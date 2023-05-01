@@ -1,9 +1,11 @@
-import Login from "./pages/Login";
 
+import Login from "./pages/Login";
+import LogOut from "./pages/LogOut";
 function App() {
   return (
     <div className="font-ssp">
-      <Login/>
+      {/* <Login/> */}
+      <LogOut></LogOut>
     </div>
   );
 }

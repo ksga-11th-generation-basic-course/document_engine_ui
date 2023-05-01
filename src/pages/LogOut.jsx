@@ -1,47 +1,49 @@
-import React from "react";
+import React from 'react'
 import Logo from "../assets/images/Logo.svg";
 import RightImage from "../assets/images/Login/Right-img-login.svg";
 import LeftImage from "../assets/images/Login/Left-img-login.svg";
 import Google from "../assets/images/Login/Google.svg";
 import Facebook from "../assets/images/Login/Facebook.svg";
-
-const Login = () => {
+export default function () {
   return (
     <div className="flex justify-center items-center bg-[#EDF9FF] text-[#37352F]">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
         <img src={Logo} className="absolute top-5 left-0" />
         <img src={LeftImage} className="mr-2" />
         <div className="bg-white p-12 flex flex-col justify-center gap-y-6 rounded-3xl shadow-md">
-          <div class=" xs:p-0 mx-auto md:w-full md:max-w-md  ">
-                  <div class="bg-white w-full  ">
-                      <h1 class="font-bold text-center text-blue-500 text-2xl">Sign Up</h1> 
-                      <div class="px-5 py-7">
-                          <label class="font-semibold text-sm text-gray-600  block">E-mail</label>
-                          <input type="text" class="border border-blue-400 rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"  placeholder='example@gmail.com'/>
-                          <label class="font-semibold text-sm text-gray-600  block">Password</label>
-                          <input type="text" class="border border-blue-400 rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"  placeholder='Password' />
-                          <div className='pb-3'>
-                              <div class="text-left">
-                                  <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
-                              </div>
-                          </div>   
-                          <button type="button" class="transition pb-3 duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
-                              Sign in
-                          </button>
-                          <button type="button" class="transition pt-3 duration-200 text-blue-500  w-full rounded-lg text-sm  font-semibold text-center inline-block">
-                              Sign Up
-                          </button>
-                      </div>
-                      <div className='px-4 '>
-                          <div
-                              class="flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-400 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-400">
-                              <p
-                              class="mx-4 mb-0 text-center font-semibold dark:text-neutral-400">
-                              or
-                              </p>
-                          </div>
-                      </div>   
-                  <div class="p-5 ">
+         <div class=" xs:p-0 mx-auto md:w-full md:max-w-md">
+                    <h1 class="font-bold text-center text-blue-500  text-2xl">Sign Up</h1> 
+                    <div class="px-5 py-7">
+                         <label class="font-semibold text-sm text-gray-600 pb-3 block">Username</label>
+                        <input type="text" class="border border-blue-400 rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"  placeholder='Username'/>
+                        <label class="font-semibold text-sm text-gray-600 pb-3 block">E-mail</label>
+                        <input type="email" class="border border-blue-400 rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"  placeholder='example@gmail.com'/>
+                        <label class="font-semibold text-sm text-gray-600 pb-3 block">Password</label>
+                        <input type="text" class="border border-blue-400 rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"  placeholder='Password' />
+                        <label class="font-semibold text-sm text-gray-600 pb-3block">Confirm Password</label>
+                        <input type="text" class="border border-blue-400 rounded-lg px-3 py-2 mt-1 mb-5 text-sm w-full"  placeholder='Confirm Password'/>
+                        {/* <div className='p-2 mb-3'>
+                            <div class="text-left">
+                                <a href="#" class="text-sm font-semibold text-gray-700 hover:text-blue-700 focus:text-blue-700">Forgot Password?</a>
+                            </div>
+                        </div>   */}
+                        <button type="button" class="transition pb-5 duration-200  w-full py-2.5 rounded-lg text-sm  font-semibold text-center inline-block">
+                            Do you have an account?<a href="" className='text-blue-500 pr-2 '> Sign Up</a>
+                        </button> 
+                        <button type="button" class="transition  duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
+                            Sign in
+                        </button>
+                    </div>
+                    <div className='px-4 mb-3'>
+                        <div
+                            class="flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-400 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-400">
+                            <p
+                            class="mx-4 mb-0 text-center font-semibold dark:text-neutral-400">
+                            or
+                            </p>
+                        </div>
+                    </div>   
+                    <div class="p-3 ">
                       <div class="grid grid-cols-2 gap-6 ">
                           <button            class="flex items-center text-center py-2 px-2 text-sm uppercase rounded bg-white border border-gray-300 hover:border-transparent hover:text-gray-700  font-bold transition transform hover:-translate-y-0.5"          >
                               <svg              xmlns="http://www.w3.org/2000/svg"              class="w-6 h-6 mr-5"              viewBox="0 0 48 48"            >
@@ -66,14 +68,13 @@ const Login = () => {
                       </div>
                   </div>
                       
-                  </div>
-                  
-              </div>
+                </div>
+                
+            </div>
+
+                        
         </div>
         <img src={RightImage} />
-      </div>
     </div>
-  );
-};
-
-export default Login;
+  )
+}
