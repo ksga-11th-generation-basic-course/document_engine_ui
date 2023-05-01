@@ -31,23 +31,34 @@ const Login = () => {
               className="w-96 h-12 px-3 outline-none border-2 border-[#1E9CEF] rounded-lg"
             />
           </div>
-          <a href="#" className="text-[#526581] font-semibold">Forgot your password?</a>
+          <a href="#" className="text-[#526581] font-semibold">
+            Forgot your password?
+          </a>
           <button
             type="button"
-            className="bg-[#1E9CEF] w-96 h-12 rounded-lg font-bold text-lg text-white"
+            className="bg-[#1E9CEF] w-96 h-12 rounded-lg font-semibold text-lg text-white"
           >
             Sign in
           </button>
-          <a href="#" className="text-center text-[#1E9CEF] font-bold text-lg">
-            Sign up
-          </a>
+          <div className="font-semibold text-lg text-center">
+            <span className="text-[#526581]">Don't have an account?</span>
+            <a href="#" className="text-[#1E9CEF] ml-2">
+              Sign up
+            </a>
+          </div>
           <hr />
           <div className="flex justify-center items-center gap-x-5">
-            <button type="button" className="flex justify-center items-center border-2 border-[#EAEAEA] w-full h-12 gap-x-3 rounded-lg font-bold text-lg">
+            <button
+              type="button"
+              className="flex justify-center items-center border-2 border-[#EAEAEA] w-full h-12 gap-x-3 rounded-lg font-semibold text-lg"
+            >
               <img src={Google} />
               <p>Google</p>
             </button>
-            <button type="button" className="flex justify-center items-center border-2 border-[#EAEAEA] w-full h-12 gap-x-3 rounded-lg font-bold text-lg">
+            <button
+              type="button"
+              className="flex justify-center items-center border-2 border-[#EAEAEA] w-full h-12 gap-x-3 rounded-lg font-semibold text-lg"
+            >
               <img src={Facebook} />
               <p>Facebook</p>
             </button>
