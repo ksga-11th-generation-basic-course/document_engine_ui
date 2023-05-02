@@ -6,8 +6,9 @@ export default {
       fontFamily: {
         ssp: ["Source Sans Pro", "sans-serif"],
       },
-      colors: {},
+      colors: {
+      },
     },
   },
-  plugins: [],
+  plugins:[],
 };
