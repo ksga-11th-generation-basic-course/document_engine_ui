@@ -1,6 +1,8 @@
 function App() {
   return (
-    <div className="font-ssp"></div>
+    <div>
+      <Landing/>
+    </div>
   );
 }
 
