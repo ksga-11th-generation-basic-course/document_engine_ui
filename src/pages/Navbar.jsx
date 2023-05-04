@@ -3,7 +3,7 @@ import Logo from "../assets/images/Logo.svg";
 export default function 
 () {
   return (
-    <div>
+    <div className='w-full fixed z-10'>
         {/* <!-- component --> */}
         <div class="bg-gray-100 font-sans w-full  m-0">
             <div class="bg-gray-100 shadow">
@@ -17,14 +17,14 @@ export default function
                 </div>
 
                 <div class="hidden sm:flex sm:items-center">
-                <a href="#" class="text-gray-800 text-sm font-semibold hover:text-blue-600 mr-4">Home</a>
-                <a href="#" class="text-gray-800 text-sm font-semibold hover:text-blue-600 mr-4">About Us</a>
-                <a href="#" class="text-gray-800 text-sm font-semibold hover:text-blue-600 mr-4">Contact Us</a>
+                <a href="#" class="text-gray-800 text-sm font-semibold hover:text-blue-700 mr-4 hover:bg-blue-300 hover:px-4 hover:py-1 hover:rounded-2xl">Home</a>
+                <a href="#" class="text-gray-800 text-sm font-semibold hover:text-blue-700 mr-4   hover:bg-blue-300 hover:px-4 hover:py-1 hover:rounded-2xl">About Us</a>
+                <a href="#" class="text-gray-800 text-sm font-semibold hover:text-blue-700 mr-4  hover:bg-blue-300 hover:px-4 hover:py-1 hover:rounded-2xl">Contact Us</a>
                 </div>
 
                 <div class="hidden sm:flex sm:items-center">
-                <a href="#" class="text-gray-800 text-sm  font-semibold hover:text-blue-600 mr-4">Sign in</a>
-                <a href="#" class="text-white text-sm font-semibold border bg-blue-500 px-4 py-2 rounded-lg hover:text-black hover:border-black">Sign up</a>
+                <a href="#" class="text-gray-800 text-sm  font-semibold hover:text-blue-600 mr-4 hover:underline">Sign in</a>
+                <a href="#" class="text-white text-sm font-semibold border bg-blue-500 px-4 py-2 rounded-lg hover:bg-white hover:text-black hover:border-blue-500">Sign up</a>
                 </div>
 
                 <div class="sm:hidden cursor-pointer">
