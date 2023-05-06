@@ -9,6 +9,12 @@ import Card3 from"../assets/images/Card/Card3.svg"
 import Icon1 from "../assets/images/Icon/Icon1.svg"
 import Icon2 from "../assets/images/Icon/Icon2.svg"
 import Icon3 from "../assets/images/Icon/Icon3.svg"
+// import Footer from"../assets/images/footer/Footer.svg"
+// import IG from "../assets/images/footer/IG.svg"
+// import Face from "../assets/images/footer/Face.svg"
+// import Telegram from "../assets/images/footer/Tegram.svg"
+import "./Homepage.css"
+import FooterMain from './FooterMain';
 
 export default function HomePage() {
   return (
@@ -27,7 +33,7 @@ export default function HomePage() {
                     <p>best security, edit your documents and work as a <br /> group.</p>
                 </div>
                 <div className="btn pt-10 ">
-                    <button className='bg-blue-500 hover:scale-x-125 text-white px-8 py-2 border rounded-lg hover:bg-white hover:border-blue-700 hover:text-black'>
+                    <button className='bg-blue-500  text-white px-8 py-2 border rounded-lg hover:bg-white hover:border-blue-700 hover:text-black'>
                         <a href="#">Get Start</a>
                     </button>
                 </div>
@@ -50,7 +56,7 @@ export default function HomePage() {
                     <div class="max-w-sm rounded overflow-hidden">
                         <img src={Card1}alt="" className='hover:opacity-50' />
                         <div class="px-6 py-6">
-                            <div class="font-bold text-blue-400 text-xl mb-2 text-center">Collaboration</div>
+                            <div class="font-bold text-blue-400 text-xl mb-2 text-center hover:scale-125">Collaboration</div>
                                 <div className="text">
                                     <p class="text-sm text-gray-500 px-4 pl-8">You have successful sign up. Please,
                                         use your</p>  
@@ -64,7 +70,7 @@ export default function HomePage() {
                     <div class="max-w-sm rounded overflow-hidden ">
                             <img src={Card2}alt=""  className='hover:opacity-50'/>
                             <div class="px-6 ">
-                                <div class="font-bold text-blue-400 text-xl mb-2 text-center">Productivity</div>
+                                <div class="font-bold text-blue-400 text-xl mb-2 text-center hover:scale-125">Productivity</div>
                                     <div className="text  text-center ">
                                         <p class="text-sm text-gray-500 px-4 pl-4">Real integrity is doing the right thing,
                                         </p>  
@@ -78,7 +84,7 @@ export default function HomePage() {
                 <div class="max-w-sm rounded overflow-hidden ">
                         <img src={Card3}alt=""  className='hover:opacity-50' />
                         <div class="px-6 ">
-                            <div class="font-bold text-blue-400 text-xl mb-2 text-center">Sharing</div>
+                            <div class="font-bold text-blue-400 text-xl mb-2 text-center hover:scale-125">Sharing</div>
                                 <div className="text-center">
                                     <p class="text-sm text-gray-500 px-4 pl-4">Love only grows by sharing. You can only
                                      </p>  
@@ -114,12 +120,12 @@ export default function HomePage() {
                 </div>
             </div>
         </div>
-        <div className='card px-32 flex justify-between relative pt-20  '>
-            <div className="grid grid-cols-3 relative">
-                <div className="cardOne">
-                    <div className="card bg-white shadow-lg border-2 px-6 py-10 rounded-3xl">
-                        <div className="icon  flex justify-evenly ">
-                            <img src={Icon1} alt="" className='absolute shadow-2xl top-8 left-10 w-12 ' />
+        <div className='card px-36 grid grid-cols-3relative pt-20  '>
+            <div className=" flex  justify-between relative">
+                <div className="CardOne">
+                    <div className="cardSharp bg-white    border-blue-500 px-6 py-10 ">
+                        <div className="icon1  flex justify-evenly ">
+                            <img src={Icon1} alt="" className='absolute  top-8 left-10 w-12 ' />
                             <h1 className='h1 pb-5 font-semibold text-lg'>Group</h1>
                         </div>
                         <div className="paragraph text-justify">
@@ -130,13 +136,38 @@ export default function HomePage() {
                         </div>
                     </div>
                 </div>
-                <div className="cardTwo">
-
+                <div className="CardTwo">
+                    <div className="cardSharp bg-white    border-blue-500 px-6 py-10 ">
+                        <div className="icon2 flex justify-evenly ">
+                            <img src={Icon1} alt="" className='absolute  top-8 left-10 w-12 ' />
+                            <h1 className='h1 pb-5 font-semibold text-lg'>Group</h1>
+                        </div>
+                        <div className="paragraph text-justify">
+                            <p>Alone we can do so little together</p>
+                            <p>we can do so much.</p>
+                            <p>Teamwork is the collaborative </p>
+                            <p>working towards a common goal.</p>
+                        </div>
+                    </div>
                 </div>
-                <div className="cardThree">
-
+                <div className="CardThree">
+                    <div className="cardSharp1 bg-white    border-blue-500 px-6 py-10 ">
+                        <div className="icon3  flex justify-evenly ">
+                            <img src={Icon1} alt="" className='absolute  top-8 left-10 w-12 ' />
+                            <h1 className='h1 pb-5 font-semibold text-lg'>Group</h1>
+                        </div>
+                        <div className="paragraph text-justify">
+                            <p>Alone we can do so little together</p>
+                            <p>we can do so much.</p>
+                            <p>Teamwork is the collaborative </p>
+                            <p>working towards a common goal.</p>
+                        </div>
+                    </div>
                 </div>
              </div>
+        </div>
+        <div className='footer  '>
+            <FooterMain></FooterMain>
         </div>
     </div>
   )

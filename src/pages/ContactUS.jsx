@@ -9,8 +9,13 @@ import Tele from'../assets/images/Contact/Telegram .svg'
 // import Telegram from'../assets/images/Contact/Telegram.svg'
 export default function () {
   return (
+   
     <div className='contact'>
+        {/* <Navbar></Navbar> */}
+        <div>
         <Navbar></Navbar>
+        </div>
+        <div>
         <div className='navbar'>
             <div className="form">
             {/* <!-- Container for demo purpose --> */}
@@ -137,6 +142,8 @@ export default function () {
 {/* <!-- Container for demo purpose --> */}
             </div>
         </div>
+        </div>
+      
         
     </div>
   )

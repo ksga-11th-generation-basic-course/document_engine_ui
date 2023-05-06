@@ -1,5 +1,7 @@
+import AboutUs from "./pages/AboutUs";
 import Comfirmrd_PassWord from "./pages/Comfirmrd_PassWord";
 import ContactUs from "./pages/ContactUs";
+import FooterMain from "./pages/FooterMain";
 import Forgot from "./pages/Forgot";
 import Form_Sucess from "./pages/Form_Sucess";
 import HomePage from "./pages/HomePage";
@@ -13,7 +15,9 @@ import Comback from "./pop-up/Comback";
 function App() {
   return (
     <div className="font-ssp">
-      <HomePage></HomePage>
+     {/* <FooterMain></FooterMain> */}
+      <AboutUs></AboutUs>
+      {/* <HomePage></HomePage> */}
      {/* <ContactUs></ContactUs> */}
      {/* <Navbar></Navbar> */}
       {/* <Comback></Comback> */}

@@ -17,9 +17,9 @@ export default function
                 </div>
 
                 <div class="hidden sm:flex sm:items-center">
-                <a href="#" class="text-gray-800 text-sm font-semibold hover:text-blue-700 mr-4 hover:bg-blue-300 hover:px-4 hover:py-1 hover:rounded-2xl">Home</a>
-                <a href="#" class="text-gray-800 text-sm font-semibold hover:text-blue-700 mr-4   hover:bg-blue-300 hover:px-4 hover:py-1 hover:rounded-2xl">About Us</a>
-                <a href="#" class="text-gray-800 text-sm font-semibold hover:text-blue-700 mr-4  hover:bg-blue-300 hover:px-4 hover:py-1 hover:rounded-2xl">Contact Us</a>
+                <a href="#" class="text-gray-800 text-sm font-semibold mr-4 hover:underline hover:text-blue-500  ">Home</a>
+                <a href="#" class="text-gray-800 text-sm font-semibold mr-4 hover:text-blue-500 hover:underline ">About Us</a>
+                <a href="#" class="text-gray-800 text-sm font-semibold  mr-4 hover:text-blue-500 hover:underline ">Contact Us</a>
                 </div>
 
                 <div class="hidden sm:flex sm:items-center">
