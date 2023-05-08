@@ -62,7 +62,6 @@ export default function AboutUs() {
                 <div className='img'>
                     <img src={Member} alt=""  className=''/>
                 </div>
-                {/* <img src={Member} alt=""  className=''/> */}
             </div>
 
         </div>

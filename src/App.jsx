@@ -16,9 +16,9 @@ function App() {
   return (
     <div className="font-ssp">
      {/* <FooterMain></FooterMain> */}
-      <AboutUs></AboutUs>
-      {/* <HomePage></HomePage> */}
-     {/* <ContactUs></ContactUs> */}
+      {/* <AboutUs></AboutUs> */}
+      {/* <HomePage></HomePage>  */}
+     <ContactUs></ContactUs>
      {/* <Navbar></Navbar> */}
       {/* <Comback></Comback> */}
       {/* <SetNew_PassWord></SetNew_PassWord> */}

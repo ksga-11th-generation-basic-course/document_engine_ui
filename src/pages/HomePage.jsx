@@ -9,10 +9,7 @@ import Card3 from"../assets/images/Card/Card3.svg"
 import Icon1 from "../assets/images/Icon/Icon1.svg"
 import Icon2 from "../assets/images/Icon/Icon2.svg"
 import Icon3 from "../assets/images/Icon/Icon3.svg"
-// import Footer from"../assets/images/footer/Footer.svg"
-// import IG from "../assets/images/footer/IG.svg"
-// import Face from "../assets/images/footer/Face.svg"
-// import Telegram from "../assets/images/footer/Tegram.svg"
+import Card from "../assets/images/Homepage/card3.svg"
 import "./Homepage.css"
 import FooterMain from './FooterMain';
 
@@ -120,7 +117,7 @@ export default function HomePage() {
                 </div>
             </div>
         </div>
-        <div className='card px-36 grid grid-cols-3relative pt-20  '>
+        {/* <div className='card px-36 grid grid-cols-3relative pt-20  '>
             <div className=" flex  justify-between relative">
                 <div className="CardOne">
                     <div className="cardSharp bg-white    border-blue-500 px-6 py-10 ">
@@ -165,6 +162,9 @@ export default function HomePage() {
                     </div>
                 </div>
              </div>
+        </div> */}
+        <div className="card3 px-28 text-center pt-10">
+            <img src={Card} alt="" />
         </div>
         <div className='footer  '>
             <FooterMain></FooterMain>
