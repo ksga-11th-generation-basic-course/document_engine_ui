@@ -21,10 +21,8 @@ function App() {
          <Route path="/" element={<HomePage></HomePage>}></Route>
          <Route path="/about" element={<AboutUs></AboutUs>}></Route>
          <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
-         
       </Routes> */}
-      
-      <DashBoardLeft></DashBoardLeft>
+      {/* <DashBoardLeft></DashBoardLeft> */}
      {/* <FooterMain></FooterMain> */}
       {/* <AboutUs>></AboutUs> */}
       {/* <HomePage></HomePage>  */}
@@ -35,7 +33,7 @@ function App() {
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
       {/* <Forgot></Forgot> */}
       {/* <VerifyAddress></VerifyAddress> */}
-      {/* <Login/> */}
+      <Login/>
       {/* <LogOut></LogOut> */}
       {/* <Form_Sucess></Form_Sucess> */}
     </div>
