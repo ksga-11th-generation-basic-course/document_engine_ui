@@ -6,7 +6,6 @@ import Message from'../assets/images/Contact/Message.svg'
 import IG from'../assets/images/Contact/IG.svg'
 import Face from'../assets/images/Contact/Facebook.svg'
 import Tele from'../assets/images/Contact/Telegram .svg'
-// import Telegram from'../assets/images/Contact/Telegram.svg'
 export default function () {
   return ( 
     <div className='contact h-full'>

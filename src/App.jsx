@@ -1,3 +1,4 @@
+import DashBoardLeft from "./dashboard/DashBoardLeft";
 import AboutUs from "./pages/AboutUs";
 import Comfirmrd_PassWord from "./pages/Comfirmrd_PassWord";
 import ContactUs from "./pages/ContactUs";
@@ -15,10 +16,11 @@ import Comback from "./pop-up/Comback";
 function App() {
   return (
     <div className="font-ssp">
+      {/* <DashBoardLeft></DashBoardLeft> */}
      {/* <FooterMain></FooterMain> */}
-      {/* <AboutUs></AboutUs> */}
-      {/* <HomePage></HomePage>  */}
-     <ContactUs></ContactUs>
+      {/* <AboutUs>></AboutUs> */}
+      <HomePage></HomePage> 
+     {/* <ContactUs></ContactUs> */}
      {/* <Navbar></Navbar> */}
       {/* <Comback></Comback> */}
       {/* <SetNew_PassWord></SetNew_PassWord> */}

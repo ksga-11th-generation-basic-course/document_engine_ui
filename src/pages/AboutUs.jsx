@@ -57,13 +57,12 @@ export default function AboutUs() {
                     </div>
                 </div>
             </div>
+            <h1 className='text-center text-5xl pt-12'>Our <span className='text-blue-'> Member</span> </h1>
             <div className="slider2 W-1/2 flex justify-center align-center ">
-                <h1 className='text-right'>Our Member</h1>
                 <div className='img'>
                     <img src={Member} alt=""  className=''/>
                 </div>
             </div>
-
         </div>
         <div className="footer">
             <FooterMain></FooterMain>

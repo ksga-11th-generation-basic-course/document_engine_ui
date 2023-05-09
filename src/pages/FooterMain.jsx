@@ -6,8 +6,8 @@ import Telegram from "../assets/images/footer/Tegram.svg"
 export default function FooterMain() {
   return (
     <div>
-        <div className='footer  relative w-full h-16'>
-             <img src={Footer} alt=""/>
+        <div className='footer  relative w-full'>
+             <img src={Footer} alt="" className='' />
              <div className='icon absolute bottom-3 top-60 left-20  '>
                 <h1 className='pl-12 text-white'>FOLLOW US</h1>
                 <div className="ICON flex flex-evenly pt-5  ">
