@@ -1,3 +1,4 @@
+import { Route, Routes } from "react-router-dom";
 import DashBoardLeft from "./dashboard/DashBoardLeft";
 import AboutUs from "./pages/AboutUs";
 import Comfirmrd_PassWord from "./pages/Comfirmrd_PassWord";
@@ -16,10 +17,17 @@ import Comback from "./pop-up/Comback";
 function App() {
   return (
     <div className="font-ssp">
-      {/* <DashBoardLeft></DashBoardLeft> */}
+      {/* <Routes>
+         <Route path="/" element={<HomePage></HomePage>}></Route>
+         <Route path="/about" element={<AboutUs></AboutUs>}></Route>
+         <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
+         
+      </Routes> */}
+      
+      <DashBoardLeft></DashBoardLeft>
      {/* <FooterMain></FooterMain> */}
       {/* <AboutUs>></AboutUs> */}
-      <HomePage></HomePage> 
+      {/* <HomePage></HomePage>  */}
      {/* <ContactUs></ContactUs> */}
      {/* <Navbar></Navbar> */}
       {/* <Comback></Comback> */}

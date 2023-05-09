@@ -22,15 +22,15 @@ export default function HomePage() {
         <div className="main grid grid-cols-3 gap-2 relative px-20">
             <div className="left ">
                 <div className="heading col-span-1 text-justify text-5xl pt-24 ">
-                    <h1 className='pb-2'>All your <span className='text-blue-500 font-semibold'>Documents</span></h1>
-                    <h1>in one  <span className='text-blue-500  font-semibold'>place</span> and <span className='text-blue-500 font-semibold'>safe!</span></h1>
+                    <h1 className='pb-2'>All your <span className='text-primary font-semibold'>Documents</span></h1>
+                    <h1>in one  <span className='text-primary  font-semibold'>place</span> and <span className='text-primary font-semibold'>safe!</span></h1>
                 </div>
-                <div className="paragraph text-justify text-gray-500 text-2xl pt-10 font-semibold texxt">
+                <div className="paragraph text-justify text-gray-500 text-2xl pt-10 font-semibold text">
                     <p>make your wiki, docs & project in ONCE with the</p>
                     <p>best security, edit your documents and work as a <br /> group.</p>
                 </div>
                 <div className="btn pt-10 ">
-                    <button className='bg-blue-500  text-white px-8 py-2 border rounded-lg hover:bg-white hover:border-blue-700 hover:text-black'>
+                    <button className='bg-primary text-white px-8 py-2 border rounded-lg hover:bg-white hover:border-blue-700 hover:text-black'>
                         <a href="#">Get Start</a>
                     </button>
                 </div>
@@ -40,7 +40,7 @@ export default function HomePage() {
             </div>
         </div>  
         <div className='px-20 pt-16'>
-           <div className='bg-gray-500 py-0.5 '></div>
+           <div className='bg-accent py-[1px]'></div>
         </div>  
         <div className='text px-20 text-center pt-20'>
             <p className='text-blue-500 text-xl'>WHAT WE DO</p>
