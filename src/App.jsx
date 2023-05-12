@@ -13,18 +13,20 @@ import Navbar from "./pages/Navbar";
 import SetNew_PassWord from "./pages/SetNew_PassWord";
 import VerifyAddress from "./pages/VerifyAddress";
 import Comback from "./pop-up/Comback";
-
+import OtpInput from 'react-otp-input';
 function App() {
+
   return (
     <div className="App font-ssp">
+     
       {/* <BrowserRouter> */}
-        <Routes>
+        {/* <Routes>
           <Route index element={<HomePage/>}></Route>
           <Route path="/about" element={<AboutUs></AboutUs>}></Route>
-          <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
+          <Route path="/contact" element={<ContactUs></ContactUs>}></Route> */} 
           {/* <Route path="*" element={<Error/>} /> */}
           {/* {props.children} */}
-        </Routes>
+        {/* </Routes>
       {/* </BrowserRouter> */}
       {/* <Routes>
          <Route path="/" element={<HomePage></HomePage>}></Route>
@@ -42,9 +44,10 @@ function App() {
       {/* <SetNew_PassWord></SetNew_PassWord> */}
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
       {/* <Forgot></Forgot> */}
-      {/* <VerifyAddress></VerifyAddress> */}
+      <VerifyAddress></VerifyAddress>
       {/* <Login/> */}
       {/* <LogOut></LogOut> */}
+      {/* <OTP></OTP> */}
       {/* <Form_Sucess></Form_Sucess> */}
     </div>
   );
