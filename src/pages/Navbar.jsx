@@ -1,5 +1,6 @@
 import React from 'react'
 import Logo from "../assets/images/Logo.svg";
+import { Link, NavLink } from 'react-router-dom'
 export default function 
 () {
   return (
@@ -17,11 +18,16 @@ export default function
                 </div>
 
                 <div class="hidden sm:flex sm:items-center">
-                <a href="#" class="text-gray-800 text-sm font-semibold mr-4 hover:underline hover:text-primary ">Home</a>
-                <a href="#" class="text-gray-800 text-sm font-semibold mr-4 hover:text-primary hover:underline ">About Us</a>
-                <a href="#" class="text-gray-800 text-sm font-semibold  mr-4 hover:text-primary hover:underline ">Contact Us</a>
+                    <NavLink to="/">
+                        <a class="text-gray-800 text-sm font-semibold mr-4 hover:text-primary hover:underline ">HOME</a>
+                    </NavLink>
+                    <NavLink to="/about">
+                        <a  class="text-gray-800 text-sm font-semibold mr-4 hover:text-primary hover:underline ">about us</a>
+                    </NavLink>
+                    <NavLink to="/contact" >
+                        <a to="/contact" class="text-gray-800 text-sm font-semibold  mr-4 hover:text-primary hover:underline ">Contact Us</a>
+                    </NavLink>
                 </div>
-
                 <div class="hidden sm:flex sm:items-center">
                 <a href="#" class="text-gray-800 text-sm  font-semibold hover:text-primary mr-4 hover:underline">Sign in</a>
                 <a href="#" class="text-white text-sm font-semibold border bg-primary px-4 py-2 rounded-lg hover:bg-white hover:text-black hover:border-blue-500">Sign up</a>

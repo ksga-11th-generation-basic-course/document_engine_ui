@@ -43,7 +43,7 @@ export default function HomePage() {
            <div className='bg-accent py-[1px]'></div>
         </div>  
         <div className='text px-20 text-center pt-20'>
-            <p className='text-blue-500 text-xl'>WHAT WE DO</p>
+            {/* <p className='text-blue-500 text-xl'>WHAT WE DO</p> */}
             <h1 className='text-gray-500 text-4xl '>We Provide Best </h1>
             <h1 className='text-gray-500 text-4xl '> <span className='text-blue-500 pr-2'>Solution</span>For you</h1>
         </div>

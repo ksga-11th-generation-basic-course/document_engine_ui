@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DashBoardLeft from "./dashboard/DashBoardLeft";
 import AboutUs from "./pages/AboutUs";
 import Comfirmrd_PassWord from "./pages/Comfirmrd_PassWord";
@@ -16,15 +16,25 @@ import Comback from "./pop-up/Comback";
 
 function App() {
   return (
-    <div className="font-ssp">
+    <div className="App font-ssp">
+      {/* <BrowserRouter> */}
+        <Routes>
+          <Route index element={<HomePage/>}></Route>
+          <Route path="/about" element={<AboutUs></AboutUs>}></Route>
+          <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
+          {/* <Route path="*" element={<Error/>} /> */}
+          {/* {props.children} */}
+        </Routes>
+      {/* </BrowserRouter> */}
       {/* <Routes>
          <Route path="/" element={<HomePage></HomePage>}></Route>
          <Route path="/about" element={<AboutUs></AboutUs>}></Route>
          <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
+         <Route path="*" element={<Error/>} />
       </Routes> */}
       {/* <DashBoardLeft></DashBoardLeft> */}
      {/* <FooterMain></FooterMain> */}
-      {/* <AboutUs>></AboutUs> */}
+      {/* <AboutUs></AboutUs> */}
       {/* <HomePage></HomePage>  */}
      {/* <ContactUs></ContactUs> */}
      {/* <Navbar></Navbar> */}
@@ -33,7 +43,7 @@ function App() {
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
       {/* <Forgot></Forgot> */}
       {/* <VerifyAddress></VerifyAddress> */}
-      <Login/>
+      {/* <Login/> */}
       {/* <LogOut></LogOut> */}
       {/* <Form_Sucess></Form_Sucess> */}
     </div>
