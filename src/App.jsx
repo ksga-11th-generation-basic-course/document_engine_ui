@@ -38,10 +38,10 @@ function App() {
       {/* <DashBoardLeft></DashBoardLeft> */}
      {/* <FooterMain></FooterMain> */}
       {/* <AboutUs></AboutUs> */}
-      {/* <HomePage></HomePage>  */}
+      <HomePage></HomePage> 
      {/* <ContactUs></ContactUs> */}
      {/* <Component_Navbar></Component_Navbar> */}
-     <Navbar></Navbar>
+     {/* <Navbar></Navbar> */}
       {/* <Comback></Comback> */}
       {/* <SetNew_PassWord></SetNew_PassWord> */}
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
