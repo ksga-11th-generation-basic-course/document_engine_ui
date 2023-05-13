@@ -12,14 +12,16 @@ import Icon3 from "../assets/images/Icon/Icon3.svg"
 import Card from "../assets/images/Homepage/card3.svg"
 import "./Homepage.css"
 import FooterMain from './FooterMain';
+import Component_Navbar from './Component_Navbar';
 
 export default function HomePage() {
   return (
     <div className='home_page'>
         <div className="nav ">
             <Navbar></Navbar>
+            {/* <Component_Navbar></Component_Navbar> */}
         </div>
-        <div className="main grid grid-cols-3 gap-2 relative px-20">
+        <div className="main grid grid-cols-3 gap-2  relative px-20">
             <div className="left ">
                 <div className="heading col-span-1 text-justify text-5xl pt-24 ">
                     <h1 className='pb-2'>All your <span className='text-primary font-semibold'>Documents</span></h1>

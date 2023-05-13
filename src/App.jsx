@@ -14,6 +14,7 @@ import SetNew_PassWord from "./pages/SetNew_PassWord";
 import VerifyAddress from "./pages/VerifyAddress";
 import Comback from "./pop-up/Comback";
 import OtpInput from 'react-otp-input';
+import Component_Navbar from "./pages/Component_Navbar";
 function App() {
 
   return (
@@ -39,12 +40,13 @@ function App() {
       {/* <AboutUs></AboutUs> */}
       {/* <HomePage></HomePage>  */}
      {/* <ContactUs></ContactUs> */}
-     {/* <Navbar></Navbar> */}
+     {/* <Component_Navbar></Component_Navbar> */}
+     <Navbar></Navbar>
       {/* <Comback></Comback> */}
       {/* <SetNew_PassWord></SetNew_PassWord> */}
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
       {/* <Forgot></Forgot> */}
-      <VerifyAddress></VerifyAddress>
+      {/* <VerifyAddress></VerifyAddress> */}
       {/* <Login/> */}
       {/* <LogOut></LogOut> */}
       {/* <OTP></OTP> */}

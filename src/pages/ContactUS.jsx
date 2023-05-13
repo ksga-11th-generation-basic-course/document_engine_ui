@@ -11,6 +11,7 @@ export default function () {
     <div className='contact h-full'>
         <div className="navbar">
             <Navbar></Navbar>
+            {/* <Component_Navbar></Component_Navbar> */}
         </div>
         <div className='main-content px-44 relative'>
             <div className='content-left absolute top-[170px]'>

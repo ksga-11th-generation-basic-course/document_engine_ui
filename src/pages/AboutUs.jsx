@@ -9,6 +9,7 @@ export default function AboutUs() {
   return (
     <div className='about'>
         <div className="navbar pb-2">
+        {/* <Component_Navbar></Component_Navbar> */}
             <Navbar></Navbar>
         </div>
         <div className="main pt-16 ">
