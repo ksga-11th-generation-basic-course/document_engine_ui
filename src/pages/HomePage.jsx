@@ -14,7 +14,7 @@ import "./Homepage.css"
 import FooterMain from './FooterMain';
 export default function HomePage() {
   return (
-    <div className='home_page'>
+    <div className='home_page w-full'>
         <div className="nav ">
             <Navbar></Navbar>
         </div>
@@ -109,7 +109,7 @@ export default function HomePage() {
                 <div className="text text-justify">
                     <h1 className='text-5xl max-sm:whitespace-pre'>Learn the best <span className='text-blue-400'>tools</span></h1>
                     <h1 className='text-5xl pt-5 '>and <span className='text-blue-400'>platforms</span></h1>
-                    <div className='paragraph text-3xl text text-justify pt-4  max-sm:whitespace-nowrap'>
+                    <div className='paragraph text-3xl text text-justify pt-4  max-sm:pt-10 max-sm:whitespace-nowrap'>
                         <p>We focus on industry leading platforms so that you </p>
                         <p>can be prepared for your next job. Then we teach all </p>
                         <p>we van about them.</p>
@@ -174,7 +174,7 @@ export default function HomePage() {
                 </div>
              </div>
         </div> */}
-        <div className="card3 px-28 max-sm:w-[98rem] text-center pt-10">
+        <div className="card3 px-28 max-sm:w-[98rem] max-sm:pb-[20rem]   text-center pt-10">
             <img src={Card} alt="" />
         </div>
         <div className='footer'>

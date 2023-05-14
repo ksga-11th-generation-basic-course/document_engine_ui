@@ -15,6 +15,7 @@ import VerifyAddress from "./pages/VerifyAddress";
 import Comback from "./pop-up/Comback";
 import OtpInput from 'react-otp-input';
 import Component_Navbar from "./pages/Component_Navbar";
+import DashBoardHeader from "./dashboard/DashBoardHeader";
 function App() {
 
   return (
@@ -35,10 +36,11 @@ function App() {
          <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
          <Route path="*" element={<Error/>} />
       </Routes> */}
+      {/* <DashBoardHeader></DashBoardHeader> */}
       {/* <DashBoardLeft></DashBoardLeft> */}
      {/* <FooterMain></FooterMain> */}
       {/* <AboutUs></AboutUs> */}
-      <HomePage></HomePage> 
+      {/* <HomePage></HomePage>  */}
      {/* <ContactUs></ContactUs> */}
      {/* <Component_Navbar></Component_Navbar> */}
      {/* <Navbar></Navbar> */}
@@ -46,7 +48,7 @@ function App() {
       {/* <SetNew_PassWord></SetNew_PassWord> */}
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
       {/* <Forgot></Forgot> */}
-      {/* <VerifyAddress></VerifyAddress> */}
+      <VerifyAddress></VerifyAddress>
       {/* <Login/> */}
       {/* <LogOut></LogOut> */}
       {/* <OTP></OTP> */}

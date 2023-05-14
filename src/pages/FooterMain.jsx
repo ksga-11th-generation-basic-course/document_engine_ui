@@ -5,11 +5,10 @@ import Face from "../assets/images/footer/Face.svg"
 import Telegram from "../assets/images/footer/Tegram.svg"
 export default function FooterMain() {
   return (
-    <div>
-        <div className='footer  relative w-full'>
+        <div className='footer max-sm:w-[100rem] max-sm:h-[100rem] relative w-full max-sm:max-h-fit'>
              <img src={Footer} alt="" className='' />
              <div className='icon absolute bottom-3 top-60 left-20  '>
-                <h1 className='pl-12 text-white'>FOLLOW US</h1>
+                <h1 className='pl-12 text-white '>FOLLOW US</h1>
                 <div className="ICON flex flex-evenly pt-5  ">
                     <div className='icon1 '>
                          <img src={Face} alt=""  className='pr-10 hover:scale-150'/>
@@ -23,6 +22,6 @@ export default function FooterMain() {
                 </div>
             </div> 
         </div>
-    </div>
+    // </div>
   )
 }

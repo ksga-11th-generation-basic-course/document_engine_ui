@@ -9,9 +9,9 @@ export default function
         <div class="bg-secondary font-sans w-full  m-0">
             <div class="bg-secondary shadow">
         <div class="container mx-auto px-4">
-            <div class="flex items-center justify-between py-4 max-sm:py-6">
-                <div className=' '>
-                    <img src={Logo} className="absolute max-sm:left-8 lg-bottom-26 w-16 h-16 top-1 mb-8 left-12" />
+            <div class="flex items-center justify-between py-4 max-sm:py-16">
+                <div className='max-sm:w-[10rem]'>
+                    <img src={Logo} className="absolute max-sm:left-8 max-sm:top-8 max-sm:w-[10rem] w-16 h-16 top-1 mb-8 left-12" />
                 </div>
                 <div class="hidden sm:flex sm:items-center">
                     <NavLink to="/">
