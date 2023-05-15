@@ -61,13 +61,9 @@ export default function () {
                               Facebook
                           </button>
                       </div>
-                  </div>
-                      
+                  </div>  
                 </div>
-                
-            </div>
-
-                        
+            </div>      
         </div>
         <img src={Right1Image} />
     </div>
