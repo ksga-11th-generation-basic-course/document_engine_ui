@@ -3,6 +3,9 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      strokeWidth: {
+        '2': '2px',
+      },
       fontFamily: {
         ssp: ["Source Sans Pro", "sans-serif"],
       },
@@ -28,6 +31,7 @@ export default {
         '36px' : '36px',
         '48px' : '48px',
       }
+      
     },
   },
   plugins: [],

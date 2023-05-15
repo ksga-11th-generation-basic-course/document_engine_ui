@@ -1,5 +1,4 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DashBoardLeft from "./dashboard/DashBoardLeft";
 import AboutUs from "./pages/AboutUs";
 import Comfirmrd_PassWord from "./pages/Comfirmrd_PassWord";
 import ContactUs from "./pages/ContactUs";
@@ -14,6 +13,8 @@ import SetNew_PassWord from "./pages/SetNew_PassWord";
 import VerifyAddress from "./pages/VerifyAddress";
 import Comback from "./pop-up/Comback";
 import OtpInput from 'react-otp-input';
+import Workspace from './pages/Workspace';
+import Sidebar from "./components/Sidebar";
 function App() {
 
   return (
@@ -34,7 +35,7 @@ function App() {
          <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
          <Route path="*" element={<Error/>} />
       </Routes> */}
-      {/* <DashBoardLeft></DashBoardLeft> */}
+      {/* <Sidebar></Sidebar> */}
      {/* <FooterMain></FooterMain> */}
       {/* <AboutUs></AboutUs> */}
       {/* <HomePage></HomePage>  */}
@@ -44,11 +45,12 @@ function App() {
       {/* <SetNew_PassWord></SetNew_PassWord> */}
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
       {/* <Forgot></Forgot> */}
-      <VerifyAddress></VerifyAddress>
+      {/* <VerifyAddress></VerifyAddress> */}
       {/* <Login/> */}
       {/* <LogOut></LogOut> */}
       {/* <OTP></OTP> */}
       {/* <Form_Sucess></Form_Sucess> */}
+      <Workspace></Workspace>
     </div>
   );
 }
