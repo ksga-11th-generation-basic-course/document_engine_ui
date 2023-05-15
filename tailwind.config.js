@@ -6,10 +6,14 @@ export default {
       fontFamily: {
         ssp: ["Source Sans Pro", "sans-serif"],
       },
+      backgroundImage: {
+        'bg-slide': "url('../assets/images/about/about.svg')",
+      },
       colors: {
         primary : '#1E9CEF',
         secondary : '#F4F4F4',
         accent : '#526581',
+        'bg-img':"../assets/images/footer/Footer.svg",
         'bg-secondary' : '[#F4F4F4]',
         'bg-accent' : '[#526581]',
 
