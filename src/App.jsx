@@ -41,7 +41,7 @@ function App() {
      {/* <FooterMain></FooterMain> */}
       {/* <AboutUs></AboutUs> */}
       {/* <HomePage></HomePage>  */}
-     {/* <ContactUs></ContactUs> */}
+     <ContactUs></ContactUs>
      {/* <Component_Navbar></Component_Navbar> */}
      {/* <Navbar></Navbar> */}
       {/* <Comback></Comback> */}
@@ -49,7 +49,7 @@ function App() {
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
       {/* <Forgot></Forgot> */}
       {/* <VerifyAddress></VerifyAddress> */}
-      <Login/>
+      {/* <Login/> */}
       {/* <LogOut></LogOut> */}
       {/* <OTP></OTP> */}
       {/* <Form_Sucess></Form_Sucess> */}
