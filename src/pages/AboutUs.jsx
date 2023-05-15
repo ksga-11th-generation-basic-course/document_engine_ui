@@ -19,12 +19,12 @@ export default function AboutUs() {
                     <h1>We Are</h1>
                 </div>
             </div>
-            <div className='SlideBar1'>
+            <div className='SlideBar1 max-sm:w-[100%]'>
                     <img src={Slider } alt="" />
             </div>
         </div>
-        <div className='flex flex-row max-sm:flex-col w-screen max-sm:px-10' >
-            <div className=' flex flex-col '>
+        <div className='flex flex-row max-sm:flex-col w-screen ' >
+            <div className=' flex flex-col max-sm:px-10 lg:px-40 '>
                 <div className="mainTitle text-4xl pt-36  max-sm:text-xl   max-sm:pt-16 ">
                     <h1 className='pb-35'>All your <span className='text-blue-400 pr-2'>Documents</span >in one <span className='text-blue-400 '> place</span></h1>
                     <h1>and<span  className='text-blue-400 p-2'>safe! </span></h1>
@@ -36,10 +36,12 @@ export default function AboutUs() {
                     <p>within the group.</p>
                 </div>
             </div>
-            <div className="img max-sm:w-screen ">
+            <div className="img max-sm:px-10 ">
                  <img src={Bg} alt="" />
             </div>
 
+        </div>
+        <div className='h-96 hidden:bg-sky-50 lg:bg-sky-50'>
         </div>
         {/* <div className="main pt-16  max-sm:pt-36  w-full">
             <div className='position relative'>
