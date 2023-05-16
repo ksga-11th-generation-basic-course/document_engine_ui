@@ -49,8 +49,8 @@ function App() {
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
       {/* <Forgot></Forgot> */}
       {/* <VerifyAddress></VerifyAddress> */}
-      {/* <SignIn/> */}
-      <SignUp></SignUp>
+      <SignIn/>
+      {/* <SignUp></SignUp> */}
       {/* <OTP></OTP> */}
       {/* <Form_Sucess></Form_Sucess> */}
     </div>
