@@ -15,7 +15,7 @@ export default function () {
 
 
 
-            {/* grid 1 */}
+            {/* grid 1 block title*/}
             <div className=' grid grid-cols-1 lg:grid-cols-2   '>
                 <div className=' m-28'>
                     <div>
@@ -86,22 +86,21 @@ export default function () {
                             transition
                             duration-150
                             ease-in-out">Send</button>
-                        {/* <img src={Contact} className='h-96 absolute  left-64 bottom-36'></img> */}
                     </div>
 
                 </div>
 
-                {/* grid 2 */}
+                {/* grid 2 block images*/}
 
-                <div className='flex flex-col justify-center items-center'>
-                    <img src={Contact} alt="" className=' md:w-96 mr-36 ' />
+                <div className='flex flex-col justify-center items-center '>
+                    <img src={Contact} alt="" className=' md:w-[560px]  mt-28' />
                     <div className=''>
-                        <div className='flex'>
+                        <div className='flex mt-12 sm:flex justify-items-center'>
                             <img src={Message} alt="" className='w-10 mr-2' />
                             <a href="#" className='pr-6 text-gray-400'>documentengine@gmail.com</a>
                         </div>
 
-                        <div className='Image flex flex-row top-12 w-56 '>
+                        <div className='Image flex flex-row top-12 w-56  mt-2'>
                             <div className="img1 pr-12">
                                 <img src={Face} alt="" className='' />
                             </div>
