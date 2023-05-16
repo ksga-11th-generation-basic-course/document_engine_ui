@@ -103,7 +103,7 @@ export default function VerifyAddress() {
                                                 </div>
                                             </Formik> 
                                         </div>  
-                                        {formik.errors.OTP && <p className='text-red-500 text-lg'>Please fill in fields</p> }          
+                                        {formik.errors.OTP && <p className='text-red-500 text-lg'>The field is not bland</p> }          
                                     <div className="flex justify-center text-center mt-5">
                                     <a className="flex items-center  cursor-pointer"><span className="font-bold">(30s)</span></a>
                                 </div>

@@ -1,0 +1,25 @@
+.CardOne .cardSharp{
+    height: 250px;
+    border-radius: 61px;
+        background: #e0e0e0;
+        box-shadow: inset 5px 5px 4px #cecece,
+                    inset -5px -5px 4px #f2f2f2;
+    /* border: 2px;
+    border-radius: 70px;
+    box-shadow:inset 6px 6px 10px #a1a1a1,
+                inset -6px -6px 12px #ffffff; */
+}
+.CardTwo .cardSharp{
+    height: 250px;
+    border: 2px;
+    border-radius: 70px;
+    box-shadow:inset 6px 6px 10px #a1a1a1,
+                inset -6px -6px 12px #ffffff;
+}
+.CardThree .cardSharp{
+    height: 250px;
+    border: 2px;
+    border-radius: 70px;
+    box-shadow:inset 6px 6px 10px #a1a1a1,
+                inset -6px -6px 12px #ffffff;
+}

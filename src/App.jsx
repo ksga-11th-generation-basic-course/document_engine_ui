@@ -7,8 +7,8 @@ import FooterMain from "./pages/FooterMain";
 import Forgot from "./pages/Forgot";
 import Form_Sucess from "./pages/Form_Sucess";
 import HomePage from "./pages/HomePage";
-import Login from "./pages/Login";
-import LogOut from "./pages/LogOut";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
 import Navbar from "./pages/Navbar";
 import SetNew_PassWord from "./pages/SetNew_PassWord";
 import VerifyAddress from "./pages/VerifyAddress";
@@ -30,12 +30,12 @@ function App() {
           {/* {props.children} */}
         {/* </Routes>
       {/* </BrowserRouter> */}
-      <Routes>
+      {/* <Routes>
          <Route path="/" element={<HomePage></HomePage>}></Route>
          <Route path="/about" element={<AboutUs></AboutUs>}></Route>
          <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
          <Route path="*" element={<Error/>} />
-      </Routes>
+      </Routes> */}
       {/* <DashBoardHeader></DashBoardHeader> */}
       {/* <DashBoardLeft></DashBoardLeft> */}
      {/* <FooterMain></FooterMain> */}
@@ -49,8 +49,8 @@ function App() {
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
       {/* <Forgot></Forgot> */}
       {/* <VerifyAddress></VerifyAddress> */}
-      {/* <Login/> */}
-      {/* <LogOut></LogOut> */}
+      {/* <SignIn/> */}
+      <SignUp></SignUp>
       {/* <OTP></OTP> */}
       {/* <Form_Sucess></Form_Sucess> */}
     </div>
