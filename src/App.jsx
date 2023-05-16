@@ -40,7 +40,7 @@ function App() {
       {/* <Forgot></Forgot> */}
       {/* <VerifyAddress></VerifyAddress> */}
       {/* <SignIn/> */}
-      {/* <SignUp></SignUp> */}
+      <SignUp></SignUp>
       {/* <Form_Sucess></Form_Sucess> */}
     </div>
   );

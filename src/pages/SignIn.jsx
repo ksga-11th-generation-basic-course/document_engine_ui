@@ -15,7 +15,7 @@ const SignIn = () => {
                                 <h1 className="font-bold text-center text-primary text-3xl">Sign in</h1>
                                 <div className="px-5 py-5">
                                     <label className="font-semibold text-sm block">Email</label>
-                                    <input type="email" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-5 text-sm w-full" placeholder='example@gmail.com' />
+                                    <input type="email" className="border border-primary outline-blue-500  rounded-lg px-2 py-3 mt-1 mb-5 text-sm w-full" placeholder='example@gmail.com' />
                                     <label className="font-semibold text-sm block">Password</label>
                                     <input type="text" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Password' />
                                     {/* <label className="font-semibold text-sm block">Password</label> */}

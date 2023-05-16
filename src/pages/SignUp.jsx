@@ -12,16 +12,28 @@ export default function SignUp() {
         <img className="w-[600px] h-[500.16px] mr-5 max-sm:hidden" src={Left1Image} />
         <div className="bg-white max-sm:bg-[#EDF9FF] p-12 flex flex-col justify-center gap-y-6 rounded-3xl lg:shadow-lg">
             <div className=" xs:p-0 mx-auto w-[380px] md:max-w-md">
-                <h1 className="font-bold text-center text-primary text-3xl">Sign Up</h1>
-                <div className="px-2 py-8 ">
-                    <label className="font-semibold text-lg block">Username</label>
-                    <input type="username" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Username' />
-                    <label className="font-semibold text-lg block">Email</label>
-                    <input type="email" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='example@gmail.com' />
-                    <label className="font-semibold text-lg block">Password</label>
-                    <input type="text" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Password' />
-                    <label className="font-semibold text-lg block">Confirm Password</label>
-                    <input type="text" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Confirm Password' />
+                <h1 className="font-bold text-center text-primary text-3xl max-sm:text-4xl">Sign Up</h1>
+                <div className="px-2 py-8 max-sm:px-8  ">
+                    <label className= "font-semibold text-lg block">Username</label>
+                    <div class=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
+                        <input class="border-primary border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none" type="text" placeholder="Username" aria-label="Full name"/>
+                    </div>
+                    {/* <input type="username" className="border border-primary max-sm:bg-transparent max-sm:appearance-none max-sm:border-none max-sm:focus:outline-none outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Username' /> */}
+                    <label className="font-semibold text-lg block pt-3 ">Email</label>
+                    <div class=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
+                        <input class="border-primary border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:leading-tight max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none" type="text" placeholder="example@gmail.com" aria-label="Full name"/>
+                    </div>
+                    {/* <input type="email" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='example@gmail.com' /> */}
+                    <label className="font-semibold text-lg block pt-3">Password</label>
+                    <div class=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
+                        <input class="border-primary border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none" type="text" placeholder='Password' aria-label="Full name"/>
+                    </div>
+                    {/* <input type="text" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Password' /> */}
+                    <label className="font-semibold text-lg block pt-3">Confirm Password</label>
+                    <div class=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
+                        <input class="border-primary border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none" type="text" placeholder="Confirm Password" aria-label="Full name"/>
+                    </div>
+                    {/* <input type="text" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Confirm Password' /> */}
                     <button type="button" className="transition duration-200 w-full py-2.5 mb-3 text-center text-sm font-semibold inline-block">
                         Do you have an account?<a href="" className='text-primary pl-2'>Sign Up</a>
                     </button>
@@ -29,7 +41,7 @@ export default function SignUp() {
                         {/* <span class=" absolute right-0 w-8 h-32  transition-all duration-1000 transform translate-x-28 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span> */}
                         <span class="relative ">Continue </span>
                     </a>
-                    <button type="button" className="transition duration-200 text-primary pt-5 w-full font-semibold text-center inline-block">
+                    <button type="button" className="outline-none duration-200 text-primary pt-5 w-full font-semibold text-center inline-block">
                         Sign up
                     </button>
             </div>
@@ -44,7 +56,7 @@ export default function SignUp() {
             </div>
             <div className="p-2">
                 <div className="grid grid-cols-2 gap-6">
-                    <button className="flex justify-center items-center py-2 px-4 text-sm rounded bg-white border border-gray-200 text-accent font-bold transition transform "          >
+                    <button className="flex justify-center items-center py-2 px-4 text-sm rounded border border-gray-200  outline-none max-sm:border-primary max-sm:border-2 text-accent font-bold transition transform "          >
                         <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6 mr-2" viewBox="0 0 48 48"            >
                             <path fill="#fbc02d" d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z" />
                             <path fill="#e53935" d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z" />
@@ -53,7 +65,7 @@ export default function SignUp() {
                         </svg>
                         Google
                     </button>
-                    <button className="flex justify-center items-center py-2 px-4 font-bold text-sm rounded border border-gray-200 text-accent transition transform "          >
+                    <button className="flex justify-center items-center py-2 px-4 font-bold text-sm rounded border  outline-none border-gray-200 max-sm:border-primary max-sm:border-2 text-accent transition transform "          >
                         <svg
                             className="w-6 h-6 mr-2 text-blue-600 fill-current"
                             xmlns="http://www.w3.org/2000/svg"
