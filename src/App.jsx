@@ -20,16 +20,6 @@ function App() {
 
   return (
     <div className="App font-ssp">
-     
-      {/* <BrowserRouter> */}
-        {/* <Routes>
-          <Route index element={<HomePage/>}></Route>
-          <Route path="/about" element={<AboutUs></AboutUs>}></Route>
-          <Route path="/contact" element={<ContactUs></ContactUs>}></Route> */} 
-          {/* <Route path="*" element={<Error/>} /> */}
-          {/* {props.children} */}
-        {/* </Routes>
-      {/* </BrowserRouter> */}
       {/* <Routes>
          <Route path="/" element={<HomePage></HomePage>}></Route>
          <Route path="/about" element={<AboutUs></AboutUs>}></Route>
@@ -49,9 +39,8 @@ function App() {
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
       {/* <Forgot></Forgot> */}
       {/* <VerifyAddress></VerifyAddress> */}
-      <SignIn/>
+      {/* <SignIn/> */}
       {/* <SignUp></SignUp> */}
-      {/* <OTP></OTP> */}
       {/* <Form_Sucess></Form_Sucess> */}
     </div>
   );
