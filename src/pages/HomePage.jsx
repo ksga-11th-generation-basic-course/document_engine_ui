@@ -95,7 +95,7 @@ export default function HomePage() {
                 <div className='paragraph text-justify pt-4 max-sm:pt-4 text-gray-500 text-bas leading-6   max-sm:whitespace-nowrap'>
                     <p>We focus on industry leading platforms so that you </p>
                     <p>can be prepared for your next job. Then we teach all </p>
-                     <p>we van about them.</p>
+                    <p>we van about them.</p>
                 </div>
             </div>
             <div className="icon w-1/3 pt-16 max-sm:pt-5 max-sm:flex max-sm: flex justify-around ">

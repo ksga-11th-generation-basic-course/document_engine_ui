@@ -28,7 +28,7 @@ export default function AboutUs() {
                     <h1 className='pb-35'>All your <span className='text-blue-400 pr-2'>Documents</span >in one <span className='text-blue-400 '> place</span></h1>
                     <h1>and<span  className='text-blue-400 p-2'>safe! </span></h1>
                 </div>
-                <div className="paragraph text-justify  pt-10 text-2xl font-semibold  max-sm:px-2 max-sm:text-xl text-gray-500">
+                <div className="paragraph text-justify  pt-10 text-2xl   max-sm:px-2 max-sm:text-xl text-gray-500">
                     <p className=''>DocEngine is a system that includes the possibility to</p>
                     <p className=''>customize the document with auto-saving and ease</p>
                     <p className=''>when the users want to share those documents </p>

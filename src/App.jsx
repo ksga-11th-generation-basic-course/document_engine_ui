@@ -30,18 +30,18 @@ function App() {
           {/* {props.children} */}
         {/* </Routes>
       {/* </BrowserRouter> */}
-      {/* <Routes>
+      <Routes>
          <Route path="/" element={<HomePage></HomePage>}></Route>
          <Route path="/about" element={<AboutUs></AboutUs>}></Route>
          <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
          <Route path="*" element={<Error/>} />
-      </Routes> */}
+      </Routes>
       {/* <DashBoardHeader></DashBoardHeader> */}
       {/* <DashBoardLeft></DashBoardLeft> */}
      {/* <FooterMain></FooterMain> */}
       {/* <AboutUs></AboutUs> */}
       {/* <HomePage></HomePage>  */}
-     <ContactUs></ContactUs>
+     {/* <ContactUs></ContactUs> */}
      {/* <Component_Navbar></Component_Navbar> */}
      {/* <Navbar></Navbar> */}
       {/* <Comback></Comback> */}

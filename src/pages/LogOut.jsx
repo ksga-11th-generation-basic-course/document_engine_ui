@@ -31,15 +31,15 @@ export default function () {
                     </div>
                     <div className='px-4 mb-3'>
                         <div
-                            class="flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-400 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-400">
+                            className="flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-400 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-400">
                             <p
-                            class="mx-4 mb-0 text-center font-semibold dark:text-neutral-400">
+                            className="mx-4 mb-0 text-center font-semibold dark:text-neutral-400">
                             or
                             </p>
                         </div>
                     </div>   
-                    <div class="p-2">
-                      <div class="grid grid-cols-2 gap-6">
+                    <div className="p-2">
+                      <div className="grid grid-cols-2 gap-6">
                           <button            class="flex justify-center items-center  py-2 px-4 text-sm uppercase rounded bg-white border border-gray-300 hover:border-transparent hover:text-gray-700  font-bold transition transform hover:-translate-y-0.5"          >
                               <svg              xmlns="http://www.w3.org/2000/svg"              class="w-6 h-6 mr-4"              viewBox="0 0 48 48"            >
                                   <path                fill="#fbc02d"                d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"              />
@@ -51,7 +51,7 @@ export default function () {
                           </button>
                           <button            class="flex justify-center items-center py-2 px-4 font-bold text-sm uppercase rounded border border-gray-300    hover:border-transparent hover:text-gray-700   transition transform hover:-translate-y-0.5"          >
                               <svg
-                                  class="w-6 h-6 mr-4 text-blue-600 fill-current"
+                                  className="w-6 h-6 mr-4 text-blue-600 fill-current"
                                   xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 24 24">
                                   <path

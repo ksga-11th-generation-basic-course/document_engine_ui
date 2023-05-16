@@ -28,7 +28,7 @@ export default function () {
                 <div className="form pt-[60px] max-sm:pt-[40px] max-sm:">
                     <form>
                          <label htmlFor="" className='text-xl text-accent'>Your Email @</label>
-                         <input type="text" className="form-control block rounded-lg border-2 w-full py-[10px] border-solid border-accent outline-primary" />
+                         <input type="text" className="form-control block rounded-lg border w-full py-[10px] border-solid border-accent outline-primary" />
                          <div className='flex flex-row pt-5'>
                             <div className='email text-accent'>
                                 <label className='text-xl'>Your Message</label>

@@ -82,21 +82,21 @@ export default function VerifyAddress() {
         <img src={Logo} className="absolute top-5 left-0" />
         <img src={VerifyL}/>
         <div className="bg-white p-12 flex flex-col justify-center gap-y-6 rounded-3xl shadow-md">
-          <div class=" xs:p-0 mx-auto md:w-full md:max-w-md  ">
-                <div class="bg-white w-full  ">
-                    <h1 class="font-bold text-center text-blue-400 text-4xl">Verify Email Address</h1> 
+          <div className=" xs:p-0 mx-auto md:w-full md:max-w-md  ">
+                <div className="bg-white w-full  ">
+                    <h1 className="font-bold text-center text-blue-400 text-4xl">Verify Email Address</h1> 
                     <div>
-                    <div class="py-10 px-3">
-                        <div class="container mx-auto">
-                            <div class="max-w-sm mx-auto md:max-w-lg">
-                                <div class="w-full">
-                                    <div class="bg-white h-64 rounded text-center">
+                    <div className="py-10 px-3">
+                        <div className="container mx-auto">
+                            <div className="max-w-sm mx-auto md:max-w-lg">
+                                <div className="w-full">
+                                    <div className="bg-white h-64 rounded text-center">
                                     <div className="text">
-                                            <p class="text-xl text-gray-500 ">Please enter the code we've end to
+                                            <p className="text-xl text-gray-500 ">Please enter the code we've end to
                                                 use your</p>  
-                                            <p class="text-xl text-center text-blue-500">your email address</p>  
+                                            <p className="text-xl text-center text-blue-500">your email address</p>  
                                             </div>
-                                        <div id="otp" class="flex   flex-row justify-center text-center px-2 mt-5">
+                                        <div id="otp" className="flex   flex-row justify-center text-center px-2 mt-5">
                                             <Formik>
                                                 <div className='form'>
                                                     {renderInput()}
@@ -104,16 +104,16 @@ export default function VerifyAddress() {
                                             </Formik> 
                                         </div>  
                                         {formik.errors.OTP && <p className='text-red-500 text-lg'>Please fill in fields</p> }          
-                                    <div class="flex justify-center text-center mt-5">
-                                    <a class="flex items-center  cursor-pointer"><span class="font-bold">(30s)</span></a>
+                                    <div className="flex justify-center text-center mt-5">
+                                    <a className="flex items-center  cursor-pointer"><span className="font-bold">(30s)</span></a>
                                 </div>
-                                <div class="flex justify-center text-center mt-5">
-                                    <a class="flex items-center text-blue-500 hover:text-blue-900 cursor-pointer"><span class="font-bold underline pr-3">Didn't receive the code?</span>Click to resend</a>
+                                <div className="flex justify-center text-center mt-5">
+                                    <a className="flex items-center text-blue-500 hover:text-blue-900 cursor-pointer"><span class="font-bold underline pr-3">Didn't receive the code?</span>Click to resend</a>
                                 </div>
                                 <div className="btn pt-8">
                                     <button type="button"
                                     onClick={formik.handleSubmit}
-                                    class="transition  duration-200 bg-blue-400 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
+                                    className="transition  duration-200 bg-blue-400 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-2.5 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
                                         Sign in
                                     </button>
                                 </div>
