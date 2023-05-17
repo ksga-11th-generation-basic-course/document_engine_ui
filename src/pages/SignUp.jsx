@@ -8,12 +8,12 @@ export default function SignUp() {
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
     <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
-        <img src={Logo} className="absolute top-8 left-14 max-sm:left-5 max-sm:top-4" />
+        <img src={Logo} className="absolute top-8 left-14 max-sm:left-3 max-sm:top-0" />
         <img className="w-[600px] h-[500.16px] mr-5 max-sm:hidden" src={Left1Image} />
         <div className="bg-white max-sm:bg-[#EDF9FF] p-12 flex flex-col justify-center gap-y-6 rounded-3xl lg:shadow-lg">
             <div className=" xs:p-0 mx-auto w-[380px] md:max-w-md">
-                <h1 className="font-bold text-center text-primary text-3xl max-sm:text-4xl">Sign Up</h1>
-                <div className="px-2 py-8 max-sm:px-8  ">
+                <h1 className="font-bold text-center text-primary text-3xl max-sm:pt-5 max-sm:text-4xl">Sign Up</h1>
+                <div className="px-2 py-8 max-sm:py-8 max-sm:px-8  ">
                     <label className= "font-semibold text-lg block">Username</label>
                     <div class=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
                         <input class="border-primary border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none" type="text" placeholder="Username" aria-label="Full name"/>
@@ -34,7 +34,7 @@ export default function SignUp() {
                         <input class="border-primary border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none" type="text" placeholder="Confirm Password" aria-label="Full name"/>
                     </div>
                     {/* <input type="text" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Confirm Password' /> */}
-                    <button type="button" className="transition duration-200 w-full py-2.5 mb-3 text-center text-sm font-semibold inline-block">
+                    <button type="button" className="transition duration-200 w-full py-2.5 mb-3 text-center text-sm font-semibold inline-block max-sm:pt-4">
                         Do you have an account?<a href="" className='text-primary pl-2'>Sign Up</a>
                     </button>
                     <a href="#_" class="px-5 py-2.5 max-sm:py-3 font-semibold relative group overflow-hidden bg-primary w-full text-center rounded-lg text-white hover:ring-2 inline-block hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-1000">
@@ -45,7 +45,7 @@ export default function SignUp() {
                         Sign up
                     </button>
             </div>
-            <div className='px-4 pb-4'>
+            <div className='px-4 pb-4 '>
                 <div
                     className="flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-400 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-400">
                     <p
