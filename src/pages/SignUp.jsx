@@ -8,7 +8,7 @@ export default function SignUp() {
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
     <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
-        <img src={Logo} className="absolute top-8 left-14 max-sm:left-3 max-sm:top-0" />
+        <img src={Logo} className="absolute top-8 left-0 max-sm:left-3 max-sm:top-0" />
         <img className="w-[600px] h-[500.16px] mr-5 max-sm:hidden" src={Left1Image} />
         <div className="bg-white max-sm:bg-[#EDF9FF] p-12 flex flex-col justify-center gap-y-6 rounded-3xl lg:shadow-lg">
             <div className=" xs:p-0 mx-auto w-[380px] md:max-w-md">

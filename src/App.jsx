@@ -1,47 +1,18 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DashBoardLeft from "./dashboard/DashBoardLeft";
-import AboutUs from "./pages/AboutUs";
-import Comfirmrd_PassWord from "./pages/Comfirmrd_PassWord";
-import ContactUs from "./pages/ContactUs";
-import FooterMain from "./pages/FooterMain";
-import Forgot from "./pages/Forgot";
-import Form_Sucess from "./pages/Form_Sucess";
-import HomePage from "./pages/HomePage";
-import SignIn from "./pages/SignIn";
-import SignUp from "./pages/SignUp";
-import Navbar from "./pages/Navbar";
-import SetNew_PassWord from "./pages/SetNew_PassWord";
-import VerifyAddress from "./pages/VerifyAddress";
-import Comback from "./pop-up/Comback";
-import OtpInput from 'react-otp-input';
-import Component_Navbar from "./pages/Component_Navbar";
-import DashBoardHeader from "./dashboard/DashBoardHeader";
+import { Route, Routes } from "react-router-dom";
+import HomePage from "./pages/HomePage.jsx";
+import SignUp from "./pages/SignUp.jsx";
+import SignIn from "./pages/SignIn.jsx";
+import Navbar from "./pages/Navbar.jsx";
+
 function App() {
 
   return (
     <div className="App font-ssp">
-      {/* <Routes>
-         <Route path="/" element={<HomePage></HomePage>}></Route>
-         <Route path="/about" element={<AboutUs></AboutUs>}></Route>
-         <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
-         <Route path="*" element={<Error/>} />
-      </Routes> */}
-      {/* <DashBoardHeader></DashBoardHeader> */}
-      {/* <DashBoardLeft></DashBoardLeft> */}
-     {/* <FooterMain></FooterMain> */}
-      {/* <AboutUs></AboutUs> */}
-      {/* <HomePage></HomePage>  */}
-     {/* <ContactUs></ContactUs> */}
-     {/* <Component_Navbar></Component_Navbar> */}
-     {/* <Navbar></Navbar> */}
-      {/* <Comback></Comback> */}
-      {/* <SetNew_PassWord></SetNew_PassWord> */}
-      {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
-      {/* <Forgot></Forgot> */}
-      {/* <VerifyAddress></VerifyAddress> */}
-      {/* <SignIn/> */}
-      <SignUp></SignUp>
-      {/* <Form_Sucess></Form_Sucess> */}
+      <Routes>
+        <Route index element={<HomePage/>}/>
+        <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/signin" element={<SignIn/>}/>
+      </Routes>
     </div>
   );
 }
