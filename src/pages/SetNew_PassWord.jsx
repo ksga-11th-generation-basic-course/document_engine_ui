@@ -29,18 +29,18 @@ export default function SetNew_PassWord() {
                                      </div>
                                     <div className="relative">
                                         <p className='text-left pt-4 '>New Password</p>
-                                        <input placeholder="Your New Password" type="text" className="border placeholder-gray-400 focus:outline-none
-                                        focus:border-black w-full pt-2 pr-3 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
+                                        <input placeholder="Your New Password" type="text" className="border-2 placeholder-gray-400 focus:outline-none
+                                        focus:border-primary w-full  pt-2 pr-3 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
                                         border-blue-500 rounded-md"/>
                                     </div>     
                                     <div className="relative">
                                         <p className='text-left pt-5 '>Confirm New Password</p>
-                                        <input placeholder="Your New Password" type="text" className="border placeholder-gray-400 focus:outline-none
-                                        focus:border-black w-full pt-2 pr-3 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
+                                        <input placeholder="Your New Password" type="text" className="border-2 placeholder-gray-400 focus:outline-none
+                                        focus:border-primary w-full pt-2 pr-3 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
                                         border-blue-500 rounded-md"/>
                                     </div>           
                                   <div className="btn pt-8">
-                                    <button type="button" className="transition  duration-200 bg-blue-500 hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-4 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
+                                    <button type="button" className="transition  duration-200 bg-primary hover:bg-blue-600 focus:bg-blue-700 focus:shadow-sm focus:ring-4 focus:ring-blue-500 focus:ring-opacity-50 text-white w-full py-4 rounded-lg text-sm shadow-sm hover:shadow-md font-semibold text-center inline-block">
                                         Reset Password
                                     </button>
                                  </div>

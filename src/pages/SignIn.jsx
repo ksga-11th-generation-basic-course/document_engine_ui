@@ -8,7 +8,7 @@ const SignIn = () => {
   return (
         <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
                     <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
-                        <img src={Logo} className="absolute top-5 left-10" />
+                        <img src={Logo} className="absolute top-5 left-3  right-0" />
                         <img className="w-[450px] h-[426.16px] mr-5  max-sm-hidden" src={LeftImage} />
                         <div className="bg-white p-10 flex flex-col justify-center gap-y-4 rounded-3xl shadow-md">
                             <div className=" xs:p-0 mx-auto w-[380px] md:max-w-md">

@@ -10,8 +10,7 @@ import Left2 from "../assets/images/Left/Completed-pana 1.svg"
 import Google from "../assets/images/Login/Google.svg";
 import Facebook from "../assets/images/Login/Facebook.svg";
 
-export default function 
-() {
+export default function Comfirmrd_PassWord () {
   return (
     <div className="flex justify-center items-center bg-[#EDF9FF] text-[#37352F]">
     <div className="flex justify-center  items-center min-h-screen relative overflow-hidden">

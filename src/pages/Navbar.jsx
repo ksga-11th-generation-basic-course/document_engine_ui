@@ -8,7 +8,7 @@ export default function
          <div className="bg-secondary font-sans w-full ">
             <div className="bg-secondary shadow">
         <div class="container mx-auto px-4">
-            <div className="flex items-center justify-between py-4 ">
+            <div className="flex items-center justify-evenly py-4 ">
                 <div className=' max-sm: '>
                     <img src={Logo} className="absolute max-sm:h-14 h-16 top-0 mb-8 left-12 max-sm:left-0" />
                 </div>

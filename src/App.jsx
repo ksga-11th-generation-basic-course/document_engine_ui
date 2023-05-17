@@ -5,7 +5,6 @@ import Comfirmrd_PassWord from "./pages/Comfirmrd_PassWord";
 import ContactUs from "./pages/ContactUs";
 import FooterMain from "./pages/FooterMain";
 import Forgot from "./pages/Forgot";
-import Form_Sucess from "./pages/Form_Sucess";
 import HomePage from "./pages/HomePage";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
@@ -39,9 +38,8 @@ function App() {
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
       {/* <Forgot></Forgot> */}
       {/* <VerifyAddress></VerifyAddress> */}
-      {/* <SignIn/> */}
-      <SignUp></SignUp>
-      {/* <Form_Sucess></Form_Sucess> */}
+      <SignIn/>
+      {/* <SignUp></SignUp> */}
     </div>
   );
 }
