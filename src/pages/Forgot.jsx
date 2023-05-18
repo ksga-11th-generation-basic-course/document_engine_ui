@@ -4,7 +4,7 @@ import Forgot1 from "../assets/images/Forgot/Forgot.svg"
 export default function Forgot() {
   return (
     <div className="flex justify-center items-center bg-[#EDF9FF] relative text-[#37352F]">
-        <img src={Logo} className="absolute top-10 left-20" />
+        <img src={Logo} className="absolute top-10 left-10" />
         <div className="flex flex-row justify-center  items-center relative min-h-screen  overflow-hidden">
         {/* <!-- component --> */}
         <div class="relative lg:py-10">
@@ -32,9 +32,9 @@ export default function Forgot() {
                                             <p class="text-l text-center text-gray-500">password reset instructor</p>  
                                      </div>
                                     <div class="relative">
-                                        <p className='text-left pt-5 '>Email</p>
+                                        <p className='text-left pt-5  text-lg'>Email</p>
                                         <input placeholder="example@.com" type="text" class="border placeholder-gray-400 focus:outline-none
-                                        focus:border-black w-full pt-2 pr-3 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
+                                        focus:border-primary w-full pt-2 pr-3 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
                                         border-blue-500 rounded-md"/>
                                     </div>           
                                   <div className="btn pt-8">

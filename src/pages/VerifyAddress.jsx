@@ -77,10 +77,11 @@ export default function VerifyAddress() {
         ));
     }
   return (
-      <div className="flex justify-center items-center bg-[#EDF9FF] text-[#37352F]">
-      <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
-        <img src={Logo} className="absolute top-5 left-0" />
-        <img src={VerifyL}/>
+
+    <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
+    <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
+        <img src={Logo} className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10" />
+        <img className="w-[500px] h-[700.16px] pt-32 mr-5 max-sm:hidden" src={VerifyL} />
         <div className="bg-white p-12 flex flex-col justify-center gap-y-6 rounded-3xl shadow-md">
           <div className=" xs:p-0 mx-auto md:w-full md:max-w-md  ">
                 <div className="bg-white w-full  ">
@@ -127,9 +128,29 @@ export default function VerifyAddress() {
                   
               </div>
         </div>
-        <img src={VerifyR} className='mb-32' />
-      </div>
     </div>
+    <img className="w-[600px] h-[500.57px]  max-sm:hidden" src={VerifyR} /> 
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   )
 }
 

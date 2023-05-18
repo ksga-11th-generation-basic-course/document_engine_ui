@@ -1,11 +1,11 @@
 import React from 'react'
 import Logo from "../assets/images/Logo.svg";
 import Reset from "../assets/images/Set_New_pass.svg"
-export default function SetNew_PassWord() {
+export default function SetNewPassWord() {
   return (
     <div>
           <div className="flex justify-center items-center bg-[#EDF9FF] relative text-[#37352F]">
-        <img src={Logo} className="absolute top-10 left-20" />
+        <img src={Logo} className="absolute top-10 left-10" />
         <div className="flex flex-row justify-center  items-center relative min-h-screen  overflow-hidden">
         {/* <!-- component --> */}
         <div className="relative lg:py-10">
@@ -23,19 +23,19 @@ export default function SetNew_PassWord() {
                                 <div className="w-full">
                                     <div className="bg-white h-54 rounded text-center">
                                     <div className="text">
-                                        <p className="text-l text-gray-500 ">Password must be at least 8 characters.
+                                        <p className="text-l text-accent ">Password must be at least 8 characters.
                                         </p>  
                                             {/* <p class="text-l text-center text-gray-500">password reset instructor</p>   */}
                                      </div>
                                     <div className="relative">
-                                        <p className='text-left pt-4 '>New Password</p>
-                                        <input placeholder="Your New Password" type="text" className="border-2 placeholder-gray-400 focus:outline-none
+                                        <p className='text-left pt-4  text-lg'>New Password</p>
+                                        <input placeholder="Your New Password" type="text" className="border-2 placeholder-gray-400  focus:outline-none
                                         focus:border-primary w-full  pt-2 pr-3 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
                                         border-blue-500 rounded-md"/>
                                     </div>     
                                     <div className="relative">
-                                        <p className='text-left pt-5 '>Confirm New Password</p>
-                                        <input placeholder="Your New Password" type="text" className="border-2 placeholder-gray-400 focus:outline-none
+                                        <p className='text-left pt-5   text-lg'>Confirm New Password</p>
+                                        <input placeholder="Your New Password" type="text" className="border-2  placeholder-gray-400 focus:outline-none
                                         focus:border-primary w-full pt-2 pr-3 pb-4 pl-4 mt-2 mr-0 mb-0 ml-0 text-base block bg-white
                                         border-blue-500 rounded-md"/>
                                     </div>           
