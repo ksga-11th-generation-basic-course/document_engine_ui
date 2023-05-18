@@ -19,7 +19,7 @@ function ResetPasswordPopup() {
 
 
 
-                        <div className=" mt-24 relative transform overflow-hidden rounded-lg bg-white text-left lg:shadow-xl transition-all sm:my-12 sm:w-full sm:max-w-lg ">
+                        <div className=" relative transform overflow-hidden rounded-lg bg-white text-left lg:shadow-xl transition-all sm:my-12 sm:w-full sm:max-w-lg ">
                             <div className='flex justify-end pt-4  pr-4'>
                                 <img src={CloseIcon} alt="" className='' />
                             </div>
@@ -28,12 +28,12 @@ function ResetPasswordPopup() {
                             </div>
                             <form className="bg-white px-4 pb-4 sm:p-6 sm:pb-4">
                                 <div className="sm:flex justify-center">
-                                    <div className="mt-14 text-center  sm:mt-0 sm:text-left">
+                                    <div className="mt-2 text-center  sm:mt-0 sm:text-left">
                                         <h3 className="text-xl text-base font-semibold leading-12 text-[#1E9CEF] flex justify-center" id="modal-title">Reset Account Password</h3>
                                         <div className="mt-8 text-left">
                                             <div className='max-sm:w-72'>
-                                            <label className='font-semibold text-[#6B7280]'>New Password</label>
-                                            <input type="text" class=" d:pr-56 sm:pr-56 form-control block w-full  py-3 text-base font-normal text-[#6B7280] bg-white bg-clip-padding  border border-solid border-[#1E9CEF] rounded-lg transition ease-in-out m-0 resize mt-2 mb-4" placeholder="New Password" />
+                                            <label className='font-semibold text-[#6B7280]'>Current Password</label>
+                                            <input type="text" class=" d:pr-56 sm:pr-56 form-control block w-full  py-3 text-base font-normal text-[#6B7280] bg-white bg-clip-padding  border border-solid border-[#1E9CEF] rounded-lg transition ease-in-out m-0 resize mt-2 mb-4" placeholder="Current Password" />
                                             </div>
                                             <label className='font-semibold text-[#6B7280]'>New Password</label>
                                             <input type="text" class=" form-control block w-full  py-3 text-base font-normal text-[#6B7280] bg-white bg-clip-padding  border border-solid border-[#1E9CEF] rounded-lg transition ease-in-out m-0 resize mt-2 mb-4" placeholder="New Password" />
