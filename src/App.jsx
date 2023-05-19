@@ -7,8 +7,9 @@ import ContactUs from "./pages/ContactUS.jsx"
 import Forgot from "./pages/Forgot.jsx"
 import Navbar from "./pages/Navbar.jsx";
 import VerifyAddress from"./pages/VerifyAddress.jsx"
-
+import EnableAccount from"./pages/EnableAccount.jsx"
 import SetNewPassWord from "./pages/SetNewPassWord.jsx";
+import NotFound from "./pages/NotFound.jsx";
 
 function App() {
 
@@ -22,6 +23,8 @@ function App() {
         <Route path="/signin" element={<SignIn/>}/>
         <Route path="/forgot" element={<Forgot/>}/>
         <Route path="/verify" element={<VerifyAddress/>}/>
+        <Route path="/enable" element={<EnableAccount/>}/>
+        <Route path="/notFound" element={<NotFound/>}/>
         <Route path="/setPassword" element={<SetNewPassWord/>}/>
       </Routes>
     </div>

@@ -13,6 +13,7 @@ export default {
         primary : '#1E9CEF',
         secondary : '#F4F4F4',
         accent : '#526581',
+        back:"#37352F",
         'bg-img':"../assets/images/footer/Footer.svg",
         'bg-secondary' : '[#F4F4F4]',
         'bg-accent' : '[#526581]',

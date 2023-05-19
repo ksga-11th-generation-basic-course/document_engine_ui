@@ -17,26 +17,26 @@ const SignIn = () => {
 
             <div className=" xs:p-0 mx-auto w-[380px] md:max-w-md">
                 <h1 className="font-bold text-center text-primary text-3xl max-sm:pt-5 max-sm:text-4xl">Sign in</h1>
-                <div className="px-2 py-8 max-sm:py-8 max-sm:px-8  ">
-                    <label className="font-semibold text-lg block pt-3 ">Email</label>
-                    <div class=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
+                <div className="px-2 py-30px max-sm:py-8 max-sm:px-8">
+                    <label className="font-semibold text-20px block pt-3 pb-2  text-back">Email</label>
+                    <div class=" max-sm:flex max-sm:items-center max-sm:border-b pb-25px max-sm:border-primary ">
                         <input class="border-primary border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:leading-tight max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none" type="text" placeholder="example@gmail.com" aria-label="Full name"/>
                     </div>
-                    <label className="font-semibold text-lg block pt-3">Password</label>
-                    <div class=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
+                    <label className="font-semibold text-20px block pt-3 pb-2  text-back">Password</label>
+                    <div class=" max-sm:flex max-sm:items-center max-sm:border-b pb-25px max-sm:border-primary ">
                         <input class="border-primary border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none" type="text" placeholder='Password' aria-label="Full name"/>
                     </div>
-                    <button type="button" className="transition duration-200 w-full py-2.5 mb-3 text-left text-sm font-semibold inline-block max-sm:pt-4">
+                    <button type="button" className="transition duration-200  w-full py-2.5 mb-2 mt-2 text-left text-sm font-semibold inline-block max-sm:pt-4">
                        Forgot your password?
                     </button>
-                    <a href="#_" class="px-5 py-2.5 max-sm:py-3 font-semibold relative group overflow-hidden bg-primary w-full text-center rounded-lg text-white hover:ring-2 inline-block hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-1000">
+                    <a href="#_" class="px-5 py-2.5  max-sm:py-3 font-semibold relative group overflow-hidden bg-primary w-full text-center rounded-lg text-white hover:ring-2 inline-block hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-1000">
                         <span class="relative ">Sign in </span>
                     </a>
-                    <button type="button" className="outline-none duration-200 text-primary pt-5 w-full font-semibold text-center inline-block">
+                    <button type="button" className="outline-none duration-200 text-primary mt-2 mb-2 max-sm:mt-0 max-sm:mb-0 max-sm:pt-2 pt-4 w-full font-semibold text-center inline-block">
                         Sign up
                     </button>
             </div>
-            <div className='px-4 pb-4 '>
+            <div className='px-4 pb-4 pt-20px max-sm:pt-10px'>
                 <div
                     className="flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-400 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-400">
                     <p
