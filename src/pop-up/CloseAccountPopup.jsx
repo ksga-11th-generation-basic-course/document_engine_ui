@@ -29,7 +29,7 @@ function CloseAccountPopup() {
                             <form className="bg-white px-4 pb-4 sm:p-6 sm:pb-4 mt-4">
                                 <div className="sm:flex justify-center">
                                     <div className="mt-2 text-center  sm:mt-0 sm:text-left">
-                                        <h3 className=" text-baseleading-12 text-[#6B7280] flex justify-center font-normal" id="modal-title">Are you sure want to delete your profile photo from this workspace?</h3>
+                                        <h3 className=" text-baseleading-12 text-[#6B7280] flex justify-center font-normal" id="modal-title">Are you sure want to close your account?</h3>
 
                                     </div>
                                 </div>
