@@ -10,6 +10,7 @@ import VerifyAddress from"./pages/VerifyAddress.jsx"
 import EnableAccount from"./pages/EnableAccount.jsx"
 import SetNewPassWord from "./pages/SetNewPassWord.jsx";
 import NotFound from "./pages/NotFound.jsx";
+import MessageSucess from "./pop-up/MessageSucess.jsx";
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
         <Route path="/enable" element={<EnableAccount/>}/>
         <Route path="/notFound" element={<NotFound/>}/>
         <Route path="/setPassword" element={<SetNewPassWord/>}/>
+        <Route path="/messageSucess" element={<MessageSucess/>} />
       </Routes>
     </div>
   );
