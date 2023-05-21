@@ -11,6 +11,11 @@ import EnableAccount from"./pages/EnableAccount.jsx"
 import SetNewPassWord from "./pages/SetNewPassWord.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import MessageSucess from "./pop-up/MessageSucess.jsx";
+import CloseAccount from "./pop-up/CloseAccount.jsx";
+import RemoveMember from "./pop-up/RemoveMember.jsx";
+import DeleteWorkspace from "./pop-up/DeleteWorkspace.jsx";
+import RemoveWorkspace from "./pop-up/RemoveWorkspace.jsx";
+import LeaveWorkspace from "./pop-up/LeaveWorkspace.jsx";
 
 function App() {
 
@@ -28,6 +33,12 @@ function App() {
         <Route path="/notFound" element={<NotFound/>}/>
         <Route path="/setPassword" element={<SetNewPassWord/>}/>
         <Route path="/messageSucess" element={<MessageSucess/>} />
+        <Route path="/closeAccount" element={<CloseAccount/>} />
+        <Route path="/removeMember" element={<RemoveMember/>} />
+        <Route path="/deleteWorkspace" element={<DeleteWorkspace/>} />
+        <Route path="/removeWorkspace" element={<RemoveWorkspace/>} />
+        <Route path="/leaveWorkspace" element={<LeaveWorkspace/>} />
+        <Route path="/*" element={<NotFound/>} />
       </Routes>
     </div>
   );

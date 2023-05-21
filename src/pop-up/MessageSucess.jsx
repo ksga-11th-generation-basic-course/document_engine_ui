@@ -1,6 +1,7 @@
 import React from 'react'
 import Message from "../assets/images/popUp/messageSucess.svg"
 import Cancel from "../assets/images/popUp/cancel.png"
+import "./font.css"
 export default function MessageSucess() {
   return (
     <div className='flex justify-center items-center bg-slate-400 w-full h-[100vh]'>
