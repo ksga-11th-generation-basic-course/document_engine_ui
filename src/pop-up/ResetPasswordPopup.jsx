@@ -33,7 +33,7 @@ function ResetPasswordPopup() {
                                         <div className="mt-8 text-left">
                                             <div className='max-sm:w-72'>
                                             <label className='font-semibold text-[#6B7280]'>Current Password</label>
-                                            <input type="text" class=" d:pr-56 sm:pr-56 form-control block w-full  py-3 text-base font-normal text-[#6B7280] bg-white bg-clip-padding  border border-solid border-[#1E9CEF] rounded-lg transition ease-in-out m-0 resize mt-2 mb-4" placeholder="Current Password" />
+                                            <input type="text" class=" md:pr-56 sm:pr-56 form-control block w-full  py-3 text-base font-normal text-[#6B7280] bg-white bg-clip-padding  border border-solid border-[#1E9CEF] rounded-lg transition ease-in-out m-0 resize mt-2 mb-4" placeholder="Current Password" />
                                             </div>
                                             <label className='font-semibold text-[#6B7280]'>New Password</label>
                                             <input type="text" class=" form-control block w-full  py-3 text-base font-normal text-[#6B7280] bg-white bg-clip-padding  border border-solid border-[#1E9CEF] rounded-lg transition ease-in-out m-0 resize mt-2 mb-4" placeholder="New Password" />

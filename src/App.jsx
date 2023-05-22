@@ -14,19 +14,31 @@ import SetNew_PassWord from "./pages/SetNew_PassWord";
 import VerifyAddress from "./pages/VerifyAddress";
 import Comback from "./pop-up/Comback";
 import OtpInput from 'react-otp-input';
+import Contact_Us from "./pages/Contact_Us";
+import ResetPasswordPopup from "./pop-up/ResetPasswordPopup";
+import DeleteProfilePhotoPopup from "./pop-up/DeleteProfilePhotoPopup";
+import CloseAccountPopup from "./pop-up/CloseAccountPopup";
+import CreateWorkSpacePopup from "./pop-up/CreateWorkSpacePopup";
+import DeleteDocumentPopup from "./pop-up/DeleteDocumentPopup";
+import RemoveMemberPopup from "./pop-up/RemoveMemberPopup";
+import RemoveWorkspacePopup from "./pop-up/RemoveWorkspacePopup";
+import DeleteWorkspacePhotoPopup from "./pop-up/DeleteWorkspacePhotoPopup";
+import LeaveFromWorkpacePopup from "./pop-up/LeaveFromWorkpacePopup";
+import JoinWorkspacePopup from "./pop-up/JoinWorkspacePopup";
+// import NavbarComponent from "./components/NavbarComponent";
 function App() {
 
   return (
     <div className="App font-ssp">
-     
+
       {/* <BrowserRouter> */}
-        {/* <Routes>
+      {/* <Routes>
           <Route index element={<HomePage/>}></Route>
           <Route path="/about" element={<AboutUs></AboutUs>}></Route>
-          <Route path="/contact" element={<ContactUs></ContactUs>}></Route> */} 
-          {/* <Route path="*" element={<Error/>} /> */}
-          {/* {props.children} */}
-        {/* </Routes>
+          <Route path="/contact" element={<ContactUs></ContactUs>}></Route> */}
+      {/* <Route path="*" element={<Error/>} /> */}
+      {/* {props.children} */}
+      {/* </Routes>
       {/* </BrowserRouter> */}
       {/* <Routes>
          <Route path="/" element={<HomePage></HomePage>}></Route>
@@ -35,20 +47,39 @@ function App() {
          <Route path="*" element={<Error/>} />
       </Routes> */}
       {/* <DashBoardLeft></DashBoardLeft> */}
-     {/* <FooterMain></FooterMain> */}
+      {/* <FooterMain></FooterMain> */}
       {/* <AboutUs></AboutUs> */}
       {/* <HomePage></HomePage>  */}
-     {/* <ContactUs></ContactUs> */}
-     {/* <Navbar></Navbar> */}
+
+      {/* All Pop up //////////////////////////////////////////////*/}
+
+      {/* <DeleteProfilePhotoPopup></DeleteProfilePhotoPopup> */}
+      {/* <CloseAccountPopup></CloseAccountPopup> */}
+      {/* <Contact_Us></Contact_Us> */}
+      {/* <ResetPasswordPopup></ResetPasswordPopup> */}
+      {/* <CreateWorkSpacePopup></CreateWorkSpacePopup> */}
+      {/* <DeleteDocumentPopup></DeleteDocumentPopup> */}
+      {/* <RemoveMemberPopup></RemoveMemberPopup> */}
+      {/* <RemoveWorkspacePopup></RemoveWorkspacePopup> */}
+      {/* <DeleteWorkspacePhotoPopup></DeleteWorkspacePhotoPopup> */}
+      {/* <LeaveFromWorkpacePopup></LeaveFromWorkpacePopup> */}
+      <JoinWorkspacePopup></JoinWorkspacePopup>
+
+      {/* //////////////////////////////////////////////////////////////// */}
+
+
+      {/* <Navbar></Navbar> */}
       {/* <Comback></Comback> */}
       {/* <SetNew_PassWord></SetNew_PassWord> */}
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
       {/* <Forgot></Forgot> */}
-      <VerifyAddress></VerifyAddress>
+      {/* <VerifyAddress></VerifyAddress> */}
       {/* <Login/> */}
       {/* <LogOut></LogOut> */}
       {/* <OTP></OTP> */}
       {/* <Form_Sucess></Form_Sucess> */}
+
+
     </div>
   );
 }
