@@ -22,9 +22,9 @@ function App() {
   return (
     <div className="App font-ssp">
       <Routes>
-        {/* <Route index element={<HomePage/>}/> */}
-        {/* <Route path="/about" element={<AboutUs/>}/> */}
-        {/* <Route path="/contact" element={<ContactUs></ContactUs>}/> */}
+         <Route index element={<HomePage/>}/> 
+      <Route path="/about" element={<AboutUs/>}/> 
+        <Route path="/contact" element={<ContactUs></ContactUs>}/> 
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/signin" element={<SignIn/>}/>
         <Route path="/forgot" element={<Forgot/>}/>

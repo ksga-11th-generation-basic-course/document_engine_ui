@@ -11,7 +11,7 @@ export default function Navbar() {
               <div>
                 <img
                   src={Logo}
-                  className="max-sm:h-14 "
+                  className="max-sm:h-14  h-14"
                 />
               </div>
               <div className="sm:flex sm:items-center max-sm:hidden ">
@@ -21,7 +21,7 @@ export default function Navbar() {
                     isActive ? "text-primary" : "text-accent"
                   }
                 >
-                  <a className=" text-22px font-semibold mr-8 hover:text-primary">
+                  <a className=" text-18px font-semibold mr-8 hover:text-primary">
                     Home
                   </a>
                 </NavLink>
@@ -31,7 +31,7 @@ export default function Navbar() {
                     isActive ? "text-primary" : "text-accent"
                   }
                 >
-                  <a className=" text-22px font-semibold mr-8 hover:text-primary ">
+                  <a className=" text-18px font-semibold mr-8 hover:text-primary ">
                     About us
                   </a>
                 </NavLink>
@@ -43,7 +43,7 @@ export default function Navbar() {
                 >
                   <a
                     to="/contact"
-                    className="text-22px font-semibold  mr-8 hover:text-primary "
+                    className="text-18px font-semibold  mr-8 hover:text-primary "
                   >
                     Contact Us
                   </a>
@@ -58,7 +58,7 @@ export default function Navbar() {
                 </Link>
                 <Link
                   to={"signup"}
-                  className="text-white text-22px font-semibold px-5 py-2 bg-primary max-sm:py-1  max-sm:px-2 border-primary border-2 rounded-xl"
+                  className="text-white text-18px font-semibold px-5 py-2 bg-primary max-sm:py-1  max-sm:px-2 border-primary border-2 rounded-xl"
                 >
                   Sign up
                 </Link>
