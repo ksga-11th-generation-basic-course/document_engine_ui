@@ -115,7 +115,7 @@ export default function HomePage() {
           <h1 className="text-5xl pt-5 max-sm:pt-2 max-sm:text-4xl text-accent ">
             and <span className="text-blue-400">platforms</span>
           </h1>
-          <div className="text-justify text-20px font-normal pt-4 max-sm:pt-4 text-accent leading-6 max-sm:whitespace-nowrap">
+          <div className="text-justify text-20px font-normal pt-4 max-sm:pt-4 text-accent leading-6 ">
             <p>We focus on industry leading platforms so that you </p>
             <p>can be prepared for your next job. Then we teach all </p>
             <p>we van about them.</p>

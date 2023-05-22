@@ -8,7 +8,7 @@ export default function FooterMain() {
         <div className='footer relative w-full ' >
              <div className='flex flex-col justify-center absolute top-[15rem] max-sm:top-[2rem]  left-24  max-sm:left-4 '>
                 <h1 className='pl-12 text-white text-22px font-semibold max-sm:hidden '>FOLLOW US</h1>
-                <div className='flex flex-row pt-10 max-sm:h-5 '>
+                <div className='flex flex-row pt-10 max-sm:pt-6 max-sm:h-5 '>
                     <div className='pr-12 max-sm:pr-8 '>
                         <a href=""><img src={Face}  className='max-sm:w-3'/></a> 
                     </div>
