@@ -22,7 +22,7 @@ export default function HomePage() {
       <div className="main px-20 max-sm:px-10 flex flex-row">
         <div className="grid grid-cols-3 gap-4 pt-[10rem]  max-sm:pt-[6rem] max-lg:flex max-lg:flex-col  max-md:flex max-md:flex-col">
           <div className="col-span-1 space-y-8">
-            <div className="font-bold text-5xl max-lg:text-xl max-lg:whitespace-pre max-md:whitespace-pre max-md:text-lg">
+            <div className="font-bold text-5xl max-sm:text-3xl max-lg:text-xl max-lg:whitespace-pre max-md:whitespace-pre max-md:text-lg">
               <h1 className="pb-5 max-sm:pb-0.5 text-accent">
                 All your <span className="text-primary">Documents</span>
               </h1>
@@ -31,7 +31,7 @@ export default function HomePage() {
                 <span className="text-primary">safe!</span>
               </h1>
             </div>
-            <div className="font-bold text-22px max-sm:pt-4 max-lg:text-xl max-lg:whitespace-pre max-sm:text-sm max-sm:whitespace-pre max-md:whitespace-pre text-accent">
+            <div className="font-bold text-22px max-sm:pt-1 max-lg:text-xl max-lg:whitespace-pre max-sm:text-sm max-sm:whitespace-pre max-md:whitespace-pre text-accent">
               <p>
                 Make your wiki, docs & project in ONCE with the
               </p>
@@ -41,7 +41,7 @@ export default function HomePage() {
               <p>group.</p>
             </div>
             <div className="button">
-              <button className="bg-primary max-sm:px-4 max-sm:py-1 text-white px-10 py-2 border rounded-xl font-bold text-22px">
+              <button className="bg-primary max-sm:px-5 max-sm:py-1 text-white px-10 py-2 border rounded-xl font-bold text-22px">
                 <a href="#">Get Start</a>
               </button>
             </div>
