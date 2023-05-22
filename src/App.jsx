@@ -14,7 +14,7 @@ import VerifyAddress from "./pages/VerifyAddress";
 import Comback from "./pop-up/Comback";
 import OtpInput from 'react-otp-input';
 import Workspace from './pages/Workspace';
-import Sidebar from "./components/Sidebar";
+import SearchButton from "./components/SearchButton";
 function App() {
 
   return (
@@ -35,7 +35,7 @@ function App() {
          <Route path="/contact" element={<ContactUs></ContactUs>}></Route>
          <Route path="*" element={<Error/>} />
       </Routes> */}
-      {/* <Sidebar></Sidebar> */}
+      {/* <SearchButton/> */}
      {/* <FooterMain></FooterMain> */}
       {/* <AboutUs></AboutUs> */}
       {/* <HomePage></HomePage>  */}
