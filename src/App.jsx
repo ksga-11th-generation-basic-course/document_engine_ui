@@ -16,21 +16,10 @@ import RemoveMember from "./pop-up/RemoveMember.jsx";
 import DeleteWorkspace from "./pop-up/DeleteWorkspace.jsx";
 import RemoveWorkspace from "./pop-up/RemoveWorkspace.jsx";
 import LeaveWorkspace from "./pop-up/LeaveWorkspace.jsx";
-
-import { BrowserRouter, Route, Routes } from "react-router-dom";
 import DashBoardLeft from "./dashboard/DashBoardLeft";
-import AboutUs from "./pages/AboutUs";
 import Comfirmrd_PassWord from "./pages/Comfirmrd_PassWord";
-// import ContactUs from "./pages/ContactUs";
 import FooterMain from "./pages/FooterMain";
-import Forgot from "./pages/Forgot";
 import Form_Sucess from "./pages/Form_Sucess";
-import HomePage from "./pages/HomePage";
-import Login from "./pages/Login";
-import LogOut from "./pages/LogOut";
-import Navbar from "./pages/Navbar";
-import SetNew_PassWord from "./pages/SetNew_PassWord";
-import VerifyAddress from "./pages/VerifyAddress";
 import Comback from "./pop-up/Comback";
 import OtpInput from 'react-otp-input';
 import Contact_Us from "./pages/Contact_Us";
@@ -44,14 +33,13 @@ import RemoveWorkspacePopup from "./pop-up/RemoveWorkspacePopup";
 import DeleteWorkspacePhotoPopup from "./pop-up/DeleteWorkspacePhotoPopup";
 import LeaveFromWorkpacePopup from "./pop-up/LeaveFromWorkpacePopup";
 import JoinWorkspacePopup from "./pop-up/JoinWorkspacePopup";
-// import NavbarComponent from "./components/NavbarComponent";
 function App() {
 
   return (
     <div className="App font-ssp">
       <Routes>
          <Route index element={<HomePage/>}/> 
-      <Route path="/about" element={<AboutUs/>}/> 
+        <Route path="/about" element={<AboutUs/>}/> 
         <Route path="/contact" element={<ContactUs></ContactUs>}/> 
         <Route path="/signup" element={<SignUp/>}/>
         <Route path="/signin" element={<SignIn/>}/>
@@ -89,7 +77,7 @@ function App() {
       {/* <AboutUs></AboutUs> */}
       {/* <HomePage></HomePage>  */}
 
-      {/* All Pop up //////////////////////////////////////////////*/}
+    
 
       {/* <DeleteProfilePhotoPopup></DeleteProfilePhotoPopup> */}
       {/* <CloseAccountPopup></CloseAccountPopup> */}
@@ -101,7 +89,7 @@ function App() {
       {/* <RemoveWorkspacePopup></RemoveWorkspacePopup> */}
       {/* <DeleteWorkspacePhotoPopup></DeleteWorkspacePhotoPopup> */}
       {/* <LeaveFromWorkpacePopup></LeaveFromWorkpacePopup> */}
-      <JoinWorkspacePopup></JoinWorkspacePopup>
+      {/* <JoinWorkspacePopup></JoinWorkspacePopup> */}
 
       {/* //////////////////////////////////////////////////////////////// */}
 
