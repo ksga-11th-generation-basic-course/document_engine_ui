@@ -31,6 +31,9 @@ export default {
         '24px' : '24px',
         '36px' : '36px',
         '48px' : '48px',
+      },
+      boxShadow: {
+        'custom': '0 0.5px 5px 2px rgba(0, 0, 0, 0.1)',
       }
     },
   },

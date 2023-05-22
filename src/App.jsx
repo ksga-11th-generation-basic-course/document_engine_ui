@@ -1,13 +1,13 @@
-import { Route, Routes } from "react-router-dom";
+import {BrowserRouter, Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import SignIn from "./pages/SignIn.jsx";
-import AboutUs from"./pages/AboutUs.jsx"
-import ContactUs from "./pages/ContactUS.jsx"
-import Forgot from "./pages/Forgot.jsx"
-import Navbar from "./pages/Navbar.jsx";
-import VerifyAddress from"./pages/VerifyAddress.jsx"
-import EnableAccount from"./pages/EnableAccount.jsx"
+import AboutUs from "./pages/AboutUs.jsx";
+import ContactUs from "./pages/ContactUS.jsx";
+import Forgot from "./pages/Forgot.jsx";
+// import Navbar from "./pages/Navbar.jsx";
+import VerifyAddress from "./pages/VerifyAddress.jsx";
+import EnableAccount from "./pages/EnableAccount.jsx";
 import SetNewPassWord from "./pages/SetNewPassWord.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import MessageSucess from "./pop-up/MessageSucess.jsx";
@@ -16,58 +16,55 @@ import RemoveMember from "./pop-up/RemoveMember.jsx";
 import DeleteWorkspace from "./pop-up/DeleteWorkspace.jsx";
 import RemoveWorkspace from "./pop-up/RemoveWorkspace.jsx";
 import LeaveWorkspace from "./pop-up/LeaveWorkspace.jsx";
+import Dashboard from "./pages/Dashboard.jsx";
 
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import DashBoardLeft from "./dashboard/DashBoardLeft";
-import AboutUs from "./pages/AboutUs";
-import Comfirmrd_PassWord from "./pages/Comfirmrd_PassWord";
-// import ContactUs from "./pages/ContactUs";
-import FooterMain from "./pages/FooterMain";
-import Forgot from "./pages/Forgot";
-import Form_Sucess from "./pages/Form_Sucess";
-import HomePage from "./pages/HomePage";
-import Login from "./pages/Login";
-import LogOut from "./pages/LogOut";
-import Navbar from "./pages/Navbar";
-import SetNew_PassWord from "./pages/SetNew_PassWord";
-import VerifyAddress from "./pages/VerifyAddress";
-import Comback from "./pop-up/Comback";
-import OtpInput from 'react-otp-input';
-import Contact_Us from "./pages/Contact_Us";
-import ResetPasswordPopup from "./pop-up/ResetPasswordPopup";
-import DeleteProfilePhotoPopup from "./pop-up/DeleteProfilePhotoPopup";
-import CloseAccountPopup from "./pop-up/CloseAccountPopup";
-import CreateWorkSpacePopup from "./pop-up/CreateWorkSpacePopup";
-import DeleteDocumentPopup from "./pop-up/DeleteDocumentPopup";
-import RemoveMemberPopup from "./pop-up/RemoveMemberPopup";
-import RemoveWorkspacePopup from "./pop-up/RemoveWorkspacePopup";
-import DeleteWorkspacePhotoPopup from "./pop-up/DeleteWorkspacePhotoPopup";
-import LeaveFromWorkpacePopup from "./pop-up/LeaveFromWorkpacePopup";
-import JoinWorkspacePopup from "./pop-up/JoinWorkspacePopup";
+// import DashBoardLeft from "./dashboard/DashBoardLeft";
+// import Comfirmrd_PassWord from "./pages/Comfirmrd_PassWord";
+// // import ContactUs from "./pages/ContactUs";
+// import FooterMain from "./pages/FooterMain";
+// import Form_Sucess from "./pages/Form_Sucess";
+// import Login from "./pages/Login";
+// import LogOut from "./pages/LogOut";
+// import SetNew_PassWord from "./pages/SetNew_PassWord";
+// import Comback from "./pop-up/Comback";
+// import OtpInput from "react-otp-input";
+// import Contact_Us from "./pages/Contact_Us";
+// import ResetPasswordPopup from "./pop-up/ResetPasswordPopup";
+// import DeleteProfilePhotoPopup from "./pop-up/DeleteProfilePhotoPopup";
+// import CloseAccountPopup from "./pop-up/CloseAccountPopup";
+// import CreateWorkSpacePopup from "./pop-up/CreateWorkSpacePopup";
+// import DeleteDocumentPopup from "./pop-up/DeleteDocumentPopup";
+// import RemoveMemberPopup from "./pop-up/RemoveMemberPopup";
+// import RemoveWorkspacePopup from "./pop-up/RemoveWorkspacePopup";
+// import DeleteWorkspacePhotoPopup from "./pop-up/DeleteWorkspacePhotoPopup";
+// import LeaveFromWorkpacePopup from "./pop-up/LeaveFromWorkpacePopup";
+// import JoinWorkspacePopup from "./pop-up/JoinWorkspacePopup";
 // import NavbarComponent from "./components/NavbarComponent";
 function App() {
-
   return (
     <div className="App font-ssp">
-      <Routes>
-         <Route index element={<HomePage/>}/> 
-      <Route path="/about" element={<AboutUs/>}/> 
-        <Route path="/contact" element={<ContactUs></ContactUs>}/> 
-        <Route path="/signup" element={<SignUp/>}/>
-        <Route path="/signin" element={<SignIn/>}/>
-        <Route path="/forgot" element={<Forgot/>}/>
-        <Route path="/verify" element={<VerifyAddress/>}/>
-        <Route path="/enable" element={<EnableAccount/>}/>
-        <Route path="/notFound" element={<NotFound/>}/>
-        <Route path="/setPassword" element={<SetNewPassWord/>}/>
-        <Route path="/messageSucess" element={<MessageSucess/>} />
-        <Route path="/closeAccount" element={<CloseAccount/>} />
-        <Route path="/removeMember" element={<RemoveMember/>} />
-        <Route path="/deleteWorkspace" element={<DeleteWorkspace/>} />
-        <Route path="/removeWorkspace" element={<RemoveWorkspace/>} />
-        <Route path="/leaveWorkspace" element={<LeaveWorkspace/>} />
-        <Route path="/*" element={<NotFound/>} />
-      </Routes>
+      {/* <BrowserRouter> */}
+        <Routes>
+          <Route index element={<HomePage />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/contact" element={<ContactUs></ContactUs>} />
+          <Route path="/signup" element={<SignUp />} />
+          <Route path="/signin" element={<SignIn />} />
+          <Route path="/forgot" element={<Forgot />} />
+          <Route path="/verify" element={<VerifyAddress />} />
+          <Route path="/enable" element={<EnableAccount />} />
+          <Route path="/notFound" element={<NotFound />} />
+          <Route path="/setPassword" element={<SetNewPassWord />} />
+          <Route path="/messageSucess" element={<MessageSucess />} />
+          <Route path="/closeAccount" element={<CloseAccount />} />
+          <Route path="/removeMember" element={<RemoveMember />} />
+          <Route path="/deleteWorkspace" element={<DeleteWorkspace />} />
+          <Route path="/removeWorkspace" element={<RemoveWorkspace />} />
+          <Route path="/leaveWorkspace" element={<LeaveWorkspace />} />
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/*" element={<NotFound />} />
+        </Routes>
+      {/* </BrowserRouter> */}
 
       {/* <BrowserRouter> */}
       {/* <Routes>
@@ -101,10 +98,9 @@ function App() {
       {/* <RemoveWorkspacePopup></RemoveWorkspacePopup> */}
       {/* <DeleteWorkspacePhotoPopup></DeleteWorkspacePhotoPopup> */}
       {/* <LeaveFromWorkpacePopup></LeaveFromWorkpacePopup> */}
-      <JoinWorkspacePopup></JoinWorkspacePopup>
+      {/* <JoinWorkspacePopup></JoinWorkspacePopup> */}
 
       {/* //////////////////////////////////////////////////////////////// */}
-
 
       {/* <Navbar></Navbar> */}
       {/* <Comback></Comback> */}
@@ -116,8 +112,6 @@ function App() {
       {/* <LogOut></LogOut> */}
       {/* <OTP></OTP> */}
       {/* <Form_Sucess></Form_Sucess> */}
-
-
     </div>
   );
 }
