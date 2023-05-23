@@ -18,8 +18,9 @@ export default {
         'bg-secondary' : '[#F4F4F4]',
         'bg-accent' : '[#526581]',
         'bg-primary' : '[#1E9CEF]',
-        'text-primary' : '#37352F',
-        'text-accent' : '#526581'
+        'text-primary' : '[#37352F]',
+        'text-accent' : '[#526581]',
+        'placeholder' : '[9CA3AF]'
       },
       fontSize: {
         '12px' : '12px',

@@ -25,7 +25,7 @@ import OtpInput from 'react-otp-input';
 import Contact_Us from "./pages/Contact_Us";
 import ResetPasswordPopup from "./pop-up/ResetPasswordPopup";
 import DeleteProfilePhotoPopup from "./pop-up/DeleteProfilePhotoPopup";
-import CloseAccountPopup from "./pop-up/CloseAccountPopup";
+// import CloseAccountPopup from "./pop-up/CloseAccountPopup";
 import CreateWorkSpacePopup from "./pop-up/CreateWorkSpacePopup";
 import DeleteDocumentPopup from "./pop-up/DeleteDocumentPopup";
 import RemoveMemberPopup from "./pop-up/RemoveMemberPopup";
