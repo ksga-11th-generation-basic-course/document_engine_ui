@@ -15,6 +15,7 @@ import Comback from "./pop-up/Comback";
 import OtpInput from 'react-otp-input';
 import Workspace from './pages/Workspace';
 import SearchButton from "./components/SearchButton";
+import WorkspaceOption from "./components/WorkspaceOption";
 function App() {
 
   return (
@@ -51,6 +52,7 @@ function App() {
       {/* <OTP></OTP> */}
       {/* <Form_Sucess></Form_Sucess> */}
       <Workspace></Workspace>
+      {/* <WorkspaceOption/> */}
     </div>
   );
 }

@@ -6,7 +6,7 @@ import Home from "../assets/images/Icon/Home.svg";
 export default function Sidebar() {
   return (
     <div>
-      <div className=" w-full h-screen shadow-sm-light bg-[#FAFAF9]">
+      <div className=" w-full h-screen bg-[#FAFAF9]">
         {/* Logo */}
             <div className="flex justify-center ">
               <img src={Logo} alt="" className="w-[100px] h-[100px] " />
@@ -28,12 +28,11 @@ export default function Sidebar() {
                 <img src={Dashboard} alt="" className="pr-4 " />
                 <button class=" text-[#1E9CEF] font-bold ">workspace</button>
               </div>
-             
+              <hr class="w-48 h-[0.30px]  mx-auto  bg-[#D9D9D9] border-0 rounded  dark:bg-gray-700"/>
+
             </div>
-            
+
       </div>
-      
-     
     </div>
   );
 }
