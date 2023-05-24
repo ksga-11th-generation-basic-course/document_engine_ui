@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from './Navbar'
+import Navbar from '../components/NavbarLogout'
 import Page404 from "../assets/images/NotFound/Error.svg"
 export default function NotFound() {
   return (

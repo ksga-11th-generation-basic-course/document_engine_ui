@@ -16,7 +16,7 @@ export default function Navbar() {
               </div>
               <div className="sm:flex sm:items-center max-sm:hidden ">
                 <NavLink
-                  to="/"
+                  to="/home"
                   className={({ isActive }) =>
                     isActive ? "text-primary" : "text-accent"
                   }

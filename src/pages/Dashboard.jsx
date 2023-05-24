@@ -1,6 +1,6 @@
 import React from "react";
-import Sidebar from "../dashboard/Sidebar";
-import NavbarLogin from "../dashboard/NavbarLogin";
+import Sidebar from "../components/Sidebar";
+import NavbarLogin from "../components/NavbarLogin";
 import star from "../assets/images/Icon/stars.svg"
 import document from "../assets/images/Icon/document.svg"
 import more from "../assets/images/Icon/More.svg"
@@ -14,7 +14,7 @@ export default function Dashboard() {
       </div>
       <div className="col-span-10">
         <NavbarLogin></NavbarLogin>
-        <div className="mt-10 px-36">
+        <div className="mt-10 px-44">
           <div className="w-full">
             {/* Header */}
             <div>

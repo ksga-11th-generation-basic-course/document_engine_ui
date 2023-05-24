@@ -1,5 +1,5 @@
 import React from 'react'
-import Navbar from './Navbar'
+import Navbar from '../components/NavbarLogout'
 import FooterMain from './FooterMain'
 import Slider from'../assets/images/about/about.svg'
 import Bg from "../assets/images/about/BgAbout.svg"

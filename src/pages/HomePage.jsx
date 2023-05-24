@@ -1,5 +1,5 @@
 import React from "react";
-import Navbar from "./Navbar";
+import Navbar from "../components/NavbarLogout";
 import Pic from "../assets/images/Homepage/Literature-bro 1.svg";
 import Logo from "../assets/images/Logo.svg";
 import Reset from "../assets/images/Set_New_pass.svg";

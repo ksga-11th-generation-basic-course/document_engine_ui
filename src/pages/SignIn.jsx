@@ -29,9 +29,14 @@ const SignIn = () => {
                     <button type="button" className="transition duration-200  w-full py-2.5 mb-2 mt-2 text-left text-sm font-semibold inline-block max-sm:pt-4">
                        Forgot your password?
                     </button>
-                    <a href="#_" class="px-5 py-2.5  max-sm:py-3 font-semibold relative group overflow-hidden bg-primary w-full text-center rounded-lg text-white hover:ring-2 inline-block hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-1000">
-                        <span class="relative ">Sign in </span>
-                    </a>
+
+                    <Link
+                        to={"/dashboard"}
+                        class="px-5 py-2.5  max-sm:py-3 font-semibold relative group overflow-hidden bg-primary w-full text-center rounded-lg text-white hover:ring-2 inline-block hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-1000"
+                    >
+                            <span className="relative ">Sign in </span>
+                    </Link>
+
                     <button type="button" className="outline-none duration-200 text-primary mt-2 mb-2 max-sm:mt-0 max-sm:mb-0 max-sm:pt-2 pt-4 w-full font-semibold text-center inline-block">
                         Sign up
                     </button>

@@ -1,7 +1,7 @@
 import React from 'react'
 import Logo from "../assets/images/Logo.svg";
 import Contact from "../assets/images/Contact.svg"
-import Navbar from './Navbar';
+import Navbar from '../components/NavbarLogout';
 import Message from'../assets/images/Contact/Message.svg'
 import IG from'../assets/images/Contact/IG.svg'
 import Face from'../assets/images/Contact/Facebook.svg'
