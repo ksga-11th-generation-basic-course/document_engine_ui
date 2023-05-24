@@ -3,10 +3,7 @@ import Sidebar from "../components/Sidebar";
 import NavbarLogin from "../components/NavbarLogin";
 import Group from "../assets/images/Icon/Group.svg";
 import Solar from "../assets/images/Icon/Solar.svg";
-import Drop from "../assets/images/Icon/Drop down.svg";
 import Filter from "../assets/images/Icon/filtering.svg";
-import Search from "../assets/images/Icon/search.svg";
-import More from "../assets/images/Icon/More.svg";
 import SearchButton from "../components/SearchButton";
 import Docker from "../assets/images/Workspace/Docker.svg";
 import Spring from "../assets/images/Workspace/Spring.svg";
@@ -209,10 +206,10 @@ export default function Workspace() {
                         </div>
                       </div>
                       <div>
-                        {/* All Workspace */}
+                    {/* All Workspace */}
                         <button
-                          id="dropdownRadioBgHoverButtons"
-                          data-dropdown-toggle="dropdownRadioBgHovers"
+                          id="drodownWorkspace"
+                          data-dropdown-toggle="AllWorkspace"
                           class="text-[#526581] font-normal text-xl
                                     hover:bg-[#D8D7DD] rounded-lg  px-4 py-1 text-center inline-flex items-center"
                           type="button"
@@ -237,15 +234,15 @@ export default function Workspace() {
 
                         {/* <!-- Dropdown menu --> */}
                         <div
-                          id="dropdownRadioBgHovers"
+                          id="AllWorkspace"
                           class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg 
                             shadow dark:bg-gray-700 dark:divide-gray-600"
                         >
                           <ul
                             class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
-                            aria-labelledby="dropdownRadioBgHoverButtons"
+                            aria-labelledby="drodownWorkspace"
                           >
-                            {/* My Workspace */}
+                            {/* All Workspace */}
                             <li>
                               <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                 <input
@@ -262,11 +259,11 @@ export default function Workspace() {
                                   class="w-full ml-2 text-sm font-medium text-gray-900 rounded
                                       dark:text-gray-300"
                                 >
-                                  My Workspace
+                                  All Workspace
                                 </label>
                               </div>
                             </li>
-                            {/* Other Workspace */}
+                            {/* My Workspace */}
                             <li>
                               <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                 <input
@@ -283,12 +280,12 @@ export default function Workspace() {
                                   class="w-full ml-2 text-sm font-medium text-gray-900 rounded
                                       dark:text-gray-300"
                                 >
-                                  Other Workspace
+                                  My Workspace
                                 </label>
                               </div>
                             </li>
                   
-                            {/*All Workspace */}
+                            {/*Other Workspace */}
                             <li>
                               <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                 <input
@@ -306,7 +303,7 @@ export default function Workspace() {
                                   class="w-full ml-2 text-sm font-medium text-gray-900 rounded
                                       dark:text-gray-300"
                                 >
-                                  All Workspace 
+                                  Orther Workspace 
                                 </label>
                               </div>
                             </li>
@@ -488,9 +485,11 @@ export default function Workspace() {
           {/* Pagination  */}
               <div className="grid grid-cols-3 ml-10 mt-48 ">
                 <div className="col-span-1"></div>
-                <div className="col-span-2 ml-8">
+                <div className="col-span-2 ml-20">
                 <nav aria-label="Page navigation example" >
                 <ul class="inline-flex items-center -space-x-px">
+
+                {/* Previous  */}
                   <li>
                     <a href="#" class="block px-3 py-2 ml-0 leading-tight text-gray-500  
                      rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800
@@ -499,16 +498,21 @@ export default function Workspace() {
                       <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
                     </a>
                   </li>
+
+                  {/* Page 1 */}
                       <li>
                         <a href="#" class="px-3 py-1 leading-tight text-gray-500  
                          hover:bg-[#1E9CEF] rounded-full
                           dark:border-gray-700  ">1</a>
                       </li>
+
+                  {/* Page 2 */}
                       <li>
                         <a href="#" class="px-3 py-1 leading-tight text-gray-500 rounded-full
-                       hover:bg-[#1E9CEF]  dark:bg-gray-800
-                         dark:text-gray-400 dark:hover:bg-gray-700 ">2</a>
+                       hover:bg-[#1E9CEF] dark:border-gray-700  ">2</a>
                       </li>
+
+                    {/* Next */}
                     <li>
                         <a href="#" class="block px-3 py-2 leading-tight text-gray-500 
                         rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700
@@ -521,9 +525,7 @@ export default function Workspace() {
                     </ul>
                   </nav>
                 </div>
-              </div>  
-                    
-                    
+              </div>      
             </div>
             
             
