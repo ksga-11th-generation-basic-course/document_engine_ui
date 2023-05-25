@@ -4,7 +4,7 @@ import RightImage from "../assets/images/Login/Right-img-login.svg";
 import LeftImage from "../assets/images/Login/Left-img-login.svg";
 import Google from "../assets/images/Login/Google.svg";
 import Facebook from "../assets/images/Login/Facebook.svg";
-import { Formik, Form, Field } from "formik";
+// import { Formik, Form, Field } from "formik";
 // import * as Yup from "yup";
 import { Link } from "react-router-dom";
 const SignIn = () => {

@@ -41,7 +41,7 @@ export default function HomePage() {
               <p>group.</p>
             </div>
             <div className="button">
-              <button className="bg-primary max-sm:px-5 max-sm:py-1 text-white px-10 py-2 border rounded-xl font-bold text-22px">
+              <button className="bg-primary  max-sm:px-4 max-sm:py-1 text-white px-10 py-2 border rounded-xl font-bold text-22px">
                 <a href="#">Get Start</a>
               </button>
             </div>

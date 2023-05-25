@@ -4,7 +4,7 @@ import VerifyL from "../assets/images/verify/left-verify-pic.svg";
 import VerifyR from "../assets/images/verify/right-verify-pic.svg";
 import Google from "../assets/images/Login/Google.svg";
 import Facebook from "../assets/images/Login/Facebook.svg";
-import { Formik, useFormik } from 'formik';
+// import { Formik, useFormik } from 'formik';
 import { useState } from 'react';
 import { useRef } from 'react';
 import { data } from 'autoprefixer';
