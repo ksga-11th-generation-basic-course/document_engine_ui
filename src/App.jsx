@@ -18,11 +18,6 @@ import RemoveWorkspace from "./pop-up/RemoveWorkspace.jsx";
 import LeaveWorkspace from "./pop-up/LeaveWorkspace.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Workspace from "./pages/Workspace.jsx";
-import WorkspaceOption from "./components/dropdowns/WorkspaceOption.jsx";
-import DocumentOption from "./components/dropdowns/DocumentOption.jsx";
-import Tips from "./components/dropdowns/Tips.jsx";
-import { ProfilePopup } from "./pop-up/ProfilePopup.jsx";
-
 
 // import DashBoardLeft from "./dashboard/DashBoardLeft";
 // import Comfirmrd_PassWord from "./pages/Comfirmrd_PassWord";

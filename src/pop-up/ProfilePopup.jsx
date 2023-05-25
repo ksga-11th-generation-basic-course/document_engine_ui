@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import Avatar from "../assets/images/Workspace/Avatar.svg"
 import setting from '../assets/images/Icon/settings.svg'
 import close from '../assets/images/Icon/close.svg'

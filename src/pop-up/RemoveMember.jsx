@@ -1,4 +1,3 @@
-import React from 'react'
 import Cancel from "../assets/images/popUp/cancel.png"
 import remove from "../assets/images/popUp/removeMember.svg"
 export default function RemoveMember() {

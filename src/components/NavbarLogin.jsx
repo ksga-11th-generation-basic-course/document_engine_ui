@@ -1,11 +1,9 @@
-import React, { useState } from 'react'
-import Avatar from "../assets/images/Workspace/Avatar.svg"
+import { useState } from 'react';
 import JoinWorkspacePopup from '../pop-up/JoinWorkspacePopup';
 import { ProfilePopup } from '../pop-up/ProfilePopup';
 
 export default function NavbarLogin() {
 const [joinWorkspace, setJoinWorkspace] = useState(false);
-const [profile, setProfile] = useState(false);
   return (
     <div>
         <div className='w-full flex justify-end left-0 h-[70px] z-20'> 
@@ -17,12 +15,6 @@ const [profile, setProfile] = useState(false);
               {joinWorkspace && (
                     <div>
                            <JoinWorkspacePopup></JoinWorkspacePopup>
-                    </div>
-              )}
-
-              {profile && (
-                    <div>
-                           <ProfilePopup></ProfilePopup>
                     </div>
               )}
         </div>

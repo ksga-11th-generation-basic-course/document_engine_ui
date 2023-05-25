@@ -1,5 +1,4 @@
 
-import React from 'react'
 import ResetPassword from '../assets/reset_pw_popup/resetpassword.svg'
 import CloseIcon from '../assets/reset_pw_popup/closeIcon.svg'
 
@@ -29,16 +28,16 @@ function ResetPasswordPopup() {
                             <form className="bg-white px-4 pb-4 sm:p-6 sm:pb-4">
                                 <div className="sm:flex justify-center">
                                     <div className="mt-2 text-center  sm:mt-0 sm:text-left">
-                                        <h3 className="text-xl text-base font-semibold leading-12 text-[#1E9CEF] flex justify-center" id="modal-title">Reset Account Password</h3>
+                                        <h3 className="text-xlfont-semibold leading-12 text-[#1E9CEF] flex justify-center" id="modal-title">Reset Account Password</h3>
                                         <div className="mt-8 text-left">
                                             <div className='max-sm:w-72'>
                                             <label className='font-semibold text-[#6B7280]'>Current Password</label>
-                                            <input type="text" class=" md:pr-56 sm:pr-56 form-control block w-full  py-3 text-base font-normal text-[#6B7280] bg-white bg-clip-padding  border border-solid border-[#1E9CEF] rounded-lg transition ease-in-out m-0 resize mt-2 mb-4" placeholder="Current Password" />
+                                            <input type="text" className=" md:pr-56 sm:pr-56 form-control block w-full  py-3 text-base font-normal text-[#6B7280] bg-white bg-clip-padding  border border-solid border-[#1E9CEF] rounded-lg transition ease-in-out m-0 resize mt-2 mb-4" placeholder="Current Password" />
                                             </div>
                                             <label className='font-semibold text-[#6B7280]'>New Password</label>
-                                            <input type="text" class=" form-control block w-full  py-3 text-base font-normal text-[#6B7280] bg-white bg-clip-padding  border border-solid border-[#1E9CEF] rounded-lg transition ease-in-out m-0 resize mt-2 mb-4" placeholder="New Password" />
+                                            <input type="text" className=" form-control block w-full  py-3 text-base font-normal text-[#6B7280] bg-white bg-clip-padding  border border-solid border-[#1E9CEF] rounded-lg transition ease-in-out m-0 resize mt-2 mb-4" placeholder="New Password" />
                                             <label className='font-semibold text-[#6B7280]'>Confirm New Password</label>
-                                            <input type="text" class="form-control block w-full py-3 text-base font-normal text-[#6B7280] bg-white bg-clip-padding  border border-solid border-[#1E9CEF] rounded-lg transition ease-in-out m-0 resize mt-2" placeholder="Confirm New Password" />
+                                            <input type="text" className="form-control block w-full py-3 text-base font-normal text-[#6B7280] bg-white bg-clip-padding  border border-solid border-[#1E9CEF] rounded-lg transition ease-in-out m-0 resize mt-2" placeholder="Confirm New Password" />
                                         </div>
                                     </div>
                                 </div>
