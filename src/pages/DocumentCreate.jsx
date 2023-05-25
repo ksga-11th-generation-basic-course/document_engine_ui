@@ -75,7 +75,9 @@ function DocumentCreate() {
                                     </li>
                                 </ol>
                             </nav>
-                            <span className='font-bold text-[38px]'>Untitle</span>
+                            <span className='font-bold '>
+                                <input className='text-[38px] p-0 py-2 focus:ring-0 focus:border-0 border-0' type="text" placeholder='Untitle' />
+                            </span>
                             <div className='w-[40%] grid grid-rows-1 gap-1'>
                                 <div className='grid grid-cols-2'>
                                     <div className='flex gap-1'>
@@ -87,14 +89,14 @@ function DocumentCreate() {
                                 <div className='grid grid-cols-2'>
                                     <div className='flex gap-1'>
                                         <img src={file} alt="" />
-                                        <p>Create By</p>
+                                        <p>Create Date</p>
                                     </div>
                                     <p>April 21, 2023 4:01 PM</p>
                                 </div>
                                 <div className='grid grid-cols-2 re'>
                                     <div className='flex items-center gap-1'>
                                         <img src={file} alt="" />
-                                        <p>Create By</p>
+                                        <p>Tag</p>
                                     </div>
                                     <div className='w-24 gap-2 shadow flex justify-center items-center rounded-md'>
                                         <p>Add tag</p>
