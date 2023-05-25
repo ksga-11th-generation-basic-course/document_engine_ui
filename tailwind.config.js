@@ -1,6 +1,9 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}",  "./node_modules/flowbite/**/*.js"],
+  content: [
+    "./index.html",
+    "./src/**/*.{js,ts,jsx,tsx}",
+  ],
   theme: {
     extend: {
       fontFamily: {
@@ -41,7 +44,5 @@ export default {
       'content' : '-1px 5px 32px rgba(0, 0, 0, 0.08)',
     }
   },
-  plugins: [
-    require('flowbite/plugin')
-  ],
-};
+  plugins: [],
+}
