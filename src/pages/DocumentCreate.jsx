@@ -45,9 +45,6 @@ function DocumentCreate() {
                                     <p>Join</p>
                                 </div>
                                 <img src={Avatar} alt="" />
-
-
-
                             </div>
                         </div>
                     </div>
@@ -109,7 +106,7 @@ function DocumentCreate() {
                         </div>
 
                         <div className='w-full h-auto'>
-                            <Editor/>
+                            {/* <Editor/> */}
                         </div>
                     </div>
 
