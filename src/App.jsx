@@ -25,6 +25,7 @@ import RemoveWorkspacePopup from "./pop-up/RemoveWorkspacePopup";
 import DeleteWorkspacePhotoPopup from "./pop-up/DeleteWorkspacePhotoPopup";
 import LeaveFromWorkpacePopup from "./pop-up/LeaveFromWorkpacePopup";
 import JoinWorkspacePopup from "./pop-up/JoinWorkspacePopup";
+import WorkspaceCallaboratorMember from "./pop-up/WorkspaceCallaboratorMember";
 // import NavbarComponent from "./components/NavbarComponent";
 function App() {
 
@@ -53,6 +54,8 @@ function App() {
 
       {/* All Pop up //////////////////////////////////////////////*/}
 
+      {/* <Comback></Comback> */}
+      {/* <Navbar></Navbar> */}
       {/* <DeleteProfilePhotoPopup></DeleteProfilePhotoPopup> */}
       {/* <CloseAccountPopup></CloseAccountPopup> */}
       {/* <Contact_Us></Contact_Us> */}
@@ -63,13 +66,11 @@ function App() {
       {/* <RemoveWorkspacePopup></RemoveWorkspacePopup> */}
       {/* <DeleteWorkspacePhotoPopup></DeleteWorkspacePhotoPopup> */}
       {/* <LeaveFromWorkpacePopup></LeaveFromWorkpacePopup> */}
-      <JoinWorkspacePopup></JoinWorkspacePopup>
+      {/* <JoinWorkspacePopup></JoinWorkspacePopup> */}
+      <WorkspaceCallaboratorMember></WorkspaceCallaboratorMember>
 
       {/* //////////////////////////////////////////////////////////////// */}
 
-
-      {/* <Navbar></Navbar> */}
-      {/* <Comback></Comback> */}
       {/* <SetNew_PassWord></SetNew_PassWord> */}
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
       {/* <Forgot></Forgot> */}
