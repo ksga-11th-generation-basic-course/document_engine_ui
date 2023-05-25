@@ -1,6 +1,6 @@
 import React from 'react'
 import Logo from '../assets/reset_pw_popup/logo.svg'
-import PersonTwo from '../assets/reset_pw_popup/personTwo.svg'
+import PersonTwo from "../assets/reset_pw_popup/personTwo.svg";
 
 
 function SideBarForPopup() {
@@ -17,7 +17,7 @@ function SideBarForPopup() {
                 <div>
                       <div className="shadow-lg relative bg-[#F6F6F6] mb-5 px-2.5 py-2 rounded-sm ">
                           <div className='ml-2 flex'>
-                              <img src={PersonTwo}></img>
+                              {/* <img src={PersonTwo}></img> */}
                               <label className='text-[#1E9CEF] ml-4'>Collabrators</label>
                           </div>
                            {/* <NavLink to="/workspace" className={({isActive}) => isActive? "fill-primary text-primary" : " fill-accent text-accent"}>

@@ -1,9 +1,8 @@
 import React from "react";
-
-import RemoveWorkspace from "../assets/reset_pw_popup/removeWorkspace.svg";
+import SignpOut from "../assets/images/popUp/Comback.svg";
 import CloseIcon from "../assets/reset_pw_popup/closeIcon.svg";
 
-function RemoveWorkspacePopup({ open, setOpen }) {
+export default function Comback({ open, setOpen }) {
   return (
     <div>
       <div
@@ -24,7 +23,7 @@ function RemoveWorkspacePopup({ open, setOpen }) {
                 <img src={CloseIcon} alt="" className="" />
               </div>
               <div className="flex flex-col justify-center items-center px-4 ">
-                <img src={RemoveWorkspace} alt="" className="md:w-24" />
+                <img src={SignpOut} alt="" className="md:w-24" />
               </div>
               <form className="bg-white px-4 pb-4 sm:p-6 sm:pb-4">
                 <div className="sm:flex justify-center">
@@ -33,7 +32,7 @@ function RemoveWorkspacePopup({ open, setOpen }) {
                       className=" text-baseleading-12 text-20px text-accent flex justify-center font-normal"
                       id="modal-title"
                     >
-                      Are you sure want to leave from this workspace?
+                      Are you sure want to sign out?
                     </h3>
                   </div>
                 </div>
@@ -51,7 +50,7 @@ function RemoveWorkspacePopup({ open, setOpen }) {
                   type="button"
                   class="text-white bg-[#FF5658] hover:bg-[#FF5659]/90 focus:outline-none  font-bold rounded-lg text-16px px-12 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-10"
                 >
-                  Remove
+                  Yes, Sign out
                 </button>
               </div>
               {/* flex-row-reverse rounded-md bg-[#1E9CEF] px-36 py-3 text-sm font-semibold text-white  hover:bg-blue-500 sm:ml-3 sm:w-auto */}
@@ -62,5 +61,3 @@ function RemoveWorkspacePopup({ open, setOpen }) {
     </div>
   );
 }
-
-export default RemoveWorkspacePopup;
