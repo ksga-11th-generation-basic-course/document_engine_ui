@@ -15,6 +15,10 @@ import Comback from "./pop-up/Comback";
 import OtpInput from 'react-otp-input';
 import Workspace from './pages/Workspace';
 import SearchButton from "./components/SearchButton";
+import Documents from "./pages/Documents";
+import DocumentsEmpty from "./pages/DocumentsEmpty";
+import DocumentsList from "./pages/DocumentsList";
+import DocumentCreate from "./pages/DocumentCreate";
 function App() {
 
   return (
@@ -50,7 +54,11 @@ function App() {
       {/* <LogOut></LogOut> */}
       {/* <OTP></OTP> */}
       {/* <Form_Sucess></Form_Sucess> */}
-      <Workspace></Workspace>
+      {/* <Workspace></Workspace> */}
+      {/* <Documents/> */}
+      {/* <DocumentsEmpty/> */}
+      {/* <DocumentsList/> */}
+      <DocumentCreate/>
     </div>
   );
 }
