@@ -6,7 +6,7 @@ import Home from "../assets/images/Icon/Home.svg";
 export default function Sidebar() {
   return (
     <div>
-      <div className=" w-full h-screen bg-[#FAFAF9]">
+      <div className="fixed  w-64 h-screen bg-[#FAFAF9]">
         {/* Logo */}
             <div className="flex justify-center ">
               <img src={Logo} alt="" className="w-[100px] h-[100px] " />

@@ -16,6 +16,8 @@ import OtpInput from 'react-otp-input';
 import Workspace from './pages/Workspace';
 import SearchButton from "./components/SearchButton";
 import WorkspaceOption from "./components/WorkspaceOption";
+import NavbarLogin from "./components/NavbarLogin";
+import Sidebar from "./components/Sidebar";
 function App() {
 
   return (
@@ -37,6 +39,8 @@ function App() {
          <Route path="*" element={<Error/>} />
       </Routes> */}
       {/* <SearchButton/> */}
+      {/* <NavbarLogin/> */}
+      {/* <Sidebar/> */}
      {/* <FooterMain></FooterMain> */}
       {/* <AboutUs></AboutUs> */}
       {/* <HomePage></HomePage>  */}
@@ -53,6 +57,7 @@ function App() {
       {/* <Form_Sucess></Form_Sucess> */}
       <Workspace></Workspace>
       {/* <WorkspaceOption/> */}
+      
     </div>
   );
 }

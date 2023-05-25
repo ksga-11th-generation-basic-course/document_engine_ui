@@ -21,28 +21,28 @@ export default function Workspace() {
   return (
     <div>
       <div className="grid grid-cols-12">
-        <div className="col-span-2">
+        <div className="z-10 col-span-2">
           <Sidebar />
         </div>
-        <div className="col-span-10">
+        <div className="z-20 col-span-10 shadow-content">
           <NavbarLogin />
 
-          <div className="grid grid-cols-12  shadow-2xl h-[100%]  ">
+          <div className="grid grid-cols-12  h-[100%]  ">
             <div className="col-span-1"></div>
             <div className="col-span-10">
               <div className="ml-4">
             {/* Workspace */}
-                <div className="grid grid-cols-12 ml-6 ">
-                  <div className="   ">
-                    <button class="cols-span-1 flex justify-center mt-2 mr-2 drop-shadow-2xl rounded-lg border-2 right-0 w-[38px] h-[35px] py-1 text-center ">
+                <div className="grid grid-cols-12  ">
+                  
+                    <button class="cols-span-1 ml-6 flex justify-center  drop-shadow-2xl rounded-lg border-2 right-0 w-[34px] h-[35px] py-1 text-center ">
                       <img
                         src={Group}
                         alt=""
-                        className="cols-span-2 w-[23px] h-[23px] "
+                        className="cols-span-1 w-[20px] h-[23px] "
                       />
                     </button>
-                  </div>
-                  <div class="col-start-2 text-[#526581] font-bold py-3 text-xl ">
+                  
+                  <div class="col-span-1 py-1 text-[#526581] font-bold text-xl ">
                     Workspace
                   </div>
                 </div>
@@ -501,7 +501,7 @@ export default function Workspace() {
 
                   {/* Page 1 */}
                       <li>
-                        <a href="#" class="px-3 py-1 leading-tight text-gray-500  
+                        <a href="#" class="px-3 py-1 leading-tight bg-[#1E9CEF] text-[#FFFFFF] 
                          hover:bg-[#1E9CEF] rounded-full
                           dark:border-gray-700  ">1</a>
                       </li>
@@ -509,7 +509,7 @@ export default function Workspace() {
                   {/* Page 2 */}
                       <li>
                         <a href="#" class="px-3 py-1 leading-tight text-gray-500 rounded-full
-                       hover:bg-[#1E9CEF] dark:border-gray-700  ">2</a>
+                       dark:border-gray-700  ">2</a>
                       </li>
 
                     {/* Next */}

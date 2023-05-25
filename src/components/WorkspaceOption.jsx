@@ -27,7 +27,7 @@ export default function WorkspaceOption() {
                         {/* WorkspaceOption  */}
                         <div
                           id="WorkspaceOption"
-                          class="z-10 hidden  w-55 bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
+                          class="z-10 hidden  bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600">
                           <ul
                             class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
                             aria-labelledby="More"
