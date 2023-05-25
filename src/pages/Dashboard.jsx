@@ -8,11 +8,11 @@ import pencil from "../assets/images/Icon/pencil.svg"
 
 export default function Dashboard() {
   return (
-    <div className="grid grid-cols-12">
-      <div className="col-span-2">
+    <div className="h-screen grid grid-cols-12">
+      <div className="col-span-2 z-0">
         <Sidebar></Sidebar>
       </div>
-      <div className="col-span-10">
+      <div className="col-span-10 shadow-content z-10">
         <NavbarLogin></NavbarLogin>
         <div className="mt-10 px-44">
           <div className="w-full">
@@ -29,8 +29,8 @@ export default function Dashboard() {
                                 <img src={star} className="w-10 col-span-1"/>
                             </span>
                             <span className="col-span-11">
-                                    <h1 className="text-2xl font-semibold">Ouddom, get started with DocEngine</h1>
-                                    <p className="text-20px text-[#526581]">Hint! to create your Document</p>
+                                    <h1 className="text-22px font-semibold">Ouddom, get started with DocEngine</h1>
+                                    <p className="text-20px text-accent">Hint! to create your Document</p>
                             </span>
                 </div>
                 <div className="bg-[#1E9CEF] w-[2%] shadow-custom rounded-r-lg ">    
@@ -42,7 +42,7 @@ export default function Dashboard() {
                     {/* Title */}
                     <div className="flex">
                             <img src={document} className="bg-white rounded-lg shadow-custom p-2"/>
-                            <p className="flex items-center ml-5 text-xl">Recently</p>
+                            <p className="flex items-center ml-4 font-semibold  text-20px text-accent">Recently</p>
                     </div>
 
                     {/* Document */}
@@ -52,21 +52,21 @@ export default function Dashboard() {
                                     <div className="col-span-11">
                                                 <div>
                                                         <div className="flex items-center">
-                                                                    <p className="text-[1.4rem] font-semibold w-40">Spring Profile</p>
+                                                                    <p className="text-22px font-semibold w-36">Spring Profile</p>
                                                                     <p className="ml-7 bg-[#EDF9FF] px-5 rounded-lg flex">
-                                                                            <span className="text-[#1E9CEF]">Editing...</span>
+                                                                            <span className="text-[#1E9CEF] text-12px">Editing...</span>
                                                                             <span className="flex items-center ml-3">
                                                                                     <img src={pencil}/>
                                                                             </span>
                                                                     </p>
                                                         </div>
                                                         <div>
-                                                            <p className="text-[#526581]">Edited 5days ago</p>
+                                                            <p className="text-accent">Edited 5days ago</p>
                                                         </div>
                                                 </div>
                                     </div>
                                     <div className="col-span-1 flex justify-center">
-                                            <img src={more}  className="w-1.5"/>
+                                            <img src={more}  className="w-[5px]"/>
                                     </div>
                         </div>
                     </div>
@@ -77,15 +77,15 @@ export default function Dashboard() {
                                     <div className="col-span-11">
                                                 <div>
                                                         <div className="flex items-center">
-                                                                    <p className="text-[1.4rem] font-semibold mb-">Redux Toolkit</p>
+                                                                    <p className="text-22px font-semibold w-40">Redux Toolkit</p>
                                                         </div>
                                                         <div>
-                                                            <p className="text-[#526581]">Edited 9days ago</p>
+                                                            <p className="text-accent">Edited 9days ago</p>
                                                         </div>
                                                 </div>
                                     </div>
                                     <div className="col-span-1 flex justify-center">
-                                            <img src={more}  className="w-1.5"/>
+                                            <img src={more}  className="w-[5px]"/>
                                     </div>
                         </div>
                     </div>
@@ -96,21 +96,21 @@ export default function Dashboard() {
                                     <div className="col-span-11">
                                                 <div>
                                                         <div className="flex items-center">
-                                                                    <p className="text-[1.4rem] font-semibold w-40">Laravel</p>
+                                                                    <p className="text-22px font-semibold w-36">Laravel</p>
                                                                     <p className="ml-7 bg-[#EDF9FF] px-5 rounded-lg flex">
-                                                                            <span className="text-[#1E9CEF]">Editing...</span>
+                                                                            <span className="text-[#1E9CEF] text-12px">Editing...</span>
                                                                             <span className="flex items-center ml-3">
                                                                                     <img src={pencil}/>
                                                                             </span>
                                                                     </p>
                                                         </div>
                                                         <div>
-                                                            <p className="text-[#526581]">Edited 17days ago</p>
+                                                            <p className="text-accent">Edited 17days ago</p>
                                                         </div>
                                                 </div>
                                     </div>
                                     <div className="col-span-1 flex justify-center">
-                                            <img src={more}  className="w-1.5"/>
+                                            <img src={more}  className="w-[5px]"/>
                                     </div>
                         </div>
                     </div>

@@ -25,6 +25,7 @@ export default function Navbar() {
                     Home
                   </a>
                 </NavLink>
+                
                 <NavLink
                   to="/about"
                   className={({ isActive }) =>
@@ -49,6 +50,7 @@ export default function Navbar() {
                   </a>
                 </NavLink>
               </div>
+
               <div className="max-sm:absolute max-sm:right-14 text-sm">
                 <Link
                   to={"signin"}

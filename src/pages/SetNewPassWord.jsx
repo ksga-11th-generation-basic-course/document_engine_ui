@@ -56,7 +56,7 @@ export default function SetNewPassWord() {
             </div>
             <div className="w-full bg-cover relative max-w-md lg:max-w-2xl lg:w-7/12">
                 <div className="flex flex-col items-center justify-center w-full h-full relative lg:pr-10">
-                <img src={Reset} class="btn-"/>
+                <img src={Reset}/>
                 </div>    
             </div>
         </div>
