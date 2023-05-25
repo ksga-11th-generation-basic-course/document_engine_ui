@@ -11,27 +11,87 @@ import {
   providerFacebook,
   providerGoogle,
 } from "../firebase/firebase.utils";
-import { signup } from "../redux/service/authenticationService/authenticationService";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import {
+  signup,
+  signupWithGoogleAndFacebook,
+} from "../redux/service/authenticationService/authenticationService";
+import { useFormik } from "formik";
+import * as Yup from "yup";
 
 export default function SignUp() {
+  const authentication = useSelector(
+    (state) => state.authentication.authentication
+  );
+
+  const navigate = useNavigate();
+
   const dispatch = useDispatch();
 
   const handleGoogle = () => {
     signInWithPopup(auth, providerGoogle)
       .then((data) => {
-        console.log(data);
         const googleAuth = {
           username: data.user.displayName,
           email: data.user.email,
           password: data.user.accessToken,
+          profileImage: data.user.photoURL,
         };
-        dispatch(signup(googleAuth));
+        dispatch(signupWithGoogleAndFacebook(googleAuth));
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  const handleFacebook = () => {
+    signInWithPopup(auth, providerFacebook)
+      .then((data) => {
+        const facebookAuth = {
+          username: data.user.displayName,
+          email: data.user.email,
+          password: data.user.accessToken,
+          profileImage: data.user.photoURL,
+        };
+        dispatch(signupWithGoogleAndFacebook(facebookAuth));
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const formik = useFormik({
+    initialValues: {
+      username: "",
+      email: "",
+      password: "",
+      confirmPassword: "",
+    },
+    validationSchema: Yup.object({
+      username: Yup.string()
+        .required("Username is a required field")
+        .min(4, "Must have at least 2 characters"),
+      email: Yup.string()
+        .email("Enter a valid email")
+        .required("Please enter a registered email"),
+      password: Yup.string()
+        .required("Password is a required field")
+        .min(4, "Password must have more than 4 characters "),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref("password")], "Confirm Password must matched Password")
+        .required("Confirm Password is required"),
+    }),
+    onSubmit: (values, { resetForm }) => {
+      dispatch(signup(values));
+      resetForm({ values: "" });
+    },
+  });
+
+  useEffect(() => {
+    if (authentication.email) {
+      navigate("/verifyOTP");
+    }
+  });
 
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
@@ -44,7 +104,10 @@ export default function SignUp() {
           className="w-[600px] h-[500.16px] mr-5 max-sm:hidden"
           src={Left1Image}
         />
-        <form className="bg-white max-sm:bg-[#EDF9FF] p-12 flex flex-col justify-center gap-y-6 rounded-3xl lg:shadow-lg">
+        <form
+          onSubmit={formik.handleSubmit}
+          className="bg-white max-sm:bg-[#EDF9FF] p-12 flex flex-col justify-center gap-y-6 rounded-3xl lg:shadow-lg"
+        >
           <div className=" xs:p-0 mx-auto w-[380px] md:max-w-md">
             <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl">
               Sign Up
@@ -55,11 +118,20 @@ export default function SignUp() {
               </label>
               <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
                 <input
-                  className="border-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-placeholder mr-3  leading-tight focus:outline-none"
+                  className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
                   type="text"
                   placeholder="Username"
                   aria-label="Full name"
+                  name="username"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.username}
                 />
+                {formik.touched.username && formik.errors.username ? (
+                  <div className="mt-2 text-red-600">
+                    {formik.errors.username}
+                  </div>
+                ) : null}
               </div>
               {/* <input type="username" className="border border-primary max-sm:bg-transparent max-sm:appearance-none max-sm:border-none max-sm:focus:outline-none outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Username' /> */}
               <label className="font-semibold text-lg block pt-3 pb-2 text-black">
@@ -67,11 +139,18 @@ export default function SignUp() {
               </label>
               <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
                 <input
-                  className="border-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:leading-tight max-sm:border-none w-full text-placeholder mr-3  leading-tight focus:outline-none"
+                  className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:leading-tight max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
                   type="text"
                   placeholder="example@gmail.com"
                   aria-label="Full name"
+                  name="email"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.email}
                 />
+                {formik.touched.email && formik.errors.email ? (
+                  <div className="mt-2 text-red-600">{formik.errors.email}</div>
+                ) : null}
               </div>
               {/* <input type="email" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='example@gmail.com' /> */}
               <label className="font-semibold text-lg block pt-3 pb-2  text-black">
@@ -79,11 +158,20 @@ export default function SignUp() {
               </label>
               <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
                 <input
-                  className="border-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-placeholder mr-3  leading-tight focus:outline-none"
-                  type="text"
+                  className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
+                  type="password"
                   placeholder="Password"
                   aria-label="Full name"
+                  name="password"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.password}
                 />
+                {formik.touched.password && formik.errors.password ? (
+                  <div className="mt-2 text-red-600">
+                    {formik.errors.password}
+                  </div>
+                ) : null}
               </div>
               {/* <input type="text" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Password' /> */}
               <label className="font-semibold text-lg block pt-3 pb-2 text-black">
@@ -91,11 +179,21 @@ export default function SignUp() {
               </label>
               <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
                 <input
-                  className="border-primary border text-18px  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-placeholder mr-3  leading-tight focus:outline-none"
-                  type="text"
+                  className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
+                  type="password"
                   placeholder="Confirm Password"
                   aria-label="Full name"
+                  name="confirmPassword"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.confirmPassword}
                 />
+                {formik.touched.confirmPassword &&
+                formik.errors.confirmPassword ? (
+                  <div className="mt-2 text-red-600">
+                    {formik.errors.confirmPassword}
+                  </div>
+                ) : null}
               </div>
               {/* <input type="text" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Confirm Password' /> */}
               <button
@@ -103,11 +201,15 @@ export default function SignUp() {
                 className="transition text-black duration-200 w-full py-2.5 mb-3 mt-2 text-center text-18px text-b font-semibold inline-block max-sm:pt-4"
               >
                 Do you have an account?
-                <Link className="text-primary pl-2">Sign In</Link>
+                <Link to={"/signin"} className="text-primary pl-2">
+                  Sign In
+                </Link>
               </button>
-              <button className="px-5 py-2.5 max-sm:py-3 font-semibold relative group overflow-hidden bg-primary w-full text-center rounded-[10px] text-white hover:ring-2 inline-block hover:ring-offset-2 hover:ring-blue-400 transition-all ease-out duration-1000">
-                {/* <span class=" absolute right-0 w-8 h-32  transition-all duration-1000 transform translate-x-28 bg-white opacity-10 rotate-12 group-hover:-translate-x-40 ease"></span> */}
-                <span className="relative text-20px">Continue</span>
+              <button
+                type="submit"
+                className="px-2 py-3  transition duration-200 bg-primary hover:bg-btn-primary focus:shadow-sm text-white w-full rounded-lg focus:outline-none shadow-sm hover:shadow-md text-center font-bold text-18px inline-block"
+              >
+                Continue
               </button>
             </div>
             <div className="px-4 pb-4 ">
@@ -120,7 +222,7 @@ export default function SignUp() {
                 <button
                   onClick={handleGoogle}
                   type="button"
-                  className="flex justify-center items-center py-2 px-4 text-sm rounded border border-gray-200  outline-none max-sm:border-primary max-sm:border-2 text-accent font-bold transition transform "
+                  className="flex rounded-lg justify-center items-center py-2 px-4 text-sm border border-gray-200  outline-none max-sm:border-primary max-sm:border-2 text-accent font-bold transition transform "
                 >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -146,7 +248,11 @@ export default function SignUp() {
                   </svg>
                   <span className="text-18px text-black">Google</span>
                 </button>
-                <button className="flex justify-center items-center py-2 px-4 font-bold text-sm rounded border  outline-none border-gray-200 max-sm:border-primary max-sm:border-2 text-accent transition transform ">
+                <button
+                  onClick={handleFacebook}
+                  type="button"
+                  className="flex rounded-lg justify-center items-center py-2 px-4 font-bold text-sm border  outline-none border-gray-200 max-sm:border-primary max-sm:border-2 text-accent transition transform "
+                >
                   <svg
                     className="w-7 h-7 mr-2 text-blue-600 fill-current"
                     xmlns="http://www.w3.org/2000/svg"

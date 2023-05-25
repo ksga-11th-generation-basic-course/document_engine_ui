@@ -13,14 +13,15 @@ export default {
         primary : '#1E9CEF',
         secondary : '#F4F4F4',
         accent : '#526581',
-        back:"#37352F",
+        black:"#37352F",
+        'btn-primary': '#0f92e5',
         'bg-img':"../assets/images/footer/Footer.svg",
-        'bg-secondary' : '[#F4F4F4]',
-        'bg-accent' : '[#526581]',
-        'bg-primary' : '[#1E9CEF]',
-        'text-primary' : '[#37352F]',
-        'text-accent' : '[#526581]',
-        'placeholder' : '[9CA3AF]'
+        'bg-secondary' : '#F4F4F4',
+        'bg-accent' : '#526581',
+        'bg-primary' : '#1E9CEF',
+        'text-primary' : '#37352F',
+        'text-accent' : '#526581',
+        placeholder : '#9CA3AF'
       },
       fontSize: {
         '12px' : '12px',

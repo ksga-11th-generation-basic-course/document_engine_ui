@@ -1,12 +1,11 @@
 import { Route, Routes } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import SignUp from "./pages/SignUp.jsx";
-import SignIn from "./pages/SignIn.jsx";
 import AboutUs from"./pages/AboutUs.jsx"
 import ContactUs from "./pages/ContactUS.jsx"
-import Forgot from "./pages/Forgot.jsx"
+import ForgotPassword from "./pages/ForgotPassword.jsx"
 import Navbar from "./pages/Navbar.jsx";
-import VerifyAddress from"./pages/VerifyAddress.jsx"
+import VerifyOTP from"./pages/VerifyOTP.jsx"
 import EnableAccount from"./pages/EnableAccount.jsx"
 import SetNewPassWord from "./pages/SetNewPassWord.jsx";
 import NotFound from "./pages/NotFound.jsx";
@@ -33,6 +32,9 @@ import RemoveWorkspacePopup from "./pop-up/RemoveWorkspacePopup";
 import DeleteWorkspacePhotoPopup from "./pop-up/DeleteWorkspacePhotoPopup";
 import LeaveFromWorkpacePopup from "./pop-up/LeaveFromWorkpacePopup";
 import JoinWorkspacePopup from "./pop-up/JoinWorkspacePopup";
+import SignIn from "./pages/SignIn.jsx";
+import SignIn1 from "./pages/SignIn.jsx";
+import VerifyForgotPassword from "./pages/VerifyFogotPassword.jsx";
 function App() {
 
   return (
@@ -42,12 +44,13 @@ function App() {
         <Route path="/about" element={<AboutUs/>}/> 
         <Route path="/contact" element={<ContactUs></ContactUs>}/> 
         <Route path="/signup" element={<SignUp/>}/>
+        <Route path="/verifyOTP" element={<VerifyOTP/>}/>
         <Route path="/signin" element={<SignIn/>}/>
-        <Route path="/forgot" element={<Forgot/>}/>
-        <Route path="/verify" element={<VerifyAddress/>}/>
+        <Route path="/forgotpassword" element={<ForgotPassword/>}/>
+        <Route path="/verifyForgotPassword" element={<VerifyForgotPassword/>}/>
+        <Route path="/setPassword" element={<SetNewPassWord/>}/>
         <Route path="/enable" element={<EnableAccount/>}/>
         <Route path="/notFound" element={<NotFound/>}/>
-        <Route path="/setPassword" element={<SetNewPassWord/>}/>
         <Route path="/messageSucess" element={<MessageSucess/>} />
         <Route path="/closeAccount" element={<CloseAccount/>} />
         <Route path="/removeMember" element={<RemoveMember/>} />
