@@ -10,6 +10,7 @@ import RemoveMemberPopup from "./pop-up/RemoveMemberPopup.jsx";
 import RemoveWorkspacePopup from "./pop-up/RemoveWorkspacePopup.jsx";
 import ResetPasswordPopup from "./pop-up/ResetPasswordPopup.jsx";
 import SignOutPopup from "./pop-up/SignOutPopup.jsx";
+import MessageSucessPopUp from "./pop-up/MessageSucessPopUp.jsx";
 // import WorkspaceCallaboratorMember from "./pop-up/WorkspaceCallaboratorMember.jsx";
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
       {/* {open ? <RemoveWorkspacePopup open={open} setOpen={setOpen}/> : null} */}
       {/* {open ? <ResetPasswordPopup open={open} setOpen={setOpen}/> : null} */}
       {/* {open ? <SignOutPopup open={open} setOpen={setOpen}/> : null} */}
+      {open ? <MessageSucessPopUp open={open} setOpen={setOpen}/> : null}
       {/* {open ? <WorkspaceCallaboratorMember open={open} setOpen={setOpen}/> : null} */}
     </div>
   );
