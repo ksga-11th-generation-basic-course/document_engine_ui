@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}",  "node_modules/flowbite-react/**/*.{js,jsx,ts,tsx}"],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}",  "./node_modules/flowbite/**/*.js"],
   theme: {
     extend: {
       fontFamily: {
@@ -13,7 +13,9 @@ export default {
         primary : '#1E9CEF',
         secondary : '#F4F4F4',
         accent : '#526581',
+        accent_secondary : '#9CA3AF',
         black:"#37352F",
+        red: '#FF5658',
         'bg-img':"../assets/images/footer/Footer.svg",
         'bg-secondary' : '[#F4F4F4]',
         'bg-accent' : '[#526581]',
@@ -35,6 +37,8 @@ export default {
       boxShadow: {
         'custom'   : '0 0.5px 5px 2px rgba(0, 0, 0, 0.1)',
         'content' : '-1px 5px 32px rgba(0, 0, 0, 0.08)',
+        'tip' : '0px 2px 2px rgba(0, 0, 0, 0.2)',
+        'profile' : '0px 1px 4px rgba(0, 0, 0, 0.1)'
       }
     },
   },

@@ -18,35 +18,25 @@ import RemoveWorkspace from "./pop-up/RemoveWorkspace.jsx";
 import LeaveWorkspace from "./pop-up/LeaveWorkspace.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Workspace from "./pages/Workspace.jsx";
-import { DocumentOption } from "./components/dropdowns/DocumentOption.jsx";
+import WorkspaceOption from "./components/dropdowns/WorkspaceOption.jsx";
+import DocumentOption from "./components/dropdowns/DocumentOption.jsx";
+import Tips from "./components/dropdowns/Tips.jsx";
+import { ProfilePopup } from "./pop-up/ProfilePopup.jsx";
+
 
 // import DashBoardLeft from "./dashboard/DashBoardLeft";
 // import Comfirmrd_PassWord from "./pages/Comfirmrd_PassWord";
 // // import ContactUs from "./pages/ContactUs";
-// import FooterMain from "./pages/FooterMain";
-// import Form_Sucess from "./pages/Form_Sucess";
+
 // import Login from "./pages/Login";
 // import LogOut from "./pages/LogOut";
 // import SetNew_PassWord from "./pages/SetNew_PassWord";
-// import Comback from "./pop-up/Comback";
-// import OtpInput from "react-otp-input";
-// import Contact_Us from "./pages/Contact_Us";
-// import ResetPasswordPopup from "./pop-up/ResetPasswordPopup";
-// import DeleteProfilePhotoPopup from "./pop-up/DeleteProfilePhotoPopup";
-// import CloseAccountPopup from "./pop-up/CloseAccountPopup";
-// import CreateWorkSpacePopup from "./pop-up/CreateWorkSpacePopup";
-// import DeleteDocumentPopup from "./pop-up/DeleteDocumentPopup";
-// import RemoveMemberPopup from "./pop-up/RemoveMemberPopup";
-// import RemoveWorkspacePopup from "./pop-up/RemoveWorkspacePopup";
-// import DeleteWorkspacePhotoPopup from "./pop-up/DeleteWorkspacePhotoPopup";
-// import LeaveFromWorkpacePopup from "./pop-up/LeaveFromWorkpacePopup";
-// import JoinWorkspacePopup from "./pop-up/JoinWorkspacePopup";
-// import NavbarComponent from "./components/NavbarComponent";
+
 function App() {
   return (
     <div className="App font-ssp">
       {/* <BrowserRouter> */}
-        {/* <Routes>
+        <Routes>
           <Route index element={<HomePage />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<ContactUs></ContactUs>} />
@@ -66,10 +56,8 @@ function App() {
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/workspace" element={<Workspace />} />
           <Route path="/*" element={<NotFound />} />
-        </Routes> */}
-
-        <DocumentOption></DocumentOption>
-      {/* </BrowserRouter> */}
+        </Routes> 
+      {/* </BrowserRouter> 
 
       {/* <BrowserRouter> */}
       {/* <Routes>

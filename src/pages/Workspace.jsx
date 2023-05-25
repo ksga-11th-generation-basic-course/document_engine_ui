@@ -11,34 +11,38 @@ import PHP from "../assets/images/Workspace/PHP.svg";
 import Angular from "../assets/images/Workspace/Angular.svg";
 import ReactJS from "../assets/images/Workspace/React.svg";
 import NodeJS from "../assets/images/Workspace/NodeJS.svg"
-import WorkspaceOption from "../components/WorkspaceOption";
+import WorkspaceOption from "../components/dropdowns/WorkspaceOption";
+
+
+
+
 
 export default function Workspace() {
   return (
     <div>
-      <div className="h-screen grid grid-cols-12">
-        <div className="col-span-2 z-0">
-              <Sidebar />
+      <div className="grid grid-cols-12">
+        <div className="z-10 col-span-2">
+          <Sidebar />
         </div>
-        <div className="col-span-10 shadow-content z-10">
-              <NavbarLogin />
+        <div className="z-20 col-span-10 shadow-content">
+          <NavbarLogin />
 
-          <div className="grid grid-cols-12  h-full">
+          <div className="grid grid-cols-12  h-[100%]  ">
             <div className="col-span-1"></div>
             <div className="col-span-10">
               <div className="ml-4">
             {/* Workspace */}
-                <div className="grid grid-cols-12 ml-6 ">
-                  <div className="   ">
-                    <button class="cols-span-1 flex justify-center mt-2 mr-2 drop-shadow-2xl rounded-lg border-2 right-0 w-[38px] h-[35px] py-1 text-center ">
+                <div className="grid grid-cols-12  ">
+                  
+                    <button class="cols-span-1 ml-6 flex justify-center  drop-shadow-2xl rounded-lg border-2 right-0 w-[34px] h-[35px] py-1 text-center ">
                       <img
                         src={Group}
                         alt=""
-                        className="cols-span-2 w-[23px] h-[23px] "
+                        className="cols-span-1 w-[20px] h-[23px] "
                       />
                     </button>
-                  </div>
-                  <div class="col-start-2 text-[#526581] font-bold py-3 text-xl ">
+                  
+                  <div class="col-span-1 py-1 text-[#526581] font-bold text-xl ">
                     Workspace
                   </div>
                 </div>
@@ -53,7 +57,7 @@ export default function Workspace() {
                           alt=""
                           className="w-[23px] h-[23px] mt-1"
                         />
-                        <div className=" text-[#526581] font-bold text-xl ">
+                        <div class=" text-[#526581] font-bold text-xl ">
                           Sort:
                         </div>
                       </div>
@@ -62,14 +66,14 @@ export default function Workspace() {
                         <button
                           id="dropdownRadioBgHoverButton"
                           data-dropdown-toggle="dropdownRadioBgHover"
-                          className="text-[#526581] font-normal text-xl
+                          class="text-[#526581] font-normal text-xl
                                     hover:bg-[#D8D7DD] rounded-lg  px-4 py-1 text-center inline-flex items-center"
                           type="button"
                         >
                           {" "}
                           Last Updated{" "}
                           <svg
-                            className="w-4 h-4 ml-2"
+                            class="w-4 h-4 ml-2"
                             aria-hidden="true"
                             fill="none"
                             stroke="currentColor"
@@ -87,22 +91,22 @@ export default function Workspace() {
                         {/* <!-- Dropdown menu --> */}
                         <div
                           id="dropdownRadioBgHover"
-                          className="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg 
+                          class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg 
                             shadow dark:bg-gray-700 dark:divide-gray-600"
                         >
                           <ul
-                            className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
+                            class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
                             aria-labelledby="dropdownRadioBgHoverButton"
                           >
                             {/*Last Updated */}
                             <li>
-                              <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                 <input
                                   id="default-radio-4"
                                   type="radio"
                                   value=""
                                   name="default-radio"
-                                  className="w-4 h-4 text-[#526581]
+                                  class="w-4 h-4 text-[#526581]
                                       focus:ring-[#526581] dark:focus:ring-[#526581] dark:ring-offset-gray-700
                                         dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                                     />
@@ -118,14 +122,14 @@ export default function Workspace() {
 
                             {/*This week */}
                             <li>
-                              <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                 <input
                                   checked
                                   id="default-radio-5"
                                   type="radio"
                                   value=""
                                   name="default-radio"
-                                  className="w-4 h-4 text-[#526581]
+                                  class="w-4 h-4 text-[#526581]
                                        focus:ring-[#526581] dark:focus:ring-[#526581] dark:ring-offset-gray-700
                                         dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600 dark:border-gray-500"
                                 />
@@ -141,20 +145,20 @@ export default function Workspace() {
 
                             {/*This Month */}
                             <li>
-                              <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                 <input
                                   id="default-radio-6"
                                   type="radio"
                                   value=""
                                   name="default-radio"
-                                  className="w-4 h-4
+                                  class="w-4 h-4
                                       text-[#526581]  focus:ring-[#526581] dark:focus:ring-[#526581]
                                         dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600
                                         dark:border-gray-500"
                                 />
                                 <label
                                   for="default-radio-6"
-                                  className="w-full ml-2 text-sm font-medium text-gray-900 rounded
+                                  class="w-full ml-2 text-sm font-medium text-gray-900 rounded
                                       dark:text-gray-300">
                                   This month
                                 </label>
@@ -163,20 +167,20 @@ export default function Workspace() {
 
                             {/*This Year */}
                             <li>
-                              <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                 <input
                                   id="default-radio-6"
                                   type="radio"
                                   value=""
                                   name="default-radio"
-                                  className="w-4 h-4
+                                  class="w-4 h-4
                                       text-[#526581]   focus:ring-[#526581] dark:focus:ring-[#526581]
                                         dark:ring-offset-[#526581] dark:focus:ring-offset-gray-700 focus:ring-2 dark:bg-gray-600
                                         dark:border-gray-500"
                                   />
                                   <label
                                     for="default-radio-6"
-                                    className="w-full ml-2 text-sm font-medium text-gray-900 rounded
+                                    class="w-full ml-2 text-sm font-medium text-gray-900 rounded
                                         dark:text-gray-300">
                                     This year
                                   </label>
@@ -197,7 +201,7 @@ export default function Workspace() {
                           alt=""
                           className="w-[23px] h-[23px] mt-1 "
                         />
-                        <div className="  text-[#526581] font-bold text-xl">
+                        <div class="  text-[#526581] font-bold text-xl">
                         Filter:
                         </div>
                       </div>
@@ -206,14 +210,14 @@ export default function Workspace() {
                         <button
                           id="drodownWorkspace"
                           data-dropdown-toggle="AllWorkspace"
-                          className="text-[#526581] font-normal text-xl
+                          class="text-[#526581] font-normal text-xl
                                     hover:bg-[#D8D7DD] rounded-lg  px-4 py-1 text-center inline-flex items-center"
                           type="button"
                         >
                           {" "}
                           All Workspace{" "}
                           <svg
-                            className="w-4 h-4 ml-2"
+                            class="w-4 h-4 ml-2"
                             aria-hidden="true"
                             fill="none"
                             stroke="currentColor"
@@ -231,28 +235,28 @@ export default function Workspace() {
                         {/* <!-- Dropdown menu --> */}
                         <div
                           id="AllWorkspace"
-                          className="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg 
+                          class="z-10 hidden w-48 bg-white divide-y divide-gray-100 rounded-lg 
                             shadow dark:bg-gray-700 dark:divide-gray-600"
                         >
                           <ul
-                            className="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
+                            class="p-3 space-y-1 text-sm text-gray-700 dark:text-gray-200"
                             aria-labelledby="drodownWorkspace"
                           >
                             {/* All Workspace */}
                             <li>
-                              <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                 <input
                                   id="default-radio-4"
                                   type="radio"
                                   value=""
                                   name="default-radio"
-                                  className="w-4 h-4 text-[#526581]
+                                  class="w-4 h-4 text-[#526581]
                                       bg-gray-100  focus:ring-[#526581] dark:ring-offset-gray-700
                                         dark:focus:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500"
                                 />
                                 <label
                                   for="default-radio-4"
-                                  className="w-full ml-2 text-sm font-medium text-gray-900 rounded
+                                  class="w-full ml-2 text-sm font-medium text-gray-900 rounded
                                       dark:text-gray-300"
                                 >
                                   All Workspace
@@ -261,19 +265,19 @@ export default function Workspace() {
                             </li>
                             {/* My Workspace */}
                             <li>
-                              <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                 <input
                                   id="default-radio-4"
                                   type="radio"
                                   value=""
                                   name="default-radio"
-                                  className="w-4 h-4 text-[#526581]
+                                  class="w-4 h-4 text-[#526581]
                                       bg-gray-100  focus:ring-[#526581] dark:focus:ring-[#526581] dark:ring-offset-gray-700
                                         dark:focus:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600 dark:border-gray-500"
                                 />
                                 <label
                                   for="default-radio-4"
-                                  className="w-full ml-2 text-sm font-medium text-gray-900 rounded
+                                  class="w-full ml-2 text-sm font-medium text-gray-900 rounded
                                       dark:text-gray-300"
                                 >
                                   My Workspace
@@ -283,20 +287,20 @@ export default function Workspace() {
                   
                             {/*Other Workspace */}
                             <li>
-                              <div className="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
+                              <div class="flex items-center p-2 rounded hover:bg-gray-100 dark:hover:bg-gray-600">
                                 <input
                                   id="default-radio-6"
                                   type="radio"
                                   value=""
                                   name="default-radio"
-                                  className="w-4 h-4
+                                  class="w-4 h-4
                                       text-[#526581] bg-gray-100  focus:ring-[#526581] dark:focus:ring-[#526581]
                                         dark:ring-offset-gray-700 dark:focus:ring-offset-gray-700 focus:ring-1 dark:bg-gray-600
                                         dark:border-gray-500"
                                 />
                                 <label
                                   for="default-radio-6"
-                                  className="w-full ml-2 text-sm font-medium text-gray-900 rounded
+                                  class="w-full ml-2 text-sm font-medium text-gray-900 rounded
                                       dark:text-gray-300"
                                 >
                                   Orther Workspace 
@@ -325,7 +329,7 @@ export default function Workspace() {
                     <div className="row-span-4 ">
                       <div className="grid grid-cols-3  ml-10 ">
                           {/* Docker */}
-                          <div className="cols-span-1 mt-4 h-[60px] w-[315px] rounded-t-lg  shadow-inner">
+                          <div class="cols-span-1 mt-4 h-[60px] w-[315px] rounded-t-lg  shadow-inner">
                             <div className="grid grid-cols-9 p-2 ">
                               <h1 className="col-span-7  text-[#526581] font-semibold  text-lg ">
                                 Docker
@@ -338,13 +342,13 @@ export default function Workspace() {
                             </div>
 
                             <div>
-                              <img src={Docker} className="w-full " alt="" />
+                              <img src={Docker} class="w-full " alt="" />
                             </div>
 
-                            <div className="grid grid-cols-3 h-[60px] pl-3 pt-1 pb-2 rounded-b-lg shadow-md">
-                              <div className=" col-span-2 mt-1  text-[#526581] font-semibold  text-base">
+                            <div class="grid grid-cols-3 h-[60px] pl-3 pt-1 pb-2 rounded-b-lg shadow-md">
+                              <div class=" col-span-2 mt-1  text-[#526581] font-semibold  text-base">
                               12 Document Total
-                                <p className="pb- text-[#526581] font-normal text-sm">
+                                <p class="pb- text-[#526581] font-normal text-sm">
                                   Create date: 12/01/2023
                                 </p>
                               </div>
@@ -354,38 +358,38 @@ export default function Workspace() {
                             </div>
                           </div>
                           {/* Spring */}
-                          <div className="cols-span- mt-4 h-[60px] w-[315px] rounded-t-lg shadow-inner">
+                          <div class="cols-span- mt-4 h-[60px] w-[315px] rounded-t-lg shadow-inner">
                             <div className="grid grid-cols-8 p-2  ">
                               <h1 className="col-span-6  text-[#526581] font-semibold  text-lg  ">
                                 Spring
                               </h1>
                             </div>
                             <div>
-                              <img src={Spring} className="w-full " alt="" />
+                              <img src={Spring} class="w-full " alt="" />
                             </div>
-                            <div className="grid grid-cols-3 h-[60px] pl-3 pt-1 pb-2 rounded-b-lg  shadow-md ">
-                              <div className=" col-span-2 mt-1  text-[#526581] font-semibold  text-base">
+                            <div class="grid grid-cols-3 h-[60px] pl-3 pt-1 pb-2 rounded-b-lg  shadow-md ">
+                              <div class=" col-span-2 mt-1  text-[#526581] font-semibold  text-base">
                               12 Document Total
-                                <p className="pb- text-[#526581] font-normal text-sm">
+                                <p class="pb- text-[#526581] font-normal text-sm">
                                   Create date: 10/05/2023
                                 </p>
                               </div>
                             </div>
                           </div>
                           {/*  PHP Developer */}
-                          <div className="cols-span-3 mt-4 h-[60px] w-[315px] rounded-t-lg shadow-inner">
+                          <div class="cols-span-3 mt-4 h-[60px] w-[315px] rounded-t-lg shadow-inner">
                             <div className="grid grid-cols-8 p-2  ">
                               <h1 className="col-span-6  text-[#526581] font-semibold  text-lg  ">
                                 PHP Developer
                               </h1>
                             </div>
                             <div>
-                              <img src={PHP} className="w-full " alt="" />
+                              <img src={PHP} class="w-full " alt="" />
                             </div>
-                            <div className="grid grid-cols-3 h-[60px] pl-3 pt-1 pb-2 rounded-b-lg  shadow-md">
-                              <div className=" col-span-2 mt-1  text-[#526581] font-semibold  text-base">
+                            <div class="grid grid-cols-3 h-[60px] pl-3 pt-1 pb-2 rounded-b-lg  shadow-md">
+                              <div class=" col-span-2 mt-1  text-[#526581] font-semibold  text-base">
                               12 Document Total
-                                <p className="pb- text-[#526581] font-normal text-sm">
+                                <p class="pb- text-[#526581] font-normal text-sm">
                                   Create date: 11/05/2023
                                 </p>
                               </div>
@@ -397,7 +401,7 @@ export default function Workspace() {
                     <div className="row-span-1">
                     <div className="grid grid-cols-3  ml-10 mb-2 " >
                       {/* Angular */}
-                      <div className="cols-span-1 mt-4 h-[60px] w-[315px] rounded-t-lg  shadow-inner">
+                      <div class="cols-span-1 mt-4 h-[60px] w-[315px] rounded-t-lg  shadow-inner">
                             <div className="grid grid-cols-9 p-2 ">
                               <h1 className="col-span-7  text-[#526581] font-semibold  text-lg ">
                               Angular
@@ -413,10 +417,10 @@ export default function Workspace() {
                               <img src={Angular} class="w-full " alt="" />
                             </div>
 
-                            <div className="grid grid-cols-3 h-[60px] pl-3 pt-1 pb-2 rounded-b-lg shadow-md">
-                              <div className=" col-span-2 mt-1  text-[#526581] font-semibold  text-base">
+                            <div class="grid grid-cols-3 h-[60px] pl-3 pt-1 pb-2 rounded-b-lg shadow-md">
+                              <div class=" col-span-2 mt-1  text-[#526581] font-semibold  text-base">
                               12 Document Total
-                                <p className="pb- text-[#526581] font-normal text-sm">
+                                <p class="pb- text-[#526581] font-normal text-sm">
                                   Create date: 12/01/2023
                                 </p>
                               </div>
@@ -426,26 +430,26 @@ export default function Workspace() {
                             </div>
                           </div>
                         {/* ReactJS */}
-                        <div className="cols-span- mt-4 h-[60px] w-[315px] rounded-t-lg shadow-inner">
+                        <div class="cols-span- mt-4 h-[60px] w-[315px] rounded-t-lg shadow-inner">
                             <div className="grid grid-cols-8 p-2  ">
                               <h1 className="col-span-6  text-[#526581] font-semibold  text-lg  ">
                               ReactJS
                               </h1>
                             </div>
                               <div>
-                                <img src={ReactJS} className="w-full " alt="" />
+                                <img src={ReactJS} class="w-full " alt="" />
                               </div>
-                              <div className="grid grid-cols-3 h-[60px] pl-3 pt-1 pb-2 rounded-b-lg  shadow-md ">
-                                <div className=" col-span-2 mt-1  text-[#526581] font-semibold  text-base">
+                              <div class="grid grid-cols-3 h-[60px] pl-3 pt-1 pb-2 rounded-b-lg  shadow-md ">
+                                <div class=" col-span-2 mt-1  text-[#526581] font-semibold  text-base">
                                   12 Document Total
-                                  <p className="pb- text-[#526581] font-normal text-sm">
+                                  <p class="pb- text-[#526581] font-normal text-sm">
                                     Create date: 10/05/2023
                                   </p>
                                 </div>
                               </div>
                             </div>
                         {/*  React & NodeJS */}
-                        <div className="cols-span-1 mt-4 h-[60px] w-[315px] rounded-t-lg  shadow-inner">
+                        <div class="cols-span-1 mt-4 h-[60px] w-[315px] rounded-t-lg  shadow-inner">
                             <div className="grid grid-cols-9 p-2 ">
                               <h1 className="col-span-7  text-[#526581] font-semibold  text-lg ">
                               React & NodeJS
@@ -458,13 +462,13 @@ export default function Workspace() {
                             </div>
 
                             <div>
-                              <img src={NodeJS} className="w-full " alt="" />
+                              <img src={NodeJS} class="w-full " alt="" />
                             </div>
 
-                            <div className="grid grid-cols-3 h-[60px] pl-3 pt-1 pb-2 rounded-b-lg shadow-md">
-                              <div className=" col-span-2 mt-1  text-[#526581] font-semibold  text-base">
+                            <div class="grid grid-cols-3 h-[60px] pl-3 pt-1 pb-2 rounded-b-lg shadow-md">
+                              <div class=" col-span-2 mt-1  text-[#526581] font-semibold  text-base">
                               12 Document Total
-                                <p className="pb- text-[#526581] font-normal text-sm">
+                                <p class="pb- text-[#526581] font-normal text-sm">
                                   Create date: 12/01/2023
                                 </p>
                               </div>
@@ -487,34 +491,34 @@ export default function Workspace() {
 
                 {/* Previous  */}
                   <li>
-                    <a href="#" className="block px-3 py-2 ml-0 leading-tight text-gray-500  
+                    <a href="#" class="block px-3 py-2 ml-0 leading-tight text-gray-500  
                      rounded-l-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800
                       dark:border-gray-700 dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                      <span className="sr-only">Previous</span>
-                      <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
+                      <span class="sr-only">Previous</span>
+                      <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd"></path></svg>
                     </a>
                   </li>
 
                   {/* Page 1 */}
                       <li>
-                        <a href="#" className="px-3 py-1 leading-tight text-gray-500  
+                        <a href="#" class="px-3 py-1 leading-tight bg-[#1E9CEF] text-[#FFFFFF] 
                          hover:bg-[#1E9CEF] rounded-full
                           dark:border-gray-700  ">1</a>
                       </li>
 
                   {/* Page 2 */}
                       <li>
-                        <a href="#" className="px-3 py-1 leading-tight text-gray-500 rounded-full
-                       hover:bg-[#1E9CEF] dark:border-gray-700  ">2</a>
+                        <a href="#" class="px-3 py-1 leading-tight text-gray-500 rounded-full
+                       dark:border-gray-700  ">2</a>
                       </li>
 
                     {/* Next */}
                     <li>
-                        <a href="#" className="block px-3 py-2 leading-tight text-gray-500 
+                        <a href="#" class="block px-3 py-2 leading-tight text-gray-500 
                         rounded-r-lg hover:bg-gray-100 hover:text-gray-700 dark:bg-gray-800 dark:border-gray-700
                         dark:text-gray-400 dark:hover:bg-gray-700 dark:hover:text-white">
-                          <span className="sr-only">Next</span>
-                          <svg aria-hidden="true" className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+                          <span class="sr-only">Next</span>
+                          <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path></svg>
                         </a>
                       </li>
