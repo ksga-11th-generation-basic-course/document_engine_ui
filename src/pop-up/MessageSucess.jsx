@@ -1,7 +1,7 @@
 import React from "react";
 import Message from "../assets/images/popUp/messageSucess.svg";
 import CloseIcon from "../assets/reset_pw_popup/closeIcon.svg";
-export default function MessageSucess() {
+export default function MessageSucessPopUp() {
   return (
     <div>
       <div
