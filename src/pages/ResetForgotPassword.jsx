@@ -6,7 +6,7 @@ import * as Yup from "yup";
 import { resetPassword } from "../redux/service/authenticationService/authenticationService";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-export default function SetNewPassWord() {
+export default function ResetForgotPassword() {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -100,7 +100,7 @@ export default function SetNewPassWord() {
                                       />
                                       {formik.touched.newPassword &&
                                       formik.errors.newPassword ? (
-                                        <div className="mt-2 text-red-600">
+                                        <div className="mt-2 text-red-600 text-left">
                                           {formik.errors.newPassword}
                                         </div>
                                       ) : null}
@@ -120,7 +120,7 @@ export default function SetNewPassWord() {
                                       />
                                       {formik.touched.newConfirmPassword &&
                                       formik.errors.newConfirmPassword ? (
-                                        <div className="mt-2 text-red-600">
+                                        <div className="mt-2 text-red-600 text-left">
                                           {formik.errors.newConfirmPassword}
                                         </div>
                                       ) : null}
