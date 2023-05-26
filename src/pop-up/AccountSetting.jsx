@@ -99,7 +99,7 @@ export default function WorkspaceSetting() {
                       </h1>
                     </div>
                     {/* Change Password */}
-                    <div className="flex  mt-6 ml-64 pl-6">
+                    <div className="flex  mt-6 ml-60 pl-8">
                     <img
                           src={Lyheng}
                           alt=""
@@ -109,7 +109,7 @@ export default function WorkspaceSetting() {
                         <h1 className="ml-3 mt-1">Upload Photo</h1>
                       </div>
                     {/*Button Remove */}
-                      <div className="ml-1 ">
+                      <div className="pl-3 ">
                       <button class=" mt-2 flex justify-center drop-shadow-2xl border-[#BEBEBE]  rounded-lg border right-0 w-[30px] h-[30px]  text-center ">
                         <img
                           src={Remove}
