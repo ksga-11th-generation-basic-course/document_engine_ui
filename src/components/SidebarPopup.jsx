@@ -25,7 +25,7 @@ export default function Sidebar() {
                 <button class=" text-[#1E9CEF] font-semibold ">Setting</button>
               </div>
               
-              <div className="flex ml-7 px-5 m-2">
+              <div className="flex ml-6 px-5 m-2">
               <img src={User} alt="" className="mr-4 " />
               <h1 className="text-[#526581] font-semibold">Collaborators</h1>
             </div>

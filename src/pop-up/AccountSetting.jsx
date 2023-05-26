@@ -18,7 +18,7 @@ export default function WorkspaceSetting() {
           </div>
 
           <div className=" col-span-10 bg-white h-[670px] pl-12">
-            <div className="flex justify-end m-4">
+            <div className="flex justify-end m-2">
               <img src={Cancel} alt="" className=" pr-2 w-[35px] " />
             </div>
 
@@ -45,7 +45,7 @@ export default function WorkspaceSetting() {
                       </h1>
                     </div>
                     <div className="col-span-2 ml-40   ">
-                      <button class="bg-[#1E9CEF] hover:bg-[#92c8ed] rounded-md text-white font-semibold px-5 h-8 ">
+                      <button class="bg-[#1E9CEF] hover:bg-[#2a8fd1] rounded-md text-white font-semibold px-5 h-8 ">
                         Save
                       </button>
                     </div>
@@ -70,7 +70,7 @@ export default function WorkspaceSetting() {
                   </div>
                   {/*Change new password */}
                   <div className="flex ">
-                    <div className="col-span-2">
+                    <div className="">
                       <h1 className=" mt-4 ml-4 text-[#37352F] font-bold  text-lg px-3">
                         Change new password
                       </h1>
@@ -80,41 +80,44 @@ export default function WorkspaceSetting() {
                       </h1>
                     </div>
                     {/* Change Password */}
-                    <div className="flex  mt-6 ml-60">
+                    <div className="flex  mt-6 ml-56 pl-5">
                       <div className=" mt-2  border  border-[#BEBEBE] rounded-lg w-32 h-8 text-[#526581] font-semibold  text-sm">
                         <h1 className="ml-3 mt-1">Change Password</h1>
                       </div>
                     </div>
                   </div>
 
-                  {/* Profile Picture */}
+                  {/*Change new password */}
                   <div className="flex ">
-                    <div className="col-span-2">
-                      <h1 className=" mt-2 ml-4 text-[#37352F] font-bold  text-lg px-3">
-                        Profile Picture
+                    <div className="">
+                      <h1 className=" mt-4 ml-4 text-[#37352F] font-bold  text-lg px-3">
+                        Change new password
                       </h1>
                       <h1 className=" ml-7  text-[#526581] font-normal text-sm">
-                        Displayed when collaborating with others.
+                      Displayed when collaborating with others.
+
                       </h1>
                     </div>
-                    {/* Upload Photo */}
-                    <div className="flex  mt-5 ml-72 mr-7">
+                    {/* Change Password */}
+                    <div className="flex  mt-6 ml-64 pl-6">
                     <img
                           src={Lyheng}
                           alt=""
-                          className="  w-[45px] h-[45px] "
+                          className="  w-[39px] h-[42px] "
                         />
-                      <div className=" mt-2  border ml-2 border-[#BEBEBE] rounded-lg w-32 h-8 text-[#526581] font-semibold  text-sm">
-                        <h1 className="ml-4 mt-1">Upload Photo</h1>
+                      <div className=" mt-2 ml-2 border  border-[#BEBEBE] rounded-lg w-32 h-8 text-[#526581] font-semibold  text-sm">
+                        <h1 className="ml-3 mt-1">Upload Photo</h1>
                       </div>
-                      {/*Button Remove */}
-                      <button class="ml-1 mt-2 flex justify-center drop-shadow-2xl border-[#BEBEBE]  rounded-lg border right-0 w-[30px] h-[30px]  text-center ">
+                    {/*Button Remove */}
+                      <div className="ml-1 ">
+                      <button class=" mt-2 flex justify-center drop-shadow-2xl border-[#BEBEBE]  rounded-lg border right-0 w-[30px] h-[30px]  text-center ">
                         <img
                           src={Remove}
                           alt=""
-                          className="cols-span-1 mt-1 w-[15px] h-[15px] "
+                          className="  m-1 w-[18px] h-[18px] "
                         />
                       </button>
+                      </div>
                     </div>
                   </div>
 
@@ -139,7 +142,7 @@ export default function WorkspaceSetting() {
                 </div>
 
                 {/* Advanced */}
-                <div className=" mb-2 mt-4  border-solid rounded-lg border border-[#BEBEBE]   h-[190px]">
+                <div className="  mt-4  border-solid rounded-lg border border-[#BEBEBE]   h-[200px]">
                   <div className="flex m-2 ml-7 ">
                     <img src={Setting} alt="" className="w-6" />
                     <h1 className=" ml-3  text-[#37352F] font-bold text-xl ">
@@ -161,8 +164,8 @@ export default function WorkspaceSetting() {
                         choose to sign in back later.
                       </p1>
                     </div>
-                    <div className="col-end-3 ml-60 mt-5 ">
-                      <button class=" rounded-lg border border-[#BEBEBE]  text-[#FF5658] font-bold py-1 px-3">
+                    <div className="col-end-3 ml-60 pl-2 mt-5 ">
+                      <button class=" rounded-lg border border-[#BEBEBE]  text-[#FF5658] font-semibold py-1 px-3">
                         Signing out
                       </button>
                     </div>
@@ -177,8 +180,8 @@ export default function WorkspaceSetting() {
                         By close your account, your account can’t see by other.
                       </p1>
                     </div>
-                    <div className="col-end-3 ml-56   mt-3 ">
-                      <button class=" rounded-lg border border-[#BEBEBE]  text-[#FF5658] font-bold py-1 px-3">
+                    <div className="col-end-3 ml-56 pl-1   mt-3 ">
+                      <button class=" rounded-lg border border-[#BEBEBE]  text-[#FF5658] font-semibold py-1 px-3">
                         Close Account
                       </button>
                     </div>
