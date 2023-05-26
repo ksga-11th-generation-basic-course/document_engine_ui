@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import LeftSidebar from '../components/LeftSidebar'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/NavbarComponent'
 import file from "../assets/images/file.svg";
 import Tick from "../assets/images/Tick.svg";
 import Avatar from "../assets/images/Avatar.svg";

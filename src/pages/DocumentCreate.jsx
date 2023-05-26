@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import LeftSidebar from '../components/LeftSidebar'
-import Navbar from '../components/Navbar'
+import Navbar from '../components/NavbarComponent'
 import file from "../assets/images/file.svg";
 import Pen from "../assets/images/Dashboard/Pen.svg";
 import View from "../assets/images/Dashboard/View.svg";
@@ -18,7 +18,7 @@ import AddTag from "../assets/images/AddTag.svg";
 import Dropdown from '../components/Dropdown';
 import DocumentCard from '../components/DocumentCard';
 import Pagination from '../components/Pagination';
-import Editor from '../components/Editor';
+// import Editor from '../components/Editor';
 
 
 function DocumentCreate() {
