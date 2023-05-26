@@ -7,7 +7,7 @@ import LeaveIconSmall from '../assets/reset_pw_popup/leaveIcon.svg'
 function SideBarForPopup() {
   return (
     <div>
-      <div className="h-screen shadow-lg bg-[#FFFFFF] w-64 rounded-md shadow-content">
+      <div className="h-[650px] shadow-lg bg-[#FFFFFF] w-64 rounded-md shadow-content">
             {/* Logo */}
             <div className="flex justify-center mb-4 drop-shadow-lg bg-[#FFFFFF] pr-12 rounded-md  ">
               <img src={Logo} alt="" className="w-[80px] h-[104px] " />
@@ -33,12 +33,9 @@ function SideBarForPopup() {
                             </NavLink> */}
                       </div>
                     <div>
-               <div className='flex mt-[580px]'>
-                 
-                
+               <div className='flex mt-[440px]'>                                
                   <img src={LeaveIconSmall} alt="" className="w-[20px] h-[21px] " />
-                  <label className='text-[#FF5658] ml-4 font-semibold'> Leave Workspace</label>
-                 
+                  <label className='text-[#FF5658] ml-4 font-semibold'> Leave Workspace</label>                
                </div>
             </div>
         </div>
