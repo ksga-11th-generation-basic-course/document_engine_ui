@@ -12,6 +12,7 @@ import {
 const initialState = {
   loading: false,
   authentication: {},
+  thirdPartyAuthentication : {},
   OTPauthentication: {},
   resetAuthentication: {},
   error: "",
@@ -28,13 +29,13 @@ const authenticationSlice = createSlice({
         signupWithGoogleAndFacebook.fulfilled,
         (state, action) => {
           state.loading = false;
-          state.authentication = action.payload;
+          state.thirdPartyAuthentication = action.payload;
           state.error = "";
         }
       ),
       builder.addCase(signupWithGoogleAndFacebook.rejected, (state, action) => {
         state.loading = true;
-        state.authentication = {};
+        state.thirdPartyAuthentication = {};
         state.error = action.error.message;
       });
     builder.addCase(signinWithGoogleAndFacebook.pending, (state) => {

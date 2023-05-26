@@ -24,6 +24,12 @@ export default function SignUp() {
     (state) => state.authentication.authentication
   );
 
+  const thirdPartyAuthentication = useSelector(
+    (state) => state.authentication.thirdPartyAuthentication
+  );
+
+  console.log(thirdPartyAuthentication)
+  
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
