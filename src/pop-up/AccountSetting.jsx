@@ -5,6 +5,8 @@ import Profile from "../assets/images/Icon/Profile.svg";
 import Remove from "../assets/images/Icon/Remove.svg";
 import Setting from "../assets/images/Icon/SettingAdvance.svg";
 import Google from "../assets/images/Icon/Google.svg";
+import Lyheng from "../assets/images/Icon/lyheng.svg"
+
 
 export default function WorkspaceSetting() {
   return (
@@ -42,8 +44,8 @@ export default function WorkspaceSetting() {
                         Your Profile
                       </h1>
                     </div>
-                    <div className="col-span-2 ml-28    ">
-                      <button class="bg-[#1E9CEF] rounded-md text-white font-semibold px-5 h-8 ">
+                    <div className="col-span-2 ml-40   ">
+                      <button class="bg-[#1E9CEF] hover:bg-[#92c8ed] rounded-md text-white font-semibold px-5 h-8 ">
                         Save
                       </button>
                     </div>
@@ -57,9 +59,14 @@ export default function WorkspaceSetting() {
                     <h1 className="mb-1  mt-1 text-[#37352F] font-bold text-lg px-3 ">
                       Account Name:
                     </h1>
-                    <div class="border ml-3  border-[#BEBEBE] rounded-lg w-80 h-9 text-[#526581] font-semibold  text-base">
-                      <h1 className="ml-6 mt-1.5">Chhum Lyheng</h1>
-                    </div>
+                   <div>
+                   <label class="relative block">
+                    <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                        <svg class="h-5 w-5 fill-slate-300" viewBox="0 0 20 20"></svg>
+                    </span>
+                    <input class="ml-2 placeholder:text-slate-400 block bg-white w-60 border border-slate-300 rounded-md py-1 pl-4 pr-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="Chhum Lyheng" type="text" name="search"/>
+                    </label>
+                   </div>
                   </div>
                   {/*Change new password */}
                   <div className="flex ">
@@ -73,9 +80,9 @@ export default function WorkspaceSetting() {
                       </h1>
                     </div>
                     {/* Change Password */}
-                    <div className="flex  mt-6 ml-44">
-                      <div className=" mt-2  border ml-2 border-[#BEBEBE] rounded-lg w-32 h-8 text-[#526581] font-semibold  text-sm">
-                        <h1 className="ml-4 mt-1">Change Password</h1>
+                    <div className="flex  mt-6 ml-60">
+                      <div className=" mt-2  border  border-[#BEBEBE] rounded-lg w-32 h-8 text-[#526581] font-semibold  text-sm">
+                        <h1 className="ml-3 mt-1">Change Password</h1>
                       </div>
                     </div>
                   </div>
@@ -91,12 +98,17 @@ export default function WorkspaceSetting() {
                       </h1>
                     </div>
                     {/* Upload Photo */}
-                    <div className="flex  mt-6 ml-64">
+                    <div className="flex  mt-5 ml-72 mr-7">
+                    <img
+                          src={Lyheng}
+                          alt=""
+                          className="  w-[45px] h-[45px] "
+                        />
                       <div className=" mt-2  border ml-2 border-[#BEBEBE] rounded-lg w-32 h-8 text-[#526581] font-semibold  text-sm">
                         <h1 className="ml-4 mt-1">Upload Photo</h1>
                       </div>
                       {/*Button Remove */}
-                      <button class="cols-span-1 mt-2 ml-3 flex justify-center drop-shadow-2xl rounded-lg border right-0 w-[30px] h-[30px] py-1 text-center ">
+                      <button class="ml-1 mt-2 flex justify-center drop-shadow-2xl border-[#BEBEBE]  rounded-lg border right-0 w-[30px] h-[30px]  text-center ">
                         <img
                           src={Remove}
                           alt=""
@@ -117,7 +129,7 @@ export default function WorkspaceSetting() {
                       </h1>
                     </div>
                     {/* lyhengchhum@gmail.com */}
-                    <div className="flex  mt-4 ml-32">
+                    <div className="flex  mt-4 ml-44">
                       <div className="flex  mt-1  border ml-2 bg-[#F8F8F8] border-[#BEBEBE] rounded-lg w-56 h-8 text-[#526581] font-semibold  text-sm">
                         <img src={Google} alt="" className="ml-4 w-5" />
                         <h1 className="ml-4 mt-1">lyhengchhum@gmail.com</h1>
@@ -127,7 +139,7 @@ export default function WorkspaceSetting() {
                 </div>
 
                 {/* Advanced */}
-                <div className="  mt-4  border-solid rounded-lg border border-[#BEBEBE]   h-[190px]">
+                <div className=" mb-2 mt-4  border-solid rounded-lg border border-[#BEBEBE]   h-[190px]">
                   <div className="flex m-2 ml-7 ">
                     <img src={Setting} alt="" className="w-6" />
                     <h1 className=" ml-3  text-[#37352F] font-bold text-xl ">
@@ -149,15 +161,15 @@ export default function WorkspaceSetting() {
                         choose to sign in back later.
                       </p1>
                     </div>
-                    <div className="col-end-3 ml-52  mt-3 ">
-                      <button class=" rounded-lg border-2  text-[#FF5658] font-bold py-1 px-3">
+                    <div className="col-end-3 ml-60 mt-5 ">
+                      <button class=" rounded-lg border border-[#BEBEBE]  text-[#FF5658] font-bold py-1 px-3">
                         Signing out
                       </button>
                     </div>
                   </div>
                   {/* Close Account */}
                   <div className="grid grid-cols-2 mt-2   ml-7">
-                    <div className="col-span-1 ">
+                    <div className="col-span-1  ">
                       <h1 className="text-[#37352F] font-bold text-lg">
                         Close Account
                       </h1>
@@ -165,8 +177,8 @@ export default function WorkspaceSetting() {
                         By close your account, your account can’t see by other.
                       </p1>
                     </div>
-                    <div className="col-end-3 ml-52   mt-3 ">
-                      <button class=" rounded-lg border-2  text-[#FF5658] font-bold py-1 px-3">
+                    <div className="col-end-3 ml-56   mt-3 ">
+                      <button class=" rounded-lg border border-[#BEBEBE]  text-[#FF5658] font-bold py-1 px-3">
                         Close Account
                       </button>
                     </div>
