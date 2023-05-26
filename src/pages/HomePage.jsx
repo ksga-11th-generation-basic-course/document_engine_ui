@@ -18,7 +18,7 @@ export default function HomePage() {
   return (
     <div className="w-full">
       <div>
-              <NavbarLogout></NavbarLogout>
+        <NavbarLogout></NavbarLogout>
       </div>
       <div className="main px-20 max-sm:px-10 flex flex-row">
         <div className="grid grid-cols-3 gap-4 pt-[10rem]  max-sm:pt-[6rem] max-lg:flex max-lg:flex-col  max-md:flex max-md:flex-col">
@@ -33,20 +33,16 @@ export default function HomePage() {
               </h1>
             </div>
             <div className="font-bold py-5 text-18px max-sm:pt-1 max-lg:text-xl max-lg:whitespace-pre max-sm:text-sm max-sm:whitespace-pre max-md:whitespace-pre text-accent">
-              <p>
-                Make your wiki, docs & project in ONCE with the
-              </p>
-              <p>
-                best security, edit your documents and work as a
-              </p>
+              <p>Make your wiki, docs & project in ONCE with the</p>
+              <p>best security, edit your documents and work as a</p>
               <p>group.</p>
             </div>
             <div className="button">
-                  <Link to="/sign-in">
-                        <button className="bg-primary max-sm:px-5 max-sm:py-1 text-white px-12 py-2.5 border rounded-xl font-bold text-18px">
-                              <a href="#">Get Start</a>
-                        </button>
-                  </Link>
+              <Link to="/sign-in">
+                <button className="bg-primary max-sm:px-5 max-sm:py-1 text-white px-12 py-2.5 border rounded-xl font-bold text-18px">
+                  <a href="#">Get Start</a>
+                </button>
+              </Link>
             </div>
           </div>
           <div className="col-span-2">
@@ -56,7 +52,7 @@ export default function HomePage() {
       </div>
 
       <div className="p-20 max-sm:px-6 max-sm:pt-5">
-          <div className="bg-accent_secondary h-[3px]"></div>
+        <div className="bg-accent_secondary h-[3px]"></div>
       </div>
       <div className="text text-center px-20 pt-8 max-sm:pt-8 font-bold">
         <h1 className="text-gray-500 text-4xl max-sm:whitespace-pre  max-sm:text-3xl">
@@ -69,7 +65,7 @@ export default function HomePage() {
       </div>
       <div className="flex flex-row justify-evenly w-[100%] px-20 pt-20 max-sm:flex-col max-sm:pt-5 max-sm:px-2">
         <div className="max-sm:pt-5">
-          <img src={Card1} className="w-[360px]"/>
+          <img src={Card1} className="w-[360px]" />
           <div className="px-6">
             <div className="font-semibold text-blue-400 text-36px pt-5 text-center">
               Collaboration
@@ -82,10 +78,10 @@ export default function HomePage() {
           </div>
         </div>
         <div>
-          <img src={Card2} className="w-[360px]"/>
+          <img src={Card2} className="w-[360px]" />
           <div className="px-6 ">
             <div className="font-semibold text-blue-400 text-36px text-center">
-                Productivity
+              Productivity
             </div>
             <div className="text-20px text-center max-sm:whitespace-nowrap  text-gray-500 leading-6 text-base max-sm:text-sm">
               <p>Real integrity is doing the right thing,</p>
@@ -95,16 +91,14 @@ export default function HomePage() {
           </div>
         </div>
         <div className="max-sm:pt-5">
-          <img src={Card3} className="w-[330px]"/>
+          <img src={Card3} className="w-[330px]" />
           <div className="px-6 ">
             <div className="font-semibold text-blue-400 text-36px text-center">
               Sharing
             </div>
             <div className="text-20px text-center max-sm:whitespace-nowrap  text-gray-500 leading-6 text-base max-sm:text-sm">
               <p>Love only grows by sharing.</p>
-              <p>
-                You can only have more for yourself{" "}
-              </p>
+              <p>You can only have more for yourself </p>
               <p>by giving it away to others.</p>
             </div>
           </div>
@@ -123,28 +117,16 @@ export default function HomePage() {
             <p>can be prepared for your next job. Then we teach all </p>
             <p>we van about them.</p>
           </div>
-      </div>
+        </div>
         <div className="w-1/3 pt-16 max-sm:pt-5 max-sm:flex max-sm: flex justify-around ">
           <div>
-            <img
-              src={Icon1}
-            
-              className="w-16 max-sm:w-44 hover:scale-125  "
-            />
+            <img src={Icon1} className="w-16 max-sm:w-44 hover:scale-125  " />
           </div>
           <div>
-            <img
-              src={Icon2}
-            
-              className="w-16 max-sm:w-44 hover:scale-125"
-            />
+            <img src={Icon2} className="w-16 max-sm:w-44 hover:scale-125" />
           </div>
           <div>
-            <img
-              src={Icon3}
-            
-              className="w-16 max-sm:w-44 hover:scale-125"
-            />
+            <img src={Icon3} className="w-16 max-sm:w-44 hover:scale-125" />
           </div>
         </div>
       </div>

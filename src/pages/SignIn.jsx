@@ -6,7 +6,7 @@ import Google from "../assets/images/Login/Google.svg";
 import Facebook from "../assets/images/Login/Facebook.svg";
 import { Formik, Form, Field, useFormik } from "formik";
 // import * as Yup from "yup";n
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signInWithPopup } from "firebase/auth";
 import {
@@ -20,6 +20,13 @@ import {
 } from "../redux/service/authenticationService/authenticationService";
 import * as Yup from "yup";
 const SignIn = () => {
+
+  const navigate = useNavigate();
+
+  const authentication = useSelector((state) => state.authentication.authentication);
+
+  console.log(authentication)
+
   const dispatch = useDispatch();
 
   const handleGoogle = () => {
@@ -69,10 +76,17 @@ const SignIn = () => {
     },
   });
 
+  if(authentication.email){
+    navigate("/dashboard");
+  }
+
   return (
     <div className="flex justify-center items-center bg-[#EDF9FF] text-accent">
-      <Link to="/" >
-                  <img src={Logo} className="absolute top-8 left-32 max-sm:left-3 max-sm:top-10" />
+      <Link to="/">
+        <img
+          src={Logo}
+          className="absolute top-8 left-32 max-sm:left-3 max-sm:top-10"
+        />
       </Link>
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
         <img
@@ -103,7 +117,7 @@ const SignIn = () => {
                   value={formik.values.email}
                 />
                 {formik.touched.email && formik.errors.email ? (
-                  <div className="mt-2 text-red-600">{formik.errors.email}</div>
+                  <div className="mt-2 text-red">{formik.errors.email}</div>
                 ) : null}
               </div>
               <label className="font-semibold text-18px block pt-3 pb-2  text-black">
@@ -121,34 +135,32 @@ const SignIn = () => {
                   value={formik.values.password}
                 />
                 {formik.touched.password && formik.errors.password ? (
-                  <div className="mt-2 text-red-600">
+                  <div className="mt-2 text-red">
                     {formik.errors.password}
                   </div>
                 ) : null}
               </div>
               <Link
-                to={"/forgot-password"}
+                to={"/forgotpassword"}
                 className="transition text-18px duration-200 text-accent w-full py-2.5 mb-2 mt-2 text-left font-semibold inline-block max-sm:pt-4"
               >
                 Forgot your password?
               </Link>
-              
-              <Link to='/dashboard'>
-                    <button
-                      type="submit"
-                      className="px-2 py-3 transition duration-200 bg-primary hover:bg-btn-primary focus:shadow-sm text-white w-full rounded-lg focus:outline-none shadow-sm hover:shadow-md text-center font-bold text-18px inline-block"
-                    >
-                      Sign in
-                    </button>
-              </Link>
+
+              <button
+                type="submit"
+                className="px-2 py-3 transition duration-200 bg-primary hover:bg-btn-primary focus:shadow-sm text-white w-full rounded-lg focus:outline-none shadow-sm hover:shadow-md text-center font-bold text-18px inline-block"
+              >
+                Sign in
+              </button>
 
               <div className="py-3">
-                    <Link
-                      to={"/sign-up"}
-                      className="outline-none font-semibold text-18px duration-200 text-primary mb-2 max-sm:mt-0 max-sm:mb-0 max-sm:pt-2 pt-4 w-full text-center inline-block"
-                    >
-                      Sign up
-                    </Link>
+                <Link
+                  to={"/signup"}
+                  className="outline-none font-semibold text-18px duration-200 text-primary mb-2 max-sm:mt-0 max-sm:mb-0 max-sm:pt-2 pt-4 w-full text-center inline-block"
+                >
+                  Sign up
+                </Link>
               </div>
             </div>
             <div className="px-4 pb-4 pt-20px max-sm:pt-10px">

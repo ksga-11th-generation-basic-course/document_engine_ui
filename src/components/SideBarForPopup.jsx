@@ -1,5 +1,5 @@
 import React from 'react'
-import Logo from '../assets/reset_pw_popup/logo.svg'
+import Logo from "../assets/reset_pw_popup/Logo.svg";;
 import PersonTwo from '../assets/reset_pw_popup/personTwo.svg'
 import LeaveIconSmall from '../assets/reset_pw_popup/leaveIcon.svg'
 
