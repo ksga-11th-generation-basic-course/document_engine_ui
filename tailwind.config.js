@@ -33,6 +33,7 @@ export default {
     boxShadow: {
       'custom'   : '0 0.5px 5px 2px rgba(0, 0, 0, 0.1)',
       'content' : '-1px 5px 32px rgba(0, 0, 0, 0.08)',
+      'boxShadow' : '0px 1px 4px rgba(0, 0, 0, 0.1)',
     }
   },
   plugins: [

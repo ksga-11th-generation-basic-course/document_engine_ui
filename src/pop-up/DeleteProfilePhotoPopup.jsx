@@ -44,8 +44,6 @@ function DeleteProfilePhotoPopup() {
                     </div>
                 </div>
             </div>
-
-
         </div>
 
     )

@@ -26,6 +26,10 @@ import DeleteWorkspacePhotoPopup from "./pop-up/DeleteWorkspacePhotoPopup";
 import LeaveFromWorkpacePopup from "./pop-up/LeaveFromWorkpacePopup";
 import JoinWorkspacePopup from "./pop-up/JoinWorkspacePopup";
 import WorkspaceCallaboratorMember from "./pop-up/WorkspaceCallaboratorMember";
+import EnableAccountPopup from "./pop-up/EnableAccountPopup";
+import SendMessageSuccess from "./pop-up/SendMessageSuccess";
+import SideBarOwnerPopup from "./components/SideBarOwnerPopup";
+import WorkspaceCollabOwner from "./pop-up/WorkspaceCollabOwner";
 // import NavbarComponent from "./components/NavbarComponent";
 function App() {
 
@@ -67,7 +71,11 @@ function App() {
       {/* <DeleteWorkspacePhotoPopup></DeleteWorkspacePhotoPopup> */}
       {/* <LeaveFromWorkpacePopup></LeaveFromWorkpacePopup> */}
       {/* <JoinWorkspacePopup></JoinWorkspacePopup> */}
-      <WorkspaceCallaboratorMember></WorkspaceCallaboratorMember>
+      {/* <WorkspaceCallaboratorMember></WorkspaceCallaboratorMember> */}
+      {/* <SendMessageSuccess></SendMessageSuccess> */}
+      {/* <EnableAccountPopup></EnableAccountPopup> */}
+      {/* <SideBarOwnerPopup></SideBarOwnerPopup> */}
+      <WorkspaceCollabOwner></WorkspaceCollabOwner>
 
       {/* //////////////////////////////////////////////////////////////// */}
 
