@@ -1,5 +1,4 @@
 import React from "react";
-import Navbar from "../components/NavbarLogout";
 import Pic from "../assets/images/Homepage/Literature-bro 1.svg";
 import Logo from "../assets/images/Logo.svg";
 import Reset from "../assets/images/Set_New_pass.svg";
@@ -13,17 +12,19 @@ import Document from "../assets/images/Homepage/Document.svg";
 import Sharing from "../assets/images/Homepage/Sharing.svg";
 import Group from "../assets/images/Homepage/Group 70.svg";
 import FooterMain from "./FooterMain";
+import NavbarLogout from "../components/NavbarLogout";
+import { Link } from "react-router-dom";
 export default function HomePage() {
   return (
     <div className="w-full">
       <div>
-        <Navbar></Navbar>
+              <NavbarLogout></NavbarLogout>
       </div>
       <div className="main px-20 max-sm:px-10 flex flex-row">
         <div className="grid grid-cols-3 gap-4 pt-[10rem]  max-sm:pt-[6rem] max-lg:flex max-lg:flex-col  max-md:flex max-md:flex-col">
           <div className="col-span-1 space-y-8">
-            <div className="font-bold text-5xl max-lg:text-xl max-lg:whitespace-pre max-md:whitespace-pre max-md:text-lg">
-              <h1 className="pb-5 max-sm:pb-0.5 text-accent">
+            <div className="font-bold text-4xl max-sm:text-3xl max-lg:text-xl max-lg:whitespace-pre max-md:whitespace-pre max-md:text-lg">
+              <h1 className="pb-1 max-sm:pb-0.5 text-accent">
                 All your <span className="text-primary">Documents</span>
               </h1>
               <h1 className="text-accent">
@@ -31,7 +32,7 @@ export default function HomePage() {
                 <span className="text-primary">safe!</span>
               </h1>
             </div>
-            <div className="font-bold text-22px max-sm:pt-4 max-lg:text-xl max-lg:whitespace-pre max-sm:text-sm max-sm:whitespace-pre max-md:whitespace-pre text-accent">
+            <div className="font-bold py-5 text-18px max-sm:pt-1 max-lg:text-xl max-lg:whitespace-pre max-sm:text-sm max-sm:whitespace-pre max-md:whitespace-pre text-accent">
               <p>
                 Make your wiki, docs & project in ONCE with the
               </p>
@@ -41,9 +42,11 @@ export default function HomePage() {
               <p>group.</p>
             </div>
             <div className="button">
-              <button className="bg-primary max-sm:px-4 max-sm:py-1 text-white px-10 py-2 border rounded-xl font-bold text-22px">
-                <a href="#">Get Start</a>
-              </button>
+                  <Link to="/sign-in">
+                        <button className="bg-primary max-sm:px-5 max-sm:py-1 text-white px-12 py-2.5 border rounded-xl font-bold text-18px">
+                              <a href="#">Get Start</a>
+                        </button>
+                  </Link>
             </div>
           </div>
           <div className="col-span-2">
@@ -52,10 +55,10 @@ export default function HomePage() {
         </div>
       </div>
 
-      <div className="px-20 pt-20 max-sm:px-6 max-sm:pt-3">
-        <div className="py-[1px] bg-accent"></div>
+      <div className="p-20 max-sm:px-6 max-sm:pt-5">
+          <div className="bg-accent_secondary h-[3px]"></div>
       </div>
-      <div className="text text-center px-20 pt-16 max-sm:pt-8 font-bold">
+      <div className="text text-center px-20 pt-8 max-sm:pt-8 font-bold">
         <h1 className="text-gray-500 text-4xl max-sm:whitespace-pre  max-sm:text-3xl">
           We Provide Best{" "}
         </h1>
@@ -66,7 +69,7 @@ export default function HomePage() {
       </div>
       <div className="flex flex-row justify-evenly w-[100%] px-20 pt-20 max-sm:flex-col max-sm:pt-5 max-sm:px-2">
         <div className="max-sm:pt-5">
-          <img src={Card1}/>
+          <img src={Card1} className="w-[360px]"/>
           <div className="px-6">
             <div className="font-semibold text-blue-400 text-36px pt-5 text-center">
               Collaboration
@@ -79,10 +82,10 @@ export default function HomePage() {
           </div>
         </div>
         <div>
-          <img src={Card2}/>
+          <img src={Card2} className="w-[360px]"/>
           <div className="px-6 ">
             <div className="font-semibold text-blue-400 text-36px text-center">
-              Productivity
+                Productivity
             </div>
             <div className="text-20px text-center max-sm:whitespace-nowrap  text-gray-500 leading-6 text-base max-sm:text-sm">
               <p>Real integrity is doing the right thing,</p>
@@ -92,7 +95,7 @@ export default function HomePage() {
           </div>
         </div>
         <div className="max-sm:pt-5">
-          <img src={Card3} />
+          <img src={Card3} className="w-[330px]"/>
           <div className="px-6 ">
             <div className="font-semibold text-blue-400 text-36px text-center">
               Sharing
@@ -108,19 +111,19 @@ export default function HomePage() {
         </div>
       </div>
       <div className="font-bold px-64 max-sm:px-10 pt-[123.8px;] max-sm:pt-[30px] flex justify-between max-sm:flex-col">
-        <div className="text text-justify">
-          <h1 className="text-accent text-5xl max-sm:whitespace-pre max-sm:text-4xl">
+        <div className="text text-justify text-4xl">
+          <h1 className="text-accent  max-sm:whitespace-pre max-sm:text-4xl">
             Learn the best <span className="text-blue-400">tools</span>
           </h1>
-          <h1 className="text-5xl pt-5 max-sm:pt-2 max-sm:text-4xl text-accent ">
+          <h1 className="pt-2 max-sm:pt-2 max-sm:text-4xl text-accent ">
             and <span className="text-blue-400">platforms</span>
           </h1>
-          <div className="text-justify text-20px font-normal pt-4 max-sm:pt-4 text-accent leading-6 max-sm:whitespace-nowrap">
+          <div className="text-justify text-20px font-normal pt-4 max-sm:pt-4 text-accent leading-6 ">
             <p>We focus on industry leading platforms so that you </p>
             <p>can be prepared for your next job. Then we teach all </p>
             <p>we van about them.</p>
           </div>
-        </div>
+      </div>
         <div className="w-1/3 pt-16 max-sm:pt-5 max-sm:flex max-sm: flex justify-around ">
           <div>
             <img

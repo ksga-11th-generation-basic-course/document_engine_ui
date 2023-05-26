@@ -3,12 +3,8 @@ import HomePage from "./pages/HomePage.jsx";
 import SignUp from "./pages/SignUp.jsx";
 import SignIn from "./pages/SignIn.jsx";
 import AboutUs from "./pages/AboutUs.jsx";
-import ContactUs from "./pages/ContactUS.jsx";
-import Forgot from "./pages/Forgot.jsx";
 // import Navbar from "./pages/Navbar.jsx";
-import VerifyAddress from "./pages/VerifyAddress.jsx";
 import EnableAccount from "./pages/EnableAccount.jsx";
-import SetNewPassWord from "./pages/SetNewPassWord.jsx";
 import NotFound from "./pages/NotFound.jsx";
 import MessageSucess from "./pop-up/MessageSucess.jsx";
 import CloseAccount from "./pop-up/CloseAccount.jsx";
@@ -18,6 +14,11 @@ import RemoveWorkspace from "./pop-up/RemoveWorkspace.jsx";
 import LeaveWorkspace from "./pop-up/LeaveWorkspace.jsx";
 import Dashboard from "./pages/Dashboard.jsx";
 import Workspace from "./pages/Workspace.jsx";
+// import { AccountSetting } from "./pop-up/AccountSetting.jsx";
+import ForgotPassword from "./pages/ForgotPassword.jsx";
+import ContactUs from "./pages/ContactUS.jsx";
+import VerifyForgotPassword from "./pages/VerifyFogotPassword.jsx";
+import ResetForgotPassword from "./pages/ResetForgotPassword.jsx";
 
 // import DashBoardLeft from "./dashboard/DashBoardLeft";
 // import Comfirmrd_PassWord from "./pages/Comfirmrd_PassWord";
@@ -30,18 +31,18 @@ import Workspace from "./pages/Workspace.jsx";
 function App() {
   return (
     <div className="App font-ssp">
-      {/* <BrowserRouter> */}
+      {/* <BrowserRouter> */} 
         <Routes>
           <Route index element={<HomePage />} />
           <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<ContactUs></ContactUs>} />
-          <Route path="/signup" element={<SignUp />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/forgot" element={<Forgot />} />
-          <Route path="/verify" element={<VerifyAddress />} />
+          <Route path="/contact" element={<ContactUs/>} />
+          <Route path="/sign-up" element={<SignUp />} />
+          <Route path="/sign-in" element={<SignIn />} />
+          <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/verify-forget-password" element={<VerifyForgotPassword />} />
           <Route path="/enable" element={<EnableAccount />} />
           <Route path="/notFound" element={<NotFound />} />
-          <Route path="/setPassword" element={<SetNewPassWord />} />
+          <Route path="/set-new-password" element={<ResetForgotPassword />} />
           <Route path="/messageSucess" element={<MessageSucess />} />
           <Route path="/closeAccount" element={<CloseAccount />} />
           <Route path="/removeMember" element={<RemoveMember />} />
@@ -52,6 +53,7 @@ function App() {
           <Route path="/workspace" element={<Workspace />} />
           <Route path="/*" element={<NotFound />} />
         </Routes> 
+        {/* <AccountSetting></AccountSetting> */}
       {/* </BrowserRouter> 
 
       {/* <BrowserRouter> */}

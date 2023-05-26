@@ -13,7 +13,7 @@ export const ProfilePopup = () => {
 
             {(profileOption &&
                     <div className='bg-white shadow-profile w-fit mt-16 mr-10 px-7 py-5 rounded-lg absolute  z-20'>
-                            <img src={close} alt="close-icon" className='ml-72'/>
+                            <img src={close} alt="close-icon" className='ml-72 hover:cursor-pointer' onClick={() => setProfileOption(false)}/>
                             <div >
                                     <span className='text-[28px] font-bold text-primary'>Profile</span>
                             </div>

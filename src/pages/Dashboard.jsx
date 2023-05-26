@@ -17,8 +17,8 @@ export default function Dashboard() {
                 <div className="w-full">
                 {/* Header */}
                 <div>
-                <h1 className="font-bold text-4xl text-[#526581]">Hi, Ouddom!</h1>
-                <p className="mt-2 text-20px text-[#526581]">Welcome to DocEngine</p>
+                <h1 className="font-bold text-5xl text-[#526581]">Hi, Ouddom!</h1>
+                <p className="mt-2 text-24px text-[#526581]">Welcome to DocEngine</p>
                 </div>
 
                 {/* Tips */}
@@ -54,7 +54,7 @@ export default function Dashboard() {
                                                                 </div>
                                                         </div>
                                         </div>
-                                        <div className="col-span-1 ml-12 w-[5px] flex justify-center">
+                                        <div className="col-span-1 ml-20 w-[5px] flex justify-center">
                                                 <DocumentOption/>
                                         </div>
                                 </div>
@@ -73,7 +73,7 @@ export default function Dashboard() {
                                                                 </div>
                                                         </div>
                                         </div>
-                                        <div className="col-span-1 ml-12 w-[5px] flex justify-center">
+                                        <div className="col-span-1 ml-20 w-[5px] flex justify-center">
                                                 <DocumentOption/>
                                         </div>
                                 </div>
@@ -98,7 +98,7 @@ export default function Dashboard() {
                                                                 </div>
                                                         </div>
                                         </div>
-                                        <div className="col-span-1 ml-12 w-[5px] flex justify-center">
+                                        <div className="col-span-1 ml-20 w-[5px] flex justify-center">
                                                 <DocumentOption/>
                                         </div>
                                 </div>

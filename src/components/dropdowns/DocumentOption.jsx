@@ -18,11 +18,11 @@ export default function DocumentOption() {
                     <button
                       id="More"
                       data-dropdown-toggle="DocumentOption"
-                      class="text-[#526581] font-normal text-xl rounded-lg  px-2 py-1 text-center inline-flex items-center"
+                      className="text-[#526581] font-normal text-xl rounded-lg  px-2 py-1 text-center inline-flex items-center"
                       type="button">
                     <img
                         src={More}
-                        class="w-[15px] h-[15px] mt-5 mr-3"
+                        className="w-[15px] h-[15px] mt-5 mr-3"
                         alt=""
                     /> 
                     </button>

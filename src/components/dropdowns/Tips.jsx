@@ -14,8 +14,8 @@ const [toggle, setToggle] = useState(false);
                                                 <img src={star} className="w-10"/>
                                         </span>
                                         <span className="pl-8">
-                                                <h1 className="text-22px font-semibold">Ouddom, get started with DocEngine</h1>
-                                                <p className="text-18px text-accent text-left">Hint! to create your Document</p>
+                                                <h1 className="text-24px font-semibold">Ouddom, get started with DocEngine</h1>
+                                                <p className="text-22px text-accent text-left">Hint! to create your Document</p>
                                         </span>
                                 </div>
                                 <div className="bg-[#1E9CEF] w-[2%] shadow-custom rounded-r-lg">    

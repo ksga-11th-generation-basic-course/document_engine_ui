@@ -1,6 +1,7 @@
 
 import JoinWorkspace from '../assets/reset_pw_popup/joinworkspace.svg'
 import CloseIcon from '../assets/reset_pw_popup/closeIcon.svg'
+import { useState } from 'react';
 
 function JoinWorkspacePopup() {
     return (
