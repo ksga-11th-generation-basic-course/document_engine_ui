@@ -20,7 +20,7 @@ export default function Sidebar() {
         
         {/* workspace */}
             <div>
-              <div className="flex rounded py-2 px-5 m-5 mt-6 bg-[#EFEFEF]">
+              <div className="flex rounded-lg py-2 px-5 m-5 mt-6 bg-[#EFEFEF]">
                 <img src={Setting} alt="" className="pr-2 w-[30px] " />
                 <button class=" text-[#1E9CEF] font-semibold ">Setting</button>
               </div>

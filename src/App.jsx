@@ -21,6 +21,7 @@ import Sidebar from "./components/Sidebar";
 import SidebarPopup from "./components/SidebarPopup";
 import WorkspaceOwnerSetting from "./pop-up/WorkspaceSetting";
 import WorkspaceSetting from "./pop-up/WorkspaceSetting";
+import AccountSetting from "./pop-up/AccountSetting";
 function App() {
 
   return (
@@ -61,7 +62,8 @@ function App() {
       {/* <Workspace></Workspace> */}
       {/* <WorkspaceOption/> */}
       {/* <SidebarPopup/> */}
-      <WorkspaceSetting/>
+      {/* <WorkspaceSetting/> */}
+      <AccountSetting/>
     </div>
   );
 }

@@ -8,21 +8,21 @@ import Setting from "../assets/images/Icon/SettingAdvance.svg";
 
 export default function WorkspaceSetting() {
   return (
-    <div className='flex justify-center items-center h-screen'>
-        <div className=' w-[1200px] h-[670px]'>
+    <div className='flex justify-center items-center h-screen '>
+        <div className=' w-[1200px] h-[670px] shadow-custom rounded-2xl'>
                 <div className="grid grid-cols-12">
                     <div className="col-span-2 h-[670px]">
                         <SidebarPopup />
                     </div>
 
-                    <div className=" col-span-10 bg-white h-[670px] pl-10">
+                    <div className=" col-span-10 bg-white h-[670px] pl-12">
                         <div className="flex justify-end m-4">
-                            <img src={Cancel} alt="" className=" pr-2 w-[30px] " />
+                            <img src={Cancel} alt="" className=" pr-2 w-[35px] " />
                         </div>
 
                         <div className=" grid grid-cols-12">
                             <div className="col-span-2"></div>
-                            <div className="col-span-8 justify-center">
+                            <div className="col-span-10 justify-center">
                             {/*Workspace’s Setting  */}
                             <div>
                                 <h1 className="text-[#526581] font-bold text-3xl">
@@ -34,7 +34,7 @@ export default function WorkspaceSetting() {
                             </div>
 
                             {/* Your Workspace */}
-                            <div className="mt-2 border-solid rounded-lg border border-[#BEBEBE] h-[375px]">
+                            <div className="mt-4 border-solid rounded-lg border border-[#BEBEBE] h-[375px]">
                                 <div className="grid grid-cols-6 ml-7 mt-2 ">
 
                                 <div className="col-span-4 flex ">
@@ -131,7 +131,7 @@ export default function WorkspaceSetting() {
                                 
                             </div>
                             </div>
-                            <div className="col-end-2"></div>
+                            <div className="col-end-1"></div>
                         </div>
                 </div>
             </div>
