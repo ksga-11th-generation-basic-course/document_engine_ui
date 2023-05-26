@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../assets/images/Logo.svg";
 import RightImage from "../assets/images/Login/Right-img-login.svg";
 import LeftImage from "../assets/images/Login/Left-img-login.svg";
@@ -19,7 +19,9 @@ import {
   signinWithGoogleAndFacebook,
 } from "../redux/service/authenticationService/authenticationService";
 import * as Yup from "yup";
+import EnableAccountPopup from "../pop-up/EnableAccountPopup";
 const SignIn = () => {
+
   const dispatch = useDispatch();
 
   const handleGoogle = () => {
@@ -202,6 +204,7 @@ const SignIn = () => {
         </form>
       </div>
       <img className="w-[600px] h-[600.57px]  max-sm:hidden" src={RightImage} />
+      {/* {open ? <EnableAccountPopup open={open} setOpen={setOpen} /> : null} */}
     </div>
   );
 };

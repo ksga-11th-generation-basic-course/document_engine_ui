@@ -8,7 +8,6 @@ import SignUp from "./pages/SignUp";
 import VerifyOTP from "./pages/VerifyOTP";
 
 function App() {
-
   return (
     <div className="App font-ssp">
       <Routes>
