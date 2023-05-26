@@ -81,10 +81,9 @@ export const signin = createAsyncThunk(
           "Content-Type": "application/json",
         }
       );
-      console.log(response)
       return response.data.payload;
     } catch (error) {
-      return error;
+      return error.response.status;
     }
   }
 );

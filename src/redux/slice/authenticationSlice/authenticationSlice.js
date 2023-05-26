@@ -14,6 +14,7 @@ const initialState = {
   authentication: {},
   OTPauthentication: {},
   resetAuthentication: {},
+  checkAuthentication: {},
   error: "",
 };
 
