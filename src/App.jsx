@@ -18,6 +18,9 @@ import SearchButton from "./components/SearchButton";
 import WorkspaceOption from "./components/WorkspaceOption";
 import NavbarLogin from "./components/NavbarLogin";
 import Sidebar from "./components/Sidebar";
+import SidebarPopup from "./components/SidebarPopup";
+import WorkspaceOwnerSetting from "./pop-up/WorkspaceSetting";
+import WorkspaceSetting from "./pop-up/WorkspaceSetting";
 function App() {
 
   return (
@@ -55,9 +58,10 @@ function App() {
       {/* <LogOut></LogOut> */}
       {/* <OTP></OTP> */}
       {/* <Form_Sucess></Form_Sucess> */}
-      <Workspace></Workspace>
+      {/* <Workspace></Workspace> */}
       {/* <WorkspaceOption/> */}
-      
+      {/* <SidebarPopup/> */}
+      <WorkspaceSetting/>
     </div>
   );
 }
