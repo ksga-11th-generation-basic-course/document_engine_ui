@@ -1,6 +1,7 @@
 import React from 'react'
 import Logo from '../assets/reset_pw_popup/logo.svg'
 import PersonTwo from '../assets/reset_pw_popup/personTwo.svg'
+import LeaveIconSmall from '../assets/reset_pw_popup/leaveIcon.svg'
 
 
 function SideBarForPopup() {
@@ -8,7 +9,7 @@ function SideBarForPopup() {
     <div>
       <div className="h-screen shadow-lg bg-[#FFFFFF] w-64 rounded-md shadow-content">
             {/* Logo */}
-            <div className="flex justify-center mb-6 drop-shadow-lg bg-[#FFFFFF] pr-12 rounded-md  ">
+            <div className="flex justify-center mb-4 drop-shadow-lg bg-[#FFFFFF] pr-12 rounded-md  ">
               <img src={Logo} alt="" className="w-[80px] h-[104px] " />
             </div>
             
@@ -32,7 +33,13 @@ function SideBarForPopup() {
                             </NavLink> */}
                       </div>
                     <div>
-                <label>Hello</label>
+               <div className='flex mt-[580px]'>
+                 
+                
+                  <img src={LeaveIconSmall} alt="" className="w-[20px] h-[21px] " />
+                  <label className='text-[#FF5658] ml-4 font-semibold'> Leave Workspace</label>
+                 
+               </div>
             </div>
         </div>
     </div>
