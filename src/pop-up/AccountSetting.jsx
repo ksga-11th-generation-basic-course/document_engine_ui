@@ -132,11 +132,15 @@ export default function WorkspaceSetting() {
                       </h1>
                     </div>
                     {/* lyhengchhum@gmail.com */}
-                    <div className="flex  mt-4 ml-44">
-                      <div className="flex  mt-1  border ml-2 bg-[#F8F8F8] border-[#BEBEBE] rounded-lg w-56 h-8 text-[#526581] font-semibold  text-sm">
-                        <img src={Google} alt="" className="ml-4 w-5" />
-                        <h1 className="ml-4 mt-1">lyhengchhum@gmail.com</h1>
-                      </div>
+                    <div className="flex relative mt-4 ml-40">
+                      
+                        <label class="relative mt-1 block">
+                          <span class="absolute inset-y-0 left-0 flex items-center pl-2">
+                              <svg class="h-5 w-5 fill-slate-300" viewBox="0 0 20 20"></svg>
+                          </span>
+                          <img src={Google} alt="" className="absolute top-1  ml-4 w-5" />
+                          <input class="ml-2 placeholder:text-slate-400 block bg-white w-60 border border-slate-300 rounded-md py-1 pl-10 pr-2 shadow-sm focus:outline-none focus:border-sky-500 focus:ring-sky-500 focus:ring-1 sm:text-sm" placeholder="lyhengchhum@gmail.com" type="text" name="search"/>
+                        </label>
                     </div>
                   </div>
                 </div>
