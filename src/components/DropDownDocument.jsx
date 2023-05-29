@@ -26,41 +26,41 @@ export const DropDownDocument = ({ open, setOpen }) => {
               <img src={view} />
               <span>View page</span>
             </Link>
-            <Link
+            <button
               className="flex items-center text-18px gap-x-4"
               onClick={() => setOpen(!open)}
             >
               <img src={permission} />
               <span>Permission</span>
-            </Link>
-            <Link
+            </button>
+            <button
               className="flex items-center text-18px gap-x-4"
               onClick={() => setOpen(!open)}
             >
               <img src={history} />
               <span>Document History</span>
-            </Link>
-            <Link
+            </button>
+            <button
               className="flex items-center text-18px gap-x-4"
               onClick={() => setOpen(!open)}
             >
               <img src={duplicate} />
               <span>Export file</span>
-            </Link>
-            <Link
+            </button>
+            <button
               className="flex items-center text-18px gap-x-4"
               onClick={() => setOpen(!open)}
             >
               <img src={file} />
               <span>Duplicate </span>
-            </Link>
-            <Link
+            </button>
+            <button
               className="flex items-center text-18px gap-x-4 text-red-500"
               onClick={() => setOpen(!open)}
             >
               <img src={document} />
               <span>Delete</span>
-            </Link>
+            </button>
           </div>
         </div>
       </div>

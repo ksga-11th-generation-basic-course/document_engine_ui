@@ -4,7 +4,6 @@ import { Link, NavLink } from "react-router-dom";
 import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
 
 export const SideBar = () => {
-  
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {
     setVisible(!visible);
@@ -16,9 +15,10 @@ export const SideBar = () => {
         <Link>
           <img src={logo} className="w-24 h-24" />
         </Link>
-        <CreateWorkspaceModal visible={visible} toggleVisible={toggleVisible}/>
+        <CreateWorkspaceModal visible={visible} toggleVisible={toggleVisible} />
         <div className="flex flex-col w-full gap-y-3 text-16px text-accent font-semibold">
           <NavLink
+            to={"/dashboard"}
             className={({ isActive }) =>
               isActive
                 ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
@@ -39,7 +39,14 @@ export const SideBar = () => {
             </svg>
             Home
           </NavLink>
-          <NavLink className="flex items-center w-full gap-x-3 py-3 rounded-lg px-4">
+          <NavLink
+            to={"/workspace"}
+            className={({ isActive }) =>
+              isActive
+                ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
+                : "flex items-center w-full gap-x-3 py-3 rounded-lg px-4"
+            }
+          >
             <svg
               width="20"
               height="20"
