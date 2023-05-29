@@ -1,7 +1,7 @@
 import React, { useState } from "react";
-import avatar from "../../assets/dashboard_image/avatar.svg";
+import avatar from "../assets/dashboard_image/avatar.svg";
 import { JoinWorkspaceModal } from "../modal/JoinWorkspaceModal";
-import { DropDownProfile } from "./DropDownProfile";
+import { DropDownProfile } from "../components/DropDownProfile";
 
 export const NavBarProfile = () => {
   const [visible, setVisible] = useState(false);

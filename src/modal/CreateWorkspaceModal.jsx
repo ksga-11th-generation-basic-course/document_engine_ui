@@ -1,8 +1,8 @@
 import React from "react";
 import { Modal } from "react-daisyui";
-import close from "../../assets/dashboard_image/close.svg";
-import group from "../../assets/dashboard_image/group.svg";
-import worksapacephoto from "../../assets/dashboard_image/worksapacephoto.svg";
+import close from "../assets/dashboard_image/close.svg";
+import group from "../assets/dashboard_image/group.svg";
+import worksapacephoto from "../assets/dashboard_image/worksapacephoto.svg";
 
 export const CreateWorkspaceModal = ({ visible, toggleVisible }) => {
   return (
@@ -13,7 +13,7 @@ export const CreateWorkspaceModal = ({ visible, toggleVisible }) => {
       >
         New Workspace
       </button>
-      <Modal open={visible}>
+      <Modal open={visible} onClickBackdrop={toggleVisible}>
         <div className="w-[540px] bg-white rounded-lg p-3">
           <div className="flex justify-end">
             <button type="button" onClick={toggleVisible}>

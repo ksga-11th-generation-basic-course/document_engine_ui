@@ -51,7 +51,9 @@ export default {
         "20px": "20px",
         "22px": "22px",
         "24px": "24px",
+        "34px": "34px",
         "36px": "36px",
+        "44px": "44px",
         "48px": "48px",
       },
       boxShadow: {

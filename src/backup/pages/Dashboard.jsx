@@ -1,16 +1,15 @@
 import React from "react";
-import { SideBar } from "../components/SideBar";
-import { NavBarProfile } from "../components/NavBarProfile";
+import star from "../../assets/dashboard_image/star.svg";
 
 export const Dashboard = () => {
   return (
-    <div className="bg-white">
-      <div className="grid grid-cols-12">
-        <div className="col-span-2">
-          <SideBar />
-        </div>
-        <div className="col-span-10">
-          <NavBarProfile />
+    <div>
+      <h1 className="font-bold text-accent text-44px">Hi, Ouddom!</h1>
+      <p className="text-accent text-18px">Welcome to DocEngine</p>
+      <div>
+        <img src={star} />
+        <div>
+          <h3>Ouddom, get started with DocEngine</h3>
         </div>
       </div>
     </div>
