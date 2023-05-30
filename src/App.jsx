@@ -13,6 +13,7 @@ import { ResetForgotPassword } from "./pages/ResetForgotPassword";
 import { CreateDocument } from "./pages/CreateDocument";
 import { AboutUs } from "./pages/AboutUs";
 import { ContactUs } from "./pages/ContactUS";
+import { NotFound } from "./pages/NotFound";
 
 function App() {
   return (
@@ -39,6 +40,8 @@ function App() {
           <Route path="/document" element={<Document />} />
           <Route path="/createdocument" element={<CreateDocument />} />
         </Route>
+
+        <Route path="*" element={<NotFound/>}/>
       </Routes>
     </div>
   );
