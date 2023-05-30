@@ -7,7 +7,7 @@ export const DropDownExport = ({openExport, setOpenExport}) => {
       {open && (
         <div className="fixed inset-0" onClick={() => setOpenExport(!openExport)}></div>
       )}
-      <div className="absolute left-32 p-2 w-[160px] text-accent rounded-lg shadow-md bg-white z-50">
+      <div className="absolute right-0 p-2 w-[160px] text-accent rounded-lg shadow-md bg-white z-50">
         <div className="flex flex-col gap-y-5 px-5">
           <div className="flex flex-col gap-y-5 py-5">
             <button

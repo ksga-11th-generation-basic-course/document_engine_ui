@@ -12,6 +12,7 @@ import grid from "../assets/document_image/grid.svg";
 import { DocumentCard } from "../components/card/DocumentCard";
 import { DocumentList } from "../components/card/DocumentList";
 import { DropDownWorkspaceSetting } from "../components/DropDownWorkspaceSetting";
+import { Link } from "react-router-dom";
 
 export const Document = () => {
   const [openSort, setOpenSort] = useState(false);
@@ -39,9 +40,12 @@ export const Document = () => {
           <img src={documenticon} className="p-2 shadow-md rounded-lg" />
           <p className="font-semibold text-20px">Documents</p>
         </div>
-        <button className="font-semibold bg-primary px-5 py-3 rounded-lg text-white">
+        <Link
+          to={"/createdocument"}
+          className="font-semibold bg-primary px-5 py-3 rounded-lg text-white"
+        >
           Create Document
-        </button>
+        </Link>
       </div>
       <div className="grid grid-cols-12">
         <div className="col-span-4 flex items-center gap-x-5 h-11">

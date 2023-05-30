@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 import { DropDownExport } from "./DropDownExport";
 import { DocumentHistoryModal } from "../modal/DocumentHistoryModal";
 import { DeleteDocumentModal } from "../modal/DeleteDocumentModal";
+import { DocumentPermissionModal } from "../modal/DocumentPermissionModal";
 
 export const DropDownDocument = ({ open, setOpen }) => {
   const [openExport, setOpenExport] = useState(false);
@@ -16,6 +17,8 @@ export const DropDownDocument = ({ open, setOpen }) => {
   const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
 
   const [deleteDocument, setDeleteDocument] = useState(false);
+
+  const [openPermission, setOpenPermission] = useState(false);
 
   return (
     <div>
@@ -29,7 +32,11 @@ export const DropDownDocument = ({ open, setOpen }) => {
               <img src={view} />
               <span>View page</span>
             </Link>
-            <button className="flex items-center text-18px gap-x-4">
+            <button
+              className="flex items-center text-18px gap-x-4"
+              type="button"
+              onClick={() => setOpenPermission(!openPermission)}
+            >
               <img src={permission} />
               <span>Permission</span>
             </button>
@@ -79,6 +86,10 @@ export const DropDownDocument = ({ open, setOpen }) => {
         <DeleteDocumentModal
           deleteDocument={deleteDocument}
           setDeleteDocument={setDeleteDocument}
+        />
+        <DocumentPermissionModal
+          openPermission={openPermission}
+          setOpenPermission={setOpenPermission}
         />
       </div>
     </div>

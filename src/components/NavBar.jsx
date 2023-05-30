@@ -5,7 +5,7 @@ import { DropDownMenu } from "../components/DropDownMenu";
 
 export const NavBar = () => {
   return (
-    <div className="fixed flex w-full justify-between items-center px-14 lg:px-7 sm:3 border-[2px] text-18px font-semibold text-accent bg-[#F9F9FF]">
+    <div className="fixed flex w-full justify-between items-center px-14 border-[2px] text-18px font-semibold text-accent bg-[#F9F9FF]">
       <div>
         <Link>
           <img src={logo} className="w-[72px] h-[72px]" />
@@ -47,9 +47,9 @@ export const NavBar = () => {
         <Link className="bg-primary px-4 py-2 rounded-xl text-white">
           Sign up
         </Link>
-        <div className="hidden lg:block">
+        {/* <div className="hidden lg:block">
           <DropDownMenu />
-        </div>
+        </div> */}
       </div>
     </div>
   );

@@ -18,9 +18,9 @@ export const Landing = () => {
     <div className="bg-white">
       <NavBar />
       
-      <div className="pt-32 px-16 sm:px-5">
-        <div className="grid grid-cols-12 lg:grid-cols-2">
-          <dir className="col-span-4 sm:m-0 sm:p-5">
+      <div className="pt-32 px-16">
+        <div className="grid grid-cols-12">
+          <dir className="col-span-4">
             <div className="text-accent flex flex-col gap-8">
               <h1 className="font-bold text-36px leading-[45px]">
                 All your <span className="text-primary">Documents</span> <br />{" "}
@@ -52,8 +52,8 @@ export const Landing = () => {
               <span className="text-primary">Solution</span> For you
             </h1>
           </div>
-          <div className="grid grid-cols-12 gap-y-20 mt-20 lg:grid-cols-2  md:grid-cols-1">
-            <div className="col-span-4 lg:col-span-1 md:col-span-1">
+          <div className="grid grid-cols-12 gap-y-20 mt-20">
+            <div className="col-span-4">
               <img src={teamspirit} className="mx-auto" />
               <h1 className="mt-3 font-bold text-primary text-2xl text-center">
                 Collaboration
@@ -63,7 +63,7 @@ export const Landing = () => {
                 progress, and working <br /> together is success.
               </p>
             </div>
-            <div className="col-span-4 lg:col-span-1 md:col-span-1">
+            <div className="col-span-4">
               <img src={rectangle} className="mx-auto" />
               <h1 className="mt-3 font-bold text-primary text-2xl text-center">
                 Productivity
@@ -73,7 +73,7 @@ export const Landing = () => {
                 nobody’s going to know whether you <br /> did it or not.
               </p>
             </div>
-            <div className="col-span-4 md:col-span-1">
+            <div className="col-span-4">
               <img src={sharing} className="mx-auto" />
               <h1 className="mt-3 font-bold text-primary text-2xl text-center">
                 Sharing
@@ -86,7 +86,7 @@ export const Landing = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-12 gap-y-20 items-center mt-24 md:grid-cols-1">
+        <div className="grid grid-cols-12 gap-y-20 items-center mt-24">
           <div className="col-span-6 mx-auto">
             <h1 className="font-bold text-36px text-accent leading-[45px]">
               Learn the best <span className="text-primary">tools</span> <br />
@@ -107,14 +107,14 @@ export const Landing = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-12 mt-24 lg:grid-cols-2 md:grid-cols-1">
-          <div className="col-span-4 mx-auto lg:col-span-1 md:col-span-1">
+        <div className="grid grid-cols-12 mt-24">
+          <div className="col-span-4 mx-auto">
             <img src={groupcard} />
           </div>
-          <div className="col-span-4 mx-auto lg:col-span-1 md:col-span-1">
+          <div className="col-span-4 mx-auto">
             <img src={sharingcard} />
           </div>
-          <div className="col-span-4 mx-auto md:col-span-1">
+          <div className="col-span-4 mx-auto">
             <img src={documentcard} />
           </div>
         </div>

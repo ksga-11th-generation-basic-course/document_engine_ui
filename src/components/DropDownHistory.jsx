@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import restore from "../assets/document_image/restore.svg";
 import trush from "../assets/document_image/delete.svg";
-import { DeleteDocumentModal } from "../modal/DeleteDocumentModal";
+import { RemoveHistory } from "../modal/RemoveHistoryModal";
 
 export const DropDownHistory = ({ openHistory, setOpenHistory }) => {
+  const [removeHistory, setRemoveHistory] = useState(false);
 
   return (
     <div>
@@ -19,11 +20,21 @@ export const DropDownHistory = ({ openHistory, setOpenHistory }) => {
             <img src={restore} />
             <span>Restore</span>
           </button>
-          <button className="flex items-center text-18px gap-x-4">
+          <button
+            className="flex items-center text-18px gap-x-4"
+            type="button"
+            onClick={() => setRemoveHistory(!removeHistory)}
+          >
             <img src={trush} />
             <span className="text-red-500">Remove</span>
           </button>
         </div>
+      </div>
+      <div>
+        <RemoveHistory
+          removeHistory={removeHistory}
+          setRemoveHistory={setRemoveHistory}
+        />
       </div>
     </div>
   );

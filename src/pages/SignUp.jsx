@@ -1,12 +1,9 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../assets/images/Logo.svg";
-import RightImage from "../assets/images/Login/Right-img-login.svg";
-import LeftImage from "../assets/images/Login/Left-img-login.svg";
+import Right1Image from "../assets/images/Login/Right-img-logout.svg";
+import Left1Image from "../assets/images/Login/Left-img-logout.svg";
 import Google from "../assets/images/Login/Google.svg";
 import Facebook from "../assets/images/Login/Facebook.svg";
-import { Formik, Form, Field, useFormik } from "formik";
-
-import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signInWithPopup } from "firebase/auth";
 import {
@@ -14,13 +11,20 @@ import {
   providerFacebook,
   providerGoogle,
 } from "../firebase/firebase.utils";
+import { Link, useNavigate } from "react-router-dom";
 import {
-  signin,
-  signinWithGoogleAndFacebook,
+  signup,
+  signupWithGoogleAndFacebook,
 } from "../redux/service/authenticationService/authenticationService";
+import { useFormik } from "formik";
 import * as Yup from "yup";
 
-export const SignIn = () => {
+export const SignUp = () => {
+  const authentication = useSelector(
+    (state) => state.authentication.authentication
+  );
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -28,10 +32,12 @@ export const SignIn = () => {
     signInWithPopup(auth, providerGoogle)
       .then((data) => {
         const googleAuth = {
+          username: data.user.displayName,
           email: data.user.email,
           password: data.user.accessToken,
+          profileImage: data.user.photoURL,
         };
-        dispatch(signinWithGoogleAndFacebook(googleAuth));
+        dispatch(signupWithGoogleAndFacebook(googleAuth));
       })
       .catch((err) => {
         console.log(err);
@@ -42,10 +48,12 @@ export const SignIn = () => {
     signInWithPopup(auth, providerFacebook)
       .then((data) => {
         const facebookAuth = {
+          username: data.user.displayName,
           email: data.user.email,
           password: data.user.accessToken,
+          profileImage: data.user.photoURL,
         };
-        dispatch(signinWithGoogleAndFacebook(facebookAuth));
+        dispatch(signupWithGoogleAndFacebook(facebookAuth));
       })
       .catch((err) => {
         console.log(err);
@@ -54,21 +62,35 @@ export const SignIn = () => {
 
   const formik = useFormik({
     initialValues: {
+      username: "",
       email: "",
       password: "",
+      confirmPassword: "",
     },
     validationSchema: Yup.object({
+      username: Yup.string()
+        .required("Username is a required field")
+        .min(4, "Must have at least 2 characters"),
       email: Yup.string()
         .email("Enter a valid email")
         .required("Please enter a registered email"),
       password: Yup.string()
         .required("Password is a required field")
         .min(4, "Password must have more than 4 characters "),
+      confirmPassword: Yup.string()
+        .oneOf([Yup.ref("password")], "Confirm Password must matched Password")
+        .required("Confirm Password is required"),
     }),
     onSubmit: (values, { resetForm }) => {
-      dispatch(signin(values));
+      dispatch(signup(values));
       resetForm({ values: "" });
     },
+  });
+
+  useEffect(() => {
+    if (authentication.email) {
+      navigate("/verifyOTP");
+    }
   });
 
   return (
@@ -76,11 +98,11 @@ export const SignIn = () => {
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
         <img
           src={Logo}
-          className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10"
+          className="absolute top-8 left-10 max-sm:left-3 max-sm:top-0"
         />
         <img
           className="w-[600px] h-[500.16px] mr-5 max-sm:hidden"
-          src={LeftImage}
+          src={Left1Image}
         />
         <form
           onSubmit={formik.handleSubmit}
@@ -88,15 +110,36 @@ export const SignIn = () => {
         >
           <div className=" xs:p-0 mx-auto w-[380px] md:max-w-md">
             <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl">
-              Sign in
+              Sign Up
             </h1>
-            <div className="px-2 py-30px max-sm:py-8 max-sm:px-8">
-              <label className="font-semibold text-18px block pt-3 pb-2  text-black">
+            <div className="px-2 py-5 max-sm:py-8 max-sm:px-8  ">
+              <label className="font-semibold text-lg block pb-2  text-black">
+                Username
+              </label>
+              <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
+                <input
+                  className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
+                  type="text"
+                  placeholder="Username"
+                  aria-label="Full name"
+                  name="username"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.username}
+                />
+                {formik.touched.username && formik.errors.username ? (
+                  <div className="mt-2 text-red-600">
+                    {formik.errors.username}
+                  </div>
+                ) : null}
+              </div>
+              {/* <input type="username" className="border border-primary max-sm:bg-transparent max-sm:appearance-none max-sm:border-none max-sm:focus:outline-none outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Username' /> */}
+              <label className="font-semibold text-lg block pt-3 pb-2 text-black">
                 Email
               </label>
-              <div className=" max-sm:flex max-sm:items-center max-sm:border-b pb-25px max-sm:border-primary ">
+              <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
                 <input
-                  className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:leading-tight max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
+                  className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:leading-tight max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
                   type="text"
                   placeholder="example@gmail.com"
                   aria-label="Full name"
@@ -109,12 +152,13 @@ export const SignIn = () => {
                   <div className="mt-2 text-red-600">{formik.errors.email}</div>
                 ) : null}
               </div>
-              <label className="font-semibold text-18px block pt-3 pb-2  text-black">
+              {/* <input type="email" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='example@gmail.com' /> */}
+              <label className="font-semibold text-lg block pt-3 pb-2  text-black">
                 Password
               </label>
-              <div className=" max-sm:flex max-sm:items-center max-sm:border-b pb-25px max-sm:border-primary ">
+              <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
                 <input
-                  className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
+                  className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
                   type="password"
                   placeholder="Password"
                   aria-label="Full name"
@@ -129,26 +173,46 @@ export const SignIn = () => {
                   </div>
                 ) : null}
               </div>
-              <Link
-                to={"/forgotpassword"}
-                className="transition text-18px duration-200 text-black w-full py-2.5 mb-2 mt-2 text-left font-semibold inline-block max-sm:pt-4"
+              {/* <input type="text" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Password' /> */}
+              <label className="font-semibold text-lg block pt-3 pb-2 text-black">
+                Confirm Password
+              </label>
+              <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
+                <input
+                  className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
+                  type="password"
+                  placeholder="Confirm Password"
+                  aria-label="Full name"
+                  name="confirmPassword"
+                  onChange={formik.handleChange}
+                  onBlur={formik.handleBlur}
+                  value={formik.values.confirmPassword}
+                />
+                {formik.touched.confirmPassword &&
+                formik.errors.confirmPassword ? (
+                  <div className="mt-2 text-red-600">
+                    {formik.errors.confirmPassword}
+                  </div>
+                ) : null}
+              </div>
+              {/* <input type="text" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Confirm Password' /> */}
+              <button
+                type="button"
+                className="transition text-black duration-200 w-full py-2.5 mb-3 mt-2 text-center text-18px text-b font-semibold inline-block max-sm:pt-4"
               >
-                Forgot your password?
-              </Link>
+                Do you have an account?
+                <Link to={"/signin"} className="text-primary pl-2">
+                  Sign In
+                </Link>
+              </button>
               <button
                 type="submit"
-                className="px-2 py-3 transition duration-200 bg-primary hover:bg-btn-primary focus:shadow-sm text-white w-full rounded-lg focus:outline-none shadow-sm hover:shadow-md text-center font-bold text-18px inline-block"
+                className="px-2 py-3  transition duration-200 bg-primary hover:bg-btn-primary focus:shadow-sm text-white w-full rounded-lg focus:outline-none shadow-sm hover:shadow-md text-center font-bold text-18px inline-block"
               >
-                Sign in
+                Continue
               </button>
-              <Link
-                to={"/signup"}
-                className="outline-none font-semibold text-18px duration-200 text-primary mb-2 max-sm:mt-0 max-sm:mb-0 max-sm:pt-2 pt-4 w-full text-center inline-block"
-              >
-                Sign up
-              </Link>
             </div>
-            <div className="px-4 pb-4 pt-20px max-sm:pt-10px">
+            <div className="px-4 pb-4 ">
               <div className="flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-400 after:mt-0.5 after:flex-1 after:border-t after:border-neutral-400">
                 <p className="mx-1 text-center text-gray-400 ">or</p>
               </div>
@@ -203,7 +267,10 @@ export const SignIn = () => {
           </div>
         </form>
       </div>
-      <img className="w-[600px] h-[600.57px]  max-sm:hidden" src={RightImage} />
+      <img
+        className="w-[600px] h-[600.57px]  max-sm:hidden"
+        src={Right1Image}
+      />
     </div>
   );
-};
+}
