@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Plus from "../assets/images/Dashboard/Plus.svg";
 import CreateBy from "../assets/images/Dashboard/CreateBy.svg";
 import CreateDate from "../assets/images/Dashboard/CreateDate.svg";
@@ -13,11 +13,51 @@ import doc from "../assets/document_image/doc.svg";
 import { DocumentPermissionModal } from "../modal/DocumentPermissionModal";
 import { DocumentHistoryModal } from "../modal/DocumentHistoryModal";
 import { DropDownExport } from "../components/DropDownExport";
+import EditorJS from "@editorjs/editorjs";
+import List from "@editorjs/list";
+import Code from "@editorjs/code";
+import LinkTool from "@editorjs/link";
+import Image from "@editorjs/image";
+import Header from "@editorjs/header";
+import Quote from "@editorjs/quote";
+import CheckList from "@editorjs/checklist";
+import InlineCode from "@editorjs/inline-code";
 
 export const CreateDocument = () => {
   const [openPermission, setOpenPermission] = useState(false);
   const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
   const [openExport, setOpenExport] = useState(false);
+
+  const ejInstance = useRef();
+  const editor = new EditorJS({
+    holder: "editorjs",
+    onReady: () => {
+      ejInstance.current = editor;
+    },
+    autofocus: true,
+    onChange: async () => {
+      let content = await editor.saver.save();
+      console.log(content);
+    },
+    tools: {
+      header: Header,
+      list: List,
+      code: Code,
+      linkTool: LinkTool,
+      image: Image,
+      quote: Quote,
+      checklist: CheckList,
+      inlineCode: InlineCode,
+    },
+  });
+  useEffect(() => {
+    if (ejInstance.current === null) {
+    }
+    return () => {
+      ejInstance?.current?.destroy();
+      ejInstance.current = null;
+    };
+  }, []);
 
   return (
     <div className="w-full">
@@ -106,9 +146,9 @@ export const CreateDocument = () => {
           </div>
           <hr className="mt-3" />
         </div>
-
-        {/* Editor */}
-        <div className="w-full h-auto">{/* <Editor/> */}</div>
+        <div className="w-full">
+          <div id="editorjs" />
+        </div>
       </div>
       <div>
         <DocumentPermissionModal

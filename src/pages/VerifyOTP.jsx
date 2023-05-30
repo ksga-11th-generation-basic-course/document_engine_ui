@@ -88,7 +88,7 @@ export const VerifyOTP = () => {
         value={value}
         onKeyUp={(event) => handleBackSpace(event, index)}
         ref={(element) => (inputRef.current[index] = element)}
-        className="m-2 border border-primary bg-blue-50 focus:ring-btn-primary focus:border-btn-primary h-12 w-12 text-center form-control rounded"
+        className="m-2 border border-primary bg-blue-50 focus:ring-btn-primary focus:border-btn-primary h-12 w-12 text-center rounded"
         type="text"
         id="first"
         maxLength="1"
@@ -180,7 +180,7 @@ export const VerifyOTP = () => {
                               </button>
                             </a>
                           </div>
-                          <div className="btn pt-8">
+                          <div className="mt-5">
                             <button
                               type="button"
                               onClick={formik.handleSubmit}

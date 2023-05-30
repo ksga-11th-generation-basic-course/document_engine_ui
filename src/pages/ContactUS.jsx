@@ -8,7 +8,7 @@ import { NavBar } from "../components/NavBar";
 
 export const ContactUs = () => {
   return (
-    <div className="min-h-screen">
+    <div className="min-h-screen bg-white">
       <div>
         <NavBar/>
       </div>

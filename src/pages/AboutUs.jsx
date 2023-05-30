@@ -7,7 +7,7 @@ import { NavBar } from "../components/NavBar";
 import { Footer } from "../components/Footer.jsx";
 export const AboutUs = () => {
   return (
-    <div>
+    <div className="bg-white">
       <div>
         <NavBar />
       </div>
