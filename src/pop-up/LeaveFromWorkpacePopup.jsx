@@ -35,7 +35,7 @@ function LeaveFromWorkpacePopup() {
                     </form>
 
                     <div className='mt-4 ml-2 flex justify-center'>
-                        <button type="button" class="mr-4 text-black bg-[#FFFFFF] border focus:outline-none  font-medium rounded-lg text-sm px-8 py-2.5  text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-10">
+                        <button type="button" class="mr-4 text-black bg-[#FFFFFF] border focus:outline-none  font-medium rounded-lg text-sm px-8 py-2.5  text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mb-10">
                             No, cancel
                         </button>
                         <button type="button" class="text-white bg-[#FF5658] hover:bg-[#FF5659]/90 focus:outline-none  font-medium rounded-lg text-sm px-9 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-10">

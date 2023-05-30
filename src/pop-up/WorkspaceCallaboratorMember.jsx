@@ -4,7 +4,7 @@ import SideBarForPopup from '../components/SideBarForPopup'
 function WorkspaceCallaboratorMember() {
     return (
         <div>
-            <div className=' pl-32 py-20 flex  justify-center item-center bg-[#526581] fixed  '>
+            <div className=' pl-32 py-20 flex justify-center item-center bg-[#526581] fixed  '>
                 <div className='rounded'>
                     <div className="  flex grid grid-cols-12">
                         <div className=" flex col-span-2 z-0">

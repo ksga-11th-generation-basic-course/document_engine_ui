@@ -7,21 +7,21 @@ import LeaveIconSmall from '../assets/reset_pw_popup/leaveIcon.svg'
 function SideBarForPopup() {
   return (
     <div>
-      <div className="h-[650px] shadow-lg bg-[#FFFFFF] w-64 rounded-md shadow-content">
-            {/* Logo */}
-            <div className="flex justify-center mb-4 drop-shadow-lg bg-[#FFFFFF] pr-12 rounded-md  ">
-              <img src={Logo} alt="" className="w-[80px] h-[104px] " />
-            </div>
-            
-          <div className="pr-16 pl-6">                
-                {/* workspace */}
-                <div>
-                      <div className="shadow-lg relative bg-[#F6F6F6] mb-5 px-2.5 py-2 rounded-sm ">
-                          <div className='ml-2 flex'>
-                              <img src={PersonTwo}></img>
-                              <label className='text-[#1E9CEF] ml-4'>Collabrators</label>
-                          </div>
-                           {/* <NavLink to="/workspace" className={({isActive}) => isActive? "fill-primary text-primary" : " fill-accent text-accent"}>
+      <div className="h-[650px] bg-[#FFFFFF] w-64 rounded-md shadow-content">
+        {/* Logo */}
+        <div className="flex justify-center mb-4 border-2 bg-[#FFFFFF] pr-12 rounded-md  ">
+          <img src={Logo} alt="" className="w-[80px] h-[104px] " />
+        </div>
+
+        <div className="pr-16 pl-6">
+          {/* workspace */}
+          <div>
+            <div className="shadow-lg relative bg-[#F6F6F6] mb-5 px-2.5 py-2 rounded-sm ">
+              <div className='ml-2 flex'>
+                <img src={PersonTwo}></img>
+                <label className='text-[#1E9CEF] ml-4'>Collaborators</label>
+              </div>
+              {/* <NavLink to="/workspace" className={({isActive}) => isActive? "fill-primary text-primary" : " fill-accent text-accent"}>
                                 <span className="flex">
                                       <span className="pr-4">
                                             <svg width="20" height="20" viewBox="0 0 20 20"  xmlns="http://www.w3.org/2000/svg">
@@ -31,17 +31,17 @@ function SideBarForPopup() {
                                         <p className="font-bold">Workspace</p>
                                 </span>
                             </NavLink> */}
-                      </div>
-                    <div>
-               <div className='flex mt-[440px]'>                                
-                  <img src={LeaveIconSmall} alt="" className="w-[20px] h-[21px] " />
-                  <label className='text-[#FF5658] ml-4 font-semibold'> Leave Workspace</label>                
-               </div>
             </div>
+            <div>
+              <div className='flex mt-[440px]'>
+                <img src={LeaveIconSmall} alt="" className="w-[20px] h-[21px] " />
+                <label className='text-[#FF5658] ml-4 font-semibold'> Leave Workspace</label>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
     </div>
- </div>
-</div>
   )
 }
 

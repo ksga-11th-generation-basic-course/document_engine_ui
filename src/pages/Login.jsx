@@ -68,7 +68,6 @@ const Login = () => {
         </div>
         <img src={RightImage} />
       {/* <div className="flex justify-center items-center min-h-screen relative overflow-hidden"> */}
-       
             {/* <img src={LeftImage} className="" /> */}
             {/* <div className="bg-white p-12 flex flex-col justify-center gap-y-6 rounded-3xl shadow-md">
             <div class=" xs:p-0 mx-auto md:w-full md:max-w-md  ">

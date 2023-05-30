@@ -26,6 +26,16 @@ import DeleteWorkspacePhotoPopup from "./pop-up/DeleteWorkspacePhotoPopup";
 import LeaveFromWorkpacePopup from "./pop-up/LeaveFromWorkpacePopup";
 import JoinWorkspacePopup from "./pop-up/JoinWorkspacePopup";
 import WorkspaceCallaboratorMember from "./pop-up/WorkspaceCallaboratorMember";
+import WorkspaceCollaborationOwner from "./pop-up/WorkspaceCollaborationOwner";
+import SideBarPopup from "./components/SideBarPopup";
+import SignIn from "./pages/SignIn";
+import SignUp from "./pages/SignUp";
+import VerifyEmail from "./pages/VerifyEmail";
+import ForgetPassword from "./pages/ForgetPassword";
+import SetNewPassword from "./pages/SetNewPassword";
+import VerifyEmailChangePW from "./pages/VerifyEmailChangePW";
+import EnableAccount from "./pages/EnableAccount";
+import Error404 from "./pages/Error404";
 // import NavbarComponent from "./components/NavbarComponent";
 function App() {
 
@@ -52,7 +62,7 @@ function App() {
       {/* <AboutUs></AboutUs> */}
       {/* <HomePage></HomePage>  */}
 
-      {/* All Pop up //////////////////////////////////////////////*/}
+      {/* All Pop up */}
 
       {/* <Comback></Comback> */}
       {/* <Navbar></Navbar> */}
@@ -67,9 +77,15 @@ function App() {
       {/* <DeleteWorkspacePhotoPopup></DeleteWorkspacePhotoPopup> */}
       {/* <LeaveFromWorkpacePopup></LeaveFromWorkpacePopup> */}
       {/* <JoinWorkspacePopup></JoinWorkspacePopup> */}
-      <WorkspaceCallaboratorMember></WorkspaceCallaboratorMember>
+      {/* <WorkspaceCallaboratorMember></WorkspaceCallaboratorMember> */}
 
-      {/* //////////////////////////////////////////////////////////////// */}
+      {/* <WorkspaceCollaborationOwner/> */}
+
+
+      {/* <SideBarPopup/> */}
+
+
+
 
       {/* <SetNew_PassWord></SetNew_PassWord> */}
       {/* <Comfirmrd_PassWord></Comfirmrd_PassWord> */}
@@ -81,6 +97,16 @@ function App() {
       {/* <Form_Sucess></Form_Sucess> */}
 
 
+      {/* seyha  */}
+      {/* <SignIn /> */}
+      {/* <SignUp /> */}
+      {/* <VerifyEmail /> */}
+      {/* <EnableAccount /> */}
+
+      {/* <ForgetPassword /> */}
+      {/* <VerifyEmailChangePW /> */}
+      {/* <SetNewPassword /> */}
+      {/* <Error404 /> */}
     </div>
   );
 }

@@ -5,8 +5,8 @@ export default function
 () {
   return (
     <div className='w-full fixed z-10'>
-        {/* <!-- component --> */}
-        <div class="bg-secondary font-sans w-full  m-0">
+        {/ * <!-- component --> */}
+        <div class="bg-white font-sans w-full  m-0">
             <div class="bg-secondary shadow">
         <div class="container mx-auto px-4">
             <div class="flex items-center justify-between py-4">
