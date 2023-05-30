@@ -48,7 +48,7 @@ export const Hint = () => {
             ></div>
           )}
           {open ? (
-            <div className="absolute w-full text-accent rounded-b-lg border-t-[1px] border-r-[10px] border-r-primary shadow-md bg-white">
+            <div className="absolute w-full text-accent rounded-b-lg border-t-[1px] border-r-[10px] border-r-primary shadow-md bg-white z-50">
               <div className="flex flex-col gap-y-3 py-5 px-5">
                 <div>
                   <button

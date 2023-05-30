@@ -3,15 +3,15 @@ import close from "../assets/dashboard_image/close.svg";
 import { MemberWorkspaceCard } from "./card/MemberWorkspaceCard";
 
 export const CollaboratorMemberContent = ({
-  openWorkspaceSetting,
-  setOpenWorkspaceSetting,
+  openCollaborator,
+  setOpenCollaborator,
 }) => {
   return (
     <div>
       <div className="flex w-full justify-end">
         <button
           type="button"
-          onClick={() => setOpenWorkspaceSetting(!openWorkspaceSetting)}
+          onClick={() => setOpenCollaborator(!openCollaborator)}
         >
           <img src={close} />
         </button>
@@ -34,8 +34,18 @@ export const CollaboratorMemberContent = ({
               isOwner={true}
               currentuser={false}
             />
-            <MemberWorkspaceCard username={"Kheng Sovannak"} status={true} isOwner={false} currentuser={true}/>
-            <MemberWorkspaceCard username={"Yan Sovanseyha"} status={true} isOwner={false} currentuser={false}/>
+            <MemberWorkspaceCard
+              username={"Kheng Sovannak"}
+              status={true}
+              isOwner={false}
+              currentuser={true}
+            />
+            <MemberWorkspaceCard
+              username={"Yan Sovanseyha"}
+              status={true}
+              isOwner={false}
+              currentuser={false}
+            />
           </div>
         </div>
       </div>

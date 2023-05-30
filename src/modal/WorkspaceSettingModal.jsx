@@ -16,8 +16,6 @@ export const WorkspaceSettingModal = ({
 
   const [collaborator, setCollaborator] = useState(false);
 
-  const [isOwner, setIsOwner] = useState(false);
-
   return (
     <div className="w-full">
       <Modal
@@ -31,35 +29,23 @@ export const WorkspaceSettingModal = ({
               setCollaborator={setCollaborator}
               setting={setting}
               setSetting={setSetting}
-              isOwner={isOwner}
-              setIsOwner={setIsOwner}
             />
           </div>
           <div className="col-span-9 p-3 shadow-xl">
-            {isOwner ? (
-              <div>
-                {setting ? (
-                  <SettingContent
-                    openWorkspaceSetting={openWorkspaceSetting}
-                    setOpenWorkspaceSetting={setOpenWorkspaceSetting}
-                  />
-                ) : null}
-                {collaborator ? (
-                  <CollaboratorOwnerContent
-                    openWorkspaceSetting={openWorkspaceSetting}
-                    setOpenWorkspaceSetting={setOpenWorkspaceSetting}
-                  />
-                ) : null}
-              </div>
-            ) : (
-              <div>
-                {" "}
-                <CollaboratorMemberContent
+            <div>
+              {setting ? (
+                <SettingContent
                   openWorkspaceSetting={openWorkspaceSetting}
                   setOpenWorkspaceSetting={setOpenWorkspaceSetting}
-                />{" "}
-              </div>
-            )}
+                />
+              ) : null}
+              {collaborator ? (
+                <CollaboratorOwnerContent
+                  openWorkspaceSetting={openWorkspaceSetting}
+                  setOpenWorkspaceSetting={setOpenWorkspaceSetting}
+                />
+              ) : null}
+            </div>
           </div>
         </div>
       </Modal>

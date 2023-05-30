@@ -13,37 +13,37 @@ export const DropDownFilter = ({ openFilter, setOpenFilter }) => {
         <div className="flex items-center px-6 gap-x-4 bg-[#FAFAF9] border-b-[1px] py-3 rounded-t-lg">
           <input
             type="radio"
-            id="allworkspace"
+            id="product"
             name="radioOptions"
-            value="allworkspace"
+            value="product"
             className="focus:bg-accent focus:ring-accent"
           />
-          <label htmlFor="allworkspace" className="cursor-pointer">
-            All Workspaces
+          <label htmlFor="product" className="cursor-pointer">
+            Product
           </label>
         </div>
         <div className="flex items-center px-6 gap-x-4 py-3 rounded-lg">
           <input
             type="radio"
-            id="myworkspace"
+            id="technology"
             name="radioOptions"
-            value="myworkspace"
+            value="technology"
             className="focus:bg-accent focus:ring-accent"
           />
-          <label htmlFor="myworkspace" className="cursor-pointer">
-            My Workspaces
+          <label htmlFor="technology" className="cursor-pointer">
+            Technology
           </label>
         </div>
         <div className="flex items-center px-6 gap-x-4 py-3 rounded-lg">
           <input
             type="radio"
-            id="otherworkspace"
+            id="document"
             name="radioOptions"
-            value="otherworkspace"
+            value="document"
             className="focus:bg-accent focus:ring-accent"
           />
-          <label htmlFor="otherworkspace" className="cursor-pointer">
-            Other Workspaces
+          <label htmlFor="document" className="cursor-pointer">
+            Document
           </label>
         </div>
       </div>

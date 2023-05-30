@@ -11,7 +11,7 @@ export const DocumentCardRow = ({ documentname, editDate, status }) => {
         <div className="flex justify-center items-center gap-x-5">
           <h3 className="font-semibold text-20px text-black">{documentname}</h3>
           {status ? (
-            <div className="flex text-primary gap-x-1 h-6 px-3 justify-center rounded-2xl bg-[#EDF9FF]">
+            <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF]">
               <p>Editing...</p>
               <img src={pencil} className="w-4 h-4" />
             </div>
@@ -19,7 +19,7 @@ export const DocumentCardRow = ({ documentname, editDate, status }) => {
         </div>
         <p className="text-accent text-18px text-left">{editDate}</p>
       </div>
-      <div>
+      <div className="relative">
         <button type="button" onClick={() => setOpen(!open)}>
           <img src={dotmenu} />
         </button>
