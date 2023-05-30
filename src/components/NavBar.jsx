@@ -5,16 +5,17 @@ import { DropDownMenu } from "../components/DropDownMenu";
 
 export const NavBar = () => {
   return (
-    <div className="fixed flex w-full justify-between items-center px-14 border-[2px] text-18px font-semibold text-accent bg-[#F9F9FF]">
+    <div className="fixed z-50 flex w-full justify-between items-center px-14 border-[2px] text-18px font-semibold text-accent bg-[#F9F9FF]">
       <div>
         <Link>
           <img src={logo} className="w-[72px] h-[72px]" />
         </Link>
       </div>
-      <div className="relative lg:hidden">
+      <div className="relative">
         <ul className="flex justify-center items-center gap-x-8">
           <li>
             <NavLink
+              to={"/"}
               className={({ isActive }) =>
                 isActive ? "text-primary" : "text-accent"
               }
@@ -24,18 +25,20 @@ export const NavBar = () => {
           </li>
           <li>
             <NavLink
-            //   className={({ isActive }) =>
-            //     isActive ? "text-primary" : "text-accent"
-            //   }
+              to={"/aboutus"}
+              className={({ isActive }) =>
+                isActive ? "text-primary" : "text-accent"
+              }
             >
               About Us
             </NavLink>
           </li>
           <li>
             <NavLink
-            //   className={({ isActive }) =>
-            //     isActive ? "text-primary" : "text-accent"
-            //   }
+              to={"/contactus"}
+              className={({ isActive }) =>
+                isActive ? "text-primary" : "text-accent"
+              }
             >
               Contact Us
             </NavLink>

@@ -11,12 +11,17 @@ import { VerifyForgotPassword } from "./pages/VerifyFogotPassword";
 import { ForgotPassword } from "./pages/ForgotPassword";
 import { ResetForgotPassword } from "./pages/ResetForgotPassword";
 import { CreateDocument } from "./pages/CreateDocument";
+import { AboutUs } from "./pages/AboutUs";
+import { ContactUs } from "./pages/ContactUS";
 
 function App() {
   return (
     <div className="App font-ssp">
       <Routes>
         <Route index element={<Landing />} />
+        <Route path="/aboutus" element={<AboutUs />} />
+        <Route path="/contactus" element={<ContactUs />} />
+
         <Route path="/signin" element={<SignIn />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route
