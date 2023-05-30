@@ -27,8 +27,8 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
   return (
     <div className="w-full">
       <Modal open={openSetting} onClickBackdrop={() => setOpenSetting(!openSetting)}>
-        <div className="w-[1100px] h-[840px] bg-white rounded-lg grid grid-cols-12">
-          <div className="col-span-2 bg-[#FAFAF9] rounded-lg space-y-5">
+        <div className="w-[1200px] h-[840px] bg-white rounded-lg grid grid-cols-12">
+          <div className="col-span-3 bg-[#FAFAF9] rounded-lg space-y-5">
             <div className="flex justify-center p-5 rounded-tl-lg shadow-md">
               <img src={logo} />
             </div>
@@ -56,7 +56,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
               </button>
             </div>
           </div>
-          <div className="col-span-10 p-3 shadow-xl">
+          <div className="col-span-9 p-3 shadow-xl">
             <div className="flex w-full justify-end">
               <button
                 type="button"

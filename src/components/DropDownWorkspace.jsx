@@ -2,10 +2,12 @@ import React, { useState } from "react";
 import trush from "../assets/dashboard_image/trush.svg";
 import { Link } from "react-router-dom";
 import setting from "../assets/dashboard_image/setting.svg";
-import { RemoveWorkspace } from "../modal/RemoveWorkspace";
+import { RemoveWorkspaceModal } from "../modal/RemoveWorkspaceModal";
+import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
 
 export const DropDownWorkspace = ({ open, setOpen }) => {
   const [removeWorkspace, setRemoveWorkspace] = useState(false);
+  const [openWorkspaceSetting, setOpenWorkspaceSetting] = useState(false);
   return (
     <div>
       {open && (
@@ -16,7 +18,7 @@ export const DropDownWorkspace = ({ open, setOpen }) => {
           <div className="flex flex-col gap-y-5 py-5">
             <Link
               className="flex items-center text-18px gap-x-4"
-              onClick={() => setOpen(!open)}
+              onClick={() => setOpenWorkspaceSetting(!openWorkspaceSetting)}
             >
               <img src={setting} className="w-6 h-6" />
               <span>Setting </span>
@@ -32,9 +34,13 @@ export const DropDownWorkspace = ({ open, setOpen }) => {
         </div>
       </div>
       <div>
-        <RemoveWorkspace
+        <RemoveWorkspaceModal
           removeWorkspace={removeWorkspace}
           setRemoveWorkspace={setRemoveWorkspace}
+        />
+        <WorkspaceSettingModal
+          openWorkspaceSetting={openWorkspaceSetting}
+          setOpenWorkspaceSetting={setOpenWorkspaceSetting}
         />
       </div>
     </div>

@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import dotmenu from "../../assets/dashboard_image/dotmenu.png";
 import { DropDownWorkspace } from "../DropDownWorkspace";
 
-
 export const WorkspaceCard = ({
   workspacename,
   isOwner,
