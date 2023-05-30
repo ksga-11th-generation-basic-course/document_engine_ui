@@ -47,7 +47,7 @@ export const NavBar = () => {
       </div>
       <div className="relative flex justify-center items-center gap-x-5">
         <Link to={"/signin"}>Sign in</Link>
-        <Link className="bg-primary px-4 py-2 rounded-xl text-white">
+        <Link to={"/signup"}className="bg-primary px-4 py-2 rounded-xl text-white">
           Sign up
         </Link>
         {/* <div className="hidden lg:block">

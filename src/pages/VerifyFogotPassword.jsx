@@ -100,7 +100,7 @@ export const VerifyForgotPassword = () => {
 
   useEffect(() => {
     if (OTPauthentication.email) {
-      navigate("/setPassword");
+      navigate("/resetforgotpassword");
     }
   });
 
