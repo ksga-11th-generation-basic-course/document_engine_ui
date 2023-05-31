@@ -11,10 +11,10 @@ import {
 
 const initialState = {
   loading: false,
-  authentication: {},
-  OTPauthentication: {},
-  resetAuthentication: {},
-  error: "",
+  authentication: null,
+  OTPauthentication: null,
+  resetAuthentication: null,
+  error: null,
 };
 
 const authenticationSlice = createSlice({
@@ -29,12 +29,12 @@ const authenticationSlice = createSlice({
         (state, action) => {
           state.loading = false;
           state.authentication = action.payload;
-          state.error = "";
+          state.error = null;
         }
       ),
       builder.addCase(signupWithGoogleAndFacebook.rejected, (state, action) => {
         state.loading = true;
-        state.authentication = {};
+        state.authentication = null;
         state.error = action.error.message;
       });
     builder.addCase(signinWithGoogleAndFacebook.pending, (state) => {
@@ -45,12 +45,12 @@ const authenticationSlice = createSlice({
         (state, action) => {
           state.loading = false;
           state.authentication = action.payload;
-          state.error = "";
+          state.error = null;
         }
       ),
       builder.addCase(signinWithGoogleAndFacebook.rejected, (state, action) => {
         state.loading = true;
-        state.authentication = {};
+        state.authentication = null;
         state.error = action.error.message;
       });
     builder.addCase(signup.pending, (state) => {
@@ -59,11 +59,11 @@ const authenticationSlice = createSlice({
       builder.addCase(signup.fulfilled, (state, action) => {
         state.loading = false;
         state.authentication = action.payload;
-        state.error = "";
+        state.error = null;
       }),
       builder.addCase(signup.rejected, (state, action) => {
         state.loading = true;
-        state.authentication = {};
+        state.authentication = null;
         state.error = action.error.message;
       });
     builder.addCase(signin.pending, (state) => {
@@ -72,11 +72,11 @@ const authenticationSlice = createSlice({
       builder.addCase(signin.fulfilled, (state, action) => {
         state.loading = false;
         state.authentication = action.payload;
-        state.error = "";
+        state.error = null;
       }),
       builder.addCase(signin.rejected, (state, action) => {
         state.loading = true;
-        state.authentication = {};
+        state.authentication = null;
         state.error = action.error.message;
       });
     builder.addCase(verifyOTP.pending, (state) => {
@@ -85,11 +85,11 @@ const authenticationSlice = createSlice({
       builder.addCase(verifyOTP.fulfilled, (state, action) => {
         state.loading = false;
         state.OTPauthentication = action.payload;
-        state.error = "";
+        state.error = null;
       }),
       builder.addCase(verifyOTP.rejected, (state, action) => {
         state.loading = true;
-        state.OTPauthentication = {};
+        state.OTPauthentication = null;
         state.error = action.error.message;
       });
     builder.addCase(forgotPassword.pending, (state) => {
@@ -98,11 +98,11 @@ const authenticationSlice = createSlice({
       builder.addCase(forgotPassword.fulfilled, (state, action) => {
         state.loading = false;
         state.authentication = action.payload;
-        state.error = "";
+        state.error = null;
       }),
       builder.addCase(forgotPassword.rejected, (state, action) => {
         state.loading = true;
-        state.authentication = {};
+        state.authentication = null;
         state.error = action.error.message;
       });
     builder.addCase(resetPassword.pending, (state) => {
@@ -111,11 +111,11 @@ const authenticationSlice = createSlice({
       builder.addCase(resetPassword.fulfilled, (state, action) => {
         state.loading = false;
         state.resetAuthentication = action.payload;
-        state.error = "";
+        state.error = null;
       }),
       builder.addCase(resetPassword.rejected, (state, action) => {
         state.loading = true;
-        state.resetAuthentication = {};
+        state.resetAuthentication = null;
         state.error = action.error.message;
       });
   },

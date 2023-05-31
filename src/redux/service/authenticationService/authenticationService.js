@@ -81,10 +81,10 @@ export const signin = createAsyncThunk(
           "Content-Type": "application/json",
         }
       );
-      console.log(response)
+      localStorage.setItem("token", response.data.payload.token);
       return response.data.payload;
     } catch (error) {
-      return error;
+      throw Error(error.response.data)
     }
   }
 );

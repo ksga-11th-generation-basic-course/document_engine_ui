@@ -14,6 +14,7 @@ import { CreateDocument } from "./pages/CreateDocument";
 import { AboutUs } from "./pages/AboutUs";
 import { ContactUs } from "./pages/ContactUS";
 import { NotFound } from "./pages/NotFound";
+import { ProtectedRoute } from "./routes/ProtectedRoute";
 
 function App() {
   return (
@@ -24,24 +25,77 @@ function App() {
         <Route path="/contactus" element={<ContactUs />} />
 
         <Route path="/signin" element={<SignIn />} />
-        <Route path="/forgotpassword" element={<ForgotPassword />} />
+        <Route
+          path="/forgotpassword"
+          element={
+            <ProtectedRoute>
+              <ForgotPassword />
+            </ProtectedRoute>
+          }
+        />
         <Route
           path="/verifyforgotpassword"
-          element={<VerifyForgotPassword />}
+          element={
+            <ProtectedRoute>
+              <VerifyForgotPassword />
+            </ProtectedRoute>
+          }
         />
-        <Route path="/resetforgotpassword" element={<ResetForgotPassword />} />
+        <Route
+          path="/resetforgotpassword"
+          element={
+            <ProtectedRoute>
+              <ResetForgotPassword />
+            </ProtectedRoute>
+          }
+        />
 
         <Route path="/signup" element={<SignUp />} />
-        <Route path="/verifyotp" element={<VerifyOTP />} />
+        <Route
+          path="/verifyotp"
+          element={
+            <ProtectedRoute>
+              <VerifyOTP />
+            </ProtectedRoute>
+          }
+        />
 
         <Route path="/" element={<Root />}>
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/workspace" element={<Workspace />} />
-          <Route path="/document" element={<Document />} />
-          <Route path="/createdocument" element={<CreateDocument />} />
+          <Route
+            path="/dashboard"
+            element={
+              <ProtectedRoute>
+                <Dashboard />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/workspace"
+            element={
+              <ProtectedRoute>
+                <Workspace />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/document"
+            element={
+              <ProtectedRoute>
+                <Document />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/createdocument"
+            element={
+              <ProtectedRoute>
+                <CreateDocument />
+              </ProtectedRoute>
+            }
+          />
         </Route>
 
-        <Route path="*" element={<NotFound/>}/>
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
   );

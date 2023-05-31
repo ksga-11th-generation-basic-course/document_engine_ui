@@ -7,7 +7,7 @@ export const NavBar = () => {
   return (
     <div className="fixed z-50 flex w-full justify-between items-center px-14 border-[2px] text-18px font-semibold text-accent bg-[#F9F9FF]">
       <div>
-        <Link>
+        <Link to={"/"}>
           <img src={logo} className="w-[72px] h-[72px]" />
         </Link>
       </div>
@@ -47,7 +47,7 @@ export const NavBar = () => {
       </div>
       <div className="relative flex justify-center items-center gap-x-5">
         <Link to={"/signin"}>Sign in</Link>
-        <Link className="bg-primary px-4 py-2 rounded-xl text-white">
+        <Link to={"/signup"} className="bg-primary px-4 py-2 rounded-xl text-white">
           Sign up
         </Link>
         {/* <div className="hidden lg:block">

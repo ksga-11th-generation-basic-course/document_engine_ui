@@ -4,9 +4,9 @@ import RightImage from "../assets/images/Login/Right-img-login.svg";
 import LeftImage from "../assets/images/Login/Left-img-login.svg";
 import Google from "../assets/images/Login/Google.svg";
 import Facebook from "../assets/images/Login/Facebook.svg";
-import { Formik, Form, Field, useFormik } from "formik";
+import { useFormik } from "formik";
 
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { signInWithPopup } from "firebase/auth";
 import {
@@ -21,8 +21,9 @@ import {
 import * as Yup from "yup";
 
 export const SignIn = () => {
-
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   const handleGoogle = () => {
     signInWithPopup(auth, providerGoogle)
@@ -71,13 +72,23 @@ export const SignIn = () => {
     },
   });
 
+  // const token = localStorage.getItem("token");
+
+  // useEffect(() => {
+  //   if (token) {
+  //     navigate("/dashboard");
+  //   }
+  // });
+
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
-        <img
-          src={Logo}
-          className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10"
-        />
+        <Link to={"/"}>
+          <img
+            src={Logo}
+            className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10"
+          />
+        </Link>
         <img
           className="w-[600px] h-[500.16px] mr-5 max-sm:hidden"
           src={LeftImage}

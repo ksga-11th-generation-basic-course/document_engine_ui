@@ -32,7 +32,7 @@ export const Landing = () => {
                 security, edit your documents and work as a <br /> group.
               </p>
               <div>
-                <Link className="bg-primary px-8 py-3 rounded-xl font-bold text-18px text-white">
+                <Link to={"/signin"} className="bg-primary px-8 py-3 rounded-xl font-bold text-18px text-white">
                   Get Started
                 </Link>
               </div>

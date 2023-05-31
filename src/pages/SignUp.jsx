@@ -87,19 +87,23 @@ export const SignUp = () => {
     },
   });
 
-  useEffect(() => {
-    if (authentication.email) {
-      navigate("/verifyOTP");
-    }
-  });
+  console.log(authentication)
+
+  // useEffect(() => {
+  //   if (authentication.email) {
+  //     navigate("/verifyOTP");
+  //   }
+  // });
 
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
-        <img
-          src={Logo}
-          className="absolute top-8 left-10 max-sm:left-3 max-sm:top-0"
-        />
+        <Link to={"/"}>
+          <img
+            src={Logo}
+            className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10"
+          />
+        </Link>
         <img
           className="w-[600px] h-[500.16px] mr-5 max-sm:hidden"
           src={Left1Image}
@@ -273,4 +277,4 @@ export const SignUp = () => {
       />
     </div>
   );
-}
+};
