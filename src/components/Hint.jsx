@@ -36,7 +36,7 @@ export const Hint = () => {
                 </button>
                 <div>
                       {open ? 
-                        <div className="absolute w-full text-accent rounded-b-lg border-t-[1px] border-r-[15px] border-r-primary shadow-md bg-white z-50">
+                        <div className="absolute w-full text-accent rounded-b-lg border-t-[1px] border-r-[15px] border-r-primary shadow-custom bg-white z-50">
                               <div className="flex flex-col gap-y-5 py-5 px-5">
                                     {/* Join Workspace */}
                                     <div>
@@ -44,9 +44,9 @@ export const Hint = () => {
                                                     <img src={lightbulb} />
                                                     <span>Join workspace</span> <br />
                                             </div>
-                                            <p className="text-[#009521] font-bold px-9 text-left">
-                                                  Hint :
-                                                  <span className="text-accent text-md font-normal ml-3">
+                                            <p className="text-[#009521] font-bold px-9 text-left md:grid md:grid-cols-12">
+                                                 <span className="col-span-1"> Hint :</span>
+                                                  <span className="col-span-11 text-accent text-md font-normal ml-3">
                                                           Click on “+ Join” near profile and enter workspace
                                                           code then click “join”
                                                   </span>
@@ -59,9 +59,9 @@ export const Hint = () => {
                                                     <img src={lightbulb} />
                                                     <span>Create new document</span> <br />
                                             </div>
-                                            <p className="text-[#009521] font-bold px-9 text-left">
-                                                  Hint :{" "}
-                                                  <span className="text-accent text-md font-normal ml-3">
+                                            <p className="text-[#009521] font-bold px-9 text-left md:grid md:grid-cols-12">
+                                                <span className="col-span-1">Hint :</span>
+                                                  <span className="col-span-11 text-accent text-md font-normal ml-3">
                                                         Click on “Workspaces” in sidebar and click one of
                                                         workspaces then click “Create new document”
                                                   </span>
@@ -74,9 +74,9 @@ export const Hint = () => {
                                                     <img src={lightbulb} />
                                                     <span>Create new workspace</span> <br />
                                             </div>
-                                            <p className="text-[#009521] font-bold px-9 text-left">
-                                                  Hint :{" "}
-                                                  <span className="text-accent text-md font-normal ml-3">
+                                            <p className="text-[#009521] font-bold px-9 text-left md:grid md:grid-cols-12">
+                                                  <span className="col-span-1">Hint :</span>
+                                                  <span className="col-span-11 text-accent text-md font-normal ml-3">
                                                           Click on “New workspace” in the top of sidebar and
                                                           enter name and profile picture of workspace
                                                   </span>
@@ -89,9 +89,9 @@ export const Hint = () => {
                                                     <img src={lightbulb} />
                                                     <span>Visit workspace code</span> <br />
                                             </div>
-                                            <p className="text-[#009521] font-bold px-9 text-left">
-                                                  Hint :{" "}
-                                                  <span className="text-accent text-md font-normal ml-3">
+                                            <p className="text-[#009521] font-bold px-9 text-left md:grid md:grid-cols-12">
+                                                  <span className="col-span-1">Hint :</span>
+                                                  <span className="col-span-11 text-accent text-md font-normal ml-3">
                                                           Click on “Workspaces” in sidebar and click one of
                                                           workspaces then visit at the right of workspace name
                                                   </span>
