@@ -6,10 +6,17 @@ import worksapacephoto from "../assets/dashboard_image/worksapacephoto.svg";
 
 export const CreateWorkspaceModal = ({ visible, toggleVisible }) => {
   return (
+<<<<<<< HEAD
     <div className="w-full md:w-[160px]">
       <button
         onClick={toggleVisible}
         className="bg-primary w-full py-3 text-white rounded-lg md:text-sm font-semibold mt-5"
+=======
+    <div className="w-full -mt-3 md:-mt-7">
+      <button
+        onClick={toggleVisible}
+        className="bg-primary w-full py-3 text-white rounded-lg text-18px font-semibold mt-5 lg:w-60 md:text-14px md:w-44"
+>>>>>>> 6d37ee2 (responsive)
       >
         New Workspace
       </button>

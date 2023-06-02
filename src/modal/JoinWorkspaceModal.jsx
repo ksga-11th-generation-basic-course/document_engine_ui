@@ -8,10 +8,17 @@ export const JoinWorkspaceModal = ({ visible, toggleVisible }) => {
   return (
     <div className="w-full ">
       <button
+<<<<<<< HEAD
         className="flex justify-center items-center text-16px font-semibold gap-x-2 md:gap-x-1 border-[1px] border-accent px-5 md:px-2 py-2 md:py-1 rounded-lg text-primary"
         onClick={toggleVisible}
       >
         <img src={join} className="w-4 h-4 md:w-3 md:h-3" />
+=======
+        className="flex justify-center items-center text-16px font-semibold gap-x-2 border-[1px] border-accent px-5 py-2 rounded-lg text-primary md:px-2.5 md:py-1.5 md:text-12px"
+        onClick={toggleVisible}
+      >
+        <img src={join} className="w-4 h-4 md:w-3.5" />
+>>>>>>> 6d37ee2 (responsive)
         Join
       </button>
       <Modal open={visible} onClickBackdrop={toggleVisible}>
