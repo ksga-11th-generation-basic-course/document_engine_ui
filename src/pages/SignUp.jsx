@@ -94,11 +94,11 @@ export const SignUp = () => {
   });
 
   return (
-    <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
+    <div className="lg:bg-[#EDF9FF] flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
         <img
           src={Logo}
-          className="absolute top-8 left-10 max-sm:left-3 max-sm:top-0"
+          className=" absolute top-8 left-10 max-sm:left-3 max-sm:top-0"
         />
         <img
           className="w-[600px] h-[500.16px] mr-5 max-sm:hidden"
@@ -106,9 +106,9 @@ export const SignUp = () => {
         />
         <form
           onSubmit={formik.handleSubmit}
-          className="bg-white max-sm:bg-[#EDF9FF] p-12 flex flex-col justify-center gap-y-6 rounded-3xl lg:shadow-lg"
+          className=" bg-[#FFFFFF] p-12 flex flex-col justify-center gap-y-6 rounded-3xl lg:w-28 lg:flex "
         >
-          <div className=" xs:p-0 mx-auto w-[380px] md:max-w-md">
+          <div className=" xs:p-0 mx-auto w-[380px] ">
             <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl">
               Sign Up
             </h1>
@@ -128,7 +128,7 @@ export const SignUp = () => {
                   value={formik.values.username}
                 />
                 {formik.touched.username && formik.errors.username ? (
-                  <div className="mt-2 text-red-600">
+                  <div className=" sm:mt-6 mt-2  text-red-600">
                     {formik.errors.username}
                   </div>
                 ) : null}
@@ -158,7 +158,7 @@ export const SignUp = () => {
               </label>
               <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
                 <input
-                  className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
+                  className=" border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
                   type="password"
                   placeholder="Password"
                   aria-label="Full name"
@@ -174,7 +174,7 @@ export const SignUp = () => {
                 ) : null}
               </div>
               {/* <input type="text" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Password' /> */}
-              <label className="font-semibold text-lg block pt-3 pb-2 text-black">
+              <label className=" font-semibold text-lg block pt-3 pb-2 text-black">
                 Confirm Password
               </label>
               <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
