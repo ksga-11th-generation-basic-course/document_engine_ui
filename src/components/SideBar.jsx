@@ -12,9 +12,9 @@ export const SideBar = ({sideBar,setSideBar}) => {
   };
 
   return (
-    <div>
-          <div className="hidden lg:flex flex-col items-end pr-3 pt-3">
-                  <div className="hidden lg:inline-block">
+    <div className="bg-[#FAFAF9] md:mt-8">
+          <div className="hidden lg:flex flex-col items-end pr-3 pt-3 md:absolute md:right-0 md:top-0">
+                  <div className="hidden lg:inline-block  md:justify-end">
                         <button
                             type="button"
                             onClick={() => setSideBar(!sideBar)}
