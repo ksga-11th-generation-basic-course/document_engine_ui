@@ -32,7 +32,7 @@ export const Document = () => {
       <div>
         <h1 className="font-bold text-accent text-44px">React & NodeJS</h1>
         <p className="text-accent text-18px">
-          Welcome to React & NodeJS workspace
+          Welcome to React & NodeJS workspace hello
         </p>
       </div>
       <div className="flex justify-between items-center">
