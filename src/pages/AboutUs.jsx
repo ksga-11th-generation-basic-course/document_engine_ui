@@ -11,10 +11,10 @@ export const AboutUs = () => {
       <div>
         <NavBar />
       </div>
-      <div className="SlideBar pt-8 sm:pt-16">
-        <div className="SlideBar2 relative">
-          <div className="absolute left-0 sm:left-0 text-6xl lg:top-20  sm:text-2xl text-primary px-20 md:top-16 font-bold top-40 sm:top-8 sm:leading-6 ">
-            <h1 className="sm:whitespace-nowrap">What & Who</h1>
+      <div className="SlideBar pt-[76px]  sm:pt-[76px]  md:pt-[32px] lg:pt-[78px]">
+        <div className="SlideBar2 relative ">
+          <div className="absolute left-0 sm:left-0 lg:top-12 text-6xl xl:top-24  sm:text-4xl text-primary px-20 md:top-16 font-bold top-40 sm:top-8 sm:leading-6 ">
+            <h1 className="sm:whitespace-nowrap sm:pb-2">What & Who</h1>
             <h1 className="sm:whitespace-nowrap">We Are</h1>
           </div>
         </div>
