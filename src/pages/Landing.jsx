@@ -17,32 +17,31 @@ export const Landing = () => {
   return (
     <div className="bg-white">
       <NavBar />
-      
-      <div className="pt-32 px-16">
-        <div className="grid grid-cols-12">
+      <div className="pt-32 sm:pt-20 px-16 sm:px-0 md:px-5 ">
+        <div className="grid grid-cols-12 sm:flex sm:flex-col md:flex md:flex-col">
           <dir className="col-span-4">
             <div className="text-accent flex flex-col gap-8">
-              <h1 className="font-bold text-36px leading-[45px]">
+              <h1 className="font-bold text-36px md:whitespace-nowrap   lg:whitespace-nowrap  lg:text-[32px] leading-[45px] sm:pr-3 ">
                 All your <span className="text-primary">Documents</span> <br />{" "}
                 in one <span className="text-primary">place</span> and{" "}
                 <span className="text-primary">safe</span>!
               </h1>
-              <p className="font-bold text-18px">
+              <p className="font-bold text-18px  lg:whitespace-nowrap md:whitespace-nowrap sm:text-14px sm:overflow-hidden md:text-14px lg:text-sm sm:pr-12 md:text-justify ">
                 Make your wiki, docs & project in ONCE with the <br /> best
                 security, edit your documents and work as a <br /> group.
               </p>
               <div>
-                <Link className="bg-primary px-8 py-3 rounded-xl font-bold text-18px text-white">
+                <Link className="bg-primary px-8 py-3 sm:px-4 sm:py-2 rounded-xl font-bold text-18px text-white">
                   Get Started
                 </Link>
               </div>
             </div>
           </dir>
-          <div className="col-span-8 mx-auto">
-            <img src={literature}/>
+          <div className="col-span-8 mx-auto lg:pl-28 md:pl-10">
+            <img src={literature} className="" />
           </div>
         </div>
-        
+
         <div className="border-[2px] mt-24 border-gray-300"></div>
 
         <div className="mt-24">
@@ -52,13 +51,13 @@ export const Landing = () => {
               <span className="text-primary">Solution</span> For you
             </h1>
           </div>
-          <div className="grid grid-cols-12 gap-y-20 mt-20">
+          <div className="grid grid-cols-12 gap-y-20 mt-20 sm:flex sm:flex-col">
             <div className="col-span-4">
               <img src={teamspirit} className="mx-auto" />
               <h1 className="mt-3 font-bold text-primary text-2xl text-center">
                 Collaboration
               </h1>
-              <p className="text-18px text-accent text-center">
+              <p className="text-18px text-accent md:text-[12px] text-center">
                 Coming together is a beginning, staying <br /> together is
                 progress, and working <br /> together is success.
               </p>
@@ -68,7 +67,7 @@ export const Landing = () => {
               <h1 className="mt-3 font-bold text-primary text-2xl text-center">
                 Productivity
               </h1>
-              <p className="text-18px text-accent text-center">
+              <p className="text-18px text-accent md:text-[12px] text-center">
                 Real integrity is doing the right thing, knowing <br /> that
                 nobody’s going to know whether you <br /> did it or not.
               </p>
@@ -78,7 +77,7 @@ export const Landing = () => {
               <h1 className="mt-3 font-bold text-primary text-2xl text-center">
                 Sharing
               </h1>
-              <p className="text-18px text-accent text-center">
+              <p className="text-18px text-accent md:text-[12px] text-center">
                 Love only grows by sharing. You can only <br /> have more for
                 yourself by giving it <br /> away to others.
               </p>
@@ -86,13 +85,13 @@ export const Landing = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-12 gap-y-20 items-center mt-24">
+        <div className="grid grid-cols-12 gap-y-20  sm:mt-12 items-center mt-24 sm:flex sm:flex-col">
           <div className="col-span-6 mx-auto">
-            <h1 className="font-bold text-36px text-accent leading-[45px]">
+            <h1 className="font-bold text-36px sm:px-6   md:whitespace-nowrap text-accent sm:text-28px  leading-[45px]">
               Learn the best <span className="text-primary">tools</span> <br />
               and <span className="text-primary">platforms</span>
             </h1>
-            <p className="text-18px text-accent">
+            <p className="text-18px sm:px-10 md:text-[14px] sm:text-[12px] md:pt-10 text-accent sm:pt-5 md:whitespace-normal">
               We focus on industry leading platforms so that you can <br /> be
               prepared for your next job. Then we teach all <br /> we van about
               them.
@@ -107,7 +106,7 @@ export const Landing = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-12 mt-24">
+        <div className="grid grid-cols-12 mt-24  sm:flex sm:flex-col">
           <div className="col-span-4 mx-auto">
             <img src={groupcard} />
           </div>
@@ -119,8 +118,7 @@ export const Landing = () => {
           </div>
         </div>
       </div>
-
-      <Footer/>
+      <Footer />
     </div>
   );
 };
