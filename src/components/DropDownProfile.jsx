@@ -18,13 +18,13 @@ export const DropDownProfile = ({ open, setOpen }) => {
       {open && (
         <div className="fixed inset-0" onClick={() => setOpen(!open)}></div>
       )}
-      <div className="absolute right-0 mt-3 p-3 text-accent rounded-lg shadow-md bg-white z-50">
+      <div className="absolute right-0 mt-3 md:p-3 text-accent rounded-lg shadow-md bg-white z-50">
         <div className="flex justify-end">
           <button type="button" onClick={() => setOpen(!open)}>
             <img src={close} className="h-7 w-7" />
           </button>
         </div>
-        <div className="flex flex-col gap-y-5 px-5">
+        <div className="flex flex-col gap-y-5 md:gap-y-4 px-5">
           <p className="font-bold text-24px text-primary">Profile</p>
           <div className="relative flex items-center gap-x-3">
             <div className="overflow-hidden w-14 h-14 flex bg-primary rounded-full">
@@ -36,7 +36,7 @@ export const DropDownProfile = ({ open, setOpen }) => {
             </div>
           </div>
           <div className="border-[1px] border-[#E7E7E7]"></div>
-          <div className="flex flex-col gap-y-5 py-5">
+          <div className="flex flex-col gap-y-5 py-5 md:py-0">
             <button
               className="flex items-center text-18px gap-x-4"
               onClick={() => setOpenSetting(!openSetting)}

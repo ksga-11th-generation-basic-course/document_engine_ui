@@ -1,6 +1,6 @@
 import React from "react";
 
-export const CollaboratorOwner = ({collaborator, setCollaborator, setting, setSetting}) => {
+export const CollaboratorOwner = ({ collaborator, setCollaborator, setting, setSetting }) => {
   return (
     <div>
       <button
@@ -71,7 +71,7 @@ export const CollaboratorOwner = ({collaborator, setCollaborator, setting, setSe
             </defs>
           </svg>
         )}
-        <p className="font-semibold text-18px">Collaborators</p>
+        <p className="font-semibold text-18px md:text-[16px]">Collaborators</p>
       </button>
     </div>
   );

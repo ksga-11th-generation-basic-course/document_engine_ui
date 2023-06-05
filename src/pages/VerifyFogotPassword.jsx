@@ -131,8 +131,13 @@ export const VerifyForgotPassword = () => {
         <form className="bg-white  h-[510px] w-[530px] mt-36 flex flex-col justify-center  rounded-3xl shadow-md 
          lg:w-[500px] lg:h-[470px] lg:mt-48 md:w-[320px] md:h-[370px] md:mt-44 ">
           <div className=" xs:p-0 mx-auto md:w-full md:max-w-md  ">
+<<<<<<< HEAD
             <div className=" w-full  ">
               <h1 className="font-bold text-center text-primary text-36px lg:text-3xl md:text-xl md:mt-8">
+=======
+            <div className="bg-white w-full">
+              <h1 className="font-bold text-center text-primary text-36px">
+>>>>>>> 114d6aa (seyha)
                 Verify Email Address
               </h1>
 

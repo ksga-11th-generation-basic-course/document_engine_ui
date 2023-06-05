@@ -6,10 +6,10 @@ import worksapacephoto from "../assets/dashboard_image/worksapacephoto.svg";
 
 export const CreateWorkspaceModal = ({ visible, toggleVisible }) => {
   return (
-    <div className="w-full">
+    <div className="w-full md:w-[160px]">
       <button
         onClick={toggleVisible}
-        className="bg-primary w-full py-3 text-white rounded-lg text-16px font-semibold mt-5"
+        className="bg-primary w-full py-3 text-white rounded-lg md:text-sm font-semibold mt-5"
       >
         New Workspace
       </button>
@@ -28,7 +28,7 @@ export const CreateWorkspaceModal = ({ visible, toggleVisible }) => {
               Create Workspace
             </h1>
             <div className="flex flex-col gap-y-2 font-semibold text-18px">
-              <p>Worksapce Name</p>
+              <p>Workspace Name</p>
               <input
                 type="text"
                 placeholder="Workspace Name"
@@ -49,7 +49,7 @@ export const CreateWorkspaceModal = ({ visible, toggleVisible }) => {
               <button className="px-10 py-3 border-[1px] rounded-lg" onClick={toggleVisible}>
                 Cancel
               </button>
-              <button className="bg-primary text-white  px-10 py-3 rounded-lg ">
+              <button className="bg-primary text-white px-10 py-3 rounded-lg ">
                 Create
               </button>
             </div>

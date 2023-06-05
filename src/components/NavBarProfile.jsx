@@ -11,20 +11,19 @@ export const NavBarProfile = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex justify-end items-center py-5 px-14 gap-x-5">
+    <div className="flex justify-end items-center py-5 px-14 gap-x-5 md:px-7">
       <div>
         <JoinWorkspaceModal visible={visible} toggleVisible={toggleVisible} />
       </div>
       <div className="relative">
         <div className="relative inline-block">
           <button
-            className="overflow-hidden w-10 rounded-full"
+            className="overflow-hidden w-10 md:w-9 md:mt-1.5 rounded-full"
             onClick={() => setOpen(!open)}
           >
             <img src={avatar} />
           </button>
-
-          {open ? <DropDownProfile open={open} setOpen={setOpen}/> : null}
+          {open ? <DropDownProfile open={open} setOpen={setOpen} /> : null}
         </div>
       </div>
     </div>
