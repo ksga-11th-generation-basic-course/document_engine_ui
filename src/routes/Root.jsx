@@ -7,12 +7,12 @@ export const Root = () => {
   return (
     <div className="bg-white">
       <div className="grid grid-cols-12">
-        <div className="col-span-2">
+        <div className="col-span-2 md:col-span-3 sm:hidden">
           <SideBar />
         </div>
-        <div className="col-span-10 shadow-xl">
+        <div className="col-span-10 md:col-span-9">
           <NavBarProfile />
-          <div className="px-64">
+          <div className="md:px-4 px-64 ">
             <Outlet />
           </div>
         </div>

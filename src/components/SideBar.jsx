@@ -11,18 +11,37 @@ export const SideBar = () => {
 
   return (
     <div>
-      <div className="bg-[#FAFAF9] flex flex-col items-center py-5 px-5 gap-y-3 h-screen">
+      {/* daysi  */}
+      <div class="drawer sm:flex hidden">
+        <input id="my-drawer" type="checkbox" class="drawer-toggle" />
+        <div class="drawer-content">
+          {/* <!-- Page content here --> */}
+          <label for="my-drawer" class="btn btn-primary drawer-button">Open drawer</label>
+        </div>
+        <div class="drawer-side">
+          <label for="my-drawer" class="drawer-overlay"></label>
+          <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
+            {/* <!-- Sidebar content here --> */}
+            <li><a>Sidebar Item 1</a></li>
+            <li><a>Sidebar Item 2</a></li>
+          </ul>
+        </div>
+      </div>
+
+
+
+      <div className="sm:hidden bg-[#FAFAF9] flex flex-col items-center py-5 px-5 gap-y-3 h-screen">
         <Link>
-          <img src={logo} className="w-24 h-24" />
+          <img src={logo} className="md:w-16 md:h-16 w-24 h-24" />
         </Link>
         <CreateWorkspaceModal visible={visible} toggleVisible={toggleVisible} />
-        <div className="flex flex-col w-full gap-y-3 text-16px text-accent font-semibold">
+        <div className="flex flex-col md:flex md:items-center md:justify-center w-full gap-y-3 text-1px text-accent font-semibold">
           <NavLink
             to={"/dashboard"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
-                : "flex items-center w-full gap-x-3 py-3 rounded-lg px-4"
+                ? "flex items-center w-full md:w-[160px] md:flex  gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
+                : "flex items-center w-full md:w-[160px] md:flex gap-x-3 py-3 rounded-lg px-4"
             }
           >
             <svg
@@ -43,8 +62,8 @@ export const SideBar = () => {
             to={"/workspace"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
-                : "flex items-center w-full gap-x-3 py-3 rounded-lg px-4"
+                ? "flex items-center w-full md:w-[160px] gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
+                : "flex items-center w-full md:w-[160px] gap-x-3 py-3 rounded-lg px-4"
             }
           >
             <svg
@@ -59,15 +78,15 @@ export const SideBar = () => {
                 fill="#1E9CEF"
               />
             </svg>
-            Workspace
+            <p>Workspace</p>
           </NavLink>
-          <div className="w-full border-[1px]"></div>
+          <div className="w-full md:text-center border-[1px]"></div>
           <NavLink
             to={"/document"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
-                : "flex items-center w-full gap-x-3 py-3 rounded-lg px-4"
+                ? "flex items-center w-full md:w-[160px] md:px-0 md:flex md:items-center md:justify-center gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
+                : "flex items-center w-full md:w-[160px] md:px-0 md:flex md:items-center md:justify-center gap-x-3 py-3 rounded-lg px-4"
             }
           >
             <svg
@@ -92,7 +111,7 @@ export const SideBar = () => {
                 </clipPath>
               </defs>
             </svg>
-            React & NodeJS
+            <p>React & NodeJS</p>
           </NavLink>
         </div>
       </div>
