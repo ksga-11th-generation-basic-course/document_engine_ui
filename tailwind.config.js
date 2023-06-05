@@ -21,6 +21,12 @@ export default {
 
       'sm': {'max': '639px'},
       // => @media (max-width: 639px) { ... }
+
+      'xs': {'max': '414px' },
+      // => @media (max-width: 414px) { ... }
+
+      '2xs': { 'max': '390px' },
+      // => @media (max-width: 390px) { ... }
     },
     extend: {
       fontFamily: {
