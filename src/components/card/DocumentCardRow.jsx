@@ -20,7 +20,7 @@ export const DocumentCardRow = ({ documentname, editDate, status }) => {
         <p className="text-accent text-16px text-left">{editDate}</p>
       </div>
       <div className="relative">
-        <button type="button" onClick={() => setOpen(!open)}>
+        <button type="button" onClick={() => setOpen(!open)} className="h-fit">
           <img src={dotmenu} />
         </button>
         {open ? <DropDownDocument open={open} setOpen={setOpen} /> : null}
