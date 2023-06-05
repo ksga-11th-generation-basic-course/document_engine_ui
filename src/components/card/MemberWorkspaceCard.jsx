@@ -40,22 +40,22 @@ export const MemberWorkspaceCard = ({
             {username} {currentuser ? <span>(You)</span> : null}
           </h3>
           {isOwner ? (
-            <span className="px-6 text-primary bg-[#EDF9FF] rounded-lg">
+            <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg">
               Owner
             </span>
           ) : null}
         </div>
         {!status ? (
-          <div className="flex justify-center items-center gap-x-4">
+          <div className="flex justify-center items-center gap-x-4 md:gap-x-2">
             <div className="relative">
               <button
                 type="button"
-                className="text-18px border-[1px] rounded-lg px-3 py-1 flex justify-center items-center gap-x-2"
+                className="text-18px md:text-16px md:gap-x-1 md:px-2 border-[1px] rounded-lg px-3 py-1 flex justify-center items-center gap-x-2"
                 onClick={() => setOpenEditor(!openEditor)}
               >
-                <img src={pencil} />
+                <img className="w-4" src={pencil} />
                 <p>Editor</p>
-                <img src={chevrondown} />
+                <img className="md:w-4" src={chevrondown} />
               </button>
               <div>
                 {openEditor ? (
@@ -68,7 +68,7 @@ export const MemberWorkspaceCard = ({
             </div>
             <button
               type="button"
-              className="px-3 py-2 border-[1px] rounded-lg"
+              className="px-3 py-2 md:p-1.5 border-[1px] rounded-lg"
               onClick={() => setRemoveMember(!removeMember)}
             >
               <img src={trush} />
