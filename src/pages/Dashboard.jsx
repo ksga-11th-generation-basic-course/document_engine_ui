@@ -13,7 +13,7 @@ export const Dashboard = () => {
         <img src={documenticon} className="shadow-md p-2 rounded-lg" />
         <p className="font-semibold text-20px text-accent">Recently</p>
       </div>
-      <div className="space-y-8 h-fit">
+      <div className="space-y-8 h-screen">
         <div>
           <DocumentCardRow
             documentname={"Spring Profile"}
@@ -28,6 +28,38 @@ export const Dashboard = () => {
             status={false}
           />
         </div>
+        <div>
+          <DocumentCardRow
+            documentname={"Laravel"}
+            editDate={"Edited 17days ago"}
+            status={true}
+          />
+        </div>
+
+        <div>
+          <DocumentCardRow
+            documentname={"Laravel"}
+            editDate={"Edited 17days ago"}
+            status={true}
+          />
+        </div>
+
+        <div>
+          <DocumentCardRow
+            documentname={"Laravel"}
+            editDate={"Edited 17days ago"}
+            status={true}
+          />
+        </div>
+
+        <div>
+          <DocumentCardRow
+            documentname={"Laravel"}
+            editDate={"Edited 17days ago"}
+            status={true}
+          />
+        </div>
+
         <div>
           <DocumentCardRow
             documentname={"Laravel"}

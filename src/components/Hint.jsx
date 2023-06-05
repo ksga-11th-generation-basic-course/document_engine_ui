@@ -19,8 +19,8 @@ export const Hint = () => {
                 <button
                   className={
                     open
-                      ? "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom  border-gray-500 rounded-t-lg hover:shadow-hover"
-                      : "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom rounded-lg hover:shadow-hover"
+                      ? "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom  border-gray-500 rounded-t-lg"
+                      : "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom rounded-lg hover:shadow-hover "
                   }
                   onClick={() => setOpen(!open)}
                 >
@@ -44,11 +44,11 @@ export const Hint = () => {
                                                     <img src={lightbulb} />
                                                     <span>Join workspace</span> <br />
                                             </div>
-                                            <p className="text-[#009521] font-bold px-9 text-left md:grid md:grid-cols-12">
-                                                 <span className="col-span-1"> Hint :</span>
-                                                  <span className="col-span-11 text-accent text-md font-normal ml-3">
+                                            <p className="text-[#009521] font-bold px-9 text-left">
+                                                  Hint :
+                                                  <span className=" text-accent text-md font-normal ml-3">
                                                           Click on “+ Join” near profile and enter workspace
-                                                          code then click “join”
+                                                          code then click “join” .
                                                   </span>
                                             </p>
                                     </div>
@@ -63,7 +63,7 @@ export const Hint = () => {
                                                 <span className="col-span-1">Hint :</span>
                                                   <span className="col-span-11 text-accent text-md font-normal ml-3">
                                                         Click on “Workspaces” in sidebar and click one of
-                                                        workspaces then click “Create new document”
+                                                        workspaces then click “Create new document” .
                                                   </span>
                                             </p>
                                     </div>
@@ -78,7 +78,7 @@ export const Hint = () => {
                                                   <span className="col-span-1">Hint :</span>
                                                   <span className="col-span-11 text-accent text-md font-normal ml-3">
                                                           Click on “New workspace” in the top of sidebar and
-                                                          enter name and profile picture of workspace
+                                                          enter name and profile picture of workspace.
                                                   </span>
                                             </p>
                                     </div>
@@ -92,8 +92,7 @@ export const Hint = () => {
                                             <p className="text-[#009521] font-bold px-9 text-left md:grid md:grid-cols-12">
                                                   <span className="col-span-1">Hint :</span>
                                                   <span className="col-span-11 text-accent text-md font-normal ml-3">
-                                                          Click on “Workspaces” in sidebar and click one of
-                                                          workspaces then visit at the right of workspace name
+                                                          Click on “Setting Workspaces” and click on  “Collaborators” in sidebar ,you will see the workspace code on the top of all collaborators.
                                                   </span>
                                             </p>
                                     </div>
