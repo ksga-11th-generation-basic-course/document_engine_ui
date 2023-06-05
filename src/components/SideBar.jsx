@@ -2,40 +2,38 @@ import React, { useState } from "react";
 import logo from "../assets/landing_image/logo.svg";
 import { Link, NavLink } from "react-router-dom";
 import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
+import close from "../assets/dashboard_image/close.svg";
+import { NavBarProfile } from "./NavBarProfile";
 
-export const SideBar = () => {
+export const SideBar = ({ sideBar, setSideBar }) => {
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {
     setVisible(!visible);
   };
 
   return (
-    <div>
-      {/* daysi  */}
-      <div class="drawer sm:flex hidden">
-        <input id="my-drawer" type="checkbox" class="drawer-toggle" />
-        <div class="drawer-content">
-          {/* <!-- Page content here --> */}
-          <label for="my-drawer" class="btn btn-primary drawer-button">Open drawer</label>
-        </div>
-        <div class="drawer-side">
-          <label for="my-drawer" class="drawer-overlay"></label>
-          <ul class="menu p-4 w-80 h-full bg-base-200 text-base-content">
-            {/* <!-- Sidebar content here --> */}
-            <li><a>Sidebar Item 1</a></li>
-            <li><a>Sidebar Item 2</a></li>
-          </ul>
+    <div className="bg-[#FAFAF9] md:mt-8">
+      {/* Close Button */}
+      <div className="hidden lg:flex flex-col items-end pr-3 pt-3 md:absolute md:right-0 md:top-0">
+        <div className="hidden lg:inline-block  md:justify-end">
+          <button type="button" onClick={() => setSideBar(!sideBar)}>
+            <img src={close} className="w-8 md:w-5" />
+          </button>
         </div>
       </div>
 
-
-
-      <div className="sm:hidden bg-[#FAFAF9] flex flex-col items-center py-5 px-5 gap-y-3 h-screen">
+      <div className=" flex flex-col items-center p-5 gap-y-3 h-screen lg:-mt-10">
+        {/* Logo */}
         <Link>
-          <img src={logo} className="md:w-16 md:h-16 w-24 h-24" />
+                <img src={logo} className="w-28 h-28 flex lg:w-28 md:w-[75px] md:h-[75px] md:mt-5" />
         </Link>
-        <CreateWorkspaceModal visible={visible} toggleVisible={toggleVisible} />
-        <div className="flex flex-col md:flex md:items-center md:justify-center w-full gap-y-3 text-1px text-accent font-semibold">
+
+        {/* Create Workspace */}
+        <CreateWorkspaceModal
+          visible={visible}
+          toggleVisible={toggleVisible}
+        />
+        <div className="flex flex-col w-full gap-y-3 text-18px text-accent font-semibold md:text-14px md:w-36">
           <NavLink
             to={"/dashboard"}
             className={({ isActive }) =>
@@ -78,7 +76,7 @@ export const SideBar = () => {
                 fill="#1E9CEF"
               />
             </svg>
-            <p>Workspace</p>
+            Workspaces
           </NavLink>
           <div className="w-full md:text-center border-[1px]"></div>
           <NavLink
@@ -93,16 +91,16 @@ export const SideBar = () => {
               width="19"
               height="19"
               viewBox="0 0 19 19"
-              fill="none"
+              fill="none "
               xmlns="http://www.w3.org/2000/svg"
             >
-              <g clip-path="url(#clip0_597_8631)">
+              <g clipPath="url(#clip0_597_8631)">
                 <path
                   d="M1.1875 17.8125V13.0625C1.1875 11.7508 2.25082 10.6875 3.5625 10.6875H7.125C8.43668 10.6875 9.5 11.7508 9.5 13.0625V17.8125M14.2586 13.0625H15.4375C16.7492 13.0625 17.8125 14.1258 17.8125 15.4375V17.8125M5.34375 1.1875C6.89348 1.1875 8.3125 2.375 8.3125 4.15625C8.3125 5.9375 6.89348 7.125 5.34375 7.125C3.79402 7.125 2.375 5.9375 2.375 4.15625C2.375 2.375 3.79402 1.1875 5.34375 1.1875ZM14.25 3.5625C13.0464 3.5625 11.875 4.51008 11.875 5.9375C11.875 7.36492 13.0464 8.3125 14.25 8.3125C15.4536 8.3125 16.625 7.36492 16.625 5.9375C16.625 4.51008 15.4536 3.5625 14.25 3.5625Z"
                   stroke="#1E9CEF"
-                  stroke-width="2"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
                 />
               </g>
               <defs>

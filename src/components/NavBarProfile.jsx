@@ -18,10 +18,10 @@ export const NavBarProfile = () => {
       <div className="relative">
         <div className="relative inline-block">
           <button
-            className="overflow-hidden w-10 md:w-9 md:mt-1.5 rounded-full"
+            className="overflow-hidden mt-1.5 rounded-full"
             onClick={() => setOpen(!open)}
           >
-            <img src={avatar} />
+            <img src={avatar} className="w-12 md:w-9"/>
           </button>
           {open ? <DropDownProfile open={open} setOpen={setOpen} /> : null}
         </div>
