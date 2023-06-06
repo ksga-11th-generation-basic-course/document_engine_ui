@@ -35,13 +35,13 @@ export const Root = () => {
             </span>
           </div>
 
-          <div className={open ? "hidden lg:inline-block lg:ml-10 xs:ml-0 lg:mt-24 lg:px-3" : "hidden lg:inline-block lg:ml-10 xs:ml-0 lg:mt-9 lg:px-3 xs:px-10"}>
+          <div className={open ? "hidden lg:inline-block lg:ml-10 xs:ml-0 lg:mt-24 lg:px-3" : "hidden lg:inline-block lg:ml-10 xs:ml-0 lg:mt-9 lg:px-3"}>
             <Outlet /></div>
         </div>
 
         <div className="col-span-10 z-10 shadow-xl lg:hidden">
           <div><NavBarProfile /></div>
-          <div className="px-64 xs:px-32">
+          <div className="px-64 xs:px-40">
             <Outlet />
           </div>
         </div>
