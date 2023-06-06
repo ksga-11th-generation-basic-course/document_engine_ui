@@ -26,7 +26,7 @@ export const DropDownDocument = ({ open, setOpen }) => {
       {open && (
         <div className="fixed inset-0" onClick={() => setOpen(!open)}></div>
       )}
-      <div className="absolute right-0 w-[280px] text-accent rounded-lg shadow-custom bg-white  hover:shadow-hover">
+      <div className="absolute right-0 w-[280px] text-accent rounded-lg shadow-custom bg-white z-10 hover:shadow-hover">
         <div className="flex flex-col gap-y-2">
           <div className="flex flex-col py-3">
             <div className=" hover:bg-[#f4f4f4] w-full">
@@ -84,7 +84,7 @@ export const DropDownDocument = ({ open, setOpen }) => {
                 </span>
               </button>
               {openExport ? (
-                <span className="absolute -right-40 -top-56 mt-2 -mr-2">
+                <span className="absolute -right-40 -top-56 mt-2 -mr-2 lg:right-72 lg:mr-0">
                   <DropDownExport
                     openExport={openExport}
                     setOpenExport={setOpenExport}

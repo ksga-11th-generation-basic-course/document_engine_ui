@@ -2,37 +2,42 @@ import React from "react";
 import { Modal } from "react-daisyui";
 import close from "../assets/dashboard_image/close.svg";
 import group from "../assets/dashboard_image/group.svg";
-import worksapacephoto from "../assets/dashboard_image/worksapacephoto.svg";
+import workspacephoto from "../assets/dashboard_image/worksapacephoto.svg";
 
-export const CreateWorkspaceModal = ({ visible, toggleVisible }) => {
+export const CreateWorkspaceModal = ({ visible, setVisible ,newWorkspace, setNewWorkspace }) => {
+  const toggleVisible = () => {
+        setVisible(!visible);
+        setNewWorkspace(!newWorkspace);
+  };
   return (
     <div className="w-full -mt-3 md:-mt-5">
       <button
-        onClick={toggleVisible}
+        onClick={toggleVisible }  
         className="bg-primary w-full py-3 text-white rounded-lg text-18px font-semibold mt-5 lg:w-60 md:text-12px md:w-36"
       >
         New Workspace
       </button>
-      <Modal open={visible} onClickBackdrop={toggleVisible}>
+      <Modal open={visible} >
         <div className="w-[540px] bg-white rounded-lg p-3">
           <div className="flex justify-end">
             <button type="button" onClick={toggleVisible}>
               <img src={close} />
             </button>
           </div>
+
           <div className="px-14 space-y-5 text-accent gap-y-4">
             <div className="flex justify-center items-center">
               <img src={group} />
             </div>
-            <h1 className="font-bold text-24px text-primary text-center">
-              Create Workspace
+            <h1 className="font-bold text-28px text-primary text-center">
+                Create Workspace
             </h1>
             <div className="flex flex-col gap-y-2 font-semibold text-18px">
               <p>Workspace Name</p>
               <input
                 type="text"
                 placeholder="Workspace Name"
-                className="rounded-lg py-3 border-primary focus:ring-btn-primary focus:border-btn-primary"
+                className="rounded-lg py-3 border-primary font-normal focus:ring-btn-primary focus:border-btn-primary"
               />
               <p>Workspace Photo</p>
               <label>
@@ -41,7 +46,7 @@ export const CreateWorkspaceModal = ({ visible, toggleVisible }) => {
                   type="file"
                   multiple
                 />
-                <img src={worksapacephoto} className="cursor-pointer" />
+                <img src={workspacephoto} className="cursor-pointer" />
               </label>
             </div>
             <p className="text-end text-[#9CA3AF]">(optional)</p>
@@ -54,6 +59,7 @@ export const CreateWorkspaceModal = ({ visible, toggleVisible }) => {
               </button>
             </div>
           </div>
+          
         </div>
       </Modal>
     </div>

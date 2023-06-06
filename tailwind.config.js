@@ -52,6 +52,7 @@ export default {
         "20px": "20px",
         "22px": "22px",
         "24px": "24px",
+        "28px": "28px",
         "34px": "34px",
         "36px": "36px",
         "44px": "44px",
@@ -60,7 +61,7 @@ export default {
       boxShadow: {
         custom: "0 0.2px 1px 1px rgba(0, 0, 0, 0.1)",
         hover: "0 0.5px 5px 2px rgba(0, 0, 0, 0.1)",
-        content: "-1px 5px 32px rgba(0, 0, 0, 0.08)",
+        sidebar: "0px 10px 20px -5px rgba(0, 0, 0, 0.2)",
         tip: "0px 2px 2px rgba(0, 0, 0, 0.2)",
         profile: "0px 1px 4px rgba(0, 0, 0, 0.1)",
         logo: "0px 2px 4px rgba(0, 0, 0, 0.1)",
