@@ -14,8 +14,8 @@ export const JoinWorkspaceModal = ({ visible, toggleVisible }) => {
         <img src={join} className="w-4 h-4 md:w-3.5" />
         Join
       </button>
-      <Modal open={visible} onClickBackdrop={toggleVisible}>
-        <div className="w-[540px] md:w-[400px] md:h-[380px] md:p-0 bg-white rounded-lg p-3">
+      <Modal open={visible}>
+        <div className="w-[540px] bg-white rounded-lg p-3">
           <div className="flex justify-end">
             <button type="button" onClick={toggleVisible}>
               <img className="p-2" src={close} />
@@ -25,15 +25,15 @@ export const JoinWorkspaceModal = ({ visible, toggleVisible }) => {
             <div className="flex justify-center items-center">
               <img className="md:w-[70px] md:h-[70px] " src={joinworkspace} />
             </div>
-            <h1 className="font-bold text-24px md:text-22px text-primary text-center">
-              Enter code to join workspaces
+            <h1 className="font-bold text-28px text-primary text-center">
+              Enter code to join workspace
             </h1>
-            <div className="flex flex-col gap-y-2 font-semibold text-18px md:text-16px">
+            <div className="flex flex-col gap-y-2 font-semibold text-18px">
               <p>Workspace Code</p>
               <input
                 type="text"
                 placeholder="Workspace Code"
-                className="rounded-lg  py-3 border-primary focus:ring-btn-primary focus:border-btn-primary"
+                className="rounded-lg py-3 border-primary font-normal focus:ring-btn-primary focus:border-btn-primary"
               />
             </div>
             <div className="flex justify-end items-center gap-5 text-16px font-semibold pb-5">

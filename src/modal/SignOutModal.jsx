@@ -6,7 +6,7 @@ import { Modal } from "react-daisyui";
 export const SignOutModal = ({ visible, toggleVisible }) => {
   return (
     <div className="w-full">
-      <Modal open={visible} onClickBackdrop={toggleVisible}>
+      <Modal open={visible}>
         <div className="w-[540px] bg-white rounded-lg p-3">
           <div className="flex justify-end">
             <button type="button" onClick={toggleVisible}>

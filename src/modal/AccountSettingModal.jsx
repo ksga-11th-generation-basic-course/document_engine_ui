@@ -26,7 +26,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
 
   return (
     <div className="w-full">
-      <Modal open={openSetting} onClickBackdrop={() => setOpenSetting(!openSetting)}>
+      <Modal open={openSetting}>
         <div className="w-[1200px] h-[840px] bg-white rounded-lg grid grid-cols-12">
           <div className="col-span-3 bg-[#FAFAF9] rounded-lg space-y-5">
             <div className="flex justify-center p-5 rounded-tl-lg shadow-md">

@@ -5,14 +5,11 @@ import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
 import close from "../assets/dashboard_image/close.svg";
 import { NavBarProfile } from "./NavBarProfile";
 
-export const SideBar = ({ sideBar, setSideBar }) => {
+export const SideBar = ({ sideBar, setSideBar, newWorkspace, setNewWorkspace}) => {
   const [visible, setVisible] = useState(false);
-  const toggleVisible = () => {
-    setVisible(!visible);
-  };
 
   return (
-    <div className="bg-[#FAFAF9] md:mt-8">
+    <div className="bg-[#FAFAF9] overflow-x-auto md:mt-8">
       {/* Close Button */}
       <div className="hidden lg:flex flex-col items-end pr-3 pt-3 md:absolute md:right-0 md:top-0">
         <div className="hidden lg:inline-block  md:justify-end">
@@ -22,16 +19,18 @@ export const SideBar = ({ sideBar, setSideBar }) => {
         </div>
       </div>
 
-      <div className=" flex flex-col items-center p-5 gap-y-3 h-screen lg:-mt-10">
+      <div className=" flex flex-col items-center p-5 gap-y-3 h-screen mt-3 lg:-mt-10">
         {/* Logo */}
-        <Link>
-                <img src={logo} className="w-28 h-28 flex lg:w-28 md:w-[75px] md:h-[75px] md:mt-5" />
+        <Link to={"/dashboard"}>
+                <img src={logo} className="w-28 h-28 mb-2 flex lg:w-28 md:w-[75px] md:h-[75px] md:mt-5" />
         </Link>
 
         {/* Create Workspace */}
         <CreateWorkspaceModal
           visible={visible}
-          toggleVisible={toggleVisible}
+          setVisible={setVisible}
+          newWorkspace={newWorkspace}
+          setNewWorkspace={setNewWorkspace}
         />
         <div className="flex flex-col w-full gap-y-3 text-18px text-accent font-semibold md:text-14px md:w-36">
           <NavLink
@@ -109,7 +108,7 @@ export const SideBar = ({ sideBar, setSideBar }) => {
                 </clipPath>
               </defs>
             </svg>
-            <p>React & NodeJS</p>
+                    <span className="line-clamp-1">React & NodeJS</span>
           </NavLink>
         </div>
       </div>
