@@ -55,6 +55,7 @@ export const Root = () => {
                         {open ? <span className="z-10 absolute shadow-custom h-screen lg:overflow-hidden md:overflow-hidden"><SideBar sideBar={open} setSideBar={setOpen} /></span>  : null}
                     </div>
 
+<<<<<<< HEAD
                     <span className={open ? "hidden fixed lg:inline-block lg:absolute lg:right-0 lg:mt-24 md:-right-8 md:mt-20 md:fixed" : "hidden lg:inline-block lg:absolute right-0 md:-right-8 md:fixed"}><NavBarProfile /></span>
               </div> 
 
@@ -67,6 +68,17 @@ export const Root = () => {
                          <Outlet/>
                 </div>
 >>>>>>> 6d37ee2 (responsive)
+=======
+          <div className={open ? "hidden lg:inline-block lg:ml-10 xs:ml-0 lg:mt-24 lg:px-3" : "hidden lg:inline-block lg:ml-10 xs:ml-0 lg:mt-9 lg:px-3 xs:px-10"}>
+            <Outlet /></div>
+        </div>
+
+        <div className="col-span-10 z-10 shadow-xl lg:hidden">
+          <div><NavBarProfile /></div>
+          <div className="px-64 xs:px-32">
+            <Outlet />
+          </div>
+>>>>>>> 993ffaf (init)
         </div>
       </div>
     </div>
