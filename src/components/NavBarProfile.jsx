@@ -13,9 +13,13 @@ export const NavBarProfile = () => {
 
   return (
 <<<<<<< HEAD
+<<<<<<< HEAD
     <div className="flex justify-end items-center py-5 px-14 gap-x-5 md:px-7">
 =======
     <div className="flex justify-end items-center py-5 px-14 gap-x-5">
+=======
+    <div className="flex justify-end items-center py-5 px-14 2xs:px-24 gap-x-5 bg-white">
+>>>>>>> 1ee19be (init)
       {signOut ? "True" : "False"}
 >>>>>>> 273f21b (responsive)
       <div>
