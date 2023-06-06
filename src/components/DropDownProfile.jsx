@@ -6,7 +6,7 @@ import signout from "../assets/dashboard_image/signout.svg";
 import { SignOutModal } from "../modal/SignOutModal";
 import { AccountSettingModal } from "../modal/AccountSettingModal";
 
-export const DropDownProfile = ({ open, setOpen}) => {
+export const DropDownProfile = ({ open, setOpen , signOut, setSignOut}) => {
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {
     setVisible(!visible);
@@ -40,9 +40,12 @@ export const DropDownProfile = ({ open, setOpen}) => {
           <p className="font-bold text-[26px] text-primary md:text-22px">Profile</p>
 >>>>>>> 184cecc (responsive)
           <div className="relative flex items-center gap-x-3">
-            <div className="overflow-hidden w-14 h-14 flex bg-primary rounded-full md:w-12 md:h-12">
-              <img src={avatar} className="bg-cover" />
-            </div>
+                <button
+                
+                  onClick={() => {setOpenSetting(!openSetting); setOpen(open)}}
+                >
+                        <img src={avatar} className="bg-cover overflow-hidden w-14 h-14 flex bg-primary rounded-full md:w-12 md:h-12"/>
+                </button>
             <div>
               <h3 className="font-bold text-22px">Ouddom</h3>
               <p className="text-[#9CA3AF]">tith.ouddom@gmail.com</p>
@@ -52,7 +55,7 @@ export const DropDownProfile = ({ open, setOpen}) => {
           <div className="flex flex-col gap-y-5 py-5 md:py-0">
             <button
               className="flex items-center text-18px gap-x-4"
-              onClick={() => setOpenSetting(!openSetting)}
+              onClick={() => {setOpenSetting(!openSetting); setOpen(open)}}
             >
               <img src={setting} />
               <span>Setting</span>
@@ -67,7 +70,7 @@ export const DropDownProfile = ({ open, setOpen}) => {
           </div>
         </div>
         <div>
-          <SignOutModal visible={visible} toggleVisible={toggleVisible} />
+            {!open ? <SignOutModal visible={visible} toggleVisible={toggleVisible} /> : null}
           <AccountSettingModal
             openSetting={openSetting}
             setOpenSetting={setOpenSetting}
