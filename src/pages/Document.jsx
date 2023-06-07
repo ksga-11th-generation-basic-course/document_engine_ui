@@ -74,7 +74,7 @@ export const Document = () => {
         </div>
         <div className="grid grid-cols-12 pt-2 xs:gap-x-5 gap-x-3 2xl:gap-x-2 md:gap-x-8 sm:gap-x-5 2xs:gap-x-3 lg:gap-x-2">
           <div className="col-span-4 grid grid-cols-3 xs:grid-cols-4 2xs:grid-cols-4 lg:grid-cols-3 justify-between items-center gap-x-3 h-11 sm:col-span-6 xs:gap-x-0 md:col-span-6 xs:col-span-6 2xs:col-span-6">
-            <div className="col-span-1 gap-x-1 2xs:col-span-1 xs:col-span-1 lg:col-span-1 xs:gap-x-3 flex">
+            <div className="col-span-1 gap-x-3 2xs:col-span-1 xs:col-span-1 lg:col-span-1 xs:gap-x-3 flex">
               <img src={sort} className="w-7 h-7 sm:hidden md:w-5" />
               <h4 className="font-semibold text-20px xs:text-16px sm:text-16px md:text-16px lg:text-18px">
                 Sort:{" "}
@@ -82,7 +82,7 @@ export const Document = () => {
             </div>
             <div className="relative col-span-2 lg:col-span-2 2xs:col-span-3 xs:col-span-3">
               <button
-                className="flex items-center justify-between sm:gap-10 xs:gap-2 p-1.5 xs:p-1 sm:p-1 rounded-lg xl:w-44 sm:w-44 xl:gap-x-0 xs:w-36 md:w-52 lg:w-full 2xl:gap-0 2xl:w-full 2xs:w-full"
+                className="flex items-center justify-between gap-x-20 sm:gap-10 xs:gap-2 p-1.5 xs:p-1 sm:p-1 rounded-lg xl:w-44 sm:w-44 xl:gap-x-0 xs:w-36 md:w-52 lg:w-full 2xl:gap-0 2xl:w-full 2xs:w-full"
                 onClick={() => setOpenSort(!openSort)}
               >
                 <p className="text-18px text-black xs:text-16px sm:text-16px md:text-16px">
