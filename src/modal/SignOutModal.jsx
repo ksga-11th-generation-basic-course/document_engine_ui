@@ -2,8 +2,21 @@ import React from "react";
 import close from "../assets/dashboard_image/close.svg";
 import signouticon from "../assets/dashboard_image/signouticon.svg";
 import { Modal } from "react-daisyui";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { signOutSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 
 export const SignOutModal = ({ visible, toggleVisible }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const signOut = () => {
+    dispatch(signOutSuccess());
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    navigate("/signin");
+  };
+
   return (
     <div className="w-full">
       <Modal open={visible} onClickBackdrop={toggleVisible}>
@@ -31,7 +44,10 @@ export const SignOutModal = ({ visible, toggleVisible }) => {
               >
                 Cancel
               </button>
-              <button className="bg-red-500 text-white  px-10 py-3 rounded-lg ">
+              <button
+                className="bg-red-500 text-white  px-10 py-3 rounded-lg "
+                onClick={signOut}
+              >
                 Yes, Sign out
               </button>
             </div>

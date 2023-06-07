@@ -1,13 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import Logo from "../assets/images/Logo.svg";
 import RightImage from "../assets/images/Login/Right-img-login.svg";
 import LeftImage from "../assets/images/Login/Left-img-login.svg";
-import Google from "../assets/images/Login/Google.svg";
-import Facebook from "../assets/images/Login/Facebook.svg";
 import { useFormik } from "formik";
 
 import { Link, useNavigate } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { signInWithPopup } from "firebase/auth";
 import {
   auth,
@@ -19,8 +17,12 @@ import {
   signinWithGoogleAndFacebook,
 } from "../redux/service/authenticationService/authenticationService";
 import * as Yup from "yup";
+import { signInSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
+import { EnableAccountModal } from "../modal/EnableAccountModal";
 
 export const SignIn = () => {
+  const [enableAccount, setEnableAccount] = useState(false);
+
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
@@ -61,24 +63,24 @@ export const SignIn = () => {
     validationSchema: Yup.object({
       email: Yup.string()
         .email("Enter a valid email")
-        .required("Please enter a registered email"),
+        .required("Please enter email"),
       password: Yup.string()
-        .required("Password is a required field")
+        .required("Please enter password")
         .min(4, "Password must have more than 4 characters "),
     }),
-    onSubmit: (values, { resetForm }) => {
-      dispatch(signin(values));
-      resetForm({ values: "" });
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const user = await signin(values);
+        dispatch(signInSuccess(user));
+        navigate("/dashboard");
+        resetForm({ values: "" });
+      } catch (error) {
+        if (error === "Account is close") {
+          setEnableAccount(!enableAccount);
+        }
+      }
     },
   });
-
-  // const token = localStorage.getItem("token");
-
-  // useEffect(() => {
-  //   if (token) {
-  //     navigate("/dashboard");
-  //   }
-  // });
 
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
@@ -215,6 +217,12 @@ export const SignIn = () => {
         </form>
       </div>
       <img className="w-[600px] h-[600.57px]  max-sm:hidden" src={RightImage} />
+      <div>
+        <EnableAccountModal
+          enableAccount={enableAccount}
+          setEnableAccount={setEnableAccount}
+        />
+      </div>
     </div>
   );
 };

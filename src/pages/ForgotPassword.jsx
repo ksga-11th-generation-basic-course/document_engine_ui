@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from "react";
 import Logo from "../assets/images/Logo.svg";
 import Forgot1 from "../assets/images/Forgot/Forgot.svg";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { forgotPassword } from "../redux/service/authenticationService/authenticationService";
 import { useNavigate } from "react-router-dom";
+import { forgotPasswordSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 export const ForgotPassword = () => {
   const navigate = useNavigate();
-
-  const authentication = useSelector(
-    (state) => state.authentication.authentication
-  );
 
   const dispatch = useDispatch();
 
   const [email, setEmail] = useState();
 
-  const handleSubmit = () => {
-    dispatch(forgotPassword(email));
-  };
-
-  useEffect(() => {
-    if (authentication.email) {
-      navigate("/verifyForgotPassword");
+  const handleSubmit = async () => {
+    try {
+      const user = await forgotPassword(email);
+      dispatch(forgotPasswordSuccess(user));
+      navigate("/verifyforgotpassword");
+    } catch (error) {
+      console.error("Forgot password failed:", error);
     }
-  });
+  };
 
   return (
     <div className="flex justify-center items-center bg-[#EDF9FF] relative text-[#37352F]">

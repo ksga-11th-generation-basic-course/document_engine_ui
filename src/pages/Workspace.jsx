@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import workspaceicon from "../assets/workspace_image/workspaceicon.png";
 import sort from "../assets/workspace_image/sort.svg";
 import chevrondown from "../assets/workspace_image/chevrondown.svg";
@@ -10,6 +10,8 @@ import { WorkspaceCard } from "../components/card/WorkspaceCard";
 import docker from "../assets/workspace_image/docker.svg";
 import spring from "../assets/workspace_image/spring.svg";
 import reactjs from "../assets/workspace_image/reactjs.svg";
+import { getAllWorkspace } from "../redux/service/workspaceService/workspaceService";
+import { useDispatch, useSelector } from "react-redux";
 
 export const Workspace = () => {
   const [openSort, setOpenSort] = useState(false);
@@ -17,6 +19,14 @@ export const Workspace = () => {
   const [openFilter, setOpenFilter] = useState(false);
 
   const [openSearch, setOpenSearch] = useState(false);
+
+  const workspaces = useSelector((state) => state.workspace.workspaces);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllWorkspace());
+  }, []);
 
   return (
     <div className="text-accent space-y-5">
@@ -88,33 +98,17 @@ export const Workspace = () => {
         </div>
       </div>
       <div className="grid grid-cols-12 gap-8">
-        <div className="col-span-4">
-          <WorkspaceCard
-            workspacename={"Docker"}
-            isOwner={true}
-            workspacephoto={docker}
-            total={12}
-            createdate={"12/01/2023"}
-          />
-        </div>
-        <div className="col-span-4">
-          <WorkspaceCard
-            workspacename={"Spring"}
-            isOwner={false}
-            workspacephoto={spring}
-            total={15}
-            createdate={"10/05/2023"}
-          />
-        </div>
-        <div className="col-span-4">
-          <WorkspaceCard
-            workspacename={"ReactJS"}
-            isOwner={true}
-            workspacephoto={reactjs}
-            total={20}
-            createdate={"11/05/2023"}
-          />
-        </div>
+        {workspaces === null ? null : workspaces.length > 0 ? (
+          workspaces.map((workspace, index) => (
+            <div className="col-span-4" key={index}>
+              <WorkspaceCard workspace={workspace} />
+            </div>
+          ))
+        ) : (
+          <div className="col-span-12 absolute bottom-[45%] left-[55%]">
+            <p className="font-semibold text-accent">No Workspace</p>
+          </div>
+        )}
       </div>
     </div>
   );

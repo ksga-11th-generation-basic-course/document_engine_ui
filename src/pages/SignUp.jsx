@@ -18,11 +18,10 @@ import {
 } from "../redux/service/authenticationService/authenticationService";
 import { useFormik } from "formik";
 import * as Yup from "yup";
+import { signUpSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 
 export const SignUp = () => {
-  const authentication = useSelector(
-    (state) => state.authentication.authentication
-  );
+
 
   const navigate = useNavigate();
 
@@ -31,6 +30,7 @@ export const SignUp = () => {
   const handleGoogle = () => {
     signInWithPopup(auth, providerGoogle)
       .then((data) => {
+        console.log(data)
         const googleAuth = {
           username: data.user.displayName,
           email: data.user.email,
@@ -45,8 +45,10 @@ export const SignUp = () => {
   };
 
   const handleFacebook = () => {
+    window.open('https://javascript.info');
     signInWithPopup(auth, providerFacebook)
       .then((data) => {
+        console.log(data)
         const facebookAuth = {
           username: data.user.displayName,
           email: data.user.email,
@@ -81,19 +83,17 @@ export const SignUp = () => {
         .oneOf([Yup.ref("password")], "Confirm Password must matched Password")
         .required("Confirm Password is required"),
     }),
-    onSubmit: (values, { resetForm }) => {
-      dispatch(signup(values));
-      resetForm({ values: "" });
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const user = await signup(values);
+        dispatch(signUpSuccess(user));
+        navigate("/verifyOTP");
+        resetForm({ values: "" });
+      } catch (error) {
+        console.error("Sign-in failed:", error);
+      }
     },
   });
-
-  console.log(authentication)
-
-  // useEffect(() => {
-  //   if (authentication.email) {
-  //     navigate("/verifyOTP");
-  //   }
-  // });
 
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">

@@ -8,7 +8,7 @@ import ExportFile from "../assets/images/Dashboard/ExportFile.svg";
 import Tag from "../assets/images/Dashboard/Tag.svg";
 import arrow from "../assets/document_image/arrow.svg";
 import icon from "../assets/document_image/icon.svg";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import doc from "../assets/document_image/doc.svg";
 import { DocumentPermissionModal } from "../modal/DocumentPermissionModal";
 import { DocumentHistoryModal } from "../modal/DocumentHistoryModal";
@@ -22,46 +22,61 @@ import Header from "@editorjs/header";
 import Quote from "@editorjs/quote";
 import CheckList from "@editorjs/checklist";
 import InlineCode from "@editorjs/inline-code";
+import { useDispatch, useSelector } from "react-redux";
+import { getDocumentByDocumentId } from "../redux/service/documentService/documentService";
+import { Editor } from "../components/editor/Editor";
 
 export const CreateDocument = () => {
   const [openPermission, setOpenPermission] = useState(false);
   const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
   const [openExport, setOpenExport] = useState(false);
 
-  const ejInstance = useRef();
-  const editor = new EditorJS({
-    holder: "editorjs",
-    onReady: () => {
-      ejInstance.current = editor;
-    },
-    autofocus: true,
-    onChange: async () => {
-      let content = await editor.saver.save();
-      console.log(content);
-    },
-    tools: {
-      header: Header,
-      list: List,
-      code: Code,
-      linkTool: LinkTool,
-      image: Image,
-      quote: Quote,
-      checklist: CheckList,
-      inlineCode: InlineCode,
-    },
-  });
+  // const ejInstance = useRef();
+  // const editor = new EditorJS({
+  //   holder: "editorjs",
+  //   onReady: () => {
+  //     ejInstance.current = editor;
+  //   },
+  //   autofocus: true,
+  //   onChange: async () => {
+  //     let content = await editor.saver.save();
+  //     console.log(content);
+  //   },
+  //   tools: {
+  //     header: Header,
+  //     list: List,
+  //     code: Code,
+  //     linkTool: LinkTool,
+  //     image: Image,
+  //     quote: Quote,
+  //     checklist: CheckList,
+  //     inlineCode: InlineCode,
+  //   },
+  // });
+  // useEffect(() => {
+  //   if (ejInstance.current === null) {
+  //   }
+  //   return () => {
+  //     ejInstance?.current?.destroy();
+  //     ejInstance.current = null;
+  //   };
+  // }, []);
+
+  const document = useSelector((state) => state.document.document);
+
+  const param = useParams();
+
+  const documentId = param.id;
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    if (ejInstance.current === null) {
-    }
-    return () => {
-      ejInstance?.current?.destroy();
-      ejInstance.current = null;
-    };
+    dispatch(getDocumentByDocumentId(documentId));
   }, []);
 
   return (
     <div className="w-full">
-      <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
+      {/* <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
         <div className="grid grid-rows-1 gap-3">
           <button
             className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
@@ -93,8 +108,8 @@ export const CreateDocument = () => {
             ) : null}
           </div>
         </div>
-      </div>
-      <div className="text-[#9CA3AF] grid grid-rows-1 gap-2">
+      </div> */}
+      <div className="text-[#9CA3AF] grid grid-rows-1 gap-2 px-12">
         <div className="w-full h-auto">
           <nav className="flex items-center text-sm">
             <ol className="list-none p-0 inline-flex">
@@ -115,7 +130,7 @@ export const CreateDocument = () => {
             <input
               className="text-5xl p-0 text-black w-auto py-2 focus:ring-0 focus:border-0 border-0"
               type="text"
-              placeholder="Untitle"
+              placeholder={document && document.title}
             />
           </span>
           <div className="w-[40%] grid grid-rows-1 gap-y-2">
@@ -146,9 +161,9 @@ export const CreateDocument = () => {
           </div>
           <hr className="mt-3" />
         </div>
-        <div className="w-full">
-          <div id="editorjs" />
-        </div>
+      </div>
+      <div className="mt-2">
+        <Editor />
       </div>
       <div>
         <DocumentPermissionModal

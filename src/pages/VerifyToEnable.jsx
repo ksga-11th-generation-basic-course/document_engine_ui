@@ -10,11 +10,11 @@ import { useRef } from "react";
 import { useDispatch } from "react-redux";
 import {
   resendVerifyCode,
-  verifyOTP,
+  verifyToEnableAccount,
 } from "../redux/service/authenticationService/authenticationService";
 import { useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
-import { verifySuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
+import { verifyToEnableAccountSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 
 const validate = (values) => {
   const errors = {};
@@ -23,7 +23,7 @@ const validate = (values) => {
   }
   return errors;
 };
-export const VerifyForgotPassword = () => {
+export const VerifyToEnable = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -35,9 +35,10 @@ export const VerifyForgotPassword = () => {
     validate,
     onSubmit: async (values) => {
       try {
-        const optCode = await verifyOTP(values.OTP.join(""));
-        dispatch(verifySuccess(optCode));
-        navigate("/ResetForgotPassword");
+        const optCode = await verifyToEnableAccount(values.OTP.join(""));
+        dispatch(verifyToEnableAccountSuccess(optCode));
+        navigate("/signin");
+        localStorage.removeItem("email");
       } catch (error) {
         console.error("Verify failed:", error);
       }
@@ -151,7 +152,7 @@ export const VerifyForgotPassword = () => {
                             </p>
                           )}
                           <div className="flex justify-center text-center mt-5">
-                            <a className="flex items-center cursor-pointer">
+                            <a className="flex items-center  cursor-pointer">
                               <span className="font-bold">
                                 (
                                 <Countdown
@@ -180,7 +181,7 @@ export const VerifyForgotPassword = () => {
                               onClick={formik.handleSubmit}
                               className="transition font-bold text-18px duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm hover:shadow-md text-center inline-block"
                             >
-                              Verify
+                              Verify & Enable Acoount
                             </button>
                           </div>
                         </div>

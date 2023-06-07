@@ -15,6 +15,8 @@ import { AboutUs } from "./pages/AboutUs";
 import { ContactUs } from "./pages/ContactUS";
 import { NotFound } from "./pages/NotFound";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
+import { EnableAccount } from "./pages/EnableAccount";
+import { VerifyToEnable } from "./pages/VerifyToEnable";
 
 function App() {
   return (
@@ -28,25 +30,41 @@ function App() {
         <Route
           path="/forgotpassword"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <ForgotPassword />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/verifyforgotpassword"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <VerifyForgotPassword />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/resetforgotpassword"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <ResetForgotPassword />
-            </ProtectedRoute>
+            // </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/enableaccount"
+          element={
+            // <ProtectedRoute>
+              <EnableAccount />
+            // </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/verifyenableaccount"
+          element={
+            // <ProtectedRoute>
+              <VerifyToEnable />
+            // </ProtectedRoute>
           }
         />
 
@@ -54,9 +72,9 @@ function App() {
         <Route
           path="/verifyotp"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <VerifyOTP />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
 
@@ -64,33 +82,33 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Dashboard />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
             path="/workspace"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Workspace />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
-            path="/document"
+            path="/document/:id"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Document />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
-            path="/createdocument"
+            path="/createdocument/:id"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <CreateDocument />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
         </Route>

@@ -5,6 +5,8 @@ import {
   FacebookAuthProvider,
 } from "firebase/auth";
 
+import { getStorage } from "firebase/storage";
+
 const firebaseConfig = {
   apiKey: "AIzaSyCNA-_7bzt3PO58hUv65BZXr4aMAvnEMjo",
   authDomain: "docengine-7e623.firebaseapp.com",
@@ -18,4 +20,5 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const providerGoogle = new GoogleAuthProvider();
 const providerFacebook = new FacebookAuthProvider();
+export const storage = getStorage(app);
 export { auth, providerGoogle, providerFacebook };

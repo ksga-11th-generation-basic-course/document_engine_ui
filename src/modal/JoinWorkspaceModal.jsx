@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useState } from "react";
 import { Modal } from "react-daisyui";
 import close from "../assets/dashboard_image/close.svg";
 import joinworkspace from "../assets/dashboard_image/joinworkspace.svg";
 import join from "../assets/dashboard_image/join.svg";
+import { joinWorkspace } from "../redux/service/workspaceService/workspaceService";
+import { useDispatch } from "react-redux";
+import { joinWorkspaceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
 
 export const JoinWorkspaceModal = ({ visible, toggleVisible }) => {
+  const [workspaceCode, setWorkspaceCode] = useState();
+
+  const dispatch = useDispatch();
+
+  const handleJoinWorkspace = async () => {
+    try {
+      const workspace = await joinWorkspace(workspaceCode);
+      dispatch(joinWorkspaceSuccess(workspace));
+      toggleVisible;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="w-full">
       <button
@@ -34,6 +51,7 @@ export const JoinWorkspaceModal = ({ visible, toggleVisible }) => {
                 type="text"
                 placeholder="Worksapce Code"
                 className="rounded-lg py-3 border-primary focus:ring-btn-primary focus:border-btn-primary"
+                onChange={(e) => setWorkspaceCode(e.target.value)}
               />
             </div>
             <div className="flex justify-end items-center gap-5 text-16px font-semibold pb-5">
@@ -43,7 +61,10 @@ export const JoinWorkspaceModal = ({ visible, toggleVisible }) => {
               >
                 Cancel
               </button>
-              <button className="bg-primary text-white  px-10 py-3 rounded-lg ">
+              <button
+                className="bg-primary text-white  px-10 py-3 rounded-lg"
+                onClick={handleJoinWorkspace}
+              >
                 Join
               </button>
             </div>
