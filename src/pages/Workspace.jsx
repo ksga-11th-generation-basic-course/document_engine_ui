@@ -87,7 +87,7 @@ export const Workspace = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-12 gap-8 md:px-6 sm:grid sm:grid-cols-1">
+      <div className="grid grid-cols-12 gap-8 md:px-6 sm:grid sm:grid-cols-1 sm:px-0 sm:py-5">
         <div className="col-span-4 md:col-span-6 md:w-[250px]">
           <WorkspaceCard
             workspacename={"Docker"}

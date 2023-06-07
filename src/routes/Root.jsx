@@ -11,7 +11,7 @@ export const Root = () => {
 
   return (
     <div className="relative bg-white">
-      <div className="grid grid-cols-12 h-screen">
+      <div className="grid grid-cols-12 sm:h-[100%]">
         <div className="col-span-2 lg:col-span-12 md:col-span-12">
           <div className="fixed w-80 z-0 lg:hidden md:hidden "> <SideBar /></div>
           <div className={!open ? "hidden lg:flex lg:items-center lg:mt-9 md:mt-7" : "lg:flex lg:items-center"}>
@@ -30,7 +30,7 @@ export const Root = () => {
                 <SideBar sideBar={open} setSideBar={setOpen} /></span> : null}
             </div>
 
-            <span className={open ? "hidden fixed lg:inline-block lg:absolute lg:right-0 lg:mt-24 md:-right-8 md:mt-20 md:fixed sm:ml-10" : "hidden lg:inline-block lg:absolute right-0 md:-right-8 md:fixed"}>
+            <span className={open ? "hidden fixed lg:inline-block lg:absolute lg:right-0 lg:mt-24 md:-right-8 md:mt-20 md:fixed sm:right-0" : "hidden lg:inline-block lg:absolute right-0 md:-right-8 md:fixed sm:right-0"}>
               <NavBarProfile />
             </span>
           </div>
@@ -41,7 +41,7 @@ export const Root = () => {
 
         <div className="col-span-10 z-10 shadow-xl lg:hidden">
           <div><NavBarProfile /></div>
-          <div className="px-64">
+          <div className="px-64 2xs:px-52">
             <Outlet />
           </div>
         </div>
