@@ -19,8 +19,8 @@ export const DocumentCard = ({ document }) => {
         <h4 className="font-semibold text-20px">{document.title}</h4>
         {document.status ? (
           <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF]">
-            <p className="text-14px">Editing...</p>
-            <img src={pencil} className="w-3 h-3" />
+            <p className="text-14px 2xl:text-12px">Editing...</p>
+            <img src={pencil} className="w-3 h-3"/>
           </div>
         ) : null}
       </div>

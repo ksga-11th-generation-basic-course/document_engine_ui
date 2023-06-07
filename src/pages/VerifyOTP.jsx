@@ -50,7 +50,7 @@ export const VerifyOTP = () => {
   useEffect(() => {
     inputRef.current[0].focus();
     inputRef.current[0].addEventListener("paste", pasteText);
-    return () => inputRef.current[0].removeEventListener("paste", pasteText);
+    // return () => inputRef.current[0].removeEventListener("paste", pasteText);
   }, []);
   const pasteText = (event) => {
     const pastedText = event.clipboard.getData("text");

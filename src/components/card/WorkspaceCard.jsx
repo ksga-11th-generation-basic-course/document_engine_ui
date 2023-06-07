@@ -24,7 +24,7 @@ export const WorkspaceCard = ({ workspace }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg text-accent cursor-pointer">
+    <div className="shadow-md rounded-lg text-accent cursor-pointer sm:w-[300px]">
       <div className="flex justify-between items-center p-3">
         <h4 className="font-semibold text-18px">{workspace.workspaceName}</h4>
         {workspace.isOwner ? (

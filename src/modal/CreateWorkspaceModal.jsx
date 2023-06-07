@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "react-daisyui";
 import close from "../assets/dashboard_image/close.svg";
 import group from "../assets/dashboard_image/group.svg";
-import worksapacephoto from "../assets/dashboard_image/worksapacephoto.svg";
+import workspacephoto from "../assets/dashboard_image/worksapacephoto.svg";
 import { useDispatch } from "react-redux";
 import { createWorkspace } from "../redux/service/workspaceService/workspaceService";
 import { createWorkspaceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
@@ -20,7 +20,6 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
   const handleSubmit = () => {
     try {
       if (!workspaceImage) return;
-
       const imageRef = ref(
         storage,
         `images/workspace/${uuidv4()}_${workspaceImage.name}`
@@ -54,11 +53,12 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
               <img src={close} />
             </button>
           </div>
+
           <div className="px-14 space-y-5 text-accent gap-y-4">
             <div className="flex justify-center items-center">
               <img src={group} />
             </div>
-            <h1 className="font-bold text-24px text-primary text-center">
+            <h1 className="font-bold text-28px text-primary text-center">
               Create Workspace
             </h1>
             <form
@@ -82,7 +82,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                     setWorkspaceImage(e.target.files[0]);
                   }}
                 />
-                <img src={worksapacephoto} className="cursor-pointer" />
+                <img src={workspacephoto} className="cursor-pointer" />
               </label>
               <div className="space-y-3 mt-2">
                 <p className="text-end text-[#9CA3AF] font-normal">

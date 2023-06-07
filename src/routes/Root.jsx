@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unknown-property */
 import React, { useState } from "react";
 import { SideBar } from "../components/SideBar";
 import { NavBarProfile } from "../components/NavBarProfile";

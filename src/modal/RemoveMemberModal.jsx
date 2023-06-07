@@ -10,7 +10,7 @@ export const RemoveMemberModal = ({ removeMember, setRemoveMember }) => {
         open={removeMember}
         onClickBackdrop={() => setRemoveMember(!removeMember)}
       >
-        <div className="w-[540px] bg-white rounded-lg p-3">
+        <div className="w-[540px] md:w-[450px] bg-white rounded-lg p-3">
           <div className="flex justify-end">
             <button
               type="button"
@@ -21,7 +21,7 @@ export const RemoveMemberModal = ({ removeMember, setRemoveMember }) => {
           </div>
           <div className="px-14 space-y-5 text-accent">
             <div className="flex justify-center items-center">
-              <img src={removemember} />
+              <img className="w-[80px]" src={removemember} />
             </div>
             <p className="font-normal text-accent text-18px text-center">
               Are you sure want to remove this member <br /> from this workspace?

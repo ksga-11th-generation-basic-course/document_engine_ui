@@ -58,7 +58,7 @@ export const SettingWorkspace = ({
             />
           </svg>
         )}
-        <p className="font-semibold text-18px">Setting</p>
+        <p className="font-semibold text-18px md:text-[16px]">Setting</p>
       </button>
     </div>
   );

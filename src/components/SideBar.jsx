@@ -56,8 +56,8 @@ export const SideBar = ({
             to={"/dashboard"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
-                : "flex items-center w-full gap-x-3 py-3 rounded-lg px-4"
+                ? "flex items-center w-full md:w-[160px] md:flex  gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
+                : "flex items-center w-full md:w-[160px] md:flex gap-x-3 py-3 rounded-lg px-4"
             }
           >
             <svg
@@ -78,8 +78,8 @@ export const SideBar = ({
             to={"/workspace"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
-                : "flex items-center w-full gap-x-3 py-3 rounded-lg px-4"
+                ? "flex items-center w-full md:w-[160px] gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
+                : "flex items-center w-full md:w-[160px] gap-x-3 py-3 rounded-lg px-4"
             }
           >
             <svg

@@ -119,7 +119,7 @@ export const VerifyForgotPassword = () => {
         />
         <div className="bg-white p-12 flex flex-col justify-center gap-y-6 rounded-3xl shadow-md">
           <div className=" xs:p-0 mx-auto md:w-full md:max-w-md  ">
-            <div className="bg-white w-full  ">
+            <div className="bg-white w-full">
               <h1 className="font-bold text-center text-primary text-36px">
                 Verify Email Address
               </h1>
