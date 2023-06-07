@@ -17,13 +17,14 @@ export const Landing = () => {
   return (
     <div className="bg-white">
       <NavBar />
-      
+
       <div className="pt-32 px-16">
         <div className="grid grid-cols-12">
+        {/* Paragraphs */}
           <dir className="col-span-4">
-            <div className="text-accent flex flex-col gap-8">
+            <div className="text-accent flex flex-col gap-8 lg:-ml-12">
               <h1 className="font-bold text-36px leading-[45px]">
-                All your <span className="text-primary">Documents</span> <br />{" "}
+                All your <span className="text-primary lg:">Documents</span> <br />{" "}
                 in one <span className="text-primary">place</span> and{" "}
                 <span className="text-primary">safe</span>!
               </h1>
@@ -31,6 +32,8 @@ export const Landing = () => {
                 Make your wiki, docs & project in ONCE with the <br /> best
                 security, edit your documents and work as a <br /> group.
               </p>
+
+              {/* Get Started Button */}
               <div>
                 <Link className="bg-primary px-8 py-3 rounded-xl font-bold text-18px text-white">
                   Get Started
@@ -38,13 +41,16 @@ export const Landing = () => {
               </div>
             </div>
           </dir>
-          <div className="col-span-8 mx-auto">
-            <img src={literature}/>
+
+          {/* Image */}
+          <div className="col-span-8 mx-auto lg:w-[270px] lg:mt-24 lg:mr-2">
+            <img src={literature} />
           </div>
         </div>
-        
-        <div className="border-[2px] mt-24 border-gray-300"></div>
+        {/* line */}
+        <div className="border-[2px] mt-24 border-[#9CA3AF] "></div>
 
+        {/* We Provide Best */}
         <div className="mt-24">
           <div>
             <h1 className="font-bold text-36px text-accent text-center leading-[45px]">
@@ -52,7 +58,9 @@ export const Landing = () => {
               <span className="text-primary">Solution</span> For you
             </h1>
           </div>
+
           <div className="grid grid-cols-12 gap-y-20 mt-20">
+            {/*  Collaboration */}
             <div className="col-span-4">
               <img src={teamspirit} className="mx-auto" />
               <h1 className="mt-3 font-bold text-primary text-2xl text-center">
@@ -63,6 +71,8 @@ export const Landing = () => {
                 progress, and working <br /> together is success.
               </p>
             </div>
+
+            {/* Productivity */}
             <div className="col-span-4">
               <img src={rectangle} className="mx-auto" />
               <h1 className="mt-3 font-bold text-primary text-2xl text-center">
@@ -73,6 +83,8 @@ export const Landing = () => {
                 nobody’s going to know whether you <br /> did it or not.
               </p>
             </div>
+
+            {/* Sharing */}
             <div className="col-span-4">
               <img src={sharing} className="mx-auto" />
               <h1 className="mt-3 font-bold text-primary text-2xl text-center">
@@ -85,7 +97,7 @@ export const Landing = () => {
             </div>
           </div>
         </div>
-
+       {/* Learn the best tools  */}
         <div className="grid grid-cols-12 gap-y-20 items-center mt-24">
           <div className="col-span-6 mx-auto">
             <h1 className="font-bold text-36px text-accent leading-[45px]">
@@ -98,6 +110,8 @@ export const Landing = () => {
               them.
             </p>
           </div>
+
+          {/* Icon  */}
           <div className="col-span-6 mx-auto">
             <div className="flex justify-center items-center gap-x-10">
               <img src={group} />
@@ -106,21 +120,23 @@ export const Landing = () => {
             </div>
           </div>
         </div>
-
+        {/*Group  */}
         <div className="grid grid-cols-12 mt-24">
           <div className="col-span-4 mx-auto">
             <img src={groupcard} />
           </div>
+          {/* Sharing */}
           <div className="col-span-4 mx-auto">
             <img src={sharingcard} />
           </div>
+          {/* Document */}
           <div className="col-span-4 mx-auto">
             <img src={documentcard} />
           </div>
         </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 };

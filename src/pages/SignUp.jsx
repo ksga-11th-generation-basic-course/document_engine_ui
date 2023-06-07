@@ -108,7 +108,7 @@ export const SignUp = () => {
         />
         <form
           onSubmit={formik.handleSubmit}
-          className=" bg-[#FFFFFF] p-12 flex flex-col justify-center gap-y-6 rounded-3xl lg:w-[480px] lg:mt-52 lg:p-8 lg:ml-10 lg:mb-6 md:w-[300px] md:p-8 md:mt-36 md:mr-8 md:mb-4"
+          className=" bg-[#FFFFFF] p-12 flex flex-col justify-center gap-y-6 shadow rounded-3xl lg:w-[480px] lg:mt-52 lg:p-8 lg:ml-10 lg:mb-6 md:w-[300px] md:p-8 md:mt-36 md:mr-8 md:mb-4"
         >
         {/* Sign Up */}
           <div className=" xs:p-0 mx-auto w-[380px] ">
