@@ -4,20 +4,12 @@ import sort from "../assets/workspace_image/sort.svg";
 import chevrondown from "../assets/workspace_image/chevrondown.svg";
 import filter from "../assets/workspace_image/filter.svg";
 import search from "../assets/workspace_image/search.svg";
-import { DropDownSort } from "../components/DropDownSort";
-import { DropDownFilter } from "../components/DropDownFilter";
 import { WorkspaceCard } from "../components/card/WorkspaceCard";
-import docker from "../assets/workspace_image/docker.svg";
-import spring from "../assets/workspace_image/spring.svg";
-import reactjs from "../assets/workspace_image/reactjs.svg";
 import { getAllWorkspace } from "../redux/service/workspaceService/workspaceService";
 import { useDispatch, useSelector } from "react-redux";
+import { Dropdown, Radio } from "react-daisyui";
 
 export const Workspace = () => {
-  const [openSort, setOpenSort] = useState(false);
-
-  const [openFilter, setOpenFilter] = useState(false);
-
   const [openSearch, setOpenSearch] = useState(false);
 
   const workspaces = useSelector((state) => state.workspace.workspaces);
@@ -41,18 +33,59 @@ export const Workspace = () => {
             <h4 className="font-semibold text-20px">Sort: </h4>
           </div>
           <div className="relative">
-            <button
+            {/* <button
               className="flex items-center gap-x-20"
               onClick={() => setOpenSort(!openSort)}
             >
               <p className="text-18px text-black">Last Update</p>
               <img src={chevrondown} />
-            </button>
-            <div>
-              {openSort ? (
-                <DropDownSort openSort={openSort} setOpenSort={setOpenSort} />
-              ) : null}
-            </div>
+            </button> */}
+            <Dropdown>
+              <Dropdown.Toggle>
+                <div className="flex items-center gap-x-20">
+                  <p className="text-18px text-black">Last Update</p>
+                  <img src={chevrondown} />
+                </div>
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="w-48 bg-white rounded-lg">
+                <Dropdown.Item>
+                  <Radio
+                    defaultChecked
+                    name="radioOptions"
+                    value="lastupdate"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>Last Update</span>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Radio
+                    defaultChecked
+                    name="radioOptions"
+                    value="thisweek"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>This week</span>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Radio
+                    defaultChecked
+                    name="radioOptions"
+                    value="thismonth"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>This month</span>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Radio
+                    defaultChecked
+                    name="radioOptions"
+                    value="thisyear"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>This year</span>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
         </div>
         <div className="col-span-4 flex items-center gap-x-5 h-11">
@@ -61,21 +94,48 @@ export const Workspace = () => {
             <h4 className="font-semibold text-20px">Filter: </h4>
           </div>
           <div className="relative">
-            <button
+            {/* <button
               className="flex items-center gap-x-20"
               onClick={() => setOpenFilter(!openFilter)}
             >
               <p className="text-18px text-black">All Workspaces</p>
               <img src={chevrondown} />
-            </button>
-            <div>
-              {openFilter ? (
-                <DropDownFilter
-                  openFilter={openFilter}
-                  setOpenFilter={setOpenFilter}
-                />
-              ) : null}
-            </div>
+            </button> */}
+            <Dropdown>
+              <Dropdown.Toggle>
+                <div className="flex items-center gap-x-20">
+                  <p className="text-18px text-black">All Workspaces</p>
+                  <img src={chevrondown} />
+                </div>
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="w-52 bg-white rounded-lg">
+                <Dropdown.Item>
+                  <Radio
+                    defaultChecked
+                    name="radioOptions"
+                    value="allworkspaces"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>All Workspaces</span>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Radio
+                    name="radioOptions"
+                    value="myworkspaces"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>My Workspaces</span>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Radio
+                    name="radioOptions"
+                    value="otherworkspaces"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>Other Workspaces</span>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
         </div>
         <div className="col-span-4 h-11">

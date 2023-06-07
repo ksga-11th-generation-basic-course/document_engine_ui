@@ -41,14 +41,17 @@ export const getAllWorkspace = createAsyncThunk(`workspaces`, async () => {
   }
 });
 
-export const removeWorkspace = async (workspaceId) => {
-  try {
-    const response = await api.delete(`workspaces/${workspaceId}`, header);
-    return response.data.payload;
-  } catch (error) {
-    throw error.response.data.detail;
+export const removeWorkspaceService = createAsyncThunk(
+  "workspaces/remove",
+  async (workspaceId) => {
+    try {
+      const response = await api.delete(`workspaces/${workspaceId}`, header);
+      return workspaceId;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
   }
-};
+);
 
 export const getWorkspaceByWorksapceId = createAsyncThunk(
   "workspaces/workspaceId",

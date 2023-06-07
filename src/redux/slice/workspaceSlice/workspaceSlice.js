@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   getAllWorkspace,
   getWorkspaceByWorksapceId,
+  removeWorkspaceService,
 } from "../../service/workspaceService/workspaceService";
 
 const initialState = {
@@ -19,9 +20,6 @@ const workspaceSlice = createSlice({
       state.workspaces.push(action.payload);
     },
     joinWorkspaceSuccess: (state, action) => {
-      state.workspace = action.payload;
-    },
-    removeWorkspaceSuccess: (state, action) => {
       state.workspace = action.payload;
     },
   },
@@ -53,13 +51,25 @@ const workspaceSlice = createSlice({
       state.workspace = null;
       state.error = action.error.message;
     });
+
+    builder.addCase(removeWorkspaceService.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(removeWorkspaceService.fulfilled, (state, action) => {
+      state.loading = false;
+      state.workspaces = state.workspaces.filter(
+        (workspace) => workspace.workspaceId !== action.payload
+      );
+      state.error = null;
+    });
+    builder.addCase(removeWorkspaceService.rejected, (state, action) => {
+      state.loading = true;
+      state.workspace = null;
+      state.error = action.error.message;
+    });
   },
 });
 
-export const {
-  createWorkspaceSuccess,
-  joinWorkspaceSuccess,
-  removeWorkspaceSuccess,
-  textSuccess,
-} = workspaceSlice.actions;
+export const { createWorkspaceSuccess, joinWorkspaceSuccess, textSuccess } =
+  workspaceSlice.actions;
 export default workspaceSlice.reducer;

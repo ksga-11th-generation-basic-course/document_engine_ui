@@ -5,9 +5,15 @@ import setting from "../assets/dashboard_image/setting.svg";
 import { RemoveWorkspaceModal } from "../modal/RemoveWorkspaceModal";
 import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
 
-export const DropDownWorkspace = ({ open, setOpen }) => {
+export const DropDownWorkspace = ({ open, setOpen, workspaceId }) => {
   const [removeWorkspace, setRemoveWorkspace] = useState(false);
   const [openWorkspaceSetting, setOpenWorkspaceSetting] = useState(false);
+
+  const handleOpenDropDownWorkspace = () => {
+    setRemoveWorkspace(!removeWorkspace);
+    setWorkspaceId(workspace.workspaceId);
+  };
+
   return (
     <div>
       {open && (
@@ -25,7 +31,9 @@ export const DropDownWorkspace = ({ open, setOpen }) => {
             </Link>
             <Link
               className="flex items-center text-18px gap-x-4 text-red-500"
-              onClick={() => setRemoveWorkspace(!removeWorkspace)}
+              onClick={() => {
+                setRemoveWorkspace(!removeWorkspace);
+              }}
             >
               <img src={trush} className="w-5 h-5" />
               <span>Remove</span>
@@ -37,6 +45,7 @@ export const DropDownWorkspace = ({ open, setOpen }) => {
         <RemoveWorkspaceModal
           removeWorkspace={removeWorkspace}
           setRemoveWorkspace={setRemoveWorkspace}
+          workspaceId={workspaceId}
         />
         <WorkspaceSettingModal
           openWorkspaceSetting={openWorkspaceSetting}
