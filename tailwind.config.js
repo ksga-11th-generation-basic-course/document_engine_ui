@@ -6,6 +6,22 @@ export default {
     "./node_modules/flowbite/**/*.js",
   ],
   theme: {
+    screens: {
+      '2xl': {'max': '1535px'},
+      // => @media (max-width: 1535px) { ... }
+
+      'xl': {'max': '1279px'},
+      // => @media (max-width: 1279px) { ... }
+
+      'lg': {'max': '1023px'},
+      // => @media (max-width: 1023px) { ... }
+
+      'md': {'max': '767px'},
+      // => @media (max-width: 767px) { ... }
+
+      'sm': {'max': '639px'},
+      // => @media (max-width: 639px) { ... }
+    },
     extend: {
       fontFamily: {
         ssp: ["Source Sans Pro", "sans-serif"],
@@ -36,14 +52,16 @@ export default {
         "20px": "20px",
         "22px": "22px",
         "24px": "24px",
+        "28px": "28px",
         "34px": "34px",
         "36px": "36px",
         "44px": "44px",
         "48px": "48px",
       },
       boxShadow: {
-        custom: "0 0.5px 5px 2px rgba(0, 0, 0, 0.1)",
-        content: "-1px 5px 32px rgba(0, 0, 0, 0.08)",
+        custom: "0 0.2px 2px 1px rgba(0, 0, 0, 0.1)",
+        hover: "0 0.5px 5px 2px rgba(0, 0, 0, 0.1)",
+        sidebar: "0px 15px 15px -2px rgba(0, 0, 0, 0.2)",
         tip: "0px 2px 2px rgba(0, 0, 0, 0.2)",
         profile: "0px 1px 4px rgba(0, 0, 0, 0.1)",
         logo: "0px 2px 4px rgba(0, 0, 0, 0.1)",

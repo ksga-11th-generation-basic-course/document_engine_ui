@@ -2,14 +2,17 @@ import React, { useEffect, useState } from "react";
 import logo from "../assets/landing_image/logo.svg";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
-import { getWorkspaceByWorksapceId } from "../redux/service/workspaceService/workspaceService";
 import { useDispatch, useSelector } from "react-redux";
+import { getWorkspaceByWorksapceId } from "../redux/service/workspaceService/workspaceService";
+import close from "../assets/dashboard_image/close.svg";
 
-export const SideBar = () => {
+export const SideBar = ({
+  sideBar,
+  setSideBar,
+  newWorkspace,
+  setNewWorkspace,
+}) => {
   const [visible, setVisible] = useState(false);
-  const toggleVisible = () => {
-    setVisible(!visible);
-  };
 
   const dispatch = useDispatch();
 
@@ -24,12 +27,30 @@ export const SideBar = () => {
   const workspaceId = param.id;
 
   return (
-    <div>
-      <div className="bg-[#FAFAF9] flex flex-col items-center py-5 px-5 gap-y-3 h-screen">
-        <Link>
-          <img src={logo} className="w-24 h-24" />
+    <div className="bg-[#FAFAF9] overflow-x-auto md:mt-8">
+      {/* Close Button */}
+      <div className="hidden lg:flex flex-col items-end pr-3 pt-3 md:absolute md:right-0 md:top-0  md:w-full md:bg-[#FAFAF9]">
+        <div className="hidden lg:inline-block">
+          <button type="button" onClick={() => setSideBar(!sideBar)}>
+            <img src={close} className="w-8 md:w-5" />
+          </button>
+        </div>
+      </div>
+
+      <div className=" flex flex-col items-center p-5 gap-y-3 h-screen mt-3 lg:-mt-10">
+        {/* Logo */}
+        <Link to={"/dashboard"}>
+          <img
+            src={logo}
+            className="w-28 h-28 mb-2 flex lg:w-28 md:w-[75px] md:h-[75px] md:mt-5"
+          />
         </Link>
-        <CreateWorkspaceModal visible={visible} setVisible={setVisible} />
+        <CreateWorkspaceModal
+          visible={visible}
+          setVisible={setVisible}
+          newWorkspace={newWorkspace}
+          setNewWorkspace={setNewWorkspace}
+        />
         <div className="flex flex-col w-full gap-y-3 text-16px text-accent font-semibold">
           <NavLink
             to={"/dashboard"}
@@ -73,7 +94,7 @@ export const SideBar = () => {
                 fill="#1E9CEF"
               />
             </svg>
-            Workspace
+            Workspaces
           </NavLink>
           <div className="w-full border-[1px]"></div>
           {workspace === null ? null : (

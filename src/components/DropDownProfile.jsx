@@ -25,7 +25,7 @@ export const DropDownProfile = ({ open, setOpen }) => {
       <div className="absolute right-0 w-[380px] mt-3 p-3 text-accent rounded-lg shadow-md bg-white z-50">
         <div className="flex justify-end">
           <button type="button" onClick={() => setOpen(!open)}>
-            <img src={close} className="h-7 w-7" />
+            <img src={close} className="h-7 w-7 md:w-5" />
           </button>
         </div>
         <div className="flex flex-col gap-y-5 px-5">
@@ -50,10 +50,10 @@ export const DropDownProfile = ({ open, setOpen }) => {
             </div>
           </div>
           <div className="border-[1px] border-[#E7E7E7]"></div>
-          <div className="flex flex-col gap-y-5 py-5">
+          <div className="flex flex-col gap-y-5 py-5 md:py-0">
             <button
               className="flex items-center text-18px gap-x-4"
-              onClick={() => setOpenSetting(!openSetting)}
+              onClick={() => {setOpenSetting(!openSetting); setOpen(open)}}
             >
               <img src={setting} />
               <span>Setting</span>
@@ -68,7 +68,7 @@ export const DropDownProfile = ({ open, setOpen }) => {
           </div>
         </div>
         <div>
-          <SignOutModal visible={visible} toggleVisible={toggleVisible} />
+           <SignOutModal visible={visible} toggleVisible={toggleVisible} />
           <AccountSettingModal
             openSetting={openSetting}
             setOpenSetting={setOpenSetting}
