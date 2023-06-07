@@ -30,34 +30,34 @@ export const Document = () => {
   return (
     <div className="text-accent space-y-5">
       <div>
-        <h1 className="font-bold text-accent text-44px">React & NodeJS</h1>
-        <p className="text-accent text-18px">
+        <h1 className="font-bold text-accent text-44px 2xl:text-28px">React & NodeJS</h1>
+        <p className="text-accent text-18px 2xl:text-15px">
           Welcome to React & NodeJS workspace
         </p>
         <div className="flex justify-between items-center pt-1">
           <div className="flex items-center gap-x-3 2xl:gap-x-2">
-            <img src={documenticon} className="p-2 lg:w-7 sm:w-6 shadow-md rounded-lg" />
-            <p className="font-semibold text-20px">Documents</p>
+            <img src={documenticon} className="p-2 lg:w-7 2xs:w-7 2xs:p-1 sm:w-6 shadow-md rounded-lg" />
+            <p className="font-semibold text-20px 2xs:text-18px">Documents</p>
           </div>
           <Link
             to={"/createdocument"}
-            className="font-semibold bg-primary px-4 py-2 rounded-lg text-white"
+            className="font-semibold bg-primary px-4 py-2 rounded-lg text-white 2xs:text-15px 2xs:py-1.5"
           >
             Create Document
           </Link>
         </div>
-        <div className="grid grid-cols-12 pt-2 sm:gap-x-5 xs:gap-x-2 gap-x-3 2xl:gap-x-7">
-          <div className="col-span-4 justify-between flex items-center gap-x-3 h-11 sm:col-span-6 xs:gap-x-1">
-            <div className="flex items-center gap-x-1">
+        <div className="grid grid-cols-12 pt-2 sm:gap-x-2 xs:gap-x-2 gap-x-3 2xl:gap-x-7 lg:gap-x-2 md:gap-x-8">
+          <div className="col-span-4 justify-between flex items-center gap-x-3 h-11 sm:col-span-6 xs:gap-x-0 md:col-span-6 xs:col-span-6 2xs:col-span-6">
+            <div className="flex items-center gap-x-1 xs:gap-x-3">
               <img src={sort} className="w-7 h-7 sm:hidden" />
-              <h4 className="font-semibold text-20px">Sort: </h4>
+              <h4 className="font-semibold text-20px xs:text-16px">Sort: </h4>
             </div>
             <div className="relative">
               <button
-                className="flex items-center justify-between gap-20 sm:gap-10 xs:gap-3 p-1.5 border-2 rounded-lg w-52 xl:w-44 xl:"
+                className="flex items-center justify-between gap-20 sm:gap-10 xs:gap-2 p-1.5 xs:p-1 border-2 rounded-lg w-52 xl:w-44 xl:gap-x-0 xs:w-36"
                 onClick={() => setOpenSort(!openSort)}
               >
-                <p className="text-18px text-black">Last_Update</p>
+                <p className="text-18px text-black xs:text-16px">Last_Update</p>
                 <img src={chevrondown} className="" />
               </button>
               <div>
@@ -67,17 +67,17 @@ export const Document = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-4 justify-between flex items-center gap-x-5 h-11 sm:col-span-6 ">
+          <div className="col-span-4 justify-between flex items-center gap-x-3 h-11 sm:col-span-6 xs:gap-x-0 md:col-span-6 xs:col-span-6 2xs:col-span-6">
             <div className="flex items-center gap-x-2">
               <img src={filter} className="w-7 h-7 sm:hidden" />
-              <h4 className="font-semibold text-20px">Filter: </h4>
+              <h4 className="font-semibold text-20px xs:text-16px">Filter: </h4>
             </div>
             <div className="relative">
               <button
-                className="flex items-center justify-between gap-20 sm:gap-10 xs:gap-6 p-1.5 border-2 rounded-lg w-52"
+                className="flex items-center justify-between gap-20 sm:gap-10 xs:gap-2 p-1.5 xs:p-1 border-2 rounded-lg w-52 xl:w-44 xl:gap-x-0 xs:w-36"
                 onClick={() => setOpenFilter(!openFilter)}
               >
-                <p className="text-18px text-black">Product</p>
+                <p className="text-18px text-black xs:text-16px">Product</p>
                 <img src={chevrondown} className="" />
               </button>
               <div>
@@ -90,7 +90,7 @@ export const Document = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-4 flex items-center justify-end sm:col-span-12 sm:h-11">
+          <div className="col-span-4 flex items-center justify-end sm:col-span-12 sm:h-11 md:col-span-12 md:h-11 md:pt-4 2xs:col-span-12">
             {openSearch ? (
               <div className="flex justify-end items-center relative">
                 {openSearch ? (
