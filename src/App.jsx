@@ -14,6 +14,7 @@ import { CreateDocument } from "./pages/CreateDocument";
 import { AboutUs } from "./pages/AboutUs";
 import { ContactUs } from "./pages/ContactUS";
 import { NotFound } from "./pages/NotFound";
+import EnableAccount from "./pages/EnableAccount";
 
 function App() {
   return (
@@ -30,6 +31,8 @@ function App() {
 
         <Route path="/signup" element={<SignUp />} />
         <Route path="/verifyotp" element={<VerifyOTP />} />
+        <Route path="/enableaccount" element={<EnableAccount />} />
+
 
         <Route path="/" element={<Root />}>
           <Route path="/dashboard" element={<Dashboard />} />
