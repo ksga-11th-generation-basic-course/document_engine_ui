@@ -76,20 +76,35 @@ export const SignIn = () => {
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
         <img
           src={Logo}
+<<<<<<< HEAD
           className="absolute top-4 left-8 max-sm:left-3 max-sm:top-7 lg:w-[80px] lg:-ml-9 md:w-[60px] md:h-[60px] md:mr-9 md:mt-0 "
         />
         <img
           className="w-[600px] h-[500.16px] mr-5 max-sm:hidden lg:w-[150px] md:w-[200px] lg:hidden"
+=======
+          className="absolute top-4 left-8 max-sm:left-3 max-sm:top-7 md:w-[60px] md:h-[60px] md:mr-9 md:mt-0 "
+        />
+        <img
+          className="w-[600px] h-[500.16px] mr-5 max-sm:hidden lg:w-[150px] md:w-[200px] "
+>>>>>>> 8b9a103 (add new)
           src={LeftImage}
         />
         {/* SignIn */}
         <form
           onSubmit={formik.handleSubmit}
+<<<<<<< HEAD
           className="bg-white  p-12 flex flex-col justify-center gap-y-6 rounded-3xl shadow 
            lg:mt-28 lg:mr-2 lg:p-6 lg:w-[500px] lg:pb-10 md:w-[285px] md:ml-6 md:pb-6 md:p-6 md:mt-24  ">
           <div className=" xs:p-0 mx-auto w-[380px]  md:max-w-md ">
             <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl 
              lg:text-4xl  lg:mt-6 md:text-2xl md:mt-1 md:pr-36">
+=======
+          className="bg-white  p-12 flex flex-col justify-center gap-y-6 rounded-3xl 
+           lg:mt-16 lg:mr-4 lg:p-16 lg:w-[600px] lg:h-[700px] md:w-[300px] md:h-[550px] md:p-8 md:mt-24  ">
+          <div className=" xs:p-0 mx-auto w-[380px]  md:max-w-md ">
+            <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl 
+             lg:text-4xl md:text-2xl md:pr-36">
+>>>>>>> 8b9a103 (add new)
               Sign in
             </h1>
 
@@ -102,7 +117,11 @@ export const SignIn = () => {
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border
                    rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:leading-tight max-sm:border-none 
+<<<<<<< HEAD
                    w-full text-gray-700 mr-3  leading-tight focus:outline-none lg:w-[370px] lg:text-2xl md:h-8 md:w-[225px] md:text-sm"
+=======
+                   w-full text-gray-700 mr-3  leading-tight focus:outline-none lg:w-[370px] lg:text-2xl md:h-10 md:w-[225px] md:text-base"
+>>>>>>> 8b9a103 (add new)
                   type="text"
                   placeholder="name@gmail.com"
                   aria-label="Full name"
@@ -112,7 +131,11 @@ export const SignIn = () => {
                   value={formik.values.email}
                 />
                 {formik.touched.email && formik.errors.email ? (
+<<<<<<< HEAD
                   <div className="mt-2 text-red-600 lg:w-[370px] lg:text-xl md:w-[219px] md:text-sm">{formik.errors.email}</div>
+=======
+                  <div className="mt-2 text-red-600 lg:w-[370px]  md:w-[219px] md:text-base">{formik.errors.email}</div>
+>>>>>>> 8b9a103 (add new)
                 ) : null}
               </div>
 
@@ -124,7 +147,11 @@ export const SignIn = () => {
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg 
                   px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3 
+<<<<<<< HEAD
                    leading-tight focus:outline-none lg:w-[370px] lg:text-2xl md:h-8 md:w-[225px] md:text-sm"
+=======
+                   leading-tight focus:outline-none lg:w-[370px] lg:text-2xl md:h-10 md:w-[225px] md:text-base"
+>>>>>>> 8b9a103 (add new)
                   type="password"
                   placeholder="password"
                   aria-label="Full name"
@@ -134,7 +161,11 @@ export const SignIn = () => {
                   value={formik.values.password}
                 />
                 {formik.touched.password && formik.errors.password ? (
+<<<<<<< HEAD
                   <div className="mt-2 text-red-600 lg:w-[370px] lg:text-xl md:w-[219px] md:text-sm">
+=======
+                  <div className="mt-2 text-red-600 lg:w-[370px]  md:w-[219px] md:text-base">
+>>>>>>> 8b9a103 (add new)
                     {formik.errors.password}
                   </div>
                 ) : null}
@@ -152,7 +183,11 @@ export const SignIn = () => {
                 type="submit"
                 className="px-2 py-3 transition duration-200 bg-primary hover:bg-btn-primary focus:shadow-sm text-white w-full rounded-lg 
                 focus:outline-none shadow-sm hover:shadow-md text-center font-bold text-18px inline-block 
+<<<<<<< HEAD
                 lg:w-[370px] lg:text-2xl lg:pr-5  md:pt-2  md:overflow-hidden  md:w-[225px] md:h-9 md:text-base"
+=======
+                lg:w-[370px] lg:text-2xl lg:pr-5  md:pb-8 md:h-[15px] md:overflow-hidden  md:w-[225px] md:text-base"
+>>>>>>> 8b9a103 (add new)
               >
                 Sign in
               </button>
@@ -161,7 +196,11 @@ export const SignIn = () => {
               <Link
                 to={"/signup"}
                 className="outline-none font-semibold text-18px duration-200 text-primary mb-2 max-sm:mt-0 max-sm:mb-0 max-sm:pt-2 pt-4 w-full 
+<<<<<<< HEAD
                 text-center inline-block  lg:text-2xl md:text-base  md:pr-36 "
+=======
+                text-center inline-block  lg:text-2xl md:text-base md:pr-36 "
+>>>>>>> 8b9a103 (add new)
               >
                 Sign up
               </Link>
@@ -169,7 +208,11 @@ export const SignIn = () => {
             {/* ---------or------- */}
             <div className=" pb-4 pt-20px ">
               <div className="flex items-center w-[369px] before:mt-0.5 before:flex-1 before:border-t before:border-neutral-400 after:mt-0.5 after:flex-1 
+<<<<<<< HEAD
               after:border-t after:border-neutral-400  lg:w-[375px] lg:mr-36  md:pl-1 md:w-[230px] ">
+=======
+              after:border-t after:border-neutral-400  lg:w-[375px] lg:mr-36  md:pl-1 md:w-[235px] ">
+>>>>>>> 8b9a103 (add new)
                 <p className="mx-1 text-center text-gray-400 lg:text-2xl md:text-base ">or</p>
               </div>
             </div>
@@ -182,6 +225,7 @@ export const SignIn = () => {
                   onClick={handleGoogle}
                   type="button"
                   className="flex  rounded-lg justify-center items-center py-2 w-[176px]  text-sm border border-gray-200  outline-none max-sm:border-primary
+<<<<<<< HEAD
                    max-sm:border-2 text-accent font-bold transition transform lg:pl-4  lg:w-[380px] md:h-[37px] md:w-[225px] md:pl-6  "
                 >
                   
@@ -189,6 +233,15 @@ export const SignIn = () => {
                       <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="w-7 h-7 mr-2 lg:w-[38px]  lg:h-[38px] md:w-[25px] md:h-[25px] "
+=======
+                   max-sm:border-2 text-accent font-bold transition transform lg:pl-4  lg:w-[380px] md:h-[37px] md:w-[225px] md:pr-2  "
+                >
+                  
+                    <div className="flex mr-5">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-7 h-7 mr-2 lg:w-[38px] lg:h-[38px] md:w-[25px] md:h-[25px] "
+>>>>>>> 8b9a103 (add new)
                         viewBox="0 0 48 48"
                       >
                         <path
@@ -237,7 +290,11 @@ export const SignIn = () => {
             </div>
           </div>
         </form>
+<<<<<<< HEAD
         <img className="w-[600px] h-[600.57px] -mt-12 max-sm:hidden lg:w-[150px] lg:hidden md:w-[200px]" src={RightImage} />
+=======
+        <img className="w-[600px] h-[600.57px]  max-sm:hidden lg:w-[150px] md:w-[200px]" src={RightImage} />
+>>>>>>> 8b9a103 (add new)
 
       </div>
     </div>

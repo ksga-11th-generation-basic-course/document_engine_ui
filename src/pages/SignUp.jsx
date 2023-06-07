@@ -98,7 +98,11 @@ export const SignUp = () => {
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
         <img
           src={Logo}
+<<<<<<< HEAD
           className=" absolute top-8 left-10 max-sm:left-3 max-sm:top-0 lg:-ml-9 md:w-[60px] md:h-[60px]"
+=======
+          className=" absolute top-8 left-10 max-sm:left-3 max-sm:top-0"
+>>>>>>> 8b9a103 (add new)
         />
 
         {/*  Background Image */}
@@ -108,11 +112,18 @@ export const SignUp = () => {
         />
         <form
           onSubmit={formik.handleSubmit}
+<<<<<<< HEAD
           className=" bg-[#FFFFFF] p-12 flex flex-col justify-center gap-y-6 rounded-3xl lg:w-[480px] lg:mt-52 lg:p-8 lg:ml-10 lg:mb-6 md:w-[300px] md:p-8 md:mt-36 md:mr-8 md:mb-4"
         >
         {/* Sign Up */}
           <div className=" xs:p-0 mx-auto w-[380px] ">
             <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl lg:text-4xl md:text-2xl md:pr-32">
+=======
+          className=" bg-[#FFFFFF] p-12 flex flex-col justify-center gap-y-6 rounded-3xl lg:w-28 lg:flex "
+        >
+          <div className=" xs:p-0 mx-auto w-[380px] ">
+            <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl">
+>>>>>>> 8b9a103 (add new)
               Sign Up
             </h1>
             <div className="px-2 py-5 max-sm:py-8 max-sm:px-8  ">
@@ -135,7 +146,11 @@ export const SignUp = () => {
                   value={formik.values.username}
                 />
                 {formik.touched.username && formik.errors.username ? (
+<<<<<<< HEAD
                   <div className="  mt-2  text-red-600 lg:text-xl md:text-sm ">
+=======
+                  <div className=" sm:mt-6 mt-2  text-red-600">
+>>>>>>> 8b9a103 (add new)
                     {formik.errors.username}
                   </div>
                 ) : null}
@@ -169,9 +184,13 @@ export const SignUp = () => {
               </label>
               <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
                 <input
+<<<<<<< HEAD
                   className=" border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none 
                   max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
                   lg:text-2xl lg:h-12 md:h-9 md:w-[225px] md:text-base"
+=======
+                  className=" border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
+>>>>>>> 8b9a103 (add new)
                   type="password"
                   placeholder="Password"
                   aria-label="Full name"
@@ -186,9 +205,14 @@ export const SignUp = () => {
                   </div>
                 ) : null}
               </div>
+<<<<<<< HEAD
 
               {/* Confirm Password */}
               <label className=" font-semibold text-lg block pt-3 pb-2 text-black lg:text-2xl md:text-lg">
+=======
+              {/* <input type="text" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Password' /> */}
+              <label className=" font-semibold text-lg block pt-3 pb-2 text-black">
+>>>>>>> 8b9a103 (add new)
                 Confirm Password
               </label>
               <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
