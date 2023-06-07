@@ -6,8 +6,8 @@ export const DropDownSort = ({ openSort, setOpenSort }) => {
       {openSort && (
         <div className="fixed inset-0" onClick={() => setOpenSort(!openSort)}></div>
       )}
-      <div className="absolute left-0 mt-1 w-full md:w-[170px] text-accent rounded-lg shadow-md bg-white">
-        <div className="flex items-center px-6 gap-x-4 bg-[#FAFAF9] border-b-[1px] py-3 rounded-t-lg">
+      <div className="absolute left-0 mt-1 w-full text-accent rounded-lg shadow-md bg-white xs:w-36 md:w-52 2xs:w-32">
+        <div className="flex items-center xs:justify-start xs:px-0 xs:pl-4 xs:py-2 px-6 gap-x-4 bg-[#FAFAF9] border-b-[1px] py-3 xs:gap-x-2 rounded-t-lg xs:w-36 md:w-52 2xs:w-32 lg:px-0 lg:pl-4 lg:py-2 lg:justify-start lg:gap-x-2">
           <input
             type="radio"
             id="lastupdate"
@@ -19,7 +19,7 @@ export const DropDownSort = ({ openSort, setOpenSort }) => {
             Last Update
           </label>
         </div>
-        <div className="flex items-center px-6 gap-x-4 py-3 rounded-lg">
+        <div className="flex items-center px-6 gap-x-4 py-3 rounded-lg xs:px-0 xs:pl-4 xs:py-2 xs:justify-start xs:gap-x-2 lg:px-0 lg:pl-4 lg:py-2 lg:justify-start lg:gap-x-2">
           <input
             type="radio"
             id="thisweek"
@@ -31,7 +31,7 @@ export const DropDownSort = ({ openSort, setOpenSort }) => {
             This Week
           </label>
         </div>
-        <div className="flex items-center px-6 gap-x-4 py-3 rounded-lg">
+        <div className="flex items-center px-6 gap-x-4 py-3 rounded-lg xs:px-0 xs:pl-4 xs:py-2 xs:justify-start xs:gap-x-2 lg:px-0 lg:pl-4 lg:py-2 lg:justify-start lg:gap-x-2">
           <input
             type="radio"
             id="thismonth"
@@ -43,7 +43,7 @@ export const DropDownSort = ({ openSort, setOpenSort }) => {
             This Month
           </label>
         </div>
-        <div className="flex items-center px-6 gap-x-4 py-3 rounded-lg">
+        <div className="flex items-center px-6 gap-x-4 py-3 rounded-lg xs:px-0 xs:pl-4 xs:py-2 xs:justify-start xs:gap-x-2 lg:px-0 lg:pl-4 lg:py-2 lg:justify-start lg:gap-x-2">
           <input
             type="radio"
             id="thisyear"
