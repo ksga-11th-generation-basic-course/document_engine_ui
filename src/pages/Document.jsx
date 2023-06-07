@@ -53,8 +53,13 @@ export const Document = () => {
         </p>
         <div className="flex justify-between items-center pt-1 xs:pt-5 2xs:pt-5">
           <div className="flex items-center gap-x-3 2xl:gap-x-2">
-            <img src={documenticon} className="p-2 lg:w-7 2xs:w-7 2xs:p-1 sm:w-8 shadow-md rounded-lg md:w-7 md:p-1.5" />
-            <p className="font-semibold text-20px 2xs:text-18px sm:text-18px md:text-18px">Documents</p>
+            <img
+              src={documenticon}
+              className="p-2 lg:w-7 2xs:w-7 2xs:p-1 sm:w-8 shadow-md rounded-lg md:w-7 md:p-1.5"
+            />
+            <p className="font-semibold text-20px 2xs:text-18px sm:text-18px md:text-18px">
+              Documents
+            </p>
           </div>
           <Link
             to={"/createdocument"}
@@ -67,14 +72,18 @@ export const Document = () => {
           <div className="col-span-4 grid grid-cols-3 xs:grid-cols-4 2xs:grid-cols-4 lg:grid-cols-3 justify-between items-center gap-x-3 h-11 sm:col-span-6 xs:gap-x-0 md:col-span-6 xs:col-span-6 2xs:col-span-6">
             <div className="col-span-1 gap-x-1 2xs:col-span-1 xs:col-span-1 lg:col-span-1 xs:gap-x-3 flex">
               <img src={sort} className="w-7 h-7 sm:hidden md:w-5" />
-              <h4 className="font-semibold text-20px xs:text-16px sm:text-16px md:text-16px lg:text-18px">Sort: </h4>
+              <h4 className="font-semibold text-20px xs:text-16px sm:text-16px md:text-16px lg:text-18px">
+                Sort:{" "}
+              </h4>
             </div>
             <div className="relative col-span-2 lg:col-span-2 2xs:col-span-3 xs:col-span-3">
               <button
                 className="flex items-center justify-between sm:gap-10 xs:gap-2 p-1.5 xs:p-1 sm:p-1 border-2 rounded-lg xl:w-44 sm:w-44 xl:gap-x-0 xs:w-36 md:w-52 lg:w-full 2xl:gap-0 2xl:w-full 2xs:w-full"
                 onClick={() => setOpenSort(!openSort)}
               >
-                <p className="text-18px text-black xs:text-16px sm:text-16px md:text-16px">Last Update</p>
+                <p className="text-18px text-black xs:text-16px sm:text-16px md:text-16px">
+                  Last Update
+                </p>
                 <img src={chevrondown} className="" />
               </button>
               <div>
@@ -87,14 +96,18 @@ export const Document = () => {
           <div className="col-span-4 grid grid-cols-3 xs:grid-cols-4 2xs:grid-cols-4 lg:grid-cols-3 justify-between items-center gap-x-3 h-11 sm:col-span-6 xs:gap-x-0 md:col-span-6 xs:col-span-6 2xs:col-span-6">
             <div className="col-span-1 lg:col-span-1 flex items-center gap-x-2">
               <img src={filter} className="w-7 h-7 sm:hidden md:w-5" />
-              <h4 className="font-semibold text-20px xs:text-16px sm:text-16px md:text-16px lg:text-18px">Filter: </h4>
+              <h4 className="font-semibold text-20px xs:text-16px sm:text-16px md:text-16px lg:text-18px">
+                Filter:{" "}
+              </h4>
             </div>
             <div className="relative col-span-2 lg:col-span-2 xs:col-span-3">
               <button
                 className="flex items-center justify-between sm:gap-10 xs:gap-2 p-1.5 xs:p-1 sm:p-1 border-2 rounded-lg w-44 xl:w-44 sm:w-44 xl:gap-x-0 xs:w-full md:w-52 2xs:w-full lg:w-full 2xl:w-full"
                 onClick={() => setOpenFilter(!openFilter)}
               >
-                <p className="text-18px text-black xs:text-16px sm:text-16px md:text-16px">Product</p>
+                <p className="text-18px text-black xs:text-16px sm:text-16px md:text-16px">
+                  Product
+                </p>
                 <img src={chevrondown} className="" />
               </button>
               <div>
@@ -178,39 +191,13 @@ export const Document = () => {
       </div>
       {openGrid ? (
         <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-4">
-            <DocumentCard
-              title={"Redux Toolkit"}
-              header={"1. Introduction to Redux Toolkit"}
-              status={false}
-              text={``}
-              editdate={9}
-            />
-          </div>
-          <div className="col-span-4">
-            <DocumentCard
-              title={"Node Js"}
-              header={"1. Introduction to Node Js"}
-              status={true}
-              text={`In this tutorial, we'll focus on introducing Profiles in Spring.
-      Profiles are a core feature of the framework — allowing us to map our
-      beans to different profiles — for example, dev, test, and prod. We can
-      then activate different profiles in different environments to
-      bootstrap only the beans we need.`}
-              editdate={12}
-            />
-          </div>
-          <div className="col-span-4">
-            <DocumentCard
-              title={"Spring Profile"}
-              header={"1. Introduction to Spring Profile"}
-              status={true}
-              text={`In this tutorial, we'll focus on introducing Profiles in Spring.
-      Profiles are a core feature of the framework — allowing us to map our beans to different profiles — for example, dev, test, and prod.
-      We can then activate different profiles in different environments to bootstrap only the beans we need.`}
-              editdate={15}
-            />
-          </div>
+          {documents === null
+            ? null
+            : documents.map((document, index) => (
+                <div className="col-span-4" key={index}>
+                  <DocumentCard document={document} />
+                </div>
+              ))}
         </div>
       ) : null}
       {openBulletList ? (

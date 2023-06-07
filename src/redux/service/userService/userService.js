@@ -6,7 +6,10 @@ export const disableAccount = async () => {
       `users/close/account`,
       {},
       {
-        ...header,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
       }
     );
     return response.data.payload;
@@ -25,7 +28,10 @@ export const changePassword = async (
       `users/change/password?currentPassword=${currentPassword}&newPassword=${newPassword}&confirmNewPassword=${confirmNewPassword}`,
       {},
       {
-        ...header,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
       }
     );
     return response.data.payload;
@@ -44,7 +50,10 @@ export const editProfileInformation = async (username, url) => {
         profileImage: url,
       },
       {
-        ...header,
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
       }
     );
 
@@ -61,7 +70,10 @@ export const editProfileInformation = async (username, url) => {
 export const deleteProfileImage = async () => {
   try {
     const response = await api.delete(`users/profile`, {
-      ...header,
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type ": "application/json",
+      },
     });
 
     const user = JSON.stringify(response.data.payload);
