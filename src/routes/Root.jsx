@@ -34,7 +34,7 @@ export const Root = () => {
               <span className={open ? "hidden fixed lg:inline-block lg:absolute lg:right-0 lg:mt-24 md:-right-8 md:mt-20 md:fixed" : "hidden lg:inline-block lg:absolute right-0 md:-right-8 md:fixed"}><NavBarProfile /></span>
             </div>
 
-            <div className={open ? "hidden lg:inline-block lg:ml-10 lg:mt-24 lg:px-20" : "lg:px-20 xs:px-10 2xs:px-5 hidden lg:inline-block lg:mt-9"}>
+            <div className={open ? "hidden lg:inline-block lg:ml-10 lg:mt-24 lg:px-20 xs:px-4 2xs:px-4" : "lg:px-20 xs:px-4 2xs:px-4 hidden lg:inline-block lg:mt-9"}>
               <Outlet />
               </div>
           </div>
