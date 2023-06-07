@@ -16,6 +16,7 @@ export const Root = () => {
     <div className="bg-white">
       <div className="grid grid-cols-12">
 <<<<<<< HEAD
+<<<<<<< HEAD
         <div className="col-span-2 md:col-span-1 lg:col-span-1 2xs:hidden xs:hidden">
           <SideBar />
         </div>
@@ -77,6 +78,9 @@ export const Root = () => {
                       <div className={open ?  "hidden lg:inline-block lg:ml-10 lg:mt-24 lg:px-3" : "hidden lg:inline-block lg:ml-10 lg:mt-9 lg:px-3"}><Outlet /></div>
 =======
         <div className="col-span-2 lg:col-span-12 xl:col-span-3 2xl:col-span-3 z-10">
+=======
+        <div className="col-span-2 lg:col-span-12 xl:col-span-3 2xl:col-span-3 xs:col-span-12 z-10">
+>>>>>>> 26dbf95 (init)
           <div className="w-80 lg:hidden md:hidden"> <SideBar newWorkspace={newWorkspace} setNewWorkspace={setNewWorkspace} /></div>
           <div className="hidden lg:inline-block md:inline-block">
             <div className={open ? "lg:flex lg:items-center" : "hidden lg:flex lg:items-center lg:mt-9 md:mt-7"}>
@@ -98,7 +102,7 @@ export const Root = () => {
               <span className={open ? "hidden fixed lg:inline-block lg:absolute lg:right-0 lg:mt-24 md:-right-8 md:mt-20 md:fixed" : "hidden lg:inline-block lg:absolute right-0 md:-right-8 md:fixed"}><NavBarProfile /></span>
             </div>
 
-            <div className={open ? "hidden lg:inline-block lg:ml-10 lg:mt-24 lg:px-20" : "lg:px-20 hidden lg:inline-block lg:mt-9 2xs:ml-16"}>
+            <div className={open ? "hidden lg:inline-block lg:ml-10 lg:mt-24 lg:px-20" : "lg:px-20 xs:px-10 2xs:px-5 hidden lg:inline-block lg:mt-9"}>
               <Outlet />
               </div>
           </div>

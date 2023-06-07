@@ -46,15 +46,15 @@ export const Document = () => {
             Create Document
           </Link>
         </div>
-        <div className="grid grid-cols-12 pt-2">
-          <div className="col-span-4 justify-between flex items-center gap-x-5 h-11">
-            <div className="flex items-center gap-x-3">
-              <img src={sort} className="w-7 h-7" />
+        <div className="grid grid-cols-12 pt-2 sm:gap-x-5 xs:gap-x-2 gap-x-3 2xl:gap-x-7">
+          <div className="col-span-4 justify-between flex items-center gap-x-3 h-11 sm:col-span-6 xs:gap-x-1">
+            <div className="flex items-center gap-x-1">
+              <img src={sort} className="w-7 h-7 sm:hidden" />
               <h4 className="font-semibold text-20px">Sort: </h4>
             </div>
             <div className="relative">
               <button
-                className="flex items-center gap-20"
+                className="flex items-center justify-between gap-20 sm:gap-10 xs:gap-3 p-1.5 border-2 rounded-lg w-52 xl:w-44 xl:"
                 onClick={() => setOpenSort(!openSort)}
               >
                 <p className="text-18px text-black">Last_Update</p>
@@ -67,14 +67,14 @@ export const Document = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-4 justify-between flex items-center gap-x-5 h-11 ">
-            <div className="flex items-center gap-x-3">
-              <img src={filter} className="w-7 h-7" />
+          <div className="col-span-4 justify-between flex items-center gap-x-5 h-11 sm:col-span-6 ">
+            <div className="flex items-center gap-x-2">
+              <img src={filter} className="w-7 h-7 sm:hidden" />
               <h4 className="font-semibold text-20px">Filter: </h4>
             </div>
             <div className="relative">
               <button
-                className="flex items-center gap-20"
+                className="flex items-center justify-between gap-20 sm:gap-10 xs:gap-6 p-1.5 border-2 rounded-lg w-52"
                 onClick={() => setOpenFilter(!openFilter)}
               >
                 <p className="text-18px text-black">Product</p>
@@ -90,7 +90,7 @@ export const Document = () => {
               </div>
             </div>
           </div>
-          <div className="col-span-4 flex items-center justify-end">
+          <div className="col-span-4 flex items-center justify-end sm:col-span-12 sm:h-11">
             {openSearch ? (
               <div className="flex justify-end items-center relative">
                 {openSearch ? (
@@ -161,7 +161,7 @@ export const Document = () => {
       </div>
       {openGrid ? (
         <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-4 sm:col-span-6 xs:col-span-12">
+          <div className="col-span-4 sm:col-span-6 xs:col-span-12 lg:col-span-6">
             <DocumentCard
               title={"Redux Toolkit"}
               header={"1. Introduction to Redux Toolkit"}
@@ -170,7 +170,7 @@ export const Document = () => {
               editdate={9}
             />
           </div>
-          <div className="col-span-4 sm:col-span-6 xs:col-span-12">
+          <div className="col-span-4 sm:col-span-6 xs:col-span-12 lg:col-span-6 ">
             <DocumentCard
               title={"Node Js"}
               header={"1. Introduction to Node Js"}
@@ -182,7 +182,7 @@ export const Document = () => {
               editdate={12}
             />
           </div>
-          <div className="col-span-4 sm:col-span-6 xs:col-span-12">
+          <div className="col-span-4 sm:col-span-6 xs:col-span-12 lg:col-span-6">
             <DocumentCard
               title={"Spring Profile"}
               header={"1. Introduction to Spring Profile"}
