@@ -44,12 +44,16 @@ export const Document = () => {
     dispatch(getWorkspaceByWorksapceId(workspaceId));
   }, []);
 
+  console.log(workspace);
+
   return (
     <div className="text-accent space-y-5">
       <div>
-        <h1 className="font-bold text-accent text-44px">React & NodeJS</h1>
+        <h1 className="font-bold text-accent text-44px">
+          {workspace && workspace.workspaceName}
+        </h1>
         <p className="text-accent text-18px">
-          Welcome to React & NodeJS workspace
+          Welcome to {workspace && workspace.workspaceName} workspace
         </p>
         <div className="flex justify-between items-center pt-1 xs:pt-5 2xs:pt-5">
           <div className="flex items-center gap-x-3 2xl:gap-x-2">
@@ -78,7 +82,7 @@ export const Document = () => {
             </div>
             <div className="relative col-span-2 lg:col-span-2 2xs:col-span-3 xs:col-span-3">
               <button
-                className="flex items-center justify-between sm:gap-10 xs:gap-2 p-1.5 xs:p-1 sm:p-1 border-2 rounded-lg xl:w-44 sm:w-44 xl:gap-x-0 xs:w-36 md:w-52 lg:w-full 2xl:gap-0 2xl:w-full 2xs:w-full"
+                className="flex items-center justify-between sm:gap-10 xs:gap-2 p-1.5 xs:p-1 sm:p-1 rounded-lg xl:w-44 sm:w-44 xl:gap-x-0 xs:w-36 md:w-52 lg:w-full 2xl:gap-0 2xl:w-full 2xs:w-full"
                 onClick={() => setOpenSort(!openSort)}
               >
                 <p className="text-18px text-black xs:text-16px sm:text-16px md:text-16px">
@@ -102,7 +106,7 @@ export const Document = () => {
             </div>
             <div className="relative col-span-2 lg:col-span-2 xs:col-span-3">
               <button
-                className="flex items-center justify-between sm:gap-10 xs:gap-2 p-1.5 xs:p-1 sm:p-1 border-2 rounded-lg w-44 xl:w-44 sm:w-44 xl:gap-x-0 xs:w-full md:w-52 2xs:w-full lg:w-full 2xl:w-full"
+                className="flex items-center justify-between sm:gap-10 xs:gap-2 p-1.5 xs:p-1 sm:p-1 rounded-lg w-44 xl:w-44 sm:w-44 xl:gap-x-0 xs:w-full md:w-52 2xs:w-full lg:w-full 2xl:w-full"
                 onClick={() => setOpenFilter(!openFilter)}
               >
                 <p className="text-18px text-black xs:text-16px sm:text-16px md:text-16px">

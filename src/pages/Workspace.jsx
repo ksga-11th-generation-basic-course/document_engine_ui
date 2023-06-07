@@ -33,13 +33,6 @@ export const Workspace = () => {
             <h4 className="font-semibold text-20px md:text-18px">Sort: </h4>
           </div>
           <div className="relative">
-            {/* <button
-              className="flex items-center gap-x-20"
-              onClick={() => setOpenSort(!openSort)}
-            >
-              <p className="text-18px text-black">Last Update</p>
-              <img src={chevrondown} />
-            </button> */}
             <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
@@ -94,13 +87,6 @@ export const Workspace = () => {
             <h4 className="font-semibold text-20px md:text-18px">Filter: </h4>
           </div>
           <div className="relative">
-            {/* <button
-              className="flex items-center gap-x-20"
-              onClick={() => setOpenFilter(!openFilter)}
-            >
-              <p className="text-18px text-black">All Workspaces</p>
-              <img src={chevrondown} />
-            </button> */}
             <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
