@@ -2,20 +2,16 @@ import React, { useState } from "react";
 import trush from "../../assets/dashboard_image/trush.svg";
 import pencil from "../../assets/workspace_image/pencil.svg";
 import chevrondown from "../../assets/workspace_image/chevrondown.svg";
-import { DropWorkspaceEdit } from "../DropWorkspaceEdit";
 import { RemoveMemberModal } from "../../modal/RemoveMemberModal";
+import { Dropdown } from "react-daisyui";
+import view from "../../assets/workspace_image/view.svg";
 
-export const MemberWorkspaceCard = ({
-  username,
-  status,
-  isOwner,
-  currentuser,
-}) => {
+export const MemberWorkspaceCard = ({ member }) => {
   const [removeMember, setRemoveMember] = useState(false);
 
   const [openEditor, setOpenEditor] = useState(false);
 
-  const character = username.split("");
+  const character = member.username.split("");
 
   const colors = [
     "bg-red-500",
@@ -32,39 +28,45 @@ export const MemberWorkspaceCard = ({
       <div className="flex justify-between items-center w-full space-y-4">
         <div className="flex justify-center items-center gap-x-3">
           <div
-            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full`}
+            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full overflow-hidden`}
           >
-            <p className="font-semibold text-18px text-white">{character[0]}</p>
+            {member.profileImage === null ? (
+              <p className="font-semibold text-18px text-white">
+                {character[0]}
+              </p>
+            ) : (
+              <img src={member.profileImage} className="w-full h-full" />
+            )}
           </div>
-          <h3 className="font-semibold text-18px">
-            {username} {currentuser ? <span>(You)</span> : null}
-          </h3>
-          {isOwner ? (
+          <h3 className="font-semibold text-18px">{member.username}</h3>
+          {member.isOwner ? (
             <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg">
               Owner
             </span>
           ) : null}
         </div>
-        {!status ? (
+        {!member.isOwner ? (
           <div className="flex justify-center items-center gap-x-4 md:gap-x-2">
             <div className="relative">
-              <button
-                type="button"
-                className="text-18px md:text-16px md:gap-x-1 md:px-2 border-[1px] rounded-lg px-3 py-1 flex justify-center items-center gap-x-2"
-                onClick={() => setOpenEditor(!openEditor)}
-              >
-                <img className="w-4" src={pencil} />
-                <p>Editor</p>
-                <img className="md:w-4" src={chevrondown} />
-              </button>
-              <div>
-                {openEditor ? (
-                  <DropWorkspaceEdit
-                    openEditor={openEditor}
-                    setOpenEditor={setOpenEditor}
-                  />
-                ) : null}
-              </div>
+              <Dropdown>
+                <Dropdown.Toggle>
+                  <div className="text-18px md:text-16px md:gap-x-1 md:px-2 border-[1px] rounded-lg px-3 py-1 flex justify-center items-center gap-x-2">
+                    <img className="w-4" src={pencil} />
+                    <p>Editor</p>
+                    <img className="md:w-4" src={chevrondown} />
+                  </div>
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="w-[125px] bg-white rounded-lg">
+                  <Dropdown.Item className="flex items-center text-18px md:text-16px">
+                    <img className="md:w-4" src={pencil} />
+                    <span>Editor</span>
+                  </Dropdown.Item>
+                  <Dropdown.Item className="flex items-center text-18px md:text-16px">
+                    <img className="md:w-4" src={view} />
+                    <span>Viewer</span>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
             <button
               type="button"

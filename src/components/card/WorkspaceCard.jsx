@@ -11,6 +11,7 @@ export const WorkspaceCard = ({ workspace }) => {
   const [workspaceId, setWorkspaceId] = useState();
   const [removeWorkspace, setRemoveWorkspace] = useState(false);
   const [openWorkspaceSetting, setOpenWorkspaceSetting] = useState(false);
+  const [workspaceCode, setWorkspaceCode] = useState();
 
   const navigate = useNavigate();
 
@@ -18,9 +19,15 @@ export const WorkspaceCard = ({ workspace }) => {
     navigate(`/document/${workspace.workspaceId}`);
   };
 
-  const handleOpenDropDownWorkspace = () => {
+  const handleRemoveWorkspace = () => {
     setRemoveWorkspace(!removeWorkspace);
     setWorkspaceId(workspace.workspaceId);
+  };
+
+  const handleSettingWorkspace = () => {
+    setOpenWorkspaceSetting(!openWorkspaceSetting);
+    setWorkspaceId(workspace.workspaceId);
+    setWorkspaceCode(workspace.workspaceCode);
   };
 
   return (
@@ -43,25 +50,25 @@ export const WorkspaceCard = ({ workspace }) => {
             Create date: <span>{workspace.createdDate}</span>
           </p>
         </div>
-        <div className="relative">
-          <Dropdown horizontal="right" vertical="middle">
-            <Dropdown.Toggle>
-              <img src={dotmenu} />
-            </Dropdown.Toggle>
-            <Dropdown.Menu className="w-52 bg-white rounded-lg">
-              <Dropdown.Item
-                onClick={() => setOpenWorkspaceSetting(!openWorkspaceSetting)}
-              >
-                <img src={setting} className="w-6 h-6" />
-                <span>Setting</span>
-              </Dropdown.Item>
-              <Dropdown.Item onClick={handleOpenDropDownWorkspace}>
-                <img src={trush} className="w-5 h-5" />
-                <span>Remove</span>
-              </Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-        </div>
+        {workspace.isOwner && (
+          <div className="relative">
+            <Dropdown horizontal="right" vertical="middle">
+              <Dropdown.Toggle>
+                <img src={dotmenu} />
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="w-52 bg-white rounded-lg">
+                <Dropdown.Item onClick={handleSettingWorkspace}>
+                  <img src={setting} className="w-6 h-6" />
+                  <span>Setting</span>
+                </Dropdown.Item>
+                <Dropdown.Item onClick={handleRemoveWorkspace}>
+                  <img src={trush} className="w-5 h-5" />
+                  <span>Remove</span>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+        )}
       </div>
       <RemoveWorkspaceModal
         removeWorkspace={removeWorkspace}
@@ -71,6 +78,8 @@ export const WorkspaceCard = ({ workspace }) => {
       <WorkspaceSettingModal
         openWorkspaceSetting={openWorkspaceSetting}
         setOpenWorkspaceSetting={setOpenWorkspaceSetting}
+        workspaceCode={workspaceCode}
+        workspaceId={workspaceId}
       />
     </div>
   );

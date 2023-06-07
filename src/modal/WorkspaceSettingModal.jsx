@@ -4,11 +4,12 @@ import { RemoveWorkspaceModal } from "./RemoveWorkspaceModal";
 import { SideBarSettingWorkspace } from "../components/SideBarSettingWorkspace";
 import { SettingContent } from "../components/SettingContent";
 import { CollaboratorOwnerContent } from "../components/CollaboratorOwnerContent";
-import { CollaboratorMemberContent } from "../components/CollaboratorMemberContent";
 
 export const WorkspaceSettingModal = ({
   openWorkspaceSetting,
   setOpenWorkspaceSetting,
+  workspaceId,
+  workspaceCode,
 }) => {
   const [removeWorkspace, setRemoveWorkspace] = useState(false);
 
@@ -41,6 +42,8 @@ export const WorkspaceSettingModal = ({
               ) : null}
               {collaborator ? (
                 <CollaboratorOwnerContent
+                  workspaceCode={workspaceCode}
+                  workspaceId={workspaceId}
                   openWorkspaceSetting={openWorkspaceSetting}
                   setOpenWorkspaceSetting={setOpenWorkspaceSetting}
                 />

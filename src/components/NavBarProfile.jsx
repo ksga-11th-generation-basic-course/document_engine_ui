@@ -17,7 +17,7 @@ export const NavBarProfile = () => {
   return (
     <div className="flex justify-end items-center py-5 px-14 2xs:px-24 gap-x-5 bg-white">
       <div>
-        <JoinWorkspaceModal visible={visible} toggleVisible={toggleVisible} />
+        <JoinWorkspaceModal visible={visible} setVisible={setVisible} />
       </div>
       <div className="relative">
         <div className="relative inline-block">

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
   getAllWorkspace,
+  getMemberInEachWorkspace,
   getWorkspaceByWorksapceId,
   removeWorkspaceService,
 } from "../../service/workspaceService/workspaceService";
@@ -8,6 +9,7 @@ import {
 const initialState = {
   workspace: null,
   workspaces: null,
+  members: null,
   loading: false,
   error: null,
 };
@@ -20,7 +22,7 @@ const workspaceSlice = createSlice({
       state.workspaces.push(action.payload);
     },
     joinWorkspaceSuccess: (state, action) => {
-      state.workspace = action.payload;
+      state.workspaces.push(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -65,6 +67,20 @@ const workspaceSlice = createSlice({
     builder.addCase(removeWorkspaceService.rejected, (state, action) => {
       state.loading = true;
       state.workspace = null;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(getMemberInEachWorkspace.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getMemberInEachWorkspace.fulfilled, (state, action) => {
+      state.loading = false;
+      state.members = action.payload;
+      state.error = null;
+    });
+    builder.addCase(getMemberInEachWorkspace.rejected, (state, action) => {
+      state.loading = true;
+      state.members = null;
       state.error = action.error.message;
     });
   },
