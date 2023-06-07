@@ -5,13 +5,15 @@ import { DropDownProfile } from "../components/DropDownProfile";
 
 export const NavBarProfile = () => {
   const [visible, setVisible] = useState(false);
+  const [signOut, setSignOut] = useState(false);
   const toggleVisible = () => {
     setVisible(!visible);
   };
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex justify-end items-center py-5 px-14 gap-x-5 md:px-7">
+    <div className="flex justify-end items-center py-5 px-14 2xs:px-24 gap-x-5 bg-white">
+      {signOut ? "True" : "False"}
       <div>
         <JoinWorkspaceModal visible={visible} toggleVisible={toggleVisible} />
       </div>
@@ -23,7 +25,8 @@ export const NavBarProfile = () => {
           >
             <img src={avatar} className="w-12 md:w-9"/>
           </button>
-          {open ? <DropDownProfile open={open} setOpen={setOpen} /> : null}
+
+          {open  && (<span>{!signOut ? <DropDownProfile open={open} setOpen={setOpen}  signOut={signOut} setSignOut={setSignOut}/> : null}</span>)}
         </div>
       </div>
     </div>
