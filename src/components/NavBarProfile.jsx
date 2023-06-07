@@ -5,7 +5,6 @@ import { DropDownProfile } from "../components/DropDownProfile";
 
 export const NavBarProfile = () => {
   const [visible, setVisible] = useState(false);
-  const [signOut, setSignOut] = useState(false);
   const toggleVisible = () => {
     setVisible(!visible);
   };
@@ -25,7 +24,7 @@ export const NavBarProfile = () => {
             <img src={avatar} className="w-12 md:w-9"/>
           </button>
 
-          {open  && (<span>{!signOut ? <DropDownProfile open={open} setOpen={setOpen}  signOut={signOut} setSignOut={setSignOut}/> : null}</span>)}
+          {open ? <DropDownProfile open={open} setOpen={setOpen} /> : null}
         </div>
       </div>
     </div>

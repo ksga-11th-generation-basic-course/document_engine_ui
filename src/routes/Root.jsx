@@ -13,8 +13,8 @@ export const Root = () => {
   return (
     <div className="relative">
       <div className="grid grid-cols-12">
-        <div className= "col-span-2 shadow-sidebar z-10">
-              <div className= "fixed w-80 lg:hidden md:hidden"> <SideBar newWorkspace={newWorkspace} setNewWorkspace={setNewWorkspace}/></div>
+        <div className= "col-span-2  z-10">
+              <div className= "fixed w-80 shadow-sidebar lg:hidden md:hidden"> <SideBar newWorkspace={newWorkspace} setNewWorkspace={setNewWorkspace}/></div>
 
               <div className="hidden lg:inline-block md:inline-block">
                       <div className={open ? "lg:flex lg:items-center" : "hidden lg:flex lg:items-center lg:mt-9 md:mt-7"}>

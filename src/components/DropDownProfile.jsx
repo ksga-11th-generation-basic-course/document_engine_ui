@@ -6,7 +6,7 @@ import signout from "../assets/dashboard_image/signout.svg";
 import { SignOutModal } from "../modal/SignOutModal";
 import { AccountSettingModal } from "../modal/AccountSettingModal";
 
-export const DropDownProfile = ({ open, setOpen , signOut, setSignOut}) => {
+export const DropDownProfile = ({ open, setOpen }) => {
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {
     setVisible(!visible);
@@ -22,7 +22,7 @@ export const DropDownProfile = ({ open, setOpen , signOut, setSignOut}) => {
           </button>
         </div>
         <div className="flex flex-col gap-y-5 px-5">
-          <p className="font-bold text-[26px] text-primary md:text-22px">Profile</p>
+          <p className="font-bold text-24px text-primary">Profile</p>
           <div className="relative flex items-center gap-x-3">
                 <button
                 
@@ -36,7 +36,7 @@ export const DropDownProfile = ({ open, setOpen , signOut, setSignOut}) => {
             </div>
           </div>
           <div className="border-[1px] border-[#E7E7E7]"></div>
-          <div className="flex flex-col gap-y-5 py-5">
+          <div className="flex flex-col gap-y-5 py-5 md:py-0">
             <button
               className="flex items-center text-18px gap-x-4"
               onClick={() => {setOpenSetting(!openSetting); setOpen(open)}}
@@ -54,7 +54,7 @@ export const DropDownProfile = ({ open, setOpen , signOut, setSignOut}) => {
           </div>
         </div>
         <div>
-            {!open ? <SignOutModal visible={visible} toggleVisible={toggleVisible} /> : null}
+           <SignOutModal visible={visible} toggleVisible={toggleVisible} />
           <AccountSettingModal
             openSetting={openSetting}
             setOpenSetting={setOpenSetting}

@@ -6,10 +6,10 @@ export const Hint = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="lg:ml-4">
+    <div className="lg:ml-4 md:-ml-5">
           <div className="mb-5 mt-7">
-              <h1 className="font-bold text-accent text-44px">Hi, Ouddom!</h1>
-              <p className="text-accent text-20px -mt-2">Welcome to DocEngine</p>
+              <h1 className="font-bold text-accent text-44px md:text-28px">Hi, Ouddom!</h1>
+              <p className="text-accent text-20px -mt-2 md:text-14px">Welcome to DocEngine</p>
           </div>
           
           <div className="relative lg:w-[620px]">
@@ -19,17 +19,17 @@ export const Hint = () => {
                 <button
                   className={
                     open
-                      ? "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom  border-gray-500 rounded-t-lg"
-                      : "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom rounded-lg hover:shadow-hover "
+                      ? "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom  rounded-t-lg md:px-3  md:w-fit"
+                      : "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom rounded-lg hover:shadow-hover md:px-3 md:w-fit"
                   }
                   onClick={() => setOpen(!open)}
                 >
-                  <img src={star} />
-                  <div>
-                    <h3 className="font-semibold text-24px text-black">
+                  <img src={star} className="md:w-7"/>
+                  <div className="md:-ml-2">
+                    <h3 className="font-semibold text-24px text-black md:text-16px">
                       Ouddom, get started with DocEngine
                     </h3>
-                    <p className="text-accent text-20px text-left">
+                    <p className="text-accent text-20px text-left md:text-12px">
                       Hint! to create your Document
                     </p>
                   </div>

@@ -11,8 +11,8 @@ export const SideBar = ({ sideBar, setSideBar, newWorkspace, setNewWorkspace}) =
   return (
     <div className="bg-[#FAFAF9] overflow-x-auto md:mt-8">
       {/* Close Button */}
-      <div className="hidden lg:flex flex-col items-end pr-3 pt-3 md:absolute md:right-0 md:top-0">
-        <div className="hidden lg:inline-block  md:justify-end">
+      <div className="hidden lg:flex flex-col items-end pr-3 pt-3 md:absolute md:right-0 md:top-0  md:w-full md:bg-[#FAFAF9]">
+        <div className="hidden lg:inline-block">
           <button type="button" onClick={() => setSideBar(!sideBar)}>
             <img src={close} className="w-8 md:w-5" />
           </button>
