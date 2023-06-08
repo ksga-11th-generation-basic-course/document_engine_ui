@@ -25,7 +25,7 @@ export const AboutUs = () => {
           />
         </div>
       </div>
-      <div className="flex flex-row sm:flex-col md:flex md:flex-col  w-screen justify-evenly px-20 sm:px-10 ">
+      <div className="flex flex-row lg:flex-col sm:flex-col md:flex md:flex-col  w-screen justify-evenly px-20 sm:px-10 ">
         <div className=" flex flex-col   ">
           <div className="mainTitle font-bold text-4xl  pt-36 md:pt-10 sm:pt-10 sm:text-2xl">
             <h1 className="pb-35 text-accent sm:text-xl xl:whitespace-nowrap xl:pt-5  sm:whitespace-nowrap">
@@ -36,7 +36,7 @@ export const AboutUs = () => {
               and<span className="text-primary p-2">safe! </span>
             </h1>
           </div>
-          <div className="pt-10 leading-normal xl:pb-5 text-2xl w-96 sm:pt-2 sm:text-sm sm:pr-16 text-[#575E69]">
+          <div className="pt-10 lg:text-xl leading-normal xl:pb-5 text-2xl w-96 sm:pt-2 sm:text-sm sm:pr-16 text-[#575E69]">
             DocEngine is a system that includes the possibility to customize the
             document with auto-saving and ease when the users want to share
             those documents within the group.
@@ -57,11 +57,11 @@ export const AboutUs = () => {
               </h1>
             </div>
           </div>
-          <div className="sm:indent-[0.5px] sm:text-xl  sm:px-0 ">
+          <div className="sm:indent-[0.5px] lg:px-5 sm:text-xl  sm:px-0 ">
             <h1 className="text-4xl text-center sm:text-3xl sm:text-center font-bold text-accent">
               About Our <span className="text-primary">Project </span>
             </h1>
-            <div className="text-accent  sm:h-auto sm:text-sm text-2xl pb-5  pt-16 sm:pt-6 sm:text-justify  sm:px-0">
+            <div className="text-accent px-10 text-10px sm:h-auto sm:text-sm text-xl pb-5  pt-16 sm:pt-6 sm:text-justify  sm:px-0">
               <p>
                 DocEngine is an online platform that allows users to read, edit,
                 and

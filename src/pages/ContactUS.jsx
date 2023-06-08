@@ -15,15 +15,15 @@ export const ContactUs = () => {
 
       {/* grid 1 block title */}
       <div className=" grid grid-cols-2 overflow-hidden  md:flex md:flex-col">
-        <div className=" px-28 md:px-8 pt-32 sm:px-10 md:pt-24">
+        <div className=" px-12  md:px-8 pt-32 sm:px-10 md:pt-24">
           <div>
             <div className="bg-primary px-2 py-0.5  rounded-r-lg  w-40"></div>
           </div>
-          <div className="text pt-8 lg:pt-5">
-            <h2 className="text-4xl font-bold pb-5 text-accent">
+          <div className="text pt-8 lg:pt-5 px-0">
+            <h2 className="text-3xl font-bold pb-5 text-accent">
               Let's <span className="text-primary">Talk!</span>
             </h2>
-            <div className="text-justify lg:text-14px  md:text-16px md:whitespace-nowrap sm:pr-16 sm:text-12px text-xl text-accent font-semibold">
+            <div className="text-justify text-12px xl:text-10px lg:text-12px   md:text-16px md:whitespace-nowrap sm:pr-16 sm:text-12px text-xl text-accent font-semibold">
               <p>To request a quote or what to meet up for coffee, </p>
               <p>
                 contact us directly or fill out the form we will get back to
@@ -102,7 +102,6 @@ export const ContactUs = () => {
               type="submit"
               className="
                             mt-5
-                            
                             px-10
                             py-2.5
                             bg-primary
