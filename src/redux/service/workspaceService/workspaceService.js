@@ -106,3 +106,20 @@ export const getMemberInEachWorkspace = createAsyncThunk(
     }
   }
 );
+
+export const filterWorkspace = createAsyncThunk(
+  "workspaces/filter",
+  async (checked) => {
+    try {
+      const response = await api.get(`workspaces/filter?filter=${checked}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
+      return response.data.payload;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);

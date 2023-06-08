@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  filterWorkspace,
   getAllWorkspace,
   getMemberInEachWorkspace,
   getWorkspaceByWorkspaceId,
@@ -81,6 +82,20 @@ const workspaceSlice = createSlice({
     builder.addCase(getMemberInEachWorkspace.rejected, (state, action) => {
       state.loading = true;
       state.members = null;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(filterWorkspace.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(filterWorkspace.fulfilled, (state, action) => {
+      state.loading = false;
+      state.workspaces = action.payload;
+      state.error = null;
+    });
+    builder.addCase(filterWorkspace.rejected, (state, action) => {
+      state.loading = true;
+      state.workspaces = null;
       state.error = action.error.message;
     });
   },

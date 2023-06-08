@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import dotmenu from "../../assets/dashboard_image/dotmenu.png";
 import { useNavigate } from "react-router-dom";
-import { Dropdown } from "react-daisyui";
 import { RemoveWorkspaceModal } from "../../modal/RemoveWorkspaceModal";
 import setting from "../../assets/dashboard_image/setting.svg";
 import trush from "../../assets/dashboard_image/trush.svg";
 import { WorkspaceSettingModal } from "../../modal/WorkspaceSettingModal";
+import { Dropdown } from "react-daisyui";
 
 export const WorkspaceCard = ({ workspace }) => {
   const [workspaceId, setWorkspaceId] = useState();
@@ -52,7 +52,7 @@ export const WorkspaceCard = ({ workspace }) => {
         </div>
         {workspace.isOwner && (
           <div className="relative">
-            <Dropdown horizontal="right" vertical="middle">
+            <Dropdown horizontal="right">
               <Dropdown.Toggle>
                 <img src={dotmenu} />
               </Dropdown.Toggle>

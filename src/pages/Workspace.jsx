@@ -5,20 +5,32 @@ import chevrondown from "../assets/workspace_image/chevrondown.svg";
 import filter from "../assets/workspace_image/filter.svg";
 import search from "../assets/workspace_image/search.svg";
 import { WorkspaceCard } from "../components/card/WorkspaceCard";
-import { getAllWorkspace } from "../redux/service/workspaceService/workspaceService";
+import {
+  filterWorkspace,
+  getAllWorkspace,
+} from "../redux/service/workspaceService/workspaceService";
 import { useDispatch, useSelector } from "react-redux";
 import { Dropdown, Radio } from "react-daisyui";
 
 export const Workspace = () => {
   const [openSearch, setOpenSearch] = useState(false);
 
+  const [checked, setChecked] = useState("allworkspaces");
+
   const workspaces = useSelector((state) => state.workspace.workspaces);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getAllWorkspace());
-  }, []);
+    switch (checked) {
+      case "allworkspaces":
+        dispatch(getAllWorkspace());
+      case "myworkspaces":
+        dispatch(filterWorkspace(true));
+      case "otherworkspaces":
+        dispatch(filterWorkspace(false));
+    }
+  }, [checked]);
 
   return (
     <div className="text-accent space-y-5 sm:h-full bg-white">
@@ -100,6 +112,7 @@ export const Workspace = () => {
                     defaultChecked
                     name="radioOptions"
                     value="allworkspaces"
+                    onChange={(e) => setChecked(e.target.value)}
                     className="checked:bg-primary checked:shadow-none"
                   />
                   <span>All Workspaces</span>
@@ -108,6 +121,7 @@ export const Workspace = () => {
                   <Radio
                     name="radioOptions"
                     value="myworkspaces"
+                    onChange={(e) => setChecked(e.target.value)}
                     className="checked:bg-primary checked:shadow-none"
                   />
                   <span>My Workspaces</span>
@@ -116,6 +130,7 @@ export const Workspace = () => {
                   <Radio
                     name="radioOptions"
                     value="otherworkspaces"
+                    onChange={(e) => setChecked(e.target.value)}
                     className="checked:bg-primary checked:shadow-none"
                   />
                   <span>Other Workspaces</span>

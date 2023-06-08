@@ -32,7 +32,7 @@
     "@material-tailwind/react": "^2.0.1",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
-    "daisyui": "^2.51.6",
+    "daisyui": "^2.52.0",
     "firebase": "^9.22.1",
     "flowbite": "^1.6.5",
     "flowbite-react": "^0.4.4",
