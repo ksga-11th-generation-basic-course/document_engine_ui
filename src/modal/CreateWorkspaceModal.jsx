@@ -32,6 +32,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
         });
       });
       setVisible(!visible);
+      setWorkspaceImage(null);
       document.getElementById("createworkspace").reset();
     } catch (error) {
       console.log(error);
@@ -82,7 +83,19 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                     setWorkspaceImage(e.target.files[0]);
                   }}
                 />
-                <img src={workspacephoto} className="cursor-pointer" />
+                <div className="w-[410px] h-[165px] overflow-hidden rounded-lg">
+                  {workspaceImage ? (
+                    <img
+                      src={URL.createObjectURL(workspaceImage)}
+                      className="cursor-pointer w-full object-cover h-full"
+                    />
+                  ) : (
+                    <img
+                      src={workspacephoto}
+                      className="cursor-pointer"
+                    />
+                  )}
+                </div>
               </label>
               <div className="space-y-3 mt-2">
                 <p className="text-end text-[#9CA3AF] font-normal">

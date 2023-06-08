@@ -3,7 +3,7 @@ import logo from "../assets/landing_image/logo.svg";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
 import { useDispatch, useSelector } from "react-redux";
-import { getWorkspaceByWorksapceId } from "../redux/service/workspaceService/workspaceService";
+import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
 import close from "../assets/dashboard_image/close.svg";
 
 export const SideBar = ({
@@ -19,7 +19,7 @@ export const SideBar = ({
   const workspace = useSelector((state) => state.workspace.workspace);
 
   useEffect(() => {
-    dispatch(getWorkspaceByWorksapceId(workspaceId));
+    dispatch(getWorkspaceByWorkspaceId(workspaceId));
   }, []);
 
   const param = useParams();

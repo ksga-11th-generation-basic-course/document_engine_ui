@@ -1,15 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal } from "react-daisyui";
 import { RemoveWorkspaceModal } from "./RemoveWorkspaceModal";
 import { SideBarSettingWorkspace } from "../components/SideBarSettingWorkspace";
 import { SettingContent } from "../components/SettingContent";
 import { CollaboratorOwnerContent } from "../components/CollaboratorOwnerContent";
+import { useDispatch, useSelector } from "react-redux";
+import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
 
 export const WorkspaceSettingModal = ({
   openWorkspaceSetting,
   setOpenWorkspaceSetting,
-  workspaceId,
-  workspaceCode,
+  workspace,
 }) => {
   const [removeWorkspace, setRemoveWorkspace] = useState(false);
 
@@ -36,14 +37,14 @@ export const WorkspaceSettingModal = ({
             <div>
               {setting ? (
                 <SettingContent
+                  workspace={workspace}
                   openWorkspaceSetting={openWorkspaceSetting}
                   setOpenWorkspaceSetting={setOpenWorkspaceSetting}
                 />
               ) : null}
               {collaborator ? (
                 <CollaboratorOwnerContent
-                  workspaceCode={workspaceCode}
-                  workspaceId={workspaceId}
+                  workspace={workspace}
                   openWorkspaceSetting={openWorkspaceSetting}
                   setOpenWorkspaceSetting={setOpenWorkspaceSetting}
                 />

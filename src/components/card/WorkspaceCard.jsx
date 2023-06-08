@@ -79,7 +79,7 @@ export const WorkspaceCard = ({ workspace }) => {
         openWorkspaceSetting={openWorkspaceSetting}
         setOpenWorkspaceSetting={setOpenWorkspaceSetting}
         workspaceCode={workspaceCode}
-        workspaceId={workspaceId}
+        workspace={workspace}
       />
     </div>
   );

@@ -143,7 +143,7 @@ export const Workspace = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-12 gap-8">
+      <div className="grid grid-cols-12 gap-5">
         {workspaces === null ? null : workspaces.length > 0 ? (
           workspaces.map((workspace, index) => (
             <div className="col-span-4" key={index}>

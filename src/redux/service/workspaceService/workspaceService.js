@@ -73,7 +73,7 @@ export const removeWorkspaceService = createAsyncThunk(
   }
 );
 
-export const getWorkspaceByWorksapceId = createAsyncThunk(
+export const getWorkspaceByWorkspaceId = createAsyncThunk(
   "workspaces/workspaceId",
   async (workspaceId) => {
     try {
@@ -83,7 +83,6 @@ export const getWorkspaceByWorksapceId = createAsyncThunk(
           "Content-Type ": "application/json",
         },
       });
-      console.log(response.data.payload)
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;

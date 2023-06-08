@@ -10,8 +10,7 @@ import { getMemberInEachWorkspace } from "../redux/service/workspaceService/work
 export const CollaboratorOwnerContent = ({
   openWorkspaceSetting,
   setOpenWorkspaceSetting,
-  workspaceCode,
-  workspaceId,
+  workspace
 }) => {
   const [copied, setCopied] = useState(false);
   const handleCopy = () => {
@@ -26,7 +25,7 @@ export const CollaboratorOwnerContent = ({
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getMemberInEachWorkspace(workspaceId));
+    dispatch(getMemberInEachWorkspace(workspace.workspaceId));
   }, []);
 
   return (
@@ -54,8 +53,8 @@ export const CollaboratorOwnerContent = ({
               <p className="font-semibold text-18px">Collaborators</p>
             </div>
             <div className="flex justify-center items-center gap-x-3 md:gap-3 md:px-0 shadow-sm px-3 p-1 rounded-lg relative">
-              <span className="text-primary">{workspaceCode}</span>
-              <CopyToClipboard text={workspaceCode} onCopy={handleCopy}>
+              <span className="text-primary">{workspace.workspaceCode}</span>
+              <CopyToClipboard text={workspace.workspaceCode} onCopy={handleCopy}>
                 <img src={copy} />
               </CopyToClipboard>
               <div>

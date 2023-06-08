@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   getAllWorkspace,
   getMemberInEachWorkspace,
-  getWorkspaceByWorksapceId,
+  getWorkspaceByWorkspaceId,
   removeWorkspaceService,
 } from "../../service/workspaceService/workspaceService";
 
@@ -40,15 +40,15 @@ const workspaceSlice = createSlice({
       state.error = action.error.message;
     });
 
-    builder.addCase(getWorkspaceByWorksapceId.pending, (state) => {
+    builder.addCase(getWorkspaceByWorkspaceId.pending, (state) => {
       state.loading = true;
     });
-    builder.addCase(getWorkspaceByWorksapceId.fulfilled, (state, action) => {
+    builder.addCase(getWorkspaceByWorkspaceId.fulfilled, (state, action) => {
       state.loading = false;
       state.workspace = action.payload;
       state.error = null;
     });
-    builder.addCase(getWorkspaceByWorksapceId.rejected, (state, action) => {
+    builder.addCase(getWorkspaceByWorkspaceId.rejected, (state, action) => {
       state.loading = true;
       state.workspace = null;
       state.error = action.error.message;
