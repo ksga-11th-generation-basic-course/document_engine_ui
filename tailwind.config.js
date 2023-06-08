@@ -44,7 +44,11 @@ export default {
         "btn-primary" : "#009AFF"
       },
       fontSize: {
+        "9px": "9px",
+        "10px": "10px",
+        "11px": "11px",
         "12px": "12px",
+        "13px": "13px",
         "14px": "14px",
         "15px": "15px",
         "16px": "16px",

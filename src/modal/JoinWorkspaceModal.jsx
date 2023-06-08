@@ -15,35 +15,35 @@ export const JoinWorkspaceModal = ({ visible, toggleVisible }) => {
         Join
       </button>
       <Modal open={visible}>
-        <div className="w-[540px] bg-white rounded-lg p-3">
+        <div className="w-[540px] bg-white rounded-lg p-3 md:w-[300px]">
           <div className="flex justify-end">
             <button type="button" onClick={toggleVisible}>
-              <img src={close} />
+              <img src={close} className="md:w-6"/>
             </button>
           </div>
-          <div className="px-14 space-y-5 text-accent">
+          <div className="px-14 space-y-5 text-accent md:px-5">
             <div className="flex justify-center items-center">
-              <img src={joinworkspace} />
+              <img src={joinworkspace} className="md:w-14"/>
             </div>
-            <h1 className="font-bold text-28px text-primary text-center">
+            <h1 className="font-bold text-28px text-primary text-center md:text-18px">
               Enter code to join workspace
             </h1>
-            <div className="flex flex-col gap-y-2 font-semibold text-18px">
+            <div className="flex flex-col gap-y-2 font-semibold text-18px md:text-12px">
               <p>Workspace Code</p>
               <input
                 type="text"
                 placeholder="Workspace Code"
-                className="rounded-lg py-3 border-primary font-normal focus:ring-btn-primary focus:border-btn-primary"
+                className="rounded-lg py-3 border-primary font-normal focus:ring-btn-primary focus:border-btn-primary md:text-12px md:py-1.5"
               />
             </div>
-            <div className="flex justify-end items-center gap-5 text-16px font-semibold pb-5">
+            <div className="flex justify-end items-center gap-5 text-16px font-semibold pb-5 md:text-10px">
               <button
-                className="px-10 py-3 border-[1px] rounded-lg"
+                className="px-10 py-3 border-[1px] rounded-lg md:px-7 md:py-2"
                 onClick={toggleVisible}
               >
                 Cancel
               </button>
-              <button className="bg-primary text-white  px-10 py-3 rounded-lg ">
+              <button className="bg-primary text-white  px-10 py-3 rounded-lg md:px-7 md:py-2">
                 Join
               </button>
             </div>
