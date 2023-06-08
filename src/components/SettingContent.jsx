@@ -6,6 +6,12 @@ import advance from "../assets/dashboard_image/advance.png";
 import spring from "../assets/workspace_image/spring.svg";
 import { RemoveWorkspaceModal } from "../modal/RemoveWorkspaceModal";
 import { RemovePhotoModal } from "../modal/RemovePhotoModal";
+import { editWorkspaceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
+import { editWorkspace } from "../redux/service/workspaceService/workspaceService";
+import { storage } from "../firebase/firebase.utils";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { v4 as uuidv4 } from "uuid";
+import { useDispatch } from "react-redux";
 
 export const SettingContent = ({
   openWorkspaceSetting,
@@ -16,12 +22,48 @@ export const SettingContent = ({
 
   const [removePhoto, setRemovePhoto] = useState(false);
 
+  const [workspaceName, setWorkspaceName] = useState();
+
+  const [workspaceImage, setWorkspaceImage] = useState();
+
+  const dispatch = useDispatch();
+
+  const handleEditWorkspaceInformation = (e) => {
+    console.log(workspace.workspaceId);
+    try {
+      if (!workspaceImage) return;
+
+      const imageRef = ref(
+        storage,
+        `images/workspace/${uuidv4()}_${workspaceImage.name}`
+      );
+
+      uploadBytes(imageRef, workspaceImage).then(async (snapshot) => {
+        getDownloadURL(snapshot.ref).then(async (url) => {
+          const workspace = await editWorkspace(
+            "3db3ba1a-80b5-4176-9980-2485ff39c6a7",
+            workspaceName,
+            url
+          );
+          dispatch(editWorkspaceSuccess(workspace));
+        });
+      });
+      setOpenWorkspaceSetting(!openWorkspaceSetting);
+      document.getElementById("changeworkspacename").reset();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div>
       <div className="flex w-full justify-end">
         <button
           type="button"
-          onClick={() => setOpenWorkspaceSetting(!openWorkspaceSetting)}
+          onClick={() => {
+            setOpenWorkspaceSetting(!openWorkspaceSetting);
+            document.getElementById("changeworkspacename").reset();
+          }}
         >
           <img src={close} />
         </button>
@@ -46,17 +88,22 @@ export const SettingContent = ({
             <button
               type="button"
               className="font-semibold text-white text-18px md:text-16px md:px-5 md:py-1 px-7 py-1 bg-primary rounded-lg"
+              onClick={handleEditWorkspaceInformation}
             >
               Save
             </button>
           </div>
-          <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg">
+          <form
+            className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg"
+            id="changeworkspacename"
+          >
             <div className="w-full space-y-2">
               <h3 className="font-bold text-18px text-black">Workspace Name</h3>
               <input
                 type="text"
                 className="w-96 md:w-72 py-3 md:py-2 rounded-lg border-gray-300 focus:ring-primary focus:border-primary text-16px font-semibold"
-                placeholder={workspace.workspaceName}
+                placeholder={workspace && workspace.workspaceName}
+                onChange={(e) => setWorkspaceName(e.target.value)}
               />
             </div>
             <div className="flex justify-between items-center w-full space-y-4">
@@ -74,6 +121,7 @@ export const SettingContent = ({
                     className="text-sm cursor-pointer w-36 hidden"
                     type="file"
                     multiple
+                    onChange={(e) => setWorkspaceImage(e.target.files[0])}
                   />
                   <p className="md:w-[110px] md:text-center md:align-middle md:h-[33px] font-semibold text-16px md:text-14px border-[1px] rounded-lg px-3 py-1 cursor-pointer">
                     Upload Photo
@@ -89,9 +137,9 @@ export const SettingContent = ({
               </div>
             </div>
             <div className="overflow-hidden rounded-lg w-[300px] h-[210px]">
-              <img src={workspace.workspaceImage} />
+              <img src={workspace && workspace.workspaceImage} />
             </div>
-          </div>
+          </form>
         </div>
         <div>
           <div className="flex justify-between border-l-[1px] border-r-[1px] border-t-[1px] px-6 md:py-2 py-3 md:px-2 rounded-t-lg">

@@ -17,7 +17,8 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
 
   const [workspaceImage, setWorkspaceImage] = useState();
 
-  const handleSubmit = () => {
+  const handleSubmit = (e) => {
+    e.preventDefault();
     try {
       if (!workspaceImage) return;
       const imageRef = ref(
@@ -33,7 +34,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
       });
       setVisible(!visible);
       setWorkspaceImage(null);
-      document.getElementById("createworkspace").reset();
+      e.target.reset();
     } catch (error) {
       console.log(error);
     }
@@ -64,7 +65,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
             </h1>
             <form
               className="flex flex-col gap-y-2 font-semibold text-18px"
-              id="createworkspace"
+              onSubmit={handleSubmit}
             >
               <p>Worksapce Name</p>
               <input
@@ -90,10 +91,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                       className="cursor-pointer w-full object-cover h-full"
                     />
                   ) : (
-                    <img
-                      src={workspacephoto}
-                      className="cursor-pointer"
-                    />
+                    <img src={workspacephoto} className="cursor-pointer" />
                   )}
                 </div>
               </label>
@@ -111,8 +109,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                   </button>
                   <button
                     className="bg-primary text-white  px-10 py-3 rounded-lg"
-                    type="button"
-                    onClick={handleSubmit}
+                    type="submit"
                   >
                     Create
                   </button>

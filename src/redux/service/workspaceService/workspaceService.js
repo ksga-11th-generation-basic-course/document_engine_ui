@@ -123,3 +123,25 @@ export const filterWorkspace = createAsyncThunk(
     }
   }
 );
+
+export const editWorkspace = async (workspaceId, workspaceName, url) => {
+  try {
+    const response = await api.put(
+      `workspaces/${workspaceId}`,
+      {
+        workspaceName: workspaceName,
+        workspaceImage: url,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      }
+    );
+    
+    return response.data.payload;
+  } catch (error) {
+    throw error.response.data.detail;
+  }
+};

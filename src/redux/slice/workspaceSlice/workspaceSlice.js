@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  editWorkspace,
   filterWorkspace,
   getAllWorkspace,
   getMemberInEachWorkspace,
@@ -24,6 +25,12 @@ const workspaceSlice = createSlice({
     },
     joinWorkspaceSuccess: (state, action) => {
       state.workspaces.push(action.payload);
+    },
+    editWorkspaceSuccess: (state, action) => {
+      state.workspaces = state.workspaces.map((val) =>
+        val.workspaceId === action.payload.workspaceId ? action.payload : val
+      );
+      console.log(action.workspaces);
     },
   },
   extraReducers: (builder) => {
@@ -101,6 +108,9 @@ const workspaceSlice = createSlice({
   },
 });
 
-export const { createWorkspaceSuccess, joinWorkspaceSuccess, textSuccess } =
-  workspaceSlice.actions;
+export const {
+  createWorkspaceSuccess,
+  joinWorkspaceSuccess,
+  editWorkspaceSuccess,
+} = workspaceSlice.actions;
 export default workspaceSlice.reducer;

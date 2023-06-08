@@ -10,9 +10,9 @@ export const Root = () => {
         <div className="col-span-2">
           <SideBar />
         </div>
-        <div className="col-span-10 shadow-xl overflow-hidden">
+        <div className="col-span-10 shadow-xl ">
           <NavBarProfile />
-          <div className="px-60 ">
+          <div className="px-60">
             <Outlet />
           </div>
         </div>

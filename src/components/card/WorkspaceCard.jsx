@@ -33,30 +33,32 @@ export const WorkspaceCard = ({ workspace }) => {
   return (
     <div className="shadow-md rounded-lg text-accent cursor-pointer sm:w-[300px]">
       <div className="flex justify-between items-center p-3">
-        <h4 className="font-semibold text-18px">{workspace.workspaceName}</h4>
-        {workspace.isOwner ? (
+        <h4 className="font-semibold text-18px">
+          {workspace && workspace.workspaceName}
+        </h4>
+        {workspace && workspace.isOwner ? (
           <p className="border-[1px] rounded-full px-3">Owner</p>
         ) : null}
       </div>
       <div className="h-[215px] overflow-hidden" onClick={handleNavigate}>
-        <img src={workspace.workspaceImage} />
+        <img src={workspace && workspace.workspaceImage} />
       </div>
       <div className="flex justify-between items-center p-3">
         <div>
           <h3 className="font-semibold text-18px">
-            {workspace.totalDocument} Documents
+            {workspace && workspace.totalDocument} Documents
           </h3>
           <p className="text-14px">
-            Create date: <span>{workspace.createdDate}</span>
+            Create date: <span>{workspace && workspace.createdDate}</span>
           </p>
         </div>
-        {workspace.isOwner && (
+        {workspace && workspace.isOwner && (
           <div className="relative">
-            <Dropdown horizontal="right">
+            <Dropdown className="dropdown-right">
               <Dropdown.Toggle>
                 <img src={dotmenu} />
               </Dropdown.Toggle>
-              <Dropdown.Menu className="w-52 bg-white rounded-lg">
+              <Dropdown.Menu className="w-52 bg-white rounded-lg text-base">
                 <Dropdown.Item onClick={handleSettingWorkspace}>
                   <img src={setting} className="w-6 h-6" />
                   <span>Setting</span>
