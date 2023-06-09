@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, } from "react";
 import Plus from "../assets/images/Dashboard/Plus.svg";
 import CreateBy from "../assets/images/Dashboard/CreateBy.svg";
 import CreateDate from "../assets/images/Dashboard/CreateDate.svg";
@@ -23,8 +23,11 @@ import Quote from "@editorjs/quote";
 import CheckList from "@editorjs/checklist";
 import InlineCode from "@editorjs/inline-code";
 import { useDispatch, useSelector } from "react-redux";
-import { getDocumentByDocumentId } from "../redux/service/documentService/documentService";
+import { getDocumentByDocumentId, getUsername, getWorkspaceName } from "../redux/service/documentService/documentService";
 import { Editor } from "../components/editor/Editor";
+import { updateDocument } from "../redux/service/documentService/documentService";
+import { updateDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
+import { date } from "yup";
 
 export const CreateDocument = () => {
   const [openPermission, setOpenPermission] = useState(false);
@@ -63,17 +66,49 @@ export const CreateDocument = () => {
   // }, []);
 
   const document = useSelector((state) => state.document.document);
+  const username = useSelector((state) => state.document.username);
+  const workspace = useSelector((state) => state.document.workspace);
 
   const param = useParams();
 
   const documentId = param.id;
 
   const dispatch = useDispatch();
+  const [workspaceName, setWorkspaceName] = useState();
+  const [timerId, setTimerId] = useState(null);
+  
 
   useEffect(() => {
+    dispatch(getWorkspaceName(documentId));
     dispatch(getDocumentByDocumentId(documentId));
+    dispatch(getUsername(documentId));
   }, []);
+  const handleUpdateDocument = async () => {
+    const document = await updateDocument(documentId, workspaceName);
+    dispatch(updateDocumentSuccess(document));
+  }
 
+  function handleInputChange(event) {
+    event.preventDefault();
+    clearTimeout(timerId);
+    const newTimerId = setTimeout(() => {
+      const handleUpdateDocument = async () => {
+        const document = await updateDocument(documentId, event.target.value);
+        dispatch(updateDocumentSuccess(document));
+      }
+      handleUpdateDocument();
+      console.log('successfully');
+    }, 3000);
+    setTimerId(newTimerId);
+  }
+
+  const timestamp =(document && document.createdDate);
+  // console.log(timestamp);
+  const dateObj = new Date(timestamp);
+  const day = dateObj.getDate();
+  const month = dateObj.toLocaleString('default', { month: 'long' });
+  const year = dateObj.getFullYear();
+  const createdDate=`${day} ${month} ${year}`;
   return (
     <div className="w-full">
       {/* <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
@@ -115,14 +150,14 @@ export const CreateDocument = () => {
             <ol className="list-none p-0 inline-flex">
               <li className="flex items-center gap-x-2">
                 <img src={icon} />
-                <Link className="text-black">React Developer</Link>
+                <Link className="text-black">{workspace}</Link>
                 <span className="mx-2">
                   <img src={arrow} className="w-2" alt="" />
                 </span>
               </li>
               <li className="flex items-center gap-x-2">
                 <img src={doc} />
-                <Link className="text-primary">Untitle</Link>
+                <Link className="text-primary">{document && document.title}</Link>
               </li>
             </ol>
           </nav>
@@ -130,6 +165,7 @@ export const CreateDocument = () => {
             <input
               className="text-5xl p-0 text-black w-auto py-2 focus:ring-0 focus:border-0 border-0"
               type="text"
+              onChange={handleInputChange}
               placeholder={document && document.title}
             />
           </span>
@@ -139,14 +175,14 @@ export const CreateDocument = () => {
                 <img src={CreateBy} className="w-[17px]" alt="" />
                 <p>Create By</p>
               </div>
-              <p className="text-black">Tith Ouddom</p>
+              <p className="text-black">{username}</p>
             </div>
             <div className="grid grid-cols-2 text-sm">
               <div className="flex gap-2">
                 <img src={CreateDate} className="w-[17px]" alt="" />
                 <p>Create Date</p>
               </div>
-              <p className="text-black">April 21, 2023 4:01 PM</p>
+              <p className="text-black">{createdDate}</p>
             </div>
             <div className="grid grid-cols-2 text-sm">
               <div className="flex items-center gap-2">

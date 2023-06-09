@@ -104,6 +104,14 @@ function App() {
             }
           />
           <Route
+            path="/createdocument/:id"
+            element={
+              // <ProtectedRoute>
+                <CreateDocument />
+              // </ProtectedRoute>
+            }
+          />
+          <Route
             path="/createdocument"
             element={
               // <ProtectedRoute>

@@ -16,7 +16,10 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
 import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
+import { createDocument } from "../redux/service/documentService/documentService";
+
 import { Checkbox, Dropdown, Radio } from "react-daisyui";
+import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
 export const Document = () => {
   const [openSort, setOpenSort] = useState(false);
 
@@ -45,6 +48,14 @@ export const Document = () => {
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
   }, []);
 
+  const now = new Date();
+  const currentDateTime = now.toISOString();
+  const handleCreateDocument = async () => {
+    const document = await createDocument("Untitle",true,currentDateTime,null,workspaceId);
+    dispatch(createDocumentSuccess(document));
+    console.log('helo');
+  }
+
   return (
     <div className="text-accent space-y-5">
       <div>
@@ -61,6 +72,7 @@ export const Document = () => {
           <p className="font-semibold text-20px">Documents</p>
         </div>
         <Link
+          onClick={handleCreateDocument}
           to={"/createdocument"}
           className="font-semibold bg-primary px-5 py-3 rounded-lg text-white"
         >
@@ -225,10 +237,10 @@ export const Document = () => {
           {documents === null
             ? null
             : documents.map((document, index) => (
-                <div className="col-span-4" key={index}>
-                  <DocumentCard document={document} />
-                </div>
-              ))}
+              <div className="col-span-4" key={index}>
+                <DocumentCard document={document} />
+              </div>
+            ))}
         </div>
       ) : null}
       {openBulletList ? (

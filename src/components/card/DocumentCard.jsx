@@ -15,6 +15,7 @@ export const DocumentCard = ({ document }) => {
 
   return (
     <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-4 space-y-3">
+      <div onClick={handleNavigate}>
       <div className="flex justify-between items-center">
         <h4 className="font-semibold text-20px">{document.title}</h4>
         {document.status ? (
@@ -24,9 +25,10 @@ export const DocumentCard = ({ document }) => {
           </div>
         ) : null}
       </div>
-      <div onClick={handleNavigate}>
+      <div>
         <h3 className="font-semibold">Introduction to Redux Toolkit</h3>
         <p className="text-sm h-[120px]"></p>
+      </div>
       </div>
       <div className="border-[1px]"></div>
       <div className="flex justify-between items-center">
