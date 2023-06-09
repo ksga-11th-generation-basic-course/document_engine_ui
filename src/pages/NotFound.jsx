@@ -4,22 +4,20 @@ import { NavBar } from "../components/NavBar";
 export const NotFound = () => {
   return (
     <div className="notFound bg-[#EDF9FF] h-[100vh] w-full ">
-      <div className="navbar md:w-full">
-        <NavBar />
-      </div>
-      <div className="flex flex-col justify-center items-center max-sm:pt-36 lg:pt-16">
+      <NavBar />
+      <div className="flex flex-col  justify-center items-center pt-14 sm:pt-28 sm:px-10 ">
         <div className="images ">
           <img
             src={Page404}
             alt=""
-            className="pr-28 max-sm:pr-4 max-sm:pl-4 h-[566px] max-sm:h-[330px] w-[566px] md:ml-24 md:w-[280px] md:-mt-48"
+            className="pr-28 sm:pr-4 sm:pl-4 h-[566px] sm:h-[330px] w-[566px]"
           />
         </div>
         <div className="text">
-          <h1 className="text-7xl max-sm:text-center text-primary max-sm:text-5xl max-sm:drop-shadow-2xl max-sm:shadow-accent font-bold lg:text-7xl md:-mt-28 md:ml-4 md:text-4xl">
+          <h1 className="text-8xl lg:text-7xl sm:text-center text-primary sm:text-4xl sm:drop-shadow-2xl sm:shadow-accent font-bold">
             Page Not Found
           </h1>
-          <p className="text-accent text-center pt-5 text-xl max-sm:text-lg md:text-sm md:ml-4">
+          <p className="text-back text-center pt-5 text-2xl sm:text-xl">
             Sorry, we can’t find the page you looking for.
           </p>
           <div className="flex justify-center pt-8 text-white">
