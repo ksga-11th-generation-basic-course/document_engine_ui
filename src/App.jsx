@@ -22,6 +22,7 @@ function App() {
     <div className="App font-ssp">
       <Routes>
         <Route index element={<Landing />} />
+        {/* <Route path="/" element={<Landing />} /> */}
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contactus" element={<ContactUs />} />
 

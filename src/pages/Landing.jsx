@@ -15,7 +15,7 @@ import { Footer } from "../components/Footer.jsx";
 
 export const Landing = () => {
   return (
-    <div className="bg-white ">
+    <div className="bg-white">
       <NavBar />
       <div className="pt-32 sm:pt-20 px-16 sm:px-0 md:px-5 ">
         <div className="grid grid-cols-12 sm:flex sm:flex-col md:flex md:flex-col">
@@ -30,7 +30,6 @@ export const Landing = () => {
                 Make your wiki, docs & project in ONCE with the <br /> best
                 security, edit your documents and work as a <br /> group.
               </p>
-              {/*Get Started Button */}
               <div>
                 <Link className="bg-primary px-8 py-3 sm:px-4 sm:py-2 rounded-xl font-bold text-18px text-white">
                   Get Started
@@ -46,8 +45,8 @@ export const Landing = () => {
         <div className="border-[2px] mt-24 border-gray-300"></div>
 
         <div className="mt-24">
-          <div className="lg:-mt-7 lg:text-2xl">
-            <h1 className="font-bold text-36px text-accent text-center leading-[45px] md:text-xl">
+          <div>
+            <h1 className="font-bold text-36px text-accent text-center leading-[45px]">
               We Provide Best <br />{" "}
               <span className="text-primary">Solution</span> For you
             </h1>
@@ -98,9 +97,8 @@ export const Landing = () => {
               them.
             </p>
           </div>
-          {/* Icon */}
-          <div className="col-span-6 mx-auto ">
-            <div className="flex justify-center items-center gap-x-10 lg:w-[50px] lg:ml-28 lg:-mt-10 md:ml-4 md:w-[40px] ">
+          <div className="col-span-6 mx-auto">
+            <div className="flex justify-center items-center gap-x-10">
               <img src={group} />
               <img src={sharingicon} />
               <img src={document} />
@@ -112,12 +110,10 @@ export const Landing = () => {
           <div className="col-span-4 mx-auto">
             <img src={groupcard} />
           </div>
-          {/* Sharing */}
-          <div className="col-span-4 mx-auto md:-mb-16 md:w-[250px] md:ml-16">
+          <div className="col-span-4 mx-auto">
             <img src={sharingcard} />
           </div>
-          {/* Document */}
-          <div className="col-span-4 mx-auto md:-mb-12 md:w-[250px] md:-ml-12">
+          <div className="col-span-4 mx-auto">
             <img src={documentcard} />
           </div>
         </div>

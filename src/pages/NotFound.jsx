@@ -21,8 +21,7 @@ export const NotFound = () => {
             Sorry, we can’t find the page you looking for.
           </p>
           <div className="flex justify-center pt-8 text-white">
-            <button className="px-4 bg-primary py-2 rounded-xl font-semibold lg:w-[200px] lg:h-14 lg:text-xl md:h-10 md:text-base
-             md:w-[150px]">
+            <button className="px-4 bg-primary py-2 rounded-xl">
               Back to Home
             </button>
           </div>

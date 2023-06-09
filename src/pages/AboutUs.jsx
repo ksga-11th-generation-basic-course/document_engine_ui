@@ -19,7 +19,10 @@ export const AboutUs = () => {
           </div>
         </div>
         <div className="w-full">
-          <img src={Slider} className="w-full" />
+          <img
+            src={Slider}
+            className="w-full md:w-full md:h-44 sm:h-full sm:w-full"
+          />
         </div>
       </div>
       <div className="flex flex-row lg:flex-col sm:flex-col md:flex md:flex-col  w-screen justify-evenly px-20 sm:px-10 ">
@@ -61,11 +64,21 @@ export const AboutUs = () => {
             <div className="text-accent px-10 text-10px sm:h-auto sm:text-sm text-xl pb-5  pt-16 sm:pt-6 sm:text-justify  sm:px-0">
               <p>
                 DocEngine is an online platform that allows users to read, edit,
-                and share documents within the workspace. It allows users to invite
-                other members to join, grant permissions, define blocks, and view
-                their history after editing. It also maintains data for users to
-                update later, edit, and share documents within the workspace.
-                </p>
+                and
+              </p>
+              <p>
+                share documents within the workspace. It allows users to invite
+                other
+              </p>
+              <p>
+                members to join, grant permissions, define blocks, and view
+                their
+              </p>
+              <p>
+                history after editing. It also maintains data for users to
+                update later.
+              </p>
+              <p>edit, and share documents within the workspace.</p>
             </div>
           </div>
         </div>
