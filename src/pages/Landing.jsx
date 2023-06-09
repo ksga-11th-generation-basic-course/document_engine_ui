@@ -17,18 +17,18 @@ export const Landing = () => {
   return (
     <div className="bg-white ">
       <NavBar />
-      <div className="pt-32 sm:pt-20 px-16 lg:p-8 lg:pt-32  md:px-0 md:px-5 ">
+      <div className="pt-32 sm:pt-20 px-16 lg:p-8 lg:pt-32 md:p-1 ">
         {/* All document */}
-        <div className="grid grid-cols-12 lg:-ml-2  sm:flex sm:flex-col md:flex md:flex-col">
+        <div className="grid grid-cols-12 lg:-ml-2  md:flex md:flex-col">
           <dir className="col-span-4">
-            <div className="text-accent flex flex-col gap-8">
-              <h1 className="font-bold text-36px leading-[45px] lg:whitespace-nowrap lg:text-[32px] md:whitespace-nowrap md:text-xl md:ml-6 md:mt-6 md:pr-3 ">
+            <div className="text-accent flex flex-col gap-8 ">
+              <h1 className="font-bold text-36px leading-[45px] lg:whitespace-nowrap lg:text-[32px] md:-ml-2 md:whitespace-nowrap md:text-xl  md:mt-6 md:pr-3 ">
                All your <span className="text-primary ">Documents</span> <br />{" "} 
                
                 in one <span className="text-primary">place</span> and{" "}
                 <span className="text-primary">safe</span>!
               </h1>
-              <p className="font-bold text-18px lg:text-lg  lg:whitespace-nowrap md:whitespace-nowrap md:overflow-hidden md:text-14px md:text-sm md:pr-12 md:ml-6 ">
+              <p className="font-bold text-18px lg:text-lg  lg:whitespace-nowrap md:whitespace-nowrap md:-ml-2 md:overflow-hidden md:text-14px md:text-sm md:pr-12 ">
                 Make your wiki, docs & project in ONCE with the <br /> best
                 security, edit your documents and work as a <br /> group.
               </p>
@@ -41,12 +41,12 @@ export const Landing = () => {
             </div>
           </dir>
           {/* Image */}
-          <div className="col-span-8 mx-auto lg:w-[300px] lg:-mr-4 lg:mt-20  md:ml-20 md:mt-6 md:w-[280px]">
+          <div className="col-span-8 mx-auto lg:w-[300px] lg:-mr-4 lg:mt-20  md:ml-16 md:mt-6 md:w-[280px]">
             <img src={literature} className="" />
           </div>
         </div>
         {/* Line */}
-        <div className="border-[2px] mt-24 border-gray-300 lg:w-[650px] lg:ml-8 lg:mt-14 md:w-[290px] md:ml-14 md:h-0 "></div>
+        <div className="border-[2px] mt-24 border-gray-300 lg:w-[650px] lg:ml-8 lg:mt-14 md:w-[290px] md:ml-12 md:h-0 "></div>
 
         {/* We Provide Best */}
         <div className="mt-24">
