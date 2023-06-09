@@ -77,12 +77,14 @@ export const CreateDocument = () => {
   const [workspaceName, setWorkspaceName] = useState();
   const [timerId, setTimerId] = useState(null);
   
-
+  
   useEffect(() => {
     dispatch(getWorkspaceName(documentId));
     dispatch(getDocumentByDocumentId(documentId));
     dispatch(getUsername(documentId));
   }, []);
+  const [title,setTitle]=useState(document && document.title);
+
   const handleUpdateDocument = async () => {
     const document = await updateDocument(documentId, workspaceName);
     dispatch(updateDocumentSuccess(document));
@@ -90,6 +92,7 @@ export const CreateDocument = () => {
 
   function handleInputChange(event) {
     event.preventDefault();
+    setTitle(event.target.value)
     clearTimeout(timerId);
     const newTimerId = setTimeout(() => {
       const handleUpdateDocument = async () => {
@@ -157,7 +160,7 @@ export const CreateDocument = () => {
               </li>
               <li className="flex items-center gap-x-2">
                 <img src={doc} />
-                <Link className="text-primary">{document && document.title}</Link>
+                <Link className="text-primary">{title}</Link>
               </li>
             </ol>
           </nav>
