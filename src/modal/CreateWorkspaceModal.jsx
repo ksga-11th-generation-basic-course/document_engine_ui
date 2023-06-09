@@ -18,26 +18,27 @@ export const CreateWorkspaceModal = ({ visible, setVisible ,newWorkspace, setNew
         New Workspace
       </button>
       <Modal open={visible} >
-        <div className="w-[540px] bg-white rounded-lg p-3 md:w-[300px]">
+        <div className="w-[540px] bg-white rounded-lg p-3 md:w-[300px] md:p-2">
           <div className="flex justify-end">
             <button type="button" onClick={toggleVisible}>
               <img src={close} className="md:w-6" />
             </button>
           </div>
 
-          <div className="px-14 space-y-5 text-accent gap-y-4 md:px-6">
+          <div className="px-14 space-y-5 text-accent gap-y-4 md:px-6 md:space-y-3">
             <div className="flex justify-center items-center">
               <img src={group} className="md:w-16"/>
             </div>
             <h1 className="font-bold text-28px text-primary text-center md:text-20px">
                 Create Workspace
             </h1>
-            <div className="flex flex-col gap-y-2 font-semibold text-20px md:text-16px">
+            
+            <div className="flex flex-col gap-y-2 font-semibold text-20px md:text-14px">
               <p>Workspace Name</p>
               <input
                 type="text"
                 placeholder="Workspace Name"
-                className="rounded-lg py-3 border-primary font-normal focus:ring-btn-primary focus:border-btn-primary text-18px md:text-14px"
+                className="rounded-lg py-3 border-primary font-normal focus:ring-btn-primary focus:border-btn-primary text-18px md:text-14px md:py-2"
               />
               <p>Workspace Photo</p>
               <label>
@@ -50,7 +51,8 @@ export const CreateWorkspaceModal = ({ visible, setVisible ,newWorkspace, setNew
               </label>
               <p className="mt-1 text-end text-[#9CA3AF] font-normal md:text-12px">(optional)</p>
             </div>
-            <div className="flex justify-end items-center gap-5 text-18px font-semibold pb-5 md:text-12px md:gap-3">
+
+            <div className="flex justify-end items-center gap-5 text-18px font-semibold pb-3 md:text-12px md:gap-3">
               <button className="px-10 py-3 border-[1px] rounded-lg md:px-8 md:ml-12 md:py-2.5" onClick={toggleVisible}>
                 Cancel
               </button>

@@ -24,7 +24,7 @@ export const SideBar = ({
         </div>
       </div>
 
-      <div className=" flex flex-col items-center p-5 gap-y-3 h-screen mt-3 lg:-mt-10">
+      <div className=" flex flex-col items-center p-5 gap-y-3 h-screen mt-3 lg:-mt-10 md:gap-y-2">
         {/* Logo */}
         <Link to={"/dashboard"}>
           <img
@@ -40,7 +40,7 @@ export const SideBar = ({
           newWorkspace={newWorkspace}
           setNewWorkspace={setNewWorkspace}
         />
-        <div className="flex flex-col w-full gap-y-3 text-18px text-accent font-semibold md:text-12px md:w-32">
+        <div className="flex flex-col w-full gap-y-3 text-18px text-accent font-semibold md:text-12px md:w-32 md:gap-y-2">
           <NavLink
             to={"/dashboard"}
             className={({ isActive }) =>

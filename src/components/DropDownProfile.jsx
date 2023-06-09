@@ -30,7 +30,7 @@ export const DropDownProfile = ({ open, setOpen }) => {
                         <img src={avatar} className="bg-cover overflow-hidden w-14 h-14 flex bg-primary rounded-full md:inline-block md:w-9 md:h-9"/>
                 </button>
             <div>
-              <h3 className="font-bold text-22px md:text-16px">Ouddom</h3>
+              <h3 className="font-bold text-24px md:text-16px">Ouddom</h3>
               <p className="text-[#9CA3AF]  md:text-10px">tith.ouddom@gmail.com</p>
             </div>
           </div>
