@@ -29,7 +29,7 @@ export const Editor = () => {
   };
 
 
-  function handleInputChange(event) {
+  function handle(event) {
     event.preventDefault();
     clearTimeout(timerId);
     const newTimerId = setTimeout(() => {
