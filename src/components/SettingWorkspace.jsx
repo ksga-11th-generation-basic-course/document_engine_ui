@@ -7,7 +7,7 @@ export const SettingWorkspace = ({
   setSetting,
 }) => {
   return (
-    <div>
+    <div className="md:w-[50px] ">
       <button
         className={
           setting

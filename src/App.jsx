@@ -14,6 +14,8 @@ import { CreateDocument } from "./pages/CreateDocument";
 import { AboutUs } from "./pages/AboutUs";
 import { ContactUs } from "./pages/ContactUS";
 import { NotFound } from "./pages/NotFound";
+import EnableAccount from "./pages/EnableAccount";
+import { EnableAccVerifyCode } from "./pages/EnableAccVerifyCode";
 
 function App() {
   return (
@@ -25,14 +27,16 @@ function App() {
 
         <Route path="/signin" element={<SignIn />} />
         <Route path="/forgotpassword" element={<ForgotPassword />} />
-        <Route
-          path="/verifyforgotpassword"
-          element={<VerifyForgotPassword />}
-        />
+        <Route path="/verifyforgotpassword" element={<VerifyForgotPassword />}/>
         <Route path="/resetforgotpassword" element={<ResetForgotPassword />} />
 
         <Route path="/signup" element={<SignUp />} />
         <Route path="/verifyotp" element={<VerifyOTP />} />
+        <Route path="/enableaccount" element={<EnableAccount />} />
+        <Route path="/enableaccountverifycode" element={<EnableAccVerifyCode/>} />
+        <Route path="/landing" element={<Landing />} />
+
+
 
         <Route path="/" element={<Root />}>
           <Route path="/dashboard" element={<Dashboard />} />

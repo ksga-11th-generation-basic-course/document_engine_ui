@@ -23,7 +23,7 @@ const validate = (values) => {
   }
   return errors;
 };
-export const VerifyForgotPassword = () => {
+export const EnableAccVerifyCode = () => {
   const OTPauthentication = useSelector(
     (state) => state.authentication.OTPauthentication
   );
@@ -128,11 +128,11 @@ export const VerifyForgotPassword = () => {
           src={VerifyL}
         />
         {/* Verify Email Address */}
-        <form className="bg-white  h-[510px] w-[530px] mt-36 flex flex-col justify-center  rounded-3xl shadow-md 
-         lg:w-[500px] lg:h-[470px] lg:mt-48 md:w-[320px] md:h-[370px] md:mt-44 ">
+        <form className="bg-white  h-[510px] w-[530px] mt-36 flex flex-col justify-center  rounded-3xl shadow-lg 
+         lg:w-[500px] lg:h-[470px] lg:mt-48 md:w-[320px] md:h-[400px] md:ml-2 md:pb-16">
           <div className=" xs:p-0 mx-auto md:w-full md:max-w-md  ">
             <div className=" w-full  ">
-              <h1 className="font-bold text-center text-primary text-36px lg:text-3xl md:text-xl md:mt-8">
+              <h1 className="font-bold text-center text-primary text-36px lg:text-3xl md:text-xl md:mt-24 ">
                 Verify Email Address
               </h1>
 
@@ -144,10 +144,10 @@ export const VerifyForgotPassword = () => {
                       <div className="w-full">
                         <div className=" h-64 rounded text-center">
                           <div className="text">
-                            <p className="text-18px text-accent lg:text-xl md:text-base md:pt-1">
+                            <p className="text-18px text-accent lg:text-xl md:text-base md:-pt-6">
                               Please enter the code we've send to
                             </p>
-                            <p className="text-18px text-center text-primary md:text-base">
+                            <p className="text-18px text-center text-[#1E9CEF] md:text-base">
                               your email address
                             </p>
                           </div>
@@ -186,7 +186,7 @@ export const VerifyForgotPassword = () => {
                               <button
                                 type="button"
                                 onClick={handleResendCode}
-                                className="underline pr-3 lg:text-lg md:text-sm"
+                                className="underline pr-3 text-[#1E9CEF] lg:text-lg md:text-sm"
                               >
                                 Didn't receive the code? Click to resend
                               </button>
@@ -198,10 +198,10 @@ export const VerifyForgotPassword = () => {
                             <button
                               type="button"
                               onClick={formik.handleSubmit}
-                              className="transition font-bold text-18px duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm
-                               hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[260px] md:h-9 md:pt-2 "
+                              className="transition font-semibold text-lg duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm
+                               hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[260px] md:h-9 md:pt-2  "
                             >
-                              Verify  
+                              Enable Account
                             </button>
                           </div>
                         </div>
@@ -217,15 +217,7 @@ export const VerifyForgotPassword = () => {
         <img className="w-[600px] h-[500.57px]  max-sm:hidden lg:w-[140px] lg:hidden lg:mt-14 md:hidden" src={VerifyR} />
         </div>       
       </div>  
-    </div>   
-    <div className="flex justify-center  mt-16 gap-1 lg:mt-32 md:mt-24 ">
-            <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5">  
-            </div>
-            <div className="w-[50px] h-[7px] rounded-2xl bg-[#1E9CEF] md:h-1.5 ">   
-            </div>
-            <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5">  
-            </div>
-    </div>        
+    </div>           
  </div> 
   );
 }
