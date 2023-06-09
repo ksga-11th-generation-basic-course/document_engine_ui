@@ -75,8 +75,8 @@ export const Landing = () => {
 
               {/* Productivity */}
               <div className="col-span-4 lg:grid-cols-2 lg:ml-52 lg:-mt-10">
-                <img src={rectangle} className="mx-auto md:-ml-24" />
-                <h1 className="mt-3 font-bold text-primary text-2xl text-center md:text-lg md:-ml-48">
+                <img src={rectangle} className="mx-auto lg:ml-20 md:-ml-24" />
+                <h1 className="mt-3 font-bold text-primary text-2xl text-center lg:ml-12 lg:mb-1 md:text-lg md:-ml-48">
                   Productivity
                 </h1>
                 <div className="w-[300px] ml-40 lg:ml-32 lg:text-base ">
