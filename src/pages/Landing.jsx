@@ -17,9 +17,9 @@ export const Landing = () => {
   return (
     <div className="bg-white ">
       <NavBar />
-      <div className="pt-32 sm:pt-20 px-16 lg:p-8 lg:pt-32  md:px-0 md:px-5 ">
+      <div className="pt-32  px-1 lg:p-8 lg:pt-32 md:pt-20 md:px-5 md:pl-0 ">
         {/* All document */}
-        <div className="grid grid-cols-12 lg:-ml-2  sm:flex sm:flex-col md:flex md:flex-col">
+        <div className="grid grid-cols-12 lg:-ml-2 md:flex md:flex-col">
           <dir className="col-span-4">
             <div className="text-accent flex flex-col gap-8">
               <h1 className="font-bold text-36px leading-[45px] lg:whitespace-nowrap lg:text-[32px] md:whitespace-nowrap md:text-xl md:ml-6 md:mt-6 md:pr-3 ">
@@ -28,13 +28,13 @@ export const Landing = () => {
                 in one <span className="text-primary">place</span> and{" "}
                 <span className="text-primary">safe</span>!
               </h1>
-              <p className="font-bold text-18px lg:text-lg  lg:whitespace-nowrap md:whitespace-nowrap md:overflow-hidden md:text-14px md:text-sm md:pr-12 md:ml-6 ">
+              <p className="font-bold text-18px lg:text-lg lg:whitespace-nowrap md:whitespace-nowrap md:overflow-hidden md:text-14px md:text-sm md:pr-12 md:ml-6 ">
                 Make your wiki, docs & project in ONCE with the <br /> best
                 security, edit your documents and work as a <br /> group.
               </p>
               {/*Get Started Button */}
               <div>
-                <Link className="bg-primary rounded-md text-18px text-white px-8 py-3 font-semibold lg:text-xl md:ml-9 md:text-sm md:px-4 sm:py-2 ">
+                <Link className="bg-primary rounded-md text-18px text-white px-8 py-3 font-semibold lg:text-xl md:ml-9 md:text-sm md:px-4 md:py-2 ">
                   Get Started
                 </Link>
               </div>

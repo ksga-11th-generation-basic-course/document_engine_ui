@@ -20,56 +20,55 @@ import {
 } from "../redux/service/authenticationService/authenticationService";
 import * as Yup from "yup";
 
-export const SignIn = () => {
+    export const SignIn = () => {
 
-  const dispatch = useDispatch();
+      const dispatch = useDispatch();
+      const handleGoogle = () => {
+        signInWithPopup(auth, providerGoogle)
+          .then((data) => {
+            const googleAuth = {
+              email: data.user.email,
+              password: data.user.accessToken,
+            };
+            dispatch(signinWithGoogleAndFacebook(googleAuth));
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
 
-  const handleGoogle = () => {
-    signInWithPopup(auth, providerGoogle)
-      .then((data) => {
-        const googleAuth = {
-          email: data.user.email,
-          password: data.user.accessToken,
-        };
-        dispatch(signinWithGoogleAndFacebook(googleAuth));
-      })
-      .catch((err) => {
-        console.log(err);
+      const handleFacebook = () => {
+        signInWithPopup(auth, providerFacebook)
+          .then((data) => {
+            const facebookAuth = {
+              email: data.user.email,
+              password: data.user.accessToken,
+            };
+            dispatch(signinWithGoogleAndFacebook(facebookAuth));
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      };
+
+      const formik = useFormik({
+        initialValues: {
+          email: "",
+          password: "",
+        },
+        validationSchema: Yup.object({
+          email: Yup.string()
+            .email("Enter a valid email")
+            .required("Please enter a registered email"),
+          password: Yup.string()
+            .required("Password is a required field")
+            .min(4, "Password must have more than 4 characters "),
+        }),
+        onSubmit: (values, { resetForm }) => {
+          dispatch(signin(values));
+          resetForm({ values: "" });
+        },
       });
-  };
-
-  const handleFacebook = () => {
-    signInWithPopup(auth, providerFacebook)
-      .then((data) => {
-        const facebookAuth = {
-          email: data.user.email,
-          password: data.user.accessToken,
-        };
-        dispatch(signinWithGoogleAndFacebook(facebookAuth));
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  };
-
-  const formik = useFormik({
-    initialValues: {
-      email: "",
-      password: "",
-    },
-    validationSchema: Yup.object({
-      email: Yup.string()
-        .email("Enter a valid email")
-        .required("Please enter a registered email"),
-      password: Yup.string()
-        .required("Password is a required field")
-        .min(4, "Password must have more than 4 characters "),
-    }),
-    onSubmit: (values, { resetForm }) => {
-      dispatch(signin(values));
-      resetForm({ values: "" });
-    },
-  });
 
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
