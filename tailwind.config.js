@@ -66,6 +66,7 @@ export default {
         custom: "0 0.2px 2px 1px rgba(0, 0, 0, 0.1)",
         hover: "0 0.5px 5px 2px rgba(0, 0, 0, 0.1)",
         sidebar: "0px 15px 15px -2px rgba(0, 0, 0, 0.2)",
+        icon: "0px 4px 4px rgba(0, 0, 0, 0.25)",
         tip: "0px 2px 2px rgba(0, 0, 0, 0.2)",
         profile: "0px 1px 4px rgba(0, 0, 0, 0.1)",
         logo: "0px 2px 4px rgba(0, 0, 0, 0.1)",
