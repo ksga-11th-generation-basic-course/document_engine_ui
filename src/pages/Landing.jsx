@@ -146,5 +146,7 @@ export const Landing = () => {
         <Footer />
       </div>
     </div>
+    // 
+    
   );
 };
