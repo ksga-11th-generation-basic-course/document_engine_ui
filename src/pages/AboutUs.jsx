@@ -13,7 +13,7 @@ export const AboutUs = () => {
       </div>
       <div className="SlideBar pt-[76px]  sm:pt-[76px]  md:pt-[32px] lg:pt-[78px]">
         <div className="SlideBar2 relative ">
-          <div className="absolute left-0 text-6xl font-bold top-40 text-primary px-20  lg:top-12 md:left-0  md:text-4xl md:-mt-6  md:leading-6 ">
+          <div className="absolute left-0 text-6xl font-bold top-40 text-primary px-20 ml-8 lg:-ml-4 lg:top-12 md:-ml-12 md:text-4xl md:-mt-6  md:leading-6 ">
             <h1 className="md:whitespace-nowrap md:pb-2">What & Who</h1>
             <h1 className="md:whitespace-nowrap">We Are</h1>
           </div>
@@ -27,7 +27,7 @@ export const AboutUs = () => {
       </div>
       {/* What & Who We Are */}
       <div className="flex flex-row lg:flex-col w-screen justify-evenly px-20 md:px-10 md:flex md:flex-col ">
-        <div className=" flex flex-col   ">
+        <div className=" flex flex-col lg:ml-12 md:ml-4  ">
           <div className="mainTitle font-bold text-4xl pt-36 md:pt-10 md:text-2xl md:mt-12">
             <h1 className="pb-35 text-accent md:text-xl md:whitespace-nowrap">
               All your <span className="text-primary pr-2">Documents</span>in
@@ -78,8 +78,8 @@ export const AboutUs = () => {
       <h1 className="text-4xl text-center w-full pt-10 text-accent font-bold  md:pt-[50px] md:text-2xl">
         Our<span className="text-primary pl-2">Members </span>
       </h1>
-      <div className="Member  flex justify-center md:px-5 md:py-2">
-        <img src={Member} alt="" className="" />
+      <div className="Member  flex justify-center  md:-ml-4 md:pr-1 md:px-5 md:py-2">
+        <img src={Member} alt="" className=" w-[930px] lg:w-[700px] md:w-[700px]" />
       </div>
       <div>
         <Footer />

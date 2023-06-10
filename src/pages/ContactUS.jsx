@@ -14,7 +14,7 @@ export const ContactUs = () => {
       </div>
 
       {/* grid 1 block title */}
-      <div className=" grid grid-cols-2 overflow-hidden lg:grid lg:grid-cols-2   md:flex md:flex-col">
+      <div className=" grid grid-cols-2 overflow-hidden ml-20 lg:grid lg:grid-cols-2 md:ml-2  md:flex md:flex-col">
 
         {/* Let's Talk */}
         <div className=" px-12 pt-32 lg:col-span-1 lg:w-[580px] md:px-8 sm:px-10 md:pt-24">
@@ -25,7 +25,7 @@ export const ContactUs = () => {
               <h2 className="text-3xl font-bold pb-5 text-accent">
                 Let's <span className="text-primary">Talk!</span>
               </h2>
-              <div className="text-justify text-xl text-accent font-semibold lg:text-xl md:text-sm md:whitespace-nowrap ">
+              <div className="text-justify text-xl text-accent font-semibold lg:text-xl md:w-[130px] md:text-sm md:whitespace-nowrap ">
                 <p>To request a quote or what to meet up for coffee, </p>
                 <p>
                   contact us directly or fill out the form we will get back to
@@ -68,28 +68,28 @@ export const ContactUs = () => {
             {/* Button Send */}
             <button
               type="submit"
-              className="mt-5 px-10 py-2.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 lg:ml-64 lg:text-xl md:ml-24 md:h-9 md:pt-1.5 md:text-base">
+              className="mt-5 px-10 py-2.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 lg:ml-48 lg:text-xl md:ml-24 md:h-9 md:pt-1.5 md:text-base">
               Send
             </button>
           </div>
         </div>
 
         {/* Contact images*/}
-        <div className="flex flex-col justify-center items-center lg:col-span-2 ">
+        <div className="flex flex-col justify-center w-[650px] ml-16 items-center lg:col-span-2 ">
           <img
             src={Contact}
             alt=""
             className="mt-28 lg:hidden md:hidden "
           />
           <div className="">
-            <div className="flex mt-12 sm:flex justify-center items-center md:ml-12">
+            <div className="flex mt-12 sm:flex justify-center items-center lg:mr-36 md:-ml-52">
               <img src={Message} alt="" className="w-7 mr-2 " />
-              <a href="#" className="pr-6 sm:pr-8 text-gray-400 md:text-sm">
+              <a href="#" className="pr-6 sm:pr-8 text-gray-400 md:text-sm ">
                 documentengine@gmail.com
               </a>
             </div>
             {/* contact with facebook, Telegram and Instagram */}
-            <div className="Image flex flex-row top-12 w-56 mt-6 lg:ml-4 md:ml-14 md:pb-10 md:w-[200px]">
+            <div className="Image flex flex-row top-12 w-56 mt-6 lg:ml-4 md:-ml-52 md:pb-10 md:w-[200px]">
               <div className="img1 pr-12 sm:pr-14 ">
                 <img src={Face} alt="" className="" />
               </div>
