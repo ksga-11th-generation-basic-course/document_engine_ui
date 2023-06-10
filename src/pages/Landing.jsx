@@ -13,28 +13,27 @@ import { Footer } from "../components/Footer.jsx";
 
 export const Landing = () => {
   return (
-    <div className="bg-white ">
+    <div>
       <NavBar />
-      <div className="pt-32 md:pt-20 px-16 lg:p-8 lg:pt-32 md:p-1">
+      <div className="pt-32 md:pt-20 lg:p-8 lg:pt-32 md:p-0">
         {/* All document */}
-        <div className="grid grid-cols-12 lg:-ml-2  md:flex md:flex-col">
-          <div className="col-span-4 ml-10">
+        <div className="grid grid-cols-12 lg:-ml-2  md:flex md:flex-col md:ml-0">
+          <div className="col-span-4 ml-10 md:ml-0">
             <div className="text-accent flex flex-col gap-8 md:gap-y-5">
-              <h1 className="font-bold text-36px leading-[45px] lg:whitespace-nowrap lg:text-[34px] md:-ml-2 md:whitespace-nowrap md:text-22px  md:mt-6 md:pr-3  md:leading-9">
-               All your <span className="text-primary ">Documents</span> <br />{" "} 
-               
+              <h1 className="font-bold text-36px leading-[45px] lg:whitespace-nowrap lg:text-[34px] md:ml-10 md:whitespace-nowrap md:text-22px  md:mt-6 md:pr-3  md:leading-9">
+               All your <span className="text-primary ">Documents</span> <br />
                 in one <span className="text-primary">place</span> and{" "}
                 <span className="text-primary">safe</span>!
               </h1>
 
-              <p className="font-bold text-18px lg:text-14px lg:w-80 md:w-96 md:-ml-2 md:overflow-hidden md:text-14px md:text-sm md:pr-12 ">
+              <p className="font-bold text-18px lg:text-14px lg:w-80 md:w-[350px] md:ml-10 md:overflow-hidden md:text-14px md:text-sm md:pr-12 ">
                 Make your wiki, docs & project in ONCE with the best
                 security, edit your documents and work as a group.
               </p>
 
               {/*Get Started Button */}
               <div className="mt-5">
-                <Link to={"/signin"} className="bg-primary rounded-2xl text-18px text-white px-10 py-4 font-semibold lg:text-16px lg:px-7 lg:py-3.5 md:-ml-2 md:text-sm md:px-7 md:py-3">
+                <Link to={"/signin"} className="bg-primary rounded-2xl text-18px text-white px-10 py-4 font-semibold lg:text-16px lg:px-7 lg:py-3.5 md:ml-10 md:text-sm md:px-7 md:py-3">
                   Get Started
                 </Link>
               </div>
@@ -58,15 +57,15 @@ export const Landing = () => {
             </h1>
           </div>
 
-          <div className="grid grid-cols-12 gap-y-20 mt-20 lg:grid-cols-3 md:mt-10 md:gap-y-10">
+          <div className="grid grid-cols-12 gap-y-20 mt-20 lg:grid-cols-3 md:mt-10 md:gap-y-10"> 
               {/* Collaboration */}
               <div className="col-span-4">
                 <img src={teamspirit} className="mx-auto lg:w-[250px] md:w-[200px]" />
                 <h1 className="mt-3 font-bold text-primary text-3xl text-center lg:text-28px md:text-18px">
                   Collaboration
                 </h1>
-                <div className="px-28 lg:px-4 md:ml-10">
-                  <p className="text-20px text-accent mt-5 text-center lg:mt-2 md:w-[280px] md:text-12px">
+                <div className="px-28 lg:px-40">
+                  <p className="text-20px text-accent mt-5 text-center lg:mt-2 md:-ml-20 md:w-[250px] md:text-12px">
                     Coming together is a beginning, staying together is
                     progress, and working together is success.
                   </p>
@@ -140,9 +139,10 @@ export const Landing = () => {
           </div>
         </div>
 
-        <div className="grid grid-cols-12 mt-24 px-16 lg:mt-5 md:ml-48 md:-mt-10">
+        {/* Card Detail */}
+        <div className="grid grid-cols-12 mt-24 px-16 lg:mt-5 md:px-0 md:-mt-10"> 
         {/* Group */}
-          <div className="col-span-4 mx-auto lg:col-span-12 lg:ml-20 md:-ml-12 ">
+          <div className="col-span-4 mx-auto lg:col-span-12 lg:ml-20 md:ml-52 ">
             <img src={card_document} className="lg:absolute lg:w-96 lg:-mt-72 lg:-ml-44 md:w-80"/>
             <span className="absolute lg:mt-36 lg:-ml-52 md:mt-32 md:-ml-56">
                 <img src={group} className="-mt-[350px] ml-[105px] w-12 lg:ml-[118px] lg:w-10 lg:-mt-[342px] md:w-8 md:ml-[122px] md:-mt-[340px]"/>
@@ -155,7 +155,7 @@ export const Landing = () => {
           </div>
 
            {/* Sharing */}
-           <div className="col-span-4 mx-auto lg:mt-20 lg:-mr-64 md:-ml-12 md:mt-5">
+           <div className="col-span-4 mx-auto lg:mt-20 lg:-mr-64 md:ml-52 md:mt-5">
                   <img src={card_document}  className="lg:absolute lg:w-96 lg:-ml-44  md:w-80"/>
                  <span className="absolute lg:mt-[435px] lg:-ml-52">
                       <img src={sharingicon} className="-mt-[350px] ml-[107px] w-11 lg:w-9 lg:ml-[120px] lg:-mt-[345px] md:w-8 md:ml-[107px] md:-mt-[360px]"/>
@@ -167,7 +167,7 @@ export const Landing = () => {
           </div>
 
           {/* Document */}
-          <div className="col-span-4 mx-auto lg:mt-[400px] lg:-ml-24 md:-ml-[70px] md:mt-[340px]">
+          <div className="col-span-4 mx-auto lg:mt-[400px] lg:-ml-24 md:ml-[70px] md:mt-[340px]">
                   <img src={card_document} className="lg:absolute lg:w-96 lg:-ml-44 md:w-80"/>
                   <span className="absolute lg:mt-[435px] lg:-ml-52">
                           <img src={document} className="-mt-[345px] ml-[107px] w-11 lg:w-10 lg:ml-[120px] lg:-mt-[343px]  md:w-8 md:ml-[107px] md:-mt-[357px]"/>
@@ -181,7 +181,7 @@ export const Landing = () => {
       </div>
 
       <div className="lg:mt-96 md:h-10 md:w-full md:mb-12">
-        {/* <Footer /> */}
+        <Footer />
       </div>
     </div>
   );
