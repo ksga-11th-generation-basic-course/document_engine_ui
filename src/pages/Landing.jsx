@@ -15,18 +15,18 @@ export const Landing = () => {
   return (
     <div>
       <NavBar />
-      <div className="pt-32 md:pt-20 lg:p-8 lg:pt-32 md:p-0">
+      <div className="pt-32  px-20 md:pt-20 lg:p-8 lg:pt-32 md:p-0">
         {/* All document */}
         <div className="grid grid-cols-12 lg:-ml-2  md:flex md:flex-col md:ml-0">
-          <div className="col-span-4 ml-10 md:ml-0">
-            <div className="text-accent flex flex-col gap-8 md:gap-y-5">
+          <div className="col-span-4 ml-5 md:ml-0">
+            <div className="text-accent flex flex-col gap-8 mt-10 md:mt-0 md:gap-y-5">
               <h1 className="font-bold text-36px leading-[45px] lg:whitespace-nowrap lg:text-[34px] md:ml-10 md:whitespace-nowrap md:text-22px  md:mt-6 md:pr-3  md:leading-9">
                All your <span className="text-primary ">Documents</span> <br />
                 in one <span className="text-primary">place</span> and{" "}
                 <span className="text-primary">safe</span>!
               </h1>
 
-              <p className="font-bold text-18px lg:text-14px lg:w-80 md:w-[350px] md:ml-10 md:overflow-hidden md:text-14px md:text-sm md:pr-12 ">
+              <p className="font-bold text-20px lg:text-14px lg:w-80 md:w-[350px] md:ml-10 md:overflow-hidden md:text-14px md:text-sm md:pr-12 ">
                 Make your wiki, docs & project in ONCE with the best
                 security, edit your documents and work as a group.
               </p>
@@ -102,13 +102,13 @@ export const Landing = () => {
         </div>
 
         {/* Learn the best tool */}
-        <div className="grid grid-cols-12 gap-y-20 mt-36 ml-60 items-center lg:ml-0 md:flex md:flex-col lg:mb-96 md:-ml-5 md:mt-20">
+        <div className="grid grid-cols-12 gap-y-20 mt-36 ml-60 items-center lg:ml-0 md:flex md:flex-col lg:mb-96 md:mt-20">
           <div className="col-span-6 mx-auto lg:ml-6">
             <h1 className="font-bold text-36px  text-accent leading-[45px] md:text-22px md:ml-5 md:leading-7">
               <div>Learn the best <span className="text-primary">tools</span> </div>
               <div>and <span className="text-primary">platforms</span></div>
             </h1>
-            <p className="text-20px  text-accent mt-5 lg:w-[420px] md:ml-5 md:text-14px md:w-80">
+            <p className="text-20px  text-accent mt-5 lg:w-[420px] md:ml-5 md:text-14px md:w-72">
               We focus on industry leading platforms so that you can be
               prepared for your next job. Then we teach all we van about
               them.
@@ -117,7 +117,7 @@ export const Landing = () => {
 
           {/* Icon */}
           <div className="col-span-6 mx-auto lg:ml-28">
-            <div className="flex justify-center items-center gap-x-10 md:-ml-16 md:-mt-12">
+            <div className="flex justify-center items-center gap-x-10 md:-ml-16 md:-mt-16">
                 <div className="bg-primary shadow-icon rounded-full ">
                       <div className="relative flex justify-center items-center w-16 h-16 lg:w-12 lg:h-12  md:w-10 md:h-10">
                           <img src={group}  className="absolute p-2"/>
@@ -140,7 +140,7 @@ export const Landing = () => {
         </div>
 
         {/* Card Detail */}
-        <div className="grid grid-cols-12 mt-24 px-16 lg:mt-5 md:px-0 md:-mt-10"> 
+        <div className="grid grid-cols-12 mt-24 px-16 lg:mt-5 md:px-0 md:-mt-10 md:pb-28"> 
         {/* Group */}
           <div className="col-span-4 mx-auto lg:col-span-12 lg:ml-20 md:ml-52 ">
             <img src={card_document} className="lg:absolute lg:w-96 lg:-mt-72 lg:-ml-44 md:w-80"/>
@@ -167,7 +167,7 @@ export const Landing = () => {
           </div>
 
           {/* Document */}
-          <div className="col-span-4 mx-auto lg:mt-[400px] lg:-ml-24 md:ml-[70px] md:mt-[340px]">
+          <div className="col-span-4 mx-auto lg:mt-[400px] lg:-ml-24 md:ml-[80px] md:mt-[340px]">
                   <img src={card_document} className="lg:absolute lg:w-96 lg:-ml-44 md:w-80"/>
                   <span className="absolute lg:mt-[435px] lg:-ml-52">
                           <img src={document} className="-mt-[345px] ml-[107px] w-11 lg:w-10 lg:ml-[120px] lg:-mt-[343px]  md:w-8 md:ml-[107px] md:-mt-[357px]"/>
@@ -180,7 +180,7 @@ export const Landing = () => {
         </div>
       </div>
 
-      <div className="lg:mt-96 md:h-10 md:w-full md:mb-12">
+      <div className="lg:mt-96 md:h-10 md:w-full">
         <Footer />
       </div>
     </div>
