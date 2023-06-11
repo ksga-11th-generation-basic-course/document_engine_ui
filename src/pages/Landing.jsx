@@ -33,8 +33,8 @@ export const Landing = () => {
                 security, edit your documents and work as a <br /> group.
               </p>
               {/*Get Started Button */}
-              <div>
-                <Link className="bg-primary  rounded-md text-18px text-white px-8 py-3 font-semibold lg:w-full lg:-ml-24 lg:text-xl md:text-sm md:px-4 md:py-2 ">
+              <div className="-mt-10">
+                <Link className="bg-primary  rounded-md text-18px text-white px-8 py-3 font-semibold  lg:w-full lg:-ml-24 lg:text-xl md:text-sm md:px-4 md:py-2 ">
                   Get Started
                 </Link>
               </div>
@@ -74,7 +74,7 @@ export const Landing = () => {
               </div>
 
               {/* Productivity */}
-              <div className="col-span-4 lg:grid-cols-2 lg:ml-24 lg:-mt-10  md:w-[170px] ">
+              <div className="col-span-4 lg:grid-cols-2 lg:ml-24 lg:-mt-10 md:ml-32 md:w-[170px] ">
                 <img src={rectangle} className="mx-auto w-[320px] lg:ml-28 md:-ml-40" />
                 <h1 className="mt-3 font-bold ml-4 text-primary text-3xl text-center lg:ml-44 md:text-lg md:-ml-80">
                   Productivity
@@ -89,7 +89,7 @@ export const Landing = () => {
             
 
             {/* Sharing */}
-            <div className="col-span-4 lg:grid-cols-3 md:w-[170px] md:-ml-4">
+            <div className="col-span-4 lg:grid-cols-3 md:w-[170px] md:-ml-10">
               <img src={sharing} className="mx-auto w-[320px] lg:-ml-8 lg:w-[290px] lg:-mt-10  md:ml-0" />
               <h1 className="mt-3 font-bold text-primary text-3xl text-center lg:-ml-48 md:-ml-1 md:text-lg md:pl-6">
                 Sharing
@@ -106,7 +106,7 @@ export const Landing = () => {
         </div>
         {/* Learn the best tool */}
         <div className="grid grid-cols-12 gap-y-20 mt-36 items-center lg:mt-16 md:flex md:-ml-1 md:flex-col">
-          <div className="col-span-6 mx-auto lg:ml-6">
+          <div className="col-span-6 mx-auto ml-80 lg:ml-6">
             <h1 className="font-bold text-4xl  text-accent leading-[45px] md:px-6  md:whitespace-nowrap md:text-xl ">
               Learn the best <span className="text-primary">tools</span> <br />
               and <span className="text-primary">platforms</span>
@@ -128,7 +128,7 @@ export const Landing = () => {
         </div>
 
         {/* Group */}
-        <div className="grid grid-cols-12 mt-24 ml-20 lg:mt-5 lg:gap-4 md:w-[190px] md:flex md:flex-col md:ml-16 md:gap-y-10 ">
+        <div className="grid grid-cols-12 mt-24 ml-24 lg:mt-5 lg:ml-16 lg:gap-4 md:w-[190px] md:flex md:flex-col md:ml-16 md:gap-y-10 ">
           <div className="col-span-4 ml-32 w-[400px] mx-auto lg:-ml-14 lg:w-[260px] md:-mb-16 md:w-[250px] md:-ml-12 ">
             <img src={groupcard} />
           </div>

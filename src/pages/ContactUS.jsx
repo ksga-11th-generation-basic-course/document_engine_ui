@@ -19,7 +19,7 @@ export const ContactUs = () => {
         {/* Let's Talk */}
         <div className=" px-12 pt-32 lg:col-span-1 lg:w-[580px] md:px-8 sm:px-10 md:pt-24">
             <div>
-              <div className="bg-primary px-2 py-0.5 rounded-r-lg w-40 md:w-[130px] md:h-0.5"></div>
+              <div className="bg-primary px-2 py-0.5 rounded-r-lg w-32 lg:w-[130px] md:w-[130px] md:h-0.5"></div>
             </div>
             <div className="text pt-8 lg:pt-5 px-0">
               <h2 className="text-3xl font-bold pb-5 text-accent">
