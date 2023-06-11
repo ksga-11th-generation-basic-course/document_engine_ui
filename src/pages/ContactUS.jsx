@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import Contact from "../assets/images/Contact.svg";
 import Message from "../assets/images/Contact/Message.svg";
 import IG from "../assets/images/Contact/IG.svg";
 import Face from "../assets/images/Contact/Facebook.svg";
 import Tele from "../assets/images/Contact/Telegram .svg";
 import { NavBar } from "../components/NavBar";
+import SendMessageSuccessModal from "../modal/SendMessageSuccessModal";
 
 export const ContactUs = () => {
+  const [visible, setVisble] = useState(false);
+  
   return (
     <div className="min-h-screen bg-white">
       <div>
@@ -20,7 +23,7 @@ export const ContactUs = () => {
             <div className="bg-primary px-2 py-0.5  rounded-r-lg  w-40"></div>
           </div>
           <div className="text pt-8 lg:pt-5 px-0">
-            <h2 className="text-3xl font-bold pb-5 text-accent">
+            <h2 className="text-4xl font-bold pb-5 text-accent">
               Let's <span className="text-primary">Talk!</span>
             </h2>
             <div className="text-justify text-12px xl:text-10px lg:text-12px   md:text-16px md:whitespace-nowrap sm:pr-16 sm:text-12px text-xl text-accent font-semibold">
@@ -31,7 +34,7 @@ export const ContactUs = () => {
               <p>your promptly </p>
             </div>
           </div>
-          <div className="form relative top-10 lg:top-2">
+          <div className="form relative  top-10 lg:top-2">
             <label
               htmlFor=""
               className="text-xl sm:text-14px text-[#575E69] font-semibold"
@@ -40,7 +43,7 @@ export const ContactUs = () => {
             </label>
             <input
               type="text"
-              className="form-control block
+              className="form-control block mt-2
                                 w-full
                                 px-3
                                 py-3
@@ -56,8 +59,8 @@ export const ContactUs = () => {
                                 font-semibold
                                 "
             />
-            <div className="flex flex-row pt-5">
-              <div className="email text-[#575E69] ">
+            <div className="flex flex-row pt-10">
+              <div className="email text-[#575E69] mb-2">
                 <label className="text-xl  sm:text-14px font-semibold">
                   Your Message
                 </label>
@@ -102,14 +105,16 @@ export const ContactUs = () => {
               type="submit"
               className="
                             mt-5
-                            px-10
-                            py-2.5
+                            px-12
+                            py-3
+                            text-lg
                             bg-primary
                             text-white
                             font-semibold
                             rounded-lg
                             hover:bg-primary/90
                             "
+                    onClick={() => setVisble(!visible)}
             >
               Send
             </button>
@@ -127,8 +132,8 @@ export const ContactUs = () => {
           <div className="">
             <div className="flex mt-12 sm:flex justify-center items-center">
               <img src={Message} alt="" className="w-7 mr-2 " />
-              <a href="#" className="pr-6 sm:pr-8 text-gray-400">
-                documentengine@gmail.com
+              <a href="#" className="pr-6 sm:pr-8 text-accent_secondary text-20px">
+                docengine@gmail.com
               </a>
             </div>
             <div className="Image flex flex-row sm:justify-center sm:w-58 sm:ml-3 top-12 md:top-10 w-56  mt-6 md:pb-10">
@@ -145,6 +150,8 @@ export const ContactUs = () => {
           </div>
         </div>
       </div>
+
+          {visible ? <SendMessageSuccessModal/> : null}
     </div>
   );
 };

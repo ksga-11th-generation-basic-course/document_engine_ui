@@ -23,11 +23,11 @@ export const DeleteProfileModal = ({
             <div className="flex justify-center items-center">
               <img src={deleteprofile} className="md:w-16"/>
             </div>
-            <p className="font-normal text-accent text-18px text-center md:text-16px">
+            <p className="font-normal text-accent text-22px text-center md:text-16px">
               Are you sure want to delete your profile photo?
             </p>
 
-            <div className="flex justify-center items-center gap-5 text-16px font-semibold pb-5 md:text-14px">
+            <div className="flex justify-center items-center gap-5 text-18px font-semibold pb-5 md:text-14px">
               <button
                 className="px-10 py-3 border-[1px] rounded-lg md:px-4 md:py-2.5"
                 onClick={() => setOpenDeleteProfile(!openDeleteProfile)}
