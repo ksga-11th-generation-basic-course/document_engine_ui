@@ -121,15 +121,15 @@ export const VerifyOTP = () => {
         />
         {/* Image Background */}
         <img
-          className="w-[500px] h-[700.16px] pt-32 mr-5 max-sm:hidden lg:hidden  md:hidden"
+          className="w-[500px] h-[700.16px] pt-16 mr-5 max-sm:hidden lg:hidden  md:hidden"
           src={VerifyL}
         />
         {/* Verify Email Address */}
-        <form className="bg-white h-[510px] w-[530px] mt-32 flex flex-col justify-center  rounded-3xl shadow-md 
+        <form className="bg-white h-[510px] w-[530px] flex flex-col justify-center  rounded-3xl shadow-md 
         lg:mb-6 lg:w-[500px] lg:h-[500px] lg:mt-32 md:w-[300px] md:h-[380px] ">
           <div className=" xs:p-0 mx-auto md:w-full md:max-w-md  ">
             <div className="bg-white w-full  ">
-              <h1 className="font-bold text-center text-primary text-36px md:text-xl md:mt-4">
+              <h1 className="font-bold text-center text-primary text-42px lg:text-34px">
                 Verify Email Address
               </h1>
 

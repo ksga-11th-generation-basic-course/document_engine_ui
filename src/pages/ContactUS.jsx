@@ -17,7 +17,7 @@ export const ContactUs = () => {
       </div>
 
       {/* grid 1 block title */}
-      <div className=" grid grid-cols-2 overflow-hidden  md:flex md:flex-col">
+      <div className="pt-5 pl-10 grid grid-cols-2 overflow-hidden  md:flex md:flex-col">
         <div className=" px-12  md:px-8 pt-32 sm:px-10 md:pt-24">
           <div>
             <div className="bg-primary px-2 py-0.5  rounded-r-lg  w-40"></div>
@@ -32,6 +32,7 @@ export const ContactUs = () => {
                     your promptly 
             </div>
           </div>
+
           <div className="form relative  top-10 lg:top-2 md:top-0">
             <label
               htmlFor=""
@@ -125,7 +126,7 @@ export const ContactUs = () => {
 
         {/* grid 2 block images*/}
 
-        <div className="flex flex-col justify-center items-center ">
+        <div className="mt-20 flex flex-col justify-center items-center ">
           <img
             src={Contact}
             alt=""

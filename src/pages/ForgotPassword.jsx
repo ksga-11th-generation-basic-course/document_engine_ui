@@ -3,7 +3,7 @@ import Logo from "../assets/images/Logo.svg";
 import Forgot1 from "../assets/images/Forgot/Forgot.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { forgotPassword } from "../redux/service/authenticationService/authenticationService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 export const ForgotPassword = () => {
   const navigate = useNavigate();
 
@@ -28,7 +28,9 @@ export const ForgotPassword = () => {
   return (
     <div className="bg-[#EDF9FF] h-screen ">
     <div className="flex justify-center items-center  relative text-[#37352F] ">
-      <img src={Logo} className="absolute top-8 left-16 md:w-[60px]" />
+      <Link to={"/"}>
+            <img src={Logo} className="absolute top-8 left-16 md:left-14 md:w-[60px]" />
+      </Link>
       <img src={Forgot1} className="hidden  lg:hidden lg:z-0 lg:mt-60" />
       
           {/* Background Image */}
@@ -39,7 +41,7 @@ export const ForgotPassword = () => {
           {/* orgot Your Password? */}
           <div className=""> 
               <form className="bg-white p-7 flex flex-col justify-center gap-y-6 rounded-3xl shadow-md mt-56 
-              lg:absolute lg:top-56 lg:left-36  lg:w-[490px] lg:mb-9 lg:-mt-0 md:absolute md:top-12 md:left-16 md:w-[280px] md:h-[328px] md:mt-36 md:p-3 ">
+              lg:absolute lg:top-56 lg:left-36  lg:w-[490px] lg:mb-9 lg:-mt-0 md:absolute md:top-0 md:left-14 md:w-[280px] md:h-[328px] md:mt-36 md:p-3 ">
                 <div className=" xs:p-0 mx-auto md:w-full md:max-w-md  md:flex flex-col-reverse ">
                   <div className="w-full  ">
                     <h1 className="font-bold text-center text-primary text-36px mt-5 md:text-xl">
@@ -70,14 +72,16 @@ export const ForgotPassword = () => {
                                   />
                                 </div>
                                 <div className="mt-5">
-                                  <button
-                                    type="button"
-                                    onClick={handleSubmit}
-                                    className="font-semibold text-18px transition  duration-200 bg-primary hover:bg-btn-primary text-white w-full px-2 py-3 rounded-lg shadow-sm 
-                                    hover:shadow-md text-center inline-block md:text-base md:h-[37px] md:pt-2 "
-                                  >
-                                    Continue
-                                  </button>
+                                  <Link to={"/verifyforgotpassword"}>
+                                        <button
+                                          type="button"
+                                          onClick={handleSubmit}
+                                          className="font-semibold text-18px transition  duration-200 bg-primary hover:bg-btn-primary text-white w-full px-2 py-3 rounded-lg shadow-sm 
+                                          hover:shadow-md text-center inline-block md:text-base md:h-[37px] md:pt-2 "
+                                        >
+                                          Continue
+                                        </button>
+                                  </Link>
                                 </div>
                               </div>
                             </div>
@@ -91,12 +95,12 @@ export const ForgotPassword = () => {
         </div>
         
        </div> 
-       <div className="flex justify-center mt-44 gap-1 lg:mt-32 md:mt-40 md:ml-6  ">
-              <div className="w-[50px] h-[7px] rounded-2xl bg-[#1E9CEF] md:h-1.5 ">   
+       <div className="flex justify-center mt-44 gap-1 lg:mt-32 md:mt-14 md:ml-5  ">
+              <div className="w-[50px] h-[7px] rounded-2xl bg-[#1E9CEF] md:h-1.5 md:w-[40px]">   
               </div>
-              <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5">  
+              <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5 md:w-[40px]">  
               </div>
-              <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5">  
+              <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5 md:w-[40px]">  
               </div>
           </div>   
     </div>   

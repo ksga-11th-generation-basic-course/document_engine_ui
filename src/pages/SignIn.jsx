@@ -74,10 +74,12 @@ export const SignIn = () => {
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
-        <img
-          src={Logo}
-          className="absolute top-4 left-8 max-sm:left-3 max-sm:top-7 lg:w-[80px] lg:-ml-9 md:w-[60px] md:h-[60px] md:mr-9 md:mt-0 "
-        />
+       <Link to={"/"}>
+              <img
+                  src={Logo}
+                  className="absolute top-4 left-8 max-sm:left-3 max-sm:top-7 lg:w-[80px] lg:-ml-9 md:w-[60px] md:h-[60px] md:mr-9 md:mt-0 "
+                />
+       </Link>
         <img
           className="w-[600px] h-[500.16px] mr-5 max-sm:hidden lg:w-[150px] md:w-[200px] lg:hidden"
           src={LeftImage}
@@ -166,6 +168,7 @@ export const SignIn = () => {
                 Sign up
               </Link>
             </div>
+            
             {/* ---------or------- */}
             <div className=" pb-4 pt-20px ">
               <div className="flex items-center w-[369px] before:mt-0.5 before:flex-1 before:border-t before:border-neutral-400 after:mt-0.5 after:flex-1 

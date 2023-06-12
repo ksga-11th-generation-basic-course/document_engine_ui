@@ -13,7 +13,7 @@ import {
   resendVerifyCode,
   verifyOTP,
 } from "../redux/service/authenticationService/authenticationService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
 
 const validate = (values) => {
@@ -129,10 +129,10 @@ export const VerifyForgotPassword = () => {
         />
         {/* Verify Email Address */}
         <form className="bg-white  h-[510px] w-[530px] mt-36 flex flex-col justify-center  rounded-3xl shadow-md 
-         lg:w-[500px] lg:h-[470px] lg:mt-48 md:w-[320px] md:h-[370px] md:mt-44 ">
+         lg:w-[500px] lg:h-[470px] lg:mt-48 md:w-[320px] md:h-[420px] md:mt-32">
           <div className=" xs:p-0 mx-auto md:w-full md:max-w-md  ">
             <div className=" w-full  ">
-              <h1 className="font-bold text-center text-primary text-36px lg:text-3xl md:text-xl md:mt-8">
+              <h1 className="font-bold text-center text-primary text-36px lg:text-3xl md:text-24px md:mt-14">
                 Verify Email Address
               </h1>
 
@@ -195,14 +195,16 @@ export const VerifyForgotPassword = () => {
 
                           {/*  Verify */}
                           <div className="mt-5">
-                            <button
-                              type="button"
-                              onClick={formik.handleSubmit}
-                              className="transition font-bold text-18px duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm
-                               hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[260px] md:h-9 md:pt-2 "
-                            >
-                              Verify  
-                            </button>
+                                    <Link to={"/resetforgotpassword"}>
+                                          <button
+                                                type="button"
+                                                onClick={formik.handleSubmit}
+                                                className="transition font-bold text-18px duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm
+                                                hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[260px] md:h-9 md:pt-2 "
+                                        >
+                                                Verify  
+                                        </button>
+                                    </Link>
                           </div>
                         </div>
                       </div>
@@ -218,13 +220,13 @@ export const VerifyForgotPassword = () => {
         </div>       
       </div>  
     </div>   
-    <div className="flex justify-center  mt-16 gap-1 lg:mt-32 md:mt-24 ">
-            <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5">  
-            </div>
-            <div className="w-[50px] h-[7px] rounded-2xl bg-[#1E9CEF] md:h-1.5 ">   
-            </div>
-            <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5">  
-            </div>
+    <div className="-ml-20 flex justify-center  mt-16 gap-1 lg:mt-16 lg:ml-0 md:mt-14 md:ml-0">
+              <div className="w-[50px] h-[7px] rounded-2xl bg-[#1E9CEF] md:h-1.5 md:w-[40px]">   
+              </div>
+              <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5 md:w-[40px]">  
+              </div>
+              <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5 md:w-[40px]">  
+              </div>
     </div>        
  </div> 
   );

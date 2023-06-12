@@ -225,14 +225,17 @@ export const SignUp = () => {
               </button>
 
               {/* Continue */}
-              <button
-                type="submit"
-                className="px-2 py-3 font-semibold transition duration-200 bg-primary hover:bg-btn-primary focus:shadow-sm text-white w-full rounded-lg 
-                focus:outline-none shadow-sm hover:shadow-md text-center  text-18px inline-block
-                lg:text-2xl lg:h-13 md:h-8 md:pb-8 md:w-[225px] md:text-base"
-              >
-                Continue
-              </button>
+              <Link to={"/verifyotp"}>
+                      <button
+                        type="submit"
+                        className="px-2 py-3 font-semibold transition duration-200 bg-primary hover:bg-btn-primary focus:shadow-sm text-white w-full rounded-lg 
+                        focus:outline-none shadow-sm hover:shadow-md text-center  text-18px inline-block
+                        lg:text-2xl lg:h-13 md:h-8 md:pb-8 md:w-[225px] md:text-base"
+                        onClick={formik.handleSubmit}
+                      >
+                        Continue
+                      </button>
+              </Link>
             </div>
             {/* ------- or -------- */}
             <div className="px-4 pb-4">
