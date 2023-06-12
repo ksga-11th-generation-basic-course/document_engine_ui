@@ -22,14 +22,15 @@ export const SettingContent = ({
 
   const [removePhoto, setRemovePhoto] = useState(false);
 
-  const [workspaceName, setWorkspaceName] = useState();
+  const [workspaceName, setWorkspaceName] = useState("");
 
-  const [workspaceImage, setWorkspaceImage] = useState();
+  const [workspaceImage, setWorkspaceImage] = useState(null);
 
   const dispatch = useDispatch();
 
+  let workspaceId = workspace.workspaceId;
+
   const handleEditWorkspaceInformation = (e) => {
-    console.log(workspace.workspaceId);
     try {
       if (!workspaceImage) return;
 
@@ -41,15 +42,16 @@ export const SettingContent = ({
       uploadBytes(imageRef, workspaceImage).then(async (snapshot) => {
         getDownloadURL(snapshot.ref).then(async (url) => {
           const workspace = await editWorkspace(
-            "3db3ba1a-80b5-4176-9980-2485ff39c6a7",
+            workspaceId,
             workspaceName,
             url
           );
           dispatch(editWorkspaceSuccess(workspace));
         });
       });
+      setWorkspaceName("");
+      setWorkspaceImage(null);
       setOpenWorkspaceSetting(!openWorkspaceSetting);
-      document.getElementById("changeworkspacename").reset();
     } catch (error) {
       console.log(error);
     }
@@ -62,7 +64,6 @@ export const SettingContent = ({
           type="button"
           onClick={() => {
             setOpenWorkspaceSetting(!openWorkspaceSetting);
-            document.getElementById("changeworkspacename").reset();
           }}
         >
           <img src={close} />
@@ -93,14 +94,12 @@ export const SettingContent = ({
               Save
             </button>
           </div>
-          <form
-            className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg"
-            id="changeworkspacename"
-          >
+          <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg">
             <div className="w-full space-y-2">
               <h3 className="font-bold text-18px text-black">Workspace Name</h3>
               <input
                 type="text"
+                value={workspaceName}
                 className="w-96 md:w-72 py-3 md:py-2 rounded-lg border-gray-300 focus:ring-primary focus:border-primary text-16px font-semibold"
                 placeholder={workspace && workspace.workspaceName}
                 onChange={(e) => setWorkspaceName(e.target.value)}
@@ -136,10 +135,24 @@ export const SettingContent = ({
                 </button>
               </div>
             </div>
-            <div className="overflow-hidden rounded-lg w-[300px] h-[210px]">
-              <img src={workspace && workspace.workspaceImage} />
-            </div>
-          </form>
+            <label className="cursor-pointer">
+              <input
+                className="text-sm w-36 hidden"
+                type="file"
+                multiple
+                onChange={(e) => {
+                  setWorkspaceImage(e.target.files[0]);
+                }}
+              />
+              <div className="overflow-hidden rounded-lg w-[300px] h-[200px]">
+                {workspaceImage ? (
+                  <img src={URL.createObjectURL(workspaceImage)}/>
+                ) : (
+                  <img src={workspace.workspaceImage} />
+                )}
+              </div>
+            </label>
+          </div>
         </div>
         <div>
           <div className="flex justify-between border-l-[1px] border-r-[1px] border-t-[1px] px-6 md:py-2 py-3 md:px-2 rounded-t-lg">
@@ -174,8 +187,10 @@ export const SettingContent = ({
         <RemoveWorkspaceModal
           removeWorkspace={removeWorkspace}
           setRemoveWorkspace={setRemoveWorkspace}
+          workspaceId={workspaceId}
         />
         <RemovePhotoModal
+          workspaceId={workspaceId}
           removePhoto={removePhoto}
           setRemovePhoto={setRemovePhoto}
         />

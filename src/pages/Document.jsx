@@ -3,20 +3,26 @@ import sort from "../assets/workspace_image/sort.svg";
 import chevrondown from "../assets/workspace_image/chevrondown.svg";
 import filter from "../assets/workspace_image/filter.svg";
 import search from "../assets/workspace_image/search.svg";
-import { DropDownSort } from "../components/DropDownSort";
-import { DropDownFilter } from "../components/DropDownFilter";
 import documenticon from "../assets/document_image/documenticon.svg";
 import bulletlist from "../assets/document_image/bulletlist.svg";
 import dotshorizontal from "../assets/document_image/dotshorizontal.svg";
 import grid from "../assets/document_image/grid.svg";
 import { DocumentCard } from "../components/card/DocumentCard";
-import { DocumentList } from "../components/card/DocumentList";
-import { DropDownWorkspaceSetting } from "../components/DropDownWorkspaceSetting";
 import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
-import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
+import {
+  checkIsOwnerWorkspace,
+  getWorkspaceByWorkspaceId,
+} from "../redux/service/workspaceService/workspaceService";
 import { Checkbox, Dropdown, Radio } from "react-daisyui";
+import setting from "../assets/document_image/settings.svg";
+import group from "../assets/document_image/group.svg";
+import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
+import usericon from "../assets/workspace_image/usericon.svg";
+import { WorkspaceViewForMemberModal } from "../modal/WorkspaceViewForMemberModal";
+import { getCurrentUser } from "../redux/service/userService/userService";
+
 export const Document = () => {
   const [openSort, setOpenSort] = useState(false);
 
@@ -30,9 +36,16 @@ export const Document = () => {
 
   const [workspaceSetting, setWorkspaceSetting] = useState(false);
 
+  const [openWorkspaceSetting, setOpenWorksapceSetting] = useState(false);
+
+  const [openCollaboratorForMember, setOpenCollaboratorForMember] =
+    useState(false);
+
   const documents = useSelector((state) => state.document.documents);
 
   const workspace = useSelector((state) => state.workspace.workspace);
+
+  const isOwner = useSelector((state) => state.workspace.isOwner);
 
   const dispatch = useDispatch();
 
@@ -40,9 +53,19 @@ export const Document = () => {
 
   const workspaceId = param.id;
 
+  const user = useSelector((state) => state.user.user);
+
+  let userId;
+
+  if (user != null) {
+    userId = user.userId;
+  }
+
   useEffect(() => {
     dispatch(getAllDocumentInEachWorkspace(workspaceId));
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
+    dispatch(getCurrentUser());
+    dispatch(checkIsOwnerWorkspace({ workspaceId, userId }));
   }, []);
 
   return (
@@ -203,18 +226,38 @@ export const Document = () => {
                 </button>
               </div>
               <div className="relative">
-                <button
-                  type="button"
-                  onClick={() => setWorkspaceSetting(!workspaceSetting)}
-                >
-                  <img src={dotshorizontal} />
-                </button>
-                {workspaceSetting ? (
-                  <DropDownWorkspaceSetting
-                    workspaceSetting={workspaceSetting}
-                    setWorkspaceSetting={setWorkspaceSetting}
-                  />
-                ) : null}
+                {isOwner ? (
+                  <Dropdown className="dropdown-left">
+                    <Dropdown.Toggle>
+                      <img src={dotshorizontal} />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className="w-56 mt-6">
+                      <Dropdown.Item
+                        onClick={() =>
+                          setOpenWorksapceSetting(!openWorkspaceSetting)
+                        }
+                      >
+                        <img src={setting} />
+                        <span>Setting Workspace</span>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <img src={group} />
+                        <span>View member</span>
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                ) : (
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setOpenCollaboratorForMember(!openCollaboratorForMember)
+                      }
+                    >
+                      <img src={usericon} />
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           )}
@@ -251,6 +294,22 @@ export const Document = () => {
           />{" "}
         </div>
       ) : null}
+      <div>
+        {workspace && isOwner && (
+          <WorkspaceSettingModal
+            openWorkspaceSetting={openWorkspaceSetting}
+            setOpenWorkspaceSetting={setOpenWorksapceSetting}
+            workspace={workspace}
+          />
+        )}
+        {workspace && openCollaboratorForMember && (
+          <WorkspaceViewForMemberModal
+            openCollaboratorForMember={openCollaboratorForMember}
+            setOpenCollaboratorForMember={setOpenCollaboratorForMember}
+            workspace={workspace}
+          />
+        )}
+      </div>
     </div>
   );
 };

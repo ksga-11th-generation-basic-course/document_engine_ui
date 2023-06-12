@@ -30,7 +30,7 @@ export const SideBar = () => {
           <img src={logo} className="w-24 h-24" />
         </Link>
         <CreateWorkspaceModal visible={visible} setVisible={setVisible} />
-        <div className="flex flex-col w-full gap-y-3 text-16px text-accent font-semibold">
+        <div className="flex flex-col w-full gap-y-3 text-lg text-accent font-semibold">
           <NavLink
             to={"/dashboard"}
             className={({ isActive }) =>

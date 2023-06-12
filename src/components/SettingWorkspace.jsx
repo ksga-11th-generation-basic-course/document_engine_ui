@@ -5,6 +5,8 @@ export const SettingWorkspace = ({
   setCollaborator,
   setting,
   setSetting,
+  openInviteMember,
+  setOpenInviteMember,
 }) => {
   return (
     <div>
@@ -17,6 +19,7 @@ export const SettingWorkspace = ({
         onClick={() => {
           setSetting(true);
           setCollaborator(false);
+          setOpenInviteMember(false)
         }}
       >
         {setting ? (

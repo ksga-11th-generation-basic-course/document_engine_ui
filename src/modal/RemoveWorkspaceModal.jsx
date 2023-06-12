@@ -4,6 +4,9 @@ import close from "../assets/dashboard_image/close.svg";
 import romoveworkspace from "../assets/workspace_image/romoveworkspace.svg";
 import { useDispatch } from "react-redux";
 import { removeWorkspaceService } from "../redux/service/workspaceService/workspaceService";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { removeWorkspaceServiceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
 
 export const RemoveWorkspaceModal = ({
   removeWorkspace,
@@ -12,9 +15,34 @@ export const RemoveWorkspaceModal = ({
 }) => {
   const dispatch = useDispatch();
 
-  const handleRemoveWorkspace = () => {
-    dispatch(removeWorkspaceService(workspaceId));
-    setRemoveWorkspace(!removeWorkspace);
+  const handleRemoveWorkspace = async () => {
+    try {
+      const workspace = await removeWorkspaceService(workspaceId);
+      dispatch(removeWorkspaceServiceSuccess(workspace));
+      setRemoveWorkspace(!removeWorkspace);
+      toast.success("Remove Workspace Successfully", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch (error) {
+      setRemoveWorkspace(!removeWorkspace);
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
   };
 
   return (

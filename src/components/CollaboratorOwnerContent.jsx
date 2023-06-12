@@ -20,6 +20,8 @@ export const CollaboratorOwnerContent = ({
     }, 2000);
   };
 
+  let workspaceId = workspace.workspaceId
+
   const members = useSelector((state) => state.workspace.members);
 
   const dispatch = useDispatch();
@@ -75,7 +77,7 @@ export const CollaboratorOwnerContent = ({
             {members &&
               members.map((member, index) => (
                 <div key={index}>
-                  <MemberWorkspaceCard member={member} />
+                  <MemberWorkspaceCard member={member} workspaceId={workspaceId}/>
                 </div>
               ))}
           </div>

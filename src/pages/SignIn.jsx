@@ -19,6 +19,8 @@ import {
 import * as Yup from "yup";
 import { signInSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 import { EnableAccountModal } from "../modal/EnableAccountModal";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const SignIn = () => {
   const [enableAccount, setEnableAccount] = useState(false);
@@ -77,6 +79,28 @@ export const SignIn = () => {
       } catch (error) {
         if (error === "Account is close") {
           setEnableAccount(!enableAccount);
+        } else if (error === "User Not Found") {
+          toast.error("Invalid Email", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        } else if (error === "Invalid Password") {
+          toast.error(error, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
         }
       }
     },
@@ -223,6 +247,7 @@ export const SignIn = () => {
           setEnableAccount={setEnableAccount}
         />
       </div>
+      <ToastContainer />
     </div>
   );
 };

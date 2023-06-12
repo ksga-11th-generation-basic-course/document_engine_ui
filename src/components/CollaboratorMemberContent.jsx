@@ -1,17 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 import close from "../assets/dashboard_image/close.svg";
 import { MemberWorkspaceCard } from "./card/MemberWorkspaceCard";
+import { useDispatch, useSelector } from "react-redux";
+import { getMemberInEachWorkspace } from "../redux/service/workspaceService/workspaceService";
+import { MemberWorkspaceForMemberViewCard } from "./card/MemberWorkspaceForMemberViewCard ";
 
 export const CollaboratorMemberContent = ({
-  openCollaborator,
-  setOpenCollaborator,
+  openCollaboratorForMember,
+  setOpenCollaboratorForMember,
+  workspace,
 }) => {
+  const members = useSelector((state) => state.workspace.members);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getMemberInEachWorkspace(workspace.workspaceId));
+  }, []);
   return (
     <div>
       <div className="flex w-full justify-end">
         <button
           type="button"
-          onClick={() => setOpenCollaborator(!openCollaborator)}
+          onClick={() =>
+            setOpenCollaboratorForMember(!openCollaboratorForMember)
+          }
         >
           <img src={close} />
         </button>
@@ -28,24 +41,12 @@ export const CollaboratorMemberContent = ({
             </div>
           </div>
           <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg">
-            <MemberWorkspaceCard
-              username={"Tith Ouddom"}
-              status={true}
-              isOwner={true}
-              currentuser={false}
-            />
-            <MemberWorkspaceCard
-              username={"Kheng Sovannak"}
-              status={true}
-              isOwner={false}
-              currentuser={true}
-            />
-            <MemberWorkspaceCard
-              username={"Yan Sovanseyha"}
-              status={true}
-              isOwner={false}
-              currentuser={false}
-            />
+            {members &&
+              members.map((member, index) => (
+                <div key={index}>
+                  <MemberWorkspaceForMemberViewCard member={member} />
+                </div>
+              ))}
           </div>
         </div>
       </div>

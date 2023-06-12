@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import dotmenu from "../../assets/dashboard_image/dotmenu.png";
+import dotmenu from "../../assets/workspace_image/dotmenu.svg";
 import { useNavigate } from "react-router-dom";
 import { RemoveWorkspaceModal } from "../../modal/RemoveWorkspaceModal";
 import setting from "../../assets/dashboard_image/setting.svg";
@@ -31,7 +31,7 @@ export const WorkspaceCard = ({ workspace }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg text-accent cursor-pointer sm:w-[300px]">
+    <div className="shadow-md rounded-lg text-accent cursor-pointer sm:w-[300px] border-[1px]">
       <div className="flex justify-between items-center p-3">
         <h4 className="font-semibold text-18px">
           {workspace && workspace.workspaceName}
@@ -41,7 +41,7 @@ export const WorkspaceCard = ({ workspace }) => {
         ) : null}
       </div>
       <div className="h-[215px] overflow-hidden" onClick={handleNavigate}>
-        <img src={workspace && workspace.workspaceImage} />
+        <img src={workspace && workspace.workspaceImage} className="w-full" />
       </div>
       <div className="flex justify-between items-center p-3">
         <div>
@@ -56,7 +56,7 @@ export const WorkspaceCard = ({ workspace }) => {
           <div className="relative">
             <Dropdown className="dropdown-right">
               <Dropdown.Toggle>
-                <img src={dotmenu} />
+                <img src={dotmenu} className="w-[6px]"/>
               </Dropdown.Toggle>
               <Dropdown.Menu className="w-52 bg-white rounded-lg text-base">
                 <Dropdown.Item onClick={handleSettingWorkspace}>

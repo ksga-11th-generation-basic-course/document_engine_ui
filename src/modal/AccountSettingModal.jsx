@@ -18,7 +18,7 @@ import { storage } from "../firebase/firebase.utils";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 
-export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
+export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {
     setVisible(!visible);
@@ -32,11 +32,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
 
   const [resetPassword, setResetPassword] = useState(false);
 
-  const user = localStorage.getItem("user");
-
-  const parseUserObj = JSON.parse(user);
-
-  const [username, setUsername] = useState();
+  const [username, setUsername] = useState(user && user.userName);
 
   const [profileImage, setProfileImage] = useState();
 
@@ -140,8 +136,9 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
                     </h3>
                     <input
                       type="text"
+                      value={username}
                       className="w-96 py-3 rounded-lg border-gray-300 focus:ring-primary focus:border-primary text-16px font-semibold"
-                      placeholder={parseUserObj.userName}
+                      placeholder={user && user.userName}
                       onChange={(e) => setUsername(e.target.value)}
                     />
                   </form>
@@ -171,14 +168,14 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
                     </div>
                     <div className="flex justify-center items-center gap-x-4">
                       <div className="overflow-hidden w-11 h-11 rounded-full">
-                        {parseUserObj.profileImage === null ? (
+                        {user && user.profileImage === null ? (
                           <img
                             src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
                             className="bg-cover w-full h-full"
                           />
                         ) : (
                           <img
-                            src={parseUserObj.profileImage}
+                            src={user && user.profileImage}
                             className="bg-cover w-full h-full"
                           />
                         )}
@@ -216,7 +213,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
                     </div>
                     <div className="flex justify-center items-center gap-x-3 w-[300px] bg-[#F8F8F8] px-5 py-2 rounded-lg">
                       <img src={google} />
-                      <p>{parseUserObj.email}</p>
+                      <p>{user && user.email}</p>
                     </div>
                   </div>
                 </div>

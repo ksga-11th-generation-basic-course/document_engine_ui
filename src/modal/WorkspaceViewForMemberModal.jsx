@@ -5,14 +5,17 @@ import { CollaboratorMember } from "../components/CollaboratorMember";
 import { Modal } from "react-daisyui";
 
 export const WorkspaceViewForMemberModal = ({
-  openCollaborator,
-  setOpenCollaborator,
+  openCollaboratorForMember,
+  setOpenCollaboratorForMember,
+  workspace,
 }) => {
   return (
     <div className="w-full">
       <Modal
-        open={openCollaborator}
-        onClickBackdrop={() => setOpenCollaborator(!openCollaborator)}
+        open={openCollaboratorForMember}
+        onClickBackdrop={() =>
+          setOpenCollaboratorForMember(!openCollaboratorForMember)
+        }
       >
         <div className="w-[1200px] h-[810px] bg-white rounded-lg grid grid-cols-12 relative">
           <div className="col-span-3 bg-[#FAFAF9] rounded-lg">
@@ -21,15 +24,16 @@ export const WorkspaceViewForMemberModal = ({
                 <img src={logo} />
               </div>
               <div className="w-full px-3">
-                <CollaboratorMember />
+                <CollaboratorMember workspace={workspace}/>
               </div>
             </div>
           </div>
           <div className="col-span-9 p-3 shadow-xl">
             <div>
               <CollaboratorMemberContent
-                openCollaborator={openCollaborator}
-                setOpenCollaborator={setOpenCollaborator}
+                openCollaboratorForMember={openCollaboratorForMember}
+                setOpenCollaboratorForMember={setOpenCollaboratorForMember}
+                workspace={workspace}
               />
             </div>
           </div>

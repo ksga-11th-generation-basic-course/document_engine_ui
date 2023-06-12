@@ -14,7 +14,6 @@ export const DeleteProfileModal = ({
 
   const handleDeleteProfileImage = async () => {
     try {
-      // uploadFile();
       const user = await deleteProfileImage();
       dispatch(deleteProfileImageSuccess(user));
       setOpenDeleteProfile(!openDeleteProfile);

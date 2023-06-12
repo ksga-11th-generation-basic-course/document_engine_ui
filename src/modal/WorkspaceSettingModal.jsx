@@ -4,8 +4,7 @@ import { RemoveWorkspaceModal } from "./RemoveWorkspaceModal";
 import { SideBarSettingWorkspace } from "../components/SideBarSettingWorkspace";
 import { SettingContent } from "../components/SettingContent";
 import { CollaboratorOwnerContent } from "../components/CollaboratorOwnerContent";
-import { useDispatch, useSelector } from "react-redux";
-import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
+import { InviteMemberByEmailContent } from "../components/InviteMemberByEmailContent";
 
 export const WorkspaceSettingModal = ({
   openWorkspaceSetting,
@@ -17,6 +16,8 @@ export const WorkspaceSettingModal = ({
   const [setting, setSetting] = useState(true);
 
   const [collaborator, setCollaborator] = useState(false);
+
+  const [openInviteMember, setOpenInviteMember] = useState(false);
 
   return (
     <div className="w-full">
@@ -31,6 +32,8 @@ export const WorkspaceSettingModal = ({
               setCollaborator={setCollaborator}
               setting={setting}
               setSetting={setSetting}
+              openInviteMember={openInviteMember}
+              setOpenInviteMember={setOpenInviteMember}
             />
           </div>
           <div className="col-span-9 md:col-span-9 p-3 shadow-xl">
@@ -44,6 +47,13 @@ export const WorkspaceSettingModal = ({
               ) : null}
               {collaborator ? (
                 <CollaboratorOwnerContent
+                  workspace={workspace}
+                  openWorkspaceSetting={openWorkspaceSetting}
+                  setOpenWorkspaceSetting={setOpenWorkspaceSetting}
+                />
+              ) : null}
+              {openInviteMember ? (
+                <InviteMemberByEmailContent
                   workspace={workspace}
                   openWorkspaceSetting={openWorkspaceSetting}
                   setOpenWorkspaceSetting={setOpenWorkspaceSetting}

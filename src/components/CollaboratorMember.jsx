@@ -1,23 +1,28 @@
 import React, { useState } from "react";
 import { LeaveWorkspaceModal } from "../modal/LeaveWorkspaceModal";
-import group from "../assets/workspace_image/users.svg"
+import group from "../assets/workspace_image/users.svg";
 
-export const CollaboratorMember = () => {
-
+export const CollaboratorMember = ({ workspace }) => {
   const [leaveWorkspace, setLeaveWorkspace] = useState(false);
+  const [workspaceId, setWorkspaceId] = useState();
+
+  const handleLeaveWorkspace = () => {
+    setWorkspaceId(workspace.workspaceId);
+    setLeaveWorkspace(!leaveWorkspace);
+  };
 
   return (
     <div>
       <div className="relative">
         <button className="flex items-center gap-x-3 text-primary bg-[#F6F6F6] rounded-lg w-full py-3 px-3">
           {" "}
-    <img src={group} />
+          <img src={group} />
           <p className="font-semibold text-18px">Collaborators</p>
         </button>
         <button
           className="flex items-center gap-x-3 text-red-500 rounded-lg w-full py-3 px-3 absolute top-[610px]"
           type="button"
-          onClick={() => setLeaveWorkspace(!leaveWorkspace)}
+          onClick={handleLeaveWorkspace}
         >
           {" "}
           <svg
@@ -49,6 +54,7 @@ export const CollaboratorMember = () => {
         <LeaveWorkspaceModal
           leaveWorkspace={leaveWorkspace}
           setLeaveWorkspace={setLeaveWorkspace}
+          workspaceId={workspaceId}
         />
       </div>
     </div>

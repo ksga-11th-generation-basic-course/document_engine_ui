@@ -7,7 +7,12 @@ export const getAllDocumentInEachWorkspace = createAsyncThunk(
     try {
       const response = await api.get(
         `documents/workspaces/${workspaceId}?pageNo=1&pageSize=5`,
-        header
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
       );
       return response.data.payload;
     } catch (error) {
@@ -20,7 +25,12 @@ export const getDocumentByDocumentId = createAsyncThunk(
   `documents/getdocumentbyid`,
   async (documentId) => {
     try {
-      const response = await api.get(`documents/${documentId}`, header);
+      const response = await api.get(`documents/${documentId}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;
