@@ -78,9 +78,11 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
                 <p className="text-18px md:text-12px">Manage your profile, preferences, and login settings</p>
               </div>
 
-              {/* Profile Setting */}
+              {/* Profile Setting*/}
               <div>
-                <div className={openProfileSetting ? "flex justify-between border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 rounded-t-lg md:px-4" : "flex justify-between border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 rounded-t-lg md:px-4 md:border-[1px] md:rounded-lg"}>
+                {/* For laptop and tablets */}
+                {/* Header */}
+                <div className="md:hidden flex justify-between border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 rounded-t-lg">
                   <div className="flex justify-center items-center gap-x-3">
                     <img src={profile} className="md:w-6"/>
                     <p className="font-bold text-24px text-black md:text-16px">
@@ -93,22 +95,8 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
                     >
                       Save
                     </button>
-
-                {/* Responsive */}
-                  <span className="hidden lg:hidden md:inline-block">
-                        {openProfileSetting ? 
-                              <button
-                              type="button"
-                              className="font-semibold text-white text-18px px-7 py-1.5 bg-primary rounded-lg md:text-12px md:px-5 md:py-1 "
-                              onClick={() => {setOpenProfileSetting(!openProfileSetting); setOpenAdvanceSetting(false)}}
-                            >
-                              Save
-                            </button> :
-                            <img src={dropdown} className="md:mt-2 md:w-3.5" onClick={() => {setOpenProfileSetting(true); setOpenAdvanceSetting(false)}}/>
-                        }
-                  </span>
                 </div>
-                  
+                {/* Content*/}
                 <div className="md:hidden px-6 border-[1px] py-4 space-y-4 rounded-b-lg lg:space-y-7 md:px-4 md:space-y-5">
                   {/* Change account name */}
                   <div className="w-full space-y-2">
@@ -198,10 +186,46 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
                   </div>
                 </div>
                 
-                {/* Responsive */}
-                <span  className="hidden lg:inline-block md:inline-block">
+                {/* For mobile*/}
+                {/* Header */}
+                {openProfileSetting ? 
+                    <div className={openProfileSetting ? "hidden md:flex md:justify-between md:border-r-[1px] md:border-t-[1px] md:border-l-[1px] md:py-3 md:rounded-t-lg md:px-4" : "hidden md:flex md:justify-between md:border-[1px] md:py-3 md:rounded-lg md:px-4"}>
+                      <div className="flex justify-center items-center gap-x-3">
+                        <img src={profile} className="md:w-6"/>
+                        <p className="font-bold text-24px text-black md:text-16px">
+                          Your Profile
+                        </p>
+                        <span className="hidden md:inline-block md:-mt-1">
+                                  <button
+                                  type="button"
+                                  className="font-semibold text-white text-18px px-7 py-1.5 bg-primary rounded-lg md:text-12px md:px-5 md:py-1 md:mt-1 md:ml-12 "
+                                  onClick={() => {setOpenProfileSetting(false); setOpenAdvanceSetting(false)}}
+                                >
+                                  Save
+                                </button>
+                          </span>
+                      </div> 
+                    </div>
+                      :
+                      <button className={openProfileSetting ? "hidden md:flex md:justify-between md:border-r-[1px] md:border-t-[1px] md:border-l-[1px] md:py-3 md:rounded-t-lg md:px-4 md:w-full" : "hidden md:flex md:justify-between md:border-[1px] md:py-3 md:rounded-lg md:px-4 md:w-full"} onClick={() => {setOpenProfileSetting(true); setOpenAdvanceSetting(false)}}>
+                      <div className="flex justify-center items-center gap-x-3">
+                        <img src={profile} className="md:w-6"/>
+                        <p className="font-bold text-24px text-black md:text-16px">
+                          Your Profile
+                        </p>
+                        <span className="hidden md:inline-block md:-mt-1">
+                                {!openProfileSetting ? <img src={dropdown} className="md:mt-2 md:w-4 md:ml-24" onClick={()=> openProfileSetting(!openProfileSetting)}/> : null }
+                          </span>
+                      </div> 
+                    </button>
+              }
+
+                
+
+                {/* Content mobile */}
+                <span  className="hidden md:inline-block">
                       {openProfileSetting ? 
-                        <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg lg:space-y-7 md:px-4 md:space-y-5">
+                        <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg lg:space-y-7 md:px-4 md:space-y-5 md:mb-5">
                         {/* Change account name */}
                         <div className="w-full space-y-2">
                           <h3 className="font-bold text-18px text-black md:text-14px">
@@ -296,12 +320,29 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
 
               {/* Advance Setting */}
               <div>
-                <div className={openAdvanceSetting ? "flex justify-between border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 rounded-t-lg lg:-mt-7  md:-mt-5" : "flex justify-between border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 rounded-t-lg lg:-mt-7  md:border-[1px] md:rounded-lg  md:-mt-5"}>
+                {/* For laptop & tablet */}
+                <div className={openAdvanceSetting ? "md:hidden flex justify-between border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 rounded-t-lg lg:-mt-7  md:mt-5" : "md:hidden flex justify-between border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 rounded-t-lg lg:mt-5  md:border-[1px] md:rounded-lg  md:-mt-6"}>
                   <div className="flex justify-center items-center gap-x-3">
-                    <img src={advance} className="md:w-6"/>
+                    <img src={advance} className="md:w-6 md:-ml-2"/>
                     <p className="font-bold text-24px text-black md:text-16px">Advanced</p>
                   </div>
                 </div>
+                  
+                  {/* For mobile */}
+                <button className={openAdvanceSetting ? "hidden md:flex md:justify-between md:border-l-[1px] md:border-r-[1px] md:border-t-[1px] md:px-6 md:py-3 md:rounded-t-lg md:w-full md:-mt-5" : "hidden md:flex  md:justify-between  md:border-l-[1px]  md:border-r-[1px]  md:border-t-[1px]  md:px-6  md:py-3  md:rounded-t-lg  md:border-[1px] md:rounded-lg  md:w-full md:-mt-5"}
+                                onClick={() => {setOpenAdvanceSetting(!openAdvanceSetting); setOpenProfileSetting(false);}}
+                >
+                  <div className="flex justify-center items-center gap-x-3">
+                    <img src={advance} className="md:w-6 md:-ml-2"/>
+                    <p className="font-bold text-24px text-black md:text-16px">Advanced</p>
+                    <span className="hidden md:inline-block md:-mt-1">
+                                {!openAdvanceSetting ? 
+                                      <img src={dropdown} className="md:mt-2 md:w-4 md:ml-[110px]"/> :  
+                                      <img src={reverse_dropdown} className="md:mt-2 md:w-4 md:ml-[110px]"/>      
+                                }
+                    </span> 
+                  </div>
+                </button>
 
                 <div className="md:hidden px-6 border-[1px] py-4 space-y-4 rounded-b-lg md:px-4">
                         {/* Signout */}

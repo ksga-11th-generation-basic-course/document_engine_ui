@@ -21,30 +21,32 @@ export const DropDownProfile = ({ open, setOpen }) => {
             <img src={close} className="h-7 w-7 md:w-5" />
           </button>
         </div>
-        <div className="flex flex-col gap-y-5 px-5 md:px-2.5 md:gap-y-3">
-          <p className="font-bold text-24px text-primary md:text-18px">Profile</p>
-          <div className="relative flex items-center gap-x-3">
-                <button
-                  onClick={() => {setOpenSetting(!openSetting); setOpen(open)}}
-                >
-                        <img src={avatar} className="bg-cover overflow-hidden w-14 h-14 flex bg-primary rounded-full md:inline-block md:w-9 md:h-9"/>
-                </button>
-            <div>
-              <h3 className="font-bold text-24px md:text-16px">Ouddom</h3>
-              <p className="text-[#9CA3AF]  md:text-10px">tith.ouddom@gmail.com</p>
-            </div>
+        <div className="flex flex-col gap-y-5 md:gap-y-3">
+          <div className="px-5 md:px-2.5">
+                  <p className="font-bold text-24px text-primary md:text-18px pb-3 md:-mt-2">Profile</p>
+                  <div className="relative flex items-center gap-x-3">
+                        <button
+                          onClick={() => {setOpenSetting(!openSetting); setOpen(open)}}
+                        >
+                                <img src={avatar} className="bg-cover overflow-hidden w-14 h-14 flex bg-primary rounded-full md:inline-block md:w-9 md:h-9"/>
+                        </button>
+                    <div>
+                      <h3 className="font-bold text-24px md:text-16px">Ouddom</h3>
+                      <p className="text-[#9CA3AF]  md:text-10px">tith.ouddom@gmail.com</p>
+                    </div>
+                  </div>
           </div>
-          <div className="border-[1px] border-[#E7E7E7]"></div>
-          <div className="flex flex-col gap-y-5 py-2 lg:mt-2 md:py-0 md:gap-y-3">
+          <div className="px-5 md:px-2.5"><div className="px-5 border-[1px] border-[#E7E7E7]"></div></div>
+          <div className="flex flex-col gap-y-2 px-0 -mt-1.5 md:py-0 md:gap-y-1 md:-mt-1">
             <button
-              className="flex items-center text-18px gap-x-4 md:text-14px"
+              className="flex items-center text-18px gap-x-4 md:text-14px hover:bg-[#f4f4f4] py-2.5 px-5 md:px-2.5 rounded-lg md:py-1.5"
               onClick={() => {setOpenSetting(!openSetting); setOpen(open)}}
             >
               <img src={setting} className="md:w-4"/>
               <span>Setting</span>
             </button>
             <button
-              className="flex items-center text-18px gap-x-4 text-red-500 md:text-14px"
+              className="flex items-center text-18px gap-x-4 text-red-500 md:text-14px hover:bg-[#f4f4f4] py-2.5 px-5 md:px-2.5 rounded-lg md:py-1.5"
               onClick={toggleVisible}
             >
               <img src={signout} className="md:w-4"/>

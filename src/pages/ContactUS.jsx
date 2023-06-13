@@ -17,7 +17,7 @@ export const ContactUs = () => {
       </div>
 
       {/* grid 1 block title */}
-      <div className="pt-5 pl-10 grid grid-cols-2 overflow-hidden  md:flex md:flex-col">
+      <div className="pt-5 pl-10 grid grid-cols-2 overflow-hidden   md:flex md:flex-col md:pl-0">
         <div className=" px-12  md:px-8 pt-32 sm:px-10 md:pt-24">
           <div>
             <div className="bg-primary px-2 py-0.5  rounded-r-lg  w-40"></div>
@@ -139,15 +139,15 @@ export const ContactUs = () => {
                 docengine@gmail.com
               </a>
             </div>
-            <div className="Image flex flex-row space-x-5 sm:justify-center sm:w-58 sm:ml-5 top-12 w-56  mt-6 md:pb-10">
+            <div className="Image flex flex-row space-x-5 lg:pl-7 sm:justify-center sm:w-58 sm:ml-5 top-12 w-56  mt-6 md:pb-10">
               <div className="img1">
-                <img src={Face} alt="" className="md:w-8" />
+                <img src={Face} alt="" className="lg:w-12 md:w-8" />
               </div>
               <div className="img2">
-                <img src={Tele} alt="" className="md:w-8"/>
+                <img src={Tele} alt="" className="lg:w-12 md:w-8"/>
               </div>
               <div className="img3">
-                <img src={IG} alt="" className="md:w-8"/>
+                <img src={IG} alt="" className="lg:w-12 md:w-8"/>
               </div>
             </div>
           </div>

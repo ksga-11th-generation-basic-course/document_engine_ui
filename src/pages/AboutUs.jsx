@@ -53,7 +53,7 @@ export const AboutUs = () => {
       </div>
 
       {/* About about project */}
-      <div className="bg-sky-50 mt-20  h-[400px] lg:h-[350px] md:mt-10 md:h-60">
+      <div className="bg-sky-50 mt-20  h-[400px] lg:h-[380px] md:mt-10 md:h-60">
         <div className="px-52 py-10 sm:flex sm:flex-col sm:px-10">
           <div className="flex items-center  sm:py-4 ">
             <div className="justify-center flex-col pr-60 lg:hidden sm:hidden  sm:text-xl sm:flex-row ">
@@ -67,7 +67,7 @@ export const AboutUs = () => {
               <h1 className="text-4xl text-center -ml-10 sm:text-18px sm:text-center font-bold text-accent md:ml-36">
                 About Our <span className="text-primary">Project </span>
               </h1>
-              <div className="text-accent text-2xl pb-12  pt-16 w-[900px] leading-9 lg:w-[670px] lg:-mt-5  md:pt-10 max-sm:text-justify max-sm:px-2 md:-mt-7  md:text-12px md:pl-40 md:w-[480px] md:leading-6">
+              <div className="text-accent text-2xl pb-12  pt-16 w-[900px] leading-9 lg:w-[670px] lg:-mt-5 lg:pl-5  md:pt-10 max-sm:text-justify max-sm:px-2 md:-mt-7  md:text-12px md:pl-40 md:w-[480px] md:leading-6">
                   DocEngine is an online platform that allows users to read,
                   edit, and
                   share documents within the workspace. It allows users to
