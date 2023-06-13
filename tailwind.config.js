@@ -7,25 +7,25 @@ export default {
   ],
   theme: {
     screens: {
-      '2xl': {'max': '1535px'},
+      "2xl": { max: "1535px" },
       // => @media (max-width: 1535px) { ... }
 
-      'xl': {'max': '1279px'},
+      xl: { max: "1279px" },
       // => @media (max-width: 1279px) { ... }
 
-      'lg': {'max': '1023px'},
+      lg: { max: "1023px" },
       // => @media (max-width: 1023px) { ... }
 
-      'md': {'max': '767px'},
+      md: { max: "767px" },
       // => @media (max-width: 767px) { ... }
 
-      'sm': {'max': '639px'},
+      sm: { max: "639px" },
       // => @media (max-width: 639px) { ... }
 
-      'xs': {'max': '429px' },
+      xs: { max: "429px" },
       // => @media (max-width: 414px) { ... }
 
-      '2xs': { 'max': '390px' },
+      "2xs": { max: "390px" },
       // => @media (max-width: 390px) { ... }
     },
     extend: {
@@ -47,7 +47,7 @@ export default {
         "bg-primary": "[#1E9CEF]",
         "text-primary": "#37352F",
         "text-accent": "#526581",
-        "btn-primary": "#009AFF"
+        "btn-primary": "#009AFF",
       },
       fontSize: {
         "12px": "12px",

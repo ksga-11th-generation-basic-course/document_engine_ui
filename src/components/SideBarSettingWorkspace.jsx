@@ -3,12 +3,15 @@ import logo from "../assets/landing_image/logo.svg";
 import { SettingWorkspace } from "./SettingWorkspace";
 import { CollaboratorOwner } from "./CollaboratorOwner";
 import { CollaboratorMember } from "./CollaboratorMember";
+import { InviteMemberByEmail } from "./InviteMemberByEmail";
 
 export const SideBarSettingWorkspace = ({
   collaborator,
   setCollaborator,
   setting,
   setSetting,
+  openInviteMember,
+  setOpenInviteMember,
 }) => {
   return (
     <div className="space-y-3">
@@ -21,6 +24,8 @@ export const SideBarSettingWorkspace = ({
           setCollaborator={setCollaborator}
           setting={setting}
           setSetting={setSetting}
+          openInviteMember={openInviteMember}
+          setOpenInviteMember={setOpenInviteMember}
         />
       </div>
       <div className="w-full px-3 md:p-0">
@@ -29,6 +34,18 @@ export const SideBarSettingWorkspace = ({
           setCollaborator={setCollaborator}
           setting={setting}
           setSetting={setSetting}
+          openInviteMember={openInviteMember}
+          setOpenInviteMember={setOpenInviteMember}
+        />
+      </div>
+      <div className="w-full px-3 md:p-0">
+        <InviteMemberByEmail
+          collaborator={collaborator}
+          setCollaborator={setCollaborator}
+          setting={setting}
+          setSetting={setSetting}
+          openInviteMember={openInviteMember}
+          setOpenInviteMember={setOpenInviteMember}
         />
       </div>
     </div>

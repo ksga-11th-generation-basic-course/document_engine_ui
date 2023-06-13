@@ -9,6 +9,8 @@ import { createWorkspaceSuccess } from "../redux/slice/workspaceSlice/workspaceS
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../firebase/firebase.utils";
 import { v4 as uuidv4 } from "uuid";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const CreateWorkspaceModal = ({ visible, setVisible }) => {
   const [workspaceName, setWorkspaceName] = useState();
@@ -17,26 +19,46 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
 
   const [workspaceImage, setWorkspaceImage] = useState();
 
-  const handleSubmit = () => {
-    try {
-      if (!workspaceImage) return;
-      const imageRef = ref(
-        storage,
-        `images/workspace/${uuidv4()}_${workspaceImage.name}`
-      );
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!workspaceImage) return;
+    const imageRef = ref(
+      storage,
+      `images/workspace/${uuidv4()}_${workspaceImage.name}`
+    );
 
-      uploadBytes(imageRef, workspaceImage).then(async (snapshot) => {
-        getDownloadURL(snapshot.ref).then(async (url) => {
+    uploadBytes(imageRef, workspaceImage).then(async (snapshot) => {
+      getDownloadURL(snapshot.ref).then(async (url) => {
+        try {
           const workspace = await createWorkspace(workspaceName, url);
           dispatch(createWorkspaceSuccess(workspace));
-        });
+          toast.success('Create Workspace Successfully', {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+            });
+        } catch (error) {
+          toast.error(error, {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "light",
+          });
+        }
       });
-      setVisible(!visible);
-      setWorkspaceImage(null);
-      document.getElementById("createworkspace").reset();
-    } catch (error) {
-      console.log(error);
-    }
+    });
+    setVisible(!visible);
+    setWorkspaceImage(null);
+    e.target.reset();
   };
 
   return (
@@ -64,7 +86,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
             </h1>
             <form
               className="flex flex-col gap-y-2 font-semibold text-18px"
-              id="createworkspace"
+              onSubmit={handleSubmit}
             >
               <p>Worksapce Name</p>
               <input
@@ -90,10 +112,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                       className="cursor-pointer w-full object-cover h-full"
                     />
                   ) : (
-                    <img
-                      src={workspacephoto}
-                      className="cursor-pointer"
-                    />
+                    <img src={workspacephoto} className="cursor-pointer" />
                   )}
                 </div>
               </label>
@@ -111,8 +130,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                   </button>
                   <button
                     className="bg-primary text-white  px-10 py-3 rounded-lg"
-                    type="button"
-                    onClick={handleSubmit}
+                    type="submit"
                   >
                     Create
                   </button>
@@ -122,6 +140,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
           </div>
         </div>
       </Modal>
+      <ToastContainer />
     </div>
   );
 };

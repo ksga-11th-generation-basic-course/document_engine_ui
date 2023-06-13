@@ -2,8 +2,21 @@ import React from "react";
 import { Modal } from "react-daisyui";
 import close from "../assets/dashboard_image/close.svg";
 import removemember from "../assets/workspace_image/removemember.svg";
+import { useDispatch } from "react-redux";
+import { removeMemberInWorkspace } from "../redux/service/workspaceService/workspaceService";
 
-export const RemoveMemberModal = ({ removeMember, setRemoveMember }) => {
+export const RemoveMemberModal = ({
+  removeMember,
+  setRemoveMember,
+  userId,
+  workspaceIdProp,
+}) => {
+  const dispatch = useDispatch();
+
+  const handleRemoveMember = () => {
+    dispatch(removeMemberInWorkspace({ userId, workspaceIdProp }));
+    setRemoveMember(!removeMember);
+  };
   return (
     <div className="w-full">
       <Modal
@@ -37,7 +50,10 @@ export const RemoveMemberModal = ({ removeMember, setRemoveMember }) => {
               >
                 No, cancel
               </button>
-              <button className="bg-red-500 text-white  px-10 py-3 rounded-lg ">
+              <button
+                className="bg-red-500 text-white  px-10 py-3 rounded-lg "
+                onClick={handleRemoveMember}
+              >
                 Remove
               </button>
             </div>

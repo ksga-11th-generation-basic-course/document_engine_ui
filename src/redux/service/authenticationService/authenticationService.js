@@ -17,7 +17,7 @@ export const signupWithGoogleAndFacebook = createAsyncThunk(
           "Content-Type": "application/json",
         }
       );
-      console.log(response.data.payload);
+
       return response.data.payload;
     } catch (error) {
       return error;
@@ -59,7 +59,7 @@ export const signup = async (authentication) => {
         "Content-Type": "application/json",
       }
     );
-    localStorage.setItem("email", response.data.payload.email);
+
     return response.data.payload;
   } catch (error) {
     throw new Error("Sign-up failed");
@@ -78,10 +78,7 @@ export const signin = async (authentication) => {
         "Content-Type": "application/json",
       }
     );
-
-    const user = JSON.stringify(response.data.payload);
     
-    localStorage.setItem("user", user);
     localStorage.setItem("token", response.data.payload.token);
     return response.data.payload;
   } catch (error) {

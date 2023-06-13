@@ -6,16 +6,12 @@ import signout from "../assets/dashboard_image/signout.svg";
 import { SignOutModal } from "../modal/SignOutModal";
 import { AccountSettingModal } from "../modal/AccountSettingModal";
 
-export const DropDownProfile = ({ open, setOpen, signOut, setSignOut }) => {
+export const DropDownProfile = ({ open, setOpen, user }) => {
   const [visible, setVisible] = useState(false);
   const toggleVisible = () => {
     setVisible(!visible);
   };
   const [openSetting, setOpenSetting] = useState(false);
-
-  const user = localStorage.getItem("user");
-
-  const parseUserObj = JSON.parse(user);
 
   return (
     <div className="relative">
@@ -32,21 +28,21 @@ export const DropDownProfile = ({ open, setOpen, signOut, setSignOut }) => {
           <p className="font-bold text-24px text-primary">Profile</p>
           <div className="relative flex items-center gap-x-3">
             <div className="overflow-hidden w-14 h-14 rounded-full bg-primary">
-              {parseUserObj.profileImage === null ? (
+              {user && user.profileImage === null ? (
                 <img
                   src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
                   className="h-full w-full bg-cover"
                 />
               ) : (
                 <img
-                  src={parseUserObj.profileImage}
+                  src={user && user.profileImage}
                   className="h-full w-full bg-cover"
                 />
               )}
             </div>
             <div>
-              <h3 className="font-bold text-20px">{parseUserObj.userName}</h3>
-              <p className="text-[#9CA3AF]">{parseUserObj.email}</p>
+              <h3 className="font-bold text-20px">{user && user.userName}</h3>
+              <p className="text-[#9CA3AF]">{user && user.email}</p>
             </div>
           </div>
           <div className="border-[1px] border-[#E7E7E7]"></div>
@@ -74,6 +70,7 @@ export const DropDownProfile = ({ open, setOpen, signOut, setSignOut }) => {
             <AccountSettingModal
               openSetting={openSetting}
               setOpenSetting={setOpenSetting}
+              user={user}
             />
           </div>
         </div>

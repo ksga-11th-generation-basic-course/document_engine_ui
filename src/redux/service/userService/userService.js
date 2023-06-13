@@ -1,4 +1,5 @@
-import { api, header } from "../../../utils/constant";
+import { createAsyncThunk } from "@reduxjs/toolkit";
+import { api } from "../../../utils/constant";
 
 export const disableAccount = async () => {
   try {
@@ -57,10 +58,6 @@ export const editProfileInformation = async (username, url) => {
       }
     );
 
-    const user = JSON.stringify(response.data.payload);
-
-    localStorage.setItem("user", user);
-    console.log(response.data.payload);
     return response.data.payload;
   } catch (error) {
     throw error.response.data.detail;
@@ -76,11 +73,22 @@ export const deleteProfileImage = async () => {
       },
     });
 
-    const user = JSON.stringify(response.data.payload);
-
-    localStorage.setItem("user", user);
     return response.data.payload;
   } catch (error) {
     throw error.response.data.detail;
   }
 };
+
+export const getCurrentUser = createAsyncThunk("users", async () => {
+  try {
+    const response = await api.get(`users/current/user`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type ": "application/json",
+      },
+    });
+    return response.data.payload;
+  } catch (error) {
+    throw error.response.data.detail;
+  }
+});

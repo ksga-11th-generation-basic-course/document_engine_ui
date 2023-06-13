@@ -16,7 +16,6 @@ export const createWorkspace = async (workspaceName, url) => {
         },
       }
     );
-    console.log(response.data.payload);
     return response.data.payload;
   } catch (error) {
     throw error.response.data.detail;
@@ -41,37 +40,36 @@ export const joinWorkspace = async (workspaceCode) => {
   }
 };
 
-export const getAllWorkspace = createAsyncThunk(`workspaces`, async () => {
+export const getAllWorkspace = createAsyncThunk(`workspaces`, async (body) => {
   try {
-    const response = await api.get(`workspaces?pageNo=1&pageSize=6`, {
-      headers: {
-        Authorization: "Bearer " + localStorage.getItem("token"),
-        "Content-Type ": "application/json",
-      },
-    });
-    // console.log(response.data.payload);
+    const response = await api.get(
+      `workspaces?pageNo=${body.no}&pageSize=${body.size}&asc=${body.asc}&desc=${body.desc}`,
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      }
+    );
     return response.data.payload;
   } catch (error) {
     throw error.response.data.detail;
   }
 });
 
-export const removeWorkspaceService = createAsyncThunk(
-  "workspaces/remove",
-  async (workspaceId) => {
-    try {
-      const response = await api.delete(`workspaces/${workspaceId}`, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-          "Content-Type ": "application/json",
-        },
-      });
-      return workspaceId;
-    } catch (error) {
-      throw error.response.data.detail;
-    }
+export const removeWorkspaceService = async (workspaceId) => {
+  try {
+    const response = await api.delete(`workspaces/${workspaceId}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type ": "application/json",
+      },
+    });
+    return workspaceId;
+  } catch (error) {
+    throw error.response.data.detail;
   }
-);
+};
 
 export const getWorkspaceByWorkspaceId = createAsyncThunk(
   "workspaces/workspaceId",
@@ -106,3 +104,153 @@ export const getMemberInEachWorkspace = createAsyncThunk(
     }
   }
 );
+
+export const filterWorkspace = createAsyncThunk(
+  "workspaces/filter",
+  async (checked) => {
+    try {
+      const response = await api.get(`workspaces/filter?filter=${checked}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
+      return response.data.payload;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);
+
+export const editWorkspace = async (workspaceId, workspaceName, url) => {
+  try {
+    const response = await api.put(
+      `workspaces/${workspaceId}`,
+      {
+        workspaceName: workspaceName,
+        workspaceImage: url,
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      }
+    );
+
+    return response.data.payload;
+  } catch (error) {
+    throw error.response.data.detail;
+  }
+};
+
+export const removeWorkspaceImage = async (workspaceId) => {
+  try {
+    const response = await api.delete(
+      `workspaces/image?workspaceId=${workspaceId}`,
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      }
+    );
+    return response.data.payload;
+  } catch (error) {
+    throw error.response.data.detail;
+  }
+};
+
+export const removeMemberInWorkspace = createAsyncThunk(
+  "workspaces/remove/member",
+  async (body) => {
+    try {
+      const response = await api.delete(
+        `workspaces/member?userId=${body.userId}&workspaceId=${body.workspaceIdProp}`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
+      );
+      return body.userId;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);
+
+export const setAccessibility = async (userId, workspaceId, status) => {
+  try {
+    const response = await api.put(
+      `workspaces/accessibility?userId=${userId}&workspaceId=${workspaceId}&status=${status}`,
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      }
+    );
+    return response.data.payload;
+  } catch (error) {
+    throw error.response.data.detail;
+  }
+};
+
+export const checkIsOwnerWorkspace = createAsyncThunk(
+  "workspaces/isOwner",
+  async (body) => {
+    try {
+      const response = await api.get(
+        `workspace/${body.workspaceId}/user/${body.userId}`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
+      );
+      console.log(response.data.payload);
+      return response.data.payload;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);
+
+export const leaveWorkspaceService = async (workspaceId) => {
+  try {
+    const response = await api.delete(
+      `workspaces/leave?workspaceId=${workspaceId}`,
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      }
+    );
+    return workspaceId;
+  } catch (error) {
+    throw error.response.data.detail;
+  }
+};
+
+export const inviteMemberViaEmail = async (workspaceId, email) => {
+  try {
+    const response = await api.post(
+      `workspace/${workspaceId}/invite?email=${email}`,
+      {},
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      }
+    );
+    return workspaceId;
+  } catch (error) {
+    throw error.response.data.detail;
+  }
+};
