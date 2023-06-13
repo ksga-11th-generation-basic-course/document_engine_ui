@@ -161,25 +161,22 @@ export const removeWorkspaceImage = async (workspaceId) => {
   }
 };
 
-export const removeMemberInWorkspace = createAsyncThunk(
-  "workspaces/remove/member",
-  async (body) => {
-    try {
-      const response = await api.delete(
-        `workspaces/member?userId=${body.userId}&workspaceId=${body.workspaceIdProp}`,
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-            "Content-Type ": "application/json",
-          },
-        }
-      );
-      return body.userId;
-    } catch (error) {
-      throw error.response.data.detail;
-    }
+export const removeMemberInWorkspace = async (userId, workspaceIdProp) => {
+  try {
+    const response = await api.delete(
+      `workspaces/member?userId=${userId}&workspaceId=${workspaceIdProp}`,
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      }
+    );
+    return userId;
+  } catch (error) {
+    throw error.response.data.detail;
   }
-);
+};
 
 export const setAccessibility = async (userId, workspaceId, status) => {
   try {
@@ -249,7 +246,7 @@ export const inviteMemberViaEmail = async (workspaceId, email) => {
         },
       }
     );
-    return workspaceId;
+    return response.data.payload;
   } catch (error) {
     throw error.response.data.detail;
   }

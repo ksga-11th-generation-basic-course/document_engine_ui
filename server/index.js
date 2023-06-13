@@ -16,15 +16,19 @@ const io = new Server(server, {
 });
 
 io.on("connection", (socket) => {
-  console.log(`User connected: ${socket.id}`);
+  console.log("A client connected.");
 
-  socket.on("join_room", (data) => {
-    socket.join(data);
+  socket.on("disconnect", () => {
+    console.log("A client disconnected.");
   });
 
-  socket.on("send_message", (data) => {
-    socket.to(data.room).emit("receive_message", data);
-    console.log(data);
+  socket.on("remove_workspace", (workspaceId) => {
+    socket.broadcast.emit("remove_workspace_success", workspaceId);
+  });
+
+  socket.on("remove_member", (workspaceIdProp) => {
+    console.log(workspaceIdProp);
+    socket.broadcast.emit("remove_member_success", workspaceIdProp);
   });
 });
 

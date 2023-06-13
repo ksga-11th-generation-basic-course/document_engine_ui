@@ -11,6 +11,13 @@ import {
 } from "../redux/service/workspaceService/workspaceService";
 import { useDispatch, useSelector } from "react-redux";
 import { Dropdown, Radio } from "react-daisyui";
+import { io } from "socket.io-client";
+import {
+  removeMemberInWorkspaceSuccess,
+  removeWorkspaceServiceSuccess,
+} from "../redux/slice/workspaceSlice/workspaceSlice";
+
+const socket = io.connect("http://localhost:3001");
 
 export const Workspace = () => {
   const [openSearch, setOpenSearch] = useState(false);
@@ -19,7 +26,7 @@ export const Workspace = () => {
 
   const [sortWorkspace, setSortWorkspace] = useState("asc");
 
-  const workspaces = useSelector((state) => state.workspace.workspaces);
+  let workspaces = useSelector((state) => state.workspace.workspaces);
 
   const dispatch = useDispatch();
 
@@ -39,6 +46,21 @@ export const Workspace = () => {
         dispatch(filterWorkspace(false));
     }
   }, [checked, sortWorkspace]);
+
+  useEffect(() => {
+    socket.on("remove_workspace_success", (workspaceId) => {
+      dispatch(removeWorkspaceServiceSuccess(workspaceId));
+    });
+
+    socket.on("remove_member_success", (workspaceIdProp) => {
+      dispatch(removeWorkspaceServiceSuccess(workspaceIdProp));
+    });
+
+    return () => {
+      socket.off("remove_workspace");
+      socket.off("remove_member_success");
+    };
+  }, [dispatch]);
 
   return (
     <div className="text-accent space-y-5 sm:h-full bg-white">

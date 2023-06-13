@@ -5,8 +5,6 @@ import {
   getAllWorkspace,
   getMemberInEachWorkspace,
   getWorkspaceByWorkspaceId,
-  removeMemberInWorkspace,
-  removeWorkspaceService,
 } from "../../service/workspaceService/workspaceService";
 
 const initialState = {
@@ -43,8 +41,9 @@ const workspaceSlice = createSlice({
       );
     },
     removeWorkspaceServiceSuccess: (state, action) => {
+      const workspaceId = action.payload;
       state.workspaces = state.workspaces.filter(
-        (workspace) => workspace.workspaceId !== action.payload
+        (workspace) => workspace.workspaceId !== workspaceId
       );
     },
     setAccessibilitySuccess: (state, action) => {
@@ -58,9 +57,15 @@ const workspaceSlice = createSlice({
         (workspace) => workspace.workspaceId !== action.payload
       );
     },
-    inviteMemberViaEmailSuccess : (state, action) => {
-      state.workspace = action.payload
-    }
+    inviteMemberViaEmailSuccess: (state, action) => {
+      state.workspace = action.payload;
+    },
+    removeMemberInWorkspaceSuccess: (state, action) => {
+      const userId = action.payload;
+      state.members = state.members.filter(
+        (member) => member.userId !== userId
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getAllWorkspace.pending, (state) => {
@@ -119,22 +124,6 @@ const workspaceSlice = createSlice({
       state.error = action.error.message;
     });
 
-    builder.addCase(removeMemberInWorkspace.pending, (state) => {
-      state.loading = true;
-    });
-    builder.addCase(removeMemberInWorkspace.fulfilled, (state, action) => {
-      state.loading = false;
-      state.members = state.members.filter(
-        (member) => member.userId !== action.payload
-      );
-      state.error = null;
-    });
-    builder.addCase(removeMemberInWorkspace.rejected, (state, action) => {
-      state.loading = true;
-      state.workspace = null;
-      state.error = action.error.message;
-    });
-
     builder.addCase(checkIsOwnerWorkspace.pending, (state) => {
       state.loading = true;
     });
@@ -159,6 +148,7 @@ export const {
   removeWorkspaceServiceSuccess,
   setAccessibilitySuccess,
   leaveWorkspaceSuccess,
-  inviteMemberViaEmailSuccess
+  inviteMemberViaEmailSuccess,
+  removeMemberInWorkspaceSuccess,
 } = workspaceSlice.actions;
 export default workspaceSlice.reducer;
