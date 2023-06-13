@@ -38,7 +38,6 @@ export const removeDocument = async (documentId) => {
     });
     return documentId;
   } catch (error) {
-    console.log(error);
     throw error.response.data.detail;
   }
 };

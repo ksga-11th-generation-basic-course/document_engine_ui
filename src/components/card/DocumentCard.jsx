@@ -15,10 +15,7 @@ import { useNavigate } from "react-router-dom";
 import { Dropdown } from "react-daisyui";
 
 export const DocumentCard = ({ document }) => {
-  const [open, setOpen] = useState(false);
-
   const navigate = useNavigate();
-
   const [openPermission, setOpenPermission] = useState(false);
   const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
   const [deleteDocument, setDeleteDocument] = useState(false);

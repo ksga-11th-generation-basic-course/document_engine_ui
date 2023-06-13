@@ -6,10 +6,14 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { removeDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
 import { removeDocument } from "../redux/service/documentService/documentService";
+import { useDispatch } from "react-redux";
 
-export const DeleteDocumentModal = ({ deleteDocument, setDeleteDocument,documentId}) => {
-  console.log(documentId);
-
+export const DeleteDocumentModal = ({ 
+  deleteDocument,
+  setDeleteDocument,
+  documentId
+}) => {
+  const dispatch = useDispatch();
   const handleRemoveDocument = async () => {
     try {
       const document = await removeDocument(documentId);

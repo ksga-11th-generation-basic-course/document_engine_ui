@@ -52,7 +52,7 @@ export const WorkspaceCard = ({ workspace }) => {
             Create date: <span>{workspace && workspace.createdDate}</span>
           </p>
         </div>
-        {workspace && workspace.isOwner && (
+        {workspace && workspace.isOwner ? (
           <div className="relative">
             <Dropdown className="dropdown-right">
               <Dropdown.Toggle>
@@ -70,7 +70,8 @@ export const WorkspaceCard = ({ workspace }) => {
               </Dropdown.Menu>
             </Dropdown>
           </div>
-        )}
+        ):
+        <div>hee</div>}
       </div>
       <RemoveWorkspaceModal
         removeWorkspace={removeWorkspace}

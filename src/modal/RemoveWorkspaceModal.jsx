@@ -4,9 +4,9 @@ import close from "../assets/dashboard_image/close.svg";
 import romoveworkspace from "../assets/workspace_image/romoveworkspace.svg";
 import { useDispatch } from "react-redux";
 import { removeWorkspaceService } from "../redux/service/workspaceService/workspaceService";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { removeWorkspaceServiceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
+import { toast } from "react-toastify";
 
 export const RemoveWorkspaceModal = ({
   removeWorkspace,

@@ -17,7 +17,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
 import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
 import { createDocument } from "../redux/service/documentService/documentService";
-
+import setting from "../assets/document_image/settings.svg";
+import group from "../assets/document_image/group.svg";
 import { Checkbox, Dropdown, Radio } from "react-daisyui";
 import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
 export const Document = () => {
@@ -43,6 +44,8 @@ export const Document = () => {
 
   const workspaceId = param.id;
 
+  const [searchTerm, setSearchTerm] = useState("");
+
   useEffect(() => {
     dispatch(getAllDocumentInEachWorkspace(workspaceId));
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
@@ -51,9 +54,8 @@ export const Document = () => {
   const now = new Date();
   const currentDateTime = now.toISOString();
   const handleCreateDocument = async () => {
-    const document = await createDocument("Untitle",true,currentDateTime,null,workspaceId);
+    const document = await createDocument("Untitle", false, currentDateTime, null, workspaceId);
     dispatch(createDocumentSuccess(document));
-    console.log('helo');
   }
 
   return (
@@ -171,6 +173,7 @@ export const Document = () => {
                 <input
                   type="text"
                   placeholder="search"
+                  onChange={(e) => setSearchTerm(e.target.value)}
                   className="rounded-lg text-18px border-gray-200 border-[1px] w-[280px] focus:ring-accent focus:border-accent"
                 />
               ) : null}
@@ -215,37 +218,84 @@ export const Document = () => {
                 </button>
               </div>
               <div className="relative">
-                <button
-                  type="button"
-                  onClick={() => setWorkspaceSetting(!workspaceSetting)}
-                >
-                  <img src={dotshorizontal} />
-                </button>
-                {workspaceSetting ? (
-                  <DropDownWorkspaceSetting
-                    workspaceSetting={workspaceSetting}
-                    setWorkspaceSetting={setWorkspaceSetting}
-                  />
-                ) : null}
+                <Dropdown className="dropdown-right">
+                  <Dropdown.Toggle>
+                    <img src={dotshorizontal} />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu className="w-56 bg-white rounded-lg text-base">
+                    <Dropdown.Item>
+                      <img src={setting} alt="" />
+                      <span>Setting Workspace</span>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <img src={group} alt="" />
+                      <span>View member</span>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
               </div>
             </div>
           )}
         </div>
       </div>
+
       {openGrid ? (
         <div className="grid grid-cols-12 gap-8">
-          {documents === null
-            ? null
-            : documents.map((document, index) => (
-              <div className="col-span-4" key={index}>
-                <DocumentCard document={document} />
-              </div>
-            ))}
+          {documents === null ? null : documents.length > 0 ? (
+            documents
+              .filter((document) => {
+                if (searchTerm === "") {
+                  return document;
+                } else if (
+                  document.title
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+                ) {
+                  return document;
+                }
+              })
+              .map((document, index) => (
+                <div className="col-span-4" key={index}>
+                  <DocumentCard document={document} />
+                </div>
+              ))
+          ) : (
+            <div className="col-span-12 absolute bottom-[45%] left-[55%]">
+              <p className="font-semibold text-accent">No Document</p>
+            </div>
+          )}
         </div>
       ) : null}
       {openBulletList ? (
         <div className="space-y-6">
-          {" "}
+          {documents === null ? null : documents.length > 0 ? (
+            documents
+              .filter((document) => {
+                if (searchTerm === "") {
+                  return document;
+                } else if (
+                  document.title
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+                ) {
+                  return document;
+                }
+              })
+              .map((document, index) => (
+                <div className="col-span-4" key={index}>
+                  <DocumentList
+                    title={document.title}
+                    status={true}
+                    editdate={"Apr 24 12:15 PM"}
+                  />
+                </div>
+              ))
+          ) : (
+            <div className="col-span-12 absolute bottom-[45%] left-[55%]">
+              <p className="font-semibold text-accent">No Document</p>
+            </div>
+          )}
+          {/* {" "}
           <DocumentList
             title={"Redux Tookit"}
             status={true}
@@ -260,7 +310,7 @@ export const Document = () => {
             title={"Spring Profile"}
             status={false}
             editdate={"Apr 24 12:15 PM"}
-          />{" "}
+          />{" "} */}
         </div>
       ) : null}
     </div>
