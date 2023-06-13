@@ -2,8 +2,44 @@ import React from "react";
 import { Modal } from "react-daisyui";
 import close from "../assets/dashboard_image/close.svg";
 import deletedocument from "../assets/document_image/deletedocument.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { removeDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
+import { removeDocument } from "../redux/service/documentService/documentService";
 
-export const DeleteDocumentModal = ({ deleteDocument, setDeleteDocument }) => {
+export const DeleteDocumentModal = ({ deleteDocument, setDeleteDocument,documentId}) => {
+  console.log(documentId);
+
+  const handleRemoveDocument = async () => {
+    try {
+      const document = await removeDocument(documentId);
+      dispatch(removeDocumentSuccess(document));
+      setDeleteDocument(!deleteDocument);
+      toast.success("Remove Document Successfully", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    } catch (error) {
+      setDeleteDocument(!deleteDocument),
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+  };
+
   return (
     <div className="w-full">
       <Modal
@@ -34,7 +70,7 @@ export const DeleteDocumentModal = ({ deleteDocument, setDeleteDocument }) => {
               >
                 No, cancel
               </button>
-              <button className="bg-red-500 text-white  px-10 py-3 rounded-lg ">
+              <button onClick={handleRemoveDocument} className="bg-red-500 text-white  px-10 py-3 rounded-lg ">
                 Delete
               </button>
             </div>

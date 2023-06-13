@@ -24,7 +24,12 @@ const documentSlice = createSlice({
     },
     updateDocumentSuccess:(state,action)=>{
       state.documents.push(action.payload);
-    }
+    },
+    // removeDocumentSuccess: (state, action) => {
+    //   state.documents = state.documents.filter(
+    //     (document) => document.documentId !== action.payload
+    //   );
+    // },
   },
   extraReducers: (builder) => {
     builder.addCase(getAllDocumentInEachWorkspace.pending, (state) => {
@@ -87,5 +92,5 @@ const documentSlice = createSlice({
     });
   },
 });
-export const {createDocumentSuccess,updateDocumentSuccess}=documentSlice.actions;
+export const {createDocumentSuccess,updateDocumentSuccess,removeDocumentSuccess}=documentSlice.actions;
 export default documentSlice.reducer;

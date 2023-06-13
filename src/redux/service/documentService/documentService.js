@@ -28,6 +28,21 @@ export const getDocumentByDocumentId = createAsyncThunk(
   }
 );
 
+export const removeDocument = async (documentId) => {
+  try {
+    const response = await api.delete(`documents/${documentId}`, {
+      headers: {
+        Authorization: "Bearer " + localStorage.getItem("token"),
+        "Content-Type ": "application/json",
+      },
+    });
+    return documentId;
+  } catch (error) {
+    console.log(error);
+    throw error.response.data.detail;
+  }
+};
+
 export const getUsername = createAsyncThunk(
   `/documents/username`,
   async (documentId) => {

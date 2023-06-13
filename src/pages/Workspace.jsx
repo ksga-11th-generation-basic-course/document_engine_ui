@@ -138,7 +138,7 @@ export const Workspace = () => {
             </Dropdown>
           </div>
         </div>
-        <div className=" md:col-span-1 col-span-4 h-11">
+        <div className="md:col-span-1 col-span-4 h-11">
           <div className="flex justify-end relative">
             {openSearch ? (
               <input
