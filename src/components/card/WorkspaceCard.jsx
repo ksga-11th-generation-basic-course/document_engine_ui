@@ -16,7 +16,7 @@ export const WorkspaceCard = ({
       <div className="flex justify-between items-center p-3">
         <h4 className="font-semibold text-18px">{workspacename}</h4>
         {isOwner ? (
-          <p className="border-[1px] rounded-full px-3">Owner</p>
+          <p className="px-3 text-primary">Owner</p>
         ) : null}
       </div>
       <div>
