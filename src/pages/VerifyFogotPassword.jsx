@@ -7,14 +7,14 @@ import Facebook from "../assets/images/Login/Facebook.svg";
 import { Formik, useFormik } from "formik";
 import { useState } from "react";
 import { useRef } from "react";
-import { data } from "autoprefixer";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   resendVerifyCode,
   verifyOTP,
 } from "../redux/service/authenticationService/authenticationService";
 import { Link, useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
+import { verifySuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 
 const validate = (values) => {
   const errors = {};
@@ -24,14 +24,6 @@ const validate = (values) => {
   return errors;
 };
 export const VerifyForgotPassword = () => {
-  const OTPauthentication = useSelector(
-    (state) => state.authentication.OTPauthentication
-  );
-
-  const authentication = useSelector(
-    (state) => state.authentication.authentication
-  );
-
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -41,8 +33,14 @@ export const VerifyForgotPassword = () => {
       OTP: Array.from({ length: 6 }).fill(""),
     },
     validate,
-    onSubmit: (values) => {
-      dispatch(verifyOTP(values.OTP.join("")));
+    onSubmit: async (values) => {
+      try {
+        const optCode = await verifyOTP(values.OTP.join(""));
+        dispatch(verifySuccess(optCode));
+        navigate("/ResetForgotPassword");
+      } catch (error) {
+        console.error("Verify failed:", error);
+      }
     },
   });
   const inputRef = useRef({});
@@ -98,18 +96,13 @@ export const VerifyForgotPassword = () => {
     ));
   };
 
-  useEffect(() => {
-    if (OTPauthentication.email) {
-      navigate("/resetforgotpassword");
-    }
-  });
-
   const [resetCountdown, setResetCountdown] = useState(false);
 
   const handleTimeout = () => {};
 
   const handleResendCode = () => {
-    dispatch(resendVerifyCode(authentication.email));
+    const email = localStorage.getItem("email");
+    dispatch(resendVerifyCode(email));
     setResetCountdown(true);
   };
 
@@ -230,4 +223,4 @@ export const VerifyForgotPassword = () => {
     </div>        
  </div> 
   );
-}
+};

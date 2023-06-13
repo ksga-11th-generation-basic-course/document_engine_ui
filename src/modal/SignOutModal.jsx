@@ -2,8 +2,21 @@ import React from "react";
 import close from "../assets/dashboard_image/close.svg";
 import signouticon from "../assets/dashboard_image/signouticon.svg";
 import { Modal } from "react-daisyui";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { signOutSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 
 export const SignOutModal = ({ visible, toggleVisible }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const signOut = () => {
+    dispatch(signOutSuccess());
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    navigate("/signin");
+  };
+
   return (
     <div className="w-full">
       <Modal open={visible}>
@@ -24,16 +37,16 @@ export const SignOutModal = ({ visible, toggleVisible }) => {
                     </p>
             </h1>
 
-            <div className="flex justify-center space-x-4 items-center text-20px font-semibold pb-3 md:text-13px md:mt-2">
-                  <button
-                    className="px-10 py-3 border-[1px] rounded-lg md:px-7 md:py-2"
-                    onClick={toggleVisible}
-                  >
-                          Cancel
-                  </button>
-                  <button className="bg-red-500 text-white  px-10 py-3 rounded-lg md:px-7 md:py-2">
-                          Yes, Sign out
-                  </button>
+            <div className="flex justify-center items-center gap-5 text-16px font-semibold pb-5">
+              <button
+                className="px-10 py-3 border-[1px] rounded-lg"
+                onClick={toggleVisible}
+              >
+                Cancel
+              </button>
+              <button className="bg-red-500 text-white  px-10 py-3 rounded-lg " onClick={signOut}>
+                Yes, Sign out
+              </button>
             </div>
           </div>
         </div>

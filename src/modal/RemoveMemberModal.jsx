@@ -23,10 +23,13 @@ export const RemoveMemberModal = ({ removeMember, setRemoveMember }) => {
             <div className="flex justify-center items-center">
               <img className="w-[80px]" src={removemember} />
             </div>
-            <p className="font-normal text-accent text-18px text-center">
-              Are you sure want to remove this member <br /> from this workspace?
-            </p>
-
+            <h1 className="font-bold text-24px text-primary text-center">
+              Remove Member!
+              <p className="font-normal text-accent text-18px text-center">
+                Are you sure want to remove this member <br /> from this
+                workspace?
+              </p>
+            </h1>
             <div className="flex justify-center items-center gap-5 text-16px font-semibold pb-5">
               <button
                 className="px-10 py-3 border-[1px] rounded-lg"

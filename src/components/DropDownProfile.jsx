@@ -13,6 +13,10 @@ export const DropDownProfile = ({ open, setOpen }) => {
   };
   const [openSetting, setOpenSetting] = useState(false);
 
+  const user = localStorage.getItem("user");
+
+  const parseUserObj = JSON.parse(user);
+
   return (
     <div className="relative">
       <div className="absolute right-0 mt-3 p-3 text-accent rounded-lg shadow-custom bg-white z-50 w-80 md:w-52 md:p-2">

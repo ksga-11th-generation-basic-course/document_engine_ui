@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal } from "react-daisyui";
 import close from "../assets/dashboard_image/close.svg";
 import logo from "../assets/landing_image/logo.svg";
@@ -7,12 +7,16 @@ import avatar from "../assets/dashboard_image/avatar.svg";
 import trush from "../assets/dashboard_image/trush.svg";
 import google from "../assets/dashboard_image/google.svg";
 import advance from "../assets/dashboard_image/advance.png";
-import dropdown from "../assets/images/popUp/dropdown.svg";
-import reverse_dropdown from "../assets/images/popUp/reverse_dropdown.svg";
 import { SignOutModal } from "./SignOutModal.jsx";
 import { DeleteProfileModal } from "./DeleteProfileModal";
 import { CloseAccountModal } from "./CloseAccountModal";
 import { ResetPasswordModal } from "./ResetPasswordModal";
+import { editProfileInformation } from "../redux/service/userService/userService";
+import { editProfileInformationSuccess } from "../redux/slice/userSlice/userSlice";
+import { useDispatch } from "react-redux";
+import { storage } from "../firebase/firebase.utils";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { v4 as uuidv4 } from "uuid";
 
 export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
   const [visible, setVisible] = useState(false);
@@ -20,18 +24,53 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
     setVisible(!visible);
   };
 
+  const dispatch = useDispatch();
+
   const [openDeleteProfile, setOpenDeleteProfile] = useState(false);
   const [closeAccount, setCloseAccount] = useState(false);
   const [resetPassword, setResetPassword] = useState(false);
   const [openProfileSetting, setOpenProfileSetting] = useState(false);
   const [openAdvanceSetting, setOpenAdvanceSetting] = useState(false);
 
+  const user = localStorage.getItem("user");
+
+  const parseUserObj = JSON.parse(user);
+
+  const [username, setUsername] = useState();
+
+  const [profileImage, setProfileImage] = useState();
+
+  const handleEditProfileInformation = () => {
+    try {
+      if (!profileImage) return;
+
+      const imageRef = ref(
+        storage,
+        `images/profile/${uuidv4()}_${profileImage.name}`
+      );
+
+      uploadBytes(imageRef, profileImage).then(async (snapshot) => {
+        getDownloadURL(snapshot.ref).then(async (url) => {
+          const user = await editProfileInformation(username, url);
+          dispatch(editProfileInformationSuccess(user));
+        });
+      });
+      setOpenSetting(!openSetting);
+      document.getElementById("changename").reset();
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="w-full">
-      <Modal open={openSetting}>
-        <div className="w-[1200px] h-[840px] bg-white rounded-lg grid grid-cols-12 lg:w-[680px] lg:h-[900px] md:w-[350px] md:h-[630px]">
-          {/* Sidebar */}
-          <div className="col-span-3 bg-[#FAFAF9] rounded-lg space-y-5 lg:hidden">
+      <Modal open={openSetting}  
+          onClickBackdrop={() => {
+          setOpenSetting(!openSetting);
+          document.getElementById("changename").reset();
+        }}>
+        <div className="w-[1200px] h-[840px] bg-white rounded-lg grid grid-cols-12">
+          <div className="col-span-3 bg-[#FAFAF9] rounded-lg space-y-5">
             <div className="flex justify-center p-5 rounded-tl-lg shadow-md">
               <img src={logo} />
             </div>
@@ -47,12 +86,12 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
                   <path
                     d="M16.75 15C16.75 17.0711 15.0711 18.75 13 18.75C10.9289 18.75 9.25 17.0711 9.25 15C9.25 12.9289 10.9289 11.25 13 11.25C15.0711 11.25 16.75 12.9289 16.75 15Z"
                     stroke="#1E9CEF"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                   <path
                     d="M9.80414 4.36597C10.7687 1.04468 15.2313 1.04468 16.1959 4.36597C16.7093 6.13384 18.4329 7.18232 20.1427 6.76688C23.355 5.9864 25.5862 10.0583 23.3386 12.5991C22.1422 13.9515 22.1422 16.0485 23.3386 17.4009C25.5862 19.9417 23.355 24.0136 20.1427 23.2331C18.4329 22.8177 16.7093 23.8662 16.1959 25.634C15.2313 28.9553 10.7687 28.9553 9.80414 25.634C9.2907 23.8662 7.56709 22.8177 5.85727 23.2331C2.64503 24.0136 0.413766 19.9417 2.66141 17.4009C3.85779 16.0485 3.85779 13.9515 2.66141 12.5991C0.413766 10.0583 2.64503 5.9864 5.85727 6.76688C7.56709 7.18232 9.2907 6.13384 9.80414 4.36597Z"
                     stroke="#1E9CEF"
-                    stroke-width="2"
+                    strokeWidth="2"
                   />
                 </svg>
                 <p className="font-semibold text-18px">Setting</p>
@@ -65,7 +104,10 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
             <div className="flex w-full justify-end">
               <button
                 type="button"
-                onClick={() => setOpenSetting(!openSetting)}
+                onClick={() => {
+                  setOpenSetting(!openSetting);
+                  document.getElementById("changename").reset();
+                }}
               >
                 <img src={close} className="lg:w-8 md:w-6" />
               </button>
@@ -90,30 +132,27 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
                     </p>
                   </div>
                   <button
-                      type="button"
-                      className="md:hidden font-semibold text-white text-18px px-7 py-1.5 bg-primary rounded-lg md:text-12px md:px-5 md:py-1 "
-                    >
-                      Save
-                    </button>
+                    onClick={handleEditProfileInformation}
+                    type="button"
+                    className="font-semibold text-white text-18px px-7 py-1 bg-primary rounded-lg  md:text-12px md:px-5 md:py-1"
+                  >
+                    Save
+                  </button>
                 </div>
-                {/* Content*/}
-                <div className="md:hidden px-6 border-[1px] py-4 space-y-4 rounded-b-lg lg:space-y-7 md:px-4 md:space-y-5">
-                  {/* Change account name */}
-                  <div className="w-full space-y-2">
-                    <h3 className="font-bold text-20px text-black md:text-14px">
+                <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg">
+                  <form className="w-full space-y-2" id="changename">
+                    <h3 className="font-bold text-18px text-black">
                       Account Name
                     </h3>
                     <input
                       type="text"
-                      className="w-80 py-3 rounded-lg border-gray-300 focus:ring-primary focus:border-primary text-18px font-semibold lg:w-60 md:text-14px md:py-1.5"
+                      className="w-96 py-3 rounded-lg border-gray-300 focus:ring-primary focus:border-primary text-18px font-semibold lg:w-60 md:text-14px md:py-1.5"
                       placeholder="Tith Ouddom"
                     />
-                  </div>
-
-                  {/* Change password */}
-                  <div className="grid grid-cols-12 md:gap-y-2">
-                    <div className="col-span-9 lg:col-span-8 md:col-span-12">
-                      <h3 className="font-bold text-20px text-black md:text-14px">
+                  </form>
+                  <div className="flex justify-between items-center w-full space-y-4">
+                    <div>
+                      <h3 className="font-bold text-18px text-black">
                         Change new password
                       </h3>
                       <p className="md:hidden">
@@ -141,13 +180,26 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
                     </div>
                     <div className="col-span-5 flex justify-center items-center gap-x-3 ml-10 lg:col-span-5 lg:ml-0 md:-ml-1 md:w-52">
                       <div>
-                        <img src={avatar} className="w-10 rounded-full lg:w-8 md:w-7" />
+                      {parseUserObj.profileImage === null ? (
+                          <img
+                            src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
+                            className="bg-cover w-full h-full rounded-full lg:w-8 md:w-7"
+                          />
+                        ) : (
+                          <img
+                            src={parseUserObj.profileImage}
+                            className="bg-cover w-full h-full rounded-full lg:w-8 md:w-7"
+                          />
+                        )}
                       </div>
                       <label>
                         <input
                           className="text-sm cursor-pointer w-36 hidden md:w-full"
                           type="file"
                           multiple
+                          onChange={(e) => {
+                            setProfileImage(e.target.files[0]);
+                          }}
                         />
                         <p className="font-semibold text-18px border-[1px] rounded-lg px-3 py-1 cursor-pointer lg:text-16px md:text-14px">
                           Upload Photo
@@ -177,11 +229,9 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
                         You can sign in to DocEngine using your Google account.
                       </p>
                     </div>
-                    <div className="col-span-5 lg:col-span-6">
-                      <span className="flex justify-center items-center gap-x-3 bg-[#F8F8F8] py-2.5 rounded-lg md:w-60 md:py-1.5 mt-2">
-                        <img src={google} className="w-5 md:w-4"/>
-                        <p className="text-18px md:text-12px">tith.ouddom@gmail.com</p>
-                      </span>
+                    <div className="flex justify-center items-center gap-x-3 bg-[#F8F8F8] px-5 py-2 rounded-lg">
+                      <img src={google} />
+                      <p>{parseUserObj.email}</p>
                     </div>
                   </div>
                 </div>

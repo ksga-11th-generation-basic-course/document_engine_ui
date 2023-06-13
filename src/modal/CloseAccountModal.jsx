@@ -2,8 +2,27 @@ import React from "react";
 import { Modal } from "react-daisyui";
 import close from "../assets/dashboard_image/close.svg";
 import closeaccount from "../assets/dashboard_image/closeaccount.svg";
+import { disableAccount } from "../redux/service/userService/userService";
+import { closeAccountSuccess } from "../redux/slice/userSlice/userSlice";
+import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export const CloseAccountModal = ({ closeAccount, setCloseAccount }) => {
+  const dispatch = useDispatch();
+
+  const navigate = useNavigate();
+
+  const handelCloseAccount = async () => {
+    try {
+      const user = await disableAccount();
+      dispatch(closeAccountSuccess(user));
+      localStorage.removeItem("user");
+      navigate("/signin");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="w-full">
       <Modal open={closeAccount} onClickBackdrop={() => closeAccount(!closeAccount)}>
@@ -31,7 +50,7 @@ export const CloseAccountModal = ({ closeAccount, setCloseAccount }) => {
               >
                 No, cancel
               </button>
-              <button className="bg-red-500 text-white  px-10 py-3 rounded-lg md:px-9 md:py-2.5">
+              <button className="bg-red-500 text-white  px-10 py-3 rounded-lg md:px-9 md:py-2.5"  onClick={handelCloseAccount}>
                 Close
               </button>
             </div>

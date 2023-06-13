@@ -4,23 +4,13 @@ import Reset from "../assets/images/Set_New_pass.svg";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { resetPassword } from "../redux/service/authenticationService/authenticationService";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch, useSelector} from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
+import { resetPasswordSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 export const ResetForgotPassword = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-
-  const OTPauthentication = useSelector(
-    (state) => state.authentication.OTPauthentication
-  );
-
-  const resetAuthentication = useSelector(
-    (state) => state.authentication.resetAuthentication
-  );
-
-  console.log(OTPauthentication.email);
-  console.log(resetAuthentication);
 
   const formik = useFormik({
     initialValues: {
@@ -38,17 +28,18 @@ export const ResetForgotPassword = () => {
         )
         .required("Confirm Password is required"),
     }),
-    onSubmit: (values, { resetForm }) => {
-      const data = { ...values, email: OTPauthentication.email };
-      dispatch(resetPassword(data));
-      resetForm({ values: "" });
+    onSubmit: async (values, { resetForm }) => {
+      try {
+        const email = localStorage.getItem("email");
+        const user = await resetPassword({ ...values, email: email });
+        dispatch(resetPasswordSuccess(user));
+        localStorage.removeItem("email");
+        navigate("/signin");
+        resetForm({ values: "" });
+      } catch (error) {
+        console.error("Reset password failed:", error);
+      }
     },
-  });
-
-  useEffect(() => {
-    if (resetAuthentication.email) {
-      navigate("/signin");
-    }
   });
 
   return (
@@ -168,4 +159,4 @@ export const ResetForgotPassword = () => {
       </div>
     
   );
-}
+};

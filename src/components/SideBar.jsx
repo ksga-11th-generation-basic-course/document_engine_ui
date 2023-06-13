@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/landing_image/logo.svg";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
 import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
+import { useDispatch, useSelector } from "react-redux";
+import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
 import close from "../assets/dashboard_image/close.svg";
-import { NavBarProfile } from "./NavBarProfile";
 
 export const SideBar = ({
   sideBar,
@@ -12,6 +13,18 @@ export const SideBar = ({
   setNewWorkspace,
 }) => {
   const [visible, setVisible] = useState(false);
+
+  const dispatch = useDispatch();
+
+  const workspace = useSelector((state) => state.workspace.workspace);
+
+  useEffect(() => {
+    dispatch(getWorkspaceByWorkspaceId(workspaceId));
+  }, []);
+
+  const param = useParams();
+
+  const workspaceId = param.id;
 
   return (
     <div className="bg-[#FAFAF9] overflow-x-auto md:mt-8 md:h-screen">
@@ -32,8 +45,6 @@ export const SideBar = ({
             className="w-28 h-28 mb-2 flex lg:w-28 md:w-[75px] md:h-[65px] md:mt-5"
           />
         </Link>
-
-        {/* Create Workspace */}
         <CreateWorkspaceModal
           visible={visible}
           setVisible={setVisible}
@@ -90,6 +101,7 @@ export const SideBar = ({
             </span>
           </NavLink>
           <div className="w-full md:text-center border-[1px]"></div>
+          {workspace === null ? null : (
           <NavLink
             to={"/document"}
             className={({ isActive }) =>
@@ -123,7 +135,9 @@ export const SideBar = ({
               </span>
               <span className="line-clamp-1">React & NodeJS</span>
             </span>
+            {workspace && workspace.workspaceName}
           </NavLink>
+          )}
         </div>
       </div>
     </div>

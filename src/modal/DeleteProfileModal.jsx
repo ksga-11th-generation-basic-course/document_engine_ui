@@ -2,11 +2,27 @@ import React from "react";
 import { Modal } from "react-daisyui";
 import close from "../assets/dashboard_image/close.svg";
 import deleteprofile from "../assets/dashboard_image/deleteprofile.svg";
+import { useDispatch } from "react-redux";
+import { deleteProfileImage } from "../redux/service/userService/userService";
+import { deleteProfileImageSuccess } from "../redux/slice/userSlice/userSlice";
 
 export const DeleteProfileModal = ({
   openDeleteProfile,
   setOpenDeleteProfile,
 }) => {
+  const dispatch = useDispatch();
+
+  const handleDeleteProfileImage = async () => {
+    try {
+      // uploadFile();
+      const user = await deleteProfileImage();
+      dispatch(deleteProfileImageSuccess(user));
+      setOpenDeleteProfile(!openDeleteProfile);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="w-full">
       <Modal open={openDeleteProfile} onClickBackdrop={() => setOpenDeleteProfile(!openDeleteProfile)}>
@@ -34,7 +50,7 @@ export const DeleteProfileModal = ({
               >
                 No, cancel
               </button>
-              <button className="bg-red-500 text-white  px-10 py-3 rounded-lg md:px-5 md:py-2.5">
+              <button className="bg-red-500 text-white  px-10 py-3 rounded-lg md:px-5 md:py-2.5"  onClick={handleDeleteProfileImage}>
                 Remove
               </button>
             </div>

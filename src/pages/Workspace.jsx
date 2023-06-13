@@ -1,22 +1,24 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import workspaceicon from "../assets/workspace_image/workspaceicon.png";
 import sort from "../assets/workspace_image/sort.svg";
 import chevrondown from "../assets/workspace_image/chevrondown.svg";
 import filter from "../assets/workspace_image/filter.svg";
 import search from "../assets/workspace_image/search.svg";
-import { DropDownSort } from "../components/DropDownSort";
-import { DropDownFilter } from "../components/DropDownFilter";
 import { WorkspaceCard } from "../components/card/WorkspaceCard";
-import docker from "../assets/workspace_image/docker.svg";
-import spring from "../assets/workspace_image/spring.svg";
-import reactjs from "../assets/workspace_image/reactjs.svg";
+import { getAllWorkspace } from "../redux/service/workspaceService/workspaceService";
+import { useDispatch, useSelector } from "react-redux";
+import { Dropdown, Radio } from "react-daisyui";
 
 export const Workspace = () => {
-  const [openSort, setOpenSort] = useState(false);
-
-  const [openFilter, setOpenFilter] = useState(false);
-
   const [openSearch, setOpenSearch] = useState(false);
+
+  const workspaces = useSelector((state) => state.workspace.workspaces);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getAllWorkspace());
+  }, []);
 
   return (
     <div className="text-accent space-y-5 sm:h-full bg-white">
@@ -31,18 +33,52 @@ export const Workspace = () => {
             <h4 className="font-semibold text-20px md:text-18px">Sort: </h4>
           </div>
           <div className="relative">
-            <button
-              className="flex items-center gap-x-20 md:gap-x-1"
-              onClick={() => setOpenSort(!openSort)}
-            >
-              <p className="text-18px md:text-16px text-black">Last Update</p>
-              <img className="md:w-4 md:h-4 md:ml-4" src={chevrondown} />
-            </button>
-            <div>
-              {openSort ? (
-                <DropDownSort openSort={openSort} setOpenSort={setOpenSort} />
-              ) : null}
-            </div>
+            <Dropdown>
+              <Dropdown.Toggle>
+                <div className="flex items-center gap-x-20">
+                  <p className="text-18px text-black">Last Update</p>
+                  <img src={chevrondown} />
+                </div>
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="w-48 bg-white rounded-lg">
+                <Dropdown.Item>
+                  <Radio
+                    defaultChecked
+                    name="radioOptions"
+                    value="lastupdate"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>Last Update</span>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Radio
+                    defaultChecked
+                    name="radioOptions"
+                    value="thisweek"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>This week</span>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Radio
+                    defaultChecked
+                    name="radioOptions"
+                    value="thismonth"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>This month</span>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Radio
+                    defaultChecked
+                    name="radioOptions"
+                    value="thisyear"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>This year</span>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
         </div>
         <div className="col-span-4 md:col-span-6 sm:grid-cols-1 flex items-center gap-x-5 h-11">
@@ -51,21 +87,41 @@ export const Workspace = () => {
             <h4 className="font-semibold text-20px md:text-18px">Filter: </h4>
           </div>
           <div className="relative">
-            <button
-              className="flex items-center gap-x-20 md:gap-x-1"
-              onClick={() => setOpenFilter(!openFilter)}
-            >
-              <p className="text-18px md:text-16px text-black">All Workspaces</p>
-              <img className="md:w-4 md:h-4 md:ml-4" src={chevrondown} />
-            </button>
-            <div>
-              {openFilter ? (
-                <DropDownFilter
-                  openFilter={openFilter}
-                  setOpenFilter={setOpenFilter}
-                />
-              ) : null}
-            </div>
+            <Dropdown>
+              <Dropdown.Toggle>
+                <div className="flex items-center gap-x-20">
+                  <p className="text-18px text-black">All Workspaces</p>
+                  <img src={chevrondown} />
+                </div>
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="w-52 bg-white rounded-lg">
+                <Dropdown.Item>
+                  <Radio
+                    defaultChecked
+                    name="radioOptions"
+                    value="allworkspaces"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>All Workspaces</span>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Radio
+                    name="radioOptions"
+                    value="myworkspaces"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>My Workspaces</span>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Radio
+                    name="radioOptions"
+                    value="otherworkspaces"
+                    className="checked:bg-primary checked:shadow-none"
+                  />
+                  <span>Other Workspaces</span>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
         </div>
         <div className=" md:col-span-1 col-span-4 h-11">
@@ -87,52 +143,18 @@ export const Workspace = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-12 gap-8 md:px-6 sm:grid sm:grid-cols-1">
-        <div className="col-span-4 md:col-span-6 md:w-[250px]">
-          <WorkspaceCard
-            workspacename={"Docker"}
-            isOwner={true}
-            workspacephoto={docker}
-            total={12}
-            createdate={"12/01/2023"}
-          />
-        </div>
-        <div className="col-span-4 md:col-span-6 md:w-[250px]">
-          <WorkspaceCard
-            workspacename={"Spring"}
-            isOwner={false}
-            workspacephoto={spring}
-            total={15}
-            createdate={"10/05/2023"}
-          />
-        </div>
-        <div className="col-span-4 md:col-span-6 md:w-[250px]">
-          <WorkspaceCard
-            workspacename={"ReactJS"}
-            isOwner={true}
-            workspacephoto={reactjs}
-            total={20}
-            createdate={"11/05/2023"}
-          />
-        </div>
-        <div className="col-span-4 md:col-span-6 md:w-[250px]">
-          <WorkspaceCard
-            workspacename={"ReactJS"}
-            isOwner={true}
-            workspacephoto={reactjs}
-            total={20}
-            createdate={"11/05/2023"}
-          />
-        </div>
-        <div className="col-span-4 md:col-span-6 md:w-[250px]">
-          <WorkspaceCard
-            workspacename={"ReactJS"}
-            isOwner={true}
-            workspacephoto={reactjs}
-            total={20}
-            createdate={"11/05/2023"}
-          />
-        </div>
+      <div className="grid grid-cols-12 gap-5">
+        {workspaces === null ? null : workspaces.length > 0 ? (
+          workspaces.map((workspace, index) => (
+            <div className="col-span-4" key={index}>
+              <WorkspaceCard workspace={workspace} />
+            </div>
+          ))
+        ) : (
+          <div className="col-span-12 absolute bottom-[45%] left-[55%]">
+            <p className="font-semibold text-accent">No Workspace</p>
+          </div>
+        )}
       </div>
     </div>
   );

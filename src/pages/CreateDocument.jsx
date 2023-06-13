@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, } from "react";
 import Plus from "../assets/images/Dashboard/Plus.svg";
 import CreateBy from "../assets/images/Dashboard/CreateBy.svg";
 import CreateDate from "../assets/images/Dashboard/CreateDate.svg";
@@ -8,7 +8,7 @@ import ExportFile from "../assets/images/Dashboard/ExportFile.svg";
 import Tag from "../assets/images/Dashboard/Tag.svg";
 import arrow from "../assets/document_image/arrow.svg";
 import icon from "../assets/document_image/icon.svg";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import doc from "../assets/document_image/doc.svg";
 import { DocumentPermissionModal } from "../modal/DocumentPermissionModal";
 import { DocumentHistoryModal } from "../modal/DocumentHistoryModal";
@@ -22,46 +22,99 @@ import Header from "@editorjs/header";
 import Quote from "@editorjs/quote";
 import CheckList from "@editorjs/checklist";
 import InlineCode from "@editorjs/inline-code";
+import { useDispatch, useSelector } from "react-redux";
+import { getDocumentByDocumentId, getUsername, getWorkspaceName } from "../redux/service/documentService/documentService";
+import { Editor } from "../components/editor/Editor";
+import { updateDocument } from "../redux/service/documentService/documentService";
+import { updateDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
+import { date } from "yup";
 
 export const CreateDocument = () => {
   const [openPermission, setOpenPermission] = useState(false);
   const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
   const [openExport, setOpenExport] = useState(false);
 
-  const ejInstance = useRef();
-  const editor = new EditorJS({
-    holder: "editorjs",
-    onReady: () => {
-      ejInstance.current = editor;
-    },
-    autofocus: true,
-    onChange: async () => {
-      let content = await editor.saver.save();
-      console.log(content);
-    },
-    tools: {
-      header: Header,
-      list: List,
-      code: Code,
-      linkTool: LinkTool,
-      image: Image,
-      quote: Quote,
-      checklist: CheckList,
-      inlineCode: InlineCode,
-    },
-  });
-  useEffect(() => {
-    if (ejInstance.current === null) {
-    }
-    return () => {
-      ejInstance?.current?.destroy();
-      ejInstance.current = null;
-    };
-  }, []);
+  // const ejInstance = useRef();
+  // const editor = new EditorJS({
+  //   holder: "editorjs",
+  //   onReady: () => {
+  //     ejInstance.current = editor;
+  //   },
+  //   autofocus: true,
+  //   onChange: async () => {
+  //     let content = await editor.saver.save();
+  //     console.log(content);
+  //   },
+  //   tools: {
+  //     header: Header,
+  //     list: List,
+  //     code: Code,
+  //     linkTool: LinkTool,
+  //     image: Image,
+  //     quote: Quote,
+  //     checklist: CheckList,
+  //     inlineCode: InlineCode,
+  //   },
+  // });
+  // useEffect(() => {
+  //   if (ejInstance.current === null) {
+  //   }
+  //   return () => {
+  //     ejInstance?.current?.destroy();
+  //     ejInstance.current = null;
+  //   };
+  // }, []);
 
+  const document = useSelector((state) => state.document.document);
+  const username = useSelector((state) => state.document.username);
+  const workspace = useSelector((state) => state.document.workspace);
+
+  const param = useParams();
+
+  const documentId = param.id;
+
+  const dispatch = useDispatch();
+  const [workspaceName, setWorkspaceName] = useState();
+  const [timerId, setTimerId] = useState(null);
+  
+  
+  useEffect(() => {
+    dispatch(getWorkspaceName(documentId));
+    dispatch(getDocumentByDocumentId(documentId));
+    dispatch(getUsername(documentId));
+  }, []);
+  const [title,setTitle]=useState(document && document.title);
+
+  const handleUpdateDocument = async () => {
+    const document = await updateDocument(documentId, workspaceName);
+    dispatch(updateDocumentSuccess(document));
+  }
+
+  function handleInputChange(event) {
+    event.preventDefault();
+    setTitle(event.target.value)
+    clearTimeout(timerId);
+    const newTimerId = setTimeout(() => {
+      const handleUpdateDocument = async () => {
+        const document = await updateDocument(documentId, event.target.value);
+        dispatch(updateDocumentSuccess(document));
+      }
+      handleUpdateDocument();
+      console.log('successfully');
+    }, 3000);
+    setTimerId(newTimerId);
+  }
+
+  const timestamp =(document && document.createdDate);
+  // console.log(timestamp);
+  const dateObj = new Date(timestamp);
+  const day = dateObj.getDate();
+  const month = dateObj.toLocaleString('default', { month: 'long' });
+  const year = dateObj.getFullYear();
+  const createdDate=`${day} ${month} ${year}`;
   return (
-    <div className=" w-full">
-      <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
+    <div className="w-full">
+      {/* <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
         <div className="grid grid-rows-1 gap-3">
           <button
             className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
@@ -93,21 +146,21 @@ export const CreateDocument = () => {
             ) : null}
           </div>
         </div>
-      </div>
-      <div className="text-[#9CA3AF] grid grid-rows-1 gap-2">
+      </div> */}
+      <div className="text-[#9CA3AF] grid grid-rows-1 gap-2 px-12">
         <div className="w-full h-auto">
           <nav className="flex items-center text-sm">
             <ol className="list-none p-0 inline-flex">
               <li className="flex items-center gap-x-2">
                 <img src={icon} />
-                <Link className="text-black">React Developer</Link>
+                <Link className="text-black">{workspace}</Link>
                 <span className="mx-2">
                   <img src={arrow} className="w-2" alt="" />
                 </span>
               </li>
               <li className="flex items-center gap-x-2">
                 <img src={doc} />
-                <Link className="text-primary">Untitle</Link>
+                <Link className="text-primary">{title}</Link>
               </li>
             </ol>
           </nav>
@@ -115,7 +168,8 @@ export const CreateDocument = () => {
             <input
               className="text-5xl p-0 text-black w-auto py-2 focus:ring-0 focus:border-0 border-0"
               type="text"
-              placeholder="Untitle"
+              onChange={handleInputChange}
+              placeholder={document && document.title}
             />
           </span>
           <div className="w-[40%] grid grid-rows-1 gap-y-2">
@@ -124,14 +178,14 @@ export const CreateDocument = () => {
                 <img src={CreateBy} className="w-[17px]" alt="" />
                 <p>Create By</p>
               </div>
-              <p className="text-black">Tith Ouddom</p>
+              <p className="text-black">{username}</p>
             </div>
             <div className="grid grid-cols-2 text-sm">
               <div className="flex gap-2">
                 <img src={CreateDate} className="w-[17px]" alt="" />
                 <p>Create Date</p>
               </div>
-              <p className="text-black">April 21, 2023 4:01 PM</p>
+              <p className="text-black">{createdDate}</p>
             </div>
             <div className="grid grid-cols-2 text-sm">
               <div className="flex items-center gap-2">
@@ -146,9 +200,9 @@ export const CreateDocument = () => {
           </div>
           <hr className="mt-3" />
         </div>
-        <div className="w-full">
-          <div id="editorjs" />
-        </div>
+      </div>
+      <div className="mt-2">
+        <Editor />
       </div>
       <div>
         <DocumentPermissionModal

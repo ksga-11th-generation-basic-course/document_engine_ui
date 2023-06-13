@@ -14,6 +14,7 @@ import {
 } from "../redux/service/authenticationService/authenticationService";
 import { useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
+import { verifySuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 
 const validate = (values) => {
   const errors = {};
@@ -23,13 +24,6 @@ const validate = (values) => {
   return errors;
 };
 export const VerifyOTP = () => {
-  const OTPauthentication = useSelector(
-    (state) => state.authentication.OTPauthentication
-  );
-
-  const authentication = useSelector(
-    (state) => state.authentication.authentication
-  );
 
   const navigate = useNavigate();
 
@@ -40,15 +34,23 @@ export const VerifyOTP = () => {
       OTP: Array.from({ length: 6 }).fill(""),
     },
     validate,
-    onSubmit: (values) => {
-      dispatch(verifyOTP(values.OTP.join("")));
+    onSubmit: async (values) => {
+      try {
+        const optCode = await verifyOTP(values.OTP.join(""));
+        dispatch(verifySuccess(optCode));
+        navigate("/signin");
+        localStorage.removeItem("email");
+      } catch (error) {
+        console.error("Verify failed:", error);
+      }
+      
     },
   });
   const inputRef = useRef({});
   useEffect(() => {
     inputRef.current[0].focus();
-    inputRef.current[0].addEventListener("pasts", pasteText);
-    // return () => inputRef.current[0].removeEventListener("pasts", pasteText);
+    inputRef.current[0].addEventListener("paste", pasteText);
+    // return () => inputRef.current[0].removeEventListener("paste", pasteText);
   }, []);
   const pasteText = (event) => {
     const pastedText = event.clipboard.getData("text");
@@ -97,18 +99,13 @@ export const VerifyOTP = () => {
     ));
   };
 
-  useEffect(() => {
-    if (OTPauthentication.email) {
-      navigate("/signin");
-    }
-  });
-
   const [resetCountdown, setResetCountdown] = useState(false);
 
   const handleTimeout = () => {};
 
   const handleResendCode = () => {
-    dispatch(resendVerifyCode(authentication.email));
+    const email = localStorage.getItem("email")
+    dispatch(resendVerifyCode(email));
     setResetCountdown(true);
   };
 
