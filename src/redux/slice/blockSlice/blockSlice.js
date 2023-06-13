@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { getBlockBydoucmentId } from "../../service/blockService/blockService";
 const initialState = {
     block: null,
+    blocks: null,
     loading: false,
     error: null,
 };
@@ -11,14 +12,29 @@ const blockSlice = createSlice({
     initialState,
     reducers: {
         createBlockSuccess: (state, action) => {
-            state.block.push(action.payload);
+            state.blocks.push(action.payload);
         },
         updateBlockSuccess: (state, action) => {
-            state.block.push(action.payload);
+            state.blocks.push(action.payload);
         }
     },
     extraReducers: (builder) => {
-        
+        builder.addCase(getBlockBydoucmentId.pending, (state) => {
+            state.loading = true;
+          });
+          builder.addCase(
+            getBlockBydoucmentId.fulfilled,
+            (state, action) => {
+              state.loading = false;
+              state.blocks = action.payload;
+              state.error = null;
+            }
+          );
+          builder.addCase(getBlockBydoucmentId.rejected, (state, action) => {
+            state.loading = true;
+            state.blocks = null;
+            state.error = action.error.message;
+          });
     },
 });
 export const { createBlockSuccess,updateBlockSuccess } = blockSlice.actions;
