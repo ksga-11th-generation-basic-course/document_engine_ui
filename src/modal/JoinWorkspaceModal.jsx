@@ -6,7 +6,7 @@ import join from "../assets/dashboard_image/join.svg";
 
 export const JoinWorkspaceModal = ({ visible, toggleVisible }) => {
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <button
         className="flex justify-center items-center text-18px font-semibold gap-x-2 border-[1px] border-accent px-5 py-2 rounded-lg text-primary md:px-2.5 md:py-1.5 md:text-12px"
         onClick={toggleVisible}

@@ -13,9 +13,9 @@ export const SideBarSettingWorkspace = ({
   return (
     <div className="space-y-3">
       <div className="flex justify-center p-5 rounded-tl-lg shadow-md">
-        <img src={logo} />
+        <img className="md:w-16" src={logo} />
       </div>
-      <div className="w-full px-3">
+      <div className="w-full px-3 md:p-0">
         <SettingWorkspace
           collaborator={collaborator}
           setCollaborator={setCollaborator}
@@ -23,7 +23,7 @@ export const SideBarSettingWorkspace = ({
           setSetting={setSetting}
         />
       </div>
-      <div className="w-full px-3">
+      <div className="w-full px-3 md:p-0">
         <CollaboratorOwner
           collaborator={collaborator}
           setCollaborator={setCollaborator}

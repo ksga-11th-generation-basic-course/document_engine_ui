@@ -7,7 +7,7 @@ import menu from '../assets/images/Dashboard/menu.svg'
 
 export const Root = () => {
 
-  const[open, setOpen] = useState(false);
+  const [open, setOpen] = useState(false);
   const [newWorkspace, setNewWorkspace] = useState(false);
 
   return (

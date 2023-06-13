@@ -21,6 +21,12 @@ export default {
 
       'sm': {'max': '639px'},
       // => @media (max-width: 639px) { ... }
+
+      'xs': {'max': '429px' },
+      // => @media (max-width: 414px) { ... }
+
+      '2xs': { 'max': '390px' },
+      // => @media (max-width: 390px) { ... }
     },
     extend: {
       fontFamily: {
@@ -41,7 +47,7 @@ export default {
         "bg-primary": "[#1E9CEF]",
         "text-primary": "#37352F",
         "text-accent": "#526581",
-        "btn-primary" : "#009AFF"
+        "btn-primary": "#009AFF"
       },
       fontSize: {
         "9px": "9px",

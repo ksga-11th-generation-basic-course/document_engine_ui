@@ -89,7 +89,7 @@ export const SideBar = ({
               Workspaces
             </span>
           </NavLink>
-          <div className="w-full border-[1px]"></div>
+          <div className="w-full md:text-center border-[1px]"></div>
           <NavLink
             to={"/document"}
             className={({ isActive }) =>

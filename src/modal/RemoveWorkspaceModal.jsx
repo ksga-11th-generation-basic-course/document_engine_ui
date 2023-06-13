@@ -10,18 +10,18 @@ export const RemoveWorkspaceModal = ({ removeWorkspace, setRemoveWorkspace }) =>
         open={removeWorkspace}
         onClickBackdrop={() => setRemoveWorkspace(!removeWorkspace)}
       >
-        <div className="w-[540px] bg-white rounded-lg p-3">
+        <div className="w-[540px] md:w-[430px] bg-white rounded-lg p-3 md:p-0">
           <div className="flex justify-end">
             <button
               type="button"
               onClick={() => setRemoveWorkspace(!removeWorkspace)}
             >
-              <img src={close} />
+              <img className="md:w-10 md:h-10 md:p-2" src={close} />
             </button>
           </div>
           <div className="px-14 space-y-5 text-accent">
             <div className="flex justify-center items-center">
-              <img src={romoveworkspace} />
+              <img className="md:w-20 md:h-20" src={romoveworkspace} />
             </div>
             <p className="font-normal text-accent text-18px text-center">
               Are you sure to remove this workspace?
