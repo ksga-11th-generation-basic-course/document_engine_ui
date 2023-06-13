@@ -49,10 +49,21 @@ export const Editor = () => {
       ]);
     }
   }
+  const blockToInsert = {
+    type: 'paragraph', // Example property
+    data: { // Example property
+      text: 'This is some sample text',
+      font: 'Arial',
+      fontSize: 14
+    }
+  };
+
   //Editor
   const editor = useBlockNote({
     onEditorContentChange: (editor) => {
+      // console.log(editor.insertBlocks(blockToInsert,k,"after"));
       // console.log(editor.topLevelBlocks);
+      // console.log(editor);
       const content = [];
       setBlock(content);
       for (let indexOfTopLevelBlocks = 0; indexOfTopLevelBlocks < editor.topLevelBlocks.length; indexOfTopLevelBlocks++) {
@@ -83,7 +94,7 @@ export const Editor = () => {
     <div>
       <input type="submit" value='click' onClick={handleCreateBlock} /><br/>
       <input type="submit" value='get' onClick={handleInsert} />
-      <BlockNoteView editor={editor} />
+      <BlockNoteView editor={editor} type={'heading'} text={'helo'}/>
     </div>
 
   )
