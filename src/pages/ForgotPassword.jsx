@@ -65,7 +65,7 @@ export const ForgotPassword = () => {
                                     type="text"
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 max-sm:appearance-none
-                                     max-sm:bg-transparent max-sm:border-none w-full text-[#9CA3AF] mr-3  leading-tight focus:outline-none md:text-sm md:h-[37px] "
+                                     max-sm:bg-transparent max-sm:border-none w-full mr-3  leading-tight focus:outline-none md:text-sm md:h-[37px] "
                                   />
                                 </div>
                                 <div className="mt-5">

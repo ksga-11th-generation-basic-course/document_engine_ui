@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { storage } from "../firebase/firebase.utils";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
+import 
 
 export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
   const [visible, setVisible] = useState(false);
@@ -264,7 +265,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
                           Your Profile
                         </p>
                         <span className="hidden md:inline-block md:-mt-1">
-                                {!openProfileSetting ? <img src={dropdown} className="md:mt-2 md:w-4 md:ml-24" onClick={()=> openProfileSetting(!openProfileSetting)}/> : null }
+                                {/* {!openProfileSetting ? <img src={dropdown} className="md:mt-2 md:w-4 md:ml-24" onClick={()=> openProfileSetting(!openProfileSetting)}/> : null } */}
                           </span>
                       </div> 
                     </button>
