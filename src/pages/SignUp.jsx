@@ -96,10 +96,12 @@ export const SignUp = () => {
   return (
     <div className="lg:bg-[#EDF9FF] flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
-        <img
-          src={Logo}
-          className=" absolute top-8 left-10 max-sm:left-3 max-sm:top-0 lg:-ml-9 md:w-[60px] md:h-[60px]"
-        />
+        <Link to={"/"}>
+                <img
+                  src={Logo}
+                  className=" absolute top-8 left-10 max-sm:left-3 max-sm:top-0 lg:-ml-9 md:w-[60px] md:h-[60px]"
+                />
+        </Link>
 
         {/*  Background Image */}
         <img

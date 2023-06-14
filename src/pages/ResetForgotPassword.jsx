@@ -54,7 +54,7 @@ export const ResetForgotPassword = () => {
   return (
     <div>
       <div className="flex justify-center items-center bg-[#EDF9FF] relative text-[#37352F]">
-        <img src={Logo} className="absolute top-10 left-10 md:w-[60px]" />
+        <Link to={"/"}><img src={Logo} className="absolute top-10 left-10 md:w-[60px]" /></Link>
         <div className="flex flex-row justify-center  items-center relative min-h-screen  overflow-hidden ">
           {/* <!-- component --> */}
           

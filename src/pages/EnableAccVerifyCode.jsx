@@ -15,6 +15,7 @@ import {
 } from "../redux/service/authenticationService/authenticationService";
 import { useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
+import { Link } from "react-router-dom";
 
 const validate = (values) => {
   const errors = {};
@@ -117,10 +118,12 @@ export const EnableAccVerifyCode = () => {
     <div className="bg-[#EDF9FF] h-screen  min-h-screen " >
     <div className="    px-2 justify-center items-center  text-accent">
       
-        <img
-          src={Logo}
-          className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10 lg:[50px] md:w-[60px] md:mr-24 "
-        />
+        <Link to={"/"}>
+              <img
+                src={Logo}
+                className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10 lg:[50px] md:w-[60px] md:mr-24 "
+              />
+        </Link>
         <div className=" flex justify-center items-center  relative overflow-hidden">
         {/* Image Background */}
         <img

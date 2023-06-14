@@ -25,7 +25,7 @@ export const SendMessageSuccessModal = ({
             <div className="flex justify-center items-center">
               <img src={sendMessageSuccess} className="md:w-16"/>
             </div>
-            <p className="font-normal text-accent text-22px leading-7 py-3 text-center md:text-16px">
+            <p className="font-normal text-accent text-22px leading-7 py-3 text-center md:text-14px md:leading-6">
                         Thank you for reaching out to us! We have received your message and will get back to you as soon as possible. 
             </p>
 

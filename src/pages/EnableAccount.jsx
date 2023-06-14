@@ -1,16 +1,23 @@
 import React from "react";
 import Logo from "../assets/images/Logo.svg";
 import EnablePic from "../assets/images/EnableAcc.svg";
+import { Link } from "react-router-dom";
 export default function EnableAccount() {
   return (
     <div>
       <div className="flex justify-center items-center bg-[#EDF9FF] relative text-[#37352F]">
-        <img src={Logo} className="absolute top-10 left-10 max-sm:top-32 md:w-[60px]" />
+      <Link to={"/"}>
+                <img
+                  src={Logo}
+                  className="absolute top-10 left-10 max-sm:top-32 md:w-[60px]"
+                />
+        </Link>
+
         <div className="flex flex-row justify-center  items-center relative min-h-screen  overflow-hidden">
           {/* Background Image */}
           <div className="w-full bg-cover relative max-w-md lg:hidden lg:w-[12px]">
             <div className="flex flex-col items-center max justify-center h-full relative ">
-              <img src={EnablePic} class="max-sm:w-13 " />
+              <img src={EnablePic} className="max-sm:w-13 "/>
             </div>
           </div>
 

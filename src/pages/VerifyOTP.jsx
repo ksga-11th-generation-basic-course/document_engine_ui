@@ -14,6 +14,7 @@ import {
 } from "../redux/service/authenticationService/authenticationService";
 import { useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
+import { Link } from "react-router-dom";
 
 const validate = (values) => {
   const errors = {};
@@ -115,10 +116,12 @@ export const VerifyOTP = () => {
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
-        <img
-          src={Logo}
-          className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10 lg:-ml-9 md:w-[50px] md:mr-24 "
-        />
+        <Link to={"/"}>
+            <img
+              src={Logo}
+              className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10 lg:-ml-9 md:w-[50px] md:mr-24 "
+            />
+        </Link>
         {/* Image Background */}
         <img
           className="w-[500px] h-[700.16px] pt-16 mr-5 max-sm:hidden lg:hidden  md:hidden"
