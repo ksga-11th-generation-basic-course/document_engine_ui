@@ -100,8 +100,7 @@ export const CreateDocument = () => {
         dispatch(updateDocumentSuccess(document));
       }
       handleUpdateDocument();
-      console.log('successfully');
-    }, 3000);
+    }, 2000);
     setTimerId(newTimerId);
   }
 

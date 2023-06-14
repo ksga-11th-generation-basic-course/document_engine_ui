@@ -20,7 +20,6 @@ export const Editor = () => {
   useEffect(() => {
     dispatch(getBlockBydoucmentId(documentId));
   }, [])
-  // console.log(blockData);
 
   // Store data to localstorage
   const data = block;
@@ -37,33 +36,41 @@ export const Editor = () => {
       const types = blocks.filter(obj => obj.type).map(obj => obj.type);
       const type = types[index]
       const response = await createBlock(type, text, documentId);
-      const success = dispatch(createBlockSuccess(response));
     }
   }
 
-  function handleInsert() {
-    if (editor) {
-      editor.insertBlocks([
-        { type: 'paragraph', text: 'New paragraph' },
-        { type: 'heading', level: 3, text: 'New heading' },
-      ]);
-    }
-  }
-  const blockToInsert = {
-    type: 'paragraph', // Example property
-    data: { // Example property
-      text: 'This is some sample text',
-      font: 'Arial',
-      fontSize: 14
-    }
-  };
+  const initialContent = [
+    {
+    },
+  ];
 
+  for (let i = 0; i < blockData.length; i++) {
+    const element = blockData[i];
+    const block = {
+      id: "d16e6bf9-7bdf-4225-8c6e-8a5470b85481",
+      type: "paragraph",
+      props: {
+        textColor: "default",
+        backgroundColor: "default",
+        textAlignment: "left",
+      },
+      content: [
+        {
+          type: "text",
+          text: element.content.text,
+          styles: {},
+        },
+      ],
+      children: [],
+    }
+    initialContent.push(block)
+  }
+  
   //Editor
   const editor = useBlockNote({
+    initialContent: initialContent,
     onEditorContentChange: (editor) => {
-      // console.log(editor.insertBlocks(blockToInsert,k,"after"));
-      // console.log(editor.topLevelBlocks);
-      // console.log(editor);
+      console.log(editor.topLevelBlocks);
       const content = [];
       setBlock(content);
       for (let indexOfTopLevelBlocks = 0; indexOfTopLevelBlocks < editor.topLevelBlocks.length; indexOfTopLevelBlocks++) {
@@ -71,12 +78,13 @@ export const Editor = () => {
         for (let indexOfContent = 0; indexOfContent < element.content.length; indexOfContent++) {
           const type = element.type
           const text = element.content[0].text;
+          const typeContent = element.content[0].type
           const level = element.props.level;
           if (type == 'heading') {
-            const dataOfContent = { type: type, text: text, level: level };
+            const dataOfContent = { type: type, typeContent:typeContent, text: text, level: level };
             content.push(dataOfContent);
           } else {
-            const dataOfContent = { type: type, text: text };
+            const dataOfContent = { type: type, typeContent:typeContent, text: text };
             content.push(dataOfContent);
           }
         }
@@ -93,8 +101,7 @@ export const Editor = () => {
   return (
     <div>
       <input type="submit" value='click' onClick={handleCreateBlock} /><br/>
-      <input type="submit" value='get' onClick={handleInsert} />
-      <BlockNoteView editor={editor} type={'heading'} text={'helo'}/>
+      <BlockNoteView editor={editor}/>
     </div>
 
   )

@@ -12,7 +12,7 @@ import grid from "../assets/document_image/grid.svg";
 import { DocumentCard } from "../components/card/DocumentCard";
 import { DocumentList } from "../components/card/DocumentList";
 import { DropDownWorkspaceSetting } from "../components/DropDownWorkspaceSetting";
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
 import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
@@ -21,6 +21,7 @@ import setting from "../assets/document_image/settings.svg";
 import group from "../assets/document_image/group.svg";
 import { Checkbox, Dropdown, Radio } from "react-daisyui";
 import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
+import { toast } from "react-toastify";
 export const Document = () => {
   const [openSort, setOpenSort] = useState(false);
 
@@ -46,16 +47,31 @@ export const Document = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [documentId, setDocumentId] = useState();
+  const navigate = useNavigate();
+
   useEffect(() => {
     dispatch(getAllDocumentInEachWorkspace(workspaceId));
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
   }, []);
+
 
   const now = new Date();
   const currentDateTime = now.toISOString();
   const handleCreateDocument = async () => {
     const document = await createDocument("Untitle", false, currentDateTime, null, workspaceId);
     dispatch(createDocumentSuccess(document));
+        navigate(`/createdocument/${document.documentId}`);
+      toast.success("Create Document Successfully", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
   }
 
   return (
@@ -73,13 +89,13 @@ export const Document = () => {
           <img src={documenticon} className="p-2 shadow-md rounded-lg" />
           <p className="font-semibold text-20px">Documents</p>
         </div>
-        <Link
+        <button
+        type="button"
           onClick={handleCreateDocument}
-          to={"/createdocument"}
           className="font-semibold bg-primary px-5 py-3 rounded-lg text-white"
         >
           Create Document
-        </Link>
+        </button>
       </div>
       <div className="grid grid-cols-12">
         <div className="col-span-4 flex items-center gap-x-5 h-11">

@@ -111,14 +111,6 @@ function App() {
               // </ProtectedRoute>
             }
           />
-          <Route
-            path="/createdocument"
-            element={
-              // <ProtectedRoute>
-                <CreateDocument />
-              // </ProtectedRoute>
-            }
-          />
         </Route>
 
         <Route path="*" element={<NotFound />} />
