@@ -7,6 +7,8 @@ import avatar from "../assets/dashboard_image/avatar.svg";
 import trush from "../assets/dashboard_image/trush.svg";
 import google from "../assets/dashboard_image/google.svg";
 import advance from "../assets/dashboard_image/advance.png";
+import dropdown from "../assets/images/popUp/dropdown.svg";
+import reverse_dropdown from "../assets/images/popUp/reverse_dropdown.svg";
 import { SignOutModal } from "./SignOutModal.jsx";
 import { DeleteProfileModal } from "./DeleteProfileModal";
 import { CloseAccountModal } from "./CloseAccountModal";
@@ -17,7 +19,6 @@ import { useDispatch } from "react-redux";
 import { storage } from "../firebase/firebase.utils";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
-import 
 
 export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
   const [visible, setVisible] = useState(false);
