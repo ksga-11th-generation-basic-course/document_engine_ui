@@ -61,17 +61,17 @@ export const Document = () => {
   const handleCreateDocument = async () => {
     const document = await createDocument("Untitle", false, currentDateTime, null, workspaceId);
     dispatch(createDocumentSuccess(document));
-        navigate(`/createdocument/${document.documentId}`);
-      toast.success("Create Document Successfully", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+    navigate(`/createdocument/${document.documentId}`);
+    toast.success("Create Document Successfully", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
   }
 
   return (
@@ -90,7 +90,7 @@ export const Document = () => {
           <p className="font-semibold text-20px">Documents</p>
         </div>
         <button
-        type="button"
+          type="button"
           onClick={handleCreateDocument}
           className="font-semibold bg-primary px-5 py-3 rounded-lg text-white"
         >

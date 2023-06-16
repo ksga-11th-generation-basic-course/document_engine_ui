@@ -92,6 +92,28 @@ export const createDocument = async (title,status,createDate,pageId,workspaceId)
   }
 };
 
+export const duplicateDocument = async (documentId) => {
+  try {
+    const response = await api.post(
+      `documents/${documentId}/duplicate`,
+      {
+        documentId:documentId
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      }
+    );
+    console.log(response.data.payload);
+    return response.data.payload;
+  } catch (error) {
+    console.log(error)
+    throw error.response.data.detail;
+  }
+};
+
 export const updateDocument = async (documentId,title) => {
   try {
     const response = await api.put(

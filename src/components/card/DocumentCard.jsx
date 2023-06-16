@@ -13,6 +13,9 @@ import { DeleteDocumentModal } from "../../modal/DeleteDocumentModal";
 import { DropDownDocument } from "../../components/DropDownDocument";
 import { useNavigate } from "react-router-dom";
 import { Dropdown } from "react-daisyui";
+import { useDispatch } from "react-redux";
+import { duplicateDocument } from "../../redux/service/documentService/documentService";
+import { toast } from "react-toastify";
 
 export const DocumentCard = ({ document }) => {
   const navigate = useNavigate();
@@ -22,13 +25,46 @@ export const DocumentCard = ({ document }) => {
   const [documentId, setdocumentId] = useState();
 
   const handleNavigate = () => {
-    navigate(`/createdocument/${document.documentId}`);
+    setTimeout(()=>{
+      navigate(`/createdocument/${document.documentId}`);
+    },1000)
   };
 
   const handleRemoveDocument = () => {
     setDeleteDocument(!deleteDocument);
     setdocumentId(document.documentId);
   };
+
+  console.log(document.documentId);
+
+  const handleDuplicateDocument=async()=>{
+    try{
+      const duplicate = await duplicateDocument('b4222747-a02e-49e0-a683-3e7d991aa81d')
+    toast.success("Duplicate Document Successfully", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    }catch{
+      toast.error("Duplicate Document failed", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
+    
+  }
+
 
   return (
     <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-4 space-y-3">
@@ -74,7 +110,7 @@ export const DocumentCard = ({ document }) => {
                   <img src={history} />
                   <span>Document History</span>
                 </Dropdown.Item>
-                <Dropdown.Item>
+                <Dropdown.Item onClick={handleDuplicateDocument}>
                   <img src={duplicate} />
                   <span>Duplicate </span>
                 </Dropdown.Item>
