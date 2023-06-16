@@ -13,7 +13,7 @@ import { Footer } from "../components/Footer.jsx";
 
 export const Landing = () => {
   return (
-    <div>
+    <div className="bg-white">
       <NavBar />
       <div className="pt-32  px-20 md:pt-20 lg:p-8 lg:pt-32 md:p-0">
         {/* All document */}
