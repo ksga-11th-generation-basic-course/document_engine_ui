@@ -5,7 +5,7 @@ import chevrondown from "../../assets/workspace_image/chevrondown.svg";
 import { DropWorkspaceEdit } from "../DropWorkspaceEdit";
 import { RemoveMemberModal } from "../../modal/RemoveMemberModal";
 import dotmenu from "../../assets/dashboard_image/dotmenu.png";
-import { DropDownDocument2 } from "../DropDownDocument2";
+import { DropDownCollaborator } from "../DropDownCollaborator";
 
 export const MemberWorkspaceCard = ({
   username,
@@ -55,7 +55,7 @@ export const MemberWorkspaceCard = ({
             <button type="button" onClick={() => setOpen(!open)}>
               <img src={dotmenu} className="md:w-6 md:h-6 md:-mt-6" />
             </button>
-            {open ? <DropDownDocument2 open={open} setOpen={setOpen} /> : null}
+            {open ? <DropDownCollaborator open={open} setOpen={setOpen} /> : null}
           </div> : null  
         }
 

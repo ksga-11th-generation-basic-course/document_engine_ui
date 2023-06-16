@@ -55,7 +55,7 @@ export const Workspace = () => {
 
       <div className="grid grid-cols-12 mt-7 md:mt-3">
         {/* Sort */}
-        <div className="-mt-1 col-span-4 gap-x-2 lg:col-span-6  flex items-center lg:w-72 md:w-36 md:col-span-6">
+        <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center lg:w-72 md:w-36 md:col-span-6">
           <div className="flex items-center gap-x-2">
             <img src={sort} className="w-7 h-7 md:w-6 md:h-8" />
             <h4 className="font-semibold text-20px md:text-16px md:hidden">Sort: </h4>

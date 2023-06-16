@@ -8,7 +8,7 @@ export const DocumentCard = ({ title, status, editdate, header, text }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-3 space-y-3 2xl:p-0 2xl:px-3 2xl:py-1 2xl:space-y-1">
+    <div className="shadow-custom hover:shadow-hover rounded-lg text-black cursor-pointer p-3 space-y-3 2xl:p-0 2xl:px-3 2xl:py-1 2xl:space-y-1">
       <div className="flex justify-between items-center">
         <h4 className="font-semibold text-20px line-clamp-1 2xl:text-18px">{title}</h4>
         {status ? (

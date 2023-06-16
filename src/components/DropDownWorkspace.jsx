@@ -13,7 +13,7 @@ export const DropDownWorkspace = ({ open, setOpen }) => {
       {open && (
         <div className="fixed inset-0" onClick={() => setOpen(!open)}></div>
       )}
-      <div className="absolute right-0 p-2 md:p-0 w-[200px] md:w-[160px] text-accent rounded-lg shadow-custom hover:shadow-hover bg-white">
+      <div className="absolute right-0 px-2 md:p-0 w-[200px] md:w-[160px] text-accent rounded-lg shadow-custom hover:shadow-hover bg-white">
         <div className="flex flex-col gap-y-5">
           <div className="flex flex-col gap-y-0.5 py-2 md:ml-1 md:px-2">
             <Link

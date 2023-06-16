@@ -26,7 +26,7 @@ export const WorkspaceSettingModal = ({
         open={openWorkspaceSetting}
         onClickBackdrop={() => setOpenWorkspaceSetting(!openWorkspaceSetting)}
       >
-        <div className="w-[1200px] h-[810px] lg:w-[770px] lg:h-[850px] md:w-[390px] md:h-[650px] bg-white rounded-lg grid grid-cols-12 relative lg:rounded-none">
+        <div className="shadow-custom w-[1200px] h-[810px] lg:w-[770px] lg:h-[850px] md:w-[390px] md:h-[650px] bg-white rounded-lg grid grid-cols-12 relative lg:rounded-none">
           <div className="col-span-3 rounded-lg lg:hidden md:hidden">
             <SideBarSettingWorkspace
               collaborator={collaborator}
@@ -48,7 +48,7 @@ export const WorkspaceSettingModal = ({
               }
 
               {open ? 
-                  <div className="hidden lg:inline-block lg:z-10 lg:absolute lg:ml-[205px] lg:-mt-2  md:w-full md:ml-[145px]">
+                  <div className="hidden lg:inline-block lg:z-20 lg:absolute lg:ml-[205px] lg:-mt-2  md:w-full md:ml-[145px]">
                   <div className="hidden lg:inline-block">
                     <button type="button" onClick={() => setOpen(!open)}>
                       <img src={close} className="w-7 md:w-5" />
@@ -58,7 +58,7 @@ export const WorkspaceSettingModal = ({
             }
 
               {open ? (
-                <span className="hidden lg:inline-block lg:absolute lg:-mt-[18px]">
+                <span className="hidden lg:z-10 lg:inline-block lg:absolute lg:-mt-[18px]">
                   <SideBarSettingWorkspace
                     collaborator={collaborator}
                     setCollaborator={setCollaborator}

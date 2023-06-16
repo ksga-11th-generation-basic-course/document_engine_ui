@@ -34,9 +34,9 @@ export const Document = () => {
         <p className="text-accent text-18px 2xl:text-15px">
           Welcome to React & NodeJS workspace
         </p>
-        <div className="flex justify-between items-center pt-1 xs:pt-5 2xs:pt-5">
+        <div className="flex justify-between items-center pt-1 xs:pt-5 2xs:pt-5 mt-5">
           <div className="flex items-center gap-x-3 2xl:gap-x-2">
-            <img src={documenticon} className="p-2 lg:w-7 2xs:w-7 2xs:p-1 sm:w-8 shadow-md rounded-lg md:w-7 md:p-1.5" />
+            <img src={documenticon} className="p-2 lg:w-7 2xs:w-7 2xs:p-1 sm:w-8 shadow-custom rounded-lg md:w-7 md:p-1.5" />
             <p className="font-semibold text-20px 2xs:text-18px sm:text-18px md:text-18px">Documents</p>
           </div>
           <Link
@@ -46,53 +46,62 @@ export const Document = () => {
             Create Document
           </Link>
         </div>
-        <div className="grid grid-cols-12 pt-2 xs:gap-x-5 gap-x-3 2xl:gap-x-2 md:gap-x-8 sm:gap-x-5 2xs:gap-x-3 lg:gap-x-2">
-          <div className="col-span-4 grid grid-cols-3 xs:grid-cols-4 2xs:grid-cols-4 lg:grid-cols-3 justify-between items-center gap-x-3 h-11 sm:col-span-6 xs:gap-x-0 md:col-span-6 xs:col-span-6 2xs:col-span-6">
-            <div className="col-span-1 gap-x-1 2xs:col-span-1 xs:col-span-1 lg:col-span-1 xs:gap-x-3 flex">
-              <img src={sort} className="w-7 h-7 sm:hidden md:w-5" />
-              <h4 className="font-semibold text-20px xs:text-16px sm:text-16px md:text-16px lg:text-18px">Sort: </h4>
-            </div>
-            <div className="relative col-span-2 lg:col-span-2 2xs:col-span-3 xs:col-span-3">
-              <button
-                className="flex items-center justify-between sm:gap-10 xs:gap-2 p-1.5 xs:p-1 sm:p-1 border-2 rounded-lg xl:w-44 sm:w-44 xl:gap-x-0 xs:w-36 md:w-52 lg:w-full 2xl:gap-0 2xl:w-full 2xs:w-full"
-                onClick={() => setOpenSort(!openSort)}
-              >
-                <p className="text-18px text-black xs:text-16px sm:text-16px md:text-16px">Last Update</p>
-                <img src={chevrondown} className="" />
-              </button>
-              <div>
-                {openSort ? (
-                  <DropDownSort openSort={openSort} setOpenSort={setOpenSort} />
-                ) : null}
-              </div>
+
+
+        <div className="grid grid-cols-12 mt-5 md:mt-3">
+        {/* Sort */}
+        <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center lg:w-72 md:w-36 md:col-span-6">
+          <div className="flex items-center gap-x-2">
+            <img src={sort} className="w-7 h-7 md:w-6 md:h-8" />
+            <h4 className="font-semibold text-20px md:text-16px md:hidden">Sort: </h4>
+          </div>
+          <div className="relative lg:inline-block">
+            <button
+              className="flex items-center gap-x-20 lg:gap-x-14 md:gap-x-1"
+              onClick={() => setOpenSort(!openSort)}
+            >
+              <p className="text-20px md:text-14px  text-accent">Last Update</p>
+              <img className="mt-1 md:w-4 md:h-4 md:ml-4" src={chevrondown} />
+            </button>
+            <div className="md:absolute md:z-20">
+              {openSort ? (
+                <DropDownSort openSort={openSort} setOpenSort={setOpenSort} />
+              ) : null}
             </div>
           </div>
-          <div className="col-span-4 grid grid-cols-3 xs:grid-cols-4 2xs:grid-cols-4 lg:grid-cols-3 justify-between items-center gap-x-3 h-11 sm:col-span-6 xs:gap-x-0 md:col-span-6 xs:col-span-6 2xs:col-span-6">
-            <div className="col-span-1 lg:col-span-1 flex items-center gap-x-2">
-              <img src={filter} className="w-7 h-7 sm:hidden md:w-5" />
-              <h4 className="font-semibold text-20px xs:text-16px sm:text-16px md:text-16px lg:text-18px">Filter: </h4>
-            </div>
-            <div className="relative col-span-2 lg:col-span-2 xs:col-span-3">
-              <button
-                className="flex items-center justify-between sm:gap-10 xs:gap-2 p-1.5 xs:p-1 sm:p-1 border-2 rounded-lg w-44 xl:w-44 sm:w-44 xl:gap-x-0 xs:w-full md:w-52 2xs:w-full lg:w-full 2xl:w-full"
-                onClick={() => setOpenFilter(!openFilter)}
-              >
-                <p className="text-18px text-black xs:text-16px sm:text-16px md:text-16px">Product</p>
-                <img src={chevrondown} className="" />
-              </button>
-              <div>
-                {openFilter ? (
-                  <DropDownFilterDocument
-                    openFilter={openFilter}
-                    setOpenFilter={setOpenFilter}
-                  />
-                ) : null}
-              </div>
+        </div>
+
+        {/* Filter */}
+        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:w-80 lg:ml-5 md:w-40 md:ml-0">
+          <div className="flex items-center gap-x-3">
+            <img src={filter} className="w-7 h-7 md:w-4 md:h-4" />
+            <h4 className="font-semibold text-20px md:text-16px md:hidden">Filter: </h4>
+          </div>
+          <div className="relative">
+            <button
+              className="flex items-center gap-x-20 lg:gap-x-12 md:gap-x-1"
+              onClick={() => setOpenFilter(!openFilter)}
+            >
+              <p className="text-20px md:text-14px text-accent">
+                Product
+              </p>
+              <img className="mt-1 md:w-4 md:h-4 md:ml-4" src={chevrondown} />
+            </button>
+            <div className="z-20">
+              {openFilter ? (
+                <DropDownFilterDocument
+                  openFilter={openFilter}
+                  setOpenFilter={setOpenFilter}
+                />
+              ) : null}
             </div>
           </div>
+        </div>
+
+        {/* Option Document */}
           <div className="col-span-4 flex items-center justify-end sm:col-span-12 sm:h-11 md:col-span-12 md:h-11 md:pt-4 2xs:col-span-12">
             {openSearch ? (
-              <div className="flex justify-end items-center relative">
+              <div className="flex justify-end items-center absolute">
                 {openSearch ? (
                   <input
                     type="text"
@@ -102,7 +111,7 @@ export const Document = () => {
                 ) : null}
                 <button
                   type="button"
-                  className="absolute mr-2 top-3"
+                  className="absolute mr-2"
                   onClick={() => setOpenSearch(!openSearch)}
                 >
                   <img src={search} />
@@ -159,6 +168,8 @@ export const Document = () => {
           </div>
         </div>
       </div>
+
+      {/* Card Document */}
       {openGrid ? (
         <div className="grid grid-cols-12 gap-8">
           <div className="col-span-4 sm:col-span-6 xs:col-span-12">

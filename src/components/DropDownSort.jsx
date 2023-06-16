@@ -6,7 +6,7 @@ export const DropDownSort = ({ openSort, setOpenSort }) => {
       {openSort && (
         <div className="fixed inset-0" onClick={() => setOpenSort(!openSort)}></div>
       )}
-      <div className="absolute left-0 mt-1 w-full text-accent rounded-lg shadow-md bg-white xs:w-36 md:w-52 2xs:w-32 md:text-12px">
+      <div className="text-18px absolute left-0 mt-1 w-full text-accent rounded-lg shadow-md bg-white xs:w-36 md:w-52 2xs:w-32 md:text-12px">
         <div className="flex items-center xs:justify-start xs:px-0 xs:pl-4 xs:py-2 px-6 gap-x-4 bg-[#FAFAF9] border-b-[1px] py-3 xs:gap-x-2 rounded-t-lg xs:w-36 md:w-52 2xs:w-32 lg:px-0 lg:pl-4 lg:py-2 lg:justify-start lg:gap-x-2">
           <input
             type="radio"
