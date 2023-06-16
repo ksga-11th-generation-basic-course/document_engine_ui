@@ -6,7 +6,7 @@ import closeaccount from "../assets/dashboard_image/closeaccount.svg";
 export const CloseAccountModal = ({ closeAccount, setCloseAccount }) => {
   return (
     <div className="w-full">
-      <Modal open={closeAccount} onClickBackdrop={() => closeAccount(!closeAccount)}>
+      <Modal open={closeAccount} onClickBackdrop={() => setCloseAccount(!closeAccount)}>
         <div className="w-[540px] bg-white rounded-lg p-3 md:w-[300px]">
           <div className="flex justify-end">
             <button

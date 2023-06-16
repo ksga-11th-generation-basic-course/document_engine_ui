@@ -1,55 +1,46 @@
-import React from 'react'
+import React from "react";
+import { Modal } from "react-daisyui";
+import close from "../assets/dashboard_image/close.svg";
+import deleteprofile from "../assets/dashboard_image/deleteprofile.svg";
 
-import DeleteProfile from '../assets/reset_pw_popup/deleteProfile.svg'
-import CloseIcon from '../assets/reset_pw_popup/closeIcon.svg'
-
-function DeleteWorkspacePhotoModal() {
-    return (
-        <div>
-
-            <div className="relative z-10" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-
-                <div className="fixed inset-0 bg-gray-200 bg-opacity-70 transition-opacity"></div>
-
-
-
-                <div className="fixed inset-0 z-10 overflow-y-auto">
-
-                    <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-
-                        <div className=" relative transform overflow-hidden rounded-lg bg-white text-left lg:shadow-xl transition-all sm:my-12 sm:w-full sm:max-w-lg ">
-                            <div className='flex justify-end pt-4  pr-4'>
-                                <img src={CloseIcon} alt="" className='' />
-                            </div>
-                            <div className='flex flex-col justify-center items-center px-4 '>
-                                <img src={DeleteProfile} alt="" className='md:w-16' />
-                            </div>
-                            <form className="bg-white px-4 pb-4 sm:p-6 sm:pb-4 mt-4">
-                                <div className="sm:flex justify-center">
-                                    <div className="mt-2 text-center  sm:mt-0 sm:text-left">
-                                        <h3 className=" text-baseleading-12 text-[#6B7280] flex justify-center font-normal" id="modal-title">Are you sure want to delete your
-                                            workspace photo?</h3>
-
-                                    </div>
-                                </div>
-                            </form>
-
-                            <div className='mt-4 ml-2 flex justify-center'>
-                                <button type="button" class="mr-4 text-black bg-[#FFFFFF] border focus:outline-none  font-medium rounded-lg text-sm px-8 py-2.5  text-center inline-flex items-center dark:focus:ring-[#3b5998]/55 mr-2 mb-10">
-                                    No, cancel
-                                </button>
-                                <button type="button" class="text-white bg-[#FF5658] hover:bg-[#FF5659]/90 focus:outline-none  font-medium rounded-lg text-sm px-9 py-2.5 text-center inline-flex items-center dark:focus:ring-[#1da1f2]/55 mr-2 mb-10">
-                                    Remove
-                                </button></div>
-                            {/* flex-row-reverse rounded-md bg-[#1E9CEF] px-36 py-3 text-sm font-semibold text-white  hover:bg-blue-500 sm:ml-3 sm:w-auto */}
-                        </div>
-                    </div>
-                </div>
+export const DeleteWorkspacePhotoModal = ({
+  removePhoto,
+  setRemovePhoto,
+}) => {
+  return (
+    <div className="w-full">
+      <Modal open={removePhoto} onClickBackdrop={() => setRemovePhoto(!removePhoto)}>
+        <div className="w-[540px] bg-white rounded-lg p-3 md:w-[330px]">
+          <div className="flex justify-end">
+            <button
+              type="button"
+              onClick={() => setRemovePhoto(!removePhoto)}
+            >
+              <img src={close} className="md:w-6"/>
+            </button>
+          </div>
+          <div className="px-14 space-y-5 text-accent md:px-5">
+            <div className="flex justify-center items-center">
+              <img src={deleteprofile} className="md:w-16"/>
             </div>
+            <p className="font-normal text-accent text-22px text-center md:text-16px">
+                    Are you sure want to delete your workspace photo?
+            </p>
 
-
+            <div className="flex justify-center items-center gap-5 text-18px font-semibold pb-5 md:text-14px">
+              <button
+                className="px-10 py-3 border-[1px] rounded-lg md:px-4 md:py-2.5"
+                onClick={() => setRemovePhoto(!removePhoto)}
+              >
+                No, cancel
+              </button>
+              <button className="bg-red-500 text-white  px-10 py-3 rounded-lg md:px-5 md:py-2.5">
+                Remove
+              </button>
+            </div>
+          </div>
         </div>
-    )
-}
-
-export default DeleteWorkspacePhotoModal
+      </Modal>
+    </div>
+  );
+};

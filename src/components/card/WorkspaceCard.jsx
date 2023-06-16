@@ -12,29 +12,31 @@ export const WorkspaceCard = ({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="shadow-md rounded-lg text-accent cursor-pointer sm:w-[300px]">
-      <div className="flex justify-between items-center p-3">
-        <h4 className="font-semibold text-18px">{workspacename}</h4>
+    <div className="shadow-custom rounded-lg text-accent cursor-pointer hover:shadow-hover">
+      <div className="flex  justify-between p-3">
+        <h4 className="font-semibold text-20px md:text-16px">{workspacename}</h4>
         {isOwner ? (
-          <p className="border-[1px] rounded-full px-3">Owner</p>
+          <p className="text-primary px-3 text-16px md:text-14px">Owner</p>
         ) : null}
       </div>
       <div>
-        <img src={workspacephoto} />
+        <img src={workspacephoto} className="w-fit"/>
       </div>
       <div className="flex justify-between items-center p-3">
         <div>
-          <h3 className="font-semibold text-18px">{total} Documents</h3>
-          <p className="text-14px">
+          <h3 className="font-semibold text-18px md:text-14px">{total} Documents</h3>
+          <p className="text-14px md:text-10px">
             Create date: <span>{createdate}</span>
           </p>
         </div>
-        <div className="relative">
-          <button type="button" onClick={() => setOpen(!open)}>
-            <img src={dotmenu} className="w-8 h-8" />
-          </button>
-          {open ? <DropDownWorkspace open={open} setOpen={setOpen} /> : null}
-        </div>
+       {isOwner ? 
+       <div className="relative">
+       <button type="button" onClick={() => setOpen(!open)}>
+         <img src={dotmenu} className="w-9 h-9" />
+       </button>
+       {open ? <DropDownWorkspace open={open} setOpen={setOpen} /> : null}
+     </div> : null
+      }
       </div>
     </div>
   );

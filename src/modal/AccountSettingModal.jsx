@@ -31,7 +31,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting }) => {
       <Modal open={openSetting}>
         <div className="w-[1200px] h-[840px] bg-white rounded-lg grid grid-cols-12 lg:w-[680px] lg:h-[900px] md:w-[350px] md:h-[630px]">
           {/* Sidebar */}
-          <div className="col-span-3 bg-[#FAFAF9] rounded-lg space-y-5 lg:hidden">
+          <div className="col-span-3  rounded-lg space-y-5 lg:hidden">
             <div className="flex justify-center p-5 rounded-tl-lg shadow-md">
               <img src={logo} />
             </div>

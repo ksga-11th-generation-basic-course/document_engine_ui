@@ -4,6 +4,8 @@ import pencil from "../../assets/workspace_image/pencil.svg";
 import chevrondown from "../../assets/workspace_image/chevrondown.svg";
 import { DropWorkspaceEdit } from "../DropWorkspaceEdit";
 import { RemoveMemberModal } from "../../modal/RemoveMemberModal";
+import dotmenu from "../../assets/dashboard_image/dotmenu.png";
+import { DropDownDocument2 } from "../DropDownDocument2";
 
 export const MemberWorkspaceCard = ({
   username,
@@ -25,37 +27,50 @@ export const MemberWorkspaceCard = ({
     "bg-purple-500",
   ];
 
+  const [open, setOpen] = useState(false);
+
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
   return (
     <div>
       <div className="flex justify-between items-center w-full space-y-4">
-        <div className="flex justify-center items-center gap-x-3">
+        <div className="flex justify-center items-center gap-x-3 md:gap-x-2.5">
           <div
-            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full`}
+            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full md:w-6 md:h-6`}
           >
-            <p className="font-semibold text-18px text-white">{character[0]}</p>
+            <p className="font-semibold text-18px text-white md:text-12px">{character[0]}</p>
           </div>
-          <h3 className="font-semibold text-18px">
+          <h3 className="font-semibold text-18px md:text-15px">
             {username} {currentuser ? <span>(You)</span> : null}
           </h3>
           {isOwner ? (
-            <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg">
+            <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg md:text-12px">
               Owner
             </span>
           ) : null}
         </div>
+
+        {!isOwner ? 
+            <div className="hidden md:inline-block md:relative">
+            <button type="button" onClick={() => setOpen(!open)}>
+              <img src={dotmenu} className="md:w-6 md:h-6 md:-mt-6" />
+            </button>
+            {open ? <DropDownDocument2 open={open} setOpen={setOpen} /> : null}
+          </div> : null  
+        }
+
+
         {!status ? (
-          <div className="flex justify-center items-center gap-x-4 md:gap-x-2">
+          <div className="flex justify-center items-center gap-x-4 md:hidden">
             <div className="relative">
               <button
                 type="button"
-                className="text-18px md:text-16px md:gap-x-1 md:px-2 border-[1px] rounded-lg px-3 py-1 flex justify-center items-center gap-x-2"
+                className="text-18px md:text-12px md:gap-x-1 md:px-2 border-[1px] rounded-lg px-3 py-1 flex justify-center items-center gap-x-2"
                 onClick={() => setOpenEditor(!openEditor)}
               >
-                <img className="w-4" src={pencil} />
+                <img className="w-4 md:w-3" src={pencil} />
                 <p>Editor</p>
-                <img className="md:w-4" src={chevrondown} />
+                <img className="md:w-3" src={chevrondown} />
               </button>
               <div>
                 {openEditor ? (
@@ -71,7 +86,7 @@ export const MemberWorkspaceCard = ({
               className="px-3 py-2 md:p-1.5 border-[1px] rounded-lg"
               onClick={() => setRemoveMember(!removeMember)}
             >
-              <img src={trush} />
+              <img src={trush} className="md:w-2.5"/>
             </button>
           </div>
         ) : null}

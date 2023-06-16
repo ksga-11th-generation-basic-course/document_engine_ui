@@ -4,7 +4,6 @@ import chevrondown from "../assets/workspace_image/chevrondown.svg";
 import filter from "../assets/workspace_image/filter.svg";
 import search from "../assets/workspace_image/search.svg";
 import { DropDownSort } from "../components/DropDownSort";
-import { DropDownFilter } from "../components/DropDownFilter";
 import documenticon from "../assets/document_image/documenticon.svg";
 import bulletlist from "../assets/document_image/bulletlist.svg";
 import dotshorizontal from "../assets/document_image/dotshorizontal.svg";
@@ -13,6 +12,7 @@ import { DocumentCard } from "../components/card/DocumentCard";
 import { DocumentList } from "../components/card/DocumentList";
 import { DropDownWorkspaceSetting } from "../components/DropDownWorkspaceSetting";
 import { Link } from "react-router-dom";
+import { DropDownFilterDocument } from "../components/DropDownFilterDocument";
 
 export const Document = () => {
   const [openSort, setOpenSort] = useState(false);
@@ -82,7 +82,7 @@ export const Document = () => {
               </button>
               <div>
                 {openFilter ? (
-                  <DropDownFilter
+                  <DropDownFilterDocument
                     openFilter={openFilter}
                     setOpenFilter={setOpenFilter}
                   />
