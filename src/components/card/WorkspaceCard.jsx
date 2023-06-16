@@ -31,24 +31,22 @@ export const WorkspaceCard = ({ workspace }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg text-accent cursor-pointer sm:w-[300px] border-[1px]">
-      <div className="flex justify-between items-center p-3">
-        <h4 className="font-semibold text-18px">
-          {workspace && workspace.workspaceName}
-        </h4>
+    <div className="shadow-custom rounded-lg text-accent cursor-pointer hover:shadow-hover">
+      <div className="flex  justify-between p-3">
+        <h4 className="font-semibold text-20px md:text-16px">{workspace && workspace.workspaceName}</h4>
         {workspace && workspace.isOwner ? (
-          <p className="border-[1px] rounded-full px-3">Owner</p>
+          <p className="text-primary px-3 text-16px md:text-14px">Owner</p>
         ) : null}
       </div>
       <div className="h-[215px] overflow-hidden" onClick={handleNavigate}>
-        <img src={workspace && workspace.workspaceImage} className="w-full" />
+        <img src={workspace && workspace.workspaceImage} className="w-full"/>
       </div>
       <div className="flex justify-between items-center p-3">
         <div>
-          <h3 className="font-semibold text-18px">
+          <h3 className="font-semibold text-18px md:text-14px">
             {workspace && workspace.totalDocument} Documents
           </h3>
-          <p className="text-14px">
+          <p className="text-14px md:text-10px">
             Create date: <span>{workspace && workspace.createdDate}</span>
           </p>
         </div>

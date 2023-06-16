@@ -14,7 +14,7 @@ export const DocumentCard = ({ document }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-4 space-y-3">
+    <div className="shadow-custom hover:shadow-hover rounded-lg text-black cursor-pointer p-3 space-y-3 2xl:p-0 2xl:px-3 2xl:py-1 2xl:space-y-1">
       <div className="flex justify-between items-center">
         <h4 className="font-semibold text-20px">{document.title}</h4>
         {document.status ? (

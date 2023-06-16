@@ -18,12 +18,14 @@ import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { EnableAccount } from "./pages/EnableAccount";
 import { VerifyToEnable } from "./pages/VerifyToEnable";
 import { Test } from "./pages/Test";
+import { EnableAccVerifyCode } from "./pages/EnableAccVerifyCode";
 
 function App() {
   return (
     <div className="App font-ssp">
       <Routes>
         <Route index element={<Landing />} />
+        {/* <Route path="/" element={<Landing />} /> */}
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contactus" element={<ContactUs />} />
 
@@ -36,9 +38,7 @@ function App() {
             // </ProtectedRoute>
           }
         />
-        <Route
-          path="/verifyforgotpassword"
-          element={
+        <Route path="/verifyforgotpassword" element={
             // <ProtectedRoute>
               <VerifyForgotPassword />
             // </ProtectedRoute>
@@ -66,8 +66,7 @@ function App() {
             // <ProtectedRoute>
               <VerifyToEnable />
             // </ProtectedRoute>
-          }
-        />
+          }/>
 
         <Route path="/signup" element={<SignUp />} />
         <Route
@@ -78,6 +77,11 @@ function App() {
             // </ProtectedRoute>
           }
         />
+        <Route path="/enableaccount" element={<EnableAccount />} />
+        <Route path="/enableaccountverifycode" element={<EnableAccVerifyCode/>} />
+        <Route path="/landing" element={<Landing />} />
+
+
 
         <Route path="/" element={<Root />}>
           <Route

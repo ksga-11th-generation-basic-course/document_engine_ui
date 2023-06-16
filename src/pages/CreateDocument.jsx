@@ -75,7 +75,7 @@ export const CreateDocument = () => {
   }, []);
 
   return (
-    <div className="w-full">
+    <div className=" w-full">
       {/* <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
         <div className="grid grid-rows-1 gap-3">
           <button

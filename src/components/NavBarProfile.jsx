@@ -20,7 +20,7 @@ export const NavBarProfile = () => {
   }, [])
 
   return (
-    <div className="flex justify-end items-center py-5 px-14 2xs:px-24 gap-x-5 bg-white">
+    <div className="flex justify-end items-center py-5 pr-14 gap-x-5 lg:pr-0">
       <div>
         <JoinWorkspaceModal visible={visible} setVisible={setVisible} />
       </div>

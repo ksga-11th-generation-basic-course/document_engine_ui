@@ -10,9 +10,10 @@ export const Root = () => {
         <div className="col-span-2">
           <SideBar />
         </div>
-        <div className="col-span-10 shadow-xl ">
-          <NavBarProfile />
-          <div className="px-60">
+
+        <div className={newWorkspace ? "col-span-10 xl:col-span-9 2xl:col-span-9 h-screen overflow-y-auto lg:hidden z-0 lg:col-span-12" : "lg:col-span-12 col-span-10 xl:col-span-9 2xl:col-span-9 h-screen overflow-y-auto lg:hidden"}>
+          <div><NavBarProfile /></div>
+          <div className="px-64 xl:px-10 2xl:px-20">
             <Outlet />
           </div>
         </div>
