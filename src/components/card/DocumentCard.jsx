@@ -74,7 +74,8 @@ export const DocumentCard = ({ document,workspaceId }) => {
         </div>
         <div>
           <h3 className="font-semibold">{document.title}</h3>
-          <p className="text-sm h-[120px]"></p>
+          <p className="text-sm h-[120px]">
+          </p>
         </div>
       </div>
       <div className="border-[1px]"></div>
