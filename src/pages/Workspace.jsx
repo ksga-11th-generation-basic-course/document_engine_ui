@@ -61,7 +61,10 @@ export const Workspace = () => {
       <div className="hidden lg:grid lg:grid-cols-12">
         {/* Icon */}
         <div className="hidden lg:col-span-6  lg:flex items-center gap-x-3 md:col-span-12">
-          <img src={workspaceicon} className="p-2 shadow-custom rounded-lg md:w-7 md:h-7 md:p-1" />
+          <img
+            src={workspaceicon}
+            className="p-2 shadow-custom rounded-lg md:w-7 md:h-7 md:p-1"
+          />
           <p className="font-semibold text-20px md:text-16px">Workspaces</p>
         </div>
 
@@ -79,7 +82,7 @@ export const Workspace = () => {
             className="mt-3 absolute"
             onClick={() => setOpenSearch(!openSearch)}
           >
-            <img src={search}/>
+            <img src={search} />
           </button>
         </div>
       </div>
@@ -89,9 +92,12 @@ export const Workspace = () => {
         <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center lg:w-72 md:w-36 md:col-span-6">
           <div className="flex items-center gap-x-2">
             <img src={sort} className="w-7 h-7 md:w-6 md:h-8" />
-            <h4 className="font-semibold text-20px md:text-16px md:hidden">Sort: </h4>
+            <h4 className="font-semibold text-20px md:text-16px md:hidden">
+              Sort:{" "}
+            </h4>
           </div>
-          <div className="relative lg:inline-block">
+
+          {/* <div className="relative lg:inline-block">
             <button
               className="flex items-center gap-x-20 lg:gap-x-14 md:gap-x-1"
               onClick={() => setOpenSort(!openSort)}
@@ -104,11 +110,10 @@ export const Workspace = () => {
                 <DropDownSort openSort={openSort} setOpenSort={setOpenSort} />
               ) : null}
             </div>
-          </div>
-        </div>
+          </div> */}
 
-        {/* <div className="relative"> */}
-            {/* <Dropdown>
+          <div className="relative">
+            <Dropdown className="bg-white">
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
                   <p className="text-18px text-black">Last Update</p>
@@ -144,17 +149,20 @@ export const Workspace = () => {
                   <span>Z-A</span>
                 </Dropdown.Item>
               </Dropdown.Menu>
-            </Dropdown> */}
-        {/* </div> */}
+            </Dropdown>
+          </div>
+        </div>
 
         {/* Filter */}
         <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:w-80 lg:ml-5 md:w-40 md:ml-0">
           <div className="flex items-center gap-x-3">
             <img src={filter} className="w-7 h-7 md:w-4 md:h-4" />
-            <h4 className="font-semibold text-20px md:text-16px md:hidden">Filter: </h4>
+            <h4 className="font-semibold text-20px md:text-16px md:hidden">
+              Filter:{" "}
+            </h4>
           </div>
-          
-          <div className="relative">
+
+          {/* <div className="relative">
             <button
               className="flex items-center gap-x-20 lg:gap-x-12 md:gap-x-1"
               onClick={() => setOpenFilter(!openFilter)}
@@ -172,9 +180,10 @@ export const Workspace = () => {
                 />
               ) : null}
             </div>
-          </div>
+          </div> */}
 
-          {/* <Dropdown>
+          <div className="relative">
+            <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
                   <p className="text-18px text-black">All Workspaces</p>
@@ -211,7 +220,8 @@ export const Workspace = () => {
                   <span>Other Workspaces</span>
                 </Dropdown.Item>
               </Dropdown.Menu>
-            </Dropdown> */}
+            </Dropdown>
+          </div>
         </div>
 
         {/* Search button for laptop */}
@@ -221,7 +231,7 @@ export const Workspace = () => {
               type="text"
               placeholder="search"
               className="-mt-2 absolute rounded-lg text-18px border-gray-200 border-[1px] w-[280px] md:w-[150px] focus:ring-accent focus:border-accent"
-                onChange={(e) => setSearchTerm(e.target.value)}
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
           ) : null}
           <button
@@ -235,17 +245,19 @@ export const Workspace = () => {
 
         {/* Search button for mobile */}
         <div className="hidden lg:hidden md:inline-block md:col-span-12 md:mt-2">
-              <input
-                  type="text"
-                  placeholder="search"
-                  className="absolute rounded-lg text-14px border-gray-200 border-[1px] w-[312px]  h-8 focus:ring-accent focus:border-accent"
-                />
-                <span className="absolute mt-2 ml-72"><img src={search} className="md:w-4 md:h-4"/></span>
+          <input
+            type="text"
+            placeholder="search"
+            className="absolute rounded-lg text-14px border-gray-200 border-[1px] w-[312px]  h-8 focus:ring-accent focus:border-accent"
+          />
+          <span className="absolute mt-2 ml-72">
+            <img src={search} className="md:w-4 md:h-4" />
+          </span>
         </div>
       </div>
 
       <div className="grid grid-cols-12 gap-8 md:px-6 sm:grid sm:grid-cols-1">
-      {workspaces === null ? null : workspaces.length > 0 ? (
+        {workspaces === null ? null : workspaces.length > 0 ? (
           workspaces
             .filter((workspace) => {
               if (searchTerm === "") {
@@ -265,8 +277,9 @@ export const Workspace = () => {
             ))
         ) : (
           <div className="col-span-12 absolute bottom-[45%] left-[55%]">
-                <p className="font-semibold text-accent text-16px">No Workspace</p>
-          </div>)}
+            <p className="font-semibold text-accent text-16px">No Workspace</p>
+          </div>
+        )}
       </div>
     </div>
   );

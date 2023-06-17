@@ -4,7 +4,6 @@ import chevrondown from "../assets/workspace_image/chevrondown.svg";
 import filter from "../assets/workspace_image/filter.svg";
 import search from "../assets/workspace_image/search.svg";
 import { DropDownSort } from "../components/DropDownSort";
-import { DropDownFilter } from "../components/DropDownFilter";
 import documenticon from "../assets/document_image/documenticon.svg";
 import bulletlist from "../assets/document_image/bulletlist.svg";
 import dotshorizontal from "../assets/document_image/dotshorizontal.svg";
@@ -40,6 +39,10 @@ export const Document = () => {
   const [openBulletList, setOpenBulletList] = useState(false);
 
   const [workspaceSetting, setWorkspaceSetting] = useState(false);
+  const [openWorkspaceSetting, setOpenWorksapceSetting] = useState(false);
+
+  const [openCollaboratorForMember, setOpenCollaboratorForMember] =
+    useState(false);
 
   const documents = useSelector((state) => state.document.documents);
 
@@ -61,11 +64,16 @@ export const Document = () => {
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
   }, []);
 
-
   const now = new Date();
   const currentDateTime = now.toISOString();
   const handleCreateDocument = async () => {
-    const document = await createDocument("Untitle", false, currentDateTime, null, workspaceId);
+    const document = await createDocument(
+      "Untitle",
+      false,
+      currentDateTime,
+      null,
+      workspaceId
+    );
     dispatch(createDocumentSuccess(document));
     navigate(`/createdocument/${document.documentId}`);
     toast.success("Create Document Successfully", {
@@ -78,7 +86,7 @@ export const Document = () => {
       progress: undefined,
       theme: "light",
     });
-  }
+  };
 
   return (
     <div className="text-accent space-y-5">
@@ -90,154 +98,160 @@ export const Document = () => {
           Welcome to {workspace && workspace.workspaceName} workspace
         </p>
         <div className="flex justify-between items-center pt-1 xs:pt-5 2xs:pt-5 mt-5">
-                <div className="flex items-center gap-x-3 2xl:gap-x-2">
-                  <img src={documenticon} className="p-2 lg:w-7 2xs:w-7 2xs:p-1 sm:w-8 shadow-custom rounded-lg md:w-7 md:p-1.5" />
-                  <p className="font-semibold text-20px 2xs:text-18px sm:text-18px md:text-18px">Documents</p>
-                </div>
-                <Link
-                    type="button"
-                    to={"/createdocument"}
-                    onClick={handleCreateDocument}
-                    className="font-semibold bg-primary px-4 py-2 rounded-lg text-white md:text-14px 2xs:text-15px 2xs:py-1.5 sm:text-15px sm:py-1.5 sm:px-3"
-                >
-                  Create Document
-                </Link>
+          <div className="flex items-center gap-x-3 2xl:gap-x-2">
+            <img
+              src={documenticon}
+              className="p-2 lg:w-7 2xs:w-7 2xs:p-1 sm:w-8 shadow-custom rounded-lg md:w-7 md:p-1.5"
+            />
+            <p className="font-semibold text-20px 2xs:text-18px sm:text-18px md:text-18px">
+              Documents
+            </p>
+          </div>
+          <Link
+            type="button"
+            to={"/createdocument"}
+            onClick={handleCreateDocument}
+            className="font-semibold bg-primary px-4 py-2 rounded-lg text-white md:text-14px 2xs:text-15px 2xs:py-1.5 sm:text-15px sm:py-1.5 sm:px-3"
+          >
+            Create Document
+          </Link>
         </div>
-    </div>  
+      </div>
 
-      <div> 
+      {/* Sort filter search */}
+      <div>
         <div className="grid grid-cols-12 mt-5 md:mt-3">
-        {/* Sort */}
-        <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center lg:w-72 md:w-36 md:col-span-6">
-          <div className="flex items-center gap-x-2">
-            <img src={sort} className="w-7 h-7 md:w-6 md:h-8" />
-            <h4 className="font-semibold text-20px md:text-16px md:hidden">Sort: </h4>
-          </div>
-          <div className="relative lg:inline-block">
-            <button
-              className="flex items-center gap-x-20 lg:gap-x-14 md:gap-x-1"
-              onClick={() => setOpenSort(!openSort)}
-            >
-              <p className="text-20px md:text-14px  text-accent">Last Update</p>
-              <img className="mt-1 md:w-4 md:h-4 md:ml-4" src={chevrondown} />
-            </button>
-            <div className="md:absolute md:z-20">
-              {openSort ? (
-                <DropDownSort openSort={openSort} setOpenSort={setOpenSort} />
-              ) : null}
+          {/* Sort */}
+          <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center lg:w-72 md:w-36 md:col-span-6">
+            <div className="flex items-center gap-x-2">
+              <img src={sort} className="w-7 h-7 md:w-6 md:h-8" />
+              <h4 className="font-semibold text-20px md:text-16px md:hidden">
+                Sort:{" "}
+              </h4>
+            </div>
+            {/* <div className="relative lg:inline-block">
+              <button
+                className="flex items-center gap-x-20 lg:gap-x-14 md:gap-x-1"
+                onClick={() => setOpenSort(!openSort)}
+              >
+                <p className="text-20px md:text-14px  text-accent">
+                  Last Update
+                </p>
+                <img className="mt-1 md:w-4 md:h-4 md:ml-4" src={chevrondown} />
+              </button>
+              <div className="md:absolute md:z-20">
+                {openSort ? (
+                  <DropDownSort openSort={openSort} setOpenSort={setOpenSort} />
+                ) : null}
+              </div>
+            </div> */}
+
+            <div className="relative">
+              <Dropdown>
+                <Dropdown.Toggle>
+                  <div className="flex items-center gap-x-20">
+                    <p className="text-18px text-black">Last Update</p>
+                    <img src={chevrondown} />
+                  </div>
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="w-48 bg-white rounded-lg">
+                  <Dropdown.Item>
+                    <Radio
+                      defaultChecked
+                      name="radioOptions"
+                      value="lastupdate"
+                      className="checked:bg-primary checked:shadow-none"
+                    />
+                    <span>Last Update</span>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Radio
+                      defaultChecked
+                      name="radioOptions"
+                      value="thisweek"
+                      className="checked:bg-primary checked:shadow-none"
+                    />
+                    <span>This week</span>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Radio
+                      defaultChecked
+                      name="radioOptions"
+                      value="thismonth"
+                      className="checked:bg-primary checked:shadow-none"
+                    />
+                    <span>This month</span>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Radio
+                      defaultChecked
+                      name="radioOptions"
+                      value="thisyear"
+                      className="checked:bg-primary checked:shadow-none"
+                    />
+                    <span>This year</span>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
           </div>
-        </div>
 
-        {/* Filter */}
-        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:w-80 lg:ml-5 md:w-40 md:ml-0">
-          <div className="flex items-center gap-x-3">
-            <img src={filter} className="w-7 h-7 md:w-4 md:h-4" />
-            <h4 className="font-semibold text-20px md:text-16px md:hidden">Filter: </h4>
-          </div>
-          <div className="relative">
-            <button
-              className="flex items-center gap-x-20 lg:gap-x-12 md:gap-x-1"
-              onClick={() => setOpenFilter(!openFilter)}
-            >
-              <p className="text-20px md:text-14px text-accent">
-                Product
-              </p>
-              <img className="mt-1 md:w-4 md:h-4 md:ml-4" src={chevrondown} />
-            </button>
-            <div className="z-20">
-              {openFilter ? (
-                <DropDownFilterDocument
-                  openFilter={openFilter}
-                  setOpenFilter={setOpenFilter}
-                />
-              ) : null}
+          {/* Filter */}
+          <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:w-80 lg:ml-5 md:w-40 md:ml-0">
+            <div className="flex items-center gap-x-3">
+              <img src={filter} className="w-7 h-7 md:w-4 md:h-4" />
+              <h4 className="font-semibold text-20px md:text-16px md:hidden">
+                Filter:{" "}
+              </h4>
+            </div>
+
+            {/* <div className="relative">
+              <button
+                className="flex items-center gap-x-20 lg:gap-x-12 md:gap-x-1"
+                onClick={() => setOpenFilter(!openFilter)}
+              >
+                <p className="text-20px md:text-14px text-accent">Product</p>
+                <img className="mt-1 md:w-4 md:h-4 md:ml-4" src={chevrondown} />
+              </button>
+              <div className="z-20">
+                {openFilter ? (
+                  <DropDownFilterDocument
+                    openFilter={openFilter}
+                    setOpenFilter={setOpenFilter}
+                  />
+                ) : null}
+              </div>
+            </div> */}
+
+            <div className="relative">
+              <Dropdown>
+                <Dropdown.Toggle>
+                  <div className="flex items-center gap-x-20">
+                    <p className="text-18px text-black">Product</p>
+                    <img src={chevrondown} />
+                  </div>
+                </Dropdown.Toggle>
+                <Dropdown.Menu className="w-48 bg-white rounded-lg">
+                  <Dropdown.Item>
+                    <Checkbox className="checked:bg-primary" />
+                    <span>Product</span>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Checkbox className="checked:bg-primary" />
+                    <span>Technology</span>
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <Checkbox className="checked:bg-primary" />
+                    <span>Document</span>
+                  </Dropdown.Item>
+                </Dropdown.Menu>
+              </Dropdown>
             </div>
           </div>
-        </div>
 
-         {/* <div className="relative">
-            <Dropdown>
-              <Dropdown.Toggle>
-                <div className="flex items-center gap-x-20">
-                  <p className="text-18px text-black">Last Update</p>
-                  <img src={chevrondown} />
-                </div>
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="w-48 bg-white rounded-lg">
-                <Dropdown.Item>
-                  <Radio
-                    defaultChecked
-                    name="radioOptions"
-                    value="lastupdate"
-                    className="checked:bg-primary checked:shadow-none"
-                  />
-                  <span>Last Update</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Radio
-                    defaultChecked
-                    name="radioOptions"
-                    value="thisweek"
-                    className="checked:bg-primary checked:shadow-none"
-                  />
-                  <span>This week</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Radio
-                    defaultChecked
-                    name="radioOptions"
-                    value="thismonth"
-                    className="checked:bg-primary checked:shadow-none"
-                  />
-                  <span>This month</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Radio
-                    defaultChecked
-                    name="radioOptions"
-                    value="thisyear"
-                    className="checked:bg-primary checked:shadow-none"
-                  />
-                  <span>This year</span>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div> 
-         <div className="col-span-4 flex items-center gap-x-5 h-11">
-          <div className="flex items-center gap-x-3">
-            <img src={filter} className="w-7 h-7" />
-            <h4 className="font-semibold text-20px">Filter: </h4>
-          </div>
-          <div className="relative">
-            <Dropdown>
-              <Dropdown.Toggle>
-                <div className="flex items-center gap-x-20">
-                  <p className="text-18px text-black">Product</p>
-                  <img src={chevrondown} />
-                </div>
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="w-48 bg-white rounded-lg">
-                <Dropdown.Item>
-                  <Checkbox className="checked:bg-primary" />
-                  <span>Product</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Checkbox className="checked:bg-primary" />
-                  <span>Technology</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Checkbox className="checked:bg-primary" />
-                  <span>Document</span>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
-          </div>
-        </div>  */}
-
-        {/* Option Document */}
-           <div className="col-span-4 flex items-center justify-end sm:col-span-12 sm:h-11 md:col-span-12 md:h-11 md:pt-4 2xs:col-span-12">
-             {openSearch ? (
+          {/* Option Document */}
+          <div className="col-span-4 flex items-center justify-end sm:col-span-12 sm:h-11 md:col-span-12 md:h-11 md:pt-4 2xs:col-span-12">
+            {openSearch ? (
               <div className="flex justify-end items-center absolute">
                 {openSearch ? (
                   <input
@@ -257,6 +271,7 @@ export const Document = () => {
               </div>
             ) : (
               <div className="flex justify-center items-center gap-x-5">
+                {/* grid */}
                 <div>
                   <button
                     type="button"
@@ -268,6 +283,8 @@ export const Document = () => {
                     <img src={grid} />
                   </button>
                 </div>
+
+                {/* bulletlist */}
                 <div>
                   <button
                     type="button"
@@ -279,6 +296,8 @@ export const Document = () => {
                     <img src={bulletlist} />
                   </button>
                 </div>
+
+                {/* search button */}
                 <div>
                   <button
                     type="button"
@@ -287,6 +306,8 @@ export const Document = () => {
                     <img src={search} />
                   </button>
                 </div>
+
+                {/* option document */}
                 <div className="relative">
                   <button
                     type="button"
@@ -320,20 +341,21 @@ export const Document = () => {
                 </Dropdown>
               </div> */}
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
 
+      {/* open grid */}
       {openGrid ? (
         <div className="grid grid-cols-12 gap-8">
           {documents === null ? null : documents.length > 0 ? (
-              documents
+            documents
               .filter((document) => {
                 if (searchTerm === "") {
                   return document;
                 } else if (
-                      document.title
+                  document.title
                     .toLowerCase()
                     .includes(searchTerm.toLowerCase())
                 ) {
@@ -341,18 +363,19 @@ export const Document = () => {
                 }
               })
               .map((document, index) => (
-                    <div className="col-span-4" key={index}>
-                      <DocumentCard document={document} />
-                    </div>
-          ))
+                <div className="col-span-4" key={index}>
+                  <DocumentCard document={document} />
+                </div>
+              ))
           ) : (
             <div className="col-span-12 absolute bottom-[45%] left-[55%]">
               <p className="font-semibold text-accent">No Document</p>
             </div>
           )}
-          </div>
-      ) : null} 
+        </div>
+      ) : null}
 
+      {/* open bulletlist */}
       {openBulletList ? (
         <div className="space-y-6">
           {documents === null ? null : documents.length > 0 ? (
@@ -382,7 +405,7 @@ export const Document = () => {
               <p className="font-semibold text-accent">No Document</p>
             </div>
           )}
-          {/* {" "}
+
           <DocumentList
             title={"Redux Tookit"}
             status={true}
@@ -400,7 +423,9 @@ export const Document = () => {
           />
         </div>
       ) : null}
-     <div>
+
+      {/* Modal */}
+      <div>
         {workspace && isOwner && (
           <WorkspaceSettingModal
             openWorkspaceSetting={openWorkspaceSetting}
@@ -416,7 +441,6 @@ export const Document = () => {
           />
         )}
       </div>
-    </div>
     </div>
   );
 };
