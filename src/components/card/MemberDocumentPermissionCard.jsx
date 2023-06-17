@@ -11,6 +11,9 @@ export const MemberDocumentPermissionCard = ({
   isOwner,
   currentuser,
   accessibility,
+  documentId,
+  userId,
+  workspaceId
 }) => {
   const [permissiom, setPermission] = useState(false);
 
@@ -26,6 +29,8 @@ export const MemberDocumentPermissionCard = ({
 
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
+
+
   return (
     <div>
       <div className="flex justify-between items-center w-full">
@@ -36,7 +41,7 @@ export const MemberDocumentPermissionCard = ({
             <p className="font-semibold text-18px text-white">{character[0]}</p>
           </div>
           <h3 className="font-semibold text-18px">
-            {username} {currentuser ? <span>(You)</span> : null}
+            {username} {currentuser ? null : <span>(You)</span>}
           </h3>
           {isOwner ? (
             <span className="px-6 text-primary bg-[#EDF9FF] rounded-lg">
@@ -73,6 +78,9 @@ export const MemberDocumentPermissionCard = ({
               <div>
                 {permissiom ? (
                   <DropDownDocumentPermission
+                    workspaceId={workspaceId}
+                    documentId={documentId}
+                    userId={userId}
                     permissiom={permissiom}
                     setPermission={setPermission}
                   />

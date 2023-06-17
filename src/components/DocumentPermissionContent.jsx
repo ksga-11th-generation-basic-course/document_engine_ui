@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import close from "../assets/dashboard_image/close.svg";
 import search from "../assets/document_image/search.svg";
 import { MemberDocumentPermissionCard } from "./card/MemberDocumentPermissionCard";
@@ -6,7 +6,11 @@ import { MemberDocumentPermissionCard } from "./card/MemberDocumentPermissionCar
 export const DocumentPermissionContent = ({
   openPermission,
   setOpenPermission,
+  members,
+  workspaceId,
+  documentId
 }) => {
+  const [searchTerm, setSearchTerm] = useState("");
   return (
     <div>
       <div className="flex w-full justify-end">
@@ -28,40 +32,45 @@ export const DocumentPermissionContent = ({
               type="text"
               className="border-[1px] text-accent border-gray-200 px-6 py-3 rounded-lg space-y-3 w-full font-semibold focus:ring-gray-200 focus:border-gray-200"
               placeholder="Search member"
+              onChange={(e) => setSearchTerm(e.target.value)}
             />
             <div className="absolute right-5 top-4">
               <img src={search} />
             </div>
           </div>
           <div className="border-[1px] rounded-lg p-5 space-y-5">
-          <MemberDocumentPermissionCard
-              username={"Tith Ouddom"}
-              status={true}
-              isOwner={true}
-              currentuser={true}
-              accessibility={"Editor"}
-            />
-            <MemberDocumentPermissionCard
-              username={"Kheang Sovannak"}
-              status={false}
-              isOwner={false}
-              currentuser={false}
-              accessibility={"Editor"}
-            />
-            <MemberDocumentPermissionCard
-              username={"Yan Sovanseyha"}
-              status={false}
-              isOwner={false}
-              currentuser={false}
-              accessibility={"Viewer"}
-            />
-            <MemberDocumentPermissionCard
-              username={"Chhum Lyheng"}
-              status={false}
-              isOwner={false}
-              currentuser={false}
-              accessibility={"No Access"}
-            />
+            {members === null ? null : members.length > 0 ? (
+              members.filter((member) => {
+                if (searchTerm === "") {
+                  return member;
+                } else if (
+                  member.username
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+                ) {
+                  return member;
+                }
+              }).map((member, index) => (
+                <div className="col-span-4" key={index}>
+                  <MemberDocumentPermissionCard
+                    username={member.username}
+                    status={member.isOwner}
+                    isOwner={member.isOwner}
+                    currentuser={true}
+                    accessibility={member.accessibility}
+                    userId={member.userId}
+                    workspaceId={workspaceId}
+                    documentId={documentId}
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="col-span-12 absolute bottom-[45%] left-[55%]">
+                <p className="font-semibold text-accent">No Member</p>
+              </div>
+            )}
+
+
           </div>
         </div>
       </div>

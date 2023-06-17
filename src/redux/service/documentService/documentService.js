@@ -6,7 +6,7 @@ export const getAllDocumentInEachWorkspace = createAsyncThunk(
   async (workspaceId) => {
     try {
       const response = await api.get(
-        `documents/workspaces/${workspaceId}?pageNo=1&pageSize=5`,
+        `documents/workspaces/${workspaceId}?pageNo=1&pageSize=5&eSortCurrentDateTime=DEFAULT`,
         header
       );
       return response.data.payload;
@@ -59,6 +59,18 @@ export const getWorkspaceName = createAsyncThunk(
   async (documentId) => {
     try {
       const response = await api.get(`documents/${documentId}/workspace`, header);
+      return response.data.payload;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);
+
+export const getMemberInEachDocument = createAsyncThunk(
+  `/documents/member`,
+  async (documentId) => {
+    try {
+      const response = await api.get(`/documents/${documentId}/member`, header);
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;
@@ -136,3 +148,32 @@ export const updateDocument = async (documentId,title) => {
     throw error.response.data.detail;
   }
 };
+
+export const setAccessibility = async (documentId,userId,workspaceId,accessibility) => {
+  console.log(documentId);
+  try {
+    const response = await api.put(
+      `documents/${documentId}/users/${userId}/${workspaceId}/accessibility/?accessibility=${accessibility}`,
+      {
+        documentId:documentId,
+        userId:userId,
+        workspaceId:workspaceId,
+        accessibility:accessibility
+      },
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      }
+    );
+    console.log(response);
+    return response.data.payload;
+  } catch (error) {
+    console.log(error)
+    throw error.response.data.detail;
+  }
+};
+
+
+

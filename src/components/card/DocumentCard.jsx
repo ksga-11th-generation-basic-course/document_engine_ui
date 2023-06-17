@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dotmenu from "../../assets/dashboard_image/dotmenu.png";
 import pencil from "../../assets/dashboard_image/pencil.svg";
 import view from "../../assets/dashboard_image/view.png";
@@ -11,18 +11,24 @@ import { DocumentPermissionModal } from "../../modal/DocumentPermissionModal";
 import { DocumentHistoryModal } from "../../modal/DocumentHistoryModal";
 import { DeleteDocumentModal } from "../../modal/DeleteDocumentModal";
 import { DropDownDocument } from "../../components/DropDownDocument";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Dropdown } from "react-daisyui";
-import { useDispatch } from "react-redux";
-import { duplicateDocument } from "../../redux/service/documentService/documentService";
+import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import { duplicateDocument, getMemberInEachDocument } from "../../redux/service/documentService/documentService";
+import { duplicateDocumentSuccess } from "../../redux/slice/documentSlice/documentSlice";
 
-export const DocumentCard = ({ document }) => {
+export const DocumentCard = ({ document,workspaceId }) => {
   const navigate = useNavigate();
   const [openPermission, setOpenPermission] = useState(false);
   const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
   const [deleteDocument, setDeleteDocument] = useState(false);
   const [documentId, setdocumentId] = useState();
+  const members = useSelector((state) => state.document.members);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMemberInEachDocument(document.documentId))
+  }, []);
 
   const handleNavigate = () => {
     setTimeout(()=>{
@@ -34,12 +40,9 @@ export const DocumentCard = ({ document }) => {
     setDeleteDocument(!deleteDocument);
     setdocumentId(document.documentId);
   };
-
-  console.log(document.documentId);
-
   const handleDuplicateDocument=async()=>{
-    try{
-      const duplicate = await duplicateDocument('b4222747-a02e-49e0-a683-3e7d991aa81d')
+    const duplicate = await duplicateDocument(document.documentId);
+    dispatch(duplicateDocumentSuccess(duplicate));
     toast.success("Duplicate Document Successfully", {
       position: "top-right",
       autoClose: 5000,
@@ -50,19 +53,10 @@ export const DocumentCard = ({ document }) => {
       progress: undefined,
       theme: "light",
     });
-    }catch{
-      toast.error("Duplicate Document failed", {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-    }
-    
+  }
+
+  const viewPage=()=>{
+    navigate(`/createdocument/${document.documentId}`);
   }
 
 
@@ -88,7 +82,7 @@ export const DocumentCard = ({ document }) => {
         <div>
           <h3 className="font-bold text-22px text-primary">{document.title}</h3>
           <p className="text-14px font-semibold text-accent">
-            Edited <span>{document.createdDate}</span>
+            Edited <span>{document.editDate}</span>
           </p>
         </div>
         <div className="relative">
@@ -98,7 +92,7 @@ export const DocumentCard = ({ document }) => {
                 <img src={dotmenu} />
               </Dropdown.Toggle>
               <Dropdown.Menu className="w-60 bg-white rounded-lg text-base">
-                <Dropdown.Item>
+                <Dropdown.Item onClick={viewPage}>
                   <img src={view} />
                   <span>View page</span>
                 </Dropdown.Item>
@@ -128,6 +122,9 @@ export const DocumentCard = ({ document }) => {
           <DocumentPermissionModal
           openPermission={openPermission}
           setOpenPermission={setOpenPermission}
+          documentId={document.documentId}
+          workspaceId={workspaceId}
+          members={members}
         />
         <DocumentHistoryModal
           openDocumentHistory={openDocumentHistory}

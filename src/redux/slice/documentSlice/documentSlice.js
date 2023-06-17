@@ -3,7 +3,8 @@ import {
   getAllDocumentInEachWorkspace,
   getDocumentByDocumentId,
   getUsername,
-  getWorkspaceName
+  getWorkspaceName,
+  getMemberInEachDocument,
 } from "../../service/documentService/documentService";
 
 const initialState = {
@@ -11,6 +12,7 @@ const initialState = {
   documents: null,
   username:null,
   workspace:null,
+  members:null,
   loading: false,
   error: null,
 };
@@ -29,6 +31,12 @@ const documentSlice = createSlice({
       state.documents = state.documents.filter(
         (document) => document.documentId !== action.payload
       );
+    },
+    duplicateDocumentSuccess:(state,action)=>{
+      state.documents.push(action.payload);
+    },
+    setAccessibilitySuccess:(state,action)=>{
+      state.documents.push(action.payload);
     },
   },
   extraReducers: (builder) => {
@@ -90,7 +98,21 @@ const documentSlice = createSlice({
       state.workspace = null;
       state.error = action.error.message;
     });
+
+    builder.addCase(getMemberInEachDocument.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getMemberInEachDocument.fulfilled, (state, action) => {
+      state.loading = false;
+      state.members = action.payload;
+      state.error = null;
+    });
+    builder.addCase(getMemberInEachDocument.rejected, (state, action) => {
+      state.loading = true;
+      state.members = null;
+      state.error = action.error.message;
+    });
   },
 });
-export const {createDocumentSuccess,updateDocumentSuccess,removeDocumentSuccess}=documentSlice.actions;
+export const {createDocumentSuccess,updateDocumentSuccess,removeDocumentSuccess,duplicateDocumentSuccess,setAccessibilitySuccess}=documentSlice.actions;
 export default documentSlice.reducer;

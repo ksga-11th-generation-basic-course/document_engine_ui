@@ -7,6 +7,9 @@ import { DocumentPermissionContent } from "../components/DocumentPermissionConte
 export const DocumentPermissionModal = ({
   openPermission,
   setOpenPermission,
+  members,
+  documentId,
+  workspaceId
 }) => {
   return (
     <div className="w-full">
@@ -30,6 +33,9 @@ export const DocumentPermissionModal = ({
               <DocumentPermissionContent
                 openPermission={openPermission}
                 setOpenPermission={setOpenPermission}
+                members={members}
+                documentId={documentId}
+                workspaceId={workspaceId}
               />
             </div>
           </div>

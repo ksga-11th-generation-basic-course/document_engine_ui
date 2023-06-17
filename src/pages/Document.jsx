@@ -272,7 +272,7 @@ export const Document = () => {
               })
               .map((document, index) => (
                 <div className="col-span-4" key={index}>
-                  <DocumentCard document={document} />
+                  <DocumentCard document={document} workspaceId={workspaceId} />
                 </div>
               ))
           ) : (
