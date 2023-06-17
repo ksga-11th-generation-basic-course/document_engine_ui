@@ -55,7 +55,6 @@ export const Document = () => {
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
   }, []);
 
-
   const now = new Date();
   const currentDateTime = now.toISOString();
   const handleCreateDocument = async () => {
@@ -96,6 +95,7 @@ export const Document = () => {
         >
           Create Document
         </button>
+        
       </div>
       <div className="grid grid-cols-12">
         <div className="col-span-4 flex items-center gap-x-5 h-11">

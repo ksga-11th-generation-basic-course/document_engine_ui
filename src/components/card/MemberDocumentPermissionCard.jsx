@@ -57,12 +57,12 @@ export const MemberDocumentPermissionCard = ({
                 className="text-18px border-[1px] rounded-lg w-[190px] py-2 flex px-5 justify-between items-center gap-x-2"
                 onClick={() => setPermission(!permissiom)}
               >
-                {accessibility === "Editor" ? (
+                {accessibility === "EDITOR" ? (
                   <div className="flex justify-center items-center gap-x-3">
                     <img src={pencil} />
                     <p>{accessibility}</p>
                   </div>
-                ) : accessibility === "Viewer" ? (
+                ) : accessibility === "VIEWER" ? (
                   <div className="flex justify-center items-center gap-x-3">
                     <img src={view} />
                     <p>{accessibility}</p>

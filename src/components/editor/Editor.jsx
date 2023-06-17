@@ -4,10 +4,15 @@ import { BlockNoteView, useBlockNote } from "@blocknote/react";
 import styles from "../../App.module.css";
 import { createBlock, getBlockBydoucmentId } from "../../redux/service/blockService/blockService";
 import { handler } from "daisyui";
+import { useParams } from "react-router-dom";
 
-export const Editor = () => {
+export const Editor = ({initialContent}) => {
   const [blocks, setBlock] = useState([]);
   const block = [...blocks];
+  const param      =  useParams();
+  const documentId =  param.id;
+
+  console.log(initialContent)
 
   // Create Block
   const handleCreateBlock = async () => {
@@ -21,6 +26,7 @@ export const Editor = () => {
 
   //Editor
   const editor = useBlockNote({
+    initialContent: initialContent,
     onEditorContentChange: (editor) => {
       const content = [];
       setBlock(content);

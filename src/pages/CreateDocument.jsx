@@ -34,18 +34,18 @@ export const CreateDocument = () => {
   // const [openPermission, setOpenPermission] = useState(false);
   // const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
   // const [openExport, setOpenExport] = useState(false);
-  const [tags, setTags]             =   useState([]);
-  const [inputValue, setInputValue] =   useState('');
-  const [toggle, setToggle]         =   useState(false);
-  const [timerId, setTimerId]       =   useState(null);
+  const [tags, setTags] = useState([]);
+  const [inputValue, setInputValue] = useState('');
+  const [toggle, setToggle] = useState(false);
+  const [timerId, setTimerId] = useState(null);
 
-  const document   =  useSelector((state) => state.document.document);
-  const username   =  useSelector((state) => state.document.username);
-  const workspace  =  useSelector((state) => state.document.workspace);
-  const blockData  =  useSelector((state) => state.block.blocks)
-  const param      =  useParams();
-  const documentId =  param.id;
-  const dispatch   =  useDispatch();
+  const document = useSelector((state) => state.document.document);
+  const username = useSelector((state) => state.document.username);
+  const workspace = useSelector((state) => state.document.workspace);
+  const blockData = useSelector((state) => state.block.blocks)
+  const param = useParams();
+  const documentId = param.id;
+  const dispatch = useDispatch();
 
 
   useEffect(() => {
@@ -56,34 +56,39 @@ export const CreateDocument = () => {
   }, []);
   const [title, setTitle] = useState(document && document.title);
 
-  console.log(blockData);
+  const [data, setData] = useState();
 
-  // const getBlockBydoucmentId=()=>{
-  //   const initialContent = [];
-  //   if(blockData!=null){
-  //     for (let i = 0; i < blockData.length; i++) {
-  //       const element = blockData[i];
-  //       const block = {
-  //         id: element.blockId,
-  //         type: element.blockType,
-  //         props: {
-  //           textColor: "default",
-  //           backgroundColor: "default",
-  //           textAlignment: "left",
-  //         },
-  //         content: [
-  //           {
-  //             type: element.content.typeContent,
-  //             text: element.content.text,
-  //             styles: {},
-  //           },
-  //         ],
-  //         children: [],
-  //       }
-  //       initialContent.push(block)
-  //     }
-  //   }
-  // }
+  let initialContent = [];
+
+  if (blockData !== null) {
+    for (let i = 0; i < blockData.length; i++) {
+      const element = blockData[i];
+      const block = {
+        id: element.blockId,
+        type: element.blockType,
+        props: {
+          textColor: "default",
+          backgroundColor: "default",
+          textAlignment: "left",
+        },
+        content: [
+          {
+            type: element.content.typeContent,
+            text: element.content.text,
+            styles: {},
+          },
+        ],
+        children: [],
+      }
+      initialContent.push(block)
+    }
+  }
+
+  // console.log(data)
+
+
+  // console.log(blockData);
+
 
 
   function handleInputChange(event) {
@@ -101,7 +106,7 @@ export const CreateDocument = () => {
   }
 
   const timestamp = (document && document.createdDate);
-  console.log(timestamp);
+  // console.log(timestamp && timestamp);
   // const dateObj = new Date(timestamp);
   // const day = dateObj.getDate();
   // const month = dateObj.toLocaleString('default', { month: 'long' });
@@ -213,8 +218,8 @@ export const CreateDocument = () => {
               <div className="relative grid grid-cols-10">
                 <span className="col-span-2 gap-x-3 w-36">
                   <div className="flex gap-x-3">
-                  <img src={Tag} className="w-[16px]" alt="" />
-                  <p>Tag</p>
+                    <img src={Tag} className="w-[16px]" alt="" />
+                    <p>Tag</p>
                   </div>
                 </span>
                 <button className="flex flex-wrap col-span-8 gap-2 h-auto w-full">
@@ -223,12 +228,12 @@ export const CreateDocument = () => {
                       key={index}
                       className="px-2 gap-1 items-center bg-gray-100 text-gray-800 rounded-full text-sm font-medium">
                       <span className="flex gap">
-                      {tag}
-                      <button className='p-1' onClick={() => handleRemoveTag(index)}>
-                        <svg width="11" height="11" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
-                          <path d="M21.5 0.516551C21.3458 0.362045 21.1627 0.239466 20.961 0.15583C20.7594 0.0721945 20.5433 0.0291441 20.325 0.0291441C20.1067 0.0291441 19.8906 0.0721945 19.689 0.15583C19.4873 0.239466 19.3042 0.362045 19.15 0.516551L11 8.64988L2.85 0.499884C2.6957 0.345581 2.51251 0.223181 2.3109 0.139673C2.1093 0.0561643 1.89322 0.0131836 1.675 0.0131836C1.45678 0.0131836 1.2407 0.0561643 1.03909 0.139673C0.837486 0.223181 0.654302 0.345581 0.499999 0.499884C0.345695 0.654187 0.223295 0.837372 0.139787 1.03898C0.0562788 1.24059 0.013298 1.45667 0.013298 1.67488C0.013298 1.8931 0.0562787 2.10918 0.139787 2.31079C0.223295 2.5124 0.345695 2.69558 0.499999 2.84988L8.65 10.9999L0.499999 19.1499C0.345695 19.3042 0.223295 19.4874 0.139787 19.689C0.0562788 19.8906 0.013298 20.1067 0.013298 20.3249C0.013298 20.5431 0.0562788 20.7592 0.139787 20.9608C0.223295 21.1624 0.345695 21.3456 0.499999 21.4999C0.654302 21.6542 0.837486 21.7766 1.03909 21.8601C1.2407 21.9436 1.45678 21.9866 1.675 21.9866C1.89322 21.9866 2.1093 21.9436 2.3109 21.8601C2.51251 21.7766 2.6957 21.6542 2.85 21.4999L11 13.3499L19.15 21.4999C19.3043 21.6542 19.4875 21.7766 19.6891 21.8601C19.8907 21.9436 20.1068 21.9866 20.325 21.9866C20.5432 21.9866 20.7593 21.9436 20.9609 21.8601C21.1625 21.7766 21.3457 21.6542 21.5 21.4999C21.6543 21.3456 21.7767 21.1624 21.8602 20.9608C21.9437 20.7592 21.9867 20.5431 21.9867 20.3249C21.9867 20.1067 21.9437 19.8906 21.8602 19.689C21.7767 19.4874 21.6543 19.3042 21.5 19.1499L13.35 10.9999L21.5 2.84988C22.1333 2.21655 22.1333 1.14988 21.5 0.516551Z" fill="#9CA3AF" />
-                        </svg>
-                      </button>
+                        {tag}
+                        <button className='p-1' onClick={() => handleRemoveTag(index)}>
+                          <svg width="11" height="11" viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M21.5 0.516551C21.3458 0.362045 21.1627 0.239466 20.961 0.15583C20.7594 0.0721945 20.5433 0.0291441 20.325 0.0291441C20.1067 0.0291441 19.8906 0.0721945 19.689 0.15583C19.4873 0.239466 19.3042 0.362045 19.15 0.516551L11 8.64988L2.85 0.499884C2.6957 0.345581 2.51251 0.223181 2.3109 0.139673C2.1093 0.0561643 1.89322 0.0131836 1.675 0.0131836C1.45678 0.0131836 1.2407 0.0561643 1.03909 0.139673C0.837486 0.223181 0.654302 0.345581 0.499999 0.499884C0.345695 0.654187 0.223295 0.837372 0.139787 1.03898C0.0562788 1.24059 0.013298 1.45667 0.013298 1.67488C0.013298 1.8931 0.0562787 2.10918 0.139787 2.31079C0.223295 2.5124 0.345695 2.69558 0.499999 2.84988L8.65 10.9999L0.499999 19.1499C0.345695 19.3042 0.223295 19.4874 0.139787 19.689C0.0562788 19.8906 0.013298 20.1067 0.013298 20.3249C0.013298 20.5431 0.0562788 20.7592 0.139787 20.9608C0.223295 21.1624 0.345695 21.3456 0.499999 21.4999C0.654302 21.6542 0.837486 21.7766 1.03909 21.8601C1.2407 21.9436 1.45678 21.9866 1.675 21.9866C1.89322 21.9866 2.1093 21.9436 2.3109 21.8601C2.51251 21.7766 2.6957 21.6542 2.85 21.4999L11 13.3499L19.15 21.4999C19.3043 21.6542 19.4875 21.7766 19.6891 21.8601C19.8907 21.9436 20.1068 21.9866 20.325 21.9866C20.5432 21.9866 20.7593 21.9436 20.9609 21.8601C21.1625 21.7766 21.3457 21.6542 21.5 21.4999C21.6543 21.3456 21.7767 21.1624 21.8602 20.9608C21.9437 20.7592 21.9867 20.5431 21.9867 20.3249C21.9867 20.1067 21.9437 19.8906 21.8602 19.689C21.7767 19.4874 21.6543 19.3042 21.5 19.1499L13.35 10.9999L21.5 2.84988C22.1333 2.21655 22.1333 1.14988 21.5 0.516551Z" fill="#9CA3AF" />
+                          </svg>
+                        </button>
                       </span>
                     </span>
                   ))}
@@ -282,7 +287,7 @@ export const CreateDocument = () => {
         </div>
       </div>
       <div className="mt-2">
-        <Editor />
+        <Editor initialContent={data} />
       </div>
       {/* <div>
         <DocumentPermissionModal

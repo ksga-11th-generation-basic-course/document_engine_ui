@@ -36,7 +36,9 @@ const documentSlice = createSlice({
       state.documents.push(action.payload);
     },
     setAccessibilitySuccess:(state,action)=>{
-      state.documents.push(action.payload);
+      state.members = state.members.map((member) =>
+        member.userId === action.payload.userId ? action.payload : member
+      );
     },
   },
   extraReducers: (builder) => {
