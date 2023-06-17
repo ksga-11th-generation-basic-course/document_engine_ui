@@ -3,6 +3,7 @@ import authenticationSlice from "./slice/authenticationSlice/authenticationSlice
 import userSlice from "./slice/userSlice/userSlice";
 import workspaceSlice from "./slice/workspaceSlice/workspaceSlice";
 import documentSlice from "./slice/documentSlice/documentSlice";
+import blockSlice from "./slice/blockSlice/blockSlice";
 
 const store = configureStore({
   reducer: {
@@ -10,6 +11,7 @@ const store = configureStore({
     user: userSlice,
     workspace: workspaceSlice,
     document: documentSlice,
+    block: blockSlice
   },
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({

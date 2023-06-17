@@ -4,28 +4,29 @@ import chevrondown from "../assets/workspace_image/chevrondown.svg";
 import filter from "../assets/workspace_image/filter.svg";
 import search from "../assets/workspace_image/search.svg";
 import { DropDownSort } from "../components/DropDownSort";
+import { DropDownFilter } from "../components/DropDownFilter";
 import documenticon from "../assets/document_image/documenticon.svg";
 import bulletlist from "../assets/document_image/bulletlist.svg";
 import dotshorizontal from "../assets/document_image/dotshorizontal.svg";
 import grid from "../assets/document_image/grid.svg";
 import { DocumentCard } from "../components/card/DocumentCard";
-import { Link, useParams } from "react-router-dom";
+import { DocumentList } from "../components/card/DocumentList";
+import { DropDownWorkspaceSetting } from "../components/DropDownWorkspaceSetting";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
-import {
-  checkIsOwnerWorkspace,
-  getWorkspaceByWorkspaceId,
-} from "../redux/service/workspaceService/workspaceService";
-import { Checkbox, Dropdown, Radio } from "react-daisyui";
+import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
+import { createDocument } from "../redux/service/documentService/documentService";
 import setting from "../assets/document_image/settings.svg";
 import group from "../assets/document_image/group.svg";
+import { Checkbox, Dropdown, Radio } from "react-daisyui";
+import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
+import { toast } from "react-toastify";
+import { DropDownFilterDocument } from "../components/DropDownFilterDocument";
 import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
 import usericon from "../assets/workspace_image/usericon.svg";
 import { WorkspaceViewForMemberModal } from "../modal/WorkspaceViewForMemberModal";
 import { getCurrentUser } from "../redux/service/userService/userService";
-import { DropDownFilterDocument } from "../components/DropDownFilterDocument";
-import { DropDownWorkspaceSetting } from "../components/DropDownWorkspaceSetting";
-import { DocumentList } from "../components/card/DocumentList";
 
 export const Document = () => {
   const [openSort, setOpenSort] = useState(false);
@@ -40,16 +41,9 @@ export const Document = () => {
 
   const [workspaceSetting, setWorkspaceSetting] = useState(false);
 
-  const [openWorkspaceSetting, setOpenWorksapceSetting] = useState(false);
-
-  const [openCollaboratorForMember, setOpenCollaboratorForMember] =
-    useState(false);
-
   const documents = useSelector((state) => state.document.documents);
 
   const workspace = useSelector((state) => state.workspace.workspace);
-
-  const isOwner = useSelector((state) => state.workspace.isOwner);
 
   const dispatch = useDispatch();
 
@@ -57,20 +51,34 @@ export const Document = () => {
 
   const workspaceId = param.id;
 
-  const user = useSelector((state) => state.user.user);
+  const [searchTerm, setSearchTerm] = useState("");
 
-  let userId;
-
-  if (user != null) {
-    userId = user.userId;
-  }
+  const [documentId, setDocumentId] = useState();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllDocumentInEachWorkspace(workspaceId));
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
-    dispatch(getCurrentUser());
-    dispatch(checkIsOwnerWorkspace({ workspaceId, userId }));
   }, []);
+
+
+  const now = new Date();
+  const currentDateTime = now.toISOString();
+  const handleCreateDocument = async () => {
+    const document = await createDocument("Untitle", false, currentDateTime, null, workspaceId);
+    dispatch(createDocumentSuccess(document));
+    navigate(`/createdocument/${document.documentId}`);
+    toast.success("Create Document Successfully", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
 
   return (
     <div className="text-accent space-y-5">
@@ -87,8 +95,10 @@ export const Document = () => {
                   <p className="font-semibold text-20px 2xs:text-18px sm:text-18px md:text-18px">Documents</p>
                 </div>
                 <Link
-                  to={"/createdocument"}
-                  className="font-semibold bg-primary px-4 py-2 rounded-lg text-white md:text-14px 2xs:text-15px 2xs:py-1.5 sm:text-15px sm:py-1.5 sm:px-3"
+                    type="button"
+                    to={"/createdocument"}
+                    onClick={handleCreateDocument}
+                    className="font-semibold bg-primary px-4 py-2 rounded-lg text-white md:text-14px 2xs:text-15px 2xs:py-1.5 sm:text-15px sm:py-1.5 sm:px-3"
                 >
                   Create Document
                 </Link>
@@ -233,6 +243,7 @@ export const Document = () => {
                   <input
                     type="text"
                     placeholder="search"
+                    onChange={(e) => setSearchTerm(e.target.value)}
                     className="rounded-lg text-18px border-gray-200 border-[1px] w-[280px] focus:ring-accent focus:border-accent"
                   />
                 ) : null}
@@ -290,26 +301,88 @@ export const Document = () => {
                     />
                   ) : null}
                 </div>
-              </div>
-            )}
-          </div>
-      </div> 
 
-      {/* Card Document */}
-      {/* {openGrid ? (
+                {/* <div className="relative">
+                <Dropdown className="dropdown-right">
+                  <Dropdown.Toggle>
+                    <img src={dotshorizontal} />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu className="w-56 bg-white rounded-lg text-base">
+                    <Dropdown.Item>
+                      <img src={setting} alt="" />
+                      <span>Setting Workspace</span>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <img src={group} alt="" />
+                      <span>View member</span>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div> */}
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      {openGrid ? (
         <div className="grid grid-cols-12 gap-8">
-          {documents === null
-              ? null
-                : documents.map((document, index) => (
+          {documents === null ? null : documents.length > 0 ? (
+              documents
+              .filter((document) => {
+                if (searchTerm === "") {
+                  return document;
+                } else if (
+                      document.title
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+                ) {
+                  return document;
+                }
+              })
+              .map((document, index) => (
                     <div className="col-span-4" key={index}>
                       <DocumentCard document={document} />
                     </div>
-          ))}
+          ))
+          ) : (
+            <div className="col-span-12 absolute bottom-[45%] left-[55%]">
+              <p className="font-semibold text-accent">No Document</p>
+            </div>
+          )}
           </div>
-      ) : null} */}
+      ) : null} 
 
       {openBulletList ? (
         <div className="space-y-6">
+          {documents === null ? null : documents.length > 0 ? (
+            documents
+              .filter((document) => {
+                if (searchTerm === "") {
+                  return document;
+                } else if (
+                  document.title
+                    .toLowerCase()
+                    .includes(searchTerm.toLowerCase())
+                ) {
+                  return document;
+                }
+              })
+              .map((document, index) => (
+                <div className="col-span-4" key={index}>
+                  <DocumentList
+                    title={document.title}
+                    status={true}
+                    editdate={"Apr 24 12:15 PM"}
+                  />
+                </div>
+              ))
+          ) : (
+            <div className="col-span-12 absolute bottom-[45%] left-[55%]">
+              <p className="font-semibold text-accent">No Document</p>
+            </div>
+          )}
+          {/* {" "}
           <DocumentList
             title={"Redux Tookit"}
             status={true}
@@ -327,7 +400,7 @@ export const Document = () => {
           />
         </div>
       ) : null}
-      <div>
+     <div>
         {workspace && isOwner && (
           <WorkspaceSettingModal
             openWorkspaceSetting={openWorkspaceSetting}

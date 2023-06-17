@@ -109,7 +109,7 @@ function App() {
             }
           />
           <Route
-            path="/createdocument"
+            path="/createdocument/:id"
             element={
               // <ProtectedRoute>
                 <CreateDocument />
@@ -117,15 +117,6 @@ function App() {
             }
           />
         </Route>
-
-        <Route
-            path="/test"
-            element={
-              // <ProtectedRoute>
-                <Test />
-              // </ProtectedRoute>
-            }
-          />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
