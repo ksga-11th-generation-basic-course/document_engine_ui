@@ -1,9 +1,44 @@
-import React, { useEffect } from "react";
+import React from "react";
 import documenticon from "../assets/dashboard_image/documenticon.svg";
 import { DocumentCardRow } from "../components/card/DocumentCardRow";
 import { Hint } from "../components/Hint";
 
 export const Dashboard = () => {
+  const documentRecentlyUpdated = [
+    {
+      documentId: "b69d1d83-21b1-4a1b-a00b-bbe11429d563",
+      title: "Laravel",
+      status: false,
+      createdDate: "16-06-2023",
+      pages: [],
+      workspaceId: "b91e387c-4399-4ff4-adf1-c5b455012f8a",
+      tags: [],
+      blocks: [],
+      editDate: "25 minutes ago",
+    },
+    {
+      documentId: "b69d1d83-21b1-4a1b-a00b-bbe11429d563",
+      title: "Spring",
+      status: true,
+      createdDate: "16-06-2023",
+      pages: [],
+      workspaceId: "b91e387c-4399-4ff4-adf1-c5b455012f8a",
+      tags: [],
+      blocks: [],
+      editDate: "25 minutes ago",
+    },
+    {
+      documentId: "b69d1d83-21b1-4a1b-a00b-bbe11429d563",
+      title: "Java",
+      status: false,
+      createdDate: "16-06-2023",
+      pages: [],
+      workspaceId: "b91e387c-4399-4ff4-adf1-c5b455012f8a",
+      tags: [],
+      blocks: [],
+      editDate: "25 minutes ago",
+    },
+  ];
 
   return (
     <div className="space-y-7 bg-white ">
@@ -15,27 +50,12 @@ export const Dashboard = () => {
         <p className="font-semibold text-20px text-accent">Recently</p>
       </div>
       <div className="space-y-8">
-        <div>
-          <DocumentCardRow
-            documentname={"Spring Profile"}
-            editDate={"Edited 5days ago"}
-            status={true}
-          />
-        </div>
-        <div>
-          <DocumentCardRow
-            documentname={"Redux Toolkit"}
-            editDate={"Edited 9days ago"}
-            status={false}
-          />
-        </div>
-        <div>
-          <DocumentCardRow
-            documentname={"Laravel"}
-            editDate={"Edited 17days ago"}
-            status={true}
-          />
-        </div>
+        {documentRecentlyUpdated &&
+          documentRecentlyUpdated.map((document, index) => (
+            <div key={index}>
+              <DocumentCardRow document={document} />
+            </div>
+          ))}
       </div>
     </div>
   );

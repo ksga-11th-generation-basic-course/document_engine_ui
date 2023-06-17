@@ -25,11 +25,6 @@ io.on("connection", (socket) => {
   socket.on("remove_workspace", (workspaceId) => {
     socket.broadcast.emit("remove_workspace_success", workspaceId);
   });
-
-  socket.on("remove_member", (workspaceIdProp) => {
-    console.log(workspaceIdProp);
-    socket.broadcast.emit("remove_member_success", workspaceIdProp);
-  });
 });
 
 server.listen(3001, () => {

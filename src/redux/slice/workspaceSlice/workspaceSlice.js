@@ -21,10 +21,10 @@ const workspaceSlice = createSlice({
   initialState,
   reducers: {
     createWorkspaceSuccess: (state, action) => {
-      state.workspaces.push(action.payload);
+      state.workspaces.unshift(action.payload);
     },
     joinWorkspaceSuccess: (state, action) => {
-      state.workspaces.push(action.payload);
+      state.workspaces.unshift(action.payload);
     },
     editWorkspaceSuccess: (state, action) => {
       state.workspaces = state.workspaces.map((workspace) =>

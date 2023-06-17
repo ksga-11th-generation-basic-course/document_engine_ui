@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { getCurrentUser } from "../../redux/service/userService/userService";
+import { useDispatch, useSelector } from "react-redux";
 
 export const MemberWorkspaceForMemberViewCard = ({ member }) => {
   const character = member.username.split("");
@@ -12,6 +14,14 @@ export const MemberWorkspaceForMemberViewCard = ({ member }) => {
   ];
 
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
+
+  const user = useSelector((state) => state.user.user);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, []);
 
   return (
     <div>
@@ -33,6 +43,9 @@ export const MemberWorkspaceForMemberViewCard = ({ member }) => {
             <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg">
               Owner
             </span>
+          ) : null}
+          {user.userId === member.userId ? (
+            <span>(You)</span>
           ) : null}
         </div>
       </div>

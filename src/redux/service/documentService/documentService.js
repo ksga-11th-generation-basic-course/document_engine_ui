@@ -6,7 +6,7 @@ export const getAllDocumentInEachWorkspace = createAsyncThunk(
   async (workspaceId) => {
     try {
       const response = await api.get(
-        `documents/workspaces/${workspaceId}?pageNo=1&pageSize=5`,
+        `documents/workspaces/${workspaceId}?pageNo=1&pageSize=5&eSortCurrentDateTime=DEFAULT`,
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),

@@ -43,7 +43,7 @@ export const joinWorkspace = async (workspaceCode) => {
 export const getAllWorkspace = createAsyncThunk(`workspaces`, async (body) => {
   try {
     const response = await api.get(
-      `workspaces?pageNo=${body.no}&pageSize=${body.size}&asc=${body.asc}&desc=${body.desc}`,
+      `workspaces?pageNo=${body.no}&pageSize=${body.size}&asc=${body.asc}&desc=${body.desc}&eSortWorkspace=${body.sortbydatetime}`,
       {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
@@ -72,7 +72,7 @@ export const removeWorkspaceService = async (workspaceId) => {
 };
 
 export const getWorkspaceByWorkspaceId = createAsyncThunk(
-  "workspaces/workspaceId",
+  "workspaces/getworkspaceId",
   async (workspaceId) => {
     try {
       const response = await api.get(`workspaces/${workspaceId}`, {
@@ -237,7 +237,7 @@ export const leaveWorkspaceService = async (workspaceId) => {
 export const inviteMemberViaEmail = async (workspaceId, email) => {
   try {
     const response = await api.post(
-      `workspace/${workspaceId}/invite?email=${email}`,
+      `workspaces/${workspaceId}/invite?email=${email}`,
       {},
       {
         headers: {

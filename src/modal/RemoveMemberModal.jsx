@@ -21,7 +21,6 @@ export const RemoveMemberModal = ({
     try {
       const user = await removeMemberInWorkspace(userId, workspaceIdProp);
       dispatch(removeMemberInWorkspaceSuccess(user));
-      socket.emit("remove_member", workspaceIdProp);
       setRemoveMember(!removeMember);
     } catch (error) {
       console.log(error);

@@ -97,7 +97,7 @@ function App() {
             }
           />
           <Route
-            path="/document/:id"
+            path="/document/:workspaceId/:workspaceName/:isOwner"
             element={
               // <ProtectedRoute>
                 <Document />

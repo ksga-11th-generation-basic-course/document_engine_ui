@@ -36,21 +36,27 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
 
   const [profileImage, setProfileImage] = useState();
 
-  const handleEditProfileInformation = () => {
-    try {
-      if (!profileImage) return;
+  const [url, setUrl] = useState(user && user.profileImage);
 
-      const imageRef = ref(
-        storage,
-        `images/profile/${uuidv4()}_${profileImage.name}`
-      );
+  useEffect(() => {
+    if (!profileImage) return;
 
-      uploadBytes(imageRef, profileImage).then(async (snapshot) => {
-        getDownloadURL(snapshot.ref).then(async (url) => {
-          const user = await editProfileInformation(username, url);
-          dispatch(editProfileInformationSuccess(user));
-        });
+    const imageRef = ref(
+      storage,
+      `images/profile/${uuidv4()}_${profileImage.name}`
+    );
+
+    uploadBytes(imageRef, profileImage).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setUrl(url);
       });
+    });
+  }, [profileImage]);
+
+  const handleEditProfileInformation = async () => {
+    try {
+      const user = await editProfileInformation(username, url);
+      dispatch(editProfileInformationSuccess(user));
       setOpenSetting(!openSetting);
       document.getElementById("changename").reset();
     } catch (error) {
@@ -130,7 +136,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                   </button>
                 </div>
                 <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg">
-                  <form className="w-full space-y-2" id="changename">
+                  <div className="w-full space-y-2">
                     <h3 className="font-bold text-18px text-black">
                       Account Name
                     </h3>
@@ -141,7 +147,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                       placeholder={user && user.userName}
                       onChange={(e) => setUsername(e.target.value)}
                     />
-                  </form>
+                  </div>
                   <div className="flex justify-between items-center w-full space-y-4">
                     <div>
                       <h3 className="font-bold text-18px text-black">
@@ -167,19 +173,29 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                       <p>Displayed when collaborating with others.</p>
                     </div>
                     <div className="flex justify-center items-center gap-x-4">
-                      <div className="overflow-hidden w-11 h-11 rounded-full">
-                        {user && user.profileImage === null ? (
-                          <img
-                            src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
-                            className="bg-cover w-full h-full"
-                          />
-                        ) : (
-                          <img
-                            src={user && user.profileImage}
-                            className="bg-cover w-full h-full"
-                          />
-                        )}
-                      </div>
+                      <label className="cursor-pointer">
+                        <input
+                          className="text-sm w-36 hidden"
+                          type="file"
+                          multiple
+                          onChange={(e) => {
+                            setProfileImage(e.target.files[0]);
+                          }}
+                        />
+                        <div className="overflow-hidden w-11 h-11 rounded-full">
+                          {profileImage ? (
+                            <img
+                              src={URL.createObjectURL(profileImage)}
+                              className="bg-cover w-full h-full"
+                            />
+                          ) : (
+                            <img
+                              src={user && user.profileImage}
+                              className="bg-cover w-full h-full"
+                            />
+                          )}
+                        </div>
+                      </label>
                       <label>
                         <input
                           className="text-sm cursor-pointer w-36 hidden"
@@ -229,7 +245,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                   <div className="flex justify-between items-center w-full space-y-4">
                     <div>
                       <h3 className="font-bold text-18px text-black">
-                        Signing out
+                        Sign out
                       </h3>
                       <p>
                         You can safely sign out from the current sessions and

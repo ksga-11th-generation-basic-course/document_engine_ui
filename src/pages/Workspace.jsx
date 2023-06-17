@@ -12,19 +12,24 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Dropdown, Radio } from "react-daisyui";
 import { io } from "socket.io-client";
-import {
-  removeMemberInWorkspaceSuccess,
-  removeWorkspaceServiceSuccess,
-} from "../redux/slice/workspaceSlice/workspaceSlice";
+import { removeWorkspaceServiceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
+import { Box, Pagination, Skeleton } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CustomSkeleton } from "../components/CustomSkeleton";
 
 const socket = io.connect("http://localhost:3001");
 
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#1E9CEF",
+      contrastText: "#fff",
+    },
+  },
+});
+
 export const Workspace = () => {
   const [openSearch, setOpenSearch] = useState(false);
-
-  const [checked, setChecked] = useState("allworkspaces");
-
-  const [sortWorkspace, setSortWorkspace] = useState("asc");
 
   let workspaces = useSelector((state) => state.workspace.workspaces);
 
@@ -32,36 +37,58 @@ export const Workspace = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [no, setNo] = useState(1);
+
+  const [size, setSize] = useState(6);
+
+  const [asc, setAsc] = useState(true);
+
+  const [desc, setDesc] = useState(false);
+
+  const [sortbydatetime, setSortbydatetime] = useState("DEFAULT");
+
+  const [loading, setLoading] = useState(true);
+
+  const [status, setStatus] = useState("A-Z");
+
+  const [filterStatus, setFilterStatus] = useState("All Workspaces");
+
   useEffect(() => {
-    switch (checked) {
-      case "allworkspaces":
-        if (sortWorkspace === "asc") {
-          dispatch(getAllWorkspace({ no: 1, size: 6, asc: true, desc: false }));
-        } else if (sortWorkspace === "desc") {
-          dispatch(getAllWorkspace({ no: 1, size: 6, asc: false, desc: true }));
-        }
-      case "myworkspaces":
-        dispatch(filterWorkspace(true));
-      case "otherworkspaces":
-        dispatch(filterWorkspace(false));
-    }
-  }, [checked, sortWorkspace]);
+    dispatch(
+      getAllWorkspace({
+        no: no,
+        size: size,
+        asc: asc,
+        desc: desc,
+        sortbydatetime: sortbydatetime,
+      })
+    );
+  }, [dispatch, no, size, asc, desc, sortbydatetime]);
 
   useEffect(() => {
     socket.on("remove_workspace_success", (workspaceId) => {
       dispatch(removeWorkspaceServiceSuccess(workspaceId));
     });
 
-    socket.on("remove_member_success", (workspaceIdProp) => {
-      dispatch(removeWorkspaceServiceSuccess(workspaceIdProp));
-    });
-
     return () => {
       socket.off("remove_workspace");
-      socket.off("remove_member_success");
     };
   }, [dispatch]);
 
+  const handleFilterWorkspace = (status) => {
+    dispatch(filterWorkspace(status));
+  };
+
+  const handlePageNoChange = (event, value) => {
+    setNo(value);
+  };
+
+  useEffect(() => {
+    // Simulating data fetching delay
+    setTimeout(() => {
+      setLoading(false);
+    }, 2000);
+  }, []);
   return (
     <div className="text-accent space-y-5 sm:h-full bg-white">
       <div className="flex items-center gap-x-3 ">
@@ -78,7 +105,7 @@ export const Workspace = () => {
             <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
-                  <p className="text-18px text-black">Last Update</p>
+                  <p className="text-18px text-black">{status}</p>
                   <img src={chevrondown} />
                 </div>
               </Dropdown.Toggle>
@@ -87,16 +114,11 @@ export const Workspace = () => {
                   <Radio
                     defaultChecked
                     name="sortOptions"
-                    value="lastupdate"
-                    className="checked:bg-primary checked:shadow-none"
-                  />
-                  <span>Last Update</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Radio
-                    name="sortOptions"
-                    value="asc"
-                    onChange={(e) => setSortWorkspace(e.target.value)}
+                    onClick={() => {
+                      setAsc(true);
+                      setDesc(false);
+                      setStatus("A-Z");
+                    }}
                     className="checked:bg-primary checked:shadow-none"
                   />
                   <span>A-Z</span>
@@ -104,11 +126,47 @@ export const Workspace = () => {
                 <Dropdown.Item>
                   <Radio
                     name="sortOptions"
-                    value="desc"
-                    onChange={(e) => setSortWorkspace(e.target.value)}
+                    onClick={() => {
+                      setAsc(false);
+                      setDesc(true);
+                      setStatus("Z-A");
+                    }}
                     className="checked:bg-primary checked:shadow-none"
                   />
                   <span>Z-A</span>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Radio
+                    name="sortOptions"
+                    className="checked:bg-primary checked:shadow-none"
+                    onClick={() => {
+                      setSortbydatetime("THIS_WEEK");
+                      setStatus("THIS_WEEK");
+                    }}
+                  />
+                  <span>This week</span>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Radio
+                    name="sortOptions"
+                    className="checked:bg-primary checked:shadow-none"
+                    onClick={() => {
+                      setSortbydatetime("THIS_MONTH");
+                      setStatus("THIS_MONTH");
+                    }}
+                  />
+                  <span>This month</span>
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <Radio
+                    name="sortOptions"
+                    className="checked:bg-primary checked:shadow-none"
+                    onClick={() => {
+                      setSortbydatetime("THIS_YEAR");
+                      setStatus("THIS_YEAR");
+                    }}
+                  />
+                  <span>This year</span>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
@@ -123,7 +181,7 @@ export const Workspace = () => {
             <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
-                  <p className="text-18px text-black">All Workspaces</p>
+                  <p className="text-18px text-black">{filterStatus}</p>
                   <img src={chevrondown} />
                 </div>
               </Dropdown.Toggle>
@@ -132,8 +190,17 @@ export const Workspace = () => {
                   <Radio
                     defaultChecked
                     name="radioOptions"
-                    value="allworkspaces"
-                    onChange={(e) => setChecked(e.target.value)}
+                    onClick={() =>
+                      {dispatch(
+                        getAllWorkspace({
+                          no: no,
+                          size: size,
+                          asc: asc,
+                          desc: desc,
+                          sortbydatetime: sortbydatetime,
+                        })
+                      ); setFilterStatus("All Workspaces")}
+                    }
                     className="checked:bg-primary checked:shadow-none"
                   />
                   <span>All Workspaces</span>
@@ -141,8 +208,10 @@ export const Workspace = () => {
                 <Dropdown.Item>
                   <Radio
                     name="radioOptions"
-                    value="myworkspaces"
-                    onChange={(e) => setChecked(e.target.value)}
+                    onClick={() => {
+                      handleFilterWorkspace(true);
+                      setFilterStatus("My Workspaces");
+                    }}
                     className="checked:bg-primary checked:shadow-none"
                   />
                   <span>My Workspaces</span>
@@ -150,8 +219,10 @@ export const Workspace = () => {
                 <Dropdown.Item>
                   <Radio
                     name="radioOptions"
-                    value="otherworkspaces"
-                    onChange={(e) => setChecked(e.target.value)}
+                    onClick={() => {
+                      handleFilterWorkspace(false);
+                      setFilterStatus("Other Workspaces");
+                    }}
                     className="checked:bg-primary checked:shadow-none"
                   />
                   <span>Other Workspaces</span>
@@ -181,7 +252,14 @@ export const Workspace = () => {
         </div>
       </div>
       <div className="grid grid-cols-12 gap-5 ">
-        {workspaces === null ? null : workspaces.length > 0 ? (
+        {loading ? (
+          workspaces &&
+          workspaces.map((workspace, index) => (
+            <div className="col-span-4" key={index}>
+              <CustomSkeleton />
+            </div>
+          ))
+        ) : workspaces === null ? null : workspaces.length > 0 ? (
           workspaces
             .filter((workspace) => {
               if (searchTerm === "") {
@@ -204,6 +282,16 @@ export const Workspace = () => {
             <p className="font-semibold text-accent">No Workspace</p>
           </div>
         )}
+      </div>
+      <div className="flex justify-center items-center absolute left-[51%] bottom-6">
+        <ThemeProvider theme={theme}>
+          <Pagination
+            count={5}
+            color="primary"
+            page={no}
+            onChange={handlePageNoChange}
+          />
+        </ThemeProvider>
       </div>
     </div>
   );

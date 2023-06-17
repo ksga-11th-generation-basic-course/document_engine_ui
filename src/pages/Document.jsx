@@ -24,17 +24,11 @@ import { WorkspaceViewForMemberModal } from "../modal/WorkspaceViewForMemberModa
 import { getCurrentUser } from "../redux/service/userService/userService";
 
 export const Document = () => {
-  const [openSort, setOpenSort] = useState(false);
-
-  const [openFilter, setOpenFilter] = useState(false);
-
   const [openSearch, setOpenSearch] = useState(false);
 
   const [openGrid, setOpenGrid] = useState(true);
 
   const [openBulletList, setOpenBulletList] = useState(false);
-
-  const [workspaceSetting, setWorkspaceSetting] = useState(false);
 
   const [openWorkspaceSetting, setOpenWorksapceSetting] = useState(false);
 
@@ -45,27 +39,18 @@ export const Document = () => {
 
   const workspace = useSelector((state) => state.workspace.workspace);
 
-  const isOwner = useSelector((state) => state.workspace.isOwner);
-
   const dispatch = useDispatch();
 
   const param = useParams();
 
-  const workspaceId = param.id;
+  const workspaceId = param.workspaceId;
 
-  const user = useSelector((state) => state.user.user);
-
-  let userId;
-
-  if (user != null) {
-    userId = user.userId;
-  }
+  const isOwner = param.isOwner;
 
   useEffect(() => {
     dispatch(getAllDocumentInEachWorkspace(workspaceId));
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
     dispatch(getCurrentUser());
-    dispatch(checkIsOwnerWorkspace({ workspaceId, userId }));
   }, []);
 
   return (
@@ -226,12 +211,12 @@ export const Document = () => {
                 </button>
               </div>
               <div className="relative">
-                {isOwner ? (
+                {isOwner === "true" ? (
                   <Dropdown className="dropdown-left">
                     <Dropdown.Toggle>
                       <img src={dotshorizontal} />
                     </Dropdown.Toggle>
-                    <Dropdown.Menu className="w-56 mt-6">
+                    <Dropdown.Menu className="w-56 mt-6 bg-white">
                       <Dropdown.Item
                         onClick={() =>
                           setOpenWorksapceSetting(!openWorkspaceSetting)

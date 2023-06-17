@@ -7,6 +7,7 @@ import {
 const initialState = {
   document: null,
   documents: null,
+  documentRecentlyUpdated: null,
   loading: false,
   error: null,
 };
