@@ -72,7 +72,9 @@ export default function EnableAccount() {
                             type="button"
                             className="transition text-lg h-[46px] duration-200 bg-[#1E9CEF] hover:bg-[#1E9CEF] focus:bg-[#1E9CEF] focus:shadow-sm focus:ring-4
                                        focus:ring-[#1E9CEF] focus:ring-opacity-50 text-white w-full  rounded-lg shadow-sm hover:shadow-md font-semibold text-center 
-                                     lg:pb-9 lg:pt-2 lg:text-xl md:text-base md:pt-1 md:pb-1 md:w-[228px] md:h-[40px] md:-mb-36">
+                                     lg:pb-9 lg:pt-2 lg:text-xl md:text-base md:pt-1 md:pb-1 md:w-[228px] md:h-[40px] md:-mb-36"
+                              onClick={handleSubmit}
+                            >
                             Continue
                           </button>
                         </div>
@@ -86,4 +88,4 @@ export default function EnableAccount() {
       </div>
     </div>
   );
-};
+}

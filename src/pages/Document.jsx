@@ -82,19 +82,20 @@ export const Document = () => {
           Welcome to {workspace && workspace.workspaceName} workspace
         </p>
         <div className="flex justify-between items-center pt-1 xs:pt-5 2xs:pt-5 mt-5">
-          <div className="flex items-center gap-x-3 2xl:gap-x-2">
-            <img src={documenticon} className="p-2 lg:w-7 2xs:w-7 2xs:p-1 sm:w-8 shadow-custom rounded-lg md:w-7 md:p-1.5" />
-            <p className="font-semibold text-20px 2xs:text-18px sm:text-18px md:text-18px">Documents</p>
-          </div>
-          <Link
-            to={"/createdocument"}
-            className="font-semibold bg-primary px-4 py-2 rounded-lg text-white md:text-14px 2xs:text-15px 2xs:py-1.5 sm:text-15px sm:py-1.5 sm:px-3"
-          >
-            Create Document
-          </Link>
+                <div className="flex items-center gap-x-3 2xl:gap-x-2">
+                  <img src={documenticon} className="p-2 lg:w-7 2xs:w-7 2xs:p-1 sm:w-8 shadow-custom rounded-lg md:w-7 md:p-1.5" />
+                  <p className="font-semibold text-20px 2xs:text-18px sm:text-18px md:text-18px">Documents</p>
+                </div>
+                <Link
+                  to={"/createdocument"}
+                  className="font-semibold bg-primary px-4 py-2 rounded-lg text-white md:text-14px 2xs:text-15px 2xs:py-1.5 sm:text-15px sm:py-1.5 sm:px-3"
+                >
+                  Create Document
+                </Link>
         </div>
+    </div>  
 
-
+      <div> 
         <div className="grid grid-cols-12 mt-5 md:mt-3">
         {/* Sort */}
         <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center lg:w-72 md:w-36 md:col-span-6">
@@ -145,7 +146,7 @@ export const Document = () => {
           </div>
         </div>
 
-        <div className="relative">
+         {/* <div className="relative">
             <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
@@ -192,9 +193,8 @@ export const Document = () => {
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
-          </div>
-        </div>
-        <div className="col-span-4 flex items-center gap-x-5 h-11">
+          </div> 
+         <div className="col-span-4 flex items-center gap-x-5 h-11">
           <div className="flex items-center gap-x-3">
             <img src={filter} className="w-7 h-7" />
             <h4 className="font-semibold text-20px">Filter: </h4>
@@ -223,11 +223,11 @@ export const Document = () => {
               </Dropdown.Menu>
             </Dropdown>
           </div>
-        </div>
+        </div>  */}
 
         {/* Option Document */}
-          <div className="col-span-4 flex items-center justify-end sm:col-span-12 sm:h-11 md:col-span-12 md:h-11 md:pt-4 2xs:col-span-12">
-            {openSearch ? (
+           <div className="col-span-4 flex items-center justify-end sm:col-span-12 sm:h-11 md:col-span-12 md:h-11 md:pt-4 2xs:col-span-12">
+             {openSearch ? (
               <div className="flex justify-end items-center absolute">
                 {openSearch ? (
                   <input
@@ -293,39 +293,38 @@ export const Document = () => {
               </div>
             )}
           </div>
-        </div>
-      </div>
+      </div> 
 
       {/* Card Document */}
-      {openGrid ? (
+      {/* {openGrid ? (
         <div className="grid grid-cols-12 gap-8">
           {documents === null
-            ? null
-            : documents.map((document, index) => (
-                <div className="col-span-4" key={index}>
-                  <DocumentCard document={document} />
-                </div>
-              ))}
-        </div>
-      ) : null}
+              ? null
+                : documents.map((document, index) => (
+                    <div className="col-span-4" key={index}>
+                      <DocumentCard document={document} />
+                    </div>
+          ))}
+          </div>
+      ) : null} */}
+
       {openBulletList ? (
         <div className="space-y-6">
-          {" "}
           <DocumentList
             title={"Redux Tookit"}
             status={true}
             editdate={"Apr 24 12:15 PM"}
-          />{" "}
+          />
           <DocumentList
             title={"Node JS"}
             status={true}
             editdate={"Apr 24 12:15 PM"}
-          />{" "}
+          />
           <DocumentList
             title={"Spring Profile"}
             status={false}
             editdate={"Apr 24 12:15 PM"}
-          />{" "}
+          />
         </div>
       ) : null}
       <div>
@@ -344,6 +343,7 @@ export const Document = () => {
           />
         )}
       </div>
+    </div>
     </div>
   );
 };

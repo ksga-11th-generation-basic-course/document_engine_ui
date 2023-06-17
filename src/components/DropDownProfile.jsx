@@ -36,12 +36,12 @@ export const DropDownProfile = ({ open, setOpen, user }) => {
                 {user && user.profileImage === null ? (
                   <img
                     src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
-                    className="h-full w-full bg-cover"
+                    className="bg-cover overflow-hidden w-14 h-14 flex bg-primary rounded-full md:inline-block md:w-9 md:h-9"
                   />
                 ) : (
                   <img
                     src={user && user.profileImage}
-                    className="h-full w-full bg-cover"
+                    className="bg-cover overflow-hidden w-14 h-14 flex bg-primary rounded-full md:inline-block md:w-9 md:h-9"
                   />
                 )}
               </button>

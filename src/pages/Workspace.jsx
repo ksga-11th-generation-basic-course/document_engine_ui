@@ -30,6 +30,10 @@ export const Workspace = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [openSort, setOpenSort] = useState(false);
+
+  const [openFilter, setOpenFilter] = useState(false);
+
   useEffect(() => {
     switch (checked) {
       case "allworkspaces":
@@ -103,8 +107,8 @@ export const Workspace = () => {
           </div>
         </div>
 
-        {/* <div className="relative">
-            <Dropdown>
+        {/* <div className="relative"> */}
+            {/* <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
                   <p className="text-18px text-black">Last Update</p>
@@ -140,9 +144,8 @@ export const Workspace = () => {
                   <span>Z-A</span>
                 </Dropdown.Item>
               </Dropdown.Menu>
-            </Dropdown>
-          </div>
-        </div> */}
+            </Dropdown> */}
+        {/* </div> */}
 
         {/* Filter */}
         <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:w-80 lg:ml-5 md:w-40 md:ml-0">
@@ -150,6 +153,7 @@ export const Workspace = () => {
             <img src={filter} className="w-7 h-7 md:w-4 md:h-4" />
             <h4 className="font-semibold text-20px md:text-16px md:hidden">Filter: </h4>
           </div>
+          
           <div className="relative">
             <button
               className="flex items-center gap-x-20 lg:gap-x-12 md:gap-x-1"
@@ -168,8 +172,9 @@ export const Workspace = () => {
                 />
               ) : null}
             </div>
+          </div>
 
-            {/* <Dropdown>
+          {/* <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
                   <p className="text-18px text-black">All Workspaces</p>
@@ -207,8 +212,6 @@ export const Workspace = () => {
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown> */}
-
-          </div>
         </div>
 
         {/* Search button for laptop */}
@@ -238,8 +241,9 @@ export const Workspace = () => {
                   className="absolute rounded-lg text-14px border-gray-200 border-[1px] w-[312px]  h-8 focus:ring-accent focus:border-accent"
                 />
                 <span className="absolute mt-2 ml-72"><img src={search} className="md:w-4 md:h-4"/></span>
-          </div>
+        </div>
       </div>
+
       <div className="grid grid-cols-12 gap-8 md:px-6 sm:grid sm:grid-cols-1">
       {workspaces === null ? null : workspaces.length > 0 ? (
           workspaces
@@ -261,7 +265,8 @@ export const Workspace = () => {
             ))
         ) : (
           <div className="col-span-12 absolute bottom-[45%] left-[55%]">
-            <p className="font-semibold text-accent">No Workspace</p>
+                <p className="font-semibold text-accent text-16px">No Workspace</p>
+          </div>)}
       </div>
     </div>
   );

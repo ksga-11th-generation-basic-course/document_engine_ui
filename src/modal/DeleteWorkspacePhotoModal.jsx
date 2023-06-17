@@ -4,9 +4,23 @@ import close from "../assets/dashboard_image/close.svg";
 import deleteprofile from "../assets/dashboard_image/deleteprofile.svg";
 
 export const DeleteWorkspacePhotoModal = ({
+  workspaceId,
   removePhoto,
-  setRemovePhoto,
+  setRemovePhoto
 }) => {
+
+  const dispatch = useDispatch();
+
+  const handleRemoveWorkspaceImage = async () => {
+    try {
+      const workspace = await removeWorkspaceImage(workspaceId);
+      dispatch(removeWorkspaceImageSuccess(workspace));
+      setRemovePhoto(!removePhoto);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   return (
     <div className="w-full">
       <Modal open={removePhoto} onClickBackdrop={() => setRemovePhoto(!removePhoto)}>

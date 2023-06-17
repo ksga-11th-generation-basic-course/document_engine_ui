@@ -15,10 +15,10 @@ import { AboutUs } from "./pages/AboutUs";
 import { ContactUs } from "./pages/ContactUS";
 import { NotFound } from "./pages/NotFound";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
-import { EnableAccount } from "./pages/EnableAccount";
 import { VerifyToEnable } from "./pages/VerifyToEnable";
 import { Test } from "./pages/Test";
 import { EnableAccVerifyCode } from "./pages/EnableAccVerifyCode";
+import EnableAccount from "./pages/EnableAccount";
 
 function App() {
   return (

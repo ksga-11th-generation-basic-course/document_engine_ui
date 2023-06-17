@@ -19,6 +19,10 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
 
   const [workspaceImage, setWorkspaceImage] = useState();
 
+  const toggleVisible = () => {
+          setVisible(!visible)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!workspaceImage) return;
