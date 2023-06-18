@@ -79,7 +79,6 @@ export const Document = () => {
       theme: "light",
     });
   }
-  console.log(documents[0].tags[0].tagName);
 
   return (
     <div className="text-accent space-y-5">
@@ -174,7 +173,7 @@ export const Document = () => {
                 </div>
               </Dropdown.Toggle>
               <Dropdown.Menu className="w-48 bg-white rounded-lg">
-                {tags === null ? null : tags.length > 0 ? (
+                {/* {tags === null ? null : tags.length > 0 ? (
                   tags.map((tag, index) => (
                     <Dropdown.Item key={index}>
                       <Checkbox className="checked:bg-primary" />
@@ -186,7 +185,7 @@ export const Document = () => {
                     <Checkbox className="checked:bg-primary" />
                     <span></span>
                   </Dropdown.Item>
-                )}
+                )} */}
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -276,13 +275,6 @@ export const Document = () => {
                     .toLowerCase()
                     .includes(searchTerm.toLowerCase())
                 ) {
-                  return document;
-                }
-                if(filterTag===""){
-                  return document;
-                } else if(
-                  document.tags
-                ){
                   return document;
                 }
               })
