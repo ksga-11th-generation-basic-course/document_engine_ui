@@ -12,16 +12,24 @@ import { Link, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
 import {
+  checkAccessibility,
   checkIsOwnerWorkspace,
   getWorkspaceByWorkspaceId,
 } from "../redux/service/workspaceService/workspaceService";
-import { Checkbox, Dropdown, Radio } from "react-daisyui";
+import { Dropdown, Form } from "react-daisyui";
 import setting from "../assets/document_image/settings.svg";
 import group from "../assets/document_image/group.svg";
 import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
 import usericon from "../assets/workspace_image/usericon.svg";
 import { WorkspaceViewForMemberModal } from "../modal/WorkspaceViewForMemberModal";
 import { getCurrentUser } from "../redux/service/userService/userService";
+import {
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
 
 export const Document = () => {
   const [openSearch, setOpenSearch] = useState(false);
@@ -39,6 +47,8 @@ export const Document = () => {
 
   const workspace = useSelector((state) => state.workspace.workspace);
 
+  const accessibility = useSelector((state) => state.workspace.accessibility);
+
   const dispatch = useDispatch();
 
   const param = useParams();
@@ -51,6 +61,7 @@ export const Document = () => {
     dispatch(getAllDocumentInEachWorkspace(workspaceId));
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
     dispatch(getCurrentUser());
+    dispatch(checkAccessibility(workspaceId));
   }, []);
 
   return (
@@ -68,12 +79,14 @@ export const Document = () => {
           <img src={documenticon} className="p-2 shadow-md rounded-lg" />
           <p className="font-semibold text-20px">Documents</p>
         </div>
-        <Link
-          to={"/createdocument"}
-          className="font-semibold bg-primary px-5 py-3 rounded-lg text-white"
-        >
-          Create Document
-        </Link>
+        {accessibility ? (
+          <Link
+            to={"/createdocument"}
+            className="font-semibold bg-primary px-5 py-3 rounded-lg text-white"
+          >
+            Create Document
+          </Link>
+        ) : null}
       </div>
       <div className="grid grid-cols-12">
         <div className="col-span-4 flex items-center gap-x-5 h-11">
@@ -90,42 +103,46 @@ export const Document = () => {
                 </div>
               </Dropdown.Toggle>
               <Dropdown.Menu className="w-48 bg-white rounded-lg">
-                <Dropdown.Item>
-                  <Radio
-                    defaultChecked
-                    name="radioOptions"
-                    value="lastupdate"
-                    className="checked:bg-primary checked:shadow-none"
-                  />
-                  <span>Last Update</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Radio
-                    defaultChecked
-                    name="radioOptions"
-                    value="thisweek"
-                    className="checked:bg-primary checked:shadow-none"
-                  />
-                  <span>This week</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Radio
-                    defaultChecked
-                    name="radioOptions"
-                    value="thismonth"
-                    className="checked:bg-primary checked:shadow-none"
-                  />
-                  <span>This month</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Radio
-                    defaultChecked
-                    name="radioOptions"
-                    value="thisyear"
-                    className="checked:bg-primary checked:shadow-none"
-                  />
-                  <span>This year</span>
-                </Dropdown.Item>
+                <FormControl>
+                  <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue="LAST_UPDATE"
+                    name="radio-buttons-group"
+                  >
+                    <Dropdown.Item>
+                      <FormControlLabel
+                        value="LAST_UPDATE"
+                        control={<Radio />}
+                        label="Last Update"
+                        className="h-5 w-full"
+                      />
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <FormControlLabel
+                        value="THIS_WEEK"
+                        control={<Radio />}
+                        label="This week"
+                        className="h-5 w-full"
+                      />
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <FormControlLabel
+                        value="THIS_MONTH"
+                        control={<Radio />}
+                        label="This month"
+                        className="h-5 w-full"
+                      />
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <FormControlLabel
+                        value="THIS_YEAR"
+                        control={<Radio />}
+                        label="This year"
+                        className="h-5 w-full"
+                      />
+                    </Dropdown.Item>
+                  </RadioGroup>
+                </FormControl>
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -145,16 +162,25 @@ export const Document = () => {
               </Dropdown.Toggle>
               <Dropdown.Menu className="w-48 bg-white rounded-lg">
                 <Dropdown.Item>
-                  <Checkbox className="checked:bg-primary" />
-                  <span>Product</span>
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label="Product"
+                    className="h-5 w-full"
+                  />
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <Checkbox className="checked:bg-primary" />
-                  <span>Technology</span>
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label="Technology"
+                    className="h-5 w-full"
+                  />
                 </Dropdown.Item>
                 <Dropdown.Item>
-                  <Checkbox className="checked:bg-primary" />
-                  <span>Document</span>
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label="Document"
+                    className="h-5 w-full"
+                  />
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

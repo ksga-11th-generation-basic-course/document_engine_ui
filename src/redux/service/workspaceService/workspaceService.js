@@ -107,14 +107,17 @@ export const getMemberInEachWorkspace = createAsyncThunk(
 
 export const filterWorkspace = createAsyncThunk(
   "workspaces/filter",
-  async (checked) => {
+  async (body) => {
     try {
-      const response = await api.get(`workspaces/filter?filter=${checked}`, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-          "Content-Type ": "application/json",
-        },
-      });
+      const response = await api.get(
+        `workspaces/filter?filter=${body.status}&pageNo=${body.no}&pageSize=${body.size}&asc=${body.asc}&desc=${body.desc}&eSortWorkspace=${body.sortbydatetime}`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
+      );
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;
@@ -201,7 +204,7 @@ export const checkIsOwnerWorkspace = createAsyncThunk(
   async (body) => {
     try {
       const response = await api.get(
-        `workspace/${body.workspaceId}/user/${body.userId}`,
+        `workspaces/${body.workspaceId}/user/${body.userId}`,
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -251,3 +254,42 @@ export const inviteMemberViaEmail = async (workspaceId, email) => {
     throw error.response.data.detail;
   }
 };
+
+export const checkAccessibility = createAsyncThunk(
+  "workspaces/checkAccessibility",
+  async (workspaceId) => {
+    try {
+      const response = await api.get(
+        `workspaces/${workspaceId}/check/accessibility`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
+      );
+      console.log(response.data.payload);
+      return response.data.payload;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);
+
+export const getTotalPage = createAsyncThunk(
+  "workspaces/totalpage",
+  async (size) => {
+    try {
+      const response = await api.get(`workspaces/totalPage?pageSize=${size}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
+      console.log(response.data.payload);
+      return response.data.payload;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);

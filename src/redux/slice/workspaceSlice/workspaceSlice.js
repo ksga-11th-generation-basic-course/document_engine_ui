@@ -1,9 +1,11 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  checkAccessibility,
   checkIsOwnerWorkspace,
   filterWorkspace,
   getAllWorkspace,
   getMemberInEachWorkspace,
+  getTotalPage,
   getWorkspaceByWorkspaceId,
 } from "../../service/workspaceService/workspaceService";
 
@@ -12,6 +14,8 @@ const initialState = {
   workspaces: null,
   members: null,
   isOwner: false,
+  accessibility: false,
+  totalPage: null,
   loading: false,
   error: null,
 };
@@ -135,6 +139,34 @@ const workspaceSlice = createSlice({
     builder.addCase(checkIsOwnerWorkspace.rejected, (state, action) => {
       state.loading = true;
       state.isOwner = false;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(checkAccessibility.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(checkAccessibility.fulfilled, (state, action) => {
+      state.loading = false;
+      state.accessibility = action.payload;
+      state.error = null;
+    });
+    builder.addCase(checkAccessibility.rejected, (state, action) => {
+      state.loading = true;
+      state.accessibility = false;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(getTotalPage.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getTotalPage.fulfilled, (state, action) => {
+      state.loading = false;
+      state.totalPage = action.payload;
+      state.error = null;
+    });
+    builder.addCase(getTotalPage.rejected, (state, action) => {
+      state.loading = true;
+      state.totalPage = null;
       state.error = action.error.message;
     });
   },

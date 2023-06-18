@@ -12,7 +12,7 @@ export const SideBar = () => {
   const param = useParams();
 
   return (
-    <div className="relative">
+    <div>
       <div className="bg-[#FAFAF9] flex flex-col items-center py-5 px-5 gap-y-3 h-screen">
         <Link>
           <img src={logo} className="w-24 h-24" />

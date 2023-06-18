@@ -17,7 +17,6 @@ import { NotFound } from "./pages/NotFound";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { EnableAccount } from "./pages/EnableAccount";
 import { VerifyToEnable } from "./pages/VerifyToEnable";
-import { Test } from "./pages/Test";
 
 function App() {
   return (
@@ -113,15 +112,6 @@ function App() {
             }
           />
         </Route>
-
-        <Route
-            path="/test"
-            element={
-              // <ProtectedRoute>
-                <Test />
-              // </ProtectedRoute>
-            }
-          />
 
         <Route path="*" element={<NotFound />} />
       </Routes>
