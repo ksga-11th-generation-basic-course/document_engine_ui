@@ -34,18 +34,18 @@ export const CreateDocument = () => {
   // const [openPermission, setOpenPermission] = useState(false);
   // const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
   // const [openExport, setOpenExport] = useState(false);
-  const [tags, setTags] = useState([]);
+  const [tags, setTags]             = useState([]);
   const [inputValue, setInputValue] = useState('');
-  const [toggle, setToggle] = useState(false);
-  const [timerId, setTimerId] = useState(null);
+  const [toggle, setToggle]         = useState(false);
+  const [timerId, setTimerId]       = useState(null);
 
-  const document = useSelector((state) => state.document.document);
-  const username = useSelector((state) => state.document.username);
-  const workspace = useSelector((state) => state.document.workspace);
-  const blockData = useSelector((state) => state.block.blocks)
-  const param = useParams();
+  const document   = useSelector((state) => state.document.document);
+  const username   = useSelector((state) => state.document.username);
+  const workspace  = useSelector((state) => state.document.workspace);
+  const blockData  = useSelector((state) => state.block.blocks)
+  const param      = useParams();
   const documentId = param.id;
-  const dispatch = useDispatch();
+  const dispatch   = useDispatch();
 
 
   useEffect(() => {
@@ -56,11 +56,8 @@ export const CreateDocument = () => {
   }, []);
   const [title, setTitle] = useState(document && document.title);
 
-  const [data, setData] = useState();
-
-  let initialContent = [];
-
-  if (blockData !== null) {
+  let initialContent      = [];
+  if (blockData != null) {
     for (let i = 0; i < blockData.length; i++) {
       const element = blockData[i];
       const block = {
@@ -106,17 +103,10 @@ export const CreateDocument = () => {
   }
 
   const timestamp = (document && document.createdDate);
-  // console.log(timestamp && timestamp);
-  // const dateObj = new Date(timestamp);
-  // const day = dateObj.getDate();
-  // const month = dateObj.toLocaleString('default', { month: 'long' });
-  // const year = dateObj.getFullYear();
-  // const createdDate = `${day} ${month} ${year}`;
 
   const handleInputChan = (event) => {
     setInputValue(event.target.value);
   };
-
   const handleInputKeyDown = (event) => {
     if (event.key === 'Enter') {
       event.preventDefault();
@@ -126,8 +116,8 @@ export const CreateDocument = () => {
         setInputValue('');
       }
     } else if (event.key === 'Backspace' && !inputValue) {
-      // event.preventDefault();
-      // setTags(tags.slice(0, -1));
+      event.preventDefault();
+      setTags(tags.slice(0, -1));
     }
   };
 
@@ -287,7 +277,11 @@ export const CreateDocument = () => {
         </div>
       </div>
       <div className="mt-2">
-        <Editor initialContent={data} />
+        {blockData === null ? null : blockData.length > 0 ? (
+          <Editor initialContent={initialContent} />
+        ) : (
+          <div><Editor initialContent={initialContent} /></div>
+        )}
       </div>
       {/* <div>
         <DocumentPermissionModal

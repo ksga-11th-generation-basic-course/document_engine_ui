@@ -12,8 +12,6 @@ export const Editor = ({initialContent}) => {
   const param      =  useParams();
   const documentId =  param.id;
 
-  console.log(initialContent)
-
   // Create Block
   const handleCreateBlock = async () => {
     for (let index = 0; index < block.length; index++) {

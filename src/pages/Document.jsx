@@ -22,6 +22,7 @@ import group from "../assets/document_image/group.svg";
 import { Checkbox, Dropdown, Radio } from "react-daisyui";
 import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
 import { toast } from "react-toastify";
+import { getTagInEachWorkspace } from "../redux/service/tagService/tagService";
 export const Document = () => {
   const [openSort, setOpenSort] = useState(false);
 
@@ -39,6 +40,8 @@ export const Document = () => {
 
   const workspace = useSelector((state) => state.workspace.workspace);
 
+  const tags = useSelector((state) => state.tag.tags);
+
   const dispatch = useDispatch();
 
   const param = useParams();
@@ -47,10 +50,14 @@ export const Document = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
+  const [filterTag,setFilterTag]=useState("");
+
   const [documentId, setDocumentId] = useState();
+
   const navigate = useNavigate();
 
   useEffect(() => {
+    dispatch(getTagInEachWorkspace(workspaceId))
     dispatch(getAllDocumentInEachWorkspace(workspaceId));
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
   }, []);
@@ -72,6 +79,7 @@ export const Document = () => {
       theme: "light",
     });
   }
+  console.log(documents[0].tags[0].tagName);
 
   return (
     <div className="text-accent space-y-5">
@@ -95,7 +103,7 @@ export const Document = () => {
         >
           Create Document
         </button>
-        
+
       </div>
       <div className="grid grid-cols-12">
         <div className="col-span-4 flex items-center gap-x-5 h-11">
@@ -166,18 +174,19 @@ export const Document = () => {
                 </div>
               </Dropdown.Toggle>
               <Dropdown.Menu className="w-48 bg-white rounded-lg">
-                <Dropdown.Item>
-                  <Checkbox className="checked:bg-primary" />
-                  <span>Product</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Checkbox className="checked:bg-primary" />
-                  <span>Technology</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Checkbox className="checked:bg-primary" />
-                  <span>Document</span>
-                </Dropdown.Item>
+                {tags === null ? null : tags.length > 0 ? (
+                  tags.map((tag, index) => (
+                    <Dropdown.Item key={index}>
+                      <Checkbox className="checked:bg-primary" />
+                      <span>{tag.tagName}</span>
+                    </Dropdown.Item>
+                  ))
+                ) : (
+                  <Dropdown.Item>
+                    <Checkbox className="checked:bg-primary" />
+                    <span></span>
+                  </Dropdown.Item>
+                )}
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -267,6 +276,13 @@ export const Document = () => {
                     .toLowerCase()
                     .includes(searchTerm.toLowerCase())
                 ) {
+                  return document;
+                }
+                if(filterTag===""){
+                  return document;
+                } else if(
+                  document.tags
+                ){
                   return document;
                 }
               })
