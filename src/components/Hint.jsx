@@ -1,15 +1,25 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import star from "../assets/dashboard_image/star.svg";
 import lightbulb from "../assets/dashboard_image/lightbulb.png";
+import { useDispatch, useSelector } from "react-redux";
+import { getCurrentUser } from "../redux/service/userService/userService";
 
 export const Hint = () => {
   const [open, setOpen] = useState(false);
+
+  const user = useSelector((state) => state.user.user);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, []);
 
   return (
     <div className="lg:ml-4 md:-ml-5">
       <div className="mb-5 mt-7">
         <h1 className="font-bold text-accent text-44px md:text-28px">
-          Hi, Ouddom!
+          Hi, {user && user.userName}!
         </h1>
         <p className="text-accent text-20px -mt-2 md:text-14px">
           Welcome to DocEngine
@@ -31,7 +41,7 @@ export const Hint = () => {
           <img src={star} className="md:w-7" />
           <div className="md:-ml-2">
             <h3 className="font-semibold text-24px text-black md:text-16px">
-              Ouddom, get started with DocEngine
+              {user && user.userName}, get started with DocEngine
             </h3>
             <p className="text-accent text-20px text-left md:text-12px">
               Hint! to create your Document

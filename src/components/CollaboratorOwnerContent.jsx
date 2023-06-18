@@ -30,6 +30,8 @@ export const CollaboratorOwnerContent = ({
     dispatch(getMemberInEachWorkspace(workspace.workspaceId));
   }, []);
 
+
+
   return (
     <div>
       <div className="flex w-full justify-end">

@@ -15,51 +15,58 @@ import { DropDownWorkspaceSetting } from "../components/DropDownWorkspaceSetting
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
-import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
-import { createDocument } from "../redux/service/documentService/documentService";
+import {
+  checkAccessibility,
+  checkIsOwnerWorkspace,
+  getWorkspaceByWorkspaceId,
+} from "../redux/service/workspaceService/workspaceService";
+import { Dropdown, Form } from "react-daisyui";
 import setting from "../assets/document_image/settings.svg";
 import group from "../assets/document_image/group.svg";
-import { Checkbox, Dropdown, Radio } from "react-daisyui";
-import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
-import { toast } from "react-toastify";
-import { getTagInEachWorkspace } from "../redux/service/tagService/tagService";
+import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
+import usericon from "../assets/workspace_image/usericon.svg";
+import { WorkspaceViewForMemberModal } from "../modal/WorkspaceViewForMemberModal";
+import { getCurrentUser } from "../redux/service/userService/userService";
+import {
+  Checkbox,
+  FormControl,
+  FormControlLabel,
+  Radio,
+  RadioGroup,
+} from "@mui/material";
+
 export const Document = () => {
-  const [openSort, setOpenSort] = useState(false);
-
-  const [openFilter, setOpenFilter] = useState(false);
-
   const [openSearch, setOpenSearch] = useState(false);
 
   const [openGrid, setOpenGrid] = useState(true);
 
   const [openBulletList, setOpenBulletList] = useState(false);
 
-  const [workspaceSetting, setWorkspaceSetting] = useState(false);
+  const [openWorkspaceSetting, setOpenWorksapceSetting] = useState(false);
+
+  const [openCollaboratorForMember, setOpenCollaboratorForMember] =
+    useState(false);
 
   const documents = useSelector((state) => state.document.documents);
 
   const workspace = useSelector((state) => state.workspace.workspace);
 
-  const tags = useSelector((state) => state.tag.tags);
+  const accessibility = useSelector((state) => state.workspace.accessibility);
 
   const dispatch = useDispatch();
 
   const param = useParams();
 
-  const workspaceId = param.id;
+  const workspaceId = param.workspaceId;
 
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const [filterTag,setFilterTag]=useState("");
-
-  const [documentId, setDocumentId] = useState();
-
-  const navigate = useNavigate();
+  const isOwner = param.isOwner;
 
   useEffect(() => {
     dispatch(getTagInEachWorkspace(workspaceId))
     dispatch(getAllDocumentInEachWorkspace(workspaceId));
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
+    dispatch(getCurrentUser());
+    dispatch(checkAccessibility(workspaceId));
   }, []);
 
   const now = new Date();
@@ -95,14 +102,14 @@ export const Document = () => {
           <img src={documenticon} className="p-2 shadow-md rounded-lg" />
           <p className="font-semibold text-20px">Documents</p>
         </div>
-        <button
-          type="button"
-          onClick={handleCreateDocument}
-          className="font-semibold bg-primary px-5 py-3 rounded-lg text-white"
-        >
-          Create Document
-        </button>
-
+        {accessibility ? (
+          <Link
+            to={"/createdocument"}
+            className="font-semibold bg-primary px-5 py-3 rounded-lg text-white"
+          >
+            Create Document
+          </Link>
+        ) : null}
       </div>
       <div className="grid grid-cols-12">
         <div className="col-span-4 flex items-center gap-x-5 h-11">
@@ -119,42 +126,46 @@ export const Document = () => {
                 </div>
               </Dropdown.Toggle>
               <Dropdown.Menu className="w-48 bg-white rounded-lg">
-                <Dropdown.Item>
-                  <Radio
-                    defaultChecked
-                    name="radioOptions"
-                    value="lastupdate"
-                    className="checked:bg-primary checked:shadow-none"
-                  />
-                  <span>Last Update</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Radio
-                    defaultChecked
-                    name="radioOptions"
-                    value="thisweek"
-                    className="checked:bg-primary checked:shadow-none"
-                  />
-                  <span>This week</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Radio
-                    defaultChecked
-                    name="radioOptions"
-                    value="thismonth"
-                    className="checked:bg-primary checked:shadow-none"
-                  />
-                  <span>This month</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <Radio
-                    defaultChecked
-                    name="radioOptions"
-                    value="thisyear"
-                    className="checked:bg-primary checked:shadow-none"
-                  />
-                  <span>This year</span>
-                </Dropdown.Item>
+                <FormControl>
+                  <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue="LAST_UPDATE"
+                    name="radio-buttons-group"
+                  >
+                    <Dropdown.Item>
+                      <FormControlLabel
+                        value="LAST_UPDATE"
+                        control={<Radio />}
+                        label="Last Update"
+                        className="h-5 w-full"
+                      />
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <FormControlLabel
+                        value="THIS_WEEK"
+                        control={<Radio />}
+                        label="This week"
+                        className="h-5 w-full"
+                      />
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <FormControlLabel
+                        value="THIS_MONTH"
+                        control={<Radio />}
+                        label="This month"
+                        className="h-5 w-full"
+                      />
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <FormControlLabel
+                        value="THIS_YEAR"
+                        control={<Radio />}
+                        label="This year"
+                        className="h-5 w-full"
+                      />
+                    </Dropdown.Item>
+                  </RadioGroup>
+                </FormControl>
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -173,19 +184,27 @@ export const Document = () => {
                 </div>
               </Dropdown.Toggle>
               <Dropdown.Menu className="w-48 bg-white rounded-lg">
-                {/* {tags === null ? null : tags.length > 0 ? (
-                  tags.map((tag, index) => (
-                    <Dropdown.Item key={index}>
-                      <Checkbox className="checked:bg-primary" />
-                      <span>{tag.tagName}</span>
-                    </Dropdown.Item>
-                  ))
-                ) : (
-                  <Dropdown.Item>
-                    <Checkbox className="checked:bg-primary" />
-                    <span></span>
-                  </Dropdown.Item>
-                )} */}
+                <Dropdown.Item>
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label="Product"
+                    className="h-5 w-full"
+                  />
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label="Technology"
+                    className="h-5 w-full"
+                  />
+                </Dropdown.Item>
+                <Dropdown.Item>
+                  <FormControlLabel
+                    control={<Checkbox />}
+                    label="Document"
+                    className="h-5 w-full"
+                  />
+                </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -242,21 +261,38 @@ export const Document = () => {
                 </button>
               </div>
               <div className="relative">
-                <Dropdown className="dropdown-right">
-                  <Dropdown.Toggle>
-                    <img src={dotshorizontal} />
-                  </Dropdown.Toggle>
-                  <Dropdown.Menu className="w-56 bg-white rounded-lg text-base">
-                    <Dropdown.Item>
-                      <img src={setting} alt="" />
-                      <span>Setting Workspace</span>
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                      <img src={group} alt="" />
-                      <span>View member</span>
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                </Dropdown>
+                {isOwner === "true" ? (
+                  <Dropdown className="dropdown-left">
+                    <Dropdown.Toggle>
+                      <img src={dotshorizontal} />
+                    </Dropdown.Toggle>
+                    <Dropdown.Menu className="w-56 mt-6 bg-white">
+                      <Dropdown.Item
+                        onClick={() =>
+                          setOpenWorksapceSetting(!openWorkspaceSetting)
+                        }
+                      >
+                        <img src={setting} />
+                        <span>Setting Workspace</span>
+                      </Dropdown.Item>
+                      <Dropdown.Item>
+                        <img src={group} />
+                        <span>View member</span>
+                      </Dropdown.Item>
+                    </Dropdown.Menu>
+                  </Dropdown>
+                ) : (
+                  <div>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        setOpenCollaboratorForMember(!openCollaboratorForMember)
+                      }
+                    >
+                      <img src={usericon} />
+                    </button>
+                  </div>
+                )}
               </div>
             </div>
           )}

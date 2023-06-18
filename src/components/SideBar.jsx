@@ -1,9 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import logo from "../assets/landing_image/logo.svg";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
-import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
-import { useDispatch, useSelector } from "react-redux";
 
 export const SideBar = () => {
   const [visible, setVisible] = useState(false);
@@ -11,17 +9,7 @@ export const SideBar = () => {
     setVisible(!visible);
   };
 
-  const dispatch = useDispatch();
-
-  const workspace = useSelector((state) => state.workspace.workspace);
-
-  useEffect(() => {
-    dispatch(getWorkspaceByWorkspaceId(workspaceId));
-  }, []);
-
   const param = useParams();
-
-  const workspaceId = param.id;
 
   return (
     <div>
@@ -76,9 +64,8 @@ export const SideBar = () => {
             Workspace
           </NavLink>
           <div className="w-full border-[1px]"></div>
-          {workspace === null ? null : (
+          {param.workspaceName && (
             <NavLink
-              to={"/document"}
               className={({ isActive }) =>
                 isActive
                   ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
@@ -107,7 +94,7 @@ export const SideBar = () => {
                   </clipPath>
                 </defs>
               </svg>
-              {workspace && workspace.workspaceName}
+              {param.workspaceName}
             </NavLink>
           )}
         </div>
