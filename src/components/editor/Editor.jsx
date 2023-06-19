@@ -25,7 +25,6 @@ export const Editor = ({initialContent}) => {
   //Editor
   const editor = useBlockNote({
     initialContent: initialContent,
-    initialContent: initialContent,
     onEditorContentChange: (editor) => {
       const content = [];
       setBlock(content);

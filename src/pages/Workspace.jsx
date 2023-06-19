@@ -12,7 +12,7 @@ import {
 } from "../redux/service/workspaceService/workspaceService";
 import { useDispatch, useSelector } from "react-redux";
 import { Dropdown } from "react-daisyui";
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 import { removeWorkspaceServiceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
 import {
   Box,
@@ -26,7 +26,7 @@ import {
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CustomSkeleton } from "../components/CustomSkeleton";
 
-const socket = io.connect("http://localhost:3002");
+// const socket = io.connect("http://localhost:3002");
 
 const theme = createTheme({
   palette: {
@@ -75,15 +75,15 @@ export const Workspace = () => {
     dispatch(getTotalPage(size));
   }, [dispatch, no, size, asc, desc, sortbydatetime]);
 
-  useEffect(() => {
-    socket.on("remove_workspace_success", (workspaceId) => {
-      dispatch(removeWorkspaceServiceSuccess(workspaceId));
-    });
+  // useEffect(() => {
+  //   socket.on("remove_workspace_success", (workspaceId) => {
+  //     dispatch(removeWorkspaceServiceSuccess(workspaceId));
+  //   });
 
-    return () => {
-      socket.off("remove_workspace");
-    };
-  }, [dispatch]);
+  //   return () => {
+  //     socket.off("remove_workspace");
+  //   };
+  // }, [dispatch]);
 
   const handleFilterWorkspace = (status) => {
     dispatch(
@@ -328,7 +328,7 @@ export const Workspace = () => {
       <div className="flex justify-center items-center absolute left-[51%] bottom-6">
         <ThemeProvider theme={theme}>
           <Pagination
-            count={totalPage !== null ? totalPage : undefined}
+            count={5}
             color="primary"
             page={no}
             onChange={handlePageNoChange}

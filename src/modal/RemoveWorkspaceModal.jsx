@@ -6,9 +6,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { removeWorkspaceService } from "../redux/service/workspaceService/workspaceService";
 import "react-toastify/dist/ReactToastify.css";
 import { removeWorkspaceServiceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 
-const socket = io.connect("http://localhost:3001");
+// const socket = io.connect("http://localhost:3001");
 
 export const RemoveWorkspaceModal = ({
   removeWorkspace,
@@ -21,7 +21,7 @@ export const RemoveWorkspaceModal = ({
     try {
       const workspace = await removeWorkspaceService(workspaceId);
       dispatch(removeWorkspaceServiceSuccess(workspace));
-      socket.emit("remove_workspace", workspace);
+      // socket.emit("remove_workspace", workspace);
       setRemoveWorkspace(!removeWorkspace);
       toast.success("Remove Workspace Successfully", {
         position: "top-right",

@@ -3,8 +3,6 @@ import sort from "../assets/workspace_image/sort.svg";
 import chevrondown from "../assets/workspace_image/chevrondown.svg";
 import filter from "../assets/workspace_image/filter.svg";
 import search from "../assets/workspace_image/search.svg";
-import { DropDownSort } from "../components/DropDownSort";
-import { DropDownFilter } from "../components/DropDownFilter";
 import documenticon from "../assets/document_image/documenticon.svg";
 import bulletlist from "../assets/document_image/bulletlist.svg";
 import dotshorizontal from "../assets/document_image/dotshorizontal.svg";
@@ -14,10 +12,14 @@ import { DocumentList } from "../components/card/DocumentList";
 import { DropDownWorkspaceSetting } from "../components/DropDownWorkspaceSetting";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
+import {
+  createDocument,
+  getAllDocumentInEachWorkspace,
+} from "../redux/service/documentService/documentService";
 import {
   checkAccessibility,
   checkIsOwnerWorkspace,
+  checkIsOwnerWorkspaceCurrent,
   getWorkspaceByWorkspaceId,
 } from "../redux/service/workspaceService/workspaceService";
 import { Dropdown, Form } from "react-daisyui";
@@ -34,6 +36,9 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
+
+import { getTagInEachWorkspace } from "../redux/service/tagService/tagService";
+import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
 
 export const Document = () => {
   const [openSearch, setOpenSearch] = useState(false);
@@ -53,28 +58,46 @@ export const Document = () => {
 
   const accessibility = useSelector((state) => state.workspace.accessibility);
 
+  const isOwner = useSelector((state) => state.workspace.isOwner);
+
+  const tagsWorkspace = useSelector((state) => state.tag.tagsWorkspace);
+
   const dispatch = useDispatch();
 
   const param = useParams();
 
   const workspaceId = param.workspaceId;
 
-  const isOwner = param.isOwner;
+  // const isOwner = param.isOwner;
+
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const [filterTag, setFilterTag] = useState("");
+
+  const [documentId, setDocumentId] = useState();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(getTagInEachWorkspace(workspaceId))
     dispatch(getAllDocumentInEachWorkspace(workspaceId));
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
     dispatch(getCurrentUser());
     dispatch(checkAccessibility(workspaceId));
+    dispatch(checkIsOwnerWorkspaceCurrent(workspaceId));
   }, []);
 
   const now = new Date();
   const currentDateTime = now.toISOString();
   const handleCreateDocument = async () => {
-    const document = await createDocument("Untitle", false, currentDateTime, null, workspaceId);
+    const document = await createDocument(
+      "Untitle",
+      false,
+      currentDateTime,
+      null,
+      workspaceId
+    );
     dispatch(createDocumentSuccess(document));
-    navigate(`/createdocument/${document.documentId}`);
+    navigate(`/createdocument/${document.documentId}/${workspaceId}`);
     toast.success("Create Document Successfully", {
       position: "top-right",
       autoClose: 5000,
@@ -85,7 +108,7 @@ export const Document = () => {
       progress: undefined,
       theme: "light",
     });
-  }
+  };
 
   return (
     <div className="text-accent space-y-5">
@@ -103,12 +126,13 @@ export const Document = () => {
           <p className="font-semibold text-20px">Documents</p>
         </div>
         {accessibility ? (
-          <Link
-            to={"/createdocument"}
+          <button
+            type="button"
+            onClick={handleCreateDocument}
             className="font-semibold bg-primary px-5 py-3 rounded-lg text-white"
           >
             Create Document
-          </Link>
+          </button>
         ) : null}
       </div>
       <div className="grid grid-cols-12">
@@ -261,7 +285,7 @@ export const Document = () => {
                 </button>
               </div>
               <div className="relative">
-                {isOwner === "true" ? (
+                {isOwner ? (
                   <Dropdown className="dropdown-left">
                     <Dropdown.Toggle>
                       <img src={dotshorizontal} />
@@ -373,6 +397,22 @@ export const Document = () => {
           />{" "} */}
         </div>
       ) : null}
+      <div>
+        {workspace && isOwner && (
+          <WorkspaceSettingModal
+            openWorkspaceSetting={openWorkspaceSetting}
+            setOpenWorkspaceSetting={setOpenWorksapceSetting}
+            workspace={workspace}
+          />
+        )}
+        {workspace && openCollaboratorForMember && (
+          <WorkspaceViewForMemberModal
+            openCollaboratorForMember={openCollaboratorForMember}
+            setOpenCollaboratorForMember={setOpenCollaboratorForMember}
+            workspace={workspace}
+          />
+        )}
+      </div>
     </div>
   );
 };

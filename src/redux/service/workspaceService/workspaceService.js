@@ -201,10 +201,11 @@ export const setAccessibility = async (userId, workspaceId, status) => {
 
 export const checkIsOwnerWorkspace = createAsyncThunk(
   "workspaces/isOwner",
-  async (body) => {
+  async (workspaceId) => {
+    console.log(workspaceId);
     try {
       const response = await api.get(
-        `workspaces/${body.workspaceId}/user/${body.userId}`,
+        `workspaces/${workspaceId}/user/${userId}`,
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -212,7 +213,6 @@ export const checkIsOwnerWorkspace = createAsyncThunk(
           },
         }
       );
-      console.log(response.data.payload);
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;
@@ -287,6 +287,23 @@ export const getTotalPage = createAsyncThunk(
         },
       });
       console.log(response.data.payload);
+      return response.data.payload;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);
+
+export const checkIsOwnerWorkspaceCurrent = createAsyncThunk(
+  "workspaces/isOwner/currentUser",
+  async (workspaceId) => {
+    try {
+      const response = await api.get(`workspaces/${workspaceId}/current/user`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;

@@ -1,5 +1,5 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { api, header } from "../../../utils/constant";
+import { api } from "../../../utils/constant";
 
 export const getAllDocumentInEachWorkspace = createAsyncThunk(
   `documents`,
@@ -7,7 +7,12 @@ export const getAllDocumentInEachWorkspace = createAsyncThunk(
     try {
       const response = await api.get(
         `documents/workspaces/${workspaceId}?pageNo=1&pageSize=5&eSortCurrentDateTime=DEFAULT`,
-        header
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
       );
       return response.data.payload;
     } catch (error) {
@@ -20,7 +25,12 @@ export const getDocumentByDocumentId = createAsyncThunk(
   `documents/getdocumentbyid`,
   async (documentId) => {
     try {
-      const response = await api.get(`documents/${documentId}`, header);
+      const response = await api.get(`documents/${documentId}`,       {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;
@@ -46,7 +56,15 @@ export const getUsername = createAsyncThunk(
   `/documents/username`,
   async (documentId) => {
     try {
-      const response = await api.get(`documents/${documentId}/username`, header);
+      const response = await api.get(
+        `documents/${documentId}/username`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
+      );
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;
@@ -58,7 +76,15 @@ export const getWorkspaceName = createAsyncThunk(
   `/documents/workspace`,
   async (documentId) => {
     try {
-      const response = await api.get(`documents/${documentId}/workspace`, header);
+      const response = await api.get(
+        `documents/${documentId}/workspace`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
+      );
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;
@@ -70,7 +96,12 @@ export const getMemberInEachDocument = createAsyncThunk(
   `/documents/member`,
   async (documentId) => {
     try {
-      const response = await api.get(`/documents/${documentId}/member`, header);
+      const response = await api.get(`/documents/${documentId}/member`,       {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;
@@ -78,12 +109,18 @@ export const getMemberInEachDocument = createAsyncThunk(
   }
 );
 
-export const createDocument = async (title,status,createDate,pageId,workspaceId) => {
+export const createDocument = async (
+  title,
+  status,
+  createDate,
+  pageId,
+  workspaceId
+) => {
   try {
     const response = await api.post(
       `documents`,
       {
-        title:title,
+        title: title,
         status: status,
         createdDate: createDate,
         pageId: pageId,
@@ -99,7 +136,7 @@ export const createDocument = async (title,status,createDate,pageId,workspaceId)
     console.log(response.data.payload);
     return response.data.payload;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     throw error.response.data.detail;
   }
 };
@@ -109,7 +146,7 @@ export const duplicateDocument = async (documentId) => {
     const response = await api.post(
       `documents/${documentId}/duplicate`,
       {
-        documentId:documentId
+        documentId: documentId,
       },
       {
         headers: {
@@ -121,18 +158,18 @@ export const duplicateDocument = async (documentId) => {
     console.log(response.data.payload);
     return response.data.payload;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     throw error.response.data.detail;
   }
 };
 
-export const updateDocument = async (documentId,title) => {
+export const updateDocument = async (documentId, title) => {
   try {
     const response = await api.put(
       `documents/${documentId}?title=${title}`,
       {
-        documentId:documentId,
-        title:title,
+        documentId: documentId,
+        title: title,
       },
       {
         headers: {
@@ -144,21 +181,26 @@ export const updateDocument = async (documentId,title) => {
     console.log(response.data.payload);
     return response.data.payload;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     throw error.response.data.detail;
   }
 };
 
-export const setAccessibility = async (documentId,userId,workspaceId,accessibility) => {
+export const setAccessibility = async (
+  documentId,
+  userId,
+  workspaceId,
+  accessibility
+) => {
   console.log(documentId);
   try {
     const response = await api.put(
       `documents/${documentId}/users/${userId}/${workspaceId}/accessibility/?accessibility=${accessibility}`,
       {
-        documentId:documentId,
-        userId:userId,
-        workspaceId:workspaceId,
-        accessibility:accessibility
+        documentId: documentId,
+        userId: userId,
+        workspaceId: workspaceId,
+        accessibility: accessibility,
       },
       {
         headers: {
@@ -170,10 +212,7 @@ export const setAccessibility = async (documentId,userId,workspaceId,accessibili
     console.log(response);
     return response.data.payload;
   } catch (error) {
-    console.log(error)
+    console.log(error);
     throw error.response.data.detail;
   }
 };
-
-
-

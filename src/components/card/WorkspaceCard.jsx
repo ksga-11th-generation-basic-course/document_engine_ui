@@ -18,7 +18,7 @@ export const WorkspaceCard = ({ workspace }) => {
 
   const handleNavigate = () => {
     navigate(
-      `/document/${workspace.workspaceId}/${workspace.workspaceName}/${workspace.isOwner}`
+      `/document/${workspace.workspaceId}`
     );
   };
 

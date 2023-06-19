@@ -15,10 +15,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { Dropdown } from "react-daisyui";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { duplicateDocument, getMemberInEachDocument } from "../../redux/service/documentService/documentService";
+import {
+  duplicateDocument,
+  getMemberInEachDocument,
+} from "../../redux/service/documentService/documentService";
 import { duplicateDocumentSuccess } from "../../redux/slice/documentSlice/documentSlice";
 
-export const DocumentCard = ({ document,workspaceId }) => {
+export const DocumentCard = ({ document, workspaceId }) => {
   const navigate = useNavigate();
   const [openPermission, setOpenPermission] = useState(false);
   const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
@@ -27,20 +30,20 @@ export const DocumentCard = ({ document,workspaceId }) => {
   const members = useSelector((state) => state.document.members);
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getMemberInEachDocument(document.documentId))
+    dispatch(getMemberInEachDocument(document.documentId));
   }, []);
 
   const handleNavigate = () => {
-    setTimeout(()=>{
-      navigate(`/createdocument/${document.documentId}`);
-    },1000)
+    setTimeout(() => {
+      navigate(`/createdocument/${document.documentId}/${workspaceId}`);
+    }, 1000);
   };
 
   const handleRemoveDocument = () => {
     setDeleteDocument(!deleteDocument);
     setdocumentId(document.documentId);
   };
-  const handleDuplicateDocument=async()=>{
+  const handleDuplicateDocument = async () => {
     const duplicate = await duplicateDocument(document.documentId);
     dispatch(duplicateDocumentSuccess(duplicate));
     toast.success("Duplicate Document Successfully", {
@@ -53,12 +56,11 @@ export const DocumentCard = ({ document,workspaceId }) => {
       progress: undefined,
       theme: "light",
     });
-  }
+  };
 
-  const viewPage=()=>{
+  const viewPage = () => {
     navigate(`/createdocument/${document.documentId}`);
-  }
-
+  };
 
   return (
     <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-4 space-y-3">
@@ -74,8 +76,7 @@ export const DocumentCard = ({ document,workspaceId }) => {
         </div>
         <div>
           <h3 className="font-semibold">{document.title}</h3>
-          <p className="text-sm h-[120px]">
-          </p>
+          <p className="text-sm h-[120px]"></p>
         </div>
       </div>
       <div className="border-[1px]"></div>
@@ -97,11 +98,15 @@ export const DocumentCard = ({ document,workspaceId }) => {
                   <img src={view} />
                   <span>View page</span>
                 </Dropdown.Item>
-                <Dropdown.Item onClick={() => setOpenPermission(!openPermission)}>
+                <Dropdown.Item
+                  onClick={() => setOpenPermission(!openPermission)}
+                >
                   <img src={permission} />
                   <span>Permission</span>
                 </Dropdown.Item>
-                <Dropdown.Item onClick={() => setOpenDocumentHistory(!openDocumentHistory)}>
+                <Dropdown.Item
+                  onClick={() => setOpenDocumentHistory(!openDocumentHistory)}
+                >
                   <img src={history} />
                   <span>Document History</span>
                 </Dropdown.Item>
@@ -121,21 +126,21 @@ export const DocumentCard = ({ document,workspaceId }) => {
             </Dropdown>
           </div>
           <DocumentPermissionModal
-          openPermission={openPermission}
-          setOpenPermission={setOpenPermission}
-          documentId={document.documentId}
-          workspaceId={workspaceId}
-          members={members}
-        />
-        <DocumentHistoryModal
-          openDocumentHistory={openDocumentHistory}
-          setOpenDocumentHistory={setOpenDocumentHistory}
-        />
-        <DeleteDocumentModal
-          deleteDocument={deleteDocument}
-          setDeleteDocument={setDeleteDocument}
-          documentId={documentId}
-        />
+            openPermission={openPermission}
+            setOpenPermission={setOpenPermission}
+            documentId={document.documentId}
+            workspaceId={workspaceId}
+            members={members}
+          />
+          <DocumentHistoryModal
+            openDocumentHistory={openDocumentHistory}
+            setOpenDocumentHistory={setOpenDocumentHistory}
+          />
+          <DeleteDocumentModal
+            deleteDocument={deleteDocument}
+            setDeleteDocument={setDeleteDocument}
+            documentId={documentId}
+          />
           {/* <button type="button" onClick={() => setOpen(!open)}>
             <img src={dotmenu} className="w-8 h-8" />
           </button>

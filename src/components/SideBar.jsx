@@ -1,7 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import logo from "../assets/landing_image/logo.svg";
 import { Link, NavLink, useParams } from "react-router-dom";
 import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
+import documentIcon from "../assets/document_image/documents.svg";
+import dropdowndocument from "../assets/document_image/dropdowndocuments.svg";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
+import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
 
 export const SideBar = () => {
   const [visible, setVisible] = useState(false);
@@ -10,6 +15,17 @@ export const SideBar = () => {
   };
 
   const param = useParams();
+
+  const documents = useSelector((state) => state.document.documents);
+
+  const workspace = useSelector((state) => state.workspace.workspace);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(getWorkspaceByWorkspaceId(param.workspaceId));
+    dispatch(getAllDocumentInEachWorkspace(param.workspaceId));
+  }, []);
 
   return (
     <div>
@@ -42,7 +58,7 @@ export const SideBar = () => {
             Home
           </NavLink>
           <NavLink
-            to={"/workspace"}
+            to={"workspace"}
             className={({ isActive }) =>
               isActive
                 ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
@@ -64,38 +80,57 @@ export const SideBar = () => {
             Workspace
           </NavLink>
           <div className="w-full border-[1px]"></div>
-          {param.workspaceName && (
-            <NavLink
-              className={({ isActive }) =>
-                isActive
-                  ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
-                  : "flex items-center w-full gap-x-3 py-3 rounded-lg px-4"
-              }
-            >
-              <svg
-                width="19"
-                height="19"
-                viewBox="0 0 19 19"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
+          {param.workspaceId && (
+            <div>
+              <NavLink
+              to={`document/${param.workspaceId}`}
+                className={({ isActive }) =>
+                  isActive
+                    ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
+                    : "flex items-center w-full gap-x-3 py-3 rounded-lg px-4"
+                }
               >
-                <g clipPath="url(#clip0_597_8631)">
-                  <path
-                    d="M1.1875 17.8125V13.0625C1.1875 11.7508 2.25082 10.6875 3.5625 10.6875H7.125C8.43668 10.6875 9.5 11.7508 9.5 13.0625V17.8125M14.2586 13.0625H15.4375C16.7492 13.0625 17.8125 14.1258 17.8125 15.4375V17.8125M5.34375 1.1875C6.89348 1.1875 8.3125 2.375 8.3125 4.15625C8.3125 5.9375 6.89348 7.125 5.34375 7.125C3.79402 7.125 2.375 5.9375 2.375 4.15625C2.375 2.375 3.79402 1.1875 5.34375 1.1875ZM14.25 3.5625C13.0464 3.5625 11.875 4.51008 11.875 5.9375C11.875 7.36492 13.0464 8.3125 14.25 8.3125C15.4536 8.3125 16.625 7.36492 16.625 5.9375C16.625 4.51008 15.4536 3.5625 14.25 3.5625Z"
-                    stroke="#1E9CEF"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  />
-                </g>
-                <defs>
-                  <clipPath id="clip0_597_8631">
-                    <rect width="19" height="19" fill="white" />
-                  </clipPath>
-                </defs>
-              </svg>
-              {param.workspaceName}
-            </NavLink>
+                <svg
+                  width="19"
+                  height="19"
+                  viewBox="0 0 19 19"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g clipPath="url(#clip0_597_8631)">
+                    <path
+                      d="M1.1875 17.8125V13.0625C1.1875 11.7508 2.25082 10.6875 3.5625 10.6875H7.125C8.43668 10.6875 9.5 11.7508 9.5 13.0625V17.8125M14.2586 13.0625H15.4375C16.7492 13.0625 17.8125 14.1258 17.8125 15.4375V17.8125M5.34375 1.1875C6.89348 1.1875 8.3125 2.375 8.3125 4.15625C8.3125 5.9375 6.89348 7.125 5.34375 7.125C3.79402 7.125 2.375 5.9375 2.375 4.15625C2.375 2.375 3.79402 1.1875 5.34375 1.1875ZM14.25 3.5625C13.0464 3.5625 11.875 4.51008 11.875 5.9375C11.875 7.36492 13.0464 8.3125 14.25 8.3125C15.4536 8.3125 16.625 7.36492 16.625 5.9375C16.625 4.51008 15.4536 3.5625 14.25 3.5625Z"
+                      stroke="#1E9CEF"
+                      strokeWidth="2"
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    />
+                  </g>
+                  <defs>
+                    <clipPath id="clip0_597_8631">
+                      <rect width="19" height="19" fill="white" />
+                    </clipPath>
+                  </defs>
+                </svg>
+                {workspace?.workspaceName}
+              </NavLink>
+              {documents &&
+                documents.map((document, index) => (
+                  <NavLink
+                    to={`createdocument/${document.documentId}/${param.workspaceId}`}
+                    className={({ isActive }) =>
+                    isActive
+                      ? "flex items-center w-full text-primary bg-[#EFEFEF] gap-x-3 py-3 px-12 rounded-lg"
+                      : "flex items-center w-full gap-x-3 py-3 px-12 rounded-lg"
+                  }
+                    key={index}
+                  >
+                    <img src={documentIcon} alt="" />
+                    {document?.title}
+                    <img src={dropdowndocument} alt="" />
+                  </NavLink>
+                ))}
+            </div>
           )}
         </div>
       </div>

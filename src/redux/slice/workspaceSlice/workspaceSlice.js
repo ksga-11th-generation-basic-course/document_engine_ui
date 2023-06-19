@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   checkAccessibility,
   checkIsOwnerWorkspace,
+  checkIsOwnerWorkspaceCurrent,
   filterWorkspace,
   getAllWorkspace,
   getMemberInEachWorkspace,
@@ -137,6 +138,20 @@ const workspaceSlice = createSlice({
       state.error = null;
     });
     builder.addCase(checkIsOwnerWorkspace.rejected, (state, action) => {
+      state.loading = true;
+      state.isOwner = false;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(checkIsOwnerWorkspaceCurrent.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(checkIsOwnerWorkspaceCurrent.fulfilled, (state, action) => {
+      state.loading = false;
+      state.isOwner = action.payload;
+      state.error = null;
+    });
+    builder.addCase(checkIsOwnerWorkspaceCurrent.rejected, (state, action) => {
       state.loading = true;
       state.isOwner = false;
       state.error = action.error.message;

@@ -4,10 +4,10 @@ import close from "../assets/dashboard_image/close.svg";
 import removemember from "../assets/workspace_image/removemember.svg";
 import { useDispatch } from "react-redux";
 import { removeMemberInWorkspace } from "../redux/service/workspaceService/workspaceService";
-import { io } from "socket.io-client";
+// import { io } from "socket.io-client";
 import { removeMemberInWorkspaceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
 
-const socket = io.connect("http://localhost:3001");
+// const socket = io.connect("http://localhost:3001");
 
 export const RemoveMemberModal = ({
   removeMember,
