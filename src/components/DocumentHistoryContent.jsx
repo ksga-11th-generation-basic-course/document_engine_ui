@@ -1,11 +1,21 @@
-import React from "react";
+import React, { useEffect } from "react";
 import close from "../assets/dashboard_image/close.svg";
 import { DocumentHistoryCard } from "./card/DocumentHistoryCard";
+import { useDispatch, useSelector } from "react-redux";
+import { getHistoryByDocumentId } from "../redux/service/historyService/historyService";
 
 export const DocumentHistoryContent = ({
   openDocumentHistory,
   setOpenDocumentHistory,
+  documentId,
 }) => {
+  const dispatch = useDispatch()
+  const histories = useSelector((state) => state.history.histories);
+  useEffect(()=>{
+    dispatch(getHistoryByDocumentId(documentId))
+  },[])
+  console.log(histories);
+
   return (
     <div>
       <div className="flex w-full justify-end">
@@ -24,8 +34,6 @@ export const DocumentHistoryContent = ({
         <div>
           <div className="border-[1px] px-6 py-3 rounded-lg space-y-3">
             <DocumentHistoryCard editby={"Ruos Raksa"} time={"2:30 PM"} />
-            <DocumentHistoryCard editby={"Chhum Lyheng"} time={"May 5, 2:55 PM"} />
-            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
           </div>
         </div>
       </div>

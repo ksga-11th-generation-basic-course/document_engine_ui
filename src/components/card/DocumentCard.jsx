@@ -132,6 +132,7 @@ export const DocumentCard = ({ document }) => {
         <DocumentHistoryModal
           openDocumentHistory={openDocumentHistory}
           setOpenDocumentHistory={setOpenDocumentHistory}
+          documentId={document.documentId}
         />
         <DeleteDocumentModal
           deleteDocument={deleteDocument}

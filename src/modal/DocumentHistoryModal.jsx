@@ -4,10 +4,13 @@ import { Modal } from "react-daisyui";
 import { DocumentHistoryContent } from "../components/DocumentHistoryContent";
 import { CollaboratorMember } from "../components/CollaboratorMember";
 import { DocumentHistory } from "../components/DocumentHistory";
+import { RemoveHistory } from "./RemoveHistoryModal";
 
 export const DocumentHistoryModal = ({
   openDocumentHistory,
   setOpenDocumentHistory,
+  documentId,
+
 }) => {
   return (
     <div className="w-full">
@@ -31,6 +34,7 @@ export const DocumentHistoryModal = ({
               <DocumentHistoryContent
                 openDocumentHistory={openDocumentHistory}
                 setOpenDocumentHistory={setOpenDocumentHistory}
+                documentId={documentId}
               />
             </div>
           </div>
