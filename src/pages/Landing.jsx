@@ -26,14 +26,14 @@ export const Landing = () => {
                 <span className="text-primary">safe</span>!
               </h1>
 
-              <p className="font-bold text-20px lg:text-14px lg:w-80 md:w-[350px] md:ml-10 md:overflow-hidden md:text-14px md:text-sm md:pr-12 ">
+              <p className="font-bold text-20px lg:text-lg lg:w-80 md:w-[350px] md:ml-10 md:overflow-hidden md:text-14px md:text-sm md:pr-12 ">
                 Make your wiki, docs & project in ONCE with the best
                 security, edit your documents and work as a group.
               </p>
 
               {/*Get Started Button */}
               <div className="mt-5">
-                <Link to={"/signin"} className="bg-primary rounded-2xl text-18px text-white px-10 py-4 font-semibold lg:text-16px lg:px-7 lg:py-3.5 md:ml-10 md:text-sm md:px-7 md:py-3">
+                <Link to={"/signin"} className="bg-primary rounded-2xl text-18px text-white px-10 py-4 font-semibold lg:rounded-lg lg:text-16px lg:px-7 lg:py-3.5 md:rounded-md md:ml-10 md:text-sm md:px-6 md:py-2">
                   Get Started
                 </Link>
               </div>
@@ -142,7 +142,7 @@ export const Landing = () => {
         {/* Card Detail */}
         <div className="grid grid-cols-12 mt-24 px-16 lg:mt-5 md:px-0 md:-mt-10 md:pb-28"> 
         {/* Group */}
-          <div className="col-span-4 mx-auto lg:col-span-12 lg:ml-20 md:ml-52 ">
+          <div className="col-span-4 mx-auto lg:col-span-12 lg:ml-24 md:ml-52 ">
             <img src={card_document} className="lg:absolute lg:w-96 lg:-mt-72 lg:-ml-44 md:w-80"/>
             <span className="absolute lg:mt-36 lg:-ml-52 md:mt-32 md:-ml-56">
                 <img src={group} className="-mt-[350px] ml-[105px] w-12 lg:ml-[118px] lg:w-10 lg:-mt-[342px] md:w-8 md:ml-[122px] md:-mt-[340px]"/>
