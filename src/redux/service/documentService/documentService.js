@@ -174,6 +174,3 @@ export const setAccessibility = async (documentId,userId,workspaceId,accessibili
     throw error.response.data.detail;
   }
 };
-
-
-
