@@ -54,10 +54,10 @@ export const ResetForgotPassword = () => {
               <div className="flex  items-center mt-20 w-full lg:pt-20 ">
 
                 {/*Form Set New Password */}
-                <form className="w-[500px] bg-white p-10 flex  justify-center  rounded-3xl shadow-md lg:mb-44 lg:w-[500px] lg:pb-8 md:p-1 md:-mt-6 md:w-[290px] md:pb-8">
+                <form className="w-[500px] bg-white p-10 flex  justify-center  rounded-3xl shadow-md lg:mb-44 lg:w-[500px] lg:pb-8  md:-mt-6 md:p-4 md:w-[290px] md:pb-8">
                   <div>
                     <div className=" w-full  ">
-                      <h1 className="font-bold text-center text-primary text-36px lg:mb-4 lg:mt-10 md:text-xl md:mb-0 ">
+                      <h1 className="font-bold text-center text-primary text-36px lg:mb-4 lg:mt-4 md:text-xl md:mb-0 ">
                         Set New Password
                       </h1>
                       {/*  Password must be at least 8 characters. */}
@@ -72,24 +72,24 @@ export const ResetForgotPassword = () => {
                                     onSubmit={formik.handleSubmit}
                                   >
                                     {/* New Password */}
-                                    <div className="relative">
-                                      <p className="font-semibold text-left pt-5 pb-2 text-black text-xl lg:text-xl lg:text-22px md:text-base md:pt-1 ">
+                                    <div className="relative ">
+                                      <p className="font-semibold text-left pt-5 pb-2 text-black text-xl lg:text-xl lg:text-22px md:text-base md:pt-1 md:ml-4 md:w-[210px]">
                                         New Password
                                       </p>
                                       <input
-                                        placeholder="Your New Password"
+                                        placeholder="your new password"
                                         name="newPassword"
                                         type="password"
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         value={formik.values.newPassword}
-                                        className="border-primary text-xl focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3
+                                        className="border-primary text-lg focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3
                                          max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-96 text-gray-700 mr-3  leading-tight focus:outline-none
-                                         lg:text-xl lg:text-20px md:text-sm md:h-[37px] "
+                                         lg:text-xl lg:text-20px md:text-sm md:ml-4 md:w-[216px] md:h-[37px] "
                                       />
                                       {formik.touched.newPassword &&
                                       formik.errors.newPassword ? (
-                                        <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:text-sm">
+                                        <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:pl-4 md:text-sm">
                                           {formik.errors.newPassword}
                                         </div>
                                       ) : null}
@@ -97,11 +97,11 @@ export const ResetForgotPassword = () => {
 
                                     {/* Confirm New Password  */}
                                     <div className="relative">
-                                      <p className="font-semibold text-left pt-5 pb-2 text-black text-xl lg:text-xl lg:text-22px md:text-base">
+                                      <p className="font-semibold text-left pt-5 pb-2 text-black text-xl lg:text-xl lg:text-22px md:text-base md:ml-4 md:w-[210px]">
                                         Confirm New Password
                                       </p>
                                       <input
-                                        placeholder="Your New Password"
+                                        placeholder="confirm new password"
                                         name="newConfirmPassword"
                                         type="password"
                                         onChange={formik.handleChange}
@@ -109,11 +109,11 @@ export const ResetForgotPassword = () => {
                                         value={formik.values.newConfirmPassword}
                                         className="border-primary text-xl focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 
                                         max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-96 text-gray-700 mr-3  leading-tight focus:outline-none
-                                        lg:text-lg lg:text-20px md:text-sm md:h-[37px]"
+                                        lg:text-lg lg:text-20px md:text-sm md:ml-4 md:w-[215px] md:h-[37px]"
                                       />
                                       {formik.touched.newConfirmPassword &&
                                       formik.errors.newConfirmPassword ? (
-                                        <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:text-sm">
+                                        <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:pl-4 md:text-sm">
                                           {formik.errors.newConfirmPassword}
                                         </div>
                                       ) : null}
@@ -125,7 +125,7 @@ export const ResetForgotPassword = () => {
                                                   <button
                                                 type="submit"
                                                 className="font-semibold text-18px transition text-xl duration-200 bg-primary hover:bg-btn-primary text-white w-full px-2 py-3 
-                                                rounded-lg shadow-sm hover:shadow-md text-center inline-block lg:text-xl lg:font-semibold lg:text-22px md:text-base md:h-[39px] md:pt-2 "
+                                                rounded-lg shadow-sm hover:shadow-md text-center inline-block lg:text-xl lg:font-semibold lg:text-22px md:text-base md:w-[215px] md:h-[39px] md:pt-2 "
                                               >
                                                         Reset Password
                                               </button>

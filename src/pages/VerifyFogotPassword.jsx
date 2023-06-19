@@ -107,7 +107,7 @@ export const VerifyForgotPassword = () => {
   };
 
   return (
-    <div className="bg-[#EDF9FF] h-screen  min-h-screen " >
+    <div className="bg-[#EDF9FF] h-full  min-h-screen " >
     <div className="    px-2 justify-center items-center  text-accent">
       <Link to={"/"}>
                 <img

@@ -131,7 +131,7 @@ export const SignUp = () => {
                    max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
                    lg:text-xl lg:h-12  md:h-9 md:w-[225px] md:text-sm"
                   type="text"
-                  placeholder="Username"
+                  placeholder="username"
                   aria-label="Full name"
                   name="username"
                   onChange={formik.handleChange}
@@ -155,7 +155,7 @@ export const SignUp = () => {
                    max-sm:bg-transparent max-sm:leading-tight max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
                    lg:text-xl lg:h-12 md:h-9 md:w-[225px] md:text-sm"
                   type="text"
-                  placeholder="example@gmail.com"
+                  placeholder="name@gmail.com"
                   aria-label="Full name"
                   name="email"
                   onChange={formik.handleChange}
@@ -177,7 +177,7 @@ export const SignUp = () => {
                   max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
                   lg:text-xl lg:h-12 md:h-9 md:w-[225px] md:text-sm"
                   type="password"
-                  placeholder="Password"
+                  placeholder="password"
                   aria-label="Full name"
                   name="password"
                   onChange={formik.handleChange}
@@ -201,7 +201,7 @@ export const SignUp = () => {
                   max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
                   lg:text-xl lg:h-12 md:h-9 md:w-[225px] md:text-sm"
                   type="password"
-                  placeholder="Confirm Password"
+                  placeholder="confirm password"
                   aria-label="Full name"
                   name="confirmPassword"
                   onChange={formik.handleChange}

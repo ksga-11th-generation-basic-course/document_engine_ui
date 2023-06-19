@@ -126,10 +126,10 @@ export const VerifyOTP = () => {
         />
         {/* Verify Email Address */}
         <form className="bg-white h-[510px] w-[530px] flex flex-col justify-center  rounded-3xl shadow-md 
-        lg:mb-6 lg:w-[500px] lg:h-[500px] lg:mt-32 md:w-[300px] md:h-[380px] ">
+        lg:mb-6 lg:w-[500px] lg:h-[500px] lg:mt-32 md:w-[320px] md:mt-28 md:h-[380px] ">
           <div className=" xs:p-0 mx-auto md:w-full md:max-w-md  ">
             <div className="bg-white w-full  ">
-              <h1 className="font-bold text-center text-primary text-42px lg:text-34px">
+              <h1 className="font-bold text-center text-primary text-4xl lg:text-34px md:text-xl md:-mb-2 md:mt-8">
                 Verify Email Address
               </h1>
 
@@ -141,10 +141,10 @@ export const VerifyOTP = () => {
                       <div className="w-full">
                         <div className="bg-white h-64 rounded text-center">
                           <div className="text">
-                            <p className="text-18px text-accent md:text-base">
+                            <p className="text-18px text-accent md:text-sm">
                               Please enter the code we've send to
                             </p>
-                            <p className="text-18px text-center text-primary md:text-base">
+                            <p className="text-18px text-center text-primary md:text-sm">
                               your email address
                             </p>
                           </div>

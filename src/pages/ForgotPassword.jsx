@@ -51,7 +51,7 @@ export const ForgotPassword = () => {
                             <div className="w-full">
                               <div className=" h-54 rounded text-center">
                                 <div className="text-18px">
-                                  <p className=" text-[#9CA3AF] md:text-sm">
+                                  <p className=" text-[#9CA3AF] lg:text-[23px] md:text-sm">
                                     Please enter your email address below to
                                     receive password reset instruction.
                                   </p>

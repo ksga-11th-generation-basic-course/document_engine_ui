@@ -69,7 +69,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
     <div className="w-full">
       <button
         onClick={toggleVisible }  
-        className="bg-primary w-full py-3 text-white rounded-lg text-18px font-semibold mt-5 lg:w-60 md:text-11px md:w-32 md:py-2.5"
+        className="bg-primary w-full py-3 text-white rounded-lg text-18px font-semibold mt-5 lg:w-60 md:text-11px md:w-32 md:py-2"
       >
         New Workspace
       </button>

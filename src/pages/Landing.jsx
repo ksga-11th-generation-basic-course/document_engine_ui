@@ -18,7 +18,7 @@ export const Landing = () => {
       <div className="pt-32  px-20 md:pt-20 lg:p-8 lg:pt-32 md:p-0">
         {/* All document */}
         <div className="grid grid-cols-12 lg:-ml-2  md:flex md:flex-col md:ml-0">
-          <div className="col-span-4 ml-5 md:ml-0">
+          <div className="col-span-4 ml-5 lg:ml-8 md:ml-0">
             <div className="text-accent flex flex-col gap-8 mt-10 md:mt-0 md:gap-y-5">
               <h1 className="font-bold text-36px leading-[45px] lg:whitespace-nowrap lg:text-[34px] md:ml-10 md:whitespace-nowrap md:text-22px  md:mt-6 md:pr-3  md:leading-9">
                All your <span className="text-primary ">Documents</span> <br />
@@ -46,7 +46,7 @@ export const Landing = () => {
         </div>
 
         {/* Line */}
-        <div className="border-[2px] mt-24 border-gray-300 lg:w-[650px] lg:ml-8 lg:mt-14 md:w-[290px] md:ml-12 md:h-0 "></div>
+        <div className="border-[2px] mt-24 ml-5 bg-[#9CA3AF] border-gray-300 lg:w-[650px] lg:ml-8 lg:mt-14 md:w-[290px] md:ml-12 md:h-0 "></div>
 
         {/* We Provide Best */}
         <div className="mt-24">
@@ -93,7 +93,7 @@ export const Landing = () => {
                 Sharing
               </h1>
               <div className="px-28 lg:px-40">
-                <p className="text-20px text-accent mt-5  text-center lg:mt-2 lg:leading-8 md:leading-5  md:-ml-24 md:w-[250px] md:text-12px">
+                <p className="text-20px text-accent mt-5 ml-10 w-[320px] text-center lg:mt-2 lg:leading-8  md:leading-5  md:-ml-24 md:w-[250px] md:text-12px">
                   Love only grows by sharing. You can only have more for yourself by giving it away to others.
                 </p>
               </div>
@@ -142,7 +142,7 @@ export const Landing = () => {
         {/* Card Detail */}
         <div className="grid grid-cols-12 mt-24 px-16 lg:mt-5 md:px-0 md:-mt-10 md:pb-28"> 
         {/* Group */}
-          <div className="col-span-4 mx-auto lg:col-span-12 lg:ml-20 md:ml-52 ">
+          <div className="col-span-4 mx-auto lg:col-span-12 lg:ml-24 md:ml-52 ">
             <img src={card_document} className="lg:absolute lg:w-96 lg:-mt-72 lg:-ml-44 md:w-80"/>
             <span className="absolute lg:mt-36 lg:-ml-52 md:mt-32 md:-ml-56">
                 <img src={group} className="-mt-[350px] ml-[105px] w-12 lg:ml-[118px] lg:w-10 lg:-mt-[342px] md:w-8 md:ml-[122px] md:-mt-[340px]"/>
@@ -159,8 +159,8 @@ export const Landing = () => {
                   <img src={card_document}  className="lg:absolute lg:w-96 lg:-ml-44  md:w-80"/>
                  <span className="absolute lg:mt-[435px] lg:-ml-52">
                       <img src={sharingicon} className="-mt-[350px] ml-[107px] w-11 lg:w-9 lg:ml-[120px] lg:-mt-[345px] md:w-8 md:ml-[107px] md:-mt-[360px]"/>
-                        <div className="-mt-[40px] ml-[190px] text-accent text-24px font-bold lg:-mt-9 md:text-22px md:-mt-[32px] md:ml-[165px]">Sharing</div>
-                        <div className="mt-7 ml-[90px] text-accent text-20px w-72 lg:text-16px lg:w-56 lg:ml-28 md:ml-24  md:mt-5 md:text-14px md:w-52">
+                        <div className="-mt-[40px] ml-[190px] text-accent text-24px font-bold  lg:-mt-9 md:text-22px md:-mt-[32px] md:ml-[165px]">Sharing</div>
+                        <div className="mt-7 ml-[100px] text-accent text-20px  w-72 lg:text-16px lg:w-56 lg:ml-28 lg:pl-1 md:ml-24  md:mt-5 md:text-14px md:w-52">
                                   Sharing is the act of giving or exchanging something with others. In a work setting, sharing can take many forms, including sharing ideas, knowledge, resources, or feedback.
                         </div>
                  </span>
@@ -180,7 +180,7 @@ export const Landing = () => {
         </div>
       </div>
 
-      <div className="lg:mt-96 md:h-10 md:w-full">
+      <div className="lg:mt-96 ">
         <Footer />
       </div>
     </div>
