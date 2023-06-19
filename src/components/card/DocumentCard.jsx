@@ -18,7 +18,7 @@ export const DocumentCard = ({ title, status, editdate, header, text }) => {
           </div>
         ) : null}
       </div>
-      <div className="m-4">
+      <div className="m-4 w-[295px] lg:w-[100px]">
         <h3 className="font-semibold lg:text-14px line-clamp-1">{header}</h3>
         <p className="text-sm h-[120px] 2xl:text-12px 2xl:h-[100px] lg:h-[80px] 2xl:line-clamp-5 lg:line-clamp-4">{text}</p>
       </div>

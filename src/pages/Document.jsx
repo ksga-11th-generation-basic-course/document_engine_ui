@@ -172,7 +172,7 @@ export const Document = () => {
       {/* Card Document */}
       {openGrid ? (
         <div className="grid grid-cols-12 gap-8">
-          <div className="col-span-4 sm:col-span-6 xs:col-span-12">
+          <div className="col-span-4 lg:w-[200px] sm:col-span-6 xs:col-span-12">
             <DocumentCard
               title={"Redux Toolkit"}
               header={"1. Introduction to Redux Toolkit"}
@@ -181,26 +181,26 @@ export const Document = () => {
               editdate={9}
             />
           </div>
-          <div className="col-span-4 sm:col-span-6 xs:col-span-12 ">
+          <div className="col-span-4 lg:w-[200px] lg:ml-6 sm:col-span-6 xs:col-span-12 ">
             <DocumentCard
               title={"Node Js"}
               header={"1. Introduction to Node Js"}
               status={true}
               text={`In this tutorial, we'll focus on introducing Profiles in Spring.
-      Profiles are a core feature of the framework — allowing us to map our
-      beans to different profiles — for example, dev, test, and prod. We can
-      then activate different profiles in different environments`}
+              Profiles are a core feature of the framework — allowing us to map our
+              beans to different profiles — for example, dev, test, and prod. We can
+              then activate different profiles in different environments`}
               editdate={12}
             />
           </div>
-          <div className="col-span-4 sm:col-span-6 xs:col-span-12">
+          <div className="col-span-4 lg:w-[200px]  lg:ml-24 sm:col-span-6 xs:col-span-12">
             <DocumentCard
               title={"Spring Profile"}
               header={"1. Introduction to Spring Profile"}
               status={true}
               text={`In this tutorial, we'll focus on introducing Profiles in Spring.
-      Profiles are a core feature of the framework — allowing us to map our beans to different profiles — for example, dev, test, and prod.
-      We can then activate different profiles in different environments`}
+              Profiles are a core feature of the framework — allowing us to map our beans to different profiles — for example, dev, test, and prod.
+              We can then activate different profiles in different environments`}
               editdate={15}
             />
 
