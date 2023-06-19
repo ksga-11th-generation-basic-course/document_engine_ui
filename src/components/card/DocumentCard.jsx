@@ -9,21 +9,21 @@ export const DocumentCard = ({ title, status, editdate, header, text }) => {
 
   return (
     <div className="shadow-custom hover:shadow-hover rounded-lg text-black cursor-pointer p-3 space-y-3 2xl:p-0 2xl:px-3 2xl:py-1 2xl:space-y-1">
-      <div className="flex justify-between items-center">
+      <div className="flex ml-3 justify-between items-center">
         <h4 className="font-semibold text-20px line-clamp-1 2xl:text-18px">{title}</h4>
         {status ? (
-          <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF]">
+          <div className="flex  text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF]">
             <p className="text-14px 2xl:text-12px">Editing...</p>
             <img src={pencil} className="w-3 h-3"/>
           </div>
         ) : null}
       </div>
-      <div>
+      <div className="m-4">
         <h3 className="font-semibold lg:text-14px line-clamp-1">{header}</h3>
         <p className="text-sm h-[120px] 2xl:text-12px 2xl:h-[100px] lg:h-[80px] 2xl:line-clamp-5 lg:line-clamp-4">{text}</p>
       </div>
       <div className="border-[1px]"></div>
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between ml-4 items-center">
         <div>
           <h3 className="font-bold text-22px text-primary 2xl:text-18px line-clamp-1">{title}</h3>
           <p className="text-14px font-semibold text-accent 2xl:text-12px">
