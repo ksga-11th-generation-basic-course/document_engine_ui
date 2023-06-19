@@ -55,14 +55,14 @@ export const CreateDocument = () => {
     dispatch(getBlockBydoucmentId(documentId));
   }, []);
   const [title, setTitle] = useState(document && document.title);
-
+  console.log(blockData);
   let initialContent      = [];
   if (blockData != null) {
     for (let i = 0; i < blockData.length; i++) {
       const element = blockData[i];
       const block = {
-        id: element.blockId,
-        type: element.blockType,
+        id: element.content.blockId,
+        type: element.content.blockType,
         props: {
           textColor: "default",
           backgroundColor: "default",

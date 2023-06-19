@@ -25,11 +25,33 @@ export const createBlock = async (blockType, content, documentId) => {
     }
 };
 
+export const updateBlock = async (blockId, documentId, content) => {
+    try {
+        const response = await api.put(
+            `blocks/${blockId}/documents/${documentId}`,
+            {
+                content: content,
+            },
+            {
+                headers: {
+                    Authorization: "Bearer " + localStorage.getItem("token"),
+                    "Content-Type ": "application/json",
+                },
+            }
+        );
+        console.log(response.data.payload);
+        return response.data.payload;
+    } catch (error) {
+        console.log(error)
+        throw error.response.data.detail;
+    }
+};
+
 export const getBlockBydoucmentId = createAsyncThunk(
     `/documents/blocks`,
     async (documentId) => {
         try {
-            const response = await api.get(`blocks/${documentId}`, {
+            const response = await api.get(`blocks/document/${documentId}`, {
                 headers: {
                     Authorization: "Bearer " + localStorage.getItem("token"),
                     "Content-Type ": "application/json",
@@ -43,3 +65,4 @@ export const getBlockBydoucmentId = createAsyncThunk(
         }
     }
 );
+

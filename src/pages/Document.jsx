@@ -50,8 +50,6 @@ export const Document = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const [filterTag,setFilterTag]=useState("");
-
   const [documentId, setDocumentId] = useState();
 
   const navigate = useNavigate();
@@ -173,7 +171,7 @@ export const Document = () => {
                 </div>
               </Dropdown.Toggle>
               <Dropdown.Menu className="w-48 bg-white rounded-lg">
-                {/* {tags === null ? null : tags.length > 0 ? (
+                {tags === null ? null : tags.length > 0 ? (
                   tags.map((tag, index) => (
                     <Dropdown.Item key={index}>
                       <Checkbox className="checked:bg-primary" />
@@ -185,7 +183,7 @@ export const Document = () => {
                     <Checkbox className="checked:bg-primary" />
                     <span></span>
                   </Dropdown.Item>
-                )} */}
+                )}
               </Dropdown.Menu>
             </Dropdown>
           </div>

@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getBlockBydoucmentId } from "../../service/blockService/blockService";
+import {getBlockBydoucmentId } from "../../service/blockService/blockService";
 const initialState = {
     block: null,
     blocks: null,
@@ -12,10 +12,10 @@ const blockSlice = createSlice({
     initialState,
     reducers: {
         createBlockSuccess: (state, action) => {
-            state.blocks.push(action.payload);
+          state.blocks.push(action.payload);
         },
         updateBlockSuccess: (state, action) => {
-            state.blocks.push(action.payload);
+          state.blocks.push(action.payload);
         }
     },
     extraReducers: (builder) => {
@@ -35,6 +35,7 @@ const blockSlice = createSlice({
             state.blocks = null;
             state.error = action.error.message;
           });
+
     },
 });
 export const { createBlockSuccess,updateBlockSuccess } = blockSlice.actions;
