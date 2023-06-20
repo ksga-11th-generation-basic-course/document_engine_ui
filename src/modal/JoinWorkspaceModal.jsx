@@ -8,7 +8,8 @@ export const JoinWorkspaceModal = ({ visible, toggleVisible }) => {
   return (
     <div className="w-full ">
       <button
-        className="flex justify-center items-center text-18px font-semibold gap-x-2 border-[1px] border-accent px-5 py-2 rounded-lg text-primary md:px-2.5 md:py-1.5 md:text-12px"
+        className="flex justify-center items-center text-18px font-semibold gap-x-2 border-[1px] border-accent px-5 py-2 rounded-lg text-primary 
+        lg:h-9 md:px-2.5 md:py-1.5 md:text-12px"
         onClick={toggleVisible}
       >
         <img src={join} className="w-5 h-5 md:w-3.5" />

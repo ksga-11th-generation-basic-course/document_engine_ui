@@ -28,29 +28,30 @@ export const Document = () => {
   const [workspaceSetting, setWorkspaceSetting] = useState(false);
 
   return (
-    <div className="text-accent space-y-5">
-      <div>
+    <div className="text-accent space-y-5 lg:ml-3 lg:mt-4">
+      <div className="lg:-ml-3">
         <h1 className="font-bold text-accent text-44px 2xl:text-28px">React & NodeJS</h1>
         <p className="text-accent text-18px 2xl:text-15px">
           Welcome to React & NodeJS workspace
         </p>
         <div className="flex justify-between items-center pt-1 xs:pt-5 2xs:pt-5 mt-5">
           <div className="flex items-center gap-x-3 2xl:gap-x-2">
-            <img src={documenticon} className="p-2 lg:w-7 2xs:w-7 2xs:p-1 sm:w-8 shadow-custom rounded-lg md:w-7 md:p-1.5" />
+            <img src={documenticon} className="p-2  2xs:w-7 2xs:p-1 sm:w-8 shadow-custom rounded-lg lg:w-9 md:w-7 md:p-1.5" />
             <p className="font-semibold text-20px 2xs:text-18px sm:text-18px md:text-18px">Documents</p>
           </div>
           <Link
             to={"/createdocument"}
-            className="font-semibold bg-primary px-4 py-2 rounded-lg text-white md:text-14px 2xs:text-15px 2xs:py-1.5 sm:text-15px sm:py-1.5 sm:px-3"
-          >
+            className="font-semibold bg-primary px-4 py-2 rounded-lg text-white md:text-14px 2xs:text-15px 2xs:py-1.5 
+            lg:-mr-14 sm:text-15px sm:py-1.5 sm:px-3" >
             Create Document
           </Link>
         </div>
 
 
-        <div className="grid grid-cols-12 mt-5 md:mt-3">
+        <div className="grid grid-cols-12 lg:grid lg:grid-cols-12 mt-5 md:mt-3">
         {/* Sort */}
-        <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center lg:w-72 md:w-36 md:col-span-6">
+        <div className="-mt-1 col-span-4 gap-x-3   flex items-center 
+        lg:col-span-4 lg:w-72 md:w-36 md:col-span-6">
           <div className="flex items-center gap-x-2">
             <img src={sort} className="w-7 h-7 md:w-6 md:h-8" />
             <h4 className="font-semibold text-20px md:text-16px md:hidden">Sort: </h4>
@@ -61,7 +62,7 @@ export const Document = () => {
               onClick={() => setOpenSort(!openSort)}
             >
               <p className="text-20px md:text-14px  text-accent">Last Update</p>
-              <img className="mt-1 md:w-4 md:h-4 md:ml-4" src={chevrondown} />
+              <img className="mt-1 lg:-ml-6 md:w-4 md:h-4 md:ml-4" src={chevrondown} />
             </button>
             <div className="md:absolute md:z-20">
               {openSort ? (
@@ -72,9 +73,10 @@ export const Document = () => {
         </div>
 
         {/* Filter */}
-        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:w-80 lg:ml-5 md:w-40 md:ml-0">
+        <div className="col-span-4  gap-x-3  flex items-center 
+        lg:col-span-4 lg:w-80 lg:ml-20 md:w-40 md:ml-0">
           <div className="flex items-center gap-x-3">
-            <img src={filter} className="w-7 h-7 md:w-4 md:h-4" />
+            <img src={filter} className="w-7 h-7 lg:w-6 md:w-4 md:h-4" />
             <h4 className="font-semibold text-20px md:text-16px md:hidden">Filter: </h4>
           </div>
           <div className="relative">
@@ -85,7 +87,7 @@ export const Document = () => {
               <p className="text-20px md:text-14px text-accent">
                 Product
               </p>
-              <img className="mt-1 md:w-4 md:h-4 md:ml-4" src={chevrondown} />
+              <img className="mt-1 lg:-ml-6 md:w-4 md:h-4 md:ml-4" src={chevrondown} />
             </button>
             <div className="z-20">
               {openFilter ? (
@@ -99,9 +101,9 @@ export const Document = () => {
         </div>
 
         {/* Option Document */}
-          <div className="col-span-4 flex items-center justify-end sm:col-span-12 sm:h-11 md:col-span-12 md:h-11 md:pt-4 2xs:col-span-12">
+          <div className="col-span-4 flex items-center justify-end lg:col-span-4 lg:-mr-12  sm:col-span-12 sm:h-11 md:col-span-12 md:h-11 md:pt-4 2xs:col-span-12">
             {openSearch ? (
-              <div className="flex justify-end items-center absolute">
+              <div className="flex justify-end items-center absolute ">
                 {openSearch ? (
                   <input
                     type="text"
@@ -111,14 +113,14 @@ export const Document = () => {
                 ) : null}
                 <button
                   type="button"
-                  className="absolute mr-2"
+                  className="absolute mr-2 "
                   onClick={() => setOpenSearch(!openSearch)}
                 >
                   <img src={search} />
                 </button>
               </div>
             ) : (
-              <div className="flex justify-center items-center gap-x-5">
+              <div className="flex justify-center items-center gap-x-5 ">
                 <div>
                   <button
                     type="button"
@@ -171,29 +173,30 @@ export const Document = () => {
 
       {/* Card Document */}
       {openGrid ? (
-        <div className="grid grid-cols-12 gap-8">
+        <div className="grid grid-cols-12 gap-8 lg:grid lg:grid-cols-12 lg:gap-14 lg:ml-">
+            <div className=" col-span-4 lg:col-span-6 lg:w-[300px] sm:col-span-6 xs:col-span-12">
+              <DocumentCard
+                title={"Redux Toolkit"}
+                header={"1. Introduction to Redux Toolkit"}
+                status={false}
+                text={``}
+                editdate={9}
+              />
+            </div>
+            <div className=" col-span-4 lg:w-[300px] lg:ml-6 sm:col-span-6 xs:col-span-12 ">
+              <DocumentCard
+                title={"Node Js"}
+                header={"1. Introduction to Node Js"}
+                status={true}
+                text={`In this tutorial, we'll focus on introducing Profiles in Spring.
+                Profiles are a core feature of the framework — allowing us to map our
+                beans to different profiles — for example, dev, test, and prod. We can
+                then activate different profiles in different environments`}
+                editdate={12}
+              />
+            </div>
+         
           <div className="col-span-4 lg:w-[200px] sm:col-span-6 xs:col-span-12">
-            <DocumentCard
-              title={"Redux Toolkit"}
-              header={"1. Introduction to Redux Toolkit"}
-              status={false}
-              text={``}
-              editdate={9}
-            />
-          </div>
-          <div className="col-span-4 lg:w-[200px] lg:ml-6 sm:col-span-6 xs:col-span-12 ">
-            <DocumentCard
-              title={"Node Js"}
-              header={"1. Introduction to Node Js"}
-              status={true}
-              text={`In this tutorial, we'll focus on introducing Profiles in Spring.
-              Profiles are a core feature of the framework — allowing us to map our
-              beans to different profiles — for example, dev, test, and prod. We can
-              then activate different profiles in different environments`}
-              editdate={12}
-            />
-          </div>
-          <div className="col-span-4 lg:w-[200px]  lg:ml-24 sm:col-span-6 xs:col-span-12">
             <DocumentCard
               title={"Spring Profile"}
               header={"1. Introduction to Spring Profile"}
@@ -208,7 +211,7 @@ export const Document = () => {
         </div>
       ) : null}
       {openBulletList ? (
-        <div className="space-y-6">
+        <div className="space-y-6 lg:z-10 lg:w-[620px]">
           {" "}
           <DocumentList
             title={"Redux Tookit"}

@@ -13,7 +13,8 @@ export const DropDownExport = ({openExport, setOpenExport}) => {
         ></div>
       )}
       
-      <div className="absolute right-0 py-3 w-[160px] text-accent rounded-lg shadow-custom bg-white z-50  md:w-[95px] md:py-2">
+      <div className="absolute right-0 py-3 w-[160px] text-accent rounded-lg shadow-custom bg-white z-50 
+      lg:-mr-52 lg:mt-16 md:w-[95px] md:py-2">
         <div className="flex flex-col">
           <div className="flex flex-col">
             <button

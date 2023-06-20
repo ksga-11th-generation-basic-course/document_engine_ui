@@ -26,8 +26,9 @@ export const DropDownDocument = ({ open, setOpen }) => {
       {open && (
         <div className="fixed inset-0" onClick={() => setOpen(!open)}></div>
       )}
-      <div className="absolute right-0 w-[280px] text-accent rounded-lg shadow-custom bg-white z-10 hover:shadow-hover md:w-[200px]">
-        <div className="flex flex-col gap-y-2">
+      <div className="absolute right-0 w-[280px] text-accent rounded-lg shadow-custom bg-white z-10 hover:shadow-hover 
+      lg:w-[250px] lg:z-20 lg:-mt-36 md:w-[200px]">
+        <div className="flex flex-col gap-y-2 ">
           <div className="flex flex-col py-3 md:py-2">
             <div className=" hover:bg-[#f4f4f4] w-full">
               <Link className="flex items-center text-20px gap-x-4 px-5 py-3 md:text-12px md:py-2 md:gap-x-3">

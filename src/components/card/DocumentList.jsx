@@ -8,7 +8,7 @@ export const DocumentList = ({ title, status, editdate }) => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="flex justify-between items-center text-black text-18px xs:text-14px">
+    <div className="flex justify-between items-center text-black text-18px lg:w-[675px] xs:text-14px">
       <div className="flex items-center gap-x-3">
         <img src={document} />
         <p>{title}</p>
