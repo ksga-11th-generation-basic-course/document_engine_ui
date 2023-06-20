@@ -6,6 +6,7 @@ import { CollaboratorMember } from "../components/CollaboratorMember";
 import { DocumentHistory } from "../components/DocumentHistory";
 
 export const DocumentHistoryModal = ({
+  documentId,
   openDocumentHistory,
   setOpenDocumentHistory,
 }) => {
@@ -29,6 +30,7 @@ export const DocumentHistoryModal = ({
           <div className="col-span-9 p-3 shadow-xl">
             <div>
               <DocumentHistoryContent
+                documentId={documentId}
                 openDocumentHistory={openDocumentHistory}
                 setOpenDocumentHistory={setOpenDocumentHistory}
               />

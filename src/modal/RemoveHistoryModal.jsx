@@ -2,8 +2,31 @@ import React from "react";
 import { Modal } from "react-daisyui";
 import close from "../assets/dashboard_image/close.svg";
 import deletedocument from "../assets/document_image/deletedocument.svg";
+import { removeHistoryByHistoryId } from "../redux/service/historyService/historyService";
+import { removeHistorySuccess } from "../redux/slice/historySlice/historySlice";
+import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
-export const RemoveHistory = ({ removeHistory, setRemoveHistory }) => {
+export const RemoveHistory = ({ removeHistory, setRemoveHistory, documentId, history }) => {
+  const histo = history.historyId;
+  console.log(histo);
+
+  const dispatch = useDispatch();
+  const handleRemoveHistory = async () => {
+  const history = await removeHistoryByHistoryId(histo, documentId);
+    dispatch(removeHistorySuccess(history));
+    toast.success("Remove Document History Successfully", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+  }
+
   return (
     <div className="w-full">
       <Modal
@@ -34,7 +57,7 @@ export const RemoveHistory = ({ removeHistory, setRemoveHistory }) => {
               >
                 No, cancel
               </button>
-              <button className="bg-red-500 text-white  px-10 py-3 rounded-lg ">
+              <button onClick={handleRemoveHistory} className="bg-red-500 text-white  px-10 py-3 rounded-lg ">
                 Remove
               </button>
             </div>

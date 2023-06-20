@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import dotsvertical from "../../assets/document_image/dotsvertical.svg";
 import { DropDownHistory } from "../DropDownHistory";
 
-export const DocumentHistoryCard = ({ editby, time }) => {
+export const DocumentHistoryCard = ({ editby, time, documentId, history }) => {
   const character = editby.split("");
 
   const colors = [
@@ -40,7 +40,7 @@ export const DocumentHistoryCard = ({ editby, time }) => {
           >
             <img src={dotsvertical} />
           </button>
-          {openHistory ? <DropDownHistory openHistory={openHistory} setOpenHistory={setOpenHistory}/> : null}
+          {openHistory ? <DropDownHistory documentId={documentId} history={history} openHistory={openHistory} setOpenHistory={setOpenHistory} /> : null}
         </div>
       </div>
       <div className="border-[1px] mt-3 mb-3"></div>
