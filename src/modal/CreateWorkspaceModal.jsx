@@ -19,6 +19,10 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
 
   const [workspaceImage, setWorkspaceImage] = useState();
 
+  const toggleVisible = () => {
+          setVisible(!visible)
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!workspaceImage) return;
@@ -64,35 +68,33 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
   return (
     <div className="w-full">
       <button
-        onClick={() => setVisible(!visible)}
-        className="bg-primary w-full py-3 text-white rounded-lg text-16px font-semibold mt-5"
+        onClick={toggleVisible }  
+        className="bg-primary w-full py-3 text-white rounded-lg text-18px font-semibold mt-5 lg:w-60 md:text-11px md:w-32 md:py-2.5"
       >
         New Workspace
       </button>
-      <Modal open={visible} onClickBackdrop={() => setVisible(!visible)}>
-        <div className="w-[540px] bg-white rounded-lg p-3">
+      <Modal open={visible} >
+        <div className="w-[540px] bg-white rounded-lg p-3 md:w-[300px] md:p-2">
           <div className="flex justify-end">
-            <button type="button" onClick={() => setVisible(!visible)}>
-              <img src={close} />
+            <button type="button" onClick={toggleVisible}>
+              <img src={close} className="md:w-6" />
             </button>
           </div>
 
-          <div className="px-14 space-y-5 text-accent gap-y-4">
+          <div className="px-14 space-y-5 text-accent gap-y-4 md:px-6 md:space-y-3">
             <div className="flex justify-center items-center">
-              <img src={group} />
+              <img src={group} className="md:w-16"/>
             </div>
-            <h1 className="font-bold text-28px text-primary text-center">
-              Create Workspace
+            <h1 className="font-bold text-28px text-primary text-center md:text-20px">
+                Create Workspace
             </h1>
-            <form
-              className="flex flex-col gap-y-2 font-semibold text-18px"
-              onSubmit={handleSubmit}
-            >
-              <p>Worksapce Name</p>
+            
+            <div className="flex flex-col gap-y-2 font-semibold text-20px md:text-14px">
+              <p>Workspace Name</p>
               <input
                 type="text"
                 placeholder="Workspace Name"
-                className="rounded-lg py-3 border-primary focus:ring-btn-primary focus:border-btn-primary"
+                className="rounded-lg py-3 border-primary focus:ring-btn-primary focus:border-btn-primary text-18px md:text-14px md:py-2"
                 onChange={(e) => setWorkspaceName(e.target.value)}
               />
               <p>Workspace Photo</p>
@@ -116,28 +118,18 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                   )}
                 </div>
               </label>
-              <div className="space-y-3 mt-2">
-                <p className="text-end text-[#9CA3AF] font-normal">
-                  (optional)
-                </p>
-                <div className="flex justify-end items-center gap-5 text-16px font-semibold pb-5">
-                  <button
-                    className="px-10 py-3 border-[1px] rounded-lg"
-                    type="button"
-                    onClick={() => setVisible(!visible)}
-                  >
-                    Cancel
-                  </button>
-                  <button
-                    className="bg-primary text-white  px-10 py-3 rounded-lg"
-                    type="submit"
-                  >
-                    Create
-                  </button>
-                </div>
-              </div>
-            </form>
+            </div>
+            <p className="text-end text-[#9CA3AF]">(optional)</p>
+            <div className="flex justify-end items-center gap-5 text-16px font-semibold pb-5">
+              <button className="px-10 py-3 border-[1px] rounded-lg" onClick={toggleVisible}>
+                Cancel
+              </button>
+              <button className="bg-primary text-white px-10 py-3 rounded-lg " type="submit">
+                Create
+              </button>
+            </div>
           </div>
+          
         </div>
       </Modal>
       <ToastContainer />

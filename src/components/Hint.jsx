@@ -16,7 +16,7 @@ export const Hint = () => {
         </p>
       </div>
 
-      <div className="relative lg:w-[620px]">
+      <div className="relative lg:w-[680px] md:w-[350px]">
         {open && (
           <div className="fixed inset-0" onClick={() => setOpen(!open)}></div>
         )}
@@ -28,12 +28,12 @@ export const Hint = () => {
           }
           onClick={() => setOpen(!open)}
         >
-          <img src={star} className="md:w-7 animate-pulse" />
+          <img src={star} className="md:w-6 animate-pulse" />
           <div className="md:-ml-2">
             <h3 className="font-semibold text-24px text-black md:text-16px">
               Ouddom, get started with DocEngine
             </h3>
-            <p className="text-accent text-20px text-left md:text-12px ">
+            <p className="text-accent text-20px text-left md:text-14px ">
               Hint! to create your Document
             </p>
           </div>
@@ -57,56 +57,54 @@ export const Hint = () => {
                   </p>
                 </div>
 
-                {/* Create new document*/}
-                <div>
-                  <div className="flex items-center w-full text-18px font-semibold gap-x-4 mb-2">
-                    <img src={lightbulb} />
-                    <span>Create new document</span> <br />
-                  </div>
-                  <p className="text-[#009521] font-bold px-9 text-left md:grid md:grid-cols-12">
-                    <span className="col-span-1">Hint :</span>
-                    <span className="col-span-11 text-accent text-md font-normal ml-3">
-                      Click on “Workspaces” in sidebar and click one of
-                      workspaces then click “Create new document” .
-                    </span>
-                  </p>
-                </div>
+                                    {/* Create new document*/}
+                                    <div>
+                                            <div className="flex items-center w-full text-20px font-semibold gap-x-4 mb-2 md:text-14px md:mb-0">
+                                                    <img src={lightbulb} className="md:w-3.5"/>
+                                                    <span>Create new document</span> <br />
+                                            </div>
+                                            <p className="text-[#009521] font-bold px-9 text-left md:text-10px md:pl-8 md:w-80">
+                                                  <span>Hint :</span>
+                                                  <span className=" text-accent font-normal ml-1">
+                                                        Click on “Workspaces” in sidebar and click one of
+                                                        workspaces then click “Create new document” .
+                                                  </span>
+                                            </p>
+                                    </div>
 
-                {/* Create new workspace*/}
-                <div>
-                  <div className="flex items-center w-full text-18px font-semibold gap-x-4 mb-2">
-                    <img src={lightbulb} />
-                    <span>Create new workspace</span> <br />
-                  </div>
-                  <p className="text-[#009521] font-bold px-9 text-left md:grid md:grid-cols-12">
-                    <span className="col-span-1">Hint :</span>
-                    <span className="col-span-11 text-accent text-md font-normal ml-3">
-                      Click on “New workspace” in the top of sidebar and enter
-                      name and profile picture of workspace.
-                    </span>
-                  </p>
-                </div>
+                                    {/* Create new workspace*/}
+                                    <div>
+                                            <div className="flex items-center w-full text-20px font-semibold gap-x-4 mb-2 md:text-14px md:mb-0">
+                                                    <img src={lightbulb} className="md:w-3.5"/>
+                                                    <span>Create new workspace</span> <br />
+                                            </div>
+                                            <p className="text-[#009521] font-bold px-9 text-left md:text-10px md:pl-8 md:w-80">
+                                                  <span>Hint :</span>
+                                                  <span className=" text-accent font-normal ml-1">
+                                                                Click on “New workspace” in the top of sidebar and
+                                                          enter name and profile picture of workspace.
+                                                  </span>
+                                            </p>
+                                    </div>
 
-                {/* Visit workspace code*/}
-                <div>
-                  <div className="flex items-center w-full text-18px font-semibold gap-x-4 mb-2">
-                    <img src={lightbulb} />
-                    <span>Visit workspace code</span> <br />
-                  </div>
-                  <p className="text-[#009521] font-bold px-9 text-left md:grid md:grid-cols-12">
-                    <span className="col-span-1">Hint :</span>
-                    <span className="col-span-11 text-accent text-md font-normal ml-3">
-                      Click on “Setting Workspaces” and click on “Collaborators”
-                      in sidebar ,you will see the workspace code on the top of
-                      all collaborators.
-                    </span>
-                  </p>
+                                    {/* Visit workspace code*/}
+                                    <div>
+                                            <div className="flex items-center w-full text-20px font-semibold gap-x-4 mb-2 md:text-14px md:mb-0">
+                                                    <img src={lightbulb} className="md:w-3.5"/>
+                                                    <span>Visit workspace code</span> <br />
+                                            </div>
+                                            <p className="text-[#009521] font-bold px-9 text-left md:text-10px md:pl-8 md:w-80">
+                                                  <span>Hint :</span>
+                                                  <span className=" text-accent font-normal ml-1">
+                                                        Click on “Setting Workspaces” and click on  “Collaborators” in sidebar ,you will see the workspace code on the top of all collaborators.
+                                                  </span>
+                                            </p>
+                                    </div>
+                              </div>
+                        </div>
+                       : null}
                 </div>
-              </div>
-            </div>
-          ) : null}
-        </div>
-      </div>
+          </div>
     </div>
   );
 };

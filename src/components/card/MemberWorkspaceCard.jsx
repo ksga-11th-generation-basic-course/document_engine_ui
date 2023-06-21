@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import pencil from "../../assets/workspace_image/pencil.svg";
 import chevrondown from "../../assets/workspace_image/chevrondown.svg";
 import { RemoveMemberModal } from "../../modal/RemoveMemberModal";
+import dotmenu from "../../assets/dashboard_image/dotmenu.png";
+import { DropDownCollaborator } from "../DropDownCollaborator";
 import { Dropdown } from "react-daisyui";
 import view from "../../assets/workspace_image/view.svg";
 import kickmember from "../../assets/workspace_image/kickmember.svg";
@@ -21,6 +23,8 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
     "bg-yellow-500",
     "bg-purple-500",
   ];
+
+  const [open, setOpen] = useState(false);
 
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
@@ -50,9 +54,9 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
   return (
     <div>
       <div className="flex justify-between items-center w-full space-y-4">
-        <div className="flex justify-center items-center gap-x-3">
+        <div className="flex justify-center items-center gap-x-3 md:gap-x-2.5">
           <div
-            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full overflow-hidden`}
+            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full md:w-6 md:h-6 overflow-hidden`}
           >
             {member.profileImage === null ? (
               <p className="font-semibold text-18px text-white">
@@ -62,23 +66,34 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
               <img src={member.profileImage} className="w-full h-full" />
             )}
           </div>
-          <h3 className="font-semibold text-18px">{member.username}</h3>
+          <h3 className="font-semibold text-18px md:text-15px">{member.username}</h3>
           {member.isOwner ? (
-            <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg">
+            <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg md:text-12px">
               Owner
             </span>
           ) : null}
         </div>
+
+        {!member.isOwner ? 
+            <div className="hidden md:inline-block md:relative">
+            <button type="button" onClick={() => setOpen(!open)}>
+              <img src={dotmenu} className="md:w-6 md:h-6 md:-mt-6" />
+            </button>
+            {open ? <DropDownCollaborator open={open} setOpen={setOpen} /> : null}
+          </div> : null  
+        }
+
+
         {!member.isOwner ? (
-          <div className="flex justify-center items-center gap-x-4 md:gap-x-2">
+          <div className="flex justify-center items-center gap-x-4 md:hidden">
             <div className="relative">
               <Dropdown>
                 <Dropdown.Toggle>
                   {member.accessibility ? (
-                    <div className="text-18px md:text-16px md:gap-x-1 md:px-2 border-[1px] rounded-lg px-3 py-1 flex justify-center items-center gap-x-2">
-                      <img className="w-4" src={pencil} />
+                    <div className="text-18px md:text-12px md:gap-x-1 md:px-2 border-[1px] rounded-lg px-3 py-1 flex justify-center items-center gap-x-2">
+                      <img className="w-4 md:w-3" src={pencil} />
                       <p>Editor</p>
-                      <img className="md:w-4" src={chevrondown} />
+                      <img className="md:w-3" src={chevrondown} />
                     </div>
                   ) : (
                     <div className="text-18px md:text-16px md:gap-x-1 md:px-2 border-[1px] rounded-lg px-3 py-1 flex justify-center items-center gap-x-2">
