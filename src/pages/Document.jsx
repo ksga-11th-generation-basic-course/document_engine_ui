@@ -112,7 +112,7 @@ export const Document = () => {
           </div>
           <Link
             type="button"
-            to={"/createdocument"}
+            to={`/createdocument/${document.documentId}`}
             onClick={handleCreateDocument}
             className="font-semibold bg-primary px-4 py-2 rounded-lg text-white md:text-14px 2xs:text-15px 2xs:py-1.5 sm:text-15px sm:py-1.5 sm:px-3"
           >
@@ -398,7 +398,9 @@ export const Document = () => {
               .map((document, index) => (
                 <div className="col-span-4" key={index}>
                   <DocumentList
-                    document={document}
+                    title={document.title}
+                    status={document.status}
+                    editdate={document.editDate}
                   />
                 </div>
               ))
@@ -407,28 +409,12 @@ export const Document = () => {
               <p className="font-semibold text-accent">No Document</p>
             </div>
           )}
-
-          <DocumentList
-            title={"Redux Tookit"}
-            status={true}
-            editdate={"Apr 24 12:15 PM"}
-          />
-          <DocumentList
-            title={"Node JS"}
-            status={true}
-            editdate={"Apr 24 12:15 PM"}
-          />
-          <DocumentList
-            title={"Spring Profile"}
-            status={false}
-            editdate={"Apr 24 12:15 PM"}
-          />
         </div>
       ) : null}
 
       {/* Modal */}
       <div>
-        {workspace && isOwner && (
+        {workspace && workspace.isOwner && (
           <WorkspaceSettingModal
             openWorkspaceSetting={openWorkspaceSetting}
             setOpenWorkspaceSetting={setOpenWorksapceSetting}

@@ -2,6 +2,7 @@ import React from "react";
 import { Modal } from "react-daisyui";
 import close from "../assets/dashboard_image/close.svg";
 import deleteprofile from "../assets/dashboard_image/deleteprofile.svg";
+import { useDispatch } from "react-redux";
 
 export const DeleteWorkspacePhotoModal = ({
   workspaceId,

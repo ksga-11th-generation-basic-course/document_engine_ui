@@ -16,6 +16,7 @@ import { storage } from "../firebase/firebase.utils";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
+import { toast } from "react-toastify";
 
 export const SettingContent = ({
   openWorkspaceSetting,
@@ -60,6 +61,16 @@ export const SettingContent = ({
       setWorkspaceName("");
       setWorkspaceImage(null);
       setOpenWorkspaceSetting(!openWorkspaceSetting);
+      toast.success('Workspace Information Updated Successfully', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
     } catch (error) {
       console.log(error);
     }

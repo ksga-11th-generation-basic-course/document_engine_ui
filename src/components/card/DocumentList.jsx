@@ -4,9 +4,9 @@ import dotsvertical from "../../assets/document_image/dotsvertical.svg";
 import pencil from "../../assets/dashboard_image/pencil.svg";
 import { DropDownDocument } from "../DropDownDocument";
 
-export const DocumentList = ({ title, status, editdate ,document }) => {
+export const DocumentList = ({ title, status, editdate}) => {
   const [open, setOpen] = useState(false);
-
+  console.log(editdate);
   return (
     <div className="flex justify-between items-center text-black text-18px xs:text-14px">
       <div className="flex items-center gap-x-3">

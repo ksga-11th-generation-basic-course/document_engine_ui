@@ -13,9 +13,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { Dropdown, Radio } from "react-daisyui";
 import { DropDownFilterWorkspace } from "../components/DropDownFilterWorkspace";
-import docker from "../assets/workspace_image/docker.svg";
-import spring from "../assets/workspace_image/spring.svg";
-import reactjs from "../assets/workspace_image/reactjs.svg";
 
 export const Workspace = () => {
   const [openSearch, setOpenSearch] = useState(false);
@@ -87,33 +84,14 @@ export const Workspace = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-12 mt-7 md:mt-3">
-        {/* Sort */}
-        <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center lg:w-72 md:w-36 md:col-span-6">
-          <div className="flex items-center gap-x-2">
+      <div className="grid grid-cols-12 md:grid md:grid-cols-12 sm:grid sm:grid-cols-1">
+        <div className="col-span-4 md:col-span-5 sm:grid-cols-1 flex items-center gap-x-5 h-11">
+          <div className="flex items-center gap-x-3">
             <img src={sort} className="w-7 h-7 md:w-6 md:h-8" />
-            <h4 className="font-semibold text-20px md:text-16px md:hidden">
-              Sort:{" "}
-            </h4>
+            <h4 className="font-semibold text-20px md:text-18px">Sort: </h4>
           </div>
-
-          {/* <div className="relative lg:inline-block">
-            <button
-              className="flex items-center gap-x-20 lg:gap-x-14 md:gap-x-1"
-              onClick={() => setOpenSort(!openSort)}
-            >
-              <p className="text-20px md:text-14px  text-accent">Last Update</p>
-              <img className="mt-1 md:w-4 md:h-4 md:ml-4" src={chevrondown} />
-            </button>
-            <div className="md:absolute md:z-20">
-              {openSort ? (
-                <DropDownSort openSort={openSort} setOpenSort={setOpenSort} />
-              ) : null}
-            </div>
-          </div> */}
-
           <div className="relative">
-            <Dropdown className="bg-white">
+            <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
                   <p className="text-18px text-black">Last Update</p>
@@ -152,36 +130,11 @@ export const Workspace = () => {
             </Dropdown>
           </div>
         </div>
-
-        {/* Filter */}
-        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:w-80 lg:ml-5 md:w-40 md:ml-0">
+        <div className="col-span-4 md:col-span-6 sm:grid-cols-1 flex items-center gap-x-5 h-11">
           <div className="flex items-center gap-x-3">
-            <img src={filter} className="w-7 h-7 md:w-4 md:h-4" />
-            <h4 className="font-semibold text-20px md:text-16px md:hidden">
-              Filter:{" "}
-            </h4>
+            <img src={filter} className="w-7 h-7 md:w-5 md:h-5" />
+            <h4 className="font-semibold text-20px md:text-18px">Filter: </h4>
           </div>
-
-          {/* <div className="relative">
-            <button
-              className="flex items-center gap-x-20 lg:gap-x-12 md:gap-x-1"
-              onClick={() => setOpenFilter(!openFilter)}
-            >
-              <p className="text-20px md:text-14px text-accent">
-                All Workspaces
-              </p>
-              <img className="mt-1 md:w-4 md:h-4 md:ml-4" src={chevrondown} />
-            </button>
-            <div className="z-20">
-              {openFilter ? (
-                <DropDownFilterWorkspace
-                  openFilter={openFilter}
-                  setOpenFilter={setOpenFilter}
-                />
-              ) : null}
-            </div>
-          </div> */}
-
           <div className="relative">
             <Dropdown>
               <Dropdown.Toggle>
@@ -223,36 +176,24 @@ export const Workspace = () => {
             </Dropdown>
           </div>
         </div>
-
-        {/* Search button for laptop */}
-        <div className="col-span-4 flex justify-end relative lg:hidden md:hidden">
-          {openSearch ? (
-            <input
-              type="text"
-              placeholder="search"
-              className="-mt-2 absolute rounded-lg text-18px border-gray-200 border-[1px] w-[280px] md:w-[150px] focus:ring-accent focus:border-accent"
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          ) : null}
-          <button
-            type="button"
-            className="absolute top-1 right-2 w-5 h-5"
-            onClick={() => setOpenSearch(!openSearch)}
-          >
-            <img src={search} />
-          </button>
-        </div>
-
-        {/* Search button for mobile */}
-        <div className="hidden lg:hidden md:inline-block md:col-span-12 md:mt-2">
-          <input
-            type="text"
-            placeholder="search"
-            className="absolute rounded-lg text-14px border-gray-200 border-[1px] w-[312px]  h-8 focus:ring-accent focus:border-accent"
-          />
-          <span className="absolute mt-2 ml-72">
-            <img src={search} className="md:w-4 md:h-4" />
-          </span>
+        <div className="md:col-span-1 col-span-4 h-11">
+          <div className="flex justify-end relative">
+            {openSearch ? (
+              <input
+                type="text"
+                placeholder="search"
+                className="md:mt-10 sm:m-0 rounded-lg text-18px border-gray-200 border-[1px] w-[280px] md:w-[150px] focus:ring-accent focus:border-accent"
+                onChange={(e) => setSearchTerm(e.target.value)}
+              />
+            ) : null}
+            <button
+              type="button"
+              className="absolute mr-2 top-3"
+              onClick={() => setOpenSearch(!openSearch)}
+            >
+              <img src={search} />
+            </button>
+          </div>
         </div>
       </div>
 
