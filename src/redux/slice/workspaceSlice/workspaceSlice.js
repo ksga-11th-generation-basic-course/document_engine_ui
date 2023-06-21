@@ -1,12 +1,13 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  checkAccessibility,
   checkIsOwnerWorkspace,
+  checkIsOwnerWorkspaceCurrent,
   filterWorkspace,
   getAllWorkspace,
   getMemberInEachWorkspace,
+  getTotalPage,
   getWorkspaceByWorkspaceId,
-  removeMemberInWorkspace,
-  removeWorkspaceService,
 } from "../../service/workspaceService/workspaceService";
 
 const initialState = {
@@ -14,6 +15,8 @@ const initialState = {
   workspaces: null,
   members: null,
   isOwner: false,
+  accessibility: false,
+  totalPage: null,
   loading: false,
   error: null,
 };
@@ -23,10 +26,10 @@ const workspaceSlice = createSlice({
   initialState,
   reducers: {
     createWorkspaceSuccess: (state, action) => {
-      state.workspaces.push(action.payload);
+      state.workspaces.unshift(action.payload);
     },
     joinWorkspaceSuccess: (state, action) => {
-      state.workspaces.push(action.payload);
+      state.workspaces.unshift(action.payload);
     },
     editWorkspaceSuccess: (state, action) => {
       state.workspaces = state.workspaces.map((workspace) =>
@@ -43,8 +46,9 @@ const workspaceSlice = createSlice({
       );
     },
     removeWorkspaceServiceSuccess: (state, action) => {
+      const workspaceId = action.payload;
       state.workspaces = state.workspaces.filter(
-        (workspace) => workspace.workspaceId !== action.payload
+        (workspace) => workspace.workspaceId !== workspaceId
       );
     },
     setAccessibilitySuccess: (state, action) => {
@@ -58,9 +62,15 @@ const workspaceSlice = createSlice({
         (workspace) => workspace.workspaceId !== action.payload
       );
     },
-    inviteMemberViaEmailSuccess : (state, action) => {
-      state.workspace = action.payload
-    }
+    inviteMemberViaEmailSuccess: (state, action) => {
+      state.workspace = action.payload;
+    },
+    removeMemberInWorkspaceSuccess: (state, action) => {
+      const userId = action.payload;
+      state.members = state.members.filter(
+        (member) => member.userId !== userId
+      );
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getAllWorkspace.pending, (state) => {
@@ -119,22 +129,6 @@ const workspaceSlice = createSlice({
       state.error = action.error.message;
     });
 
-    builder.addCase(removeMemberInWorkspace.pending, (state) => {
-      state.loading = true;
-    });
-    builder.addCase(removeMemberInWorkspace.fulfilled, (state, action) => {
-      state.loading = false;
-      state.members = state.members.filter(
-        (member) => member.userId !== action.payload
-      );
-      state.error = null;
-    });
-    builder.addCase(removeMemberInWorkspace.rejected, (state, action) => {
-      state.loading = true;
-      state.workspace = null;
-      state.error = action.error.message;
-    });
-
     builder.addCase(checkIsOwnerWorkspace.pending, (state) => {
       state.loading = true;
     });
@@ -148,6 +142,48 @@ const workspaceSlice = createSlice({
       state.isOwner = false;
       state.error = action.error.message;
     });
+
+    builder.addCase(checkIsOwnerWorkspaceCurrent.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(checkIsOwnerWorkspaceCurrent.fulfilled, (state, action) => {
+      state.loading = false;
+      state.isOwner = action.payload;
+      state.error = null;
+    });
+    builder.addCase(checkIsOwnerWorkspaceCurrent.rejected, (state, action) => {
+      state.loading = true;
+      state.isOwner = false;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(checkAccessibility.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(checkAccessibility.fulfilled, (state, action) => {
+      state.loading = false;
+      state.accessibility = action.payload;
+      state.error = null;
+    });
+    builder.addCase(checkAccessibility.rejected, (state, action) => {
+      state.loading = true;
+      state.accessibility = false;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(getTotalPage.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getTotalPage.fulfilled, (state, action) => {
+      state.loading = false;
+      state.totalPage = action.payload;
+      state.error = null;
+    });
+    builder.addCase(getTotalPage.rejected, (state, action) => {
+      state.loading = true;
+      state.totalPage = null;
+      state.error = action.error.message;
+    });
   },
 });
 
@@ -159,6 +195,7 @@ export const {
   removeWorkspaceServiceSuccess,
   setAccessibilitySuccess,
   leaveWorkspaceSuccess,
-  inviteMemberViaEmailSuccess
+  inviteMemberViaEmailSuccess,
+  removeMemberInWorkspaceSuccess,
 } = workspaceSlice.actions;
 export default workspaceSlice.reducer;

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal } from "react-daisyui";
 import close from "../assets/dashboard_image/close.svg";
 import group from "../assets/dashboard_image/group.svg";
@@ -13,7 +13,7 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 export const CreateWorkspaceModal = ({ visible, setVisible }) => {
-  const [workspaceName, setWorkspaceName] = useState();
+  const [workspaceName, setWorkspaceName] = useState("");
 
   const dispatch = useDispatch();
 
@@ -23,46 +23,53 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
           setVisible(!visible)
   }
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const [url, setUrl] = useState(
+    "https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fworkspace%2F009e87fc-0298-4096-ad96-713ac96409ba_Monterey-dark.jpg?alt=media&token=8a49d5d6-c072-4617-a7bf-88bc3d229b7e"
+  );
+
+  useEffect(() => {
     if (!workspaceImage) return;
+
     const imageRef = ref(
       storage,
       `images/workspace/${uuidv4()}_${workspaceImage.name}`
     );
 
-    uploadBytes(imageRef, workspaceImage).then(async (snapshot) => {
-      getDownloadURL(snapshot.ref).then(async (url) => {
-        try {
-          const workspace = await createWorkspace(workspaceName, url);
-          dispatch(createWorkspaceSuccess(workspace));
-          toast.success('Create Workspace Successfully', {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-            });
-        } catch (error) {
-          toast.error(error, {
-            position: "top-right",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "light",
-          });
-        }
+    uploadBytes(imageRef, workspaceImage).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setUrl(url);
       });
     });
+  }, [workspaceImage]);
+
+  const handleSubmit = async () => {
+    try {
+      const workspace = await createWorkspace(workspaceName, url);
+      dispatch(createWorkspaceSuccess(workspace));
+      toast.success("Create Workspace Successfully", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+      setWorkspaceName("");
+    } catch (error) {
+      toast.error(error, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
+    }
     setVisible(!visible);
-    setWorkspaceImage(null);
-    e.target.reset();
   };
 
   return (
@@ -88,12 +95,12 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
             <h1 className="font-bold text-28px text-primary text-center md:text-20px">
                 Create Workspace
             </h1>
-            
-            <div className="flex flex-col gap-y-2 font-semibold text-20px md:text-14px">
-              <p>Workspace Name</p>
+            <div className="flex flex-col gap-y-2 font-semibold text-18px">
+              <p>Worksapce Name</p>
               <input
                 type="text"
                 placeholder="Workspace Name"
+                value={workspaceName}
                 className="rounded-lg py-3 border-primary focus:ring-btn-primary focus:border-btn-primary text-18px md:text-14px md:py-2"
                 onChange={(e) => setWorkspaceName(e.target.value)}
               />
@@ -118,18 +125,29 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                   )}
                 </div>
               </label>
-            </div>
-            <p className="text-end text-[#9CA3AF]">(optional)</p>
-            <div className="flex justify-end items-center gap-5 text-16px font-semibold pb-5">
-              <button className="px-10 py-3 border-[1px] rounded-lg" onClick={toggleVisible}>
-                Cancel
-              </button>
-              <button className="bg-primary text-white px-10 py-3 rounded-lg " type="submit">
-                Create
-              </button>
+              <div className="space-y-3 mt-2">
+                <p className="text-end text-[#9CA3AF] font-normal">
+                  (optional)
+                </p>
+                <div className="flex justify-end items-center gap-5 text-16px font-semibold pb-5">
+                  <button
+                    className="px-10 py-3 border-[1px] rounded-lg"
+                    type="button"
+                    onClick={() => setVisible(!visible)}
+                  >
+                    Cancel
+                  </button>
+                  <button
+                    className="bg-primary text-white  px-10 py-3 rounded-lg"
+                    type="button"
+                    onClick={handleSubmit}
+                  >
+                    Create
+                  </button>
+                </div>
+              </div>
             </div>
           </div>
-          
         </div>
       </Modal>
       <ToastContainer />

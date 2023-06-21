@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import pencil from "../../assets/workspace_image/pencil.svg";
 import chevrondown from "../../assets/workspace_image/chevrondown.svg";
 import { RemoveMemberModal } from "../../modal/RemoveMemberModal";
@@ -8,8 +8,9 @@ import { Dropdown } from "react-daisyui";
 import view from "../../assets/workspace_image/view.svg";
 import kickmember from "../../assets/workspace_image/kickmember.svg";
 import { setAccessibility } from "../../redux/service/workspaceService/workspaceService";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setAccessibilitySuccess } from "../../redux/slice/workspaceSlice/workspaceSlice";
+import { getCurrentUser } from "../../redux/service/userService/userService";
 
 export const MemberWorkspaceCard = ({ member, workspaceId }) => {
   const [removeMember, setRemoveMember] = useState(false);
@@ -34,6 +35,8 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
 
   const [userId, setUserId] = useState();
 
+  const user = useSelector((state) => state.user.user);
+
   const hanldeKickMember = () => {
     setUserId(member.userId);
     setWorkspaceIdProp(workspaceId);
@@ -50,6 +53,10 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
       console.log(error);
     }
   };
+
+  useEffect(() => {
+    dispatch(getCurrentUser());
+  }, []);
 
   return (
     <div>
@@ -68,9 +75,14 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
           </div>
           <h3 className="font-semibold text-18px md:text-15px">{member.username}</h3>
           {member.isOwner ? (
-            <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg md:text-12px">
-              Owner
-            </span>
+            <div>
+              <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg md:text-12px">
+                Owner
+              </span>
+            </div>
+          ) : null}
+          {user.userId === member.userId ? (
+            <span>(You)</span>
           ) : null}
         </div>
 

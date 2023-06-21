@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Modal } from "react-daisyui";
 import close from "../assets/dashboard_image/close.svg";
 import romoveworkspace from "../assets/workspace_image/romoveworkspace.svg";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { removeWorkspaceService } from "../redux/service/workspaceService/workspaceService";
 import "react-toastify/dist/ReactToastify.css";
 import { removeWorkspaceServiceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
-import { toast } from "react-toastify";
+// import { io } from "socket.io-client";
+
+// const socket = io.connect("http://localhost:3001");
 
 export const RemoveWorkspaceModal = ({
   removeWorkspace,
@@ -19,6 +21,7 @@ export const RemoveWorkspaceModal = ({
     try {
       const workspace = await removeWorkspaceService(workspaceId);
       dispatch(removeWorkspaceServiceSuccess(workspace));
+      // socket.emit("remove_workspace", workspace);
       setRemoveWorkspace(!removeWorkspace);
       toast.success("Remove Workspace Successfully", {
         position: "top-right",

@@ -6,6 +6,7 @@ import setting from "../../assets/dashboard_image/setting.svg";
 import trush from "../../assets/dashboard_image/trush.svg";
 import { WorkspaceSettingModal } from "../../modal/WorkspaceSettingModal";
 import { Dropdown } from "react-daisyui";
+import { LeaveWorkspaceModal } from "../../modal/LeaveWorkspaceModal";
 
 export const WorkspaceCard = ({ workspace }) => {
   const [workspaceId, setWorkspaceId] = useState();
@@ -16,7 +17,9 @@ export const WorkspaceCard = ({ workspace }) => {
   const navigate = useNavigate();
 
   const handleNavigate = () => {
-    navigate(`/document/${workspace.workspaceId}`);
+    navigate(
+      `/document/${workspace.workspaceId}`
+    );
   };
 
   const handleRemoveWorkspace = () => {
@@ -30,6 +33,13 @@ export const WorkspaceCard = ({ workspace }) => {
     setWorkspaceCode(workspace.workspaceCode);
   };
 
+  const [leaveWorkspace, setLeaveWorkspace] = useState(false);
+
+  const handleLeaveWorkspace = () => {
+    setWorkspaceId(workspace.workspaceId);
+    setLeaveWorkspace(!leaveWorkspace);
+  };
+
   return (
     <div className="shadow-custom rounded-lg text-accent cursor-pointer hover:shadow-hover">
       <div className="flex  justify-between p-3">
@@ -38,8 +48,8 @@ export const WorkspaceCard = ({ workspace }) => {
           <p className="text-primary px-3 text-16px md:text-14px">Owner</p>
         ) : null}
       </div>
-      <div className="h-[215px] overflow-hidden" onClick={handleNavigate}>
-        <img src={workspace && workspace.workspaceImage} className="w-full"/>
+      <div className="h-[200px] overflow-hidden" onClick={handleNavigate}>
+        <img src={workspace && workspace.workspaceImage} className="w-full" />
       </div>
       <div className="flex justify-between items-center p-3">
         <div>
@@ -54,7 +64,7 @@ export const WorkspaceCard = ({ workspace }) => {
           <div className="relative">
             <Dropdown className="dropdown-right">
               <Dropdown.Toggle>
-                <img src={dotmenu} className="w-[6px]"/>
+                <img src={dotmenu} className="w-[6px]" />
               </Dropdown.Toggle>
               <Dropdown.Menu className="w-52 bg-white rounded-lg text-base">
                 <Dropdown.Item onClick={handleSettingWorkspace}>
@@ -68,8 +78,42 @@ export const WorkspaceCard = ({ workspace }) => {
               </Dropdown.Menu>
             </Dropdown>
           </div>
-        ):
-        <div></div>}
+        ) : (
+          <div className="relative">
+            <Dropdown className="dropdown-right">
+              <Dropdown.Toggle>
+                <img src={dotmenu} className="w-[6px]" />
+              </Dropdown.Toggle>
+              <Dropdown.Menu className="w-52 bg-white rounded-lg text-base">
+                <Dropdown.Item onClick={handleLeaveWorkspace}>
+                  <svg
+                    width="20"
+                    height="21"
+                    viewBox="0 0 20 21"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <g clip-path="url(#clip0_15_12278)">
+                      <path
+                        d="M12.5 5.25V1.3125H1.25M1.25 1.3125V14.4375L7.5 19.6875V6.5625L1.25 1.3125ZM11.25 13.125H18.75M18.75 13.125L15 9.1875M18.75 13.125L15 17.0625"
+                        stroke="#FF5658"
+                        stroke-width="2"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      />
+                    </g>
+                    <defs>
+                      <clipPath id="clip0_15_12278">
+                        <rect width="20" height="21" fill="white" />
+                      </clipPath>
+                    </defs>
+                  </svg>
+                  <span>Leave Workspace</span>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+          </div>
+        )}
       </div>
       <RemoveWorkspaceModal
         removeWorkspace={removeWorkspace}
@@ -81,6 +125,11 @@ export const WorkspaceCard = ({ workspace }) => {
         setOpenWorkspaceSetting={setOpenWorkspaceSetting}
         workspaceCode={workspaceCode}
         workspace={workspace}
+      />
+      <LeaveWorkspaceModal
+        leaveWorkspace={leaveWorkspace}
+        setLeaveWorkspace={setLeaveWorkspace}
+        workspaceId={workspaceId}
       />
     </div>
   );

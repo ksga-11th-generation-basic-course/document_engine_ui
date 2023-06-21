@@ -4,6 +4,10 @@ import close from "../assets/dashboard_image/close.svg";
 import removemember from "../assets/workspace_image/removemember.svg";
 import { useDispatch } from "react-redux";
 import { removeMemberInWorkspace } from "../redux/service/workspaceService/workspaceService";
+// import { io } from "socket.io-client";
+import { removeMemberInWorkspaceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
+
+// const socket = io.connect("http://localhost:3001");
 
 export const RemoveMemberModal = ({
   removeMember,
@@ -13,9 +17,14 @@ export const RemoveMemberModal = ({
 }) => {
   const dispatch = useDispatch();
 
-  const handleRemoveMember = () => {
-    dispatch(removeMemberInWorkspace({ userId, workspaceIdProp }));
-    setRemoveMember(!removeMember);
+  const handleRemoveMember = async () => {
+    try {
+      const user = await removeMemberInWorkspace(userId, workspaceIdProp);
+      dispatch(removeMemberInWorkspaceSuccess(user));
+      setRemoveMember(!removeMember);
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="w-full">

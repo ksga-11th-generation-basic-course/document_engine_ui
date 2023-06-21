@@ -43,7 +43,7 @@ export const joinWorkspace = async (workspaceCode) => {
 export const getAllWorkspace = createAsyncThunk(`workspaces`, async (body) => {
   try {
     const response = await api.get(
-      `workspaces?pageNo=${body.no}&pageSize=${body.size}&asc=${body.asc}&desc=${body.desc}`,
+      `workspaces?pageNo=${body.no}&pageSize=${body.size}&asc=${body.asc}&desc=${body.desc}&eSortWorkspace=${body.sortbydatetime}`,
       {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
@@ -72,7 +72,7 @@ export const removeWorkspaceService = async (workspaceId) => {
 };
 
 export const getWorkspaceByWorkspaceId = createAsyncThunk(
-  "workspaces/workspaceId",
+  "workspaces/getworkspaceId",
   async (workspaceId) => {
     try {
       const response = await api.get(`workspaces/${workspaceId}`, {
@@ -107,14 +107,17 @@ export const getMemberInEachWorkspace = createAsyncThunk(
 
 export const filterWorkspace = createAsyncThunk(
   "workspaces/filter",
-  async (checked) => {
+  async (body) => {
     try {
-      const response = await api.get(`workspaces/filter?filter=${checked}`, {
-        headers: {
-          Authorization: "Bearer " + localStorage.getItem("token"),
-          "Content-Type ": "application/json",
-        },
-      });
+      const response = await api.get(
+        `workspaces/filter?filter=${body.status}&pageNo=${body.no}&pageSize=${body.size}&asc=${body.asc}&desc=${body.desc}&eSortWorkspace=${body.sortbydatetime}`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
+      );
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;
@@ -161,25 +164,22 @@ export const removeWorkspaceImage = async (workspaceId) => {
   }
 };
 
-export const removeMemberInWorkspace = createAsyncThunk(
-  "workspaces/remove/member",
-  async (body) => {
-    try {
-      const response = await api.delete(
-        `workspaces/member?userId=${body.userId}&workspaceId=${body.workspaceIdProp}`,
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-            "Content-Type ": "application/json",
-          },
-        }
-      );
-      return body.userId;
-    } catch (error) {
-      throw error.response.data.detail;
-    }
+export const removeMemberInWorkspace = async (userId, workspaceIdProp) => {
+  try {
+    const response = await api.delete(
+      `workspaces/member?userId=${userId}&workspaceId=${workspaceIdProp}`,
+      {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      }
+    );
+    return userId;
+  } catch (error) {
+    throw error.response.data.detail;
   }
-);
+};
 
 export const setAccessibility = async (userId, workspaceId, status) => {
   try {
@@ -201,10 +201,11 @@ export const setAccessibility = async (userId, workspaceId, status) => {
 
 export const checkIsOwnerWorkspace = createAsyncThunk(
   "workspaces/isOwner",
-  async (body) => {
+  async (workspaceId) => {
+    console.log(workspaceId);
     try {
       const response = await api.get(
-        `workspace/${body.workspaceId}/user/${body.userId}`,
+        `workspaces/${workspaceId}/user/${userId}`,
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),
@@ -212,7 +213,6 @@ export const checkIsOwnerWorkspace = createAsyncThunk(
           },
         }
       );
-      console.log(response.data.payload);
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;
@@ -240,7 +240,7 @@ export const leaveWorkspaceService = async (workspaceId) => {
 export const inviteMemberViaEmail = async (workspaceId, email) => {
   try {
     const response = await api.post(
-      `workspace/${workspaceId}/invite?email=${email}`,
+      `workspaces/${workspaceId}/invite?email=${email}`,
       {},
       {
         headers: {
@@ -249,8 +249,64 @@ export const inviteMemberViaEmail = async (workspaceId, email) => {
         },
       }
     );
-    return workspaceId;
+    return response.data.payload;
   } catch (error) {
     throw error.response.data.detail;
   }
 };
+
+export const checkAccessibility = createAsyncThunk(
+  "workspaces/checkAccessibility",
+  async (workspaceId) => {
+    try {
+      const response = await api.get(
+        `workspaces/${workspaceId}/check/accessibility`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
+      );
+      console.log(response.data.payload);
+      return response.data.payload;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);
+
+export const getTotalPage = createAsyncThunk(
+  "workspaces/totalpage",
+  async (size) => {
+    try {
+      const response = await api.get(`workspaces/totalPage?pageSize=${size}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
+      console.log(response.data.payload);
+      return response.data.payload;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);
+
+export const checkIsOwnerWorkspaceCurrent = createAsyncThunk(
+  "workspaces/isOwner/currentUser",
+  async (workspaceId) => {
+    try {
+      const response = await api.get(`workspaces/${workspaceId}/current/user`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
+      return response.data.payload;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);

@@ -1,79 +1,166 @@
 import React, { useEffect, useRef, useState } from "react";
-import "@blocknote/core/style.css";
-import { BlockNoteView, useBlockNote } from "@blocknote/react";
 import styles from "../../App.module.css";
-import { createBlock, getBlockBydoucmentId, updateBlock } from "../../redux/service/blockService/blockService";
-import { handler } from "daisyui";
+import {
+  createBlock,
+  deleteBlock,
+  getBlockBydoucmentId,
+  updateBlock,
+} from "../../redux/service/blockService/blockService";
 import { useParams } from "react-router-dom";
-import { createBlockSuccess, updateBlockSuccess } from "../../redux/slice/blockSlice/blockSlice";
-import { useDispatch } from "react-redux";
+import {
+  createBlockSuccess,
+  deleteBlockSuccess,
+  updateBlockSuccess,
+} from "../../redux/slice/blockSlice/blockSlice";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  BlockNoteEditor,
+  defaultBlockSchema,
+  defaultProps,
+} from "@blocknote/core";
+import {
+  BlockNoteView,
+  useBlockNote,
+  createReactBlockSpec,
+  InlineContent,
+  ReactSlashMenuItem,
+  defaultReactSlashMenuItems,
+} from "@blocknote/react";
+import "@blocknote/core/style.css";
+import { RiImage2Fill } from "react-icons/ri";
 
-export const Editor = ({initialContent}) => {
-  const [blocks, setBlock] = useState([]);
-  const block = [...blocks];
-  const param      =  useParams();
-  const documentId =  param.id;
-  const dispatch = useDispatch();
-  console.log(initialContent);
+  // console.log("adwawd", sortedInitialContent)
+  // console.log("block", initialContent);
 
   // Create Block
   const handleCreateBlock = async () => {
-    for (let index = 0; index < block.length; index++) {
-      const text = block[index]
-      const types = blocks.filter(obj => obj.type).map(obj => obj.type);
-      const type = types[index]
-      console.log(block[index]);
-      const blockId = block[index].id;
-      const checkIsExist = initialContent.find(value => value.id === blockId);
-      if(!checkIsExist){
-        const response = await createBlock(type,text,documentId);
+    for (let index = 0; index < blocks.length; index++) {
+      const text = blocks[index];
+      const types = blocks.filter((obj) => obj.type).map((obj) => obj.type);
+      const type = types[index];
+      const blockId = blocks[index].id;
+      const isExist = sortedInitialContent.find(
+        (block) => block.blockId === blockId
+      );
+
+      if (!isExist) {
+        const response = await createBlock(
+          blockId,
+          type,
+          text,
+          param.documentId
+        );
         dispatch(createBlockSuccess(response));
+      } else {
+        const response = await updateBlock(blockId, param.documentId, text);
+        dispatch(updateBlockSuccess(response));
       }
-      // if(checkIsExist){
-      //   const response = await updateBlock(blockId,documentId,text);
-      //   dispatch(updateBlockSuccess(response));
-      // }
     }
-  }
+
+    const data = sortedInitialContent.filter(
+      (content) => !blocks.some((b) => b.id === content.blockId)
+    );
+
+    data.map(async (val) => {
+      const blockId = await deleteBlock(val.blockId, param.documentId);
+      dispatch(deleteBlockSuccess(blockId));
+    });
+  };
 
   //Editor
   const editor = useBlockNote({
-    initialContent: initialContent,
+    initialContent: sortedInitialContent.map((block) => {
+      return block.content;
+    }),
     onEditorContentChange: (editor) => {
-      console.log(editor.topLevelBlocks);
-      const content = [];
-      setBlock(content);
-      for (let indexOfTopLevelBlocks = 0; indexOfTopLevelBlocks < editor.topLevelBlocks.length; indexOfTopLevelBlocks++) {
-        const element = editor.topLevelBlocks[indexOfTopLevelBlocks];
-        for (let indexOfContent = 0; indexOfContent < element.content.length; indexOfContent++) {
-          const type = element.type
-          const id   = element.id;
-          const text = element.content[0].text;
-          const typeContent = element.content[0].type
-          const level = element.props.level;
-          if (type == 'heading') {
-            const dataOfContent = {id:id, type: type, typeContent:typeContent, text: text, level: level };
-            content.push(dataOfContent);
-          } else {
-            const dataOfContent = {id:id, type: type, typeContent:typeContent, text: text };
-            content.push(dataOfContent);
-          }
-        }
-      }
+      // console.log(editor.topLevelBlocks);
+      // const content = [];
+      setBlocks(editor.topLevelBlocks);
+      // for (
+      //   let indexOfTopLevelBlocks = 0;
+      //   indexOfTopLevelBlocks < editor.topLevelBlocks.length;
+      //   indexOfTopLevelBlocks++
+      // ) {
+      //   const element = editor.topLevelBlocks[indexOfTopLevelBlocks];
+      //   for (
+      //     let indexOfContent = 0;
+      //     indexOfContent < element.content.length;
+      //     indexOfContent++
+      //   ) {
+      //     const href = element.content[0].href;
+      //     const type = element.type;
+      //     const id = element.id;
+      //     const text = element.content[0].text;
+      //     const typeContent = element.content[0].type;
+      //     const level = element.props.level;
+      //     let backgroundColor;
+      //     let textColor;
+      //     let bold;
+      //     let italic;
+      //     let strike;
+      //     let underline;
+      //     if (href !== undefined) {
+      //       backgroundColor =
+      //         element.content[0].content[0].styles.backgroundColor;
+      //       textColor = element.content[0].content[0].styles.textColor;
+      //       bold = element.content[0].content[0].styles.bold;
+      //       italic = element.content[0].content[0].styles.italic;
+      //       strike = element.content[0].content[0].styles.strike;
+      //       underline = element.content[0].content[0].styles.underline;
+      //     } else {
+      //       backgroundColor = element.content[0].styles.backgroundColor;
+      //       textColor = element.content[0].styles.textColor;
+      //       bold = element.content[0].styles.bold;
+      //       italic = element.content[0].styles.italic;
+      //       strike = element.content[0].styles.strike;
+      //       underline = element.content[0].styles.underline;
+      //     }
+      //     const dataOfContent = {
+      //       id: id,
+      //       type: type,
+      //       typeContent: typeContent,
+      //       text: text,
+      //       level: level,
+      //       backgroundColor: backgroundColor,
+      //       textColor: textColor,
+      //       bold: bold,
+      //       italic: italic,
+      //       strike: strike,
+      //       underline: underline,
+      //       href: href,
+      //     };
+      //     content.push(dataOfContent);
+      //   }
+      // }
     },
+    blockSchema: {
+      // Adds all default blocks.
+      ...defaultBlockSchema,
+      // Adds the custom image block.
+      image: ImageBlock,
+      imageFile: ImageBlockFile,
+      embed: EmbedBlock,
+    },
+    slashCommands: [
+      ...defaultReactSlashMenuItems,
+      insertImage,
+      insertImageFile,
+      insertEmbed,
+    ],
     editorDOMAttributes: {
       class: styles.editor,
       "data-test": "editor",
     },
     theme: "light",
   });
-  
 
   return (
     <div>
-      <input type="submit" value='click' onClick={handleCreateBlock} /><br/>
-      <BlockNoteView editor={editor}/>
+      <button type="button" onClick={handleCreateBlock}>
+        Click
+      </button>
+      <br />
+      <BlockNoteView editor={editor} />
     </div>
-
-  )
+  );
 };

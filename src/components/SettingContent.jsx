@@ -31,35 +31,37 @@ export const SettingContent = ({
   const [openAdvance, setOpenAdvance] = useState(false);
 
 
-  const [workspaceName, setWorkspaceName] = useState("");
+  const [workspaceName, setWorkspaceName] = useState(
+    workspace && workspace.workspaceName
+  );
 
   const [workspaceImage, setWorkspaceImage] = useState(null);
+
+  const [url, setUrl] = useState(workspace && workspace.workspaceImage);
 
   const dispatch = useDispatch();
 
   let workspaceId = workspace.workspaceId;
 
-  const handleEditWorkspaceInformation = (e) => {
-    try {
-      if (!workspaceImage) return;
+  useEffect(() => {
+    if (!workspaceImage) return;
 
-      const imageRef = ref(
-        storage,
-        `images/workspace/${uuidv4()}_${workspaceImage.name}`
-      );
+    const imageRef = ref(
+      storage,
+      `images/workspace/${uuidv4()}_${workspaceImage.name}`
+    );
 
-      uploadBytes(imageRef, workspaceImage).then(async (snapshot) => {
-        getDownloadURL(snapshot.ref).then(async (url) => {
-          const workspace = await editWorkspace(
-            workspaceId,
-            workspaceName,
-            url
-          );
-          dispatch(editWorkspaceSuccess(workspace));
-        });
+    uploadBytes(imageRef, workspaceImage).then((snapshot) => {
+      getDownloadURL(snapshot.ref).then((url) => {
+        setUrl(url);
       });
-      setWorkspaceName("");
-      setWorkspaceImage(null);
+    });
+  }, [workspaceImage]);
+
+  const handleEditWorkspaceInformation = async () => {
+    try {
+      const workspace = await editWorkspace(workspaceId, workspaceName, url);
+      dispatch(editWorkspaceSuccess(workspace));
       setOpenWorkspaceSetting(!openWorkspaceSetting);
       toast.success('Workspace Information Updated Successfully', {
         position: "top-right",
@@ -128,7 +130,6 @@ export const SettingContent = ({
                 type="text"
                 value={workspaceName}
                 className="w-96 md:w-72 py-3 md:py-2 rounded-lg border-gray-300 focus:ring-primary focus:border-primary text-18px font-semibold"
-                placeholder={workspace && workspace.workspaceName}
                 onChange={(e) => setWorkspaceName(e.target.value)}
               />
             </div>
@@ -147,6 +148,7 @@ export const SettingContent = ({
                     className="text-sm cursor-pointer w-36 hidden"
                     type="file"
                     multiple
+                    files={workspaceImage}
                     onChange={(e) => setWorkspaceImage(e.target.files[0])}
                   />
                   <p className="md:w-[110px] md:text-center md:align-middle md:h-[33px] font-semibold text-18px md:text-14px border-[1px] rounded-lg px-3 py-1 cursor-pointer">
@@ -174,9 +176,9 @@ export const SettingContent = ({
                   />
                   <div className="overflow-hidden rounded-lg w-[300px] h-[200px]">
                     {workspaceImage ? (
-                      <img src={URL.createObjectURL(workspaceImage)}/>
+                      <img src={URL.createObjectURL(workspaceImage)} />
                     ) : (
-                      <img src={workspace.workspaceImage} />
+                      <img src={workspace && workspace.workspaceImage} />
                     )}
                   </div>
                 </label>

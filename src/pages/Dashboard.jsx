@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import documenticon from "../assets/dashboard_image/documenticon.svg";
 import { DocumentCardRow } from "../components/card/DocumentCardRow";
 import { Hint } from "../components/Hint";
@@ -11,6 +11,41 @@ export const Dashboard = () => {
   useEffect(() => {
     dispatch(getDocumentRecently());
   }, [])
+  const documentRecentlyUpdated = [
+    {
+      documentId: "b69d1d83-21b1-4a1b-a00b-bbe11429d563",
+      title: "Laravel",
+      status: false,
+      createdDate: "16-06-2023",
+      pages: [],
+      workspaceId: "b91e387c-4399-4ff4-adf1-c5b455012f8a",
+      tags: [],
+      blocks: [],
+      editDate: "25 minutes ago",
+    },
+    {
+      documentId: "b69d1d83-21b1-4a1b-a00b-bbe11429d563",
+      title: "Spring",
+      status: true,
+      createdDate: "16-06-2023",
+      pages: [],
+      workspaceId: "b91e387c-4399-4ff4-adf1-c5b455012f8a",
+      tags: [],
+      blocks: [],
+      editDate: "25 minutes ago",
+    },
+    {
+      documentId: "b69d1d83-21b1-4a1b-a00b-bbe11429d563",
+      title: "Java",
+      status: false,
+      createdDate: "16-06-2023",
+      pages: [],
+      workspaceId: "b91e387c-4399-4ff4-adf1-c5b455012f8a",
+      tags: [],
+      blocks: [],
+      editDate: "25 minutes ago",
+    },
+  ];
 
   return (
     <div className="bg-white">
