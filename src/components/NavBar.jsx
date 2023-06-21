@@ -9,7 +9,7 @@ export const NavBar = () => {
     <div className="fixed z-50 flex w-full justify-between items-center px-14 sm:px-4 md:px-6 border-[2px] text-18px font-semibold text-accent bg-[#F9F9FF] lg:py-2 sm:justify-around">
       <div>
         <Link to={"/"}>
-          <img src={logo} className="w-[72px] h-[72px] lg:w-[52px] lg:h-[52px]" />
+          <img src={logo} className="w-[72px] h-[72px] lg:w-[52px] lg:h-[52px] md:w-[50px]" />
         </Link>
       </div>
       <div className="relative sm:hidden md:hidden">
@@ -48,7 +48,7 @@ export const NavBar = () => {
       </div>
       <div className="relative flex justify-center sm:w-auto md:justify-between  sm:flex sm:justify-evenly items-center gap-x-5  text-20px lg:text-18px md:text-16px">
         <Link to={"/signin"} className="sm:whitespace-nowrap">Sign in</Link>
-        <Link to={"/signup"}className="bg-primary px-4 py-2 sm:px-2 sm:whitespace-nowrap sm:py-1  text rounded-xl text-white">
+        <Link to={"/signup"}className="bg-primary px-4 py-2 text rounded-xl text-white md:h-8 md:pt-1 md:rounded-lg  ">
           Sign up
         </Link>
       </div>

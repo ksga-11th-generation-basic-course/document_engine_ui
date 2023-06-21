@@ -25,7 +25,7 @@ export const Root = () => {
                                                 className="lg:pl-10 md:pl-5"
                                                 onClick={() => setOpen(!open)}
                                           >
-                                                  <img src={menu} alt="menu" className="md:w-3"/>
+                                                  <img src={menu} alt="menu" className=" "/>
                                           </button>
                                   }
 

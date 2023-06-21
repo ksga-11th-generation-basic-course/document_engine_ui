@@ -15,11 +15,11 @@ export const Footer = () => {
           <div className="absolute z-20 mt-24 space-x-52 grid grid-cols-12 justify-center lg:px-20 md:-ml-20 md:space-x-0 md:absolute">
                   {/* follow us */}
                     <div className="pl-52 col-span-4 -mt-20  lg:h-[50px] lg:col-span-12 md:ml-6  "> 
-                          <div className="font-semibold text-white text-24px mb-5 ml-7  lg:text-2xl lg:mt-44 lg:ml-6 md:text-20px md:-ml-40 md:mt-28 md:text-base">FOLLOW US</div>
-                          <div className="flex gap-x-10 mt-7 md:-mt-10 md:-ml-12 md:gap-x-8">
-                                <img src={facebook} className="w-5 md:w-3" />
-                                <img src={instagram} className="w-8 md:w-5" />
-                                <img src={telegram} className="w-9 md:w-6" />
+                          <div className="font-semibold text-white text-24px mb-5 ml-7 lg:absolute lg:text-2xl lg:mt-48 lg:-ml-16  md:text-20px md:-ml-40 md:mt-28 md:text-base">FOLLOW US</div>
+                          <div className="flex gap-x-10 mt-7 lg:mt-48 lg:ml-24 md:mt-28 md:-ml-12 md:gap-x-8">
+                                <img src={facebook} className="w-5 lg:w-[17px] md:w-3" />
+                                <img src={instagram} className="w-8 lg:w-[29px] md:w-5" />
+                                <img src={telegram} className="w-9 lg:w-[31px] md:w-6" />
                                       
                           </div>
                     </div>

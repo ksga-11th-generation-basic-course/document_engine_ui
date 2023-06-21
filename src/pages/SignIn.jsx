@@ -60,10 +60,10 @@ export const SignIn = () => {
     validationSchema: Yup.object({
       email: Yup.string()
         .email("Enter a valid email")
-        .required("Please enter a registered email"),
+        .required("Please enter a registered email."),
       password: Yup.string()
-        .required("Password is a required field")
-        .min(4, "Password must have more than 4 characters "),
+        .required("Password is a required field.")
+        .min(4, "Password must have more than 4 characters."),
     }),
     onSubmit: (values, { resetForm }) => {
       dispatch(signin(values));

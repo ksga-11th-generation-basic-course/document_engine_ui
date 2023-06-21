@@ -14,10 +14,10 @@ export const SideBar = ({
   const [visible, setVisible] = useState(false);
 
   return (
-    <div className="bg-[#FAFAF9] overflow-x-auto md:mt-8 md:h-screen">
+    <div className="bg-[#FAFAF9] overflow-x-auto md:w-[210px] md:mt-8 md:h-screen">
       {/* Close Button */}
       <div className="hidden lg:flex flex-col items-end pr-3 pt-3 md:absolute md:right-0 md:top-0  md:w-full md:bg-[#FAFAF9]">
-        <div className="hidden lg:inline-block">
+        <div className="hidden lg:inline-block ">
           <button type="button" onClick={() => setSideBar(!sideBar)}>
             <img src={close} className="w-8 md:w-5" />
           </button>
@@ -29,7 +29,7 @@ export const SideBar = ({
         <Link to={"/dashboard"}>
           <img
             src={logo}
-            className="w-28 h-28 mb-2 flex lg:w-28 md:w-[75px] md:h-[65px] md:mt-5"
+            className="w-24 h-24 mb-2 flex lg:w-24 md:w-[75px] md:h-[65px] md:mt-5"
           />
         </Link>
 
@@ -94,8 +94,8 @@ export const SideBar = ({
             to={"/document"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4 md:py-2.5"
-                : "flex items-center w-full gap-x-3 py-3 rounded-lg px-4 md:py-2.5"
+                ? "flex items-center w-full h-12 gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4 md:py-2.5 md:h-10 md:pt-2"
+                : "flex items-center w-full gap-x-3 py-3 rounded-lg px-4 md:py-2.5 md:h-10 md:pt-2"
             }
           >
             <span className="flex justify-center items-center gap-x-3">

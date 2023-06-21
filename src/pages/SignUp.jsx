@@ -69,17 +69,17 @@ export const SignUp = () => {
     },
     validationSchema: Yup.object({
       username: Yup.string()
-        .required("Username is a required field")
-        .min(4, "Must have at least 2 characters"),
+        .required("Username is a required field.")
+        .min(4, "Must have at least 2 characters."),
       email: Yup.string()
         .email("Enter a valid email")
-        .required("Please enter a registered email"),
+        .required("Please enter a registered email."),
       password: Yup.string()
-        .required("Password is a required field")
-        .min(4, "Password must have more than 4 characters "),
+        .required("Password is a required field.")
+        .min(4, "Password must have more than 4 characters. "),
       confirmPassword: Yup.string()
-        .oneOf([Yup.ref("password")], "Confirm Password must matched Password")
-        .required("Confirm Password is required"),
+        .oneOf([Yup.ref("password")], "Confirm Password must matched Password.")
+        .required("Confirm Password is required."),
     }),
     onSubmit: (values, { resetForm }) => {
       dispatch(signup(values));
@@ -99,7 +99,7 @@ export const SignUp = () => {
         <Link to={"/"}>
                 <img
                   src={Logo}
-                  className=" absolute top-8 left-10 max-sm:left-3 max-sm:top-0 lg:-ml-9 md:w-[60px] md:h-[60px]"
+                  className=" absolute top-8 left-10 max-sm:left-3 max-sm:top-0 lg:-ml-9 md:pl-2 md:w-[60px] md:h-[60px]"
                 />
         </Link>
 
@@ -110,11 +110,12 @@ export const SignUp = () => {
         />
         <form
           onSubmit={formik.handleSubmit}
-          className=" bg-[#FFFFFF] p-12 flex flex-col justify-center gap-y-6 shadow rounded-3xl lg:w-[480px] lg:mt-52 lg:p-8 lg:ml-10 lg:mb-6 md:w-[300px] md:p-8 md:mt-36 md:mr-8 md:mb-4"
+          className=" bg-[#FFFFFF] p-12 flex flex-col justify-center gap-y-6 shadow rounded-3xl 
+          lg:w-[480px] lg:mt-52 lg:p-8 lg:ml-10 lg:mb-6 md:w-[320px] md:p-8 md:mt-36 md:mr-8  md:mb-4"
         >
         {/* Sign Up */}
-          <div className=" xs:p-0 mx-auto w-[380px] ">
-            <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl lg:text-4xl md:text-2xl md:pr-32">
+          <div className=" xs:p-0 mx-auto w-[380px] md:ml-4">
+            <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl lg:text-4xl md:text-2xl md:pr-36">
               Sign Up
             </h1>
             <div className="px-2 py-5 max-sm:py-8 max-sm:px-8  ">
@@ -127,9 +128,9 @@ export const SignUp = () => {
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3
                    max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                   lg:text-xl lg:h-12  md:h-9 md:w-[225px] md:text-sm"
+                   lg:text-xl lg:h-12  md:h-8 md:w-[210px] md:text-sm"
                   type="text"
-                  placeholder="Username"
+                  placeholder="username"
                   aria-label="Full name"
                   name="username"
                   onChange={formik.handleChange}
@@ -151,9 +152,9 @@ export const SignUp = () => {
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none
                    max-sm:bg-transparent max-sm:leading-tight max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                   lg:text-xl lg:h-12 md:h-9 md:w-[225px] md:text-sm"
+                   lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:text-sm"
                   type="text"
-                  placeholder="example@gmail.com"
+                  placeholder="name@gmail.com"
                   aria-label="Full name"
                   name="email"
                   onChange={formik.handleChange}
@@ -173,9 +174,9 @@ export const SignUp = () => {
                 <input
                   className=" border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none 
                   max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                  lg:text-xl lg:h-12 md:h-9 md:w-[225px] md:text-sm"
+                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:text-sm"
                   type="password"
-                  placeholder="Password"
+                  placeholder="password"
                   aria-label="Full name"
                   name="password"
                   onChange={formik.handleChange}
@@ -197,9 +198,9 @@ export const SignUp = () => {
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px  rounded-lg px-2 py-3 max-sm:appearance-none 
                   max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                  lg:text-xl lg:h-12 md:h-9 md:w-[225px] md:text-sm"
+                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:text-sm"
                   type="password"
-                  placeholder="Confirm Password"
+                  placeholder="confirm password"
                   aria-label="Full name"
                   name="confirmPassword"
                   onChange={formik.handleChange}
@@ -232,7 +233,7 @@ export const SignUp = () => {
                         type="submit"
                         className="px-2 py-3 font-semibold transition duration-200 bg-primary hover:bg-btn-primary focus:shadow-sm text-white w-full rounded-lg 
                         focus:outline-none shadow-sm hover:shadow-md text-center  text-18px inline-block
-                        lg:text-2xl lg:h-13 md:h-8 md:pb-8 md:w-[225px] md:text-base"
+                        lg:text-2xl lg:h-13 md:h-[2px] md:pb-8 md:w-[210px] md:text-base"
                         onClick={formik.handleSubmit}
                       >
                         Continue
@@ -242,7 +243,7 @@ export const SignUp = () => {
             {/* ------- or -------- */}
             <div className="px-4 pb-4">
               <div className="flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-400 after:mt-0.5 after:flex-1
-               after:border-t after:border-neutral-400 md:w-[210px]">
+               after:border-t after:border-neutral-400 md:w-[200px]">
                 <p className="mx-1 text-center text-gray-400 lg:text-2xl md:text-base ">or</p>
               </div>
             </div>
@@ -254,7 +255,7 @@ export const SignUp = () => {
                   onClick={handleGoogle}
                   type="button"
                   className="flex rounded-lg justify-center items-center py-2 px-4 text-sm border border-gray-200  outline-none max-sm:border-primary max-sm:border-2
-                   text-accent font-bold transition transform md:h-10 md:w-[225px] "
+                   text-accent font-bold transition transform md:h-10 md:w-[210px] "
                 >
                   <div className="flex md:mr-4 ">
                     <svg
@@ -288,7 +289,7 @@ export const SignUp = () => {
                   onClick={handleFacebook}
                   type="button"
                   className="flex rounded-lg justify-center items-center py-2 px-4 font-bold text-sm border  outline-none border-gray-200 max-sm:border-primary max-sm:border-2
-                   text-accent transition transform md:h-10 md:w-[225px] md:text-base"
+                   text-accent transition transform md:h-10 md:w-[210px] md:text-base"
                 >
                   <svg
                     className="w-7 h-7 mr-2 text-blue-600 fill-current"

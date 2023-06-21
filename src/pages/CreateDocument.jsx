@@ -61,25 +61,28 @@ export const CreateDocument = () => {
 
   return (
     <div className=" w-full">
-      <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
-        <div className="grid grid-rows-1 gap-3">
+      <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]  md:-mr-56">
+        {/* Permission */}
+        <div className="grid grid-rows-1 gap-3 lg:-mt-4">
           <button
-            className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
+            className="w-[30px] h-[30px] rounded-[10px] shadow  flex justify-center items-center "
             type="button"
             onClick={() => setOpenPermission(!openPermission)}
           >
             <img src={ViewMember} alt="" />
           </button>
+          {/* History */}
           <button
-            className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
+            className="w-[30px] h-[30px] rounded-[10px] shadow  flex justify-center items-center"
             type="button"
             onClick={() => setOpenDocumentHistory(!openDocumentHistory)}
           >
             <img src={ViewHistory} alt="" />
           </button>
+          {/* Export file */}
           <div className="relative">
             <button
-              className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
+              className="w-[30px] h-[30px] rounded-[10px] shadow flex justify-center items-center"
               type="button"
               onClick={() => setOpenExport(!openExport)}
             >
@@ -94,6 +97,7 @@ export const CreateDocument = () => {
           </div>
         </div>
       </div>
+      {/* React Developer */}
       <div className="text-[#9CA3AF] grid grid-rows-1 gap-2">
         <div className="w-full h-auto">
           <nav className="flex items-center text-sm">
@@ -105,6 +109,7 @@ export const CreateDocument = () => {
                   <img src={arrow} className="w-2" alt="" />
                 </span>
               </li>
+              {/* Untitle */}
               <li className="flex items-center gap-x-2">
                 <img src={doc} />
                 <Link className="text-primary">Untitle</Link>
@@ -118,6 +123,7 @@ export const CreateDocument = () => {
               placeholder="Untitle"
             />
           </span>
+          {/* Create By */}
           <div className="w-[40%] grid grid-rows-1 gap-y-2">
             <div className="grid grid-cols-2 text-sm">
               <div className="flex gap-2">
@@ -126,13 +132,15 @@ export const CreateDocument = () => {
               </div>
               <p className="text-black">Tith Ouddom</p>
             </div>
+            {/* Create Date */}
             <div className="grid grid-cols-2 text-sm">
               <div className="flex gap-2">
-                <img src={CreateDate} className="w-[17px]" alt="" />
+                <img src={CreateDate} className="w-[17px] " alt="" />
                 <p>Create Date</p>
               </div>
-              <p className="text-black">April 21, 2023 4:01 PM</p>
+              <p className="text-black lg:w-[200px] md:w-[200px]">April 21, 2023 4:01 PM</p>
             </div>
+            {/* Tag */}
             <div className="grid grid-cols-2 text-sm">
               <div className="flex items-center gap-2">
                 <img src={Tag} className="w-[16px]" alt="" />
@@ -150,7 +158,8 @@ export const CreateDocument = () => {
           <div id="editorjs" />
         </div>
       </div>
-      <div>
+
+      <div >
         <DocumentPermissionModal
           openPermission={openPermission}
           setOpenPermission={setOpenPermission}

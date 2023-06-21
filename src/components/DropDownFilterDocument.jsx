@@ -9,17 +9,17 @@ export const DropDownFilterDocument = ({ openFilter, setOpenFilter }) => {
           onClick={() => setOpenFilter(!openFilter)}
         ></div>
       )}
-      <div className="text-18px absolute z-50 left-0 mt-1 w-full text-accent rounded-lg shadow-md bg-white lg:w-[200px] xs:w-36 md:w-52 2xs:w-32 ">
+      <div className="text-18px absolute z-50 left-0 mt-1 w-full text-accent rounded-lg shadow-md bg-white lg:w-[200px] md:w-[200px]">
         <div className="flex items-center px-6 gap-x-4 bg-[#FAFAF9] border-b-[1px] py-3 rounded-t-lg 
-        xs:w-36 md:w-52 xs:px-0 xs:pl-4 xs:py-2 xs:justify-start xs:gap-x-2 2xs:w-32 lg:pl-4 lg:py-2 lg:justify-start lg:gap-x-2">
+         lg:pl-4 lg:py-2 lg:w-[200px] lg:justify-start lg:gap-x-2 md:w-[200px]">
           <input
             type="radio"
             id="product"
             name="radioOptions"
             value="product"
-            className="focus:bg-accent focus:ring-accent"
+            className="focus:bg-accent focus:ring-accent "
           />
-          <label htmlFor="product" className="cursor-pointer">
+          <label htmlFor="product" className="cursor-pointer ">
             Product
           </label>
         </div>

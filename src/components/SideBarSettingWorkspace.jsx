@@ -13,7 +13,7 @@ export const SideBarSettingWorkspace = ({
   return (
       <div className="space-y-3 lg:absolute lg:h-[850px] lg:shadow-custom lg:bg-white lg:w-60 md:w-44 md:h-[650px]">
       <div className="flex justify-center p-5 rounded-tl-lg shadow-md">
-        <img className="md:w-16" src={logo} />
+        <img className=" md:w-16 " src={logo} />
       </div>
       <div className="w-full px-3">
         <SettingWorkspace

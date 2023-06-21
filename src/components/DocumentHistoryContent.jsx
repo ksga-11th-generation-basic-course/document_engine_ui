@@ -8,7 +8,7 @@ export const DocumentHistoryContent = ({
 }) => {
   return (
     <div>
-      <div className="flex w-full justify-end">
+      <div className="flex w-full justify-end ">
         <button
           type="button"
           onClick={() => setOpenDocumentHistory(!openDocumentHistory)}
@@ -16,7 +16,7 @@ export const DocumentHistoryContent = ({
           <img src={close} />
         </button>
       </div>
-      <div className="px-16 space-y-5">
+      <div className="px-16 space-y-5 lg:-ml-8 lg:-mr-10">
         <div className="text-accent">
           <h1 className="font-bold text-34px">Document History</h1>
           <p>Manage history of document and rollback to specific version</p>

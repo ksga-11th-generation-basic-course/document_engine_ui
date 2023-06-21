@@ -64,14 +64,14 @@ export const ContactUs = () => {
             {/* Button Send */}
             <button
               type="submit"
-              className="mt-5 px-10 py-2.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90 lg:ml-48 lg:text-xl md:ml-24 md:h-9 md:pt-1.5 md:text-base">
+              className="mt-5 px-10 py-2.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90  lg:text-xl lg:mb-14  md:-ml-0 md:h-9 md:pt-1.5 md:text-base">
               Send
             </button>
           </div>
         </div>
 
         {/* Contact images*/}
-        <div className="flex flex-col justify-center w-[650px] ml-16 items-center lg:col-span-2 md:mt-8">
+        <div className="flex flex-col justify-center w-[650px] ml-16 items-center lg:col-span-2 ">
           <img
             src={Contact}
             alt=""
