@@ -40,6 +40,7 @@ export const Editor = ({initialContent}) => {
   const editor = useBlockNote({
     initialContent: initialContent,
     onEditorContentChange: (editor) => {
+      console.log(editor.topLevelBlocks);
       const content = [];
       setBlock(content);
       for (let indexOfTopLevelBlocks = 0; indexOfTopLevelBlocks < editor.topLevelBlocks.length; indexOfTopLevelBlocks++) {

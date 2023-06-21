@@ -50,9 +50,6 @@ export const Document = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const [documentId,setDocumentId]=useState("");
-  console.log(documentId);
-
   const navigate = useNavigate();
 
   useEffect(() => {

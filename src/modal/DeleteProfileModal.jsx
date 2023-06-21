@@ -5,6 +5,7 @@ import deleteprofile from "../assets/dashboard_image/deleteprofile.svg";
 import { useDispatch } from "react-redux";
 import { deleteProfileImage } from "../redux/service/userService/userService";
 import { deleteProfileImageSuccess } from "../redux/slice/userSlice/userSlice";
+import { toast } from "react-toastify";
 
 export const DeleteProfileModal = ({
   openDeleteProfile,
@@ -17,6 +18,16 @@ export const DeleteProfileModal = ({
       const user = await deleteProfileImage();
       dispatch(deleteProfileImageSuccess(user));
       setOpenDeleteProfile(!openDeleteProfile);
+      toast.success("Delete Profile Picture Successfully", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
       console.log(error);
     }

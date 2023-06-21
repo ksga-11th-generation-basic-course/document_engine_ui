@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { storage } from "../firebase/firebase.utils";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
+import { toast } from "react-toastify";
 
 export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
   const [visible, setVisible] = useState(false);
@@ -53,6 +54,16 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
       });
       setOpenSetting(!openSetting);
       document.getElementById("changename").reset();
+      toast.success("Save Profile Successfully", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
       console.log(error);
     }

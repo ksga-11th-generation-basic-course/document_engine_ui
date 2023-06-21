@@ -15,8 +15,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Dropdown } from "react-daisyui";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
-import { duplicateDocument, getMemberInEachDocument } from "../../redux/service/documentService/documentService";
-import { duplicateDocumentSuccess } from "../../redux/slice/documentSlice/documentSlice";
+import { duplicateDocument, getMemberInEachDocument, updateDocument } from "../../redux/service/documentService/documentService";
+import { duplicateDocumentSuccess, updateDocumentSuccess } from "../../redux/slice/documentSlice/documentSlice";
 
 export const DocumentCard = ({ document,workspaceId }) => {
   const navigate = useNavigate();

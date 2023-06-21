@@ -21,7 +21,7 @@ export const DocumentPermissionContent = ({
           <img src={close} />
         </button>
       </div>
-      <div className="px-16 space-y-5">
+      <div className="px-16 space-y-5 relative">
         <div className="text-accent">
           <h1 className="font-bold text-34px">Document Permission</h1>
           <p>Manage permissions of your members in workspace</p>
@@ -38,7 +38,7 @@ export const DocumentPermissionContent = ({
               <img src={search} />
             </div>
           </div>
-          <div className="border-[1px] rounded-lg p-5 space-y-5">
+          <div className="border-[1px] rounded-lg p-5 space-y-5 overflow-auto">
             {members === null ? null : members.length > 0 ? (
               members.filter((member) => {
                 if (searchTerm === "") {
@@ -69,8 +69,6 @@ export const DocumentPermissionContent = ({
                 <p className="font-semibold text-accent">No Member</p>
               </div>
             )}
-
-
           </div>
         </div>
       </div>

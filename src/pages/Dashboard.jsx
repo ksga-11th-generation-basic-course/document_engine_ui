@@ -29,6 +29,7 @@ export const Dashboard = () => {
                 <div>
                   <DocumentCardRow
                   key={index}
+                  documentId={recently.documentId}
                   documentname={recently.title}
                   editDate={"Edited 5days ago"}
                   status={recently.status}

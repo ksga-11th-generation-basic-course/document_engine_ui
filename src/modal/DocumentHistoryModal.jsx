@@ -27,8 +27,8 @@ export const DocumentHistoryModal = ({
               </div>
             </div>
           </div>
-          <div className="col-span-9 p-3 shadow-xl">
-            <div>
+          <div className="col-span-9 p-3 shadow-xl overflow-auto">
+            <div className="">
               <DocumentHistoryContent
                 documentId={documentId}
                 openDocumentHistory={openDocumentHistory}
