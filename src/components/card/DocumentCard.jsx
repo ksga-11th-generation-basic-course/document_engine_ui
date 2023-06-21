@@ -128,6 +128,7 @@ export const DocumentCard = ({ document,workspaceId }) => {
           members={members}
         />
         <DocumentHistoryModal
+          documentId={document.documentId}
           openDocumentHistory={openDocumentHistory}
           setOpenDocumentHistory={setOpenDocumentHistory}
         />

@@ -71,7 +71,7 @@ export const WorkspaceCard = ({ workspace }) => {
             </Dropdown>
           </div>
         ):
-        <div>hee</div>}
+        <div></div>}
       </div>
       <RemoveWorkspaceModal
         removeWorkspace={removeWorkspace}

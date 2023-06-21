@@ -3,8 +3,9 @@ import restore from "../assets/document_image/restore.svg";
 import trush from "../assets/document_image/delete.svg";
 import { RemoveHistory } from "../modal/RemoveHistoryModal";
 
-export const DropDownHistory = ({ openHistory, setOpenHistory }) => {
+export const DropDownHistory = ({ openHistory, setOpenHistory, documentId, history }) => {
   const [removeHistory, setRemoveHistory] = useState(false);
+  
 
   return (
     <div>
@@ -32,6 +33,8 @@ export const DropDownHistory = ({ openHistory, setOpenHistory }) => {
       </div>
       <div>
         <RemoveHistory
+        history={history}
+          documentId={documentId}
           removeHistory={removeHistory}
           setRemoveHistory={setRemoveHistory}
         />
