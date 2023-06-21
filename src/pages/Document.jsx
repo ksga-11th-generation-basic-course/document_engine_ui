@@ -14,7 +14,7 @@ import { DocumentList } from "../components/card/DocumentList";
 import { DropDownWorkspaceSetting } from "../components/DropDownWorkspaceSetting";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
+import { getAllDocumentInEachWorkspace, updateDocument } from "../redux/service/documentService/documentService";
 import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
 import { createDocument } from "../redux/service/documentService/documentService";
 import setting from "../assets/document_image/settings.svg";
@@ -50,7 +50,8 @@ export const Document = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const [documentId, setDocumentId] = useState();
+  const [documentId,setDocumentId]=useState("");
+  console.log(documentId);
 
   const navigate = useNavigate();
 

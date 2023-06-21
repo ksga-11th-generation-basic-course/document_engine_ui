@@ -31,9 +31,9 @@ import { date } from "yup";
 import { getBlockBydoucmentId } from "../redux/service/blockService/blockService";
 
 export const CreateDocument = () => {
-  // const [openPermission, setOpenPermission] = useState(false);
-  // const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
-  // const [openExport, setOpenExport] = useState(false);
+  // const [openPermission, setOpenPermission] = useState(true);
+  // const [openDocumentHistory, setOpenDocumentHistory] = useState(true);
+  // // const [openExport, setOpenExport] = useState(true);
   const [tags, setTags]             = useState([]);
   const [inputValue, setInputValue] = useState('');
   const [toggle, setToggle]         = useState(false);
@@ -283,16 +283,16 @@ export const CreateDocument = () => {
           <div><Editor initialContent={initialContent} /></div>
         )}
       </div>
-      {/* <div>
-        <DocumentPermissionModal
+      <div>
+        {/* <DocumentPermissionModal
           openPermission={openPermission}
           setOpenPermission={setOpenPermission}
         />
         <DocumentHistoryModal
           openDocumentHistory={openDocumentHistory}
           setOpenDocumentHistory={setOpenDocumentHistory}
-        />
-      </div> */}
+        /> */}
+      </div>
     </div>
   );
 };
