@@ -77,6 +77,7 @@ export const Document = () => {
       theme: "light",
     });
   }
+  console.log(documents);
 
   return (
     <div className="text-accent space-y-5">
@@ -306,9 +307,7 @@ export const Document = () => {
               .map((document, index) => (
                 <div className="col-span-4" key={index}>
                   <DocumentList
-                    title={document.title}
-                    status={true}
-                    editdate={"Apr 24 12:15 PM"}
+                    document={document}
                   />
                 </div>
               ))
@@ -317,22 +316,6 @@ export const Document = () => {
               <p className="font-semibold text-accent">No Document</p>
             </div>
           )}
-          {/* {" "}
-          <DocumentList
-            title={"Redux Tookit"}
-            status={true}
-            editdate={"Apr 24 12:15 PM"}
-          />{" "}
-          <DocumentList
-            title={"Node JS"}
-            status={true}
-            editdate={"Apr 24 12:15 PM"}
-          />{" "}
-          <DocumentList
-            title={"Spring Profile"}
-            status={false}
-            editdate={"Apr 24 12:15 PM"}
-          />{" "} */}
         </div>
       ) : null}
     </div>

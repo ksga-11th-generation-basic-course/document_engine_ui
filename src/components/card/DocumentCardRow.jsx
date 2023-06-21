@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import dotmenu from "../../assets/dashboard_image/dotmenu.png";
 import pencil from "../../assets/dashboard_image/pencil.svg";
 import { DropDownDocument } from "../DropDownDocument";
@@ -6,7 +6,7 @@ import { DropDownDocument } from "../DropDownDocument";
 export const DocumentCardRow = ({ documentname, editDate, status }) => {
   const [open, setOpen] = useState(false);
   return (
-    <div className="flex justify-between items-center gap-x-5 w-full px-5 py-4 shadow-custom rounded-lg cursor-pointer hover:shadow-hover lg:ml-4 lg:w-[620px]">
+    <div  className="animate-fade-left animate-once transition ease-out delay-75 hover:-translate-y-1 hover:scale-105 duration-300 flex justify-between items-center gap-x-5 w-full px-5 py-4 shadow-custom rounded-lg cursor-pointer lg:ml-4 lg:w-[620px]">
       <div>
         <div className="flex justify-center items-center gap-x-5">
           <h3 className="font-semibold text-20px text-black w-32">{documentname}</h3>

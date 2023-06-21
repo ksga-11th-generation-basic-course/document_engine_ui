@@ -4,15 +4,18 @@ import { api, header } from "../../../utils/constant";
 export const getAllDocumentInEachWorkspace = createAsyncThunk(
   `documents`,
   async (workspaceId) => {
-    try {
-      const response = await api.get(
-        `documents/workspaces/${workspaceId}?pageNo=1&pageSize=5&eSortCurrentDateTime=DEFAULT`,
-        header
-      );
-      return response.data.payload;
-    } catch (error) {
-      throw error.response.data.detail;
-    }
+      try {
+          const response = await api.get(`documents/workspaces/${workspaceId}?pageNo=1&pageSize=5&eSortCurrentDateTime=DEFAULT`, {
+              headers: {
+                  Authorization: "Bearer " + localStorage.getItem("token"),
+                  "Content-Type ": "application/json",
+              },
+          });
+          return response.data.payload;
+      } catch (error) {
+          console.log(error)
+          throw error.response.data.detail;
+      }
   }
 );
 
@@ -75,6 +78,24 @@ export const getMemberInEachDocument = createAsyncThunk(
     } catch (error) {
       throw error.response.data.detail;
     }
+  }
+);
+
+export const getDocumentRecently = createAsyncThunk(
+  `/documents/recentlys`,
+  async () => {
+      try {
+          const response = await api.get(`documents/recently`, {
+              headers: {
+                  Authorization: "Bearer " + localStorage.getItem("token"),
+                  "Content-Type ": "application/json",
+              },
+          });
+          return response.data.payload;
+      } catch (error) {
+          console.log(error)
+          throw error.response.data.detail;
+      }
   }
 );
 

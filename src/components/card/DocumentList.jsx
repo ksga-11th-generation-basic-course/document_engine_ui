@@ -4,7 +4,7 @@ import dotsvertical from "../../assets/document_image/dotsvertical.svg";
 import pencil from "../../assets/dashboard_image/pencil.svg";
 import { DropDownDocument } from "../DropDownDocument";
 
-export const DocumentList = ({ title, status, editdate }) => {
+export const DocumentList = ({ title, status, editdate ,document }) => {
   const [open, setOpen] = useState(false);
 
   return (

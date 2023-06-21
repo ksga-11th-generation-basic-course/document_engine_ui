@@ -12,7 +12,7 @@ export const NotFound = () => {
           <img
             src={Page404}
             alt=""
-            className="pr-28 max-sm:pr-4 max-sm:pl-4 h-[566px] max-sm:h-[330px] w-[566px]"
+            className="pr-28 max-sm:pr-4 z-sm:pl-4 h-[566px] max-sm:h-[330px] w-[566px]"
           />
         </div>
         <div className="text">

@@ -28,12 +28,12 @@ export const Hint = () => {
           }
           onClick={() => setOpen(!open)}
         >
-          <img src={star} className="md:w-7" />
+          <img src={star} className="md:w-7 animate-pulse" />
           <div className="md:-ml-2">
             <h3 className="font-semibold text-24px text-black md:text-16px">
               Ouddom, get started with DocEngine
             </h3>
-            <p className="text-accent text-20px text-left md:text-12px">
+            <p className="text-accent text-20px text-left md:text-12px ">
               Hint! to create your Document
             </p>
           </div>

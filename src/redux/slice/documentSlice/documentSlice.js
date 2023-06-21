@@ -5,6 +5,7 @@ import {
   getUsername,
   getWorkspaceName,
   getMemberInEachDocument,
+  getDocumentRecently,
 } from "../../service/documentService/documentService";
 
 const initialState = {
@@ -13,6 +14,7 @@ const initialState = {
   username:null,
   workspace:null,
   members:null,
+  recently:null,
   loading: false,
   error: null,
 };
@@ -56,6 +58,23 @@ const documentSlice = createSlice({
     builder.addCase(getAllDocumentInEachWorkspace.rejected, (state, action) => {
       state.loading = true;
       state.documents = null;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(getDocumentRecently.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(
+      getDocumentRecently.fulfilled,
+      (state, action) => {
+        state.loading = false;
+        state.recently = action.payload;
+        state.error = null;
+      }
+    );
+    builder.addCase(getDocumentRecently.rejected, (state, action) => {
+      state.loading = true;
+      state.recently = null;
       state.error = action.error.message;
     });
 
