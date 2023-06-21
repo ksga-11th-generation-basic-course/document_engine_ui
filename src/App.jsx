@@ -16,7 +16,6 @@ import { ContactUs } from "./pages/ContactUS";
 import { NotFound } from "./pages/NotFound";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { VerifyToEnable } from "./pages/VerifyToEnable";
-import { Test } from "./pages/Test";
 import { EnableAccVerifyCode } from "./pages/EnableAccVerifyCode";
 import EnableAccount from "./pages/EnableAccount";
 
