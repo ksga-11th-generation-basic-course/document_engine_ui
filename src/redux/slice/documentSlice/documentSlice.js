@@ -10,21 +10,22 @@ import {
 const initialState = {
   document: null,
   documents: null,
-  username:null,
-  workspace:null,
-  members:null,
+  username: null,
+  workspace: null,
+  members: null,
   loading: false,
   error: null,
+  status: false,
 };
 
 const documentSlice = createSlice({
   name: "document",
   initialState,
   reducers: {
-    createDocumentSuccess:(state,action)=>{
+    createDocumentSuccess: (state, action) => {
       state.documents.push(action.payload);
     },
-    updateDocumentSuccess:(state,action)=>{
+    updateDocumentSuccess: (state, action) => {
       state.documents.push(action.payload);
     },
     removeDocumentSuccess: (state, action) => {
@@ -32,10 +33,10 @@ const documentSlice = createSlice({
         (document) => document.documentId !== action.payload
       );
     },
-    duplicateDocumentSuccess:(state,action)=>{
+    duplicateDocumentSuccess: (state, action) => {
       state.documents.push(action.payload);
     },
-    setAccessibilitySuccess:(state,action)=>{
+    setAccessibilitySuccess: (state, action) => {
       state.members = state.members.map((member) =>
         member.userId === action.payload.userId ? action.payload : member
       );
@@ -116,5 +117,11 @@ const documentSlice = createSlice({
     });
   },
 });
-export const {createDocumentSuccess,updateDocumentSuccess,removeDocumentSuccess,duplicateDocumentSuccess,setAccessibilitySuccess}=documentSlice.actions;
+export const {
+  createDocumentSuccess,
+  updateDocumentSuccess,
+  removeDocumentSuccess,
+  duplicateDocumentSuccess,
+  setAccessibilitySuccess,
+} = documentSlice.actions;
 export default documentSlice.reducer;

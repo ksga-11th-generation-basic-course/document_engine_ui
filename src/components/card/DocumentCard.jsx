@@ -18,6 +18,7 @@ import { toast } from "react-toastify";
 import {
   duplicateDocument,
   getMemberInEachDocument,
+  setCurrentEditing,
 } from "../../redux/service/documentService/documentService";
 import { duplicateDocumentSuccess } from "../../redux/slice/documentSlice/documentSlice";
 
@@ -34,6 +35,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
   }, []);
 
   const handleNavigate = () => {
+    dispatch(setCurrentEditing(document.documentId));
     setTimeout(() => {
       navigate(`/createdocument/${document.documentId}/${workspaceId}`);
     }, 1000);

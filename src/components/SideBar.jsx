@@ -5,8 +5,13 @@ import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
 import documentIcon from "../assets/document_image/documents.svg";
 import dropdowndocument from "../assets/document_image/dropdowndocuments.svg";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
+import {
+  createDocument,
+  getAllDocumentInEachWorkspace,
+} from "../redux/service/documentService/documentService";
 import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
+import plus from "../assets/document_image/plus.svg";
+import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
 
 export const SideBar = () => {
   const [visible, setVisible] = useState(false);
@@ -25,7 +30,20 @@ export const SideBar = () => {
   useEffect(() => {
     dispatch(getWorkspaceByWorkspaceId(param.workspaceId));
     dispatch(getAllDocumentInEachWorkspace(param.workspaceId));
-  }, []);
+  }, [dispatch]);
+
+  const handleCreatePage = async (documentId) => {
+    const now = new Date();
+    const currentDateTime = now.toISOString();
+    const response = await createDocument(
+      "Untitled",
+      true,
+      currentDateTime,
+      documentId,
+      param.workspaceId
+    );
+    dispatch(createDocumentSuccess(response));
+  };
 
   return (
     <div>
@@ -83,7 +101,7 @@ export const SideBar = () => {
           {param.workspaceId && (
             <div>
               <NavLink
-              to={`document/${param.workspaceId}`}
+                to={`document/${param.workspaceId}`}
                 className={({ isActive }) =>
                   isActive
                     ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4"
@@ -119,15 +137,29 @@ export const SideBar = () => {
                   <NavLink
                     to={`createdocument/${document.documentId}/${param.workspaceId}`}
                     className={({ isActive }) =>
-                    isActive
-                      ? "flex items-center w-full text-primary bg-[#EFEFEF] gap-x-3 py-3 px-12 rounded-lg"
-                      : "flex items-center w-full gap-x-3 py-3 px-12 rounded-lg"
-                  }
+                      isActive
+                        ? "flex items-center w-full text-primary bg-[#EFEFEF] gap-x-3 py-3 px-12 rounded-lg"
+                        : "flex items-center w-full gap-x-3 py-3 px-12 rounded-lg"
+                    }
                     key={index}
                   >
-                    <img src={documentIcon} alt="" />
-                    {document?.title}
-                    <img src={dropdowndocument} alt="" />
+                    <div className="flex items-center justify-between w-full">
+                      <div className="flex items-center gap-x-3">
+                        {document.pages === undefined ||
+                        document.pages.length > 0 ? (
+                          <img src={dropdowndocument} alt="" />
+                        ) : null}
+                        <img src={documentIcon} alt="" />
+                        {document?.title}
+                      </div>
+                      <button
+                        type="button"
+                        className="px-1 py-1 bg-primary rounded-md"
+                        onClick={() => handleCreatePage(document?.documentId)}
+                      >
+                        <img src={plus} alt="" className="w-[18px] h-[18px]" />
+                      </button>
+                    </div>
                   </NavLink>
                 ))}
             </div>

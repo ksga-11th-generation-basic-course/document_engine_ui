@@ -90,7 +90,7 @@ export const Document = () => {
   const currentDateTime = now.toISOString();
   const handleCreateDocument = async () => {
     const document = await createDocument(
-      "Untitle",
+      "Untitled",
       false,
       currentDateTime,
       null,

@@ -59,6 +59,8 @@ export const CreateDocument = () => {
   const workspaceId = param.workspaceId;
   const dispatch = useDispatch();
 
+  // console.log(blockData)
+
   useEffect(() => {
     dispatch(getWorkspaceName(documentId));
     dispatch(getDocumentByDocumentId(documentId));
@@ -69,30 +71,53 @@ export const CreateDocument = () => {
   }, []);
   const [title, setTitle] = useState(document && document.title);
 
-  let initialContent = [];
-  if (blockData != null) {
-    for (let i = 0; i < blockData.length; i++) {
-      const element = blockData[i];
-      const block = {
-        id: element.blockId,
-        type: element.blockType,
-        props: {
-          textColor: "default",
-          backgroundColor: "default",
-          textAlignment: "left",
-        },
-        content: [
-          {
-            type: element.content.typeContent,
-            text: element.content.text,
-            styles: {},
-          },
-        ],
-        children: [],
-      };
-      initialContent.push(block);
-    }
-  }
+  // let initialContent = [];
+  // if (blockData != null) {
+  //   for (let i = 0; i < blockData.length; i++) {
+  //     const element = blockData[i];
+  //     const block = {
+  //       id: element.blockId,
+  //       type: element.blockType,
+  //       props: {
+  //         textColor: "default",
+  //         backgroundColor: "default",
+  //         textAlignment: element.content.textAlignment,
+  //         level: element.content.level,
+  //       },
+  //       content: [
+  //         {
+  //           type: element.content.typeContent,
+  //           text: element.content.text,
+
+  //           styles: {
+  //             ...(element.content.bold !== undefined
+  //               ? { bold: element.content.bold }
+  //               : {}),
+  //             ...(element.content.italic !== undefined
+  //               ? { italic: element.content.italic }
+  //               : {}),
+  //             ...(element.content.strike !== undefined
+  //               ? { strike: element.content.strike }
+  //               : {}),
+  //             ...(element.content.underline !== undefined
+  //               ? { underline: element.content.underline }
+  //               : {}),
+  //             ...(element.content.backgroundColor !== undefined
+  //               ? { backgroundColor: element.content.backgroundColor }
+  //               : {}),
+  //             ...(element.content.textColor !== undefined
+  //               ? { textColor: element.content.textColor }
+  //               : {}),
+  //           },
+  //         },
+  //       ],
+
+  //       children: [],
+  //       order: element.order,
+  //     };
+  //     initialContent.push(block);
+  //   }
+  // }
 
   // console.log(data)
 
@@ -117,6 +142,7 @@ export const CreateDocument = () => {
   const handleInputChan = (event) => {
     setInputValue(event.target.value);
   };
+
   const handleInputKeyDown = (event) => {
     if (event.key === "Enter") {
       event.preventDefault();
@@ -139,18 +165,6 @@ export const CreateDocument = () => {
     }
     dispatch(addTagToDocument({ tagId, documentId, workspaceId }));
   };
-
-  function getRandomColor() {
-    const colors = [
-      "bg-red-500",
-      "bg-blue-500",
-      "bg-green-500",
-      "bg-yellow-500",
-      "bg-purple-500",
-    ];
-    const randomIndex = Math.floor(Math.random() * colors.length);
-    return colors[randomIndex];
-  }
 
   return (
     <div className="w-full">
@@ -193,7 +207,9 @@ export const CreateDocument = () => {
             <ol className="list-none p-0 inline-flex">
               <li className="flex items-center gap-x-2">
                 <img src={icon} />
-                <Link className="text-black">{workspace}</Link>
+                <Link to={`/document/${workspaceId}`} className="text-black">
+                  {workspace}
+                </Link>
                 <span className="mx-2">
                   <img src={arrow} className="w-2" alt="" />
                 </span>
@@ -209,7 +225,7 @@ export const CreateDocument = () => {
               className="text-5xl p-0 text-black w-auto py-2 focus:ring-0 focus:border-0 border-0"
               type="text"
               onChange={handleInputChange}
-              placeholder={document && document.title}
+              value={title}
             />
           </span>
           <div className="w-full grid grid-cols-12 gap-y-2">
@@ -244,7 +260,7 @@ export const CreateDocument = () => {
                     tagsDocument.map((tag, index) => (
                       <span
                         key={index}
-                        className={`px-2 gap-1 items-center ${getRandomColor} text-gray-800 rounded-full text-sm font-medium`}
+                        className={`px-2 gap-1 items-center bg-gray-200 text-gray-800 rounded-md text-sm font-medium`}
                       >
                         <span className="flex gap">
                           {tag?.tagName}
@@ -271,7 +287,7 @@ export const CreateDocument = () => {
                   {!toggle && (
                     <div
                       onClick={() => setToggle(!toggle)}
-                      className="px-2 text-sm cursor-pointer font-medium shadow rounded-full flex justify-center items-center gap-1 text-[#1E9CEF]"
+                      className="px-2 text-sm cursor-pointer font-medium shadow rounded-md flex justify-center items-center gap-1 text-[#1E9CEF]"
                     >
                       Add Tag
                       <svg
@@ -358,10 +374,10 @@ export const CreateDocument = () => {
       </div>
       <div className="mt-2">
         {blockData === null ? null : blockData.length > 0 ? (
-          <Editor initialContent={initialContent} />
+          <Editor />
         ) : (
           <div>
-            <Editor initialContent={initialContent} />
+            <Editor/>
           </div>
         )}
       </div>

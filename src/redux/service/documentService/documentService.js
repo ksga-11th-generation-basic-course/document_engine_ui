@@ -25,7 +25,7 @@ export const getDocumentByDocumentId = createAsyncThunk(
   `documents/getdocumentbyid`,
   async (documentId) => {
     try {
-      const response = await api.get(`documents/${documentId}`,       {
+      const response = await api.get(`documents/${documentId}`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
           "Content-Type ": "application/json",
@@ -56,15 +56,12 @@ export const getUsername = createAsyncThunk(
   `/documents/username`,
   async (documentId) => {
     try {
-      const response = await api.get(
-        `documents/${documentId}/username`,
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-            "Content-Type ": "application/json",
-          },
-        }
-      );
+      const response = await api.get(`documents/${documentId}/username`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;
@@ -76,15 +73,12 @@ export const getWorkspaceName = createAsyncThunk(
   `/documents/workspace`,
   async (documentId) => {
     try {
-      const response = await api.get(
-        `documents/${documentId}/workspace`,
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-            "Content-Type ": "application/json",
-          },
-        }
-      );
+      const response = await api.get(`documents/${documentId}/workspace`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;
@@ -96,7 +90,7 @@ export const getMemberInEachDocument = createAsyncThunk(
   `/documents/member`,
   async (documentId) => {
     try {
-      const response = await api.get(`/documents/${documentId}/member`,       {
+      const response = await api.get(`/documents/${documentId}/member`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
           "Content-Type ": "application/json",
@@ -216,3 +210,25 @@ export const setAccessibility = async (
     throw error.response.data.detail;
   }
 };
+
+export const setCurrentEditing = createAsyncThunk(
+  `document/current/editing`,
+  async (documentId) => {
+    try {
+      const response = await api.put(
+        `documents/${documentId}/editing`,
+        {},
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
+      );
+      console.log(response);
+      return response.data.payload;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);
