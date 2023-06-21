@@ -102,9 +102,9 @@ export const Hint = () => {
                 </div>
               </div>
             </div>
-          ):{
-            
-          }}
+          ):(
+            null
+          )}
         </div>
       </div>
     </div>

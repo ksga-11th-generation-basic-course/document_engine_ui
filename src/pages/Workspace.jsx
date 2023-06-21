@@ -60,7 +60,7 @@ export const Workspace = () => {
       {/* Title and search for tablet and mobile */}
       <div className="hidden lg:grid lg:grid-cols-12">
         {/* Icon */}
-        <div className="hidden lg:col-span-6  lg:flex items-center gap-x-3 md:col-span-12">
+        <div className="hidden lg:col-span-6 lg:flex items-center gap-x-3 md:col-span-12">
           <img
             src={workspaceicon}
             className="p-2 shadow-custom rounded-lg md:w-7 md:h-7 md:p-1"
