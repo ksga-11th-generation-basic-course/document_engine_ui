@@ -37,14 +37,8 @@ import {
   RadioGroup,
 } from "@mui/material";
 
-import { getTagInEachWorkspace } from "../redux/service/tagService/tagService";
 import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
 
-import { DropDownFilterDocument } from "../components/DropDownFilterDocument";
-import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
-import usericon from "../assets/workspace_image/usericon.svg";
-import { WorkspaceViewForMemberModal } from "../modal/WorkspaceViewForMemberModal";
-import { getCurrentUser } from "../redux/service/userService/userService";
 
 export const Document = () => {
   const [openSearch, setOpenSearch] = useState(false);
@@ -54,10 +48,6 @@ export const Document = () => {
   const [openBulletList, setOpenBulletList] = useState(false);
 
   const [openWorkspaceSetting, setOpenWorksapceSetting] = useState(false);
-  const [openWorkspaceSetting, setOpenWorksapceSetting] = useState(false);
-
-  const [openCollaboratorForMember, setOpenCollaboratorForMember] =
-    useState(false);
 
   const [openCollaboratorForMember, setOpenCollaboratorForMember] =
     useState(false);
@@ -100,17 +90,17 @@ export const Document = () => {
   const currentDateTime = now.toISOString();
   const handleCreateDocument = async () => {
     const document = await createDocument(
-      
+
       "Untitled",
-     
+
       false,
-     
+
       currentDateTime,
-     
+
       null,
-     
+
       workspaceId
-    
+
     );
     dispatch(createDocumentSuccess(document));
     navigate(`/createdocument/${document.documentId}/${workspaceId}`);
@@ -335,11 +325,10 @@ export const Document = () => {
                 )}
               </div>
             )}
-          </div>
+            </div>)}
         </div>
       </div>
 
-      {/* open grid */}
       {openGrid ? (
         <div className="grid grid-cols-12 gap-8">
           {documents === null ? null : documents.length > 0 ? (

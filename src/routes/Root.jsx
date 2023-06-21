@@ -52,5 +52,6 @@ export const Root = () => {
         </div>
       </div>
     </div>
+    </div>
   );
 };
