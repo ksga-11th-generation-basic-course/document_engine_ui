@@ -1,6 +1,4 @@
 import React, { useEffect, useRef, useState } from "react";
-import "@blocknote/core/style.css";
-import { BlockNoteView, useBlockNote } from "@blocknote/react";
 import styles from "../../App.module.css";
 import {
   createBlock,
@@ -15,8 +13,172 @@ import {
   updateBlockSuccess,
 } from "../../redux/slice/blockSlice/blockSlice";
 import { useDispatch, useSelector } from "react-redux";
+import {
+  BlockNoteEditor,
+  defaultBlockSchema,
+  defaultProps,
+} from "@blocknote/core";
+import {
+  BlockNoteView,
+  useBlockNote,
+  createReactBlockSpec,
+  InlineContent,
+  ReactSlashMenuItem,
+  defaultReactSlashMenuItems,
+} from "@blocknote/react";
+import "@blocknote/core/style.css";
+import { RiImage2Fill } from "react-icons/ri";
 
-export const Editor = ({ initialContent }) => {
+export const Editor = () => {
+  const EmbedBlock = createReactBlockSpec({
+    type: "embed",
+    propSchema: {
+      ...defaultProps,
+      src: {
+        default: "",
+      },
+      width: {
+        default: "100%",
+      },
+      height: {
+        default: "auto",
+      },
+    },
+    containsInlineContent: true,
+    render: ({ block }) => (
+      <div id="embed-wrapper">
+        <iframe
+          src={block.props.src}
+          width={block.props.width}
+          height={block.props.height}
+          frameBorder="0"
+          allowFullScreen
+        ></iframe>
+        <InlineContent />
+      </div>
+    ),
+  });
+
+  // Creates a slash menu item for inserting an embed block.
+  const insertEmbed = new ReactSlashMenuItem(
+    "Insert Embed",
+    (editor) => {
+      const src = prompt("Enter embed URL");
+      editor.insertBlocks(
+        [
+          {
+            type: "embed",
+            props: {
+              src: src || "",
+            },
+          },
+        ],
+        editor.getTextCursorPosition().block,
+        "after"
+      );
+    },
+    ["embed", "iframe", "video"],
+    "Media",
+    <RiImage2Fill />,
+    "Insert an embed"
+  );
+
+  const ImageBlockFile = createReactBlockSpec({
+    type: "image",
+    propSchema: {
+      ...defaultProps,
+      src: {
+        default: "https://via.placeholder.com/1000",
+      },
+    },
+    containsInlineContent: true,
+    render: ({ block }) => (
+      <div id="image-wrapper">
+        <img src={block.props.src} alt="Image" contentEditable={false} />
+        <InlineContent />
+      </div>
+    ),
+  });
+
+  // Creates a slash menu item for inserting an image block.
+  const insertImageFile = new ReactSlashMenuItem(
+    "Upload Image File",
+    (editor) => {
+      const fileInput = document.createElement("input");
+      fileInput.type = "file";
+      fileInput.accept = "image/*";
+      fileInput.onchange = (event) => {
+        const file = event.target.files[0];
+        if (file) {
+          const reader = new FileReader();
+          reader.onload = (readerEvent) => {
+            const src = readerEvent.target.result;
+            editor.insertBlocks(
+              [
+                {
+                  type: "image",
+                  props: {
+                    src,
+                  },
+                },
+              ],
+              editor.getTextCursorPosition().block,
+              "after"
+            );
+          };
+          reader.readAsDataURL(file);
+        }
+      };
+      fileInput.click();
+    },
+    ["image", "img", "picture", "media"],
+    "Media",
+    <RiImage2Fill />,
+    "Upload an image with file"
+  );
+
+  // Creates a custom image block.
+  const ImageBlock = createReactBlockSpec({
+    type: "image",
+    propSchema: {
+      ...defaultProps,
+      src: {
+        default: "https://via.placeholder.com/1000",
+      },
+    },
+    containsInlineContent: true,
+    render: ({ block }) => (
+      <div id="image-wrapper">
+        <img src={block.props.src} alt="Image" contentEditable={false} />
+        <InlineContent />
+      </div>
+    ),
+  });
+
+  // Creates a slash menu item for inserting an image block.
+  const insertImage = new ReactSlashMenuItem(
+    "Upload Image Link",
+    (editor) => {
+      const src = prompt("Enter image URL");
+      editor.insertBlocks(
+        [
+          {
+            type: "image",
+            props: {
+              src: src || "https://via.placeholder.com/1000",
+            },
+          },
+        ],
+        editor.getTextCursorPosition().block,
+        "after"
+      );
+    },
+    ["image", "img", "picture", "media"],
+    "Media",
+    <RiImage2Fill />,
+    "Upload an image with link"
+  );
+
   const blockData = useSelector((state) => state.block.blocks);
 
   // console.log(blockData);
@@ -135,6 +297,20 @@ export const Editor = ({ initialContent }) => {
       //   }
       // }
     },
+    blockSchema: {
+      // Adds all default blocks.
+      ...defaultBlockSchema,
+      // Adds the custom image block.
+      image: ImageBlock,
+      imageFile: ImageBlockFile,
+      embed: EmbedBlock,
+    },
+    slashCommands: [
+      ...defaultReactSlashMenuItems,
+      insertImage,
+      insertImageFile,
+      insertEmbed,
+    ],
     editorDOMAttributes: {
       class: styles.editor,
       "data-test": "editor",

@@ -157,7 +157,7 @@ export const SideBar = () => {
                         className="px-1 py-1 bg-primary rounded-md"
                         onClick={() => handleCreatePage(document?.documentId)}
                       >
-                        <img src={plus} alt="" className="w-[18px] h-[18px]" />
+                        <img src={plus} alt="" className="w-4 h-4" />
                       </button>
                     </div>
                   </NavLink>
