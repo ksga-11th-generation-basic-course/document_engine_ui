@@ -131,7 +131,7 @@ export const Document = () => {
                       setOpenBulletList(false);
                     }}
                   >
-                    <img src={grid} />
+                    <img src={grid} title="Grid"/>
                   </button>
                 </div>
                 <div>
@@ -142,7 +142,7 @@ export const Document = () => {
                       setOpenBulletList(true);
                     }}
                   >
-                    <img src={bulletlist} />
+                    <img src={bulletlist} title="Bullet List"/>
                   </button>
                 </div>
                 <div>
@@ -150,7 +150,7 @@ export const Document = () => {
                     type="button"
                     onClick={() => setOpenSearch(!openSearch)}
                   >
-                    <img src={search} />
+                    <img src={search} title="Search" />
                   </button>
                 </div>
                 <div className="relative">
@@ -158,7 +158,7 @@ export const Document = () => {
                     type="button"
                     onClick={() => setWorkspaceSetting(!workspaceSetting)}
                   >
-                    <img src={dotshorizontal} />
+                    <img src={dotshorizontal} title="More"/>
                   </button>
                   {workspaceSetting ? (
                     <DropDownWorkspaceSetting

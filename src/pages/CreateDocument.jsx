@@ -77,7 +77,8 @@ export const CreateDocument = () => {
             type="button"
             onClick={() => setOpenDocumentHistory(!openDocumentHistory)}
           >
-            <img src={ViewHistory} title="History" alt="" />
+            <img src={ViewHistory} data-te-toggle="tooltip"
+             title="History"  alt="" />
           </button>
           {/* Export file */}
           <div className="relative">
