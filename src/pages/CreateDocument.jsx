@@ -133,7 +133,7 @@ export const CreateDocument = () => {
         dispatch(updateDocumentSuccess(document));
       };
       handleUpdateDocument();
-    }, 2000);
+    }, 3000);
     setTimerId(newTimerId);
   }
 
@@ -159,7 +159,7 @@ export const CreateDocument = () => {
   };
 
   const handleAddTagToDocument = (tagId) => {
-    const existingTag = tagsDocument.find((tag) => tag.tagId === tagId);
+    const existingTag = tagsDocument.find((tag) => tag?.tagId === tagId);
     if (existingTag) {
       return;
     }
@@ -377,7 +377,7 @@ export const CreateDocument = () => {
           <Editor />
         ) : (
           <div>
-            <Editor/>
+            <Editor />
           </div>
         )}
       </div>

@@ -46,6 +46,7 @@
     "formik": "^2.2.9",
     "grommet": "^2.32.2",
     "grommet-icons": "^4.11.0",
+    "lodash.debounce": "^4.0.8",
     "patch-package": "^7.0.0",
     "react": "^18.2.0",
     "react-copy-to-clipboard": "^5.1.0",

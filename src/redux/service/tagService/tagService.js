@@ -97,7 +97,7 @@ export const addTagToDocument = createAsyncThunk(
       );
       return response.data.payload;
     } catch (error) {
-      console.log(error.response.data.status);
+      console.log(error);
     }
   }
 );

@@ -7,6 +7,7 @@ import {
   getMemberInEachDocument,
   setCurrentEditing,
   checkAccessibility,
+  searchDocumentByTagName,
 } from "../../service/documentService/documentService";
 
 const initialState = {
@@ -18,7 +19,7 @@ const initialState = {
   loading: false,
   error: null,
   status: false,
-  accessibility: null,
+  accessibility: [],
 };
 
 const documentSlice = createSlice({
@@ -144,6 +145,20 @@ const documentSlice = createSlice({
       state.error = null;
     });
     builder.addCase(checkAccessibility.rejected, (state, action) => {
+      state.loading = true;
+      state.documents = null;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(searchDocumentByTagName.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(searchDocumentByTagName.fulfilled, (state, action) => {
+      state.loading = false;
+      state.documents = action.payload;
+      state.error = null;
+    });
+    builder.addCase(searchDocumentByTagName.rejected, (state, action) => {
       state.loading = true;
       state.documents = null;
       state.error = action.error.message;

@@ -252,3 +252,27 @@ export const checkAccessibility = createAsyncThunk(
     }
   }
 );
+
+export const searchDocumentByTagName = createAsyncThunk(
+  `tags/searchDocumentByTagName`,
+  async (body) => {
+    console.log(body.selectedTags);
+    try {
+      const response = await api.get(
+        `documents/${body.workspaceId}/filter/tags?${body.selectedTags
+          .map((tag) => `tags=${tag}`)
+          .join("&")}`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
+      );
+      console.log(response.data.payload);
+      return response.data.payload;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);

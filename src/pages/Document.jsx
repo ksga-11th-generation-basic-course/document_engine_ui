@@ -15,6 +15,7 @@ import { useDispatch, useSelector } from "react-redux";
 import {
   createDocument,
   getAllDocumentInEachWorkspace,
+  searchDocumentByTagName,
 } from "../redux/service/documentService/documentService";
 import {
   checkAccessibility,
@@ -39,6 +40,7 @@ import {
 
 import { getTagInEachWorkspace } from "../redux/service/tagService/tagService";
 import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
+import "../App.css";
 
 export const Document = () => {
   const [openSearch, setOpenSearch] = useState(false);
@@ -52,9 +54,7 @@ export const Document = () => {
   const [openCollaboratorForMember, setOpenCollaboratorForMember] =
     useState(false);
 
-  const documents = useSelector((state) => state.document.documents);
-
-  console.log(documents)
+  const { documents, loading } = useSelector((state) => state.document);
 
   const workspace = useSelector((state) => state.workspace.workspace);
 
@@ -74,11 +74,15 @@ export const Document = () => {
 
   const [searchTerm, setSearchTerm] = useState("");
 
-  const [filterTag, setFilterTag] = useState("");
+  const [selectedTags, setSelectedTags] = useState([]);
 
   const [documentId, setDocumentId] = useState();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+    dispatch(searchDocumentByTagName({ workspaceId, selectedTags }));
+  }, [selectedTags]);
 
   useEffect(() => {
     dispatch(getAllDocumentInEachWorkspace(workspaceId));
@@ -86,6 +90,7 @@ export const Document = () => {
     dispatch(getCurrentUser());
     dispatch(checkAccessibility(workspaceId));
     dispatch(checkIsOwnerWorkspaceCurrent(workspaceId));
+    dispatch(getTagInEachWorkspace(workspaceId));
   }, []);
 
   const now = new Date();
@@ -210,27 +215,30 @@ export const Document = () => {
                 </div>
               </Dropdown.Toggle>
               <Dropdown.Menu className="w-48 bg-white rounded-lg">
-                <Dropdown.Item>
-                  <FormControlLabel
-                    control={<Checkbox />}
-                    label="Product"
-                    className="h-5 w-full"
-                  />
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <FormControlLabel
-                    control={<Checkbox />}
-                    label="Technology"
-                    className="h-5 w-full"
-                  />
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <FormControlLabel
-                    control={<Checkbox />}
-                    label="Document"
-                    className="h-5 w-full"
-                  />
-                </Dropdown.Item>
+                {tagsWorkspace &&
+                  tagsWorkspace.map((tag, index) => (
+                    <Dropdown.Item key={index}>
+                      <FormControlLabel
+                        control={<Checkbox />}
+                        label={tag?.tagName}
+                        className="h-5 w-full"
+                        value={tag?.tagName}
+                        checked={selectedTags.includes(tag.tagName)}
+                        onChange={(event) => {
+                          const tagName = tag.tagName;
+                          if (event.target.checked) {
+                            setSelectedTags([...selectedTags, tagName]);
+                          } else {
+                            setSelectedTags(
+                              selectedTags.filter(
+                                (selectedTag) => selectedTag !== tagName
+                              )
+                            );
+                          }
+                        }}
+                      />
+                    </Dropdown.Item>
+                  ))}
               </Dropdown.Menu>
             </Dropdown>
           </div>
@@ -327,7 +335,7 @@ export const Document = () => {
 
       {openGrid ? (
         <div className="grid grid-cols-12 gap-8">
-          {documents === null ? null : documents.length > 0 ? (
+          {documents === null ? null : documents?.length > 0 ? (
             documents
               .filter((document) => {
                 if (searchTerm === "") {
@@ -381,22 +389,6 @@ export const Document = () => {
               <p className="font-semibold text-accent">No Document</p>
             </div>
           )}
-          {/* {" "}
-          <DocumentList
-            title={"Redux Tookit"}
-            status={true}
-            editdate={"Apr 24 12:15 PM"}
-          />{" "}
-          <DocumentList
-            title={"Node JS"}
-            status={true}
-            editdate={"Apr 24 12:15 PM"}
-          />{" "}
-          <DocumentList
-            title={"Spring Profile"}
-            status={false}
-            editdate={"Apr 24 12:15 PM"}
-          />{" "} */}
         </div>
       ) : null}
       <div>

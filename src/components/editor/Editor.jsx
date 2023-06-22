@@ -182,7 +182,7 @@ export const Editor = () => {
   const blockData = useSelector((state) => state.block.blocks);
 
   // console.log(blockData);
-
+  
   const [blocks, setBlocks] = useState([]);
   const param = useParams();
   const dispatch = useDispatch();
@@ -195,6 +195,18 @@ export const Editor = () => {
 
   // console.log("adwawd", sortedInitialContent)
   // console.log("block", initialContent);
+  const [timerId, setTimerId] = useState(null);
+
+  function handleInputChange(event) {
+    event.preventDefault();
+    clearTimeout(timerId);
+    const newTimerId = setTimeout(() => {
+      console.log("helo");
+      handleUpdateDocument();
+    }, 3000);
+    setTimerId(newTimerId);
+  }
+  
 
   // Create Block
   const handleCreateBlock = async () => {
@@ -237,65 +249,22 @@ export const Editor = () => {
       return block.content;
     }),
     onEditorContentChange: (editor) => {
-      // console.log(editor.topLevelBlocks);
-      // const content = [];
+      oninput=()=>handleInputChange();
       setBlocks(editor.topLevelBlocks);
-      // for (
-      //   let indexOfTopLevelBlocks = 0;
-      //   indexOfTopLevelBlocks < editor.topLevelBlocks.length;
-      //   indexOfTopLevelBlocks++
-      // ) {
-      //   const element = editor.topLevelBlocks[indexOfTopLevelBlocks];
-      //   for (
-      //     let indexOfContent = 0;
-      //     indexOfContent < element.content.length;
-      //     indexOfContent++
-      //   ) {
-      //     const href = element.content[0].href;
-      //     const type = element.type;
-      //     const id = element.id;
-      //     const text = element.content[0].text;
-      //     const typeContent = element.content[0].type;
-      //     const level = element.props.level;
-      //     let backgroundColor;
-      //     let textColor;
-      //     let bold;
-      //     let italic;
-      //     let strike;
-      //     let underline;
-      //     if (href !== undefined) {
-      //       backgroundColor =
-      //         element.content[0].content[0].styles.backgroundColor;
-      //       textColor = element.content[0].content[0].styles.textColor;
-      //       bold = element.content[0].content[0].styles.bold;
-      //       italic = element.content[0].content[0].styles.italic;
-      //       strike = element.content[0].content[0].styles.strike;
-      //       underline = element.content[0].content[0].styles.underline;
-      //     } else {
-      //       backgroundColor = element.content[0].styles.backgroundColor;
-      //       textColor = element.content[0].styles.textColor;
-      //       bold = element.content[0].styles.bold;
-      //       italic = element.content[0].styles.italic;
-      //       strike = element.content[0].styles.strike;
-      //       underline = element.content[0].styles.underline;
-      //     }
-      //     const dataOfContent = {
-      //       id: id,
-      //       type: type,
-      //       typeContent: typeContent,
-      //       text: text,
-      //       level: level,
-      //       backgroundColor: backgroundColor,
-      //       textColor: textColor,
-      //       bold: bold,
-      //       italic: italic,
-      //       strike: strike,
-      //       underline: underline,
-      //       href: href,
-      //     };
-      //     content.push(dataOfContent);
-      //   }
-      // }
+      for (
+        let indexOfTopLevelBlocks = 0;
+        indexOfTopLevelBlocks < editor.topLevelBlocks.length;
+        indexOfTopLevelBlocks++
+      ) {
+        const element = editor.topLevelBlocks[indexOfTopLevelBlocks];
+        for (
+          let indexOfContent = 0;
+          indexOfContent < element.content.length;
+          indexOfContent++
+        ) {
+          const text = element.content[0].text;
+        }
+      }
     },
     blockSchema: {
       // Adds all default blocks.
