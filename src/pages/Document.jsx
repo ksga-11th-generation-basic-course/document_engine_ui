@@ -240,7 +240,7 @@ export const Document = () => {
           </div>
         </div>
         <div className="col-span-4 flex items-center justify-end">
-          {openSearch ? (
+          {openSearch=== null ? null (
             <div className="flex justify-end items-center relative">
               {openSearch ? (
                 <input
@@ -324,7 +324,6 @@ export const Document = () => {
                   </div>
                 )}
               </div>
-            )}
             </div>)}
         </div>
       </div>
