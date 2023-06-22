@@ -102,15 +102,6 @@ export const CreateDocument = () => {
     setTimerId(newTimerId);
   }
 
-  setTimeout(() => {
-    const handleUpdateDocument = async () => {
-      const document = await updateDocument(documentId, "Untitle");
-      dispatch(updateDocumentSuccess(document));
-    }
-    handleUpdateDocument();
-    console.log("success");
-  }, 1000);
-
   const timestamp = (document && document.createdDate);
 
   const handleInputChan = (event) => {
