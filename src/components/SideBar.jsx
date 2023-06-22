@@ -47,7 +47,7 @@ export const SideBar = () => {
 
   return (
     <div>
-      <div className="bg-[#FAFAF9] flex flex-col items-center py-5 px-5 gap-y-3 h-screen">
+      <div className="bg-[#FAFAF9] flex flex-col items-center py-5 px-5 gap-y-3 h-screen fixed w-80">
         <Link>
           <img src={logo} className="w-24 h-24" />
         </Link>
@@ -97,7 +97,9 @@ export const SideBar = () => {
             </svg>
             Workspace
           </NavLink>
+          </div>
           <div className="w-full border-[1px]"></div>
+          <div className="flex flex-col w-full gap-y-3 text-lg text-accent font-semibold overflow-y-auto">
           {param.workspaceId && (
             <div>
               <NavLink
@@ -164,7 +166,7 @@ export const SideBar = () => {
                 ))}
             </div>
           )}
-        </div>
+      </div>
       </div>
     </div>
   );

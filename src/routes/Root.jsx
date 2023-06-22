@@ -10,7 +10,7 @@ export const Root = () => {
         <div className="col-span-2">
           <SideBar />
         </div>
-        <div className="col-span-10 shadow-xl">
+        <div className="col-span-10">
           <NavBarProfile />
           <div className="px-60">
             <Outlet />
