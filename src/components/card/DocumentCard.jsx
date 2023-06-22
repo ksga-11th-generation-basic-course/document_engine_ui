@@ -16,6 +16,7 @@ import { Dropdown } from "react-daisyui";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import {
+  checkAccessibility,
   duplicateDocument,
   getMemberInEachDocument,
   setCurrentEditing,
@@ -28,14 +29,17 @@ export const DocumentCard = ({ document, workspaceId }) => {
   const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
   const [deleteDocument, setDeleteDocument] = useState(false);
   const [documentId, setdocumentId] = useState();
-  const members = useSelector((state) => state.document.members);
+  const { members, accessibility } = useSelector((state) => state.document);
+
+  console.log(accessibility)
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMemberInEachDocument(document.documentId));
+    dispatch(checkAccessibility(document.documentId));
   }, []);
 
   const handleNavigate = () => {
-    dispatch(setCurrentEditing(document.documentId));
     setTimeout(() => {
       navigate(`/createdocument/${document.documentId}/${workspaceId}`);
     }, 1000);
@@ -65,90 +69,98 @@ export const DocumentCard = ({ document, workspaceId }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-4 space-y-3">
-      <div onClick={handleNavigate}>
-        <div className="flex justify-between items-center">
-          <h4 className="font-semibold text-20px">{document.title}</h4>
-          {document.status ? (
-            <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF]">
-              <p className="text-14px 2xl:text-12px">Editing...</p>
-              <img src={pencil} className="w-3 h-3" />
+    <div>
+      {accessibility === "NO_ACCESS" ? null : (
+        <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-4 space-y-3">
+          <div onClick={handleNavigate}>
+            <div className="flex justify-between items-center">
+              <h4 className="font-semibold text-20px">{document.title}</h4>
+              {document.status ? (
+                <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF]">
+                  <p className="text-14px 2xl:text-12px">Editing...</p>
+                  <img src={pencil} className="w-3 h-3" />
+                </div>
+              ) : null}
             </div>
-          ) : null}
-        </div>
-        <div>
-          <h3 className="font-semibold">{document.title}</h3>
-          <p className="text-sm h-[120px]"></p>
-        </div>
-      </div>
-      <div className="border-[1px]"></div>
-      <div className="flex justify-between items-center">
-        <div>
-          <h3 className="font-bold text-22px text-primary">{document.title}</h3>
-          <p className="text-14px font-semibold text-accent">
-            Edited <span>{document.editDate}</span>
-          </p>
-        </div>
-        <div className="relative">
-          <div className="relative">
-            <Dropdown className="dropdown-right">
-              <Dropdown.Toggle>
-                <img src={dotmenu} />
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="w-60 bg-white rounded-lg text-base">
-                <Dropdown.Item onClick={viewPage}>
-                  <img src={view} />
-                  <span>View page</span>
-                </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() => setOpenPermission(!openPermission)}
-                >
-                  <img src={permission} />
-                  <span>Permission</span>
-                </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={() => setOpenDocumentHistory(!openDocumentHistory)}
-                >
-                  <img src={history} />
-                  <span>Document History</span>
-                </Dropdown.Item>
-                <Dropdown.Item onClick={handleDuplicateDocument}>
-                  <img src={duplicate} />
-                  <span>Duplicate </span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <img src={file} />
-                  <span> Export file</span>
-                </Dropdown.Item>
-                <Dropdown.Item onClick={handleRemoveDocument}>
-                  <img src={delet} />
-                  <span>Delete</span>
-                </Dropdown.Item>
-              </Dropdown.Menu>
-            </Dropdown>
+            <div>
+              <h3 className="font-semibold">{document.title}</h3>
+              <p className="text-sm h-[120px]"></p>
+            </div>
           </div>
-          <DocumentPermissionModal
-            openPermission={openPermission}
-            setOpenPermission={setOpenPermission}
-            documentId={document.documentId}
-            workspaceId={workspaceId}
-            members={members}
-          />
-          <DocumentHistoryModal
-            openDocumentHistory={openDocumentHistory}
-            setOpenDocumentHistory={setOpenDocumentHistory}
-          />
-          <DeleteDocumentModal
-            deleteDocument={deleteDocument}
-            setDeleteDocument={setDeleteDocument}
-            documentId={documentId}
-          />
-          {/* <button type="button" onClick={() => setOpen(!open)}>
-            <img src={dotmenu} className="w-8 h-8" />
-          </button>
-          {open ? <DropDownDocument open={open} setOpen={setOpen} /> : null} */}
+          <div className="border-[1px]"></div>
+          <div className="flex justify-between items-center">
+            <div>
+              <h3 className="font-bold text-22px text-primary">
+                {document.title}
+              </h3>
+              <p className="text-14px font-semibold text-accent">
+                Edited <span>{document.editDate}</span>
+              </p>
+            </div>
+            <div className="relative">
+              <div className="relative">
+                <Dropdown className="dropdown-right">
+                  <Dropdown.Toggle>
+                    <img src={dotmenu} />
+                  </Dropdown.Toggle>
+                  <Dropdown.Menu className="w-60 bg-white rounded-lg text-base">
+                    <Dropdown.Item onClick={viewPage}>
+                      <img src={view} />
+                      <span>View page</span>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() => setOpenPermission(!openPermission)}
+                    >
+                      <img src={permission} />
+                      <span>Permission</span>
+                    </Dropdown.Item>
+                    <Dropdown.Item
+                      onClick={() =>
+                        setOpenDocumentHistory(!openDocumentHistory)
+                      }
+                    >
+                      <img src={history} />
+                      <span>Document History</span>
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={handleDuplicateDocument}>
+                      <img src={duplicate} />
+                      <span>Duplicate </span>
+                    </Dropdown.Item>
+                    <Dropdown.Item>
+                      <img src={file} />
+                      <span> Export file</span>
+                    </Dropdown.Item>
+                    <Dropdown.Item onClick={handleRemoveDocument}>
+                      <img src={delet} />
+                      <span>Delete</span>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                </Dropdown>
+              </div>
+              <DocumentPermissionModal
+                openPermission={openPermission}
+                setOpenPermission={setOpenPermission}
+                documentId={document.documentId}
+                workspaceId={workspaceId}
+                members={members}
+              />
+              <DocumentHistoryModal
+                openDocumentHistory={openDocumentHistory}
+                setOpenDocumentHistory={setOpenDocumentHistory}
+              />
+              <DeleteDocumentModal
+                deleteDocument={deleteDocument}
+                setDeleteDocument={setDeleteDocument}
+                documentId={documentId}
+              />
+              {/* <button type="button" onClick={() => setOpen(!open)}>
+              <img src={dotmenu} className="w-8 h-8" />
+            </button>
+            {open ? <DropDownDocument open={open} setOpen={setOpen} /> : null} */}
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

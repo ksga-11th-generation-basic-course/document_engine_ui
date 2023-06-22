@@ -52,7 +52,6 @@ const workspaceSlice = createSlice({
       );
     },
     setAccessibilitySuccess: (state, action) => {
-      console.log(action.payload);
       state.members = state.members.map((member) =>
         member.userId === action.payload.userId ? action.payload : member
       );

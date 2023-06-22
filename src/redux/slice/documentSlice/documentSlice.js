@@ -5,6 +5,8 @@ import {
   getUsername,
   getWorkspaceName,
   getMemberInEachDocument,
+  setCurrentEditing,
+  checkAccessibility,
 } from "../../service/documentService/documentService";
 
 const initialState = {
@@ -16,6 +18,7 @@ const initialState = {
   loading: false,
   error: null,
   status: false,
+  accessibility: null,
 };
 
 const documentSlice = createSlice({
@@ -113,6 +116,36 @@ const documentSlice = createSlice({
     builder.addCase(getMemberInEachDocument.rejected, (state, action) => {
       state.loading = true;
       state.members = null;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(setCurrentEditing.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(setCurrentEditing.fulfilled, (state, action) => {
+      const { documentId, status } = action.payload;
+      if (state.document && state.document.documentId === documentId) {
+        state.document.status = status;
+      }
+      state.error = null;
+    });
+    builder.addCase(setCurrentEditing.rejected, (state, action) => {
+      state.loading = true;
+      state.documents = null;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(checkAccessibility.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(checkAccessibility.fulfilled, (state, action) => {
+      state.loading = false;
+      state.accessibility.push(action.payload);
+      state.error = null;
+    });
+    builder.addCase(checkAccessibility.rejected, (state, action) => {
+      state.loading = true;
+      state.documents = null;
       state.error = action.error.message;
     });
   },

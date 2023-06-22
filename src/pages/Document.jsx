@@ -54,6 +54,8 @@ export const Document = () => {
 
   const documents = useSelector((state) => state.document.documents);
 
+  console.log(documents)
+
   const workspace = useSelector((state) => state.workspace.workspace);
 
   const accessibility = useSelector((state) => state.workspace.accessibility);

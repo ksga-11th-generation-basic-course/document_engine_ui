@@ -324,7 +324,7 @@ export const Editor = () => {
         Click
       </button>
       <br />
-      <BlockNoteView editor={editor} />
+      <BlockNoteView editor={editor}/>
     </div>
   );
 };

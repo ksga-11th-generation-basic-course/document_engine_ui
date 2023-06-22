@@ -213,10 +213,10 @@ export const setAccessibility = async (
 
 export const setCurrentEditing = createAsyncThunk(
   `document/current/editing`,
-  async (documentId) => {
+  async (body) => {
     try {
       const response = await api.put(
-        `documents/${documentId}/editing`,
+        `documents/${body.documentId}/editing?status=${body.status}`,
         {},
         {
           headers: {
@@ -225,9 +225,29 @@ export const setCurrentEditing = createAsyncThunk(
           },
         }
       );
-      console.log(response);
       return response.data.payload;
     } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);
+
+export const checkAccessibility = createAsyncThunk(
+  `document/check/accessibility`,
+  async (documentId) => {
+    try {
+      const response = await api.get(
+        `documents/${documentId}/check/accessibility`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
+      );
+      return response.data.payload;
+    } catch (error) {
+      console.log(error);
       throw error.response.data.detail;
     }
   }
