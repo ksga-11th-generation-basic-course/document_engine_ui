@@ -29,7 +29,7 @@ export const DocumentCard = ({ document,workspaceId }) => {
   useEffect(() => {
     dispatch(getMemberInEachDocument(document.documentId))
   }, []);
-
+  
   const handleNavigate = () => {
     setTimeout(()=>{
       navigate(`/createdocument/${document.documentId}`);

@@ -18,7 +18,7 @@ export const DocumentCardRow = ({ documentname, editDate, status, documentId}) =
       navigate(`/createdocument/${documentId}`);
   };
   return (
-    <div className="flex justify-between items-center gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:ml-4 lg:w-[620px]">
+    <div className="animate-fade-left animate-once transition ease-out delay-75 hover:-translate-y-1 hover:scale-105 duration-300 flex justify-between items-center gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:ml-4 lg:w-[620px]">
       <div className="w-full h-full px-5 py-4" onClick={handleNavigate}>
         <div className="flex gap-x-5">
           <h3 className="font-semibold text-20px text-black w-32 ">{documentname}</h3>
@@ -40,26 +40,6 @@ export const DocumentCardRow = ({ documentname, editDate, status, documentId}) =
                 <Dropdown.Item>
                   <img src={view} />
                   <span>View page</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <img src={permission} />
-                  <span>Permission</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <img src={history} />
-                  <span>Document History</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <img src={duplicate} />
-                  <span>Duplicate </span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <img src={file} />
-                  <span> Export file</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <img src={delet} />
-                  <span>Delete</span>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>
