@@ -31,9 +31,8 @@ export const Dashboard = () => {
           {recentlies === null ? null : recentlies.length > 0 ? (
             recentlies
               .map((recently, index) => (
-                <div>
+                <div key={index}>
                   <DocumentCardRow
-                  key={index}
                   documentId={recently.documentId}
                   documentname={recently.title}
                   editDate={"Edited 5days ago"}
