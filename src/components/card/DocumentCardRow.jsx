@@ -18,7 +18,7 @@ export const DocumentCardRow = ({ documentname, editDate, status, documentId}) =
       navigate(`/createdocument/${documentId}`);
   };
   return (
-    <div className="animate-fade-left animate-once transition ease-out delay-75 hover:-translate-y-1 hover:scale-105 duration-300 flex justify-between items-center gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:w-full md:-ml-5 md:px-4 md:w-[350px] md:py-2.5 md:pl-5">
+    <div className="flex justify-between items-center gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:w-full md:-ml-5 md:px-4 md:w-[350px] md:py-2.5 md:pl-5">
       <div className="w-full h-full px-5 py-4" onClick={handleNavigate}>
         <div className="flex gap-x-5">
           <h3 className="font-semibold text-22px text-black w-44 md:text-12px md:w-24 ">{documentname}</h3>
@@ -32,34 +32,14 @@ export const DocumentCardRow = ({ documentname, editDate, status, documentId}) =
         <p className="text-accent text-16px text-left md:text-10px">{editDate}</p>
       </div>
       <div className="relative z-10">
-      <Dropdown className="dropdown-end ">
-              <Dropdown.Toggle>
+      <Dropdown className="dropdown">
+              <Dropdown.Toggle >
               <img src={dotmenu} className="md:w-6" />
               </Dropdown.Toggle>
               <Dropdown.Menu className="w-60 bg-white border rounded-lg text-base">
-                <Dropdown.Item>
+                <Dropdown.Item onClick={handleNavigate}>
                   <img src={view} />
                   <span>View page</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <img src={permission} />
-                  <span>Permission</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <img src={history} />
-                  <span>Document History</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <img src={duplicate} />
-                  <span>Duplicate </span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <img src={file} />
-                  <span> Export file</span>
-                </Dropdown.Item>
-                <Dropdown.Item>
-                  <img src={delet} />
-                  <span>Delete</span>
                 </Dropdown.Item>
               </Dropdown.Menu>
             </Dropdown>

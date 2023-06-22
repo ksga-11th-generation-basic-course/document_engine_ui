@@ -52,26 +52,7 @@ export const WorkspaceSettingModal = ({
                 </button>
               }
 
-              {open ? 
-                  <div className="hidden lg:inline-block lg:z-20 lg:absolute lg:ml-[205px] lg:-mt-2  md:w-full md:ml-[145px]">
-                  <div className="hidden lg:inline-block">
-                    <button type="button" onClick={() => setOpen(!open)}>
-                      <img src={close} className="w-7 md:w-5" />
-                    </button>
-                  </div>
-                </div> : null  
-            }
-
-              {open ? (
-                <span className="hidden lg:z-10 lg:inline-block lg:absolute lg:-mt-[18px]">
-                  <SideBarSettingWorkspace
-                    collaborator={collaborator}
-                    setCollaborator={setCollaborator}
-                    setting={setting}
-                    setSetting={setSetting}
-                  />
-                </span>
-              ) : null}
+              
             </span>
             <div>
               {setting ? (

@@ -78,6 +78,7 @@ export default {
         profile: "0px 1px 4px rgba(0, 0, 0, 0.1)",
         logo: "0px 2px 4px rgba(0, 0, 0, 0.1)",
       },
+      
     },
   },
   plugins: [require("flowbite/plugin"), require("daisyui")],
