@@ -38,7 +38,8 @@ import {
 } from "@mui/material";
 
 import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
-import { createDocument } from "../redux/service/documentService/documentService";
+import { createDocument, getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
+import { getWorkspaceByWorkspaceId } from "../redux/service/workspaceService/workspaceService";
 
 
 export const Document = () => {
