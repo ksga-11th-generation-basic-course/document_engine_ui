@@ -29,7 +29,7 @@ export const Workspace = () => {
       {/* Title and search for tablet and mobile */}
       <div className="hidden lg:grid lg:grid-cols-12">
         {/* Icon */}
-        <div className="hidden lg:col-span-6  lg:flex items-center gap-x-3 md:col-span-12">
+        <div className="hidden lg:col-span-6  lg:flex items-center gap-x-3 md:ml-8 md:col-span-12">
           <img src={workspaceicon} className="p-2 shadow-custom rounded-lg md:w-7 md:h-7 md:p-1" />
           <p className="font-semibold text-20px md:text-16px">Workspaces</p>
         </div>
@@ -45,7 +45,7 @@ export const Workspace = () => {
           ) : null}
           <button
             type="button"
-            className="mt-3 absolute"
+            className="mt-3 absolute "
             onClick={() => setOpenSearch(!openSearch)}
           >
             <img src={search}/>
@@ -55,7 +55,7 @@ export const Workspace = () => {
 
       <div className="grid grid-cols-12 mt-7 md:mt-3">
         {/* Sort */}
-        <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center lg:w-72 md:w-36 md:col-span-6">
+        <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center lg:w-72 md:ml-8 md:w-36 md:col-span-6">
           <div className="flex items-center gap-x-2">
             <img src={sort} className="w-7 h-7 md:w-6 md:h-8" />
             <h4 className="font-semibold text-20px md:text-16px md:hidden">Sort: </h4>
@@ -77,7 +77,7 @@ export const Workspace = () => {
         </div>
 
         {/* Filter */}
-        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:w-80 lg:ml-5 md:w-40 md:ml-0">
+        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:w-80 lg:ml-5 md:w-40 md:ml-36">
           <div className="flex items-center gap-x-3">
             <img src={filter} className="w-7 h-7 md:w-4 md:h-4" />
             <h4 className="font-semibold text-20px md:text-16px md:hidden">Filter: </h4>
@@ -104,7 +104,7 @@ export const Workspace = () => {
         </div>
 
         {/* Search button for laptop */}
-        <div className="col-span-4 flex justify-end relative lg:hidden md:hidden">
+        <div className="col-span-4 flex justify-end relative lg:hidden  md:hidden">
           {openSearch ? (
             <input
               type="text"
@@ -114,7 +114,7 @@ export const Workspace = () => {
           ) : null}
           <button
             type="button"
-            className="absolute top-1 right-2 w-5 h-5"
+            className="absolute top-1 right-2 w-5 h-5 "
             onClick={() => setOpenSearch(!openSearch)}
           >
             <img src={search} />
@@ -122,18 +122,18 @@ export const Workspace = () => {
         </div>
 
         {/* Search button for mobile */}
-        <div className="hidden lg:hidden md:inline-block md:col-span-12 md:mt-2">
+        <div className="hidden lg:hidden md:inline-block md:col-span-12 md:mt-2 md:ml-8">
+            <img src={search} className="md:w-4 md:h-4 md:z-20 md:absolute md:mt-2.5 md:ml-4 "/>
               <input
                   type="text"
                   placeholder="search"
-                  className="absolute rounded-lg text-14px border-gray-200 border-[1px] w-[312px]  h-8 focus:ring-accent focus:border-accent"
+                  className="absolute rounded-lg text-14px border-gray-200 border-[1px] w-[312px]  h-8 focus:ring-accent focus:border-accent md:z-10 md:pl-10"
                 />
-                <span className="absolute mt-2 ml-72"><img src={search} className="md:w-4 md:h-4"/></span>
           </div>
       </div>
 
       {/* Workspace card */}
-      <div className="grid grid-cols-12 gap-10 mt-5 lg:w-[650px] lg:mb-10 md:pb-10 md:w-[310px] md:mt-12 md:space-y-7 md:gap-0">
+      <div className="grid grid-cols-12 gap-10 mt-5 lg:w-[650px] lg:mb-10 md:ml-28 md:pb-10 md:w-[310px] md:mt-12 md:space-y-7 md:gap-0">
         <div className="col-span-4 lg:col-span-6 md:col-span-12">
           <WorkspaceCard
             workspacename={"Docker"}

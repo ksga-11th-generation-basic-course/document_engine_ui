@@ -69,7 +69,7 @@ export const CreateDocument = () => {
             type="button"
             onClick={() => setOpenPermission(!openPermission)}
           >
-            <img src={ViewMember} alt="" />
+            <img src={ViewMember} title="Permission" alt="" />
           </button>
           {/* History */}
           <button
@@ -77,7 +77,7 @@ export const CreateDocument = () => {
             type="button"
             onClick={() => setOpenDocumentHistory(!openDocumentHistory)}
           >
-            <img src={ViewHistory} alt="" />
+            <img src={ViewHistory} title="History" alt="" />
           </button>
           {/* Export file */}
           <div className="relative">
@@ -86,7 +86,7 @@ export const CreateDocument = () => {
               type="button"
               onClick={() => setOpenExport(!openExport)}
             >
-              <img src={ExportFile} alt="" />
+              <img src={ExportFile} title="Export" alt="" />
             </button>
             {openExport ? (
               <DropDownExport
@@ -138,7 +138,9 @@ export const CreateDocument = () => {
                 <img src={CreateDate} className="w-[17px] " alt="" />
                 <p>Create Date</p>
               </div>
-              <p className="text-black lg:w-[200px] md:w-[200px]">April 21, 2023 4:01 PM</p>
+              <p className="text-black lg:w-[200px] md:w-[200px]">
+                April 21, 2023 4:01 PM
+              </p>
             </div>
             {/* Tag */}
             <div className="grid grid-cols-2 text-sm">
@@ -159,7 +161,7 @@ export const CreateDocument = () => {
         </div>
       </div>
 
-      <div >
+      <div>
         <DocumentPermissionModal
           openPermission={openPermission}
           setOpenPermission={setOpenPermission}

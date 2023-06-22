@@ -58,7 +58,7 @@ export const CollaboratorOwnerContent = ({
               </span>
               <div>
                 {copied ? (
-                  <div className="absolute left-0 mt-4 text-accent rounded-lg shadow-md bg-white z-50">
+                  <div className="absolute left-0 mt-4 text-accent rounded-lg shadow-md bg-white z-50 ">
                     <div className="flex items-center gap-x-3 rounded-lg">
                       <div className="bg-[#DCFFD9] py-2 px-2 rounded-l-lg">
                         <img src={tick} className="md:w-3"/>
@@ -74,7 +74,7 @@ export const CollaboratorOwnerContent = ({
           <div className="px-6 md:p-3 border-[1px] py-4 space-y-2 rounded-b-lg">
             <MemberWorkspaceCard username={"Tith Ouddom"} status={true} isOwner={true} currentuser={true} />
             <MemberWorkspaceCard username={"Kheng Sovannak"} status={false} isOwner={false} currentuser={false} />
-            <MemberWorkspaceCard username={"Yan Sovanseyha"} status={false} isOwner={false} currentuser={false} />
+            <MemberWorkspaceCard username={"Khy Seangngorn"} status={false} isOwner={false} currentuser={false} />
           </div>
         </div>
 
@@ -104,7 +104,7 @@ export const CollaboratorOwnerContent = ({
               <input
                 type="text"
                 className="pl-12 w-72 md:w-52 py-3 md:py-2 rounded-lg border-gray-300 focus:ring-primary focus:border-primary text-18px font-semibold"
-                placeholder="example@gmail.com"
+                placeholder="name@gmail.com"
               />
             </div>
           </div>
@@ -148,7 +148,7 @@ export const CollaboratorOwnerContent = ({
                   <input
                     type="text"
                     className="pl-9 w-full py-2.5 rounded-lg border-gray-300 focus:ring-primary focus:border-primary text-16px font-semibold lg:w-60 md:text-14px md:py-1.5"
-                    placeholder="example@gmail.com"
+                    placeholder="name@gmail.com"
                   />
                 </div>
               </div>

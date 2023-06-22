@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import logo from "../assets/landing_image/logo.svg";
 import { Link, NavLink } from "react-router-dom";
-import { DropDownMenu } from "../components/DropDownMenu";
 
 export const NavBar = () => {
   const[openMenu, setOpenMenu] = useState(false);
@@ -12,6 +11,7 @@ export const NavBar = () => {
           <img src={logo} className="w-[72px] h-[72px] lg:w-[52px] lg:h-[52px] md:w-[50px]" />
         </Link>
       </div>
+      {/* Home, About Us and Contact Us */}
       <div className="relative sm:hidden md:hidden">
         <ul className="flex justify-center items-center gap-x-8 text-20px lg:text-18px" >
           <li>
@@ -46,6 +46,7 @@ export const NavBar = () => {
           </li>
         </ul>
       </div>
+      {/* Sign in and Sign up  */}
       <div className="relative flex justify-center sm:w-auto md:justify-between  sm:flex sm:justify-evenly items-center gap-x-5  text-20px lg:text-18px md:text-16px">
         <Link to={"/signin"} className="sm:whitespace-nowrap">Sign in</Link>
         <Link to={"/signup"}className="bg-primary px-4 py-2 text rounded-xl text-white md:h-8 md:pt-1 md:rounded-lg  ">
@@ -53,7 +54,7 @@ export const NavBar = () => {
         </Link>
       </div>
 
-      {/* Responsive */}
+      {/* Home, About Us and Contact Us */}
       <div className="sm:block md:block  hidden dropdown relative ">
             <div className="dropdown dropdown-end  relative">
                 <button className="btn btn-ghost btn-circle" onClick={() => setOpenMenu(!openMenu)}>

@@ -111,10 +111,10 @@ export const SignUp = () => {
         <form
           onSubmit={formik.handleSubmit}
           className=" bg-[#FFFFFF] p-12 flex flex-col justify-center gap-y-6 shadow rounded-3xl 
-          lg:w-[480px] lg:mt-52 lg:p-8 lg:ml-10 lg:mb-6 md:w-[320px] md:p-8 md:mt-36 md:mr-8  md:mb-4"
+          lg:w-[480px] lg:mt-48 lg:p-8 lg:ml-10 lg:mb-28 md:w-[310px] md:mt-36 md:mr-8  md:mb-4"
         >
         {/* Sign Up */}
-          <div className=" xs:p-0 mx-auto w-[380px] md:ml-4">
+          <div className=" xs:p-0 mx-auto w-[380px] md:ml-3">
             <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl lg:text-4xl md:text-2xl md:pr-36">
               Sign Up
             </h1>
@@ -128,7 +128,7 @@ export const SignUp = () => {
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3
                    max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                   lg:text-xl lg:h-12  md:h-8 md:w-[210px] md:text-sm"
+                   lg:text-xl lg:h-12  md:h-8 md:w-[210px] md:rounded md:text-sm"
                   type="text"
                   placeholder="username"
                   aria-label="Full name"
@@ -152,7 +152,7 @@ export const SignUp = () => {
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none
                    max-sm:bg-transparent max-sm:leading-tight max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                   lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:text-sm"
+                   lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded md:text-sm"
                   type="text"
                   placeholder="name@gmail.com"
                   aria-label="Full name"
@@ -174,7 +174,7 @@ export const SignUp = () => {
                 <input
                   className=" border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none 
                   max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:text-sm"
+                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded md:text-sm"
                   type="password"
                   placeholder="password"
                   aria-label="Full name"
@@ -198,7 +198,7 @@ export const SignUp = () => {
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px  rounded-lg px-2 py-3 max-sm:appearance-none 
                   max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:text-sm"
+                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded md:text-sm"
                   type="password"
                   placeholder="confirm password"
                   aria-label="Full name"
@@ -233,7 +233,7 @@ export const SignUp = () => {
                         type="submit"
                         className="px-2 py-3 font-semibold transition duration-200 bg-primary hover:bg-btn-primary focus:shadow-sm text-white w-full rounded-lg 
                         focus:outline-none shadow-sm hover:shadow-md text-center  text-18px inline-block
-                        lg:text-2xl lg:h-13 md:h-[2px] md:pb-8 md:w-[210px] md:text-base"
+                        lg:text-2xl lg:h-13 md:h-[2px] md:pb-8 md:w-[210px] md:rounded-md md:text-base"
                         onClick={formik.handleSubmit}
                       >
                         Continue
@@ -305,7 +305,7 @@ export const SignUp = () => {
           </div>
         </form>
         <img
-        className="w-[600px] h-[600.57px]  max-sm:hidden lg:hidden "
+        className="w-[600px] h-[600.57px] mt-12  max-sm:hidden lg:hidden "
         src={Right1Image}
       />
       </div>

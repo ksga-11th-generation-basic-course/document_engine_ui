@@ -3,6 +3,7 @@ import React from "react";
 export const CollaboratorOwner = ({ collaborator, setCollaborator, setting, setSetting }) => {
   return (
     <div>
+      {/* Collaborators */}
       <button
         className={
           collaborator

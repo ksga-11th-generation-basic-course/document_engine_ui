@@ -90,7 +90,7 @@ export const EnableAccVerifyCode = () => {
         value={value}
         onKeyUp={(event) => handleBackSpace(event, index)}
         ref={(element) => (inputRef.current[index] = element)}
-        className="m-2 border border-primary bg-blue-50 focus:ring-btn-primary focus:border-btn-primary h-12 w-12 text-center rounded md:w-[30px] md:h-[30px]"
+        className="m-2 border border-primary bg-blue-50 focus:ring-btn-primary focus:border-btn-primary h-12 w-12 text-center rounded md:-mt-6 md:w-[25px] md:h-[25px]"
         type="text"
         id="first"
         maxLength="1"
@@ -132,10 +132,10 @@ export const EnableAccVerifyCode = () => {
         />
         {/* Verify Email Address */}
         <form className="bg-white  h-[510px] w-[530px] mt-36 flex flex-col justify-center  rounded-3xl shadow-lg 
-         lg:w-[500px] lg:h-[470px] lg:mt-48 md:w-[320px] md:h-[400px] md:ml-2 md:pb-16">
-          <div className=" xs:p-0 mx-auto md:w-full md:max-w-md  ">
+         lg:w-[500px] lg:py-16 lg:mt-48 md:w-[320px] md:border md:py-28 md:h-[340px] ">
+          <div className=" xs:p-0 mx-auto md:w-full md:mt-20">
             <div className=" w-full  ">
-              <h1 className="font-bold text-center text-primary text-36px lg:text-3xl md:text-xl md:mt-24 ">
+              <h1 className="font-bold text-center text-primary text-36px lg:-mt-6 lg:text-3xl md:text-xl md:mt- ">
                 Verify Email Address
               </h1>
 
@@ -146,11 +146,11 @@ export const EnableAccVerifyCode = () => {
                     <div className="max-w-sm mx-auto md:max-w-lg">
                       <div className="w-full">
                         <div className=" h-64 rounded text-center">
-                          <div className="text">
-                            <p className="text-18px text-accent lg:text-xl md:text-base md:-pt-6">
+                          <div className="text md:-mt-4">
+                            <p className="text-18px text-accent lg:text-xl md:text-sm md:-pt-6">
                               Please enter the code we've send to
                             </p>
-                            <p className="text-18px text-center text-[#1E9CEF] md:text-base">
+                            <p className="text-18px text-center text-[#1E9CEF] md:text-sm">
                               your email address
                             </p>
                           </div>
@@ -165,7 +165,7 @@ export const EnableAccVerifyCode = () => {
                             </Formik>
                           </div>
                           {formik.errors.OTP && (
-                            <p className="text-red-500 text-lg md:text-base">
+                            <p className="text-red-500 text-lg md:text-sm">
                               The field is not blank
                             </p>
                           )}
@@ -189,7 +189,7 @@ export const EnableAccVerifyCode = () => {
                               <button
                                 type="button"
                                 onClick={handleResendCode}
-                                className="underline pr-3 text-[#1E9CEF] lg:text-lg md:text-sm"
+                                className="underline pr-3 text-[#1E9CEF] lg:text-lg md:text-sm md:-mt-3"
                               >
                                 Didn't receive the code? Click to resend
                               </button>
@@ -202,7 +202,7 @@ export const EnableAccVerifyCode = () => {
                               type="button"
                               onClick={formik.handleSubmit}
                               className="transition font-semibold text-lg duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm
-                               hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[260px] md:h-9 md:pt-2  "
+                               hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[250px] md:py-2 md:pt-2  "
                             >
                               Enable Account
                             </button>

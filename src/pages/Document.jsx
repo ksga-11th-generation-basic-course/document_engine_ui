@@ -29,6 +29,7 @@ export const Document = () => {
 
   return (
     <div className="text-accent space-y-5 lg:ml-3 lg:mt-4 md:w-full ">
+      {/* React & NodeJS */}
       <div className="lg:-ml-3 md:ml-3">
         <h1 className="font-bold text-accent text-44px md:text-xl">React & NodeJS</h1>
         <p className="text-accent text-18px md:text-sm">
@@ -49,8 +50,6 @@ export const Document = () => {
           </div>
          
         </div>
-
-
         <div className="grid grid-cols-12 mt-5 lg:grid lg:grid-cols-12 md:grid md:grid-cols-12 md:mt-3 md:w-[400px] ">
         {/* Sort */}
         <div className="-mt-1 col-span-4 gap-x-3 flex items-center 
@@ -191,8 +190,8 @@ export const Document = () => {
                 title={"Node Js"}
                 header={"1. Introduction to Node Js"}
                 status={true}
-                text={`In this tutorial, we'll focus on introducing Profiles in Spring.
-                Profiles are a core feature of the framework — allowing us to map our
+                text={`In this tutorial, we'll focus on introducing in Spring. The
+                profiles are a core feature of the framework — allowing us to map our
                 beans to different profiles — for example, dev, test, and prod. We can
                 then activate different profiles in different environments.`}
                 editdate={12}
@@ -204,16 +203,18 @@ export const Document = () => {
               title={"Spring Profile"}
               header={"1. Introduction to Spring Profile"}
               status={true}
-              text={`In this tutorial, we'll focus on introducing Profiles in Spring.
-              Profiles are a core feature of the framework — allowing us to map our beans to different profiles — for example, dev, test, and prod.
+              text={`In this tutorial, we'll focus on introducing in Spring. The
+              profiles are a core feature of the framework — allowing us to map our beans to different profiles — for example, dev, test, and prod.
               We can then activate different profiles in different environments.`}
               editdate={15}
             />
 
           </div>
         </div>
+      
       ) : null}
       {openBulletList ? (
+        // Document List//
         <div className="space-y-6 lg: lg:w-[620px]  md:w-[480px] md:ml-4  md:mr-4  ">
           {" "}
           <DocumentList
@@ -221,6 +222,7 @@ export const Document = () => {
             status={true}
             editdate={"Apr 24 12:15 PM"}
           />{" "}
+         
           <DocumentList
             title={"Node JS"}
             status={true}

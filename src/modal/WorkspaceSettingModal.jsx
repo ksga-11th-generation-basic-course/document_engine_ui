@@ -21,12 +21,12 @@ export const WorkspaceSettingModal = ({
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <Modal
         open={openWorkspaceSetting}
         onClickBackdrop={() => setOpenWorkspaceSetting(!openWorkspaceSetting)}
       >
-        <div className="shadow-custom w-[1200px] h-[810px] lg:w-[770px] lg:h-[850px] md:w-[390px] md:h-[650px] bg-white rounded-lg grid grid-cols-12 relative lg:rounded-none">
+        <div className="shadow-custom w-[1200px] h-[810px] lg:w-[700px] lg:rounded-xl lg:h-[850px] md:w-[500px] md:h-[650px] bg-white rounded-lg grid grid-cols-12 relative ">
           <div className="col-span-3 rounded-lg lg:hidden md:hidden">
             <SideBarSettingWorkspace
               collaborator={collaborator}
@@ -35,7 +35,7 @@ export const WorkspaceSettingModal = ({
               setSetting={setSetting}
             />
           </div>
-          <div className="col-span-9 lg:col-span-12 p-3 shadow-xl lg:p-0">
+          <div className="col-span-9 lg:col-span-12 p-3 shadow-xl lg:p-0  md:pl-3">
             <span className="hidden lg:inline-block md:inline-block">
               {open? null : 
                   <button onClick={() => setOpen(!open)}>

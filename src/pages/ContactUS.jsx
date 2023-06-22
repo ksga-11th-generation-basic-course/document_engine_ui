@@ -85,7 +85,7 @@ export const ContactUs = () => {
               </a>
             </div>
             {/* contact with facebook, Telegram and Instagram */}
-            <div className="Image flex flex-row ml-8 top-12 w-[40px] mt-6 lg:ml-8 md:-ml-48 md:mt-1 md:pb-10">
+            <div className="Image flex flex-row ml-8 top-12 w-[40px] mt-6 lg:ml-8 md:-ml-52 md:mt-1 md:pb-10">
                 <img src={Face} alt="" className=": md:ml-8 md:w-[30px]" />
                 <img src={Tele} alt=""className="mr-6 ml-6 md:w-[30px] md:ml-6 md:mr-6 " />
                 <img src={IG} alt="" className="md:w-[30px]  md:mr-8"/>

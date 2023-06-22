@@ -16,6 +16,7 @@ import { ContactUs } from "./pages/ContactUS";
 import { NotFound } from "./pages/NotFound";
 import EnableAccount from "./pages/EnableAccount";
 import { EnableAccVerifyCode } from "./pages/EnableAccVerifyCode";
+import Title from "./pages/Title";
 
 function App() {
   return (
@@ -36,6 +37,8 @@ function App() {
         <Route path="/enableaccount" element={<EnableAccount />} />
         <Route path="/enableaccountverifycode" element={<EnableAccVerifyCode/>} />
         <Route path="/landing" element={<Landing />} />
+        <Route path="/title" element={<Title />} />
+
 
 
 

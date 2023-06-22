@@ -19,7 +19,7 @@ export const Landing = () => {
         {/* All document */}
         <div className="grid grid-cols-12 lg:-ml-2  md:flex md:flex-col md:ml-0">
           <div className="col-span-4 ml-5 md:ml-0">
-            <div className="text-accent flex flex-col gap-8 mt-10 md:mt-0 md:gap-y-5">
+            <div className="text-accent flex flex-col gap-8 mt-10 lg:ml-4 md:mt-0 md:gap-y-5">
               <h1 className="font-bold text-36px leading-[45px] lg:whitespace-nowrap lg:text-[34px] md:ml-10 md:whitespace-nowrap md:text-22px  md:mt-6 md:pr-3  md:leading-9">
                All your <span className="text-primary ">Documents</span> <br />
                 in one <span className="text-primary">place</span> and{" "}
@@ -46,14 +46,14 @@ export const Landing = () => {
         </div>
 
         {/* Line */}
-        <div className="border-[2px] mt-24 border-gray-300 lg:w-[650px] lg:ml-8 lg:mt-14 md:w-[290px] md:ml-12 md:h-0 "></div>
+        <div className="border-[2px] mt-24 border-gray-300 lg:w-[650px] lg:ml-8 lg:mt-14 md:w-[290px] md:ml-14 md:h-[1px] "></div>
 
         {/* We Provide Best */}
         <div className="mt-24">
           <div className="lg:-mt-7 lg:text-2xl">
-            <h1 className="font-bold text-36px text-accent text-center leading-[45px] lg:text-[34px] md:text-22px">
-              <div>We Provide Best </div>
-              <span className="text-primary">Solution</span> For you
+            <h1 className="font-bold text-36px text-accent text-center leading-[45px] lg:text-[34px]  md:text-22px">
+              <div className="md:-mb-2">We Provide Best </div>
+              <span className="text-primary  ">Solution</span> For you
             </h1>
           </div>
 

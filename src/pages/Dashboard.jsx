@@ -5,7 +5,7 @@ import { Hint } from "../components/Hint";
 
 export const Dashboard = () => {
   return (
-    <div className="bg-white">
+    <div className="bg-white md:ml-16">
       <div className="w-full lg:w-full">
         <Hint />
       </div>

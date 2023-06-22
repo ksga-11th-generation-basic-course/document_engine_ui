@@ -6,7 +6,7 @@ export const Hint = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="md:-ml-5">
+    <div className="md:-ml-5 ">
           <div className="mb-5 mt-7">
               <h1 className="font-bold text-accent text-44px md:text-22px">Hi, Ouddom!</h1>
               <p className="-mt-1 text-accent text-20px md:text-11px">Welcome to DocEngine</p>
@@ -19,13 +19,13 @@ export const Hint = () => {
                 <button
                   className={
                     open
-                      ? "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom  rounded-t-lg md:py-2 md:px-3.5"
-                      : "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom rounded-lg hover:shadow-hover md:py-2 md:px-3.5"
+                      ? "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom  rounded-t-lg md:py-2 md:w-[440px] md:px-3.5"
+                      : "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom rounded-lg hover:shadow-hover md:w-[440px] md:py-2 md:px-3.5"
                   }
                   onClick={() => setOpen(!open)}
                 >
                   <img src={star} className="md:w-6"/>
-                  <div className="md:-ml-2">
+                  <div className="md:-ml-2 ">
                     <h3 className="font-semibold text-24px text-black md:text-15px md:text-left">
                       Ouddom, get started with DocEngine
                     </h3>

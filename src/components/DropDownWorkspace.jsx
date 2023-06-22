@@ -9,7 +9,7 @@ export const DropDownWorkspace = ({ open, setOpen }) => {
   const [removeWorkspace, setRemoveWorkspace] = useState(false);
   const [openWorkspaceSetting, setOpenWorkspaceSetting] = useState(false);
   return (
-    <div>
+    <div >
       {open && (
         <div className="fixed inset-0" onClick={() => setOpen(!open)}></div>
       )}

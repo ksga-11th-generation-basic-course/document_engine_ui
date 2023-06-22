@@ -14,7 +14,6 @@ import {
 } from "../redux/service/authenticationService/authenticationService";
 import { useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
-import { Link } from "react-router-dom";
 
 const validate = (values) => {
   const errors = {};
@@ -89,7 +88,8 @@ export const VerifyOTP = () => {
         value={value}
         onKeyUp={(event) => handleBackSpace(event, index)}
         ref={(element) => (inputRef.current[index] = element)}
-        className="m-2 border border-primary bg-blue-50 focus:ring-btn-primary focus:border-btn-primary h-12 w-12 text-center rounded md:w-[30px] md:h-[30px]"
+        className="m-2 border border-primary bg-blue-50 focus:ring-btn-primary focus:border-btn-primary h-12 w-12 text-center rounded 
+        md:w-[25px] md:h-[25px]"
         type="text"
         id="first"
         maxLength="1"
@@ -116,23 +116,21 @@ export const VerifyOTP = () => {
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
-        <Link to={"/"}>
-            <img
-              src={Logo}
-              className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10 lg:-ml-9 md:w-[50px] md:mr-24 "
-            />
-        </Link>
+        <img
+          src={Logo}
+          className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10  lg:-ml-10 md:w-[50px] md:mr-24 "
+        />
         {/* Image Background */}
         <img
-          className="w-[500px] h-[700.16px] pt-16 mr-5 max-sm:hidden lg:hidden  md:hidden"
+          className="w-[500px] h-[700.16px] pt-32 mr-5 max-sm:hidden lg:hidden  md:hidden"
           src={VerifyL}
         />
         {/* Verify Email Address */}
-        <form className="bg-white h-[510px] w-[530px] flex flex-col justify-center  rounded-3xl shadow-md 
-        lg:mb-6 lg:w-[500px] lg:h-[500px] lg:mt-32 md:w-[300px] md:h-[380px] ">
+        <form className="bg-white h-[510px] w-[530px] mt-32 flex flex-col justify-center  rounded-3xl shadow-md 
+        lg:mb-6 lg:w-[500px] lg:mt-32 md:-mt-6 md:w-[300px] md:h-[380px] ">
           <div className=" xs:p-0 mx-auto md:w-full md:max-w-md  ">
-            <div className="bg-white w-full  ">
-              <h1 className="font-bold text-center text-primary text-42px lg:text-34px">
+            <div className=" w-full  ">
+              <h1 className="font-bold text-center text-primary text-36px lg:-mt-6 md:text-xl md:mt-4 md:-mb-4">
                 Verify Email Address
               </h1>
 
@@ -142,12 +140,12 @@ export const VerifyOTP = () => {
                   <div className="container mx-auto">
                     <div className="max-w-sm mx-auto md:max-w-lg">
                       <div className="w-full">
-                        <div className="bg-white h-64 rounded text-center">
+                        <div className=" h-64 rounded text-center">
                           <div className="text">
-                            <p className="text-18px text-accent md:text-base">
+                            <p className="text-18px text-accent md:text-sm">
                               Please enter the code we've send to
                             </p>
-                            <p className="text-18px text-center text-primary md:text-base">
+                            <p className="text-18px text-center text-primary md:text-sm">
                               your email address
                             </p>
                           </div>
@@ -162,7 +160,7 @@ export const VerifyOTP = () => {
                             </Formik>
                           </div>
                           {formik.errors.OTP && (
-                            <p className="text-red-500 text-lg md:text-base">
+                            <p className="text-red-500 text-lg md:text-sm">
                               The field is not blank
                             </p>
                           )}
@@ -193,7 +191,7 @@ export const VerifyOTP = () => {
                             </a>
                           </div>
 
-                          {/*  Verify */}
+                          {/*  Verify & Sign in */}
                           <div className="mt-5">
                             <button
                               type="button"
@@ -213,7 +211,7 @@ export const VerifyOTP = () => {
             </div>
           </div>
         </form>
-        <img className="w-[600px] h-[500.57px]  max-sm:hidden lg:hidden  md:hidden" src={VerifyR} />
+        <img className="w-[600px] h-[500.57px] mt-8 max-sm:hidden lg:hidden  md:hidden" src={VerifyR} />
 
       </div>
       

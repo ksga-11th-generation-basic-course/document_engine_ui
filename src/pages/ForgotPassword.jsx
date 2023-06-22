@@ -41,8 +41,8 @@ export const ForgotPassword = () => {
           {/* orgot Your Password? */}
           <div className=""> 
               <form className="bg-white p-7 flex flex-col justify-center gap-y-6 rounded-3xl shadow-md mt-56 
-              lg:absolute lg:top-56 lg:left-36  lg:w-[490px] lg:mb-9 lg:-mt-0 md:absolute md:top-0 md:left-14 md:w-[280px] md:h-[328px] md:mt-36 md:p-3 ">
-                <div className=" xs:p-0 mx-auto md:w-full md:max-w-md  md:flex flex-col-reverse ">
+              lg:absolute lg:top-56 lg:left-36  lg:w-[490px] lg:mb-9 lg:-mt-0 md:absolute md:top-0 md:left-14 md:w-[290px] md:h-[328px] md:mt-36 md:p-3 ">
+                <div className=" xs:p-0 mx-auto md:max-w-md  md:flex flex-col-reverse  md:m-2">
                   <div className="w-full  ">
                     <h1 className="font-bold text-center text-primary text-36px mt-5 md:text-xl">
                       Forgot Your Password?
@@ -95,7 +95,7 @@ export const ForgotPassword = () => {
         </div>
         
        </div> 
-       <div className="flex justify-center mt-44 gap-1 lg:mt-32 md:mt-14 md:ml-5  ">
+       <div className="flex justify-center mt-44 gap-1 lg:mt-32 md:mt-28 md:ml-2  ">
               <div className="w-[50px] h-[7px] rounded-2xl bg-[#1E9CEF] md:h-1.5 md:w-[40px]">   
               </div>
               <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5 md:w-[40px]">  

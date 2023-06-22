@@ -25,9 +25,10 @@ export default function EnableAccount() {
             <div className="relative mt-20  py-2 flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mr-auto mb-0 ml-auto max-w-7xl  w-full lg:-mt-1 md:mt-5">
               <div className=" ">
                 {/* Form Enable Your Account */}
-                <form className=" p-10 pb-10 bg-white  flex flex-col justify-center gap-y-6 rounded-3xl lg:w-[490px] lg:h-[430px] lg:pb-4  md:w-[300px] md:h-[320px]  md:p-3 md:pt-16  ">
-                  <div className=" xs:p-0 mx-auto md:w-full px-5  md:max-w-md  ">
-                      <h1 className="font-bold text-center text-[#1E9CEF] text-4xl mt-5 whitespace-nowrap max-sm:text-4xl lg:-mt-4 lg:text-4xl md:text-xl md:-mt-16">
+                <form className=" p-10 pb-10 bg-white  flex flex-col justify-center gap-y-6 rounded-3xl 
+                lg:w-[490px] lg:h-[370px] lg:pb-4  md:w-[300px] md:h-[270px]  md:p-3 md:-mt-28 ">
+                  <div className=" xs:p-0 mx-auto lg:-mt-6  md:w-full md:mt-16  md:max-w-md  ">
+                      <h1 className="font-bold text-center text-[#1E9CEF] text-4xl mt-5 whitespace-nowrap max-sm:text-4xl lg:text-4xl md:text-xl md:-mt-16">
                         Enable Your Account
                       </h1>
                       <p className="text-base text-[#9CA3AF] text-center pt-3 max-sm:text-base lg:text-xl md:text-sm">
@@ -35,13 +36,13 @@ export default function EnableAccount() {
                       </p>
                        {/* Email */}
                       <div className="py-4 max-sm:px-0 max-sm:py-3 container max-w-sm mx-auto md:max-w-lg lg:bg-white  h-54 rounded text-center">
-                        <div className="relative">
+                        <div className="relative md:ml-6">
                           <p className="text-left font-semibold pt-4 text-lg lg:text-2xl md:text-base md:pt-1">Email</p>
                           <input
                             placeholder="name@gmail.com"
                             type="text"
                             className="border text-[#9CA3AF] focus:outline-none h-[46px] border-[#1E9CEF] rounded-lg focus:border-primary w-full  mt-2  text-base block
-                            lg:text-xl lg:h-13 md:text-sm md:h-9"/>
+                            lg:text-xl lg:h-13 md:w-[225px] md:text-sm md:h-9"/>
                         </div>
 
                         {/* Continue */}

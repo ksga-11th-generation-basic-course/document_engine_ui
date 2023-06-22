@@ -88,8 +88,8 @@ export const AboutUs = () => {
         <h1 className="text-4xl text-center w-full pt-10 max-sm:pt-2 sm:text-20px text-accent font-bold">
           Our<span className="text-primary pl-2">Members </span>
         </h1>
-        <div className="Member flex justify-center items-center lg:inline-block lg:ml-24 lg:mt-14 sm:px-5 md:ml-0 md:mt-5">
-          <div className="text-22px space-y-7 md:text-12px">
+        <div className="Member flex justify-center items-center lg:inline-block lg:ml-24 lg:mt-14 md:ml-1 md:mt-5">
+          <div className="text-22px space-y-7 md:text-12px md:ml-4">
             <div className=" bg-[#EDF9FF] w-fit px-4 py-2 rounded-2xl space-x-2 ml-16 lg:ml-0">
               <span className="font-semibold">KHENG SOVANAK</span>
               <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold">
@@ -122,7 +122,7 @@ export const AboutUs = () => {
           <div className="px-10 lg:hidden">
             <img src={Member} alt="" className="" />
           </div>
-          <div className="text-20px space-y-8 lg:-mt-[280px] lg:ml-[350px] md:text-12px md:ml-44 md:-mt-[220px] lg:space-y-7">
+          <div className="text-20px space-y-8 lg:-mt-[280px] lg:ml-[350px] lg:space-y-7 md:text-12px md:ml-52 md:-mt-[220px] ">
             <div className=" bg-[#EDF9FF] w-fit px-4 py-2 rounded-2xl space-x-2">
             <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold">
                 <span>@</span>
