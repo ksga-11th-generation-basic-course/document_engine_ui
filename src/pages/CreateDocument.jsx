@@ -394,6 +394,7 @@ export const CreateDocument = () => {
           </div>
         )}
       </div>
+      <div className="mt-[75vh]"></div>
       {/* <div>
         <DocumentPermissionModal
           openPermission={openPermission}

@@ -140,7 +140,7 @@ export const VerifyToEnable = () => {
                           </div>
                           <div
                             id="otp"
-                            className="flex flex-row justify-center text-center px-2 mt-5"
+                            className="flex flex-row justify-center text-center mt-5"
                           >
                             <Formik>
                               <div className="form">{renderInput()}</div>

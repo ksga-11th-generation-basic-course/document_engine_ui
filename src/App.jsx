@@ -20,7 +20,7 @@ import { VerifyToEnable } from "./pages/VerifyToEnable";
 
 function App() {
   return (
-    <div className="App font-ssp">
+    <div className="App font-ssp bg-white">
       <Routes>
         <Route index element={<Landing />} />
         <Route path="/aboutus" element={<AboutUs />} />
@@ -30,41 +30,41 @@ function App() {
         <Route
           path="/forgotpassword"
           element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <ForgotPassword />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/verifyforgotpassword"
           element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <VerifyForgotPassword />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/resetforgotpassword"
           element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <ResetForgotPassword />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/enableaccount"
           element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <EnableAccount />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           }
         />
         <Route
           path="/verifyenableaccount"
           element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <VerifyToEnable />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           }
         />
 
@@ -72,9 +72,9 @@ function App() {
         <Route
           path="/verifyotp"
           element={
-            // <ProtectedRoute>
+            <ProtectedRoute>
               <VerifyOTP />
-            // </ProtectedRoute>
+            </ProtectedRoute>
           }
         />
 
@@ -82,33 +82,33 @@ function App() {
           <Route
             path="/dashboard"
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <Dashboard />
-              // </ProtectedRoute>
+              </ProtectedRoute>
             }
           />
           <Route
             path="/workspace"
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <Workspace />
-              // </ProtectedRoute>
+              </ProtectedRoute>
             }
           />
           <Route
             path="/document/:workspaceId"
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <Document />
-              // </ProtectedRoute>
+              </ProtectedRoute>
             }
           />
           <Route
             path="/createdocument/:documentId/:workspaceId"
             element={
-              // <ProtectedRoute>
+              <ProtectedRoute>
                 <CreateDocument />
-              // </ProtectedRoute>
+              </ProtectedRoute>
             }
           />
         </Route>

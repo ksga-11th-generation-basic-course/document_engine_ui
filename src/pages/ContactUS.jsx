@@ -10,11 +10,11 @@ export const ContactUs = () => {
   return (
     <div className="min-h-screen bg-white">
       <div>
-        <NavBar/>
+        <NavBar />
       </div>
 
       {/* grid 1 block title*/}
-      <div className=" grid grid-cols-1 lg:grid-cols-2   ">
+      <div className=" grid grid-cols-2 lg:grid-cols-2   ">
         <div className=" m-28">
           <div>
             <div className="bg-primary px-2 py-0.5  rounded-r-lg  w-40"></div>

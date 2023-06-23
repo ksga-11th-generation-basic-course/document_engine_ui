@@ -14,6 +14,7 @@ export const getAllDocumentInEachWorkspace = createAsyncThunk(
           },
         }
       );
+      console.log(response.data.payload)
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;

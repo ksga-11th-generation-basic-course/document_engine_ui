@@ -6,14 +6,14 @@ import { NewSidebar } from "../components/NewSidebar";
 
 export const Root = () => {
   return (
-    <div className="bg-white">
-      <div className="grid grid-cols-12">
-        <div className="col-span-2">
+    <div className="bg-white h-screen">
+      <div className="grid grid-cols-12 bg-white">
+        <div className="col-span-2 bg-white">
           <NewSidebar />
         </div>
-        <div className="col-span-10 shadow-xl">
+        <div className="col-span-10 bg-white shadow-xl">
           <NavBarProfile />
-          <div className="px-60">
+          <div className="px-60 bg-white">
             <Outlet />
           </div>
         </div>

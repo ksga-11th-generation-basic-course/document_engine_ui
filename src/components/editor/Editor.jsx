@@ -357,7 +357,7 @@ export const Editor = () => {
 
   return (
     <div>
-      <div className="absolute -top-14 -left-36">
+      <div className="absolute -top-14 -left-36 -z-0">
         {isLoading ? (
           <Button appearance="ghost" className="w-24" loading>
             Ghost

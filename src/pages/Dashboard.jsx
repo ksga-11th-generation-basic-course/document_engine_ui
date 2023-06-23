@@ -48,7 +48,7 @@ export const Dashboard = () => {
     dispatch(getDocumentRecently());
   }, []);
 
-  console.log(recentlies)
+  // console.log(recentlies)
 
   return (
     <div className="space-y-7 bg-white ">

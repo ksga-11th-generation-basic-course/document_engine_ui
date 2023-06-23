@@ -126,7 +126,7 @@ export const Document = () => {
   };
 
   return (
-    <div className="text-accent space-y-5">
+    <div className="text-accent space-y-5 mb-[30vh]">
       <div>
         <h1 className="font-bold text-accent text-44px">
           {workspace && workspace.workspaceName}
@@ -411,6 +411,7 @@ export const Document = () => {
           />
         )}
       </div>
+      
     </div>
   );
 };

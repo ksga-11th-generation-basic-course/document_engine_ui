@@ -69,7 +69,7 @@ export default {
         hover: "0 0.5px 5px 2px rgba(0, 0, 0, 0.1)",
         sidebar: "0px 10px 20px -5px rgba(0, 0, 0, 0.2)",
         tip: "0px 2px 2px rgba(0, 0, 0, 0.2)",
-        profile: "0px 1px 4px rgba(0, 0, 0, 0.1)",
+        profile: "1px 1px 4px rgba(0, 0, 0, 0.1)",
         logo: "0px 2px 4px rgba(0, 0, 0, 0.1)",
       },
     },

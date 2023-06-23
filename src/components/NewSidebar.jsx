@@ -31,7 +31,7 @@ export const NewSidebar = () => {
 
   const documents = useSelector((state) => state.document.documents);
 
-  console.log(documents);
+  // console.log(documents);
 
   const workspace = useSelector((state) => state.workspace.workspace);
 
@@ -97,7 +97,7 @@ export const NewSidebar = () => {
                   handleDocumentClick(page.documentId, page.workspaceId)
                 }
               >
-                {page?.title}
+                <span className="text-18px">{page?.title}</span>
                 {/* <div>
                 <ExpandOutlineIcon
                   style={{ width: "21px", height: "21px" }}
@@ -133,7 +133,7 @@ export const NewSidebar = () => {
                     )
                   }
                 >
-                  {document?.title}
+                  <span className="text-18px">{document?.title}</span>
                   <div>
                     <ExpandOutlineIcon
                       style={{ width: "21px", height: "21px" }}
@@ -153,7 +153,7 @@ export const NewSidebar = () => {
   }
 
   return (
-    <div className="bg-[#FAFAF9] flex items-center flex-col p-4 gap-y-1 h-screen">
+    <div className="bg-[#F7F7FA] flex items-center flex-col p-4 gap-y-1 h-screen">
       {/* <Toggle
         onChange={setExpanded}
         checked={expanded}
@@ -171,24 +171,32 @@ export const NewSidebar = () => {
             <Nav.Item
               eventKey="1"
               icon={<DashboardIcon style={{ width: "24px", height: "24px" }} />}
-              className="hover:rounded-lg text-accent font-semibold"
+              className="hover:rounded-lg text-accent font-semibold "
               onClick={() => navigate(`/dashboard`)}
             >
-              Home
+              <span className="text-18px">Home</span>
             </Nav.Item>
             <Nav.Item
               eventKey="2"
               icon={<PeoplesIcon style={{ width: "21px", height: "21px" }} />}
-              className="hover:rounded-lg text-accent font-semibold"
+              className="hover:rounded-lg text-accent font-semibold "
               onClick={() => navigate(`/workspace`)}
             >
-              Workspace
+              <span className="text-18px">Workspace</span>
             </Nav.Item>
+          </Nav>
+        </Sidenav.Body>
+      </Sidenav>
+      <Sidenav className="overflow-auto">
+        <Sidenav.Body>
+          <Nav>
             {param.workspaceId && (
               <Nav.Menu
                 placement="rightStart"
                 eventKey="3"
-                title={workspace?.workspaceName}
+                title={
+                  <span className="text-18px">{workspace?.workspaceName}</span>
+                }
                 icon={
                   <PeopleBranchIcon style={{ width: "21px", height: "21px" }} />
                 }
