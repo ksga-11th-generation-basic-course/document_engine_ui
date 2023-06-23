@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import logo from "../assets/landing_image/logo.svg";
-import { Link, NavLink, useParams } from "react-router-dom";
+import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
 import documentIcon from "../assets/document_image/documents.svg";
 import dropdowndocument from "../assets/document_image/dropdowndocuments.svg";
 import { useDispatch, useSelector } from "react-redux";
+import PlusIcon from '@rsuite/icons/Plus';
 import {
   createDocument,
   getAllDocumentInEachWorkspace,
@@ -26,6 +27,8 @@ export const SideBar = () => {
   const workspace = useSelector((state) => state.workspace.workspace);
 
   const dispatch = useDispatch();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getWorkspaceByWorkspaceId(param.workspaceId));
@@ -136,6 +139,7 @@ export const SideBar = () => {
                 documents.map((document, index) => (
                   <NavLink
                     to={`createdocument/${document.documentId}/${param.workspaceId}`}
+                    // onClick={() => window.location.reload()}
                     className={({ isActive }) =>
                       isActive
                         ? "flex items-center w-full text-primary bg-[#EFEFEF] gap-x-3 py-3 px-12 rounded-lg"

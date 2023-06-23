@@ -186,7 +186,6 @@ export const setAccessibility = async (
   workspaceId,
   accessibility
 ) => {
-  console.log(documentId);
   try {
     const response = await api.put(
       `documents/${documentId}/users/${userId}/${workspaceId}/accessibility/?accessibility=${accessibility}`,
@@ -273,6 +272,24 @@ export const searchDocumentByTagName = createAsyncThunk(
       return response.data.payload;
     } catch (error) {
       console.log(error);
+    }
+  }
+);
+
+export const getDocumentRecently = createAsyncThunk(
+  "/documents/recentlys",
+  async () => {
+    try {
+      const response = await api.get(`documents/recently`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
+      return response.data.payload;
+    } catch (error) {
+      console.log(error);
+      throw error.response.data.detail;
     }
   }
 );

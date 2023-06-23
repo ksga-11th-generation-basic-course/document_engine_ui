@@ -69,8 +69,6 @@ export const DocumentPermissionContent = ({
                 <p className="font-semibold text-accent">No Member</p>
               </div>
             )}
-
-
           </div>
         </div>
       </div>

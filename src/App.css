@@ -1,39 +1,70 @@
-.close_Account .text{
-    font-family: 'Open Sans', sans-serif;
+@import "rsuite/dist/rsuite.css";
+
+.close_Account .text {
+  font-family: "Open Sans", sans-serif;
+}
+
+.rs-sidenav-collapse-in .rs-sidenav-item {
+  border-radius: 8px;
+}
+
+.rs-dropdown-toggle.rs-dropdown-toggle-no-caret {
+  padding-right: 7px;
 }
 
 .spinner {
-    width: 56px;
-    height: 56px;
-    display: grid;
-    border: 4.5px solid #0000;
-    border-radius: 50%;
-    border-color: #dbdcef #0000;
-    animation: spinner-e04l1k 1s infinite linear;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  border: 4.5px solid #0000;
+  border-radius: 50%;
+  border-color: #dbdcef #0000;
+  animation: spinner-e04l1k 1s infinite linear;
+}
+
+.spinner::before,
+.spinner::after {
+  content: "";
+  grid-area: 1/1;
+  margin: 2.2px;
+  border: inherit;
+  border-radius: 50%;
+}
+
+.spinner::before {
+  border-color: #474bff #0000;
+  animation: inherit;
+  animation-duration: 0.5s;
+  animation-direction: reverse;
+}
+
+.spinner::after {
+  margin: 8.9px;
+}
+
+@keyframes spinner-e04l1k {
+  100% {
+    transform: rotate(1turn);
   }
-  
-  .spinner::before,
-  .spinner::after {
-    content: "";
-    grid-area: 1/1;
-    margin: 2.2px;
-    border: inherit;
-    border-radius: 50%;
-  }
-  
-  .spinner::before {
-    border-color: #474bff #0000;
-    animation: inherit;
-    animation-duration: 0.5s;
-    animation-direction: reverse;
-  }
-  
-  .spinner::after {
-    margin: 8.9px;
-  }
-  
-  @keyframes spinner-e04l1k {
-    100% {
-      transform: rotate(1turn);
-    }
-  }
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #1e9cef;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+/* ::-webkit-scrollbar-thumb:hover {
+  background: #088ae0;
+} */

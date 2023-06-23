@@ -8,6 +8,7 @@ import {
   setCurrentEditing,
   checkAccessibility,
   searchDocumentByTagName,
+  getDocumentRecently,
 } from "../../service/documentService/documentService";
 
 const initialState = {
@@ -19,6 +20,7 @@ const initialState = {
   loading: false,
   error: null,
   status: false,
+  recently: null,
   accessibility: [],
 };
 
@@ -30,7 +32,11 @@ const documentSlice = createSlice({
       state.documents.push(action.payload);
     },
     updateDocumentSuccess: (state, action) => {
-      state.documents.push(action.payload);
+      state.documents = state.documents.map((document) =>
+        document.documentId === action.payload.documentId
+          ? action.payload
+          : document
+      );
     },
     removeDocumentSuccess: (state, action) => {
       state.documents = state.documents.filter(
@@ -161,6 +167,20 @@ const documentSlice = createSlice({
     builder.addCase(searchDocumentByTagName.rejected, (state, action) => {
       state.loading = true;
       state.documents = null;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(getDocumentRecently.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getDocumentRecently.fulfilled, (state, action) => {
+      state.loading = false;
+      state.recently = action.payload;
+      state.error = null;
+    });
+    builder.addCase(getDocumentRecently.rejected, (state, action) => {
+      state.loading = true;
+      state.recently = null;
       state.error = action.error.message;
     });
   },

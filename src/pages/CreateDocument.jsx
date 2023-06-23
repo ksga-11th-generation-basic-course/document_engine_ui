@@ -69,7 +69,7 @@ export const CreateDocument = () => {
     dispatch(getTagByDocumentId(documentId));
     dispatch(getTagInEachWorkspace(workspaceId));
   }, []);
-  const [title, setTitle] = useState(document && document.title);
+  const [title, setTitle] = useState(document?.title);
 
   // let initialContent = [];
   // if (blockData != null) {
@@ -225,7 +225,8 @@ export const CreateDocument = () => {
               className="text-5xl p-0 text-black w-auto py-2 focus:ring-0 focus:border-0 border-0"
               type="text"
               onChange={handleInputChange}
-              value={title}
+              placeholder={title}
+              defaultValue={title}
             />
           </span>
           <div className="w-full grid grid-cols-12 gap-y-2">

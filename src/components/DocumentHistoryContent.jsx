@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import close from "../assets/dashboard_image/close.svg";
 import { DocumentHistoryCard } from "./card/DocumentHistoryCard";
+import { useDispatch, useSelector } from "react-redux";
+import { getHistoryByDocumentId } from "../redux/service/historyService/historyService";
 
 export const DocumentHistoryContent = ({
   openDocumentHistory,
   setOpenDocumentHistory,
+  documentId,
 }) => {
+  const { histories, loading, error } = useSelector((state) => state.history);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getHistoryByDocumentId(documentId));
+  }, []);
   return (
     <div>
       <div className="flex w-full justify-end">
@@ -22,10 +30,13 @@ export const DocumentHistoryContent = ({
           <p>Manage history of document and rollback to specific version</p>
         </div>
         <div>
-          <div className="border-[1px] px-6 py-3 rounded-lg space-y-3">
-            <DocumentHistoryCard editby={"Ruos Raksa"} time={"2:30 PM"} />
-            <DocumentHistoryCard editby={"Chhum Lyheng"} time={"May 5, 2:55 PM"} />
-            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
+          <div className="border-[1px] px-6 py-3 rounded-lg space-y-3 overflow-auto h-[600px]">
+            {histories && histories.map((history, index) => (
+              <DocumentHistoryCard
+                history={history}
+                key={index}
+              />
+            ))}
           </div>
         </div>
       </div>

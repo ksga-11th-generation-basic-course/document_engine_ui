@@ -80,9 +80,9 @@ export const Document = () => {
 
   const navigate = useNavigate();
 
-  useEffect(() => {
-    dispatch(searchDocumentByTagName({ workspaceId, selectedTags }));
-  }, [selectedTags]);
+  // useEffect(() => {
+  //   dispatch(searchDocumentByTagName({ workspaceId, selectedTags }));
+  // }, [selectedTags]);
 
   useEffect(() => {
     dispatch(getAllDocumentInEachWorkspace(workspaceId));

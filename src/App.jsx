@@ -104,7 +104,7 @@ function App() {
             }
           />
           <Route
-            path="/createdocument/:documentId/:workspaceId"
+            path="/createdocument/document/:documentId/workspace/:workspaceId"
             element={
               // <ProtectedRoute>
                 <CreateDocument />

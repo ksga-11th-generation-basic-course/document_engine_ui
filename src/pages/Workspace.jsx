@@ -108,6 +108,19 @@ export const Workspace = () => {
       setLoading(false);
     }, 2000);
   }, []);
+
+  useEffect(() => {
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  function handleScroll() {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 10) {
+      setSize((prevPage) => prevPage + 1);
+    }
+  }
+  
   return (
     <div className="text-accent space-y-5 sm:h-full bg-white">
       <div className="flex items-center gap-x-3 ">
@@ -293,7 +306,7 @@ export const Workspace = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-12 gap-5 ">
+      <div className="grid grid-cols-12 gap-5" onScroll={() => handleScroll()}>
         {loading ? (
           workspaces &&
           workspaces.map((workspace, index) => (
@@ -325,7 +338,7 @@ export const Workspace = () => {
           </div>
         )}
       </div>
-      <div className="flex justify-center items-center absolute left-[51%] bottom-6">
+      {/* <div className="flex justify-center items-center absolute left-[51%] bottom-6">
         <ThemeProvider theme={theme}>
           <Pagination
             count={5}
@@ -334,7 +347,7 @@ export const Workspace = () => {
             onChange={handlePageNoChange}
           />
         </ThemeProvider>
-      </div>
+      </div> */}
     </div>
   );
 };
