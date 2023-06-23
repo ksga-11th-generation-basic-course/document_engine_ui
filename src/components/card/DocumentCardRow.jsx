@@ -16,11 +16,12 @@ export const DocumentCardRow = ({
   editDate,
   status,
   documentId,
+  workspaceId
 }) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
   const handleNavigate = () => {
-    navigate(`/createdocument/${documentId}`);
+    navigate(`/createdocument/${documentId}/${workspaceId}`);
   };
   return (
     <div className="flex justify-between items-center gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:w-full md:-ml-5 md:px-4 md:w-[350px] md:py-2.5 md:pl-5">

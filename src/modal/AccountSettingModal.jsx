@@ -17,6 +17,7 @@ import { useDispatch } from "react-redux";
 import { storage } from "../firebase/firebase.utils";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
+import { Button } from "rsuite";
 
 export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
   const [visible, setVisible] = useState(false);
@@ -74,7 +75,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
         }}
       >
         <div className="w-[1200px] h-[840px] bg-white rounded-lg grid grid-cols-12">
-          <div className="col-span-3 bg-[#FAFAF9] rounded-lg space-y-5">
+          <div className="col-span-3 bg-[#FAFAF9] rounded-l-lg space-y-5">
             <div className="flex justify-center p-5 rounded-tl-lg shadow-md">
               <img src={logo} />
             </div>
@@ -102,7 +103,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
               </button>
             </div>
           </div>
-          <div className="col-span-9 p-3 shadow-xl">
+          <div className="col-span-9 p-3 shadow-xl bg-white rounded-r-lg">
             <div className="flex w-full justify-end">
               <button
                 type="button"
@@ -127,13 +128,19 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                       Your Profile
                     </p>
                   </div>
-                  <button
+                  <Button
                     onClick={handleEditProfileInformation}
+                    className="font-semibold text-white text-18px px-7 py-1 bg-primary rounded-lg"
+                  >
+                    Save
+                  </Button>
+                  {/* <button
+                    
                     type="button"
                     className="font-semibold text-white text-18px px-7 py-1 bg-primary rounded-lg"
                   >
                     Save
-                  </button>
+                  </button> */}
                 </div>
                 <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg">
                   <div className="w-full space-y-2">

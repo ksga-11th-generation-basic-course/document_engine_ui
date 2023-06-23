@@ -11,7 +11,6 @@ import {
   getTotalPage,
 } from "../redux/service/workspaceService/workspaceService";
 import { useDispatch, useSelector } from "react-redux";
-import { Dropdown } from "react-daisyui";
 // import { io } from "socket.io-client";
 import { removeWorkspaceServiceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
 import {
@@ -25,6 +24,7 @@ import {
 } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CustomSkeleton } from "../components/CustomSkeleton";
+import { Dropdown } from "rsuite";
 
 // const socket = io.connect("http://localhost:3002");
 
@@ -120,7 +120,7 @@ export const Workspace = () => {
       setSize((prevPage) => prevPage + 1);
     }
   }
-  
+
   return (
     <div className="text-accent space-y-5 sm:h-full bg-white">
       <div className="flex items-center gap-x-3 ">
@@ -134,7 +134,86 @@ export const Workspace = () => {
             <h4 className="font-semibold text-20px md:text-18px">Sort: </h4>
           </div>
           <div className="relative">
-            <Dropdown>
+            <Dropdown
+              title={
+                <span className="text-lg font-semibold text-accent">
+                  {status}
+                </span>
+              }
+              className="border-[1px] border-gray-200 rounded-lg"
+            >
+              <FormControl>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="All Workspaces"
+                  name="radio-buttons"
+                >
+                  <Dropdown.Item>
+                    <FormControlLabel
+                      value="A-Z"
+                      control={<Radio defaultChecked />}
+                      label="A-Z"
+                      className="h-5 w-full font-semibold"
+                      onClick={() => {
+                        setAsc(true);
+                        setDesc(false);
+                        setStatus("A-Z");
+                      }}
+                    />
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <FormControlLabel
+                      value="Z-A"
+                      control={<Radio />}
+                      label="Z-A"
+                      className="h-5 w-full font-semibold"
+                      onClick={() => {
+                        setAsc(false);
+                        setDesc(true);
+                        setStatus("Z-A");
+                      }}
+                    />
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <FormControlLabel
+                      value="THIS_WEEK"
+                      control={<Radio />}
+                      label="This week"
+                      className="h-5 w-full font-semibold"
+                      onClick={() => {
+                        setSortbydatetime("THIS_WEEK");
+                        setStatus("THIS_WEEK");
+                      }}
+                    />
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <FormControlLabel
+                      value="THIS_MONTH"
+                      control={<Radio />}
+                      label="This month"
+                      className="h-5 w-full font-semibold"
+                      onClick={() => {
+                        setSortbydatetime("THIS_MONTH");
+                        setStatus("THIS_MONTH");
+                      }}
+                    />
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <FormControlLabel
+                      value="THIS_YEAR"
+                      control={<Radio />}
+                      label="This year"
+                      className="h-5 w-full font-semibold"
+                      onClick={() => {
+                        setSortbydatetime("THIS_YEAR");
+                        setStatus("THIS_YEAR");
+                      }}
+                    />
+                  </Dropdown.Item>
+                </RadioGroup>
+              </FormControl>
+            </Dropdown>
+            {/* <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
                   <p className="text-18px text-black">{status}</p>
@@ -213,7 +292,7 @@ export const Workspace = () => {
                   </RadioGroup>
                 </FormControl>
               </Dropdown.Menu>
-            </Dropdown>
+            </Dropdown> */}
           </div>
         </div>
         <div className="col-span-4 md:col-span-6 sm:grid-cols-1 flex items-center gap-x-5 h-11">
@@ -222,7 +301,68 @@ export const Workspace = () => {
             <h4 className="font-semibold text-20px md:text-18px">Filter: </h4>
           </div>
           <div className="relative">
-            <Dropdown>
+            <Dropdown
+              title={
+                <span className="text-lg font-semibold text-accent">
+                  {filterStatus}
+                </span>
+              }
+              className="border-[1px] border-gray-200 rounded-lg"
+            >
+              <FormControl>
+                <RadioGroup
+                  aria-labelledby="demo-radio-buttons-group-label"
+                  defaultValue="All Workspaces"
+                  name="radio-buttons-group"
+                >
+                  <Dropdown.Item>
+                    <FormControlLabel
+                      value="All Workspaces"
+                      control={<Radio defaultChecked />}
+                      label="All Workspaces"
+                      className="h-5 w-full"
+                      onClick={() => {
+                        dispatch(
+                          getAllWorkspace({
+                            no: no,
+                            size: size,
+                            asc: asc,
+                            desc: desc,
+                            sortbydatetime: sortbydatetime,
+                          })
+                        );
+                        setFilterStatus("All Workspaces");
+                      }}
+                    />
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <FormControlLabel
+                      value={true}
+                      control={<Radio />}
+                      label="My Workspaces"
+                      className="h-5 w-full"
+                      onClick={() => {
+                        handleFilterWorkspace(true);
+                        setFilterStatus("My Workspaces");
+                      }}
+                    />
+                  </Dropdown.Item>
+                  <Dropdown.Item>
+                    <FormControlLabel
+                      value={false}
+                      control={<Radio />}
+                      label="Other Workspaces"
+                      className="h-5 w-full"
+                      onClick={() => {
+                        handleFilterWorkspace(false);
+                        setFilterStatus("Other Workspaces");
+                      }}
+                    />
+                  </Dropdown.Item>
+                </RadioGroup>
+              </FormControl>
+            </Dropdown>
+            {/* <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
                   <p className="text-18px text-black">{filterStatus}</p>
@@ -283,7 +423,7 @@ export const Workspace = () => {
                   </RadioGroup>
                 </FormControl>
               </Dropdown.Menu>
-            </Dropdown>
+            </Dropdown> */}
           </div>
         </div>
         <div className="md:col-span-1 col-span-4 h-11">

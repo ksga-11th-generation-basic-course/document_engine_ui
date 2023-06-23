@@ -31,18 +31,32 @@ export const NewSidebar = () => {
 
   const documents = useSelector((state) => state.document.documents);
 
+  console.log(documents);
+
   const workspace = useSelector((state) => state.workspace.workspace);
+
+  const [no, setNo] = useState(1);
+
+  const [size, setSize] = useState(1000);
+
+  const [sortbydatetime, setSortbydatetime] = useState("DEFAULT");
+
+  const [clicked, setClicked] = useState(false);
 
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
 
+  let workspaceId = param?.workspaceId;
+
   useEffect(() => {
     dispatch(getWorkspaceByWorkspaceId(param.workspaceId));
-    dispatch(getAllDocumentInEachWorkspace(param.workspaceId));
-  }, []);
+    dispatch(
+      getAllDocumentInEachWorkspace({ workspaceId, no, size, sortbydatetime })
+    );
+  }, [dispatch, no, size, sortbydatetime]);
 
-  console.log(documents)
+  // console.log(documents);
 
   const handleCreatePage = async (documentId) => {
     const now = new Date();
@@ -58,12 +72,85 @@ export const NewSidebar = () => {
   };
 
   const handleDocumentClick = (documentId, workspaceId) => {
-    navigate(
-      `/createdocument/document/${documentId}/workspace/${workspaceId}`,
-      { replace: true }
-    );
+    navigate(`/createdocument/${documentId}/${workspaceId}`, { replace: true });
     // window.location.reload();
   };
+
+  const panelStyles = {
+    padding: "15px 85px",
+  };
+
+  function renderSubpages(pages, level = 1, documentIndex) {
+    // console.log(documentIndex)
+    return (
+      <div style={{ marginLeft: `${level}px` }}>
+        {pages.map((page, pageIndex) => (
+          <div key={pageIndex}>
+            <div>
+              <Nav.Item
+                style={panelStyles}
+                key={pageIndex}
+                eventKey={`4-${documentIndex + 1}-${pageIndex + 1}`}
+                icon={<PageIcon style={{ width: "21px", height: "21px" }} />}
+                className="hover:rounded-lg text-accent font-semibold text-15px flex items-center relative"
+                onClick={() =>
+                  handleDocumentClick(page.documentId, page.workspaceId)
+                }
+              >
+                {page?.title}
+                {/* <div>
+                <ExpandOutlineIcon
+                  style={{ width: "21px", height: "21px" }}
+                  className="absolute right-5 top-4"
+                  onClick={() => handleCreatePage(page?.documentId)}
+                />
+              </div> */}
+              </Nav.Item>
+              {page.pages && renderSubpages(page.pages, level + 1)}
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
+  function renderPages(documents) {
+    return (
+      <div>
+        {documents.map((document, documentIndex) => (
+          <div key={documentIndex}>
+            {document?.pageId === null ? (
+              <div>
+                <Nav.Item
+                  key={documentIndex}
+                  eventKey={`3-${documentIndex + 1}`}
+                  icon={<PageIcon style={{ width: "21px", height: "21px" }} />}
+                  className="hover:rounded-lg text-accent font-semibold text-15px flex items-center relative"
+                  onClick={() =>
+                    handleDocumentClick(
+                      document.documentId,
+                      document.workspaceId
+                    )
+                  }
+                >
+                  {document?.title}
+                  <div>
+                    <ExpandOutlineIcon
+                      style={{ width: "21px", height: "21px" }}
+                      className="absolute right-5 top-4"
+                      onClick={() => handleCreatePage(document?.documentId)}
+                    />
+                  </div>
+                </Nav.Item>
+                {document.pages &&
+                  renderSubpages(document.pages, documentIndex)}
+              </div>
+            ) : null}
+          </div>
+        ))}
+      </div>
+    );
+  }
 
   return (
     <div className="bg-[#FAFAF9] flex items-center flex-col p-4 gap-y-1 h-screen">
@@ -107,31 +194,38 @@ export const NewSidebar = () => {
                 }
                 className="text-accent font-semibold"
               >
-                {documents &&
+                {/* {documents &&
                   documents.map((document, index) => (
-                    <Nav.Item
-                      key={index}
-                      eventKey={`3-${index + 1}`}
-                      icon={
-                        <PageIcon style={{ width: "21px", height: "21px" }} />
-                      }
-                      className="hover:rounded-lg text-accent font-semibold text-15px flex items-center relative"
-                      onClick={() =>
-                        handleDocumentClick(
-                          document.documentId,
-                          document.workspaceId
-                        )
-                      }
-                    >
-                      {document?.title}
-                      <div>
-                        <ExpandOutlineIcon
-                          style={{ width: "21px", height: "21px" }}
-                          className="absolute right-5 top-3"
-                        />
-                      </div>
-                    </Nav.Item>
-                  ))}
+                    <div>
+                      <Nav.Item
+                        key={index}
+                        eventKey={`3-${index + 1}`}
+                        icon={
+                          <PageIcon style={{ width: "21px", height: "21px" }} />
+                        }
+                        className="hover:rounded-lg text-accent font-semibold text-15px flex items-center relative"
+                        onClick={() =>
+                          handleDocumentClick(
+                            document.documentId,
+                            document.workspaceId
+                          )
+                        }
+                      >
+                        {document?.title}
+                        <div>
+                          <ExpandOutlineIcon
+                            style={{ width: "21px", height: "21px" }}
+                            className="absolute right-5 top-4"
+                            onClick={() =>
+                              handleCreatePage(document?.documentId)
+                            }
+                          />
+                        </div>
+                      </Nav.Item>
+                      {document.pages && renderSubpages(document.pages)}
+                    </div>
+                  ))} */}
+                {documents && renderPages(documents)}
               </Nav.Menu>
             )}
           </Nav>

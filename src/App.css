@@ -12,6 +12,10 @@
   padding-right: 7px;
 }
 
+.dropdown-width {
+  width: 200px;
+}
+
 .spinner {
   width: 56px;
   height: 56px;

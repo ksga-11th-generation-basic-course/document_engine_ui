@@ -65,6 +65,7 @@ export const Dashboard = () => {
             <div key={index}>
               <DocumentCardRow
                 documentId={recently.documentId}
+                workspaceId={recently.workspaceId}
                 documentname={recently.title}
                 editDate={recently.editDate}
                 status={recently.status}

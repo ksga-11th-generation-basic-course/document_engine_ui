@@ -6,6 +6,7 @@ import join from "../assets/dashboard_image/join.svg";
 import { joinWorkspace } from "../redux/service/workspaceService/workspaceService";
 import { useDispatch } from "react-redux";
 import { joinWorkspaceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
+import { Button } from "rsuite";
 
 export const JoinWorkspaceModal = ({ visible, setVisible }) => {
   const [workspaceCode, setWorkspaceCode] = useState();
@@ -25,8 +26,8 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
 
   return (
     <div className="w-full ">
-      <button
-        className="flex justify-center items-center text-16px font-semibold gap-x-2 border-[1px] border-accent px-5 py-2 rounded-lg text-primary md:px-2.5 md:py-1.5 md:text-12px"
+      <Button
+        className="flex justify-center items-center text-16px font-semibold gap-x-2 border-solid border-[1px] border-primary px-5 py-3 rounded-lg text-primary md:px-2.5 md:py-1.5 md:text-12px"
         onClick={() => {
           setVisible(!visible);
           document.getElementById("joinWorkspaceByWorkspaceCode").reset();
@@ -34,7 +35,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
       >
         <img src={join} className="w-4 h-4 md:w-3.5" />
         Join
-      </button>
+      </Button>
       <Modal
         open={visible}
         onClickBackdrop={() => {
@@ -78,17 +79,19 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
                 className="px-10 py-3 md:px-5 border-[1px] rounded-lg"
                 onClick={() => {
                   setVisible(!visible);
-                  document.getElementById("joinWorkspaceByWorkspaceCode").reset();
+                  document
+                    .getElementById("joinWorkspaceByWorkspaceCode")
+                    .reset();
                 }}
               >
                 Cancel
               </button>
-              <button
-                className="bg-primary text-white  px-10 py-3 rounded-lg"
+              <Button
+                className="bg-primary text-16px font-semibold text-white  px-10 py-3 rounded-lg"
                 onClick={handleJoinWorkspace}
               >
                 Join
-              </button>
+              </Button>
             </div>
           </div>
         </div>

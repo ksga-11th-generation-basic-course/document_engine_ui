@@ -11,6 +11,7 @@ import { storage } from "../firebase/firebase.utils";
 import { v4 as uuidv4 } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Button } from "rsuite";
 
 export const CreateWorkspaceModal = ({ visible, setVisible }) => {
   const [workspaceName, setWorkspaceName] = useState("");
@@ -70,12 +71,18 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
 
   return (
     <div className="w-full">
-      <button
+      <Button
         onClick={() => setVisible(!visible)}
         className="bg-primary w-full py-3 text-white rounded-lg text-16px font-semibold mt-5"
       >
         New Workspace
-      </button>
+      </Button>
+      {/* <button
+        onClick={() => setVisible(!visible)}
+        className="bg-primary w-full py-3 text-white rounded-lg text-16px font-semibold mt-5"
+      >
+        New Workspace
+      </button> */}
       <Modal open={visible} onClickBackdrop={() => setVisible(!visible)}>
         <div className="w-[540px] bg-white rounded-lg p-3">
           <div className="flex justify-end">
@@ -133,13 +140,19 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                   >
                     Cancel
                   </button>
-                  <button
+                  <Button
+                    className="bg-primary text-white text-16px px-10 py-3 rounded-lg"
+                    onClick={handleSubmit}
+                  >
+                    Create
+                  </Button>
+                  {/* <button
                     className="bg-primary text-white  px-10 py-3 rounded-lg"
                     type="button"
                     onClick={handleSubmit}
                   >
                     Create
-                  </button>
+                  </button> */}
                 </div>
               </div>
             </div>

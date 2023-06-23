@@ -84,14 +84,22 @@ export const Document = () => {
   //   dispatch(searchDocumentByTagName({ workspaceId, selectedTags }));
   // }, [selectedTags]);
 
+  const [no, setNo] = useState(1);
+
+  const [size, setSize] = useState(1000);
+
+  const [sortbydatetime, setSortbydatetime] = useState("DEFAULT");
+
   useEffect(() => {
-    dispatch(getAllDocumentInEachWorkspace(workspaceId));
+    dispatch(
+      getAllDocumentInEachWorkspace({ workspaceId, no, size, sortbydatetime })
+    );
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
     dispatch(getCurrentUser());
     dispatch(checkAccessibility(workspaceId));
     dispatch(checkIsOwnerWorkspaceCurrent(workspaceId));
     dispatch(getTagInEachWorkspace(workspaceId));
-  }, []);
+  }, [dispatch, no, size, sortbydatetime]);
 
   const now = new Date();
   const currentDateTime = now.toISOString();
@@ -377,11 +385,7 @@ export const Document = () => {
               })
               .map((document, index) => (
                 <div className="col-span-4" key={index}>
-                  <DocumentList
-                    title={document.title}
-                    status={true}
-                    editdate={"Apr 24 12:15 PM"}
-                  />
+                  <DocumentList document={document} />
                 </div>
               ))
           ) : (

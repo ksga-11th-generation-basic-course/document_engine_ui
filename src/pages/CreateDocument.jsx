@@ -59,17 +59,19 @@ export const CreateDocument = () => {
   const workspaceId = param.workspaceId;
   const dispatch = useDispatch();
 
+  // console.log(documentId);
+
   // console.log(blockData)
 
   useEffect(() => {
-    dispatch(getWorkspaceName(documentId));
     dispatch(getDocumentByDocumentId(documentId));
+    dispatch(getWorkspaceName(documentId));
     dispatch(getUsername(documentId));
     dispatch(getBlockBydoucmentId(documentId));
     dispatch(getTagByDocumentId(documentId));
     dispatch(getTagInEachWorkspace(workspaceId));
-  }, []);
-  const [title, setTitle] = useState(document?.title);
+  }, [documentId, workspaceId]);
+  const [title, setTitle] = useState();
 
   // let initialContent = [];
   // if (blockData != null) {
@@ -165,9 +167,18 @@ export const CreateDocument = () => {
     }
     dispatch(addTagToDocument({ tagId, documentId, workspaceId }));
   };
+  useEffect(() => {
+    setTitle(document?.title);
+    return () => {
+      setTitle("");
+    };
+  }, [document]);
+
+  // console.log("Title : ", title);
+  // console.log("title Document  : ", document);
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
       {/* <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
         <div className="grid grid-rows-1 gap-3">
           <button
@@ -216,7 +227,7 @@ export const CreateDocument = () => {
               </li>
               <li className="flex items-center gap-x-2">
                 <img src={doc} />
-                <Link className="text-primary">{title}</Link>
+                <Link className="text-primary">{title ? title : "Loading..."}</Link>
               </li>
             </ol>
           </nav>
@@ -225,8 +236,9 @@ export const CreateDocument = () => {
               className="text-5xl p-0 text-black w-auto py-2 focus:ring-0 focus:border-0 border-0"
               type="text"
               onChange={handleInputChange}
-              placeholder={title}
-              defaultValue={title}
+              placeholder={document?.title}
+              // defaultValue={document?.title}
+              value={title ? title : "Loading..."}
             />
           </span>
           <div className="w-full grid grid-cols-12 gap-y-2">

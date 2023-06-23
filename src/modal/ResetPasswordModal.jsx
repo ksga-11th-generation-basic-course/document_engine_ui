@@ -5,6 +5,7 @@ import resetpasswordIcon from "../assets/dashboard_image/resetpassword.svg";
 import { changePassword } from "../redux/service/userService/userService";
 import { useDispatch } from "react-redux";
 import { changePasswordSuccess } from "../redux/slice/userSlice/userSlice";
+import { Button } from "rsuite";
 
 export const ResetPasswordModal = ({ resetPassword, setResetPassword }) => {
   const dispatch = useDispatch();
@@ -30,13 +31,19 @@ export const ResetPasswordModal = ({ resetPassword, setResetPassword }) => {
     <div className="w-full">
       <Modal
         open={resetPassword}
-        onClickBackdrop={() => {setResetPassword(!resetPassword), document.getElementById("changpassword").reset();}}
+        onClickBackdrop={() => {
+          setResetPassword(!resetPassword),
+            document.getElementById("changpassword").reset();
+        }}
       >
         <div className="w-[540px] bg-white rounded-lg p-3">
           <div className="flex justify-end">
             <button
               type="button"
-              onClick={() => {setResetPassword(!resetPassword), document.getElementById("changpassword").reset();}}
+              onClick={() => {
+                setResetPassword(!resetPassword),
+                  document.getElementById("changpassword").reset();
+              }}
             >
               <img src={close} />
             </button>
@@ -48,7 +55,10 @@ export const ResetPasswordModal = ({ resetPassword, setResetPassword }) => {
             <h1 className="font-bold text-24px text-primary text-center">
               Reset Account Password
             </h1>
-            <form className="flex flex-col gap-y-2 font-semibold text-18px" id="changpassword">
+            <form
+              className="flex flex-col gap-y-2 font-semibold text-18px"
+              id="changpassword"
+            >
               <p>Current Password</p>
               <input
                 type="password"
@@ -72,12 +82,18 @@ export const ResetPasswordModal = ({ resetPassword, setResetPassword }) => {
               />
             </form>
             <div className="text-16px font-semibold pb-5 pt-2 w-full">
-              <button
+              <Button
+                className="bg-primary text-16px font-semibold text-white w-full py-3 rounded-lg"
+                onClick={handleChangePassword}
+              >
+                Save Change
+              </Button>
+              {/* <button
                 className="bg-primary text-white w-full py-3 rounded-lg"
                 onClick={handleChangePassword}
               >
                 Save Change
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
