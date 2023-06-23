@@ -217,7 +217,7 @@ export const EnableAccVerifyCode = () => {
           </div>          
         </form>
         <div>
-        <img className="w-[600px] h-[500.57px]  max-sm:hidden lg:w-[140px] lg:hidden lg:mt-14 md:hidden" src={VerifyR} />
+        <img className="w-[600px] h-[500.57px] mt-4  max-sm:hidden lg:w-[140px] lg:hidden lg:mt-14 md:hidden" src={VerifyR} />
         </div>       
       </div>  
     </div>           
