@@ -22,9 +22,21 @@ export const DocumentHistoryContent = ({
           <p>Manage history of document and rollback to specific version</p>
         </div>
         <div>
-          <div className="border-[1px] px-6 py-3 rounded-lg space-y-3">
+          <div className="border-[1px] px-6 py-3 rounded-lg space-y-3 overflow-auto h-[600px]">
             <DocumentHistoryCard editby={"Ruos Raksa"} time={"2:30 PM"} />
             <DocumentHistoryCard editby={"Chhum Lyheng"} time={"May 5, 2:55 PM"} />
+            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
+            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
+            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
+            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
+            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
+            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
+            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
+            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
+            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
+            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
+            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
+            <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
             <DocumentHistoryCard editby={"Yan Sovanseyha"} time={"May 02, 7:37 AM"} />
           </div>
         </div>
