@@ -19,6 +19,8 @@ import {
   getMemberInEachDocument,
 } from "../../redux/service/documentService/documentService";
 import { duplicateDocumentSuccess } from "../../redux/slice/documentSlice/documentSlice";
+import { getBlockBydoucmentId } from "../../redux/service/blockService/blockService";
+import { Editor } from "../editor/Editor";
 
 export const DocumentCard = ({ document, workspaceId }) => {
   const navigate = useNavigate();
@@ -27,10 +29,12 @@ export const DocumentCard = ({ document, workspaceId }) => {
   const [deleteDocument, setDeleteDocument] = useState(false);
   const [documentId, setdocumentId] = useState();
   const { members } = useSelector((state) => state.document);
+  const blockData = useSelector((state) => state.block.blocks);
 
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getMemberInEachDocument(document.documentId));
+    dispatch(getBlockBydoucmentId(document.documentId));
   }, []);
 
   const handleNavigate = () => {
@@ -75,8 +79,16 @@ export const DocumentCard = ({ document, workspaceId }) => {
           ) : null}
         </div>
         <div>
-          <h3 className="font-semibold">{document.title}</h3>
-          <p className="text-sm h-[120px]"></p>
+          <p className="text-sm h-[120px] justify-center items-center flex">
+          <iframe src={`/createdocument/${document.documentId}/${workspaceId}`}
+            frameborder="0" 
+            marginheight="0" 
+            marginwidth="0" 
+            width="100%" 
+            height="100%" 
+            scrolling="auto">
+  </iframe>
+          </p>
         </div>
       </div>
       <div className="border-[1px]"></div>

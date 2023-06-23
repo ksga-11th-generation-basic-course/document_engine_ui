@@ -3,10 +3,10 @@ import { api } from "../../../utils/constant";
 
 export const getAllDocumentInEachWorkspace = createAsyncThunk(
   `documents`,
-  async (workspaceId) => {
+  async (body) => {
     try {
       const response = await api.get(
-        `documents/workspaces/${workspaceId}?pageNo=1&pageSize=5&eSortCurrentDateTime=DEFAULT`,
+        `documents/workspaces/${body.workspaceId}?pageNo=1&pageSize=${body.page}&eSortCurrentDateTime=DEFAULT`,
         {
           headers: {
             Authorization: "Bearer " + localStorage.getItem("token"),

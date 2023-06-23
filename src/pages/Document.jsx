@@ -70,6 +70,9 @@ export const Document = () => {
 
   const workspaceId = param.workspaceId;
 
+  const [page, setPage] = useState(6);
+
+
   // const isOwner = param.isOwner;
 
   const [searchTerm, setSearchTerm] = useState("");
@@ -80,18 +83,20 @@ export const Document = () => {
 
   const navigate = useNavigate();
 
+  const [load, setLoad] = useState(false);
+
   useEffect(() => {
     dispatch(searchDocumentByTagName({ workspaceId, selectedTags }));
   }, [selectedTags]);
 
   useEffect(() => {
-    dispatch(getAllDocumentInEachWorkspace(workspaceId));
+    dispatch(getAllDocumentInEachWorkspace({workspaceId,page}));
     dispatch(getWorkspaceByWorkspaceId(workspaceId));
     dispatch(getCurrentUser());
     dispatch(checkAccessibility(workspaceId));
     dispatch(checkIsOwnerWorkspaceCurrent(workspaceId));
     dispatch(getTagInEachWorkspace(workspaceId));
-  }, []);
+  }, [page]);
 
   const now = new Date();
   const currentDateTime = now.toISOString();
@@ -116,6 +121,19 @@ export const Document = () => {
       theme: "light",
     });
   };
+
+  useEffect(() => {
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  function handleScroll() {
+    const { scrollTop, clientHeight, scrollHeight } = document.documentElement;
+    if (scrollTop + clientHeight >= scrollHeight - 20) {
+      setPage((prevPage) => prevPage + 2);
+    }
+  }
+ 
 
   return (
     <div className="text-accent space-y-5">
@@ -334,7 +352,7 @@ export const Document = () => {
       </div>
 
       {openGrid ? (
-        <div className="grid grid-cols-12 gap-8">
+        <div onScroll={()=>handleScroll()} className="grid grid-cols-12 gap-8">
           {documents === null ? null : documents?.length > 0 ? (
             documents
               .filter((document) => {

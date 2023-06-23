@@ -111,8 +111,8 @@ export const NavBarProfile = () => {
       <div>
         <JoinWorkspaceModal visible={visible} setVisible={setVisible} />
       </div>
-      <div className="relative">
-        <div className="relative inline-block">
+      <div className="">
+        <div className="">
           <button
             className="overflow-hidden w-11 h-11 rounded-full"
             onClick={() => setOpen(!open)}
