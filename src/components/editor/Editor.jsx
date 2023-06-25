@@ -31,7 +31,7 @@ import { RiImage2Fill } from "react-icons/ri";
 import { RiChatQuoteFill } from "react-icons/ri";
 import { Button, ButtonToolbar, Loader, Placeholder } from "rsuite";
 
-export const Editor = () => {
+export const Editor = ({ loading }) => {
   const QuoteBlock = createReactBlockSpec({
     type: "quote",
     propSchema: {
@@ -251,8 +251,6 @@ export const Editor = () => {
 
   const sortedInitialContent = [...blockData].sort((a, b) => a.order - b.order);
 
-  // console.log("adwawd", sortedInitialContent)
-  // console.log("block", initialContent);
   const [timerId, setTimerId] = useState(null);
 
   function handleInputChange(event) {
@@ -269,11 +267,10 @@ export const Editor = () => {
   const [loadingPlaceHolder, setLoadingPlaceHolder] = useState(true);
   setTimeout(() => {
     setLoadingPlaceHolder(false);
-  }, 2000);
+  }, 4000);
 
   // Create Block
   const handleCreateBlock = async () => {
-    setIsLoading(true);
     for (let index = 0; index < blocks.length; index++) {
       const text = blocks[index];
       const types = blocks.filter((obj) => obj.type).map((obj) => obj.type);
@@ -304,10 +301,24 @@ export const Editor = () => {
       const blockId = await deleteBlock(val.blockId, param.documentId);
       dispatch(deleteBlockSuccess(blockId));
     });
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    setIsLoading(false);
   };
+
+  const [inputValue, setInputValue] = useState();
+
+  useEffect(() => {
+    setIsLoading(loading);
+  }, [loading]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timeoutId = setTimeout(() => {
+      handleCreateBlock();
+    }, 1000);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [inputValue]);
 
   //Editor
   const editor = useBlockNote({
@@ -315,22 +326,8 @@ export const Editor = () => {
       return block.content;
     }),
     onEditorContentChange: (editor) => {
-      oninput = () => handleInputChange();
       setBlocks(editor.topLevelBlocks);
-      for (
-        let indexOfTopLevelBlocks = 0;
-        indexOfTopLevelBlocks < editor.topLevelBlocks.length;
-        indexOfTopLevelBlocks++
-      ) {
-        const element = editor.topLevelBlocks[indexOfTopLevelBlocks];
-        for (
-          let indexOfContent = 0;
-          indexOfContent < element.content.length;
-          indexOfContent++
-        ) {
-          const text = element.content[0].text;
-        }
-      }
+      setInputValue(editor.topLevelBlocks);
     },
     blockSchema: {
       // Adds all default blocks.
@@ -365,13 +362,12 @@ export const Editor = () => {
         ) : (
           <ButtonToolbar>
             <Button
-              onClick={handleCreateBlock}
               disabled={isLoading}
               className="w-24"
               appearance="ghost"
               active
             >
-              Save
+              Saved
             </Button>
           </ButtonToolbar>
         )}

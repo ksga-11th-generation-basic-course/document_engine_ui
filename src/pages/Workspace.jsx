@@ -13,18 +13,27 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 // import { io } from "socket.io-client";
 import { removeWorkspaceServiceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
+// import {
+//   Box,
+//   FormControl,
+//   FormControlLabel,
+//   Pagination,
+//   Radio,
+//   RadioGroup,
+//   Skeleton,
+// } from "@mui/material";
+import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CustomSkeleton } from "../components/CustomSkeleton";
+import "primereact/resources/themes/lara-light-indigo/theme.css";
+import "primereact/resources/primereact.min.css";
 import {
-  Box,
   FormControl,
   FormControlLabel,
   Pagination,
   Radio,
   RadioGroup,
-  Skeleton,
 } from "@mui/material";
-import { ThemeProvider, createTheme } from "@mui/material/styles";
-import { CustomSkeleton } from "../components/CustomSkeleton";
-import { Dropdown } from "rsuite";
+import { Dropdown } from "react-daisyui";
 
 // const socket = io.connect("http://localhost:3002");
 
@@ -38,6 +47,8 @@ const theme = createTheme({
 });
 
 export const Workspace = () => {
+  const [visible, setVisible] = useState(false);
+
   const [openSearch, setOpenSearch] = useState(false);
 
   const { workspaces, totalPage } = useSelector((state) => state.workspace);
@@ -134,7 +145,7 @@ export const Workspace = () => {
             <h4 className="font-semibold text-20px md:text-18px">Sort: </h4>
           </div>
           <div className="relative">
-            <Dropdown
+            {/* <Dropdown
               title={
                 <span className="text-lg font-semibold text-accent">
                   {status}
@@ -212,8 +223,8 @@ export const Workspace = () => {
                   </Dropdown.Item>
                 </RadioGroup>
               </FormControl>
-            </Dropdown>
-            {/* <Dropdown>
+            </Dropdown> */}
+            <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
                   <p className="text-18px text-black">{status}</p>
@@ -292,7 +303,7 @@ export const Workspace = () => {
                   </RadioGroup>
                 </FormControl>
               </Dropdown.Menu>
-            </Dropdown> */}
+            </Dropdown>
           </div>
         </div>
         <div className="col-span-4 md:col-span-6 sm:grid-cols-1 flex items-center gap-x-5 h-11">
@@ -301,7 +312,7 @@ export const Workspace = () => {
             <h4 className="font-semibold text-20px md:text-18px">Filter: </h4>
           </div>
           <div className="relative">
-            <Dropdown
+            {/* <Dropdown
               title={
                 <span className="text-lg font-semibold text-accent">
                   {filterStatus}
@@ -361,8 +372,8 @@ export const Workspace = () => {
                   </Dropdown.Item>
                 </RadioGroup>
               </FormControl>
-            </Dropdown>
-            {/* <Dropdown>
+            </Dropdown> */}
+            <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
                   <p className="text-18px text-black">{filterStatus}</p>
@@ -423,7 +434,7 @@ export const Workspace = () => {
                   </RadioGroup>
                 </FormControl>
               </Dropdown.Menu>
-            </Dropdown> */}
+            </Dropdown>
           </div>
         </div>
         <div className="md:col-span-1 col-span-4 h-11">
@@ -478,7 +489,7 @@ export const Workspace = () => {
           </div>
         )}
       </div>
-      {/* <div className="flex justify-center items-center absolute left-[51%] bottom-6">
+      <div className="flex justify-center items-center absolute left-[51%] bottom-6">
         <ThemeProvider theme={theme}>
           <Pagination
             count={5}
@@ -487,7 +498,7 @@ export const Workspace = () => {
             onChange={handlePageNoChange}
           />
         </ThemeProvider>
-      </div> */}
+      </div>
     </div>
   );
 };

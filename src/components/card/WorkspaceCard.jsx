@@ -8,11 +8,26 @@ import { WorkspaceSettingModal } from "../../modal/WorkspaceSettingModal";
 import { LeaveWorkspaceModal } from "../../modal/LeaveWorkspaceModal";
 import { Dropdown } from "rsuite";
 
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Fade } from "@mui/material";
+
 export const WorkspaceCard = ({ workspace }) => {
   const [workspaceId, setWorkspaceId] = useState();
   const [removeWorkspace, setRemoveWorkspace] = useState(false);
   const [openWorkspaceSetting, setOpenWorkspaceSetting] = useState(false);
   const [workspaceCode, setWorkspaceCode] = useState();
+
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const navigate = useNavigate();
 
@@ -23,12 +38,14 @@ export const WorkspaceCard = ({ workspace }) => {
   const handleRemoveWorkspace = () => {
     setRemoveWorkspace(!removeWorkspace);
     setWorkspaceId(workspace.workspaceId);
+    handleClose();
   };
 
   const handleSettingWorkspace = () => {
     setOpenWorkspaceSetting(!openWorkspaceSetting);
     setWorkspaceId(workspace.workspaceId);
     setWorkspaceCode(workspace.workspaceCode);
+    handleClose();
   };
 
   const [leaveWorkspace, setLeaveWorkspace] = useState(false);
@@ -62,7 +79,46 @@ export const WorkspaceCard = ({ workspace }) => {
         </div>
         {workspace && workspace.isOwner ? (
           <div className="relative">
-            <Dropdown
+            <IconButton
+              aria-label="more"
+              id="long-button"
+              aria-controls={open ? "long-menu" : undefined}
+              aria-expanded={open ? "true" : undefined}
+              aria-haspopup="true"
+              onClick={handleClick}
+            >
+              <MoreVertIcon />
+            </IconButton>
+            <Menu
+              id="fade-menu"
+              MenuListProps={{
+                "aria-labelledby": "fade-button",
+              }}
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              TransitionComponent={Fade}
+            >
+              <MenuItem
+                onClick={handleSettingWorkspace}
+                className="flex items-center w-40 hover:bg-gray-200 hover:text-accent gap-x-3 p-3"
+              >
+                {" "}
+                <img src={setting} className="w-6 h-6" />
+                <span className=" font-semibold text-16px text-accent">Setting</span>
+              </MenuItem>
+              <MenuItem
+                onClick={handleRemoveWorkspace}
+                className="flex items-center w-40 hover:bg-gray-200 hover:text-accent gap-x-3 p-3"
+              >
+                {" "}
+                <img src={trush} className="w-5 h-5" />
+                <span className="text-red-500 font-semibold text-16px">
+                  Remove
+                </span>
+              </MenuItem>
+            </Menu>
+            {/* <Dropdown
               icon={
                 <svg
                   width="5"
@@ -79,17 +135,23 @@ export const WorkspaceCard = ({ workspace }) => {
               }
               noCaret
             >
-              <Dropdown.Item onClick={handleSettingWorkspace} className="flex items-center w-40 hover:bg-gray-200 hover:text-accent gap-x-3 p-3">
+              <Dropdown.Item
+                onClick={handleSettingWorkspace}
+                className="flex items-center w-40 hover:bg-gray-200 hover:text-accent gap-x-3 p-3"
+              >
                 <img src={setting} className="w-6 h-6" />
                 <span className="font-semibold text-16px">Setting</span>
               </Dropdown.Item>
-              <Dropdown.Item onClick={handleRemoveWorkspace} className="flex items-center w-40 hover:bg-gray-200 hover:text-accent gap-x-3 p-3">
+              <Dropdown.Item
+                onClick={handleRemoveWorkspace}
+                className="flex items-center w-40 hover:bg-gray-200 hover:text-accent gap-x-3 p-3"
+              >
                 <img src={trush} className="w-5 h-5" />
                 <span className="text-red-500 font-semibold text-16px">
                   Remove
                 </span>
               </Dropdown.Item>
-            </Dropdown>
+            </Dropdown> */}
             {/* <Dropdown className="dropdown-right">
               <Dropdown.Toggle>
                 <img src={dotmenu} className="w-[6px]" />

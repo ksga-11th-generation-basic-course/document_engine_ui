@@ -24,6 +24,12 @@ import FileSaver from "file-saver";
 // import HtmlDocx from 'html-docx-js';
 import ReactMarkdown from "react-markdown";
 
+import IconButton from "@mui/material/IconButton";
+import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import { Fade } from "@mui/material";
+
 export const DocumentCard = ({ document, workspaceId }) => {
   const navigate = useNavigate();
   const [openPermission, setOpenPermission] = useState(false);
@@ -69,7 +75,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
   };
 
   const viewPage = () => {
-    navigate(`/createdocument/${document.documentId}`);
+    navigate(`/createdocument/${document.documentId}/${workspaceId}`);
   };
 
   const handleExport = () => {
@@ -106,187 +112,212 @@ export const DocumentCard = ({ document, workspaceId }) => {
           ) : null}
         </div>
         <div className="flex justify-between items-center">
-        <div>
-          <span className="font-bold text-22px text-primary flex gap-x-3"><svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
-            <path d="M15.1368 6.4H9.2C8.97918 6.4 8.8 6.22082 8.8 6V0.0632031C8.65519 0.0232031 8.52 0 8.4 0H0.4C0.179219 0 0 0.179219 0 0.4V19.6C0 19.8208 0.179219 20 0.4 20H14.8C15.0208 20 15.2 19.8208 15.2 19.6V6.8C15.2 6.68 15.1768 6.5448 15.1368 6.4Z" fill="#1E9CEF" />
-            <path d="M9.60059 0.411865V5.59987H14.7886C13.8246 3.84866 11.3518 1.37589 9.60059 0.411865Z" fill="#1E9CEF" />
-          </svg>{document.title}</span>
-          <span className="text-14px font-semibold text-accent">
-            Edited <span>{document.editDate}</span>
-          </span>
-        </div>
+          <div>
+            <span className="font-bold text-22px text-primary flex gap-x-3">
+              <svg
+                className="mt-2"
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="20"
+                viewBox="0 0 16 20"
+                fill="none"
+              >
+                <path
+                  d="M15.1368 6.4H9.2C8.97918 6.4 8.8 6.22082 8.8 6V0.0632031C8.65519 0.0232031 8.52 0 8.4 0H0.4C0.179219 0 0 0.179219 0 0.4V19.6C0 19.8208 0.179219 20 0.4 20H14.8C15.0208 20 15.2 19.8208 15.2 19.6V6.8C15.2 6.68 15.1768 6.5448 15.1368 6.4Z"
+                  fill="#1E9CEF"
+                />
+                <path
+                  d="M9.60059 0.411865V5.59987H14.7886C13.8246 3.84866 11.3518 1.37589 9.60059 0.411865Z"
+                  fill="#1E9CEF"
+                />
+              </svg>
+              {document.title}
+            </span>
+            <span className="text-14px font-semibold text-accent">
+              Edited <span>{document.editDate}</span>
+            </span>
+          </div>
         </div>
       </div>
-      
-        <div className="absolute bottom-1 right-0">
-          <div className="relative">
-            <ButtonToolbar>
-              <Dropdown className="p-2"
+
+      <div className="absolute bottom-1 right-0">
+        <div className="relative">
+          <ButtonToolbar>
+            <Dropdown
+              icon={
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="5"
+                  height="16"
+                  viewBox="0 0 5 16"
+                  fill="none"
+                >
+                  <path
+                    d="M1.79199 2C1.79199 2.55228 2.23971 3 2.79199 3C3.34428 3 3.79199 2.55228 3.79199 2C3.79199 1.44772 3.34428 1 2.79199 1C2.23971 1 1.79199 1.44772 1.79199 2Z"
+                    stroke="#526581"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M1.79199 8C1.79199 8.55228 2.23971 9 2.79199 9C3.34428 9 3.79199 8.55228 3.79199 8C3.79199 7.44772 3.34428 7 2.79199 7C2.23971 7 1.79199 7.44772 1.79199 8Z"
+                    stroke="#526581"
+                    stroke-width="2"
+                  />
+                  <path
+                    d="M1.79199 14C1.79199 14.5523 2.23971 15 2.79199 15C3.34428 15 3.79199 14.5523 3.79199 14C3.79199 13.4477 3.34428 13 2.79199 13C2.23971 13 1.79199 13.4477 1.79199 14Z"
+                    stroke="#526581"
+                    stroke-width="2"
+                  />
+                </svg>
+              }
+              noCaret
+            >
+              <Dropdown.Item
+                onClick={viewPage}
+                eventKey="a"
+                className="flex gap-x-3 w-52 hover:rounded-lg font-semibold hover:bg-gray-200"
+              >
+                <img src={view} />
+                <span className="text-16px font-semibold">View page</span>
+              </Dropdown.Item>
+              <Dropdown.Item
+                eventKey="b"
+                onClick={() => setOpenPermission(!openPermission)}
+                className="flex gap-x-3 hover:rounded-lg font-semibold hover:bg-gray-200"
+              >
+                <img src={permission} />
+                <span className="text-16px font-semibold">Permission</span>
+              </Dropdown.Item>
+              <Dropdown.Item
+                eventKey="c"
+                onClick={() => setOpenDocumentHistory(!openDocumentHistory)}
+                className="flex gap-x-3 hover:rounded-lg font-semibold hover:bg-gray-200"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="26"
+                  height="23"
+                  viewBox="0 0 26 23"
+                  fill="none"
+                >
+                  <path
+                    d="M0.887053 9.24006C-0.00902021 9.24006 -0.238783 9.88575 0.255206 10.5426L3.03534 14.2831C3.42593 14.8063 4.02331 14.7952 4.40241 14.2831L7.18254 10.5314C7.65355 9.89689 7.43528 9.24006 6.55069 9.24006H4.88491C5.91885 5.22118 9.65249 2.27105 14.1328 2.27105C19.4175 2.27105 23.6681 6.37898 23.6681 11.5C23.6681 16.621 19.4175 20.7511 14.1328 20.7401C11.0425 20.7288 8.34284 19.3262 6.61963 17.1219C6.1601 16.5987 5.4823 16.4318 4.93088 16.8213C4.40241 17.1887 4.29902 17.9012 4.8045 18.4912C6.9298 21.1853 10.4107 23 14.1328 23C20.6352 23 26 17.801 26 11.5C26 5.21006 20.6352 0 14.1328 0C8.43475 0 3.59825 3.9966 2.50687 9.24006H0.887053ZM13.7078 5.04307C13.1449 5.04307 12.7083 5.47724 12.7083 6.01161V12.0677C12.7083 12.3238 12.8002 12.5687 12.9955 12.8248L15.7412 16.3314C16.1433 16.8547 16.7407 16.9438 17.2346 16.5987C17.7057 16.287 17.7401 15.697 17.3726 15.2183L14.7073 11.7338V6.01161C14.7073 5.47724 14.2592 5.04307 13.7078 5.04307Z"
+                    fill="#1E9CEF"
+                  />
+                </svg>
+                <span className="text-16px font-semibold">
+                  Document History
+                </span>
+              </Dropdown.Item>
+              <Dropdown.Item
+                onClick={handleDuplicateDocument}
+                eventKey="c"
+                className="flex gap-x-3 hover:rounded-lg font-semibold hover:bg-gray-200"
+              >
+                <img src={duplicate} />
+                <span className="text-16px font-semibold">Duplicate </span>
+              </Dropdown.Item>
+              <Dropdown.Menu
+                className="flex gap-x-3 w-40 hover:rounded-lg"
+                title={
+                  <span className="text-16px font-semibold">Export File</span>
+                }
                 icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
-                    width="5"
-                    height="16"
-                    viewBox="0 0 5 16"
+                    width="22"
+                    height="23"
+                    viewBox="0 0 22 23"
                     fill="none"
                   >
                     <path
-                      d="M1.79199 2C1.79199 2.55228 2.23971 3 2.79199 3C3.34428 3 3.79199 2.55228 3.79199 2C3.79199 1.44772 3.34428 1 2.79199 1C2.23971 1 1.79199 1.44772 1.79199 2Z"
-                      stroke="#526581"
+                      d="M7.65039 4.68801L10.8503 1.5L14.0503 4.68801"
+                      stroke="#1E9CEF"
                       stroke-width="2"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     />
                     <path
-                      d="M1.79199 8C1.79199 8.55228 2.23971 9 2.79199 9C3.34428 9 3.79199 8.55228 3.79199 8C3.79199 7.44772 3.34428 7 2.79199 7C2.23971 7 1.79199 7.44772 1.79199 8Z"
-                      stroke="#526581"
+                      d="M10.8496 14.2524V1.58752"
+                      stroke="#1E9CEF"
                       stroke-width="2"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     />
                     <path
-                      d="M1.79199 14C1.79199 14.5523 2.23971 15 2.79199 15C3.34428 15 3.79199 14.5523 3.79199 14C3.79199 13.4477 3.34428 13 2.79199 13C2.23971 13 1.79199 13.4477 1.79199 14Z"
-                      stroke="#526581"
+                      d="M1 11.5375C1 17.0418 4.75 21.5 11 21.5C17.25 21.5 21 17.0418 21 11.5375"
+                      stroke="#1E9CEF"
                       stroke-width="2"
+                      stroke-miterlimit="10"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
                     />
                   </svg>
                 }
-                noCaret
               >
                 <Dropdown.Item
-                  onClick={viewPage}
-                  eventKey="a"
-                  className="flex gap-x-3 w-52 hover:rounded-lg font-semibold"
+                  eventKey="e-1"
+                  onClick={handleExport}
+                  className="flex gap-x-3 hover:rounded-lg font-semibold hover:bg-gray-200"
                 >
-                  <img src={view} />
-                  <span>View page</span>
-                </Dropdown.Item>
-                <Dropdown.Item
-                  eventKey="b"
-                  onClick={() => setOpenPermission(!openPermission)}
-                  className="flex gap-x-3 hover:rounded-lg font-semibold"
-                >
-                  <img src={permission} />
-                  <span>Permission</span>
-                </Dropdown.Item>
-                <Dropdown.Item
-                  eventKey="c"
-                  onClick={() => setOpenDocumentHistory(!openDocumentHistory)}
-                  className="flex gap-x-3 p-2.5 hover:rounded-lg font-semibold"
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="26"
-                    height="23"
-                    viewBox="0 0 26 23"
-                    fill="none"
-                  >
-                    <path
-                      d="M0.887053 9.24006C-0.00902021 9.24006 -0.238783 9.88575 0.255206 10.5426L3.03534 14.2831C3.42593 14.8063 4.02331 14.7952 4.40241 14.2831L7.18254 10.5314C7.65355 9.89689 7.43528 9.24006 6.55069 9.24006H4.88491C5.91885 5.22118 9.65249 2.27105 14.1328 2.27105C19.4175 2.27105 23.6681 6.37898 23.6681 11.5C23.6681 16.621 19.4175 20.7511 14.1328 20.7401C11.0425 20.7288 8.34284 19.3262 6.61963 17.1219C6.1601 16.5987 5.4823 16.4318 4.93088 16.8213C4.40241 17.1887 4.29902 17.9012 4.8045 18.4912C6.9298 21.1853 10.4107 23 14.1328 23C20.6352 23 26 17.801 26 11.5C26 5.21006 20.6352 0 14.1328 0C8.43475 0 3.59825 3.9966 2.50687 9.24006H0.887053ZM13.7078 5.04307C13.1449 5.04307 12.7083 5.47724 12.7083 6.01161V12.0677C12.7083 12.3238 12.8002 12.5687 12.9955 12.8248L15.7412 16.3314C16.1433 16.8547 16.7407 16.9438 17.2346 16.5987C17.7057 16.287 17.7401 15.697 17.3726 15.2183L14.7073 11.7338V6.01161C14.7073 5.47724 14.2592 5.04307 13.7078 5.04307Z"
-                      fill="#1E9CEF"
-                    />
-                  </svg>
-                  <span>Document History</span>
-                </Dropdown.Item>
-                <Dropdown.Item
-                  onClick={handleDuplicateDocument}
-                  eventKey="c"
-                  className="flex gap-x-3 hover:rounded-lg font-semibold"
-                >
-                  <img src={duplicate} />
-                  <span>Duplicate </span>
-                </Dropdown.Item>
-                <Dropdown.Menu
-                  className="flex gap-x-3 w-40 hover:rounded-lg font-semibold"
-                  title="Export File"
-                  icon={
-                    <svg
-                      xmlns="http://www.w3.org/2000/svg"
-                      width="22"
-                      height="23"
-                      viewBox="0 0 22 23"
-                      fill="none"
-                    >
-                      <path
-                        d="M7.65039 4.68801L10.8503 1.5L14.0503 4.68801"
-                        stroke="#1E9CEF"
-                        stroke-width="2"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M10.8496 14.2524V1.58752"
-                        stroke="#1E9CEF"
-                        stroke-width="2"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                      <path
-                        d="M1 11.5375C1 17.0418 4.75 21.5 11 21.5C17.25 21.5 21 17.0418 21 11.5375"
-                        stroke="#1E9CEF"
-                        stroke-width="2"
-                        stroke-miterlimit="10"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  }
-                >
-                  <Dropdown.Item
-                    eventKey="e-1"
-                    onClick={handleExport}
-                    className="flex gap-x-4 hover:rounded-lg font-semibold"
-                  >
-                    <img src={file} />
+                  <img src={file} />
+                  <span className="text-16px font-semibold">
                     Export as .doc
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    eventKey="e-2"
-                    onClick={exportMarkdown}
-                    className="flex gap-x-4 hover:rounded-lg font-semibold"
-                  >
-                    <img src={file} /> Export as .md
-                  </Dropdown.Item>
-                  <Dropdown.Item
-                    eventKey="d"
-                    onClick={() => exportHTML()}
-                    className="flex gap-x-4 hover:rounded-lg font-semibold" 
-                  >
-                    <img src={file} />
-                    Export as .html
-                  </Dropdown.Item>
-                </Dropdown.Menu>
-                <Dropdown.Item
-                  onClick={handleRemoveDocument}
-                  eventKey="c"
-                  className="flex gap-x-3 hover:rounded-lg font-semibold"
-                >
-                  <img src={delet} />
-                  <span>Delete</span>
+                  </span>
                 </Dropdown.Item>
-              </Dropdown>
-            </ButtonToolbar>
-          </div>
-          <DocumentPermissionModal
-            openPermission={openPermission}
-            setOpenPermission={setOpenPermission}
-            documentId={document.documentId}
-            workspaceId={workspaceId}
-            members={members}
-          />
-          <DocumentHistoryModal
-            openDocumentHistory={openDocumentHistory}
-            setOpenDocumentHistory={setOpenDocumentHistory}
-            documentId={document.documentId}
-          />
-          <DeleteDocumentModal
-            deleteDocument={deleteDocument}
-            setDeleteDocument={setDeleteDocument}
-            documentId={documentId}
-          />
-          {/* <button type="button" onClick={() => setOpen(!open)}>
+                <Dropdown.Item
+                  eventKey="e-2"
+                  onClick={exportMarkdown}
+                  className="flex gap-x-3 hover:rounded-lg font-semibold hover:bg-gray-200"
+                >
+                  <img src={file} />{" "}
+                  <span className="text-16px font-semibold">Export as .md</span>
+                </Dropdown.Item>
+                <Dropdown.Item
+                  eventKey="d"
+                  onClick={() => exportHTML()}
+                  className="flex gap-x-3 hover:rounded-lg font-semibold hover:bg-gray-200"
+                >
+                  <img src={file} />
+                  <span className="text-16px font-semibold">
+                    Export as .html
+                  </span>
+                </Dropdown.Item>
+              </Dropdown.Menu>
+              <Dropdown.Item
+                onClick={handleRemoveDocument}
+                eventKey="c"
+                className="flex gap-x-3 hover:rounded-lg font-semibold hover:bg-gray-200"
+              >
+                <img src={delet} />
+                <span className="text-16px font-semibold">Delete</span>
+              </Dropdown.Item>
+            </Dropdown>
+          </ButtonToolbar>
+        </div>
+        <DocumentPermissionModal
+          openPermission={openPermission}
+          setOpenPermission={setOpenPermission}
+          documentId={document.documentId}
+          workspaceId={workspaceId}
+          members={members}
+        />
+        <DocumentHistoryModal
+          openDocumentHistory={openDocumentHistory}
+          setOpenDocumentHistory={setOpenDocumentHistory}
+          documentId={document.documentId}
+        />
+        <DeleteDocumentModal
+          deleteDocument={deleteDocument}
+          setDeleteDocument={setDeleteDocument}
+          documentId={documentId}
+        />
+        {/* <button type="button" onClick={() => setOpen(!open)}>
         <img src={dotmenu} className="w-8 h-8" />
       </button>
       {open ? <DropDownDocument open={open} setOpen={setOpen} /> : null} */}
-        </div>
       </div>
+    </div>
   );
 };

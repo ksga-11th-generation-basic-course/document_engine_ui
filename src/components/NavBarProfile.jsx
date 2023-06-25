@@ -66,7 +66,7 @@ export const NavBarProfile = () => {
               leaveFrom="transform opacity-100 scale-100"
               leaveTo="transform opacity-0 scale-95"
             >
-              <Menu.Items className="absolute  mt-2 w-[250px] origin-top-right divide-y divide-gray-100 rounded-md bg-white z-10 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+              <Menu.Items className="absolute z-[2000]  mt-2 w-[250px] origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="px-1 py-1 bg-white">
                   <Menu.Item className=" hover:bg-gray-100">
                     {({ active }) => (

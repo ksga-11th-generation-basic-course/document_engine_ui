@@ -55,11 +55,11 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
               <img className="p-2" src={close} />
             </button>
           </div>
-          <div className="px-14 space-y-5 text-accent">
+          <div className="px-14 space-y-3 text-accent">
             <div className="flex justify-center items-center">
               <img className="md:w-[70px] md:h-[70px] " src={joinworkspace} />
             </div>
-            <h1 className="font-bold text-28px text-primary text-center">
+            <h1 className="font-bold text-28px leading-9 text-primary text-center">
               Enter code to join workspace
             </h1>
             <form

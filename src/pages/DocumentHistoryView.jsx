@@ -128,18 +128,14 @@ export const CreateDocument = () => {
 
   // console.log(blockData);
 
-  const [loading, setLoading] = useState(false);
-
   function handleInputChange(event) {
     event.preventDefault();
     setTitle(event.target.value);
-    setLoading(true);
     clearTimeout(timerId);
     const newTimerId = setTimeout(() => {
       const handleUpdateDocument = async () => {
         const document = await updateDocument(documentId, event.target.value);
         dispatch(updateDocumentSuccess(document));
-        setLoading(false);
       };
       handleUpdateDocument();
     }, 3000);
@@ -395,10 +391,10 @@ export const CreateDocument = () => {
         </div>
         <div className="mt-2">
           {blockData === null ? null : blockData.length > 0 ? (
-            <Editor loading={loading} />
+            <Editor />
           ) : (
             <div>
-              <Editor loading={loading} />
+              <Editor />
             </div>
           )}
         </div>

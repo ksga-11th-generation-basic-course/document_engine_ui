@@ -47,7 +47,7 @@ export const DropDownProfile = ({ open, setOpen, user }) => {
               )}
             </div>
             <div>
-              <h3 className="font-bold text-20px">{user && user.userName}</h3>
+              <h3 className="font-bold text-20px leading-9">{user && user.userName}</h3>
               <p className="text-[#9CA3AF]">{user && user.email}</p>
             </div>
           </div>

@@ -12,6 +12,7 @@ import { storage } from "../firebase/firebase.utils";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
+import { Button } from "rsuite";
 
 export const SettingContent = ({
   openWorkspaceSetting,
@@ -88,13 +89,13 @@ export const SettingContent = ({
                 Your Workspace
               </p>
             </div>
-            <button
+            <Button
               type="button"
               className="font-semibold text-white text-18px md:text-16px md:px-5 md:py-1 px-7 py-1 bg-primary rounded-lg"
               onClick={handleEditWorkspaceInformation}
             >
               Save
-            </button>
+            </Button>
           </div>
           <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg">
             <div className="w-full space-y-2">

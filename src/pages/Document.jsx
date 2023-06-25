@@ -41,6 +41,7 @@ import {
 import { getTagInEachWorkspace } from "../redux/service/tagService/tagService";
 import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
 import "../App.css";
+import { Button } from "rsuite";
 
 export const Document = () => {
   const [openSearch, setOpenSearch] = useState(false);
@@ -141,13 +142,13 @@ export const Document = () => {
           <p className="font-semibold text-20px">Documents</p>
         </div>
         {accessibility ? (
-          <button
+          <Button
             type="button"
             onClick={handleCreateDocument}
-            className="font-semibold bg-primary px-5 py-3 rounded-lg text-white"
+            className="font-semibold text-16px bg-primary px-5 py-3 rounded-lg text-white"
           >
             Create Document
-          </button>
+          </Button>
         ) : null}
       </div>
       <div className="grid grid-cols-12">

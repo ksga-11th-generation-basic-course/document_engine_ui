@@ -111,6 +111,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+          <Route
+            path="/createdocument/:documentId/:workspaceId"
+            element={
+              <ProtectedRoute>
+                <CreateDocument />
+              </ProtectedRoute>
+            }
+          />
         </Route>
 
         <Route path="*" element={<NotFound />} />

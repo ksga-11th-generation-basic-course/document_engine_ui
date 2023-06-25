@@ -48,11 +48,11 @@ export const ResetPasswordModal = ({ resetPassword, setResetPassword }) => {
               <img src={close} />
             </button>
           </div>
-          <div className="px-14 space-y-5 text-accent">
+          <div className="px-14 space-y-3 text-accent">
             <div className="flex justify-center items-center">
               <img src={resetpasswordIcon} />
             </div>
-            <h1 className="font-bold text-24px text-primary text-center">
+            <h1 className="font-bold text-24px leading-9 text-primary text-center">
               Reset Account Password
             </h1>
             <form

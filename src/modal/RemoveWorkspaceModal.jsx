@@ -63,11 +63,11 @@ export const RemoveWorkspaceModal = ({
               <img className="md:w-10 md:h-10 md:p-2" src={close} />
             </button>
           </div>
-          <div className="px-14 space-y-5 text-accent">
+          <div className="px-14 text-accent space-y-3">
             <div className="flex justify-center items-center">
               <img className="md:w-20 md:h-20" src={romoveworkspace} />
             </div>
-            <h1 className="font-bold text-24px text-primary text-center">
+            <h1 className="font-bold text-24px leading-9 text-primary text-center">
               Remove Workspace!
               <p className="font-normal text-accent text-18px text-center">
                 Are you sure to remove this workspace?

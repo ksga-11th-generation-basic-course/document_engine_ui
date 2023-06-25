@@ -8,10 +8,10 @@ import { removeDocumentSuccess } from "../redux/slice/documentSlice/documentSlic
 import { removeDocument } from "../redux/service/documentService/documentService";
 import { useDispatch } from "react-redux";
 
-export const DeleteDocumentModal = ({ 
+export const DeleteDocumentModal = ({
   deleteDocument,
   setDeleteDocument,
-  documentId
+  documentId,
 }) => {
   const dispatch = useDispatch();
   const handleRemoveDocument = async () => {
@@ -31,16 +31,16 @@ export const DeleteDocumentModal = ({
       });
     } catch (error) {
       setDeleteDocument(!deleteDocument),
-      toast.error(error, {
-        position: "top-right",
-        autoClose: 5000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
+        toast.error(error, {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "light",
+        });
     }
   };
 
@@ -59,13 +59,16 @@ export const DeleteDocumentModal = ({
               <img src={close} />
             </button>
           </div>
-          <div className="px-14 space-y-5 text-accent">
+          <div className="px-14 space-y-3 text-accent">
             <div className="flex justify-center items-center">
               <img src={deletedocument} />
             </div>
-            <p className="font-normal text-accent text-18px text-center">
-              Are you sure want to delete this document?
-            </p>
+            <h1 className="font-bold text-24px leading-9 text-primary text-center">
+              Delete Document!
+              <p className="font-normal text-accent text-18px text-center">
+                Are you sure want to delete this document?
+              </p>
+            </h1>
 
             <div className="flex justify-center items-center gap-5 text-16px font-semibold pb-5">
               <button
@@ -74,7 +77,10 @@ export const DeleteDocumentModal = ({
               >
                 No, cancel
               </button>
-              <button onClick={handleRemoveDocument} className="bg-red-500 text-white  px-10 py-3 rounded-lg ">
+              <button
+                onClick={handleRemoveDocument}
+                className="bg-red-500 text-white  px-10 py-3 rounded-lg "
+              >
                 Delete
               </button>
             </div>

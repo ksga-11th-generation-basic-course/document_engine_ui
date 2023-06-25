@@ -91,11 +91,11 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
             </button>
           </div>
 
-          <div className="px-14 space-y-5 text-accent gap-y-4">
+          <div className="px-14 space-y-3 text-accent">
             <div className="flex justify-center items-center">
               <img src={group} />
             </div>
-            <h1 className="font-bold text-28px text-primary text-center">
+            <h1 className="font-bold text-28px leading-9 text-primary text-center">
               Create Workspace
             </h1>
             <div className="flex flex-col gap-y-2 font-semibold text-18px">

@@ -37,11 +37,11 @@ export const DeleteProfileModal = ({
               <img src={close} />
             </button>
           </div>
-          <div className="px-14 space-y-5 text-accent">
+          <div className="px-14 space-y-3 text-accent">
             <div className="flex justify-center items-center">
               <img src={deleteprofile} />
             </div>
-            <h1 className="font-bold text-24px text-primary text-center">
+            <h1 className="font-bold text-24px leading-9 text-primary text-center">
               Remove Profile!
               <p className="font-normal text-accent text-18px text-center">
                 Are you sure want to delete your profile <br /> photo from this

@@ -4,6 +4,7 @@ import iconemail from "../assets/workspace_image/email.svg";
 import { inviteMemberViaEmail } from "../redux/service/workspaceService/workspaceService";
 import { useDispatch } from "react-redux";
 import { inviteMemberViaEmailSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
+import { Button } from "rsuite";
 
 export const InviteMemberByEmailContent = ({
   openWorkspaceSetting,
@@ -17,14 +18,14 @@ export const InviteMemberByEmailContent = ({
   let workspaceId = workspace.workspaceId;
 
   const handleInviteMemberViaEmail = async () => {
-    try{
+    try {
       const workspace = await inviteMemberViaEmail(workspaceId, email);
       dispatch(inviteMemberViaEmailSuccess(workspace));
       setEmail("");
-    }catch(error){
-      console.log(error)
+    } catch (error) {
+      console.log(error);
     }
-  }
+  };
 
   return (
     <div>
@@ -50,9 +51,13 @@ export const InviteMemberByEmailContent = ({
               <p className="font-semibold text-18px">Invite Members</p>
             </div>
             <div className="flex justify-center items-center gap-x-3 md:gap-3 md:px-0 shadow-sm px-3 rounded-lg relative">
-              <button className="bg-primary px-5 py-1 rounded-lg text-white" type="button" onClick={handleInviteMemberViaEmail}>
+              <Button
+                className="font-semibold text-white text-18px md:text-16px md:px-5 md:py-1 px-7 py-2 bg-primary rounded-lg"
+                type="button"
+                onClick={handleInviteMemberViaEmail}
+              >
                 Invite
-              </button>
+              </Button>
             </div>
           </div>
           <div className="px-6 md:p-3 border-[1px] py-4 space-y-2 rounded-b-lg">
