@@ -41,8 +41,9 @@ import {
   getTagInEachWorkspace,
 } from "../redux/service/tagService/tagService";
 import { BlockUI } from "primereact/blockui";
+import { getHistoryByHistoryId } from "../redux/service/historyService/historyService";
 
-export const CreateDocument = () => {
+export const DocumentHistoryView = () => {
   // const [openPermission, setOpenPermission] = useState(false);
   // const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
   // const [openExport, setOpenExport] = useState(false);
@@ -55,11 +56,15 @@ export const CreateDocument = () => {
   const workspace = useSelector((state) => state.document.workspace);
   const blockData = useSelector((state) => state.block.blocks);
   const { tagsWorkspace, tagsDocument } = useSelector((state) => state.tag);
+  const { history } = useSelector((state) => state.history);
+
+  console.log(history);
+
   const param = useParams();
   const documentId = param.documentId;
   const workspaceId = param.workspaceId;
   const dispatch = useDispatch();
-
+  const character = history?.editedBy.split("");
   console.log(document?.status);
 
   // console.log(documentId);
@@ -76,7 +81,10 @@ export const CreateDocument = () => {
   }, [documentId, workspaceId]);
   const [title, setTitle] = useState();
 
-  // let initialContent = [];
+  useEffect(() => {
+    dispatch(getHistoryByHistoryId("519b6675-a526-4a85-bfd2-c313302904b4"));
+  }, []);
+
   // if (blockData != null) {
   //   for (let i = 0; i < blockData.length; i++) {
   //     const element = blockData[i];
@@ -170,18 +178,28 @@ export const CreateDocument = () => {
     }
     dispatch(addTagToDocument({ tagId, documentId, workspaceId }));
   };
+
   useEffect(() => {
-    setTitle(document?.title);
+    setTitle(history?.title);
     return () => {
       setTitle("");
     };
-  }, [document]);
+  }, [history]);
 
   // console.log("Title : ", title);
   // console.log("title Document  : ", document);
 
   return (
     <div className="w-full relative">
+      <div className="fixed top-6 flex items-center gap-x-2 text-16px text-accent">
+        <span>Edited at</span>
+        <span className="font-bold">{history?.editedDate}</span>
+        <span>By</span>
+        <div className="w-6 h-6 flex items-center justify-center rounded-full bg-purple-500 text-white relative">
+          <span>{character[0].toUpperCase()}</span>
+        </div>
+        <span className="font-bold">{history?.editedBy}</span>
+      </div>
       {/* <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
         <div className="grid grid-rows-1 gap-3">
           <button
@@ -232,7 +250,7 @@ export const CreateDocument = () => {
           </li>
         </ol>
       </nav>
-      <BlockUI blocked={!document?.status}>
+      <BlockUI blocked={false}>
         <div className="text-[#9CA3AF] grid grid-rows-1 gap-2 px-12">
           <div className="w-full h-auto">
             <span className="font-semibold ">
@@ -241,6 +259,7 @@ export const CreateDocument = () => {
                 type="text"
                 onChange={handleInputChange}
                 placeholder={document?.title}
+                disabled
                 // defaultValue={document?.title}
                 value={title ? title : "Loading..."}
               />
@@ -301,28 +320,6 @@ export const CreateDocument = () => {
                           </span>
                         </span>
                       ))}
-                    {!toggle && (
-                      <div
-                        onClick={() => setToggle(!toggle)}
-                        className="px-2 text-sm cursor-pointer font-medium shadow rounded-md flex justify-center items-center gap-1 text-[#1E9CEF]"
-                      >
-                        Add Tag
-                        <svg
-                          width="12"
-                          height="12"
-                          viewBox="0 0 12 12"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M6 11V6M6 6V1M6 6L11 6M6 6H1"
-                            stroke="#1E9CEF"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                          />
-                        </svg>
-                      </div>
-                    )}
                     {toggle && (
                       <span className="flex justify-center items-center relative pl-3 pr-3">
                         <input
@@ -350,7 +347,7 @@ export const CreateDocument = () => {
                         <span className="bg-white w-full rounded shadow h-auto pb-2 top-0 absolute z-10">
                           <hr className="mt-7"></hr>
                           <div className="pt-2 pl-[14px] grid grid-rows-1 gap-2">
-                            {tagsWorkspace &&
+                            {/* {tagsWorkspace &&
                               tagsWorkspace.map((tag, index) => (
                                 <span
                                   className="gap-3 flex justify-start items-center"
@@ -377,7 +374,7 @@ export const CreateDocument = () => {
                                     {tag?.tagName}
                                   </button>
                                 </span>
-                              ))}
+                              ))} */}
                           </div>
                         </span>
                       </span>
@@ -400,16 +397,6 @@ export const CreateDocument = () => {
         </div>
         <div className="mt-[75vh]"></div>
       </BlockUI>
-      {/* <div>
-        <DocumentPermissionModal
-          openPermission={openPermission}
-          setOpenPermission={setOpenPermission}
-        />
-        <DocumentHistoryModal
-          openDocumentHistory={openDocumentHistory}
-          setOpenDocumentHistory={setOpenDocumentHistory}
-        />
-      </div> */}
     </div>
   );
 };

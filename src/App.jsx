@@ -17,6 +17,7 @@ import { NotFound } from "./pages/NotFound";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { EnableAccount } from "./pages/EnableAccount";
 import { VerifyToEnable } from "./pages/VerifyToEnable";
+import { DocumentHistoryView } from "./pages/DocumentHistoryView";
 
 function App() {
   return (
@@ -112,10 +113,10 @@ function App() {
             }
           />
           <Route
-            path="/createdocument/:documentId/:workspaceId"
+            path="/document/history"
             element={
               <ProtectedRoute>
-                <CreateDocument />
+                <DocumentHistoryView />
               </ProtectedRoute>
             }
           />

@@ -1,8 +1,14 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { getHistoryByDocumentId } from "../../service/historyService/historyService";
+import {
+  getBlockHistory,
+  getHistoryByDocumentId,
+  getHistoryByHistoryId,
+} from "../../service/historyService/historyService";
 
 const initialState = {
   histories: null,
+  blockHistory: null,
+  history: null,
   title: null,
   loading: false,
   error: null,
@@ -34,8 +40,39 @@ const historySlice = createSlice({
     builder.addCase(getHistoryByDocumentId.rejected, (state, action) => {
       state.loading = true;
       state.histories = null;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(getBlockHistory.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getBlockHistory.fulfilled, (state, action) => {
+      state.loading = false;
+      state.blockHistory = action.payload;
+      state.error = null;
+    });
+    builder.addCase(getBlockHistory.rejected, (state, action) => {
+      state.loading = true;
+      state.blockHistory = null;
+      state.error = action.error.message;
+    });
+
+    
+    builder.addCase(getHistoryByHistoryId.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getHistoryByHistoryId.fulfilled, (state, action) => {
+      state.loading = false;
+      state.history = action.payload;
+      state.error = null;
+    });
+    builder.addCase(getHistoryByHistoryId.rejected, (state, action) => {
+      state.loading = true;
+      state.history = null;
+      state.error = action.error.message;
     });
   },
 });
-export const { removeHistorySuccess, restoreDocumentSuccess } = historySlice.actions;
+export const { removeHistorySuccess, restoreDocumentSuccess } =
+  historySlice.actions;
 export default historySlice.reducer;
