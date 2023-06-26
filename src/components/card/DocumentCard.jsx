@@ -94,31 +94,31 @@ export const DocumentCard = ({ document, workspaceId }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-4 space-y-3">
-      <div onClick={handleNavigate}>
+    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-1 flex relative">
+      <div onClick={handleNavigate} className="w-full p-3">
         <div className="flex justify-between items-center">
-          <h4 className="font-semibold text-20px">{document.title}</h4>
+          {/* <h4 className="font-semibold text-20px">{document.title}</h4> */}
           {document.status ? (
-            <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF]">
+            <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF] ">
               <p className="text-14px 2xl:text-12px">Editing...</p>
               <img src={pencil} className="w-3 h-3" />
-            </div>
+            </div> 
           ) : null}
         </div>
-        <div>
-          <h3 className="font-semibold">{document.title}</h3>
-          <p className="text-sm h-[120px]"></p>
-        </div>
-      </div>
-      <div className="border-[1px]"></div>
       <div className="flex justify-between items-center">
         <div>
-          <h3 className="font-bold text-22px text-primary">{document.title}</h3>
-          <p className="text-14px font-semibold text-accent">
+          <span className="font-bold text-22px text-primary flex gap-x-3"><svg className="mt-2" xmlns="http://www.w3.org/2000/svg" width="16" height="20" viewBox="0 0 16 20" fill="none">
+            <path d="M15.1368 6.4H9.2C8.97918 6.4 8.8 6.22082 8.8 6V0.0632031C8.65519 0.0232031 8.52 0 8.4 0H0.4C0.179219 0 0 0.179219 0 0.4V19.6C0 19.8208 0.179219 20 0.4 20H14.8C15.0208 20 15.2 19.8208 15.2 19.6V6.8C15.2 6.68 15.1768 6.5448 15.1368 6.4Z" fill="#1E9CEF" />
+            <path d="M9.60059 0.411865V5.59987H14.7886C13.8246 3.84866 11.3518 1.37589 9.60059 0.411865Z" fill="#1E9CEF" />
+          </svg>{document.title}</span>
+          <span className="text-14px font-semibold text-accent">
             Edited <span>{document.editDate}</span>
-          </p>
+          </span>
         </div>
-        <div className="relative">
+      </div>
+      </div>
+
+        <div className="absolute bottom-1 right-0">
           <div className="relative">
             <ButtonToolbar>
               <Dropdown className="p-2"
@@ -248,7 +248,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
                   <Dropdown.Item
                     eventKey="d"
                     onClick={() => exportHTML()}
-                    className="flex gap-x-4 hover:rounded-lg font-semibold" 
+                    className="flex gap-x-4 hover:rounded-lg font-semibold"
                   >
                     <img src={file} />
                     Export as .html
@@ -287,7 +287,6 @@ export const DocumentCard = ({ document, workspaceId }) => {
       </button>
       {open ? <DropDownDocument open={open} setOpen={setOpen} /> : null} */}
         </div>
-      </div>
     </div>
   );
 };

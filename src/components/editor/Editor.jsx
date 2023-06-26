@@ -28,8 +28,12 @@ import {
 } from "@blocknote/react";
 import "@blocknote/core/style.css";
 import { RiImage2Fill } from "react-icons/ri";
+import { Button, ButtonToolbar } from 'rsuite';
+import { Loader, Placeholder } from 'rsuite';
 
-export const Editor = () => {
+
+
+export const Editor = ({loading}) => {
   const EmbedBlock = createReactBlockSpec({
     type: "embed",
     propSchema: {
@@ -182,7 +186,8 @@ export const Editor = () => {
   const blockData = useSelector((state) => state.block.blocks);
 
   // console.log(blockData);
-  
+
+  const [publish, setPublish] = useState(false);
   const [blocks, setBlocks] = useState([]);
   const param = useParams();
   const dispatch = useDispatch();
@@ -195,18 +200,11 @@ export const Editor = () => {
 
   // console.log("adwawd", sortedInitialContent)
   // console.log("block", initialContent);
-  const [timerId, setTimerId] = useState(null);
-
-  function handleInputChange(event) {
-    event.preventDefault();
-    clearTimeout(timerId);
-    const newTimerId = setTimeout(() => {
-      console.log("helo");
-      handleUpdateDocument();
-    }, 3000);
-    setTimerId(newTimerId);
-  }
-  
+  const [isLoading, setIsLoading] = useState(false);
+  const [loadingPlaceHolder, setLoadingPlaceHolder] = useState(true);
+  setTimeout(() => {
+    setLoadingPlaceHolder(false);
+  }, 4000);
 
   // Create Block
   const handleCreateBlock = async () => {
@@ -218,7 +216,6 @@ export const Editor = () => {
       const isExist = sortedInitialContent.find(
         (block) => block.blockId === blockId
       );
-
       if (!isExist) {
         const response = await createBlock(
           blockId,
@@ -241,7 +238,25 @@ export const Editor = () => {
       const blockId = await deleteBlock(val.blockId, param.documentId);
       dispatch(deleteBlockSuccess(blockId));
     });
+    setIsLoading(false);
   };
+
+  const [inputValue, setInputValue] = useState();
+
+  useEffect(()=>{
+    setIsLoading(loading);
+  },[loading])
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timeoutId = setTimeout(() => {
+      handleCreateBlock();
+    }, 1000);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [inputValue]);
+
 
   //Editor
   const editor = useBlockNote({
@@ -249,8 +264,8 @@ export const Editor = () => {
       return block.content;
     }),
     onEditorContentChange: (editor) => {
-      oninput=()=>handleInputChange();
       setBlocks(editor.topLevelBlocks);
+      setInputValue(editor.topLevelBlocks);
       for (
         let indexOfTopLevelBlocks = 0;
         indexOfTopLevelBlocks < editor.topLevelBlocks.length;
@@ -289,11 +304,26 @@ export const Editor = () => {
 
   return (
     <div>
-      <button type="button" onClick={handleCreateBlock}>
-        Click
-      </button>
-      <br />
-      <BlockNoteView editor={editor}/>
+      <div className="absolute -top-14 -left-36">
+        {isLoading ?
+          <Button appearance="ghost" className="w-24" loading>
+            Ghost
+          </Button> :
+          <ButtonToolbar>
+            <Button disabled={isLoading} className="w-24" appearance="ghost" active>
+              Saved
+            </Button>
+          </ButtonToolbar>}
+      </div>
+
+      {loadingPlaceHolder ? (
+        <div>
+          <Placeholder.Paragraph rows={blockData.length} />
+          <Loader content="loading" />
+        </div>
+
+      ) : <BlockNoteView editor={editor} />}
+
     </div>
   );
 };

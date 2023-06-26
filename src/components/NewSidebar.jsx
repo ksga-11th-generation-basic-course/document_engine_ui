@@ -66,7 +66,7 @@ export const NewSidebar = () => {
   };
 
   return (
-    <div className="bg-[#FAFAF9] flex items-center flex-col p-4 gap-y-1 h-screen">
+    <div className="bg-[#F7F7FA] flex items-center flex-col p-4 gap-y-1 h-screen fixed w-[340px]">
       {/* <Toggle
         onChange={setExpanded}
         checked={expanded}

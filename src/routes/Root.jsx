@@ -8,10 +8,10 @@ export const Root = () => {
   return (
     <div className="bg-white">
       <div className="grid grid-cols-12">
-        <div className="col-span-2">
+        <div className="col-span-2 bg-[#F7F7FA]">
           <NewSidebar />
         </div>
-        <div className="col-span-10 shadow-xl">
+        <div className="col-span-10">
           <NavBarProfile />
           <div className="px-60">
             <Outlet />

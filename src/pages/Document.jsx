@@ -42,6 +42,7 @@ import { getTagInEachWorkspace } from "../redux/service/tagService/tagService";
 import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
 import "../App.css";
 
+
 export const Document = () => {
   const [openSearch, setOpenSearch] = useState(false);
 
@@ -118,7 +119,7 @@ export const Document = () => {
   };
 
   return (
-    <div className="text-accent space-y-5">
+    <div className="text-accent space-y-5 h-screen">
       <div>
         <h1 className="font-bold text-accent text-44px">
           {workspace && workspace.workspaceName}
@@ -207,6 +208,7 @@ export const Document = () => {
             <h4 className="font-semibold text-20px">Filter: </h4>
           </div>
           <div className="relative">
+          
             <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
@@ -238,6 +240,7 @@ export const Document = () => {
                         }}
                       />
                     </Dropdown.Item>
+                    
                   ))}
               </Dropdown.Menu>
             </Dropdown>

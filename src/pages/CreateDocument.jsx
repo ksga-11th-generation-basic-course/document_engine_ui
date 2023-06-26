@@ -41,6 +41,7 @@ import {
   getTagInEachWorkspace,
 } from "../redux/service/tagService/tagService";
 
+
 export const CreateDocument = () => {
   // const [openPermission, setOpenPermission] = useState(false);
   // const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
@@ -122,15 +123,18 @@ export const CreateDocument = () => {
   // console.log(data)
 
   // console.log(blockData);
+  const [loading, setLoading] = useState(false);
 
   function handleInputChange(event) {
     event.preventDefault();
     setTitle(event.target.value);
+    setLoading(true);
     clearTimeout(timerId);
     const newTimerId = setTimeout(() => {
       const handleUpdateDocument = async () => {
         const document = await updateDocument(documentId, event.target.value);
         dispatch(updateDocumentSuccess(document));
+        setLoading(false);
       };
       handleUpdateDocument();
     }, 3000);
@@ -167,7 +171,9 @@ export const CreateDocument = () => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full relative">
+      
+
       {/* <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
         <div className="grid grid-rows-1 gap-3">
           <button
@@ -375,13 +381,14 @@ export const CreateDocument = () => {
       </div>
       <div className="mt-2">
         {blockData === null ? null : blockData.length > 0 ? (
-          <Editor />
+          <Editor loading={loading} />
         ) : (
           <div>
-            <Editor />
+            <Editor loading={loading} />
           </div>
         )}
       </div>
+      <div className="mt-[75vh]"></div>
       {/* <div>
         <DocumentPermissionModal
           openPermission={openPermission}
