@@ -14,7 +14,6 @@ import { CreateDocument } from "./pages/CreateDocument";
 import { AboutUs } from "./pages/AboutUs";
 import { ContactUs } from "./pages/ContactUS";
 import { NotFound } from "./pages/NotFound";
-import EnableAccount from "./pages/EnableAccount";
 import { EnableAccVerifyCode } from "./pages/EnableAccVerifyCode";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { EnableAccount } from "./pages/EnableAccount";

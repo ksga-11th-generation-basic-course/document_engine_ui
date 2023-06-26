@@ -33,7 +33,7 @@ export const Landing = () => {
 
               {/*Get Started Button */}
               <div className="mt-5">
-                <Link to={"/signin"} to={"/signin"} className="bg-primary rounded-2xl text-18px text-white px-10 py-4 font-semibold lg:rounded-lg lg:text-16px lg:px-7 lg:py-3.5 md:rounded-md md:ml-10 md:text-sm md:px-6 md:py-2">
+                <Link to={"/signin"}  className="bg-primary rounded-2xl text-18px text-white px-10 py-4 font-semibold lg:rounded-lg lg:text-16px lg:px-7 lg:py-3.5 md:rounded-md md:ml-10 md:text-sm md:px-6 md:py-2">
                   Get Started
                 </Link>
               </div>
