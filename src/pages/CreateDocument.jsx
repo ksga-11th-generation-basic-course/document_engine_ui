@@ -178,30 +178,34 @@ export const CreateDocument = () => {
   // console.log("title Document  : ", document);
 
   return (
-    <div className="w-full relative">
-      {/* <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
-        <div className="grid grid-rows-1 gap-3">
+    <div className=" w-full">
+      <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]  md:-mr-56">
+        {/* Permission */}
+        <div className="grid grid-rows-1 gap-3 lg:-mt-4">
           <button
-            className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
+            className="w-[30px] h-[30px] rounded-[10px] shadow  flex justify-center items-center "
             type="button"
             onClick={() => setOpenPermission(!openPermission)}
           >
-            <img src={ViewMember} alt="" />
+            <img src={ViewMember} title="Permission" alt="" />
           </button>
+          {/* History */}
           <button
-            className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
+            className="w-[30px] h-[30px] rounded-[10px] shadow  flex justify-center items-center"
             type="button"
             onClick={() => setOpenDocumentHistory(!openDocumentHistory)}
           >
-            <img src={ViewHistory} alt="" />
+            <img src={ViewHistory} data-te-toggle="tooltip"
+             title="History"  alt="" />
           </button>
+          {/* Export file */}
           <div className="relative">
             <button
-              className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
+              className="w-[30px] h-[30px] rounded-[10px] shadow flex justify-center items-center"
               type="button"
               onClick={() => setOpenExport(!openExport)}
             >
-              <img src={ExportFile} alt="" />
+              <img src={ExportFile} title="Export" alt="" />
             </button>
             {openExport ? (
               <DropDownExport
@@ -211,8 +215,9 @@ export const CreateDocument = () => {
             ) : null}
           </div>
         </div>
-      </div> */}
-      <div className="text-[#9CA3AF] grid grid-rows-1 gap-2 px-12">
+      </div>
+      {/* React Developer */}
+      <div className="text-[#9CA3AF] grid grid-rows-1 gap-2">
         <div className="w-full h-auto">
           <nav className="flex items-center text-sm">
             <ol className="list-none p-0 inline-flex">
@@ -225,6 +230,7 @@ export const CreateDocument = () => {
                   <img src={arrow} className="w-2" alt="" />
                 </span>
               </li>
+              {/* Untitle */}
               <li className="flex items-center gap-x-2">
                 <img src={doc} />
                 <Link className="text-primary">{title ? title : "Loading..."}</Link>
@@ -241,6 +247,7 @@ export const CreateDocument = () => {
               value={title ? title : "Loading..."}
             />
           </span>
+          {/* Create By */}
           <div className="w-full grid grid-cols-12 gap-y-2">
             <div className="col-span-12 text-sm">
               <div className="flex">
@@ -251,10 +258,11 @@ export const CreateDocument = () => {
                 <p className="text-black">{username}</p>
               </div>
             </div>
+            {/* Create Date */}
             <div className="col-span-12 text-sm">
               <div className="flex">
                 <span className="flex gap-x-3 w-36">
-                  <img src={CreateDate} className="w-[17px]" alt="" />
+                  <img src={CreateDate} className="w-[17px] " alt="" />
                   <p>Create Date</p>
                 </span>
                 <p className="text-black">{timestamp}</p>
@@ -396,6 +404,8 @@ export const CreateDocument = () => {
       </div>
       <div className="mt-[75vh]"></div>
       {/* <div>
+
+      <div>
         <DocumentPermissionModal
           openPermission={openPermission}
           setOpenPermission={setOpenPermission}

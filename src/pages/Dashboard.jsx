@@ -51,13 +51,18 @@ export const Dashboard = () => {
   // console.log(recentlies)
 
   return (
-    <div className="space-y-7 bg-white ">
-      <div>
+    <div className="bg-white md:ml-16">
+      <div className="w-full lg:w-full">
         <Hint />
       </div>
-      <div className="flex items-center gap-x-3 lg:ml-4">
-        <img src={documenticon} className="shadow-md p-2 rounded-lg" />
-        <p className="font-semibold text-20px text-accent">Recently</p>
+      <div className="flex items-center mt-12 mb-7 gap-x-3 md:-ml-5 md:mt-7 md:mb-5">
+        <img
+          src={documenticon}
+          className="shadow-custom p-2 rounded-lg md:w-7"
+        />
+        <p className="font-semibold text-22px text-accent md:text-14px">
+          Recently
+        </p>
       </div>
       <div className="space-y-8">
         {recentlies === null ? null : recentlies.length > 0 ? (

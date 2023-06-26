@@ -14,6 +14,8 @@ import { CreateDocument } from "./pages/CreateDocument";
 import { AboutUs } from "./pages/AboutUs";
 import { ContactUs } from "./pages/ContactUS";
 import { NotFound } from "./pages/NotFound";
+import EnableAccount from "./pages/EnableAccount";
+import { EnableAccVerifyCode } from "./pages/EnableAccVerifyCode";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { EnableAccount } from "./pages/EnableAccount";
 import { VerifyToEnable } from "./pages/VerifyToEnable";
@@ -23,6 +25,7 @@ function App() {
     <div className="App font-ssp bg-white">
       <Routes>
         <Route index element={<Landing />} />
+        {/* <Route path="/" element={<Landing />} /> */}
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contactus" element={<ContactUs />} />
 
@@ -35,9 +38,7 @@ function App() {
             </ProtectedRoute>
           }
         />
-        <Route
-          path="/verifyforgotpassword"
-          element={
+        <Route path="/verifyforgotpassword" element={
             <ProtectedRoute>
               <VerifyForgotPassword />
             </ProtectedRoute>
@@ -65,8 +66,7 @@ function App() {
             <ProtectedRoute>
               <VerifyToEnable />
             </ProtectedRoute>
-          }
-        />
+          }/>
 
         <Route path="/signup" element={<SignUp />} />
         <Route
@@ -77,6 +77,12 @@ function App() {
             </ProtectedRoute>
           }
         />
+        <Route path="/enableaccount" element={<EnableAccount />} />
+        <Route path="/enableaccountverifycode" element={<EnableAccVerifyCode/>} />
+        <Route path="/landing" element={<Landing />} />
+
+
+
 
         <Route path="/" element={<Root />}>
           <Route

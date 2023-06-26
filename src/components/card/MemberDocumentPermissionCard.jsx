@@ -38,9 +38,9 @@ export const MemberDocumentPermissionCard = ({
           <div
             className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full`}
           >
-            <p className="font-semibold text-18px text-white">{character[0]}</p>
+            <p className="font-semibold text-18px text-white lg:text-sm">{character[0]}</p>
           </div>
-          <h3 className="font-semibold text-18px">
+          <h3 className="font-semibold text-18px lg:text-base">
             {username} {currentuser ? null : <span>(You)</span>}
           </h3>
           {isOwner ? (
@@ -54,11 +54,11 @@ export const MemberDocumentPermissionCard = ({
             <div className="relative">
               <button
                 type="button"
-                className="text-18px border-[1px] rounded-lg w-[190px] py-2 flex px-5 justify-between items-center gap-x-2"
+                className="text-18px border-[1px] rounded-lg w-[190px] py-2 flex px-5 justify-between items-center gap-x-2 lg:text-base lg:w-[178px]"
                 onClick={() => setPermission(!permissiom)}
               >
                 {accessibility === "EDITOR" ? (
-                  <div className="flex justify-center items-center gap-x-3">
+                  <div className="flex justify-center items-center gap-x-3 ">
                     <img src={pencil} />
                     <p>{accessibility}</p>
                   </div>

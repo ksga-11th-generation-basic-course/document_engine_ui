@@ -13,7 +13,7 @@ export const DocumentPermissionContent = ({
   const [searchTerm, setSearchTerm] = useState("");
   return (
     <div>
-      <div className="flex w-full justify-end">
+      <div className="flex w-full justify-end ">
         <button
           type="button"
           onClick={() => setOpenPermission(!openPermission)}
@@ -21,16 +21,16 @@ export const DocumentPermissionContent = ({
           <img src={close} />
         </button>
       </div>
-      <div className="px-16 space-y-5">
+      <div className="px-16 space-y-5 lg:-ml-8 lg:-mr-10">
         <div className="text-accent">
-          <h1 className="font-bold text-34px">Document Permission</h1>
+          <h1 className="font-bold text-34px lg:text-2xl">Document Permission</h1>
           <p>Manage permissions of your members in workspace</p>
         </div>
         <div className="space-y-2">
           <div className="relative">
             <input
               type="text"
-              className="border-[1px] text-accent border-gray-200 px-6 py-3 rounded-lg space-y-3 w-full font-semibold focus:ring-gray-200 focus:border-gray-200"
+              className="border-[1px] text-accent border-gray-200 px-6 py-3 rounded-lg space-y-3 w-full font-semibold focus:ring-gray-200 focus:border-gray-200 "
               placeholder="Search member"
               onChange={(e) => setSearchTerm(e.target.value)}
             />

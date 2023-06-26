@@ -26,54 +26,53 @@ export const DropDownDocument = ({ open, setOpen }) => {
       {open && (
         <div className="fixed inset-0" onClick={() => setOpen(!open)}></div>
       )}
-      <div className="absolute right-0 w-[280px] text-accent rounded-lg shadow-custom bg-white z-10 hover:shadow-hover">
-        <div className="flex flex-col gap-y-2">
-          <div className="flex flex-col py-3">
+      <div className="absolute right-0 w-[280px] -mt-32 mr-8 text-accent rounded-lg shadow-custom bg-white z-10 hover:shadow-hover 
+      lg:w-[250px] lg:-mt-36 md:w-[200px]">
+        <div className="flex flex-col gap-y-2 ">
+          <div className="flex flex-col py-3 md:py-2">
             <div className=" hover:bg-[#f4f4f4] w-full">
-              <Link className="flex items-center text-18px gap-x-4 px-5 py-3">
-                <img src={view} />
+              <Link className="flex items-center text-20px gap-x-4 px-5 py-3 md:text-12px md:py-2 md:gap-x-3">
+                <img src={view} className="md:w-4" />
                 <span>View page</span>
               </Link>
             </div>
 
             {/* Permission */}
             <button
-              className="flex w-full items-center text-18px gap-x-4 px-5 py-3 hover:bg-[#f4f4f4]"
+              className="flex w-full items-center text-20px gap-x-4 px-5 py-3 hover:bg-[#f4f4f4]  md:text-12px md:py-2 md:gap-x-3"
               type="button"
               onClick={() => setOpenPermission(!openPermission)}
             >
-              <img src={permission} />
+              <img src={permission} className="md:w-4"/>
               <span>Permission</span>
             </button>
 
             {/* Document History */}
             <button
-              className="flex items-center text-18px gap-x-4 px-5 py-3 hover:bg-[#f4f4f4]"
+              className="flex items-center text-20px gap-x-4 px-5 py-3 hover:bg-[#f4f4f4]  md:text-12px md:py-2 md:gap-x-3"
               type="button"
               onClick={() => setOpenDocumentHistory(!openDocumentHistory)}
             >
-              <img src={history} />
+              <img src={history} className="md:w-4"/>
               <span>Document History</span>
             </button>
 
             {/* Duplicate */}
-            <button className="flex items-center text-18px gap-x-4 px-5 py-3 hover:bg-[#f4f4f4]">
-              <img src={duplicate} />
+            <button className="flex items-center text-20px gap-x-4 px-5 py-3 hover:bg-[#f4f4f4]  md:text-12px md:py-2 md:gap-x-3">
+              <img src={duplicate}  className="md:w-4"/>
               <span>Duplicate </span>
             </button>
 
             {/* Export File */}
             <div className="relative">
               <button
-                className={openExport ? "flex items-center text-18px gap-x-4 px-5 py-3 w-full bg-[#f4f4f4]" : "flex items-center text-18px gap-x-4 px-5 py-3 w-full hover:bg-[#f4f4f4]"}
+                className={openExport ? "flex items-center text-20px gap-x-4 px-5 py-3 w-full bg-[#f4f4f4] md:text-12px md:py-2 md:gap-x-3" : "flex items-center text-20px gap-x-4 px-5 py-3 w-full hover:bg-[#f4f4f4]  md:text-12px md:py-2 md:gap-x-3"}
                 onClick={() => setOpenExport(!openExport)}
               >
-                <img src={file} />
+                <img src={file}  className="md:w-4"/>
                 <span> Export file</span>
-                <span className="absolute right-5 fill-primary">
+                <span className="absolute right-5 fill-primary w-[8px] h-[16px] md:w-[7px] md:h-[15px]">
                   <svg
-                    width="8"
-                    height="16"
                     viewBox="0 0 8 16"
                     xmlns="http://www.w3.org/2000/svg"
                   >
@@ -84,7 +83,7 @@ export const DropDownDocument = ({ open, setOpen }) => {
                 </span>
               </button>
               {openExport ? (
-                <span className="absolute -right-40 -top-56 mt-2 -mr-2 lg:right-72 lg:mr-0">
+                <span className="absolute -right-40 -top-56 -mr-2 lg:right-72 lg:mr-0 md:right-52 md:-top-40 md:mt-4 md:-mr-1">
                   <DropDownExport
                     openExport={openExport}
                     setOpenExport={setOpenExport}
@@ -95,11 +94,11 @@ export const DropDownDocument = ({ open, setOpen }) => {
 
             {/* Delete File */}
             <button
-              className="flex items-center text-18px gap-x-4 text-red-500 px-5 py-3 hover:bg-[#f4f4f4] w-full"
+              className="flex items-center text-20px gap-x-4 text-red-500 px-5 py-3 hover:bg-[#f4f4f4] w-full  md:text-12px md:py-2 md:gap-x-3"
               type="button"
               onClick={() => setDeleteDocument(!deleteDocument)}
             >
-              <img src={document} />
+              <img src={document}  className="md:w-4"/>
               <span>Delete</span>
             </button>
           </div>

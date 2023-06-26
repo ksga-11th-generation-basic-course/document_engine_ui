@@ -20,11 +20,11 @@ export const DropDownWorkspaceSetting = ({
           onClick={() => setWorkspaceSetting(!workspaceSetting)}
         ></div>
       )}
-      <div className="absolute -right-2 p-2 w-[300px] text-accent rounded-lg shadow-md bg-white z-50">
-        <div className="flex flex-col gap-y-5 px-5">
-          <div className="flex flex-col gap-y-5 py-5">
+      <div className="absolute -right-2 w-[250px] text-accent rounded-xl shadow-custom hover:shadow-hover bg-white z-50">
+        <div className="flex flex-col gap-y-5">
+          <div className="flex flex-col p-2">
             <button
-              className="flex items-center text-18px gap-x-4"
+              className="flex items-center text-18px gap-x-4 hover:bg-secondary px-3 py-3 rounded-lg"
               type="button"
               onClick={() => setOpenWorksapceSetting(!openWorkspaceSetting)}
             >
@@ -32,7 +32,7 @@ export const DropDownWorkspaceSetting = ({
               <span>Setting Workspace</span>
             </button>
             <button
-              className="flex items-center text-18px gap-x-4"
+              className="flex items-center text-18px gap-x-4  hover:bg-secondary px-3 py-3 rounded-lg"
               type="button"
               onClick={() => setOpenCollaborator(!openCollaborator)}
             >

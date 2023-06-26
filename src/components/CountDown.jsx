@@ -21,7 +21,7 @@ const Countdown = ({ seconds, onTimeout, reset }) => {
     }
   }, [reset, seconds]);
 
-  return <span>{count}</span>;
+  return <span>{count}s</span>;
 };
 
 export default Countdown;

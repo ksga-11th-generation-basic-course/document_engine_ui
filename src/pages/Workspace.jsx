@@ -4,6 +4,7 @@ import sort from "../assets/workspace_image/sort.svg";
 import chevrondown from "../assets/workspace_image/chevrondown.svg";
 import filter from "../assets/workspace_image/filter.svg";
 import search from "../assets/workspace_image/search.svg";
+import { DropDownSort } from "../components/DropDownSort";
 import { WorkspaceCard } from "../components/card/WorkspaceCard";
 import {
   filterWorkspace,
@@ -122,16 +123,46 @@ export const Workspace = () => {
   }
 
   return (
-    <div className="text-accent space-y-5 sm:h-full bg-white">
-      <div className="flex items-center gap-x-3 ">
-        <img src={workspaceicon} className="p-2 shadow-md rounded-lg" />
+    <div className="text-accent lg:ml-5 md:ml-0 md:mt-3">
+      {/* Icon workspace */}
+      <div className="flex items-center gap-x-3 lg:hidden md:hidden">
+        <img src={workspaceicon} className="p-2 shadow-custom rounded-lg" />
         <p className="font-semibold text-20px">Workspaces</p>
       </div>
-      <div className="grid grid-cols-12 md:grid md:grid-cols-12 sm:grid sm:grid-cols-1">
-        <div className="col-span-4 md:col-span-5 sm:grid-cols-1 flex items-center gap-x-5 h-11">
-          <div className="flex items-center gap-x-3">
+
+      {/* Title and search for tablet and mobile */}
+      <div className="hidden lg:grid lg:grid-cols-12">
+        {/* Icon */}
+        <div className="hidden lg:col-span-6  lg:flex items-center gap-x-3 md:ml-8 md:col-span-12">
+          <img src={workspaceicon} className="p-2 shadow-custom rounded-lg md:w-7 md:h-7 md:p-1" />
+          <p className="font-semibold text-20px md:text-16px">Workspaces</p>
+        </div>
+
+        {/* Search button for tablet */}
+        <div className="hidden lg:col-span-6 lg:flex lg:justify-between lg:w-5 lg:h-5 lg:ml-[295px] md:hidden">
+          {openSearch ? (
+            <input
+              type="text"
+              placeholder="search"
+              className="absolute rounded-lg text-18px border-gray-200 border-[1px] w-[280px] lg:-ml-[250px] focus:ring-accent focus:border-accent"
+            />
+          ) : null}
+          <button
+            type="button"
+            className="mt-3 absolute "
+            onClick={() => setOpenSearch(!openSearch)}
+          >
+            <img src={search}/>
+          </button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-12 mt-7 md:mt-3">
+        {/* Sort */}
+        <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center lg:w-72 md:ml-8 md:w-36 md:col-span-6">
+          <div className="flex items-center gap-x-2">
             <img src={sort} className="w-7 h-7 md:w-6 md:h-8" />
-            <h4 className="font-semibold text-20px md:text-18px">Sort: </h4>
+            <h4 className="font-semibold text-20px md:text-16px md:hidden">Sort: </h4>
           </div>
           <div className="relative">
             <Dropdown
@@ -295,10 +326,12 @@ export const Workspace = () => {
             </Dropdown> */}
           </div>
         </div>
-        <div className="col-span-4 md:col-span-6 sm:grid-cols-1 flex items-center gap-x-5 h-11">
+
+        {/* Filter */}
+        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:w-80 lg:ml-5 md:w-40 md:ml-36">
           <div className="flex items-center gap-x-3">
-            <img src={filter} className="w-7 h-7 md:w-5 md:h-5" />
-            <h4 className="font-semibold text-20px md:text-18px">Filter: </h4>
+            <img src={filter} className="w-7 h-7 md:w-4 md:h-4" />
+            <h4 className="font-semibold text-20px md:text-16px md:hidden">Filter: </h4>
           </div>
           <div className="relative">
             <Dropdown

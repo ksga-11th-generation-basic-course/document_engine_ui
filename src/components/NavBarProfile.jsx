@@ -40,7 +40,7 @@ export const NavBarProfile = () => {
   };
 
   return (
-    <div className="flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white">
+    <div className="flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white lg:mt-2 md:-mr-56 md:relative">
       {param.documentId ? (
         <div>
           <Menu as="div" className="relative inline-block text-left bg-white">
@@ -108,19 +108,19 @@ export const NavBarProfile = () => {
           </Menu>
         </div>
       ) : null}
-      <div>
+      <div className="lg:w-[100px] md:absolute  ">
         <JoinWorkspaceModal visible={visible} setVisible={setVisible} />
       </div>
-      <div className="relative">
-        <div className="relative inline-block">
+      <div className="relative ">
+        <div className="relative inline-block  ">
           <button
-            className="overflow-hidden w-11 h-11 rounded-full"
+            className="overflow-hidden w-11 h-11 rounded-full lg:-mr-12 lg:rounded-full   "
             onClick={() => setOpen(!open)}
           >
             {user && user.profileImage === null ? (
               <img
                 src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
-                className="bg-cover"
+                className="bg-cover  md:w-9"
               />
             ) : (
               <img

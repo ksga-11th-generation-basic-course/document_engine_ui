@@ -45,105 +45,116 @@ export const ResetForgotPassword = () => {
   return (
     <div>
       <div className="flex justify-center items-center bg-[#EDF9FF] relative text-[#37352F]">
-        <img src={Logo} className="absolute top-10 left-10" />
-        <div className="flex flex-row justify-center  items-center relative min-h-screen  overflow-hidden">
+        <img src={Logo} className="absolute top-10 left-10 md:w-[60px]" />
+        <div className="flex flex-row justify-center  items-center relative min-h-screen  overflow-hidden ">
           {/* <!-- component --> */}
-          <div className="relative lg:py-10">
+          
             <div
-              className="flex flex-col items-center justify-between pt-0 pr-10 pb-0 pl-10 mt-0 mr-auto mb-0 ml-auto max-w-7xl
-            xl:px-5 lg:flex-row"
-            >
-              <div className="flex flex-col items-center w-full pt-5 pr-10 pb-20 pl-10 lg:pt-20 lg:flex-row">
-                <div className="bg-white p-10 flex flex-col justify-center gap-y-6 rounded-3xl shadow-md">
-                  <div className=" xs:p-0 mx-auto md:w-full px-5  md:max-w-md  ">
-                    <div className="bg-white w-full  ">
-                      <h1 className="font-bold text-center text-primary text-36px">
+              className="flex flex-col items-center justify-between  " >
+              <div className="flex  items-center mt-20 w-full lg:pt-20 ">
+
+                {/*Form Set New Password */}
+                <form className="bg-white p-10 flex  justify-center  rounded-3xl shadow-md lg:mb-44 lg:w-[500px] lg:pb-8 md:p-1 md:-mt-28  md:w-[290px] md:pb-8">
+                  <div className="  ">
+                    <div className=" w-full  ">
+                      <h1 className="font-bold text-center text-primary text-36px text-2xl lg:mb-4 lg:mt-6 md:text-xl md:mb-0 ">
                         Set New Password
                       </h1>
-                      <div>
-                        <div className="py-4">
-                          <div className="container mx-auto">
-                            <div className="max-w-sm mx-auto md:max-w-lg">
-                              <div className="w-full">
-                                <div className="bg-white h-54 rounded text-center">
-                                  <div className="text">
-                                    <p className="text-18px text-accent ">
-                                      Password must be at least 8 characters.
-                                    </p>
-                                    {/* <p class="text-l text-center text-gray-500">password reset instructor</p>   */}
-                                  </div>
+                      {/*  Password must be at least 8 characters. */}
+                          <div className="py-4 container mx-auto max-w-sm h-54 rounded text-center  md:max-w-lg">
+                              <div className="text">
+                                <p className="text-18px text-accent text-base lg:text-xl lg:text-22px lg:pb-4 lg:pl-4 md:text-sm  ">
+                                  Password must be at least 8 characters.
+                                </p>
+                              </div>
                                   <form
                                     action=""
                                     onSubmit={formik.handleSubmit}
                                   >
-                                    <div className="relative">
-                                      <p className="font-semibold text-left pt-5 pb-2 text-black text-lg">
+                                    {/* New Password */}
+                                    <div className="relative md:ml-2">
+                                      <p className="font-semibold text-left pt-5 pb-2 text-black text-base lg:text-xl lg:text-22px md:text-base md:pt-1 md:pl-3">
                                         New Password
                                       </p>
                                       <input
-                                        placeholder="Your New Password"
+                                        placeholder="Your new password"
                                         name="newPassword"
                                         type="password"
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         value={formik.values.newPassword}
-                                        className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
+                                        className="border-primary text-base focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3
+                                         max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
+                                         lg:text-xl lg:text-20px md:text-sm md:w-[200px] md:h-[35px] "
                                       />
                                       {formik.touched.newPassword &&
                                       formik.errors.newPassword ? (
-                                        <div className="mt-2 text-red-600 text-left">
+                                        <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:text-sm md:pl-6">
                                           {formik.errors.newPassword}
                                         </div>
                                       ) : null}
                                     </div>
-                                    <div className="relative">
-                                      <p className="font-semibold text-left pt-5 pb-2 text-black text-lg">
+
+                                    {/* Confirm New Password  */}
+                                    <div className="relative md:ml-2">
+                                      <p className="font-semibold text-left pt-5 pb-2 text-black text-base lg:text-xl lg:text-22px md:text-base md:pl-4">
                                         Confirm New Password
                                       </p>
                                       <input
-                                        placeholder="Your New Password"
+                                        placeholder="Confirm new password"
                                         name="newConfirmPassword"
                                         type="password"
                                         onChange={formik.handleChange}
                                         onBlur={formik.handleBlur}
                                         value={formik.values.newConfirmPassword}
-                                        className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
+                                        className="border-primary text-base focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 
+                                        max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
+                                        lg:text-lg lg:text-20px md:text-sm  md:w-[200px] md:h-[35px] "
                                       />
                                       {formik.touched.newConfirmPassword &&
                                       formik.errors.newConfirmPassword ? (
-                                        <div className="mt-2 text-red-600 text-left">
+                                        <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:text-sm md:pl-6">
                                           {formik.errors.newConfirmPassword}
                                         </div>
                                       ) : null}
                                     </div>
+
+                                    {/* Reset Password */}
                                     <div className="mt-5">
                                       <button
                                         type="submit"
-                                        className="font-bold text-18px transition  duration-200 bg-primary hover:bg-btn-primary text-white w-full px-2 py-3 rounded-lg shadow-sm hover:shadow-md text-center inline-block"
+                                        className="font-semibold text-18px transition text-base duration-200 bg-primary hover:bg-btn-primary text-white w-full px-2 py-3 
+                                        rounded-lg shadow-sm hover:shadow-md text-center inline-block lg:text-xl lg:font-semibold lg:text-22px md:text-base  md:w-[200px] md:h-[35px] md:pt-2 "
                                       >
                                         Reset Password
                                       </button>
                                     </div>
                                   </form>
-                                </div>
                               </div>
-                            </div>
                           </div>
                         </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                <div className="w-full bg-cover relative max-w-md lg:max-w-2xl lg:w-7/12">
+                   </form>
+                {/* Background Image */}
+                <div className="w-full bg-cover relative max-w-md  ml-16 lg:max-w-2xl lg:hidden">
                   <div className="flex flex-col items-center justify-center w-full h-full relative lg:pr-10">
                     <img src={Reset} />
                   </div>
                 </div>
               </div>
+              
+              {/* Pagination */}
+              <div className="flex justify-center  mt-52 gap-1 lg:top-96 lg:-mt-20 lg:left-52 md:-mt-24 md:left-16">
+                  <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1">  
+                  </div>
+                  <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1">  
+                  </div>
+                  <div className="w-[50px] h-[7px] rounded-2xl bg-[#1E9CEF] md:h-1.5 ">   
+                  </div>
+              </div>  
             </div>
           </div>
         </div>
       </div>
-    </div>
+    
   );
 };

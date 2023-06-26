@@ -6,14 +6,15 @@ export const DropDownSort = ({ openSort, setOpenSort }) => {
       {openSort && (
         <div className="fixed inset-0" onClick={() => setOpenSort(!openSort)}></div>
       )}
-      <div className="absolute left-0 mt-1 w-full text-accent rounded-lg shadow-md bg-white xs:w-36 md:w-52 2xs:w-32">
-        <div className="flex items-center xs:justify-start xs:px-0 xs:pl-4 xs:py-2 px-6 gap-x-4 bg-[#FAFAF9] border-b-[1px] py-3 xs:gap-x-2 rounded-t-lg xs:w-36 md:w-52 2xs:w-32 lg:px-0 lg:pl-4 lg:py-2 lg:justify-start lg:gap-x-2">
+      <div className="text-18px absolute left-0 mt-1 w-full text-accent rounded-lg shadow-md bg-white lg:w-[200px]  md:w-[200px]  md:text-lg">
+        <div className="flex items-center xs:justify-start xs:px-0 xs:pl-4 xs:py-2 px-6 gap-x-4 bg-[#FAFAF9] border-b-[1px] py-3 
+        rounded-t-lg lg:px-0 lg:pl-4 lg:py-2 lg:justify-start lg:gap-x-2 md:w-[200px]">
           <input
             type="radio"
             id="lastupdate"
             name="radioOptions"
             value="lastupdate"
-            className="focus:bg-accent focus:ring-accent"
+            className="focus:bg-accent focus:ring-accent "
           />
           <label htmlFor="lastupdate" className="cursor-pointer">
             Last Update

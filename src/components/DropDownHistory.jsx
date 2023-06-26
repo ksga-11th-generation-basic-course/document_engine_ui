@@ -21,7 +21,7 @@ export const DropDownHistory = ({ openHistory, setOpenHistory }) => {
             <span>Restore</span>
           </button>
           <button
-            className="flex items-center text-18px gap-x-4"
+            className="flex items-center text-18px gap-x-4 lg:w-5"
             type="button"
             onClick={() => setRemoveHistory(!removeHistory)}
           >

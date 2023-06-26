@@ -24,50 +24,50 @@ export const DropDownProfile = ({ open, setOpen, user }) => {
             <img src={close} className="h-7 w-7 md:w-5" />
           </button>
         </div>
-        <div className="flex flex-col gap-y-5 px-5">
-          <p className="font-bold text-24px text-primary">Profile</p>
-          <div
-            className="relative flex items-center gap-x-3 cursor-pointer"
-            onClick={() => {
-              setOpenSetting(!openSetting);
-              setOpen(open);
-            }}
-          >
-            <div className="overflow-hidden w-14 h-14 rounded-full bg-primary">
-              {user && user.profileImage === null ? (
-                <img
-                  src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
-                  className="h-full w-full bg-cover"
-                />
-              ) : (
-                <img
-                  src={user && user.profileImage}
-                  className="h-full w-full bg-cover"
-                />
-              )}
-            </div>
-            <div>
-              <h3 className="font-bold text-20px">{user && user.userName}</h3>
-              <p className="text-[#9CA3AF]">{user && user.email}</p>
-            </div>
+        <div className="flex flex-col gap-y-5 md:gap-y-3">
+          <div className="px-5 md:px-2.5">
+                  <p className="font-bold text-24px text-primary md:text-18px pb-3 md:-mt-2">Profile</p>
+                  <div className="relative flex items-center gap-x-3 cursor-pointer">
+                        <div
+                          onClick={() => {setOpenSetting(!openSetting); setOpen(open)}}
+                        >
+                                <div className="bg-cover overflow-hidden w-14 h-14 rounded-full bg-primary md:inline-block md:w-9 md:h-9">
+                                  {user && user.profileImage === null ? (
+                                    <img
+                                      src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
+                                      className="h-full w-full bg-cover"
+                                    />
+                                  ) : (
+                                    <img
+                                      src={user && user.profileImage}
+                                      className="h-full w-full bg-cover"
+                                    />
+                                  )}
+                              </div>
+                        </div>
+                    <div>
+                      <h3 className="font-bold text-24px md:text-16px">Ouddom</h3>
+                      <p className="text-[#9CA3AF]  md:text-10px">tith.ouddom@gmail.com</p>
+                    </div>
+                  </div>
           </div>
-          <div className="border-[1px] border-[#E7E7E7]"></div>
-          <div className="flex flex-col py-3 md:py-0">
+          <div className="px-5 md:px-2.5"><div className="px-5 border-[1px] border-[#E7E7E7]"></div></div>
+          <div className="flex flex-col gap-y-2 px-0 -mt-1.5 md:py-0 md:gap-y-1 md:-mt-1">
             <button
-              className="flex items-center text-18px gap-x-4 hover:bg-gray-200 p-3 rounded-lg"
+              className="flex items-center text-18px gap-x-4 md:text-14px hover:bg-[#f4f4f4] py-2.5 px-5 md:px-2.5 md:py-1.5  p-3 rounded-lg"
               onClick={() => {
                 setOpenSetting(!openSetting);
                 setOpen(open);
               }}
             >
-              <img src={setting} />
+              <img src={setting} className="md:w-4"/>
               <span>Setting</span>
             </button>
             <button
-              className="flex items-center text-18px gap-x-4 text-red-500 hover:bg-gray-200 p-3 rounded-lg"
+              className="flex items-center text-18px gap-x-4 text-red-500 md:text-14px hover:bg-[#f4f4f4] py-2.5 px-5 md:px-2.5 md:py-1.5 p-3 rounded-lg"
               onClick={toggleVisible}
             >
-              <img src={signout} />
+              <img src={signout} className="md:w-4"/>
               <span>Sign out</span>
             </button>
           </div>

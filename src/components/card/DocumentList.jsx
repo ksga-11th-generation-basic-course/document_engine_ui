@@ -10,24 +10,24 @@ export const DocumentList = ({ document }) => {
   console.log(document);
 
   return (
-    <div className="flex justify-between items-center text-black text-18px xs:text-14px">
-      <div className="flex items-center gap-x-3">
+    <div className="flex justify-between items-center text-black text-18px lg:w-[675px] md:w-full md:text-lg ">
+      <div className="flex items-center gap-x-3 ">
         <img src={documentIcon} />
         <p>{document?.title}</p>
         {document?.status ? (
-          <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF] ml-5 xs:text-14px xs:ml-0 xs:px-2 xs:py-2 xs:gap-x-5">
+          <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF] ml-5 ">
             <p className="text-14px xs:hidden">Editing...</p>
-            <img src={pencil} className="w-3 h-3" />
+            <img src={pencil} className="w-3 h-3 " />
           </div>
         ) : null}
       </div>
-      <div className="flex items-center gap-x-3 -z-0">
+      <div className="flex items-center gap-x-3 md:ml-16">
         <p>{document?.editDate}</p>
-        <div className="relative -z-0">
+        <div className="relative ">
           <button type="button" onClick={() => setOpen(!open)}>
             <img
               src={dotsvertical}
-              className="p-2 border-[1px] rounded-lg xs:p-1 xs:w-6"
+              className="p-2 border-[1px] rounded-lg  md:w-8 "
             />
           </button>
           {open ? <DropDownDocument open={open} setOpen={setOpen} /> : null}

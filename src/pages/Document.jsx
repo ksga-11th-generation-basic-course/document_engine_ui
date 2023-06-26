@@ -3,6 +3,7 @@ import sort from "../assets/workspace_image/sort.svg";
 import chevrondown from "../assets/workspace_image/chevrondown.svg";
 import filter from "../assets/workspace_image/filter.svg";
 import search from "../assets/workspace_image/search.svg";
+import { DropDownSort } from "../components/DropDownSort";
 import documenticon from "../assets/document_image/documenticon.svg";
 import bulletlist from "../assets/document_image/bulletlist.svg";
 import dotshorizontal from "../assets/document_image/dotshorizontal.svg";
@@ -341,6 +342,8 @@ export const Document = () => {
         </div>
       </div>
 
+
+      {/* Card Document */}
       {openGrid ? (
         <div className="grid grid-cols-12 gap-8">
           {documents === null ? null : documents?.length > 0 ? (
@@ -367,6 +370,7 @@ export const Document = () => {
             </div>
           )}
         </div>
+      
       ) : null}
       {openBulletList ? (
         <div className="space-y-6">

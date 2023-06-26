@@ -49,14 +49,14 @@ export const WorkspaceCard = ({ workspace }) => {
         ) : null}
       </div>
       <div className="h-[200px] overflow-hidden" onClick={handleNavigate}>
-        <img src={workspace && workspace.workspaceImage} className="w-full" />
+        <img src={workspace && workspace.workspaceImage} className="w-full" className="w-fit"/>
       </div>
       <div className="flex justify-between items-center p-3">
         <div>
-          <h3 className="font-semibold text-18px">
+          <h3 className="font-semibold text-18px md:text-14px">
             {workspace && workspace.totalDocument} Documents
           </h3>
-          <p className="text-14px">
+          <p className="text-14px md:text-10px">
             Create date: <span>{workspace && workspace.createdDate}</span>
           </p>
         </div>

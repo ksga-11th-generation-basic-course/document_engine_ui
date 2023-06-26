@@ -9,6 +9,8 @@ import { setAccessibility } from "../../redux/service/workspaceService/workspace
 import { useDispatch, useSelector } from "react-redux";
 import { setAccessibilitySuccess } from "../../redux/slice/workspaceSlice/workspaceSlice";
 import { getCurrentUser } from "../../redux/service/userService/userService";
+import dotmenu from "../../assets/dashboard_image/dotmenu.png";
+import { DropDownCollaborator } from "../DropDownCollaborator";
 
 export const MemberWorkspaceCard = ({ member, workspaceId }) => {
   const [removeMember, setRemoveMember] = useState(false);
@@ -22,6 +24,8 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
     "bg-yellow-500",
     "bg-purple-500",
   ];
+
+  const [open, setOpen] = useState(false);
 
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
@@ -57,22 +61,22 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
   return (
     <div>
       <div className="flex justify-between items-center w-full space-y-4">
-        <div className="flex justify-center items-center gap-x-3">
+        <div className="flex justify-center items-center gap-x-3 md:gap-x-2.5">
           <div
-            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full overflow-hidden`}
+            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full overflow-hidden md:w-6 md:h-6`}
           >
             {member.profileImage === null ? (
-              <p className="font-semibold text-18px text-white">
+              <p className="font-semibold text-18px text-white md:text-12px">
                 {character[0]}
               </p>
             ) : (
               <img src={member.profileImage} className="w-full h-full" />
             )}
           </div>
-          <h3 className="font-semibold text-18px">{member.username}</h3>
+          <h3 className="font-semibold text-18px md:text-15px">{member.username}</h3>
           {member.isOwner ? (
             <div>
-              <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg">
+              <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg md:text-12px">
                 Owner
               </span>
             </div>
@@ -123,7 +127,7 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
               className="px-3 py-2 md:p-1.5 border-[1px] rounded-lg"
               onClick={hanldeKickMember}
             >
-              <img src={kickmember} className="w-[19px] h-[19px]" />
+              <img src={kickmember} className="w-[19px] h-[19px]" className="md:w-2.5"/>
             </button>
           </div>
         ) : null}
