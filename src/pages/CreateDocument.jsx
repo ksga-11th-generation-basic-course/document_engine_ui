@@ -186,6 +186,7 @@ export const CreateDocument = () => {
 
   return (
     <div className="w-full relative">
+      <div className="ball-loader"></div>
       {/* <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
         <div className="grid grid-rows-1 gap-3">
           <button
@@ -338,7 +339,7 @@ export const CreateDocument = () => {
                           placeholder="Type to add your tag"
                         />
                         <svg
-                          className="z-20 cursor-pointer"
+                          className="z-20 cursor-pointer "
                           onClick={() => setToggle(!toggle)}
                           width="11"
                           height="11"
