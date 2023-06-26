@@ -53,6 +53,7 @@ export const Dashboard = () => {
   return (
     <div className="space-y-7 bg-white ">
       <div>
+        
         <Hint />
       </div>
       <div className="flex items-center gap-x-3 lg:ml-4">

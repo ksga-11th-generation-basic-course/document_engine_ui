@@ -43,9 +43,6 @@ import {
 import { BlockUI } from "primereact/blockui";
 
 export const CreateDocument = () => {
-  // const [openPermission, setOpenPermission] = useState(false);
-  // const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
-  // const [openExport, setOpenExport] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [toggle, setToggle] = useState(false);
   const [timerId, setTimerId] = useState(null);
@@ -62,10 +59,6 @@ export const CreateDocument = () => {
 
   console.log(document?.status);
 
-  // console.log(documentId);
-
-  // console.log(blockData)
-
   useEffect(() => {
     dispatch(getDocumentByDocumentId(documentId));
     dispatch(getWorkspaceName(documentId));
@@ -75,58 +68,6 @@ export const CreateDocument = () => {
     dispatch(getTagInEachWorkspace(workspaceId));
   }, [documentId, workspaceId]);
   const [title, setTitle] = useState();
-
-  // let initialContent = [];
-  // if (blockData != null) {
-  //   for (let i = 0; i < blockData.length; i++) {
-  //     const element = blockData[i];
-  //     const block = {
-  //       id: element.blockId,
-  //       type: element.blockType,
-  //       props: {
-  //         textColor: "default",
-  //         backgroundColor: "default",
-  //         textAlignment: element.content.textAlignment,
-  //         level: element.content.level,
-  //       },
-  //       content: [
-  //         {
-  //           type: element.content.typeContent,
-  //           text: element.content.text,
-
-  //           styles: {
-  //             ...(element.content.bold !== undefined
-  //               ? { bold: element.content.bold }
-  //               : {}),
-  //             ...(element.content.italic !== undefined
-  //               ? { italic: element.content.italic }
-  //               : {}),
-  //             ...(element.content.strike !== undefined
-  //               ? { strike: element.content.strike }
-  //               : {}),
-  //             ...(element.content.underline !== undefined
-  //               ? { underline: element.content.underline }
-  //               : {}),
-  //             ...(element.content.backgroundColor !== undefined
-  //               ? { backgroundColor: element.content.backgroundColor }
-  //               : {}),
-  //             ...(element.content.textColor !== undefined
-  //               ? { textColor: element.content.textColor }
-  //               : {}),
-  //           },
-  //         },
-  //       ],
-
-  //       children: [],
-  //       order: element.order,
-  //     };
-  //     initialContent.push(block);
-  //   }
-  // }
-
-  // console.log(data)
-
-  // console.log(blockData);
 
   const [loading, setLoading] = useState(false);
 
@@ -181,45 +122,9 @@ export const CreateDocument = () => {
     };
   }, [document]);
 
-  // console.log("Title : ", title);
-  // console.log("title Document  : ", document);
 
   return (
     <div className="w-full relative">
-      <div className="ball-loader"></div>
-      {/* <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
-        <div className="grid grid-rows-1 gap-3">
-          <button
-            className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
-            type="button"
-            onClick={() => setOpenPermission(!openPermission)}
-          >
-            <img src={ViewMember} alt="" />
-          </button>
-          <button
-            className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
-            type="button"
-            onClick={() => setOpenDocumentHistory(!openDocumentHistory)}
-          >
-            <img src={ViewHistory} alt="" />
-          </button>
-          <div className="relative">
-            <button
-              className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
-              type="button"
-              onClick={() => setOpenExport(!openExport)}
-            >
-              <img src={ExportFile} alt="" />
-            </button>
-            {openExport ? (
-              <DropDownExport
-                openExport={openExport}
-                setOpenExport={setOpenExport}
-              />
-            ) : null}
-          </div>
-        </div>
-      </div> */}
       <nav className="flex items-center text-sm">
         <ol className="list-none p-0 inline-flex">
           <li className="flex items-center gap-x-2">
