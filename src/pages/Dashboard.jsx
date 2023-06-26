@@ -5,6 +5,7 @@ import { Hint } from "../components/Hint";
 import { useDispatch, useSelector } from "react-redux";
 import { getDocumentRecently } from "../redux/service/documentService/documentService";
 
+
 export const Dashboard = () => {
   // const documentRecentlyUpdated = [
   //   {
@@ -46,9 +47,10 @@ export const Dashboard = () => {
   const recentlies = useSelector((state) => state.document.recently);
   useEffect(() => {
     dispatch(getDocumentRecently());
-  }, []);
+  },[]);
 
-  // console.log(recentlies)
+
+
 
   return (
     <div className="space-y-7 bg-white ">

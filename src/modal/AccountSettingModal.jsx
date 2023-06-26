@@ -18,6 +18,7 @@ import { storage } from "../firebase/firebase.utils";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { Button } from "rsuite";
+import { Toaster, toast } from "react-hot-toast";
 
 export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
   const [visible, setVisible] = useState(false);
@@ -53,9 +54,9 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
       });
     });
   }, [profileImage]);
-
   const handleEditProfileInformation = async () => {
     try {
+      toast.success('Update Profile Information Successfully');
       const user = await editProfileInformation(username, url);
       dispatch(editProfileInformationSuccess(user));
       setOpenSetting(!openSetting);
@@ -64,9 +65,12 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
       console.log(error);
     }
   };
-
+  
+  
+  
   return (
     <div className="w-full">
+      <Toaster />
       <Modal
         open={openSetting}
         onClickBackdrop={() => {
