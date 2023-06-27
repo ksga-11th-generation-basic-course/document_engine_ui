@@ -16,6 +16,9 @@ import { ContactUs } from "./pages/ContactUS";
 import { NotFound } from "./pages/NotFound";
 import EnableAccount from "./pages/EnableAccount";
 import { EnableAccVerifyCode } from "./pages/EnableAccVerifyCode";
+import FileUpload from './pages/FileUpload';
+import Profile from "./pages/FileDownloader";
+
 
 function App() {
   return (
@@ -29,6 +32,11 @@ function App() {
         <Route path="/forgotpassword" element={<ForgotPassword />} />
         <Route path="/verifyforgotpassword" element={<VerifyForgotPassword />}/>
         <Route path="/resetforgotpassword" element={<ResetForgotPassword />} />
+        <Route path="/fileupload" element={<FileUpload />} />
+        <Route path="/profile" element={<Profile />} />
+
+
+
 
         <Route path="/signup" element={<SignUp />} />
         <Route path="/verifyotp" element={<VerifyOTP />} />
@@ -43,7 +51,7 @@ function App() {
           <Route path="/workspace" element={<Workspace />} />
           <Route path="/document" element={<Document />} />
           <Route path="/createdocument" element={<CreateDocument />} />
-        </Route>
+        </Route> 
 
         <Route path="*" element={<NotFound/>}/>
       </Routes>
