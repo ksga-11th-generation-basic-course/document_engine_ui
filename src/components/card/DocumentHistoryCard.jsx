@@ -7,6 +7,7 @@ import { RemoveHistory } from "../../modal/RemoveHistoryModal";
 import { restoreDocument } from "../../redux/service/historyService/historyService";
 import { useDispatch } from "react-redux";
 import { restoreDocumentSuccess } from "../../redux/slice/historySlice/historySlice";
+import { useNavigate } from "react-router";
 
 export const DocumentHistoryCard = ({ history }) => {
   const character = history?.editedBy.split("");
@@ -25,9 +26,13 @@ export const DocumentHistoryCard = ({ history }) => {
 
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   let historyId = history?.historyId;
 
   let documentId = history?.documentId;
+
+  let workspaceId = history?.workspaceId;
 
   const handleRestoreHistory = async () => {
     try {
@@ -40,7 +45,6 @@ export const DocumentHistoryCard = ({ history }) => {
 
   return (
     <div>
-      {" "}
       <div className="flex justify-between items-center w-full text-accent">
         <div className="text-18px space-y-3">
           <p className="font-semibold">{history?.editedDate}</p>
@@ -84,7 +88,9 @@ export const DocumentHistoryCard = ({ history }) => {
                         className={`${
                           active ? "bg-violet-500 text-accent" : "text-accent"
                         } group flex w-full flex-col justify-start text-sm rounded-md px-2 py-2`}
-                        onClick={handleRestoreHistory}
+                        onClick={() =>
+                          navigate(`/document/history/${historyId}/${workspaceId}`)
+                        }
                       >
                         <div className="flex gap-x-3">
                           {/* <img src={pen} alt="" /> */}

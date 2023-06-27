@@ -31,41 +31,41 @@ function App() {
         <Route
           path="/forgotpassword"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <ForgotPassword />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/verifyforgotpassword"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <VerifyForgotPassword />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/resetforgotpassword"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <ResetForgotPassword />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/enableaccount"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <EnableAccount />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/verifyenableaccount"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <VerifyToEnable />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
 
@@ -73,9 +73,9 @@ function App() {
         <Route
           path="/verifyotp"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <VerifyOTP />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
 
@@ -113,7 +113,7 @@ function App() {
             }
           />
           <Route
-            path="/document/history"
+            path="/document/history/:historyId/:workspaceId"
             element={
               <ProtectedRoute>
                 <DocumentHistoryView />

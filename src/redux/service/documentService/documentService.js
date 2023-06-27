@@ -294,3 +294,20 @@ export const getDocumentRecently = createAsyncThunk(
     }
   }
 );
+
+export const getDocumentByPageId = createAsyncThunk(
+  `documents/getpagebyid`,
+  async (pageId) => {
+    try {
+      const response = await api.get(`documents/page/${pageId}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
+      return response.data.payload;
+    } catch (error) {
+      throw error.response.data.detail;
+    }
+  }
+);

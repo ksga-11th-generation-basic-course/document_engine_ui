@@ -9,6 +9,7 @@ import {
   checkAccessibility,
   searchDocumentByTagName,
   getDocumentRecently,
+  getDocumentByPageId,
 } from "../../service/documentService/documentService";
 
 const initialState = {
@@ -21,6 +22,7 @@ const initialState = {
   error: null,
   status: false,
   recently: null,
+  page: null,
   accessibility: [],
 };
 
@@ -181,6 +183,20 @@ const documentSlice = createSlice({
     builder.addCase(getDocumentRecently.rejected, (state, action) => {
       state.loading = true;
       state.recently = null;
+      state.error = action.error.message;
+    });
+
+    builder.addCase(getDocumentByPageId.pending, (state) => {
+      state.loading = true;
+    });
+    builder.addCase(getDocumentByPageId.fulfilled, (state, action) => {
+      state.loading = false;
+      state.page = action.payload;
+      state.error = null;
+    });
+    builder.addCase(getDocumentByPageId.rejected, (state, action) => {
+      state.loading = true;
+      state.page = null;
       state.error = action.error.message;
     });
   },

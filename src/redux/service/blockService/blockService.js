@@ -1,7 +1,13 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { api } from "../../../utils/constant";
 
-export const createBlock = async (blockId, blockType, content, documentId) => {
+export const createBlock = async (
+  blockId,
+  blockType,
+  content,
+  order,
+  documentId
+) => {
   try {
     const response = await api.post(
       `blocks`,
@@ -9,6 +15,7 @@ export const createBlock = async (blockId, blockType, content, documentId) => {
         blockId: blockId,
         blockType: blockType,
         content: content,
+        order: order,
         documentId: documentId,
       },
       {
@@ -44,10 +51,10 @@ export const getBlockBydoucmentId = createAsyncThunk(
   }
 );
 
-export const updateBlock = async (blockId, documentId, content) => {
+export const updateBlock = async (blockId, documentId, content, order) => {
   try {
     const response = await api.put(
-      `blocks/${blockId}/documents/${documentId}`,
+      `blocks/${blockId}/documents/${documentId}?order=${order}`,
       {
         ...content,
       },

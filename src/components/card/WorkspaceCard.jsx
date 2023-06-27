@@ -6,13 +6,15 @@ import setting from "../../assets/dashboard_image/setting.svg";
 import trush from "../../assets/dashboard_image/trush.svg";
 import { WorkspaceSettingModal } from "../../modal/WorkspaceSettingModal";
 import { LeaveWorkspaceModal } from "../../modal/LeaveWorkspaceModal";
-import { Dropdown } from "rsuite";
+import { Dropdown } from "react-daisyui";
 
-import IconButton from "@mui/material/IconButton";
-import Menu from "@mui/material/Menu";
-import MenuItem from "@mui/material/MenuItem";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
-import { Fade } from "@mui/material";
+import {
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+  Button,
+} from "@material-tailwind/react";
 
 export const WorkspaceCard = ({ workspace }) => {
   const [workspaceId, setWorkspaceId] = useState();
@@ -79,7 +81,17 @@ export const WorkspaceCard = ({ workspace }) => {
         </div>
         {workspace && workspace.isOwner ? (
           <div className="relative">
-            <IconButton
+            <Menu>
+              <MenuHandler>
+                <Button>Open Menu</Button>
+              </MenuHandler>
+              <MenuList>
+                <MenuItem>Menu Item 1</MenuItem>
+                <MenuItem>Menu Item 2</MenuItem>
+                <MenuItem>Menu Item 3</MenuItem>
+              </MenuList>
+            </Menu>
+            {/* <IconButton
               aria-label="more"
               id="long-button"
               aria-controls={open ? "long-menu" : undefined}
@@ -88,8 +100,8 @@ export const WorkspaceCard = ({ workspace }) => {
               onClick={handleClick}
             >
               <MoreVertIcon />
-            </IconButton>
-            <Menu
+            </IconButton> */}
+            {/* <Menu
               id="fade-menu"
               MenuListProps={{
                 "aria-labelledby": "fade-button",
@@ -117,7 +129,7 @@ export const WorkspaceCard = ({ workspace }) => {
                   Remove
                 </span>
               </MenuItem>
-            </Menu>
+            </Menu> */}
             {/* <Dropdown
               icon={
                 <svg

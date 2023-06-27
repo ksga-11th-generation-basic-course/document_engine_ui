@@ -25,6 +25,7 @@ import InlineCode from "@editorjs/inline-code";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getDocumentByDocumentId,
+  getDocumentByPageId,
   getUsername,
   getWorkspaceName,
 } from "../redux/service/documentService/documentService";
@@ -41,6 +42,10 @@ import {
   getTagInEachWorkspace,
 } from "../redux/service/tagService/tagService";
 import { BlockUI } from "primereact/blockui";
+import Breadcrumbs from "@mui/material/Breadcrumbs";
+import Typography from "@mui/material/Typography";
+import Stack from "@mui/material/Stack";
+import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 
 export const CreateDocument = () => {
   // const [openPermission, setOpenPermission] = useState(false);
@@ -51,6 +56,7 @@ export const CreateDocument = () => {
   const [timerId, setTimerId] = useState(null);
 
   const document = useSelector((state) => state.document.document);
+  const page = useSelector((state) => state.document.page);
   const username = useSelector((state) => state.document.username);
   const workspace = useSelector((state) => state.document.workspace);
   const blockData = useSelector((state) => state.block.blocks);
@@ -59,8 +65,6 @@ export const CreateDocument = () => {
   const documentId = param.documentId;
   const workspaceId = param.workspaceId;
   const dispatch = useDispatch();
-
-  console.log(document?.status);
 
   // console.log(documentId);
 
@@ -73,7 +77,8 @@ export const CreateDocument = () => {
     dispatch(getBlockBydoucmentId(documentId));
     dispatch(getTagByDocumentId(documentId));
     dispatch(getTagInEachWorkspace(workspaceId));
-  }, [documentId, workspaceId]);
+    dispatch(getDocumentByPageId(document?.pageId));
+  }, [documentId, workspaceId, document?.pageId]);
   const [title, setTitle] = useState();
 
   // let initialContent = [];
@@ -181,8 +186,49 @@ export const CreateDocument = () => {
     };
   }, [document]);
 
+  console.log(page);
+
   // console.log("Title : ", title);
   // console.log("title Document  : ", document);
+
+  console.log(page?.documentId);
+
+  const breadcrumbsTwo = [
+    <li className="flex items-center gap-x-2">
+      <img src={icon} />
+      <Link to={`/document/${workspaceId}`} className="text-black">
+        {workspace}
+      </Link>
+    </li>,
+    <li className="flex items-center gap-x-2">
+      <img src={doc} />
+      <p className="text-primary">{title ? title : "Loading..."}</p>
+    </li>,
+  ];
+
+  const breadcrumbsThree = [
+    <li className="flex items-center gap-x-2">
+      <img src={icon} />
+      <Link to={`/document/${workspaceId}`} className="text-black">
+        {workspace}
+      </Link>
+    </li>,
+    <li className="flex items-center gap-x-2">
+      <img src={doc} />
+      <Link
+        className="text-black"
+        to={`/createdocument/${page?.documentId}/${workspaceId}`}
+      >
+        {page?.title}
+      </Link>
+    </li>,
+    <li className="flex items-center gap-x-2">
+      <img src={doc} />
+      <p className="text-primary">{title ? title : "Loading..."}</p>
+    </li>,
+  ];
+
+  console.log(blockData)
 
   return (
     <div className="w-full relative">
@@ -219,9 +265,17 @@ export const CreateDocument = () => {
           </div>
         </div>
       </div> */}
-      <nav className="flex items-center text-sm">
+      <nav className="flex items-center text-sm px-10">
         <ol className="list-none p-0 inline-flex">
-          <li className="flex items-center gap-x-2">
+          <Stack spacing={2}>
+            <Breadcrumbs
+              separator={<NavigateNextIcon fontSize="small" />}
+              aria-label="breadcrumb"
+            >
+              {document?.pageId === null ? breadcrumbsTwo : breadcrumbsThree}
+            </Breadcrumbs>
+          </Stack>
+          {/* <li className="flex items-center gap-x-2">
             <img src={icon} />
             <Link to={`/document/${workspaceId}`} className="text-black">
               {workspace}
@@ -233,10 +287,10 @@ export const CreateDocument = () => {
           <li className="flex items-center gap-x-2">
             <img src={doc} />
             <Link className="text-primary">{title ? title : "Loading..."}</Link>
-          </li>
+          </li> */}
         </ol>
       </nav>
-      <BlockUI blocked={!document?.status}>
+      <BlockUI blocked={false}>
         <div className="text-[#9CA3AF] grid grid-rows-1 gap-2 px-12">
           <div className="w-full h-auto">
             <span className="font-semibold ">
@@ -395,10 +449,10 @@ export const CreateDocument = () => {
         </div>
         <div className="mt-2">
           {blockData === null ? null : blockData.length > 0 ? (
-            <Editor loading={loading} />
+            <Editor loading={loading} blockData={blockData} />
           ) : (
             <div>
-              <Editor loading={loading} />
+              <Editor loading={loading} blockData={blockData} />
             </div>
           )}
         </div>

@@ -31,7 +31,7 @@ import { RiImage2Fill } from "react-icons/ri";
 import { RiChatQuoteFill } from "react-icons/ri";
 import { Button, ButtonToolbar, Loader, Placeholder } from "rsuite";
 
-export const Editor = ({ loading }) => {
+export const Editor = ({ loading, blockData }) => {
   const QuoteBlock = createReactBlockSpec({
     type: "quote",
     propSchema: {
@@ -237,7 +237,7 @@ export const Editor = ({ loading }) => {
     "Upload an image with link"
   );
 
-  const blockData = useSelector((state) => state.block.blocks);
+  // const blockData = useSelector((state) => state.block.blocks);
 
   // console.log(blockData);
 
@@ -245,9 +245,9 @@ export const Editor = ({ loading }) => {
   const param = useParams();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getBlockBydoucmentId(param.documentId));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getBlockBydoucmentId(param.documentId));
+  // }, [param.documentId]);
 
   const sortedInitialContent = [...blockData].sort((a, b) => a.order - b.order);
 
@@ -285,11 +285,17 @@ export const Editor = ({ loading }) => {
           blockId,
           type,
           text,
+          index,
           param.documentId
         );
         dispatch(createBlockSuccess(response));
       } else {
-        const response = await updateBlock(blockId, param.documentId, text);
+        const response = await updateBlock(
+          blockId,
+          param.documentId,
+          text,
+          index
+        );
         dispatch(updateBlockSuccess(response));
       }
     }

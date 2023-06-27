@@ -153,16 +153,25 @@ export const NewSidebar = () => {
   }
 
   return (
-    <div className="bg-[#F7F7FA] flex items-center flex-col p-4 gap-y-1 h-screen">
+    <div className="bg-[#F7F7FA] p-4 h-screen">
       {/* <Toggle
         onChange={setExpanded}
         checked={expanded}
         checkedChildren="Expand"
         unCheckedChildren="Collapse"
       /> */}
-      <Link to={`/dashboard`} className="p-5">
-        <img src={logo} className="w-24 h-24" />
-      </Link>
+      <div
+        className="p-5 flex items-center cursor-pointer"
+        onClick={() => navigate(`/dashboard`)}
+      >
+        <img src={logo} className="w-20 h-20" />
+        <p
+          className="font-bold text-primary text-3xl"
+          style={{ textDecoration: "none" }}
+        >
+          DocEngine
+        </p>
+      </div>
       <CreateWorkspaceModal visible={visible} setVisible={setVisible} />
       <div className="bg-gray-200 w-full h-[1px] m-2"></div>
       <Sidenav expanded={expanded} defaultOpenKeys={["3", "4"]}>

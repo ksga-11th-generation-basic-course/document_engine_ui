@@ -61,7 +61,7 @@ export const getBlockHistory = createAsyncThunk(
   `histories/block`,
   async (historyId) => {
     try {
-      const response = await api.get(`block/history/${historyId}`, {
+      const response = await api.get(`blocks/history/${historyId}`, {
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
           "Content-Type ": "application/json",
@@ -70,6 +70,7 @@ export const getBlockHistory = createAsyncThunk(
       console.log(response.data.payload);
       return response.data.payload;
     } catch (error) {
+      console.log(error)
       throw error.response.data.detail;
     }
   }

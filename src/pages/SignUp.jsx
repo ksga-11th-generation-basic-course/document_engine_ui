@@ -21,8 +21,6 @@ import * as Yup from "yup";
 import { signUpSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 
 export const SignUp = () => {
-
-
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -30,7 +28,7 @@ export const SignUp = () => {
   const handleGoogle = () => {
     signInWithPopup(auth, providerGoogle)
       .then((data) => {
-        console.log(data)
+        console.log(data);
         const googleAuth = {
           username: data.user.displayName,
           email: data.user.email,
@@ -45,10 +43,9 @@ export const SignUp = () => {
   };
 
   const handleFacebook = () => {
-    window.open('https://javascript.info');
     signInWithPopup(auth, providerFacebook)
       .then((data) => {
-        console.log(data)
+        console.log(data);
         const facebookAuth = {
           username: data.user.displayName,
           email: data.user.email,

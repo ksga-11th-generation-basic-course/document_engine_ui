@@ -3,12 +3,13 @@ import close from "../assets/dashboard_image/close.svg";
 import search from "../assets/document_image/search.svg";
 import { MemberDocumentPermissionCard } from "./card/MemberDocumentPermissionCard";
 
+
 export const DocumentPermissionContent = ({
   openPermission,
   setOpenPermission,
   members,
   workspaceId,
-  documentId
+  documentId,
 }) => {
   const [searchTerm, setSearchTerm] = useState("");
   return (
@@ -39,31 +40,33 @@ export const DocumentPermissionContent = ({
             </div>
           </div>
           <div className="border-[1px] rounded-lg p-5 space-y-5">
-            {members === null ? null : members.length > 0 ? (
-              members.filter((member) => {
-                if (searchTerm === "") {
-                  return member;
-                } else if (
-                  member.username
-                    .toLowerCase()
-                    .includes(searchTerm.toLowerCase())
-                ) {
-                  return member;
-                }
-              }).map((member, index) => (
-                <div className="col-span-4" key={index}>
-                  <MemberDocumentPermissionCard
-                    username={member.username}
-                    status={member.isOwner}
-                    isOwner={member.isOwner}
-                    currentuser={true}
-                    accessibility={member.accessibility}
-                    userId={member.userId}
-                    workspaceId={workspaceId}
-                    documentId={documentId}
-                  />
-                </div>
-              ))
+            {members === null ? null : members?.length > 0 ? (
+              members
+                .filter((member) => {
+                  if (searchTerm === "") {
+                    return member;
+                  } else if (
+                    member.username
+                      .toLowerCase()
+                      .includes(searchTerm.toLowerCase())
+                  ) {
+                    return member;
+                  }
+                })
+                .map((member, index) => (
+                  <div className="col-span-4" key={index}>
+                    <MemberDocumentPermissionCard
+                      username={member.username}
+                      status={member.isOwner}
+                      isOwner={member.isOwner}
+                      currentuser={true}
+                      accessibility={member.accessibility}
+                      userId={member.userId}
+                      workspaceId={workspaceId}
+                      documentId={documentId}
+                    />
+                  </div>
+                ))
             ) : (
               <div className="col-span-12 absolute bottom-[45%] left-[55%]">
                 <p className="font-semibold text-accent">No Member</p>
