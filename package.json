@@ -31,6 +31,7 @@
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.4.0",
     "daisyui": "^2.51.6",
+    "file-saver": "^2.0.5",
     "firebase": "^9.22.1",
     "flowbite": "^1.6.5",
     "flowbite-react": "^0.4.4",
@@ -42,6 +43,7 @@
     "react-dom": "^18.2.0",
     "react-editor-js": "^2.1.0",
     "react-otp-input": "^3.0.2",
+    "react-pdf": "^7.1.2",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.11.1",
     "yup": "^1.2.0"
