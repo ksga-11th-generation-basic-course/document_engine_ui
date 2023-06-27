@@ -18,6 +18,7 @@ import { storage } from "../firebase/firebase.utils";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { Button } from "rsuite";
+import { Avatar } from "@material-tailwind/react";
 
 export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
   const [visible, setVisible] = useState(false);
@@ -189,16 +190,20 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                             setProfileImage(e.target.files[0]);
                           }}
                         />
-                        <div className="overflow-hidden w-11 h-11 rounded-full">
+                        <div>
                           {profileImage ? (
-                            <img
+                            <Avatar
+                              variant="circular"
+                              alt="candice wu"
+                              className="cursor-pointer rounded-full"
                               src={URL.createObjectURL(profileImage)}
-                              className="bg-cover w-full h-full"
                             />
                           ) : (
-                            <img
+                            <Avatar
+                              variant="circular"
+                              alt="candice wu"
+                              className="cursor-pointer rounded-full"
                               src={user && user.profileImage}
-                              className="bg-cover w-full h-full"
                             />
                           )}
                         </div>

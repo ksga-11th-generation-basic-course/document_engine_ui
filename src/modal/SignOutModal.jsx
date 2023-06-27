@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signOutSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 
-export const SignOutModal = ({ visible, toggleVisible }) => {
+export const SignOutModal = ({ openSignOut, setOpenSignOut }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,10 +19,10 @@ export const SignOutModal = ({ visible, toggleVisible }) => {
 
   return (
     <div className="w-full">
-      <Modal open={visible}>
+      <Modal open={openSignOut}>
         <div className="w-[540px] bg-white rounded-lg p-3">
           <div className="flex justify-end">
-            <button type="button" onClick={toggleVisible}>
+            <button type="button" onClick={() => setOpenSignOut(!openSignOut)}>
               <img src={close} />
             </button>
           </div>
@@ -40,7 +40,7 @@ export const SignOutModal = ({ visible, toggleVisible }) => {
             <div className="flex justify-center items-center gap-5 text-16px font-semibold pb-5">
               <button
                 className="px-10 py-3 border-[1px] rounded-lg"
-                onClick={toggleVisible}
+                onClick={() => setOpenSignOut(!openSignOut)}
               >
                 Cancel
               </button>

@@ -9,7 +9,6 @@ import dotshorizontal from "../assets/document_image/dotshorizontal.svg";
 import grid from "../assets/document_image/grid.svg";
 import { DocumentCard } from "../components/card/DocumentCard";
 import { DocumentList } from "../components/card/DocumentList";
-import { DropDownWorkspaceSetting } from "../components/DropDownWorkspaceSetting";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -37,6 +36,13 @@ import {
   Radio,
   RadioGroup,
 } from "@mui/material";
+
+import {
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+} from "@material-tailwind/react";
 
 import { getTagInEachWorkspace } from "../redux/service/tagService/tagService";
 import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
@@ -305,25 +311,30 @@ export const Document = () => {
               </div>
               <div className="relative">
                 {isOwner ? (
-                  <Dropdown className="dropdown-left">
-                    <Dropdown.Toggle>
-                      <img src={dotshorizontal} />
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu className="w-56 mt-6 bg-white">
-                      <Dropdown.Item
+                  <Menu>
+                    <MenuHandler>
+                      <button type="button">
+                        <img src={dotshorizontal} className="w-4 h-4" />
+                      </button>
+                    </MenuHandler>
+                    <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56">
+                      <MenuItem
+                        className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                         onClick={() =>
                           setOpenWorksapceSetting(!openWorkspaceSetting)
                         }
                       >
+                        {" "}
                         <img src={setting} />
-                        <span>Setting Workspace</span>
-                      </Dropdown.Item>
-                      <Dropdown.Item>
+                        <span className="text-18px">Setting Workspace</span>
+                      </MenuItem>
+                      <MenuItem className="hover:bg-gray-200 p-2 flex items-center gap-x-3">
+                        {" "}
                         <img src={group} />
-                        <span>View member</span>
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
+                        <span className="text-18px">View member</span>
+                      </MenuItem>
+                    </MenuList>
+                  </Menu>
                 ) : (
                   <div>
                     <button
@@ -370,7 +381,7 @@ export const Document = () => {
         </div>
       ) : null}
       {openBulletList ? (
-        <div className="space-y-6">
+        <div className="space-y-5">
           {documents === null ? null : documents.length > 0 ? (
             documents
               .filter((document) => {
@@ -386,7 +397,7 @@ export const Document = () => {
               })
               .map((document, index) => (
                 <div className="col-span-4" key={index}>
-                  <DocumentList document={document} />
+                  <DocumentList document={document} workspaceId={workspaceId} />
                 </div>
               ))
           ) : (
@@ -412,7 +423,6 @@ export const Document = () => {
           />
         )}
       </div>
-      
     </div>
   );
 };

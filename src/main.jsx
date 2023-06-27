@@ -5,13 +5,16 @@ import "./index.css";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import store from "./redux/store";
+import { ThemeProvider } from "@material-tailwind/react";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   // <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
+  <BrowserRouter>
+    <Provider store={store}>
+      <ThemeProvider>
         <App />
-      </Provider>
-    </BrowserRouter>
+      </ThemeProvider>
+    </Provider>
+  </BrowserRouter>
   // </React.StrictMode>
 );
