@@ -143,7 +143,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
                 <img src={dotmenu} className="w-4 h-4" />
               </button>
             </MenuHandler>
-            <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56">
+            <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56 font-ssp">
               <MenuItem
                 className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                 onClick={viewPage}
@@ -208,7 +208,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
               >
                 {" "}
                 <img src={delet} />
-                <span className="text-16px text-red-500">Delete</span>
+                <span className="text-18px text-red-500">Delete</span>
               </MenuItem>
             </MenuList>
           </Menu>

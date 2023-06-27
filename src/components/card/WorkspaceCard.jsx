@@ -86,11 +86,11 @@ export const WorkspaceCard = ({ workspace }) => {
           <div className="relative">
             <Menu placement="right-start">
               <MenuHandler>
-                <Button className="bg-transparent p-0">
+                <button>
                   <img src={dotmenu} className="w-4 h-4" />
-                </Button>
+                </button>
               </MenuHandler>
-              <MenuList className="rounded-lg space-y-2 p-2 w-56 text-accent">
+              <MenuList className="rounded-lg space-y-2 p-2 w-56 text-accent font-ssp">
                 <MenuItem
                   className="flex gap-x-3 items-center hover:bg-gray-200 p-2"
                   onClick={handleSettingWorkspace}
@@ -119,7 +119,7 @@ export const WorkspaceCard = ({ workspace }) => {
                   <img src={dotmenu} className="w-4 h-4" />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg space-y-2 p-2 w-56 text-accent">
+              <MenuList className="rounded-lg space-y-2 p-2 w-56 text-accent font-ssp">
                 <MenuItem
                   className="flex gap-x-3 items-center hover:bg-gray-200 p-2"
                   onClick={handleLeaveWorkspace}

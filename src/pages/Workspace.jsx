@@ -41,10 +41,11 @@ import {
   MenuHandler,
   MenuList,
   MenuItem,
-  Button,
 } from "@material-tailwind/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Radio } from "@material-tailwind/react";
+import { Collapse, Card, CardBody } from "@material-tailwind/react";
+import { Tooltip } from "@material-tailwind/react";
 
 // const socket = io.connect("http://localhost:3002");
 
@@ -59,6 +60,7 @@ const theme = createTheme({
 
 export const Workspace = () => {
   const [openMenu, setOpenMenu] = React.useState(false);
+
   const [openMenuTwo, setOpenMenuTwo] = React.useState(false);
 
   const [visible, setVisible] = useState(false);
@@ -86,6 +88,8 @@ export const Workspace = () => {
   const [status, setStatus] = useState("Ascending");
 
   const [filterStatus, setFilterStatus] = useState("All Workspaces");
+
+  const toggleOpen = () => setOpenSearch((cur) => !cur);
 
   useEffect(() => {
     dispatch(
@@ -168,7 +172,7 @@ export const Workspace = () => {
             >
               <MenuHandler>
                 <button className="flex items-center justify-between w-[200px]">
-                  <p className="text-18px text-black">{status}</p>
+                  <p className="text-18px text-black font-ssp">{status}</p>
                   <ChevronDownIcon
                     strokeWidth={3}
                     className={`h-4 w-4 transition-transform ${
@@ -177,12 +181,12 @@ export const Workspace = () => {
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px]">
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="Ascending"
                     name="type"
-                    label={<span className="text-16px">Ascending</span>}
+                    label={<span className="text-18px">Ascending</span>}
                     className="checked:bg-primary"
                     onClick={() => {
                       setAsc(true);
@@ -196,7 +200,7 @@ export const Workspace = () => {
                   <Radio
                     id="Descending"
                     name="type"
-                    label={<span className="text-16px">Descending</span>}
+                    label={<span className="text-18px">Descending</span>}
                     className="checked:bg-primary"
                     onClick={() => {
                       setAsc(false);
@@ -209,7 +213,7 @@ export const Workspace = () => {
                   <Radio
                     id="This week"
                     name="type"
-                    label={<span className="text-16px">This week</span>}
+                    label={<span className="text-18px">This week</span>}
                     className="checked:bg-primary"
                     onClick={() => {
                       setSortbydatetime("THIS_WEEK");
@@ -221,7 +225,7 @@ export const Workspace = () => {
                   <Radio
                     id="This month"
                     name="type"
-                    label={<span className="text-16px">This month</span>}
+                    label={<span className="text-18px">This month</span>}
                     className="checked:bg-primary"
                     onClick={() => {
                       setSortbydatetime("THIS_MONTH");
@@ -233,7 +237,7 @@ export const Workspace = () => {
                   <Radio
                     id="This year"
                     name="type"
-                    label={<span className="text-16px">This year</span>}
+                    label={<span className="text-18px">This year</span>}
                     className="checked:bg-primary"
                     onClick={() => {
                       setSortbydatetime("THIS_YEAR");
@@ -260,7 +264,7 @@ export const Workspace = () => {
             >
               <MenuHandler>
                 <button className="flex items-center justify-between w-[200px]">
-                  <p className="text-18px text-black">{filterStatus}</p>
+                  <p className="text-18px text-black font-ssp">{filterStatus}</p>
                   <ChevronDownIcon
                     strokeWidth={3}
                     className={`h-4 w-4 transition-transform ${
@@ -269,12 +273,12 @@ export const Workspace = () => {
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px]">
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="All Workspaces"
                     name="type"
-                    label={<span className="text-16px">All Workspaces</span>}
+                    label={<span className="text-18px">All Workspaces</span>}
                     className="checked:bg-primary"
                     onClick={() => {
                       dispatch(
@@ -295,7 +299,7 @@ export const Workspace = () => {
                   <Radio
                     id="My Workspaces"
                     name="type"
-                    label={<span className="text-16px">My Workspaces</span>}
+                    label={<span className="text-18px">My Workspaces</span>}
                     className="checked:bg-primary"
                     onClick={() => {
                       handleFilterWorkspace(true);
@@ -307,7 +311,7 @@ export const Workspace = () => {
                   <Radio
                     id="Other Workspaces"
                     name="type"
-                    label={<span className="text-16px">Other Workspaces</span>}
+                    label={<span className="text-18px">Other Workspaces</span>}
                     className="checked:bg-primary"
                     onClick={() => {
                       handleFilterWorkspace(false);
@@ -322,21 +326,35 @@ export const Workspace = () => {
         </div>
         <div className="md:col-span-1 col-span-4 h-11">
           <div className="flex justify-end relative">
-            {openSearch ? (
-              <input
-                type="text"
-                placeholder="search"
-                className="md:mt-10 sm:m-0 rounded-lg text-18px border-gray-200 border-[1px] w-[280px] md:w-[150px] focus:ring-accent focus:border-accent"
-                onChange={(e) => setSearchTerm(e.target.value)}
-              />
-            ) : null}
-            <button
-              type="button"
-              className="absolute mr-2 top-3"
-              onClick={() => setOpenSearch(!openSearch)}
+            <Collapse open={openSearch}>
+              <Card>
+                <CardBody>
+                  <input
+                    type="text"
+                    placeholder="search"
+                    className={`rounded-lg text-18px font-ssp border-gray-300 w-full focus:ring-accent focus:border-accent transition-transform duration-300 ease-in-out transform ${
+                      openSearch ? "translate-x-0" : "translate-x-full"
+                    }`}
+                    onChange={(e) => setSearchTerm(e.target.value)}
+                  />
+                </CardBody>
+              </Card>
+            </Collapse>
+            <Tooltip
+              content="Search Workspace"
+              animate={{
+                mount: { scale: 1, y: 0 },
+                unmount: { scale: 0, y: 25 },
+              }}
             >
-              <img src={search} />
-            </button>
+              <button
+                type="button"
+                className="absolute mr-2 top-3 transition-opacity duration-500 ease-in-out opacity-100 hover:opacity-75"
+                onClick={toggleOpen}
+              >
+                <img src={search} />
+              </button>
+            </Tooltip>
           </div>
         </div>
       </div>

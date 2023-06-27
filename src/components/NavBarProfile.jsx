@@ -158,9 +158,9 @@ export const NavBarProfile = () => {
               src={user && user.profileImage}
             />
           </MenuHandler>
-          <MenuList className="rounded-lg text-accent w-[360px] p-5">
+          <MenuList className="rounded-lg text-accent w-[360px] p-5 font-ssp">
             <MenuItem>
-              <p className="font-extrabold text-24px text-primary text-left">
+              <p className="font-extrabold text-28px text-primary text-left">
                 Profile
               </p>
             </MenuItem>
@@ -184,10 +184,10 @@ export const NavBarProfile = () => {
                 />
               )}
               <div>
-                <h3 className="font-bold text-18px text-left">
+                <h3 className="font-bold text-20px text-left">
                   {user && user.userName}
                 </h3>
-                <p className="text-[#9CA3AF] leading-3 text-left">{user && user.email}</p>
+                <p className="text-[#9CA3AF] leading-3 text-base text-left">{user && user.email}</p>
               </div>
             </MenuItem>
             <hr className="my-2 border-blue-gray-50 mt-2" />

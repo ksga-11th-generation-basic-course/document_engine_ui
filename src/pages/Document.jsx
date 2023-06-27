@@ -317,7 +317,7 @@ export const Document = () => {
                         <img src={dotshorizontal} className="w-4 h-4" />
                       </button>
                     </MenuHandler>
-                    <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56">
+                    <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56 font-ssp">
                       <MenuItem
                         className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                         onClick={() =>
