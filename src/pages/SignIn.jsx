@@ -66,7 +66,7 @@ export const SignIn = () => {
       });
   };
 
-  const [open, setOpen] = useState(true);
+  const [open, setOpen] = useState(false);
 
 
   const formik = useFormik({
