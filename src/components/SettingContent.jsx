@@ -31,6 +31,8 @@ export const SettingContent = ({
   );
 
   const [workspaceImage, setWorkspaceImage] = useState(null);
+  const [openWorkspace, setOpenWorkspace] = useState(false);
+  const [openAdvance, setOpenAdvance] = useState(false);
 
   const [url, setUrl] = useState(workspace && workspace.workspaceImage);
 

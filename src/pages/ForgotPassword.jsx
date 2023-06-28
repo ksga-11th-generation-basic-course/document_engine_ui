@@ -3,7 +3,7 @@ import Logo from "../assets/images/Logo.svg";
 import Forgot1 from "../assets/images/Forgot/Forgot.svg";
 import { useDispatch } from "react-redux";
 import { forgotPassword } from "../redux/service/authenticationService/authenticationService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { forgotPasswordSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 export const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -65,20 +65,18 @@ export const ForgotPassword = () => {
                                     type="text"
                                     onChange={(e) => setEmail(e.target.value)}
                                     className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 max-sm:appearance-none
-                                     max-sm:bg-transparent max-sm:border-none w-full text-[#9CA3AF] mr-3  leading-tight focus:outline-none md:text-sm md:h-[37px] "
+                                     max-sm:bg-transparent max-sm:border-none w-full text-[#] mr-3  leading-tight focus:outline-none md:text-sm md:h-[37px] "
                                   />
                                 </div>
                                 <div className="mt-5">
-                                  <Link to={"/verifyforgotpassword"}>
-                                        <button
-                                          type="button"
-                                          onClick={handleSubmit}
-                                          className="font-semibold text-18px transition  duration-200 bg-primary hover:bg-btn-primary text-white w-full px-2 py-3 rounded-lg shadow-sm 
-                                          hover:shadow-md text-center inline-block md:text-base md:h-[37px] md:pt-2 "
-                                        >
-                                          Continue
-                                        </button>
-                                  </Link>
+                                    <button
+                                      type="button"
+                                      onClick={handleSubmit}
+                                      className="font-semibold text-18px transition  duration-200 bg-primary hover:bg-btn-primary text-white w-full px-2 py-3 rounded-lg shadow-sm 
+                                      hover:shadow-md text-center inline-block md:text-base md:h-[37px] md:pt-2 "
+                                    >
+                                      Continue
+                                    </button>
                                 </div>
                               </div>
                             </div>

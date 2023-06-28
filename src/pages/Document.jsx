@@ -3,14 +3,12 @@ import sort from "../assets/workspace_image/sort.svg";
 import chevrondown from "../assets/workspace_image/chevrondown.svg";
 import filter from "../assets/workspace_image/filter.svg";
 import search from "../assets/workspace_image/search.svg";
-import { DropDownSort } from "../components/DropDownSort";
 import documenticon from "../assets/document_image/documenticon.svg";
 import bulletlist from "../assets/document_image/bulletlist.svg";
 import dotshorizontal from "../assets/document_image/dotshorizontal.svg";
 import grid from "../assets/document_image/grid.svg";
 import { DocumentCard } from "../components/card/DocumentCard";
 import { DocumentList } from "../components/card/DocumentList";
-import { DropDownWorkspaceSetting } from "../components/DropDownWorkspaceSetting";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import {
@@ -31,17 +29,28 @@ import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
 import usericon from "../assets/workspace_image/usericon.svg";
 import { WorkspaceViewForMemberModal } from "../modal/WorkspaceViewForMemberModal";
 import { getCurrentUser } from "../redux/service/userService/userService";
+// import {
+//   Checkbox,
+//   FormControl,
+//   FormControlLabel,
+//   Radio,
+//   RadioGroup,
+// } from "@mui/material";
+
 import {
-  Checkbox,
-  FormControl,
-  FormControlLabel,
-  Radio,
-  RadioGroup,
-} from "@mui/material";
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+} from "@material-tailwind/react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import { Radio } from "@material-tailwind/react";
 
 import { getTagInEachWorkspace } from "../redux/service/tagService/tagService";
 import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
 import "../App.css";
+import { Button } from "rsuite";
+import { Checkbox } from "@material-tailwind/react";
 
 export const Document = () => {
   const [openSearch, setOpenSearch] = useState(false);
@@ -78,6 +87,10 @@ export const Document = () => {
   const [selectedTags, setSelectedTags] = useState([]);
 
   const [documentId, setDocumentId] = useState();
+
+  const [openMenu, setOpenMenu] = React.useState(false);
+
+  const [openMenuTwo, setOpenMenuTwo] = React.useState(false);
 
   const navigate = useNavigate();
 
@@ -151,6 +164,8 @@ export const Document = () => {
           </button>
         ) : null}
       </div>
+      
+      {/* Option */}
       <div className="grid grid-cols-12">
         <div className="col-span-4 flex items-center gap-x-5 h-11">
           <div className="flex items-center gap-x-3">
@@ -158,7 +173,78 @@ export const Document = () => {
             <h4 className="font-semibold text-20px">Sort: </h4>
           </div>
           <div className="relative">
-            <Dropdown>
+            <Menu
+              open={openMenu}
+              handler={setOpenMenu}
+              dismiss={{
+                itemPress: false,
+              }}
+            >
+              <MenuHandler>
+                <button className="flex items-center justify-between w-[200px]">
+                  <p className="text-18px text-black font-ssp">Ascending</p>
+                  <ChevronDownIcon
+                    strokeWidth={3}
+                    className={`h-4 w-4 transition-transform ${
+                      openMenu ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+              </MenuHandler>
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
+                <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
+                  <Radio
+                    id="Ascending"
+                    name="type"
+                    label={<span className="text-18px">Last Update</span>}
+                    className="checked:bg-primary"
+                    // onClick={() => {
+                    //   setAsc(true);
+                    //   setDesc(false);
+                    //   setStatus("Ascending");
+                    // }}
+                    defaultChecked
+                  />
+                </MenuItem>
+                <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
+                  <Radio
+                    id="This week"
+                    name="type"
+                    label={<span className="text-18px">This week</span>}
+                    className="checked:bg-primary"
+                    // onClick={() => {
+                    //   setSortbydatetime("THIS_WEEK");
+                    //   setStatus("THIS_WEEK");
+                    // }}
+                  />
+                </MenuItem>
+                <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
+                  <Radio
+                    id="This month"
+                    name="type"
+                    label={<span className="text-18px">This month</span>}
+                    className="checked:bg-primary"
+                    // onClick={() => {
+                    //   setSortbydatetime("THIS_MONTH");
+                    //   setStatus("THIS_MONTH");
+                    // }}
+                  />
+                </MenuItem>
+                <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
+                  <Radio
+                    id="This year"
+                    name="type"
+                    label={<span className="text-18px">This year</span>}
+                    className="checked:bg-primary"
+                    // onClick={() => {
+                    //   setSortbydatetime("THIS_YEAR");
+                    //   setStatus("THIS_YEAR");
+                    // }}
+                  />
+                </MenuItem>
+              </MenuList>
+            </Menu>
+            {/* <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
                   <p className="text-18px text-black">Last Update</p>
@@ -207,7 +293,7 @@ export const Document = () => {
                   </RadioGroup>
                 </FormControl>
               </Dropdown.Menu>
-            </Dropdown>
+            </Dropdown> */}
           </div>
         </div>
         <div className="col-span-4 flex items-center gap-x-5 h-11">
@@ -216,7 +302,49 @@ export const Document = () => {
             <h4 className="font-semibold text-20px">Filter: </h4>
           </div>
           <div className="relative">
-            <Dropdown>
+            <Menu
+              open={openMenuTwo}
+              handler={setOpenMenuTwo}
+              dismiss={{
+                itemPress: false,
+              }}
+            >
+              <MenuHandler>
+                <button className="flex items-center justify-between w-[200px]">
+                  <p className="text-18px text-black font-ssp">Product</p>
+                  <ChevronDownIcon
+                    strokeWidth={3}
+                    className={`h-4 w-4 transition-transform ${
+                      openMenuTwo ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+              </MenuHandler>
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
+                <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
+                  <Checkbox
+                    id="Product"
+                    label={<span className="text-18px">Product</span>}
+                    className="checked:bg-primary"
+                  />
+                </MenuItem>
+                <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
+                  <Checkbox
+                    id="Technology"
+                    label={<span className="text-18px">Technology</span>}
+                    className="checked:bg-primary"
+                  />
+                </MenuItem>
+                <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
+                  <Checkbox
+                    id="Document"
+                    label={<span className="text-18px">Document</span>}
+                    className="checked:bg-primary"
+                  />
+                </MenuItem>
+              </MenuList>
+            </Menu>
+            {/* <Dropdown>
               <Dropdown.Toggle>
                 <div className="flex items-center gap-x-20">
                   <p className="text-18px text-black">Product</p>
@@ -249,7 +377,7 @@ export const Document = () => {
                     </Dropdown.Item>
                   ))}
               </Dropdown.Menu>
-            </Dropdown>
+            </Dropdown> */}
           </div>
         </div>
         <div className="col-span-4 flex items-center justify-end">
@@ -305,25 +433,30 @@ export const Document = () => {
               </div>
               <div className="relative">
                 {isOwner ? (
-                  <Dropdown className="dropdown-left">
-                    <Dropdown.Toggle>
-                      <img src={dotshorizontal} />
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu className="w-56 mt-6 bg-white">
-                      <Dropdown.Item
+                  <Menu>
+                    <MenuHandler>
+                      <button type="button">
+                        <img src={dotshorizontal} className="w-4 h-4" />
+                      </button>
+                    </MenuHandler>
+                    <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56 font-ssp">
+                      <MenuItem
+                        className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                         onClick={() =>
                           setOpenWorksapceSetting(!openWorkspaceSetting)
                         }
                       >
+                        {" "}
                         <img src={setting} />
-                        <span>Setting Workspace</span>
-                      </Dropdown.Item>
-                      <Dropdown.Item>
+                        <span className="text-18px">Setting Workspace</span>
+                      </MenuItem>
+                      <MenuItem className="hover:bg-gray-200 p-2 flex items-center gap-x-3">
+                        {" "}
                         <img src={group} />
-                        <span>View member</span>
-                      </Dropdown.Item>
-                    </Dropdown.Menu>
-                  </Dropdown>
+                        <span className="text-18px">View member</span>
+                      </MenuItem>
+                    </MenuList>
+                  </Menu>
                 ) : (
                   <div>
                     <button
@@ -337,7 +470,7 @@ export const Document = () => {
                   </div>
                 )}
               </div>
-            </div>
+              </div>
           )}
         </div>
       </div>

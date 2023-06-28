@@ -71,12 +71,12 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
 
   return (
     <div className="w-full z-50">
-      <Button
+      {/* <Button
         onClick={() => setVisible(!visible)}
         className="bg-primary w-full py-3 text-white rounded-lg text-16px font-semibold mt-5"
       >
         New Workspace
-      </Button>
+      </Button> */}
       {/* <button
         onClick={() => setVisible(!visible)}
         className="bg-primary w-full py-3 text-white rounded-lg text-16px font-semibold mt-5"

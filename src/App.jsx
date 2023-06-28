@@ -14,17 +14,16 @@ import { CreateDocument } from "./pages/CreateDocument";
 import { AboutUs } from "./pages/AboutUs";
 import { ContactUs } from "./pages/ContactUS";
 import { NotFound } from "./pages/NotFound";
-import { EnableAccVerifyCode } from "./pages/EnableAccVerifyCode";
 import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { EnableAccount } from "./pages/EnableAccount";
 import { VerifyToEnable } from "./pages/VerifyToEnable";
+// import { DocumentHistoryView } from "./pages/DocumentHistoryView";
 
 function App() {
   return (
     <div className="App font-ssp bg-white">
       <Routes>
         <Route index element={<Landing />} />
-        {/* <Route path="/" element={<Landing />} /> */}
         <Route path="/aboutus" element={<AboutUs />} />
         <Route path="/contactus" element={<ContactUs />} />
 
@@ -32,56 +31,53 @@ function App() {
         <Route
           path="/forgotpassword"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <ForgotPassword />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
-        <Route path="/verifyforgotpassword" element={
-            <ProtectedRoute>
+        <Route
+          path="/verifyforgotpassword"
+          element={
+            // <ProtectedRoute>
               <VerifyForgotPassword />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/resetforgotpassword"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <ResetForgotPassword />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/enableaccount"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <EnableAccount />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
         <Route
           path="/verifyenableaccount"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <VerifyToEnable />
-            </ProtectedRoute>
-          }/>
+            // </ProtectedRoute>
+          }
+        />
 
         <Route path="/signup" element={<SignUp />} />
         <Route
           path="/verifyotp"
           element={
-            <ProtectedRoute>
+            // <ProtectedRoute>
               <VerifyOTP />
-            </ProtectedRoute>
+            // </ProtectedRoute>
           }
         />
-        <Route path="/enableaccount" element={<EnableAccount />} />
-        <Route path="/enableaccountverifycode" element={<EnableAccVerifyCode/>} />
-        <Route path="/landing" element={<Landing />} />
-
-
-
 
         <Route path="/" element={<Root />}>
           <Route
@@ -116,6 +112,14 @@ function App() {
               </ProtectedRoute>
             }
           />
+          {/* <Route
+            path="/document/history/:historyId/:workspaceId"
+            element={
+              <ProtectedRoute>
+                <DocumentHistoryView />
+              </ProtectedRoute>
+            }
+          /> */}
         </Route>
 
         <Route path="*" element={<NotFound />} />
