@@ -63,7 +63,7 @@ export const WorkspaceCard = ({ workspace }) => {
           {workspace && workspace.workspaceName}
         </h4>
         {workspace && workspace.isOwner ? (
-          <p className="border-[1px] rounded-full px-3">Owner</p>
+          <p className="rounded-full">Owner</p>
         ) : null}
       </div>
       <div className="h-[200px] overflow-hidden" onClick={handleNavigate}>
@@ -72,7 +72,8 @@ export const WorkspaceCard = ({ workspace }) => {
       <div className="flex justify-between items-center p-3">
         <div>
           <h3 className="font-semibold text-18px">
-            {workspace && workspace.totalDocument === 0 ? (
+            {(workspace && workspace.totalDocument === 0) ||
+            workspace.totalDocument === 1 ? (
               <p>{workspace.totalDocument} Document</p>
             ) : (
               <p>{workspace.totalDocument} Documents</p>
@@ -87,7 +88,21 @@ export const WorkspaceCard = ({ workspace }) => {
             <Menu placement="right-start">
               <MenuHandler>
                 <button>
-                  <img src={dotmenu} className="w-4 h-4" />
+                  <svg
+                    width="22"
+                    height="22"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M12 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                    <path d="M12 4a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                    <path d="M12 18a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                  </svg>
                 </button>
               </MenuHandler>
               <MenuList className="rounded-lg space-y-2 p-2 w-56 text-accent font-ssp">
@@ -116,7 +131,21 @@ export const WorkspaceCard = ({ workspace }) => {
             <Menu placement="right-start">
               <MenuHandler>
                 <button type="button">
-                  <img src={dotmenu} className="w-4 h-4" />
+                  <svg
+                    width="22"
+                    height="22"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M12 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                    <path d="M12 4a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                    <path d="M12 18a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                  </svg>
                 </button>
               </MenuHandler>
               <MenuList className="rounded-lg space-y-2 p-2 w-56 text-accent font-ssp">

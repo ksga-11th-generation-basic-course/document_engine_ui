@@ -12,29 +12,10 @@ import {
 } from "../redux/service/workspaceService/workspaceService";
 import { useDispatch, useSelector } from "react-redux";
 import emptybox from "../assets/workspace_image/emptybox.png";
-// import { io } from "socket.io-client";
-import { removeWorkspaceServiceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
-// import {
-//   Box,
-//   FormControl,
-//   FormControlLabel,
-//   Pagination,
-//   Radio,
-//   RadioGroup,
-//   Skeleton,
-// } from "@mui/material";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CustomSkeleton } from "../components/CustomSkeleton";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
-// import {
-//   FormControl,
-//   FormControlLabel,
-//   Pagination,
-//   Radio,
-//   RadioGroup,
-// } from "@mui/material";
-// import { Dropdown } from "react-daisyui";
 
 import {
   Menu,
@@ -45,7 +26,6 @@ import {
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Radio } from "@material-tailwind/react";
 import { Collapse, Card, CardBody } from "@material-tailwind/react";
-import { Tooltip } from "@material-tailwind/react";
 
 // const socket = io.connect("http://localhost:3002");
 
@@ -251,7 +231,19 @@ export const Workspace = () => {
         </div>
         <div className="col-span-4 md:col-span-6 sm:grid-cols-1 flex items-center gap-x-5 h-11">
           <div className="flex items-center gap-x-3">
-            <img src={filter} className="w-7 h-7 md:w-5 md:h-5" />
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
+            </svg>
             <h4 className="font-semibold text-20px md:text-18px">Filter: </h4>
           </div>
           <div className="relative">
@@ -264,7 +256,9 @@ export const Workspace = () => {
             >
               <MenuHandler>
                 <button className="flex items-center justify-between w-[200px]">
-                  <p className="text-18px text-black font-ssp">{filterStatus}</p>
+                  <p className="text-18px text-black font-ssp">
+                    {filterStatus}
+                  </p>
                   <ChevronDownIcon
                     strokeWidth={3}
                     className={`h-4 w-4 transition-transform ${
@@ -340,21 +334,13 @@ export const Workspace = () => {
                 </CardBody>
               </Card>
             </Collapse>
-            <Tooltip
-              content="Search Workspace"
-              animate={{
-                mount: { scale: 1, y: 0 },
-                unmount: { scale: 0, y: 25 },
-              }}
+            <button
+              type="button"
+              className="absolute mr-2 top-3 transition-opacity duration-500 ease-in-out opacity-100 hover:opacity-75"
+              onClick={toggleOpen}
             >
-              <button
-                type="button"
-                className="absolute mr-2 top-3 transition-opacity duration-500 ease-in-out opacity-100 hover:opacity-75"
-                onClick={toggleOpen}
-              >
-                <img src={search} />
-              </button>
-            </Tooltip>
+              <img src={search} />
+            </button>
           </div>
         </div>
       </div>

@@ -26,6 +26,7 @@ import signout from "../assets/dashboard_image/signout.svg";
 import close from "../assets/dashboard_image/close.svg";
 import { SignOutModal } from "../modal/SignOutModal";
 import { AccountSettingModal } from "../modal/AccountSettingModal";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export const NavBarProfile = () => {
   const [visible, setVisible] = useState(false);
@@ -35,6 +36,7 @@ export const NavBarProfile = () => {
   const [openSetting, setOpenSetting] = useState(false);
   const [openSignOut, setOpenSignOut] = useState(false);
   const [open, setOpen] = useState(false);
+  const [openMenu, setOpenMenu] = React.useState(false);
 
   const user = useSelector((state) => state.user.user);
 
@@ -59,6 +61,46 @@ export const NavBarProfile = () => {
     <div className="flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white">
       {param.documentId ? (
         <div>
+          <Menu
+            open={openMenu}
+            handler={setOpenMenu}
+            dismiss={{
+              itemPress: false,
+            }}
+          >
+            <MenuHandler>
+              <button className="flex items-center justify-between w-[250px] border-[1px] rounded-lg p-3">
+                <p className="text-18px text-black font-ssp flex gap-x-2">
+                  <img src={pen} alt="" />
+                  Editing
+                </p>
+                <ChevronDownIcon
+                  strokeWidth={3}
+                  className={`h-4 w-4 transition-transform ${
+                    openMenu ? "rotate-180" : ""
+                  }`}
+                />
+              </button>
+            </MenuHandler>
+            <MenuList className="rounded-lg p-2 font-ssp w-[250px] space-y-2">
+              <MenuItem className="p-2 hover:bg-gray-200 rounded-lg">
+                {" "}
+                <div className="flex gap-x-3">
+                  <img src={pen} alt="" />
+                  <span className="text-lg">Editing</span>
+                </div>
+                <p className="mr-6">Edit document directly</p>
+              </MenuItem>
+              <MenuItem className="p-2 hover:bg-gray-200 rounded-lg">
+                {" "}
+                <div className="flex gap-x-3">
+                  <img src={eyeview} alt="" />
+                  <span className="text-lg">Viewing</span>
+                </div>
+                <p className="ml-4">Read or export final document</p>
+              </MenuItem>
+            </MenuList>
+          </Menu>
           {/* <Menu as="div" className="relative inline-block text-left bg-white">
             <div>
               <Menu.Button className="inline-flex w-full gap-x-3 justify-center items-center rounded-lg border-[1px] bg-opacity-20 px-5 py-2 text-sm font-medium text-accent hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
@@ -128,27 +170,6 @@ export const NavBarProfile = () => {
         <JoinWorkspaceModal visible={visible} setVisible={setVisible} />
       </div>
       <div className="relative">
-        {/* <div className="relative inline-block">
-          <button
-            className="overflow-hidden w-11 h-11 rounded-full"
-            onClick={() => setOpen(!open)}
-          >
-            {user && user.profileImage === null ? (
-              <img
-                src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
-                className="bg-cover"
-              />
-            ) : (
-              <img
-                src={user && user.profileImage}
-                className="h-full w-full bg-cover"
-              />
-            )}
-          </button>
-          {open ? (
-            <DropDownProfile open={open} setOpen={setOpen} user={user} />
-          ) : null}
-        </div> */}
         <Menu placement="bottom-end">
           <MenuHandler>
             <Avatar
@@ -187,7 +208,9 @@ export const NavBarProfile = () => {
                 <h3 className="font-bold text-20px text-left">
                   {user && user.userName}
                 </h3>
-                <p className="text-[#9CA3AF] leading-3 text-base text-left">{user && user.email}</p>
+                <p className="text-[#9CA3AF] leading-3 text-base text-left">
+                  {user && user.email}
+                </p>
               </div>
             </MenuItem>
             <hr className="my-2 border-blue-gray-50 mt-2" />

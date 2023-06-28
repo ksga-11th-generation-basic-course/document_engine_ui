@@ -71,18 +71,6 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
 
   return (
     <div className="w-full z-50">
-      <Button
-        onClick={() => setVisible(!visible)}
-        className="bg-primary w-full py-3 text-white rounded-lg text-16px font-semibold mt-5"
-      >
-        New Workspace
-      </Button>
-      {/* <button
-        onClick={() => setVisible(!visible)}
-        className="bg-primary w-full py-3 text-white rounded-lg text-16px font-semibold mt-5"
-      >
-        New Workspace
-      </button> */}
       <Modal open={visible} onClickBackdrop={() => setVisible(!visible)}>
         <div className="w-[540px] bg-white rounded-lg p-3">
           <div className="flex justify-end">
