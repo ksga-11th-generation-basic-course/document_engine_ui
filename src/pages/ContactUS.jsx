@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import Contact from "../assets/images/Contact.svg";
 import Message from "../assets/images/Contact/Message.svg";
 import IG from "../assets/images/Contact/IG.svg";
 import Face from "../assets/images/Contact/Facebook.svg";
 import Tele from "../assets/images/Contact/Telegram .svg";
 import { NavBar } from "../components/NavBar";
+import { SendMessageSuccessModal } from "../modal/SendMessageSuccessModal";
 
 export const ContactUs = () => {
+  const [openSendMessageSuccess, setOpenSendMessageSuccess] = useState(false);
   return (
     <div className="min-h-screen bg-white">
       <div>
@@ -64,7 +66,9 @@ export const ContactUs = () => {
             {/* Button Send */}
             <button
               type="submit"
-              className="mt-5 px-10 py-2.5 bg-primary text-white font-semibold rounded-lg hover:bg-primary/90  lg:text-xl lg:mb-14  md:-ml-0 md:h-9 md:pt-1.5 md:text-base">
+              className="mt-5 px-10 py-2.5 text-18px bg-primary text-white font-semibold rounded-lg hover:bg-primary/90  lg:text-xl lg:mb-14  md:-ml-0 md:h-9 md:pt-1.5 md:text-base"
+              onClick={() => setOpenSendMessageSuccess(!openSendMessageSuccess)}
+              >
               Send
             </button>
           </div>
@@ -94,6 +98,7 @@ export const ContactUs = () => {
           </div>
         </div>
       </div>
+      {openSendMessageSuccess ? <SendMessageSuccessModal openSendMessageSuccess={openSendMessageSuccess} setOpenSendMessageSuccess={setOpenSendMessageSuccess} /> : null}
     </div>
   );
 };

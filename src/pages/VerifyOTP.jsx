@@ -12,7 +12,7 @@ import {
   resendVerifyCode,
   verifyOTP,
 } from "../redux/service/authenticationService/authenticationService";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
 import { verifySuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 
@@ -24,7 +24,6 @@ const validate = (values) => {
   return errors;
 };
 export const VerifyOTP = () => {
-
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
@@ -43,7 +42,6 @@ export const VerifyOTP = () => {
       } catch (error) {
         console.error("Verify failed:", error);
       }
-      
     },
   });
   const inputRef = useRef({});
@@ -90,7 +88,7 @@ export const VerifyOTP = () => {
         value={value}
         onKeyUp={(event) => handleBackSpace(event, index)}
         ref={(element) => (inputRef.current[index] = element)}
-        className="m-2 border border-primary bg-blue-50 focus:ring-btn-primary focus:border-btn-primary h-12 w-12 text-center rounded"
+        className="m-2 border border-primary bg-blue-50 focus:ring-btn-primary focus:border-btn-primary h-12 w-12 text-center rounded md:h-6 md:w-6"
         type="text"
         id="first"
         maxLength="1"
@@ -104,86 +102,106 @@ export const VerifyOTP = () => {
   const handleTimeout = () => {};
 
   const handleResendCode = () => {
-    const email = localStorage.getItem("email")
+    const email = localStorage.getItem("email");
     dispatch(resendVerifyCode(email));
     setResetCountdown(true);
   };
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
-        <img
-          src={Logo}
-          className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10"
-        />
-        <img
-          className="w-[500px] h-[700.16px] pt-32 mr-5 max-sm:hidden"
-          src={VerifyL}
-        />
-        <div className="bg-white p-12 flex flex-col justify-center gap-y-6 rounded-3xl shadow-md">
-          <div className=" xs:p-0 mx-auto md:w-full md:max-w-md  ">
-            <div className="bg-white w-full  ">
-              <h1 className="font-bold text-center text-primary text-36px">
-                Verify Email Address
-              </h1>
-              <div>
-                <div className="py-8 px-3">
-                  <div className="container mx-auto">
-                    <div className="max-w-sm mx-auto md:max-w-lg">
-                      <div className="w-full">
-                        <div className="bg-white h-64 rounded text-center">
-                          <div className="text">
-                            <p className="text-18px text-accent">
-                              Please enter the code we've send to
-                            </p>
-                            <p className="text-18px text-center text-primary">
-                              your email address
-                            </p>
-                          </div>
-                          <div
-                            id="otp"
-                            className="flex flex-row justify-center text-center mt-5"
-                          >
-                            <Formik>
-                              <div className="form">{renderInput()}</div>
-                            </Formik>
-                          </div>
-                          {formik.errors.OTP && (
-                            <p className="text-red-500 text-lg">
-                              The field is not blank
-                            </p>
-                          )}
-                          <div className="flex justify-center text-center mt-5">
-                            <a className="flex items-center  cursor-pointer">
-                              <span className="font-bold">
-                                (
-                                <Countdown
-                                  seconds={60}
-                                  onTimeout={handleTimeout}
-                                  reset={resetCountdown}
-                                />
-                                s)
-                              </span>
-                            </a>
-                          </div>
-                          <div className="flex justify-center text-center mt-5">
-                            <a className="flex items-center text-primary hover:text-btn-primary cursor-pointer">
-                              <button
-                                type="button"
-                                onClick={handleResendCode}
-                                className="underline pr-3"
-                              >
-                                Didn't receive the code? Click to resend
-                              </button>
-                            </a>
-                          </div>
-                          <div className="mt-5">
-                            <button
-                              type="button"
-                              onClick={formik.handleSubmit}
-                              className="transition font-bold text-18px duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm hover:shadow-md text-center inline-block"
+      <Link to={"/"}>
+                <img
+                    src={Logo}
+                    className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10 lg:[50px] md:w-[60px] md:mr-24 "
+              />
+      </Link>
+
+        <div className=" flex justify-center items-center  relative overflow-hidden -mt-60">
+          {/* Image Background */}
+          <img
+            className="w-[500px] h-[700.16px] mt-32 mr-5 max-sm:hidden lg:w-[140px] lg:hidden md:hidden"
+            src={VerifyL}
+          />
+          {/* Verify Email Address */}
+          <form
+            className="bg-white  mt-36 flex flex-col justify-center  rounded-3xl shadow-md px-10 py-20 pb-28 lg:mt-48 md:ml-2"
+          >
+            <div className="  mx-auto  md:w-full md:max-w-md  ">
+              <div className=" w-full  ">
+                <h1 className="font-bold text-center text-primary text-36px lg:-mt-8 lg:text-3xl md:text-28px md:-mb-4">
+                  Verify Email Address
+                </h1>
+
+                {/* Please enter the code we've send to */}
+                <div>
+                  <div className="py-8 px-3">
+                    <div className="container mx-auto">
+                      <div className="max-w-sm mx-auto md:max-w-lg">
+                        <div className="w-full">
+                          <div className=" h-64 rounded text-center">
+                            <div className="text">
+                              <p className="text-18px text-accent lg:text-xl md:text-14px">
+                                Please enter the code we've send to
+                              </p>
+                              <p className="text-18px text-center text-primary md:text-sm">
+                                your email address
+                              </p>
+                            </div>
+
+                            {/* Box input password */}
+                            <div
+                              id="otp"
+                              className="flex justify-center text-center mt-5"
                             >
-                              Verify & Sign in
-                            </button>
+                              <Formik>
+                                <div className="form ">{renderInput()}</div>
+                              </Formik>
+                            </div>
+                            {formik.errors.OTP && (
+                              <p className="text-red-500 text-lg md:text-sm">
+                                The field is not blank
+                              </p>
+                            )}
+                            <div className="flex justify-center text-center mt-5 ">
+                              <a className="flex items-center cursor-pointer ">
+                                <span className="font-bold ">
+                                  (
+                                  <Countdown
+                                    seconds={60}
+                                    onTimeout={handleTimeout}
+                                    reset={resetCountdown}
+                                  />
+                                  )
+                                </span>
+                              </a>
+                            </div>
+
+                            {/* Didn't receive the code? Click to resend */}
+                            <div className="flex justify-center text-center mt-5 ">
+                              <a className="flex items-center text-primary hover:text-btn-primary cursor-pointer">
+                                <button
+                                  type="button"
+                                  onClick={handleResendCode}
+                                  className="underline pr-3 lg:text-lg md:text-sm"
+                                >
+                                  Didn't receive the code? Click to resend
+                                </button>
+                              </a>
+                            </div>
+
+                            {/*  Verify */}
+                            <div className="mt-5">
+                              <Link to={"/resetforgotpassword"}>
+                                <button
+                                  type="button"
+                                  onClick={formik.handleSubmit}
+                                  className="transition font-bold text-18px duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm
+                                                hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[260px] md:h-12 md:pt-2.5"
+                                >
+                                  Verify  & Sign in
+                                </button>
+                              </Link>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -192,10 +210,15 @@ export const VerifyOTP = () => {
                 </div>
               </div>
             </div>
+          </form>
+          <div>
+            <img
+              className="w-[600px] h-[500.57px]  max-sm:hidden lg:w-[140px] lg:hidden lg:mt-14 md:hidden"
+              src={VerifyR}
+            />
           </div>
         </div>
       </div>
-      <img className="w-[600px] h-[500.57px]  max-sm:hidden" src={VerifyR} />
     </div>
   );
-}
+};

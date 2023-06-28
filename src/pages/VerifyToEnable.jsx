@@ -160,7 +160,7 @@ export const VerifyToEnable = () => {
                                   onTimeout={handleTimeout}
                                   reset={resetCountdown}
                                 />
-                                s)
+                                )
                               </span>
                             </a>
                           </div>
