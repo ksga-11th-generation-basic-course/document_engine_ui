@@ -30,6 +30,7 @@ export const Hint = () => {
         {open && (
           <div className="fixed inset-0" onClick={() => setOpen(!open)}></div>
         )}
+
         <button
           className={
             open
@@ -48,6 +49,7 @@ export const Hint = () => {
             </p>
           </div>
         </button>
+
         <div>
           {open ? (
             <div className="absolute w-full text-accent rounded-b-lg border-t-[1px] border-r-[15px] border-r-primary shadow-custom bg-white z-50">
@@ -97,24 +99,24 @@ export const Hint = () => {
                   </p>
                 </div>
 
-                                    {/* Visit workspace code*/}
-                                    <div>
-                                            <div className="flex items-center w-full text-20px font-semibold gap-x-4 mb-2 md:text-14px md:mb-0">
-                                                    <img src={lightbulb} className="md:w-3.5"/>
-                                                    <span>Visit workspace code</span> <br />
-                                            </div>
-                                            <p className="text-[#009521] font-bold px-9 text-left md:text-10px md:pl-8 md:w-80">
-                                                  <span>Hint :</span>
-                                                  <span className=" text-accent font-normal ml-1">
-                                                        Click on “Setting Workspaces” and click on  “Collaborators” in sidebar ,you will see the workspace code on the top of all collaborators.
-                                                  </span>
-                                            </p>
-                                    </div>
-                              </div>
-                        </div>
-                       : null}
+                {/* Visit workspace code*/}
+                <div>
+                    <div className="flex items-center w-full text-20px font-semibold gap-x-4 mb-2 md:text-14px md:mb-0">
+                            <img src={lightbulb} className="md:w-3.5"/>
+                            <span>Visit workspace code</span> <br />
+                    </div>
+                    <p className="text-[#009521] font-bold px-9 text-left md:text-10px md:pl-8 md:w-80">
+                          <span>Hint :</span>
+                          <span className=" text-accent font-normal ml-1">
+                                Click on “Setting Workspaces” and click on  “Collaborators” in sidebar ,you will see the workspace code on the top of all collaborators.
+                          </span>
+                    </p>
                 </div>
-          </div>
+              </div>
+            </div>
+            ): null}
+      </div>
+      </div>
     </div>
   );
 };
