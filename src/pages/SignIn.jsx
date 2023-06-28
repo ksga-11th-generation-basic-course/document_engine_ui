@@ -21,6 +21,15 @@ import { signInSuccess } from "../redux/slice/authenticationSlice/authentication
 import { EnableAccountModal } from "../modal/EnableAccountModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import {
+  Button,
+  Dialog,
+  DialogHeader,
+  DialogBody,
+  DialogFooter,
+} from "@material-tailwind/react";
+import logo from "../assets/landing_image/logo.svg";
+
 
 export const SignIn = () => {
   const [enableAccount, setEnableAccount] = useState(false);
@@ -57,6 +66,9 @@ export const SignIn = () => {
       });
   };
 
+  const [open, setOpen] = useState(true);
+
+
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -74,14 +86,21 @@ export const SignIn = () => {
       try {
         const user = await signin(values);
         dispatch(signInSuccess(user));
-        navigate("/dashboard");
-        resetForm({ values: "" });
+        setOpen(!open)
+        setTimeout(() => {
+          navigate("/dashboard");
+          resetForm({ values: "" });
+          setOpen(open)
+        }, 6000);
       } catch (error) {
+        setOpen(open)
         if (error === "Account is close") {
+          setOpen(open)
           setEnableAccount(!enableAccount);
         } else if (error === "User Not Found") {
+          setOpen(open)
           toast.error("Invalid Email", {
-            position: "top-right",
+            position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -91,8 +110,9 @@ export const SignIn = () => {
             theme: "colored",
           });
         } else if (error === "Invalid Password") {
+          setOpen(open)
           toast.error(error, {
-            position: "top-right",
+            position: "top-center",
             autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
@@ -105,6 +125,8 @@ export const SignIn = () => {
       }
     },
   });
+
+
 
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
@@ -173,6 +195,7 @@ export const SignIn = () => {
                 Forgot your password?
               </Link>
               <button
+                variant="gradient"
                 type="submit"
                 className="px-2 py-3 transition duration-200 bg-primary hover:bg-btn-primary focus:shadow-sm text-white w-full rounded-lg focus:outline-none shadow-sm hover:shadow-md text-center font-bold text-18px inline-block"
               >
@@ -234,6 +257,7 @@ export const SignIn = () => {
                     <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
                   </svg>
                   <span className="text-18px text-black">Facebook</span>
+
                 </button>
               </div>
             </div>
@@ -248,6 +272,21 @@ export const SignIn = () => {
         />
       </div>
       <ToastContainer />
+      <Dialog open={open} className="flex justify-center items-center">
+        <section className="relative">
+          <img src={logo} alt="" className="absolute z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 animate-fade animate-infinite animate-ease-in-out animate-alternate" />
+
+          <div className="wave absolute bottom-0 wave1"></div>
+          <div className="wave absolute bottom-0 wave2"></div>
+          <div className="wave absolute bottom-0 wave3"></div>
+          <div className="wave absolute bottom-0 wave4"></div>
+
+          <div className="wave2 absolute top-0 wave1"></div>
+          <div className="wave2 absolute top-0 wave2"></div>
+          <div className="wave2 absolute top-0 wave3"></div>
+          <div className="wave2 absolute top-0 wave4"></div>
+        </section>
+      </Dialog>
     </div>
   );
 };
