@@ -1,24 +1,12 @@
 import React, { useEffect, useState } from "react";
 import {
   Card,
-  Typography,
   List,
   ListItem,
-  ListItemPrefix,
-  ListItemSuffix,
-  Chip,
   Accordion,
   AccordionHeader,
   AccordionBody,
 } from "@material-tailwind/react";
-import {
-  PresentationChartBarIcon,
-  ShoppingBagIcon,
-  UserCircleIcon,
-  Cog6ToothIcon,
-  InboxIcon,
-  PowerIcon,
-} from "@heroicons/react/24/solid";
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Button } from "@material-tailwind/react";
 import logo from "../assets/landing_image/logo.svg";
@@ -26,9 +14,15 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllWorkspace } from "../redux/service/workspaceService/workspaceService";
 import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
-import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
+import {
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+} from "@material-tailwind/react";
+import { CreatePageModal } from "../modal/CreatePageModal";
 
-export const SecondSideBar = () => {
+export const SecondSideBar = ({ handleClick }) => {
   const [open, setOpen] = React.useState(0);
 
   const { workspaces } = useSelector((state) => state.workspace);
@@ -49,6 +43,22 @@ export const SecondSideBar = () => {
 
   const [visible, setVisible] = useState(false);
 
+  const [visiblePage, setVisiblePage] = useState(false);
+
+  const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const handleMouseEnter = (index) => {
+    setHoveredIndex(index);
+  };
+
+  const handleMouseLeave = () => {
+    setHoveredIndex(null);
+  };
+
+  const secondhandleClick = (status) => {
+    handleClick(status);
+  };
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -61,14 +71,14 @@ export const SecondSideBar = () => {
         sortbydatetime: sortbydatetime,
       })
     );
-  }, [dispatch, no, size, asc, desc, sortbydatetime, workspaces]);
+  }, [dispatch, no, size, asc, desc, sortbydatetime]);
 
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
 
   return (
-    <Card className="h-screen w-[18rem] p-6">
+    <Card className="fixed h-screen w-[18rem] p-6 ">
       <div className="p-4 flex justify-center">
         <NavLink
           style={{ textDecoration: "none" }}
@@ -83,7 +93,10 @@ export const SecondSideBar = () => {
         <div className="text-18px text-gray-400">DASHBOARD</div>
         <Button
           className="bg-primary rounded-lg p-3 shadow-none font-semibold flex items-center justify-center gap-x-2"
-          onClick={() => setVisible(!visible)}
+          onClick={() => {
+            setVisible(!visible);
+            handleClick(true);
+          }}
         >
           <svg
             width="20"
@@ -101,15 +114,19 @@ export const SecondSideBar = () => {
           </svg>
           New Workspace
         </Button>
-        <CreateWorkspaceModal visible={visible} setVisible={setVisible} />
+        <CreateWorkspaceModal
+          visible={visible}
+          setVisible={setVisible}
+          secondhandleClick={secondhandleClick}
+        />
         <ListItem className="p-0">
           <NavLink
             style={{ textDecoration: "none" }}
             to={"/dashboard"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4 focus:text-primary hover:text-primary"
-                : "flex items-center w-full gap-x-3 py-3 rounded-lg text-accent px-4 focus:text-accent hover:text-accent"
+                ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4 focus:text-primary hover:text-primary focus:bg-gray-200"
+                : "flex items-center w-full gap-x-3 py-3 rounded-lg text-accent px-4 focus:text-accent hover:text-accent hover:bg-gray-200"
             }
           >
             <svg
@@ -135,8 +152,8 @@ export const SecondSideBar = () => {
             to={"/workspace"}
             className={({ isActive }) =>
               isActive
-                ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4 focus:text-primary hover:text-primary"
-                : "flex items-center w-full gap-x-3 py-3 text-accent rounded-lg px-4 focus:text-accent hover:text-accent"
+                ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4 focus:text-primary hover:text-primary focus:bg-gray-200"
+                : "flex items-center w-full gap-x-3 py-3 text-accent rounded-lg px-4 focus:text-accent hover:text-accent hover:bg-gray-200"
             }
           >
             <svg
@@ -183,18 +200,19 @@ export const SecondSideBar = () => {
               </ListItem>
               {workspace?.documents &&
                 workspace?.documents.map((document, index) => (
-                  <AccordionBody
-                    className="py-0"
-                    key={index}
-                  >
+                  <AccordionBody className="py-0" key={index}>
                     <List className="px-2 py-1">
-                      <ListItem className="p-0">
+                      <ListItem
+                        className="p-0 hover:bg-gray-200"
+                        onMouseEnter={() => handleMouseEnter(index)}
+                        onMouseLeave={handleMouseLeave}
+                      >
                         <NavLink
                           to={`/createdocument/${document?.documentId}/${workspace?.workspaceId}`}
                           className={({ isActive }) =>
                             isActive
-                              ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4 focus:text-primary hover:text-primary justify-between"
-                              : "flex items-center w-full gap-x-3 py-3 text-accent rounded-lg px-4 focus:text-accent hover:text-accent justify-between"
+                              ? "flex items-center w-full gap-x-3 text-primary py-3 rounded-lg px-4 focus:text-primary focus:bg-gray-200 hover:text-primary "
+                              : "flex items-center w-full gap-x-3 py-3 text-accent rounded-lg px-4 focus:text-accent hover:text-accent"
                           }
                           style={{ textDecoration: "none" }}
                         >
@@ -217,29 +235,98 @@ export const SecondSideBar = () => {
                               {document?.title}
                             </p>
                           </div>
-                          <svg
-                            width="20"
-                            height="20"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            viewBox="0 0 24 24"
-                            xmlns="http://www.w3.org/2000/svg"
-                          >
-                            <rect
-                              width="18"
-                              height="18"
-                              x="3"
-                              y="3"
-                              rx="2"
-                              ry="2"
-                            ></rect>
-                            <path d="M12 8v8"></path>
-                            <path d="M8 12h8"></path>
-                          </svg>
                         </NavLink>
+                        {index === hoveredIndex && (
+                          <div className="flex gap-x-2 mr-2">
+                            <Menu placement="right-start">
+                              <MenuHandler>
+                                <button
+                                  type="submit"
+                                  className="hover:bg-gray-300 rounded-sm p-[1px]"
+                                >
+                                  <svg
+                                    width="20"
+                                    height="20"
+                                    fill="none"
+                                    stroke="currentColor"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M12 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                                    <path d="M19 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                                    <path d="M5 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                                  </svg>
+                                </button>
+                              </MenuHandler>
+                              <MenuList className="p-2 w-44 z-50 rounded-lg space-y-1">
+                                <MenuItem className="flex items-center gap-x-3 p-3 hover:bg-gray-200 rounded-md">
+                                  <svg
+                                    width="20"
+                                    height="20"
+                                    fill="none"
+                                    stroke="#1E9CEF"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                  </svg>
+                                  <p className="text-16px">Rename</p>
+                                </MenuItem>
+                                <MenuItem className="flex items-center gap-x-3 p-3 hover:bg-gray-200 rounded-lg">
+                                  <svg
+                                    width="20"
+                                    height="20"
+                                    fill="none"
+                                    stroke="#f44336"
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    stroke-width="2"
+                                    viewBox="0 0 24 24"
+                                    xmlns="http://www.w3.org/2000/svg"
+                                  >
+                                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                                    <path d="M14 2v6h6"></path>
+                                    <path d="M9 15h6"></path>
+                                  </svg>
+
+                                  <p className="text-16px text-red-500">
+                                    Delete
+                                  </p>
+                                </MenuItem>
+                              </MenuList>
+                            </Menu>
+                            <button
+                              type="button"
+                              className="hover:bg-gray-300 rounded-sm p-[1px]"
+                              onClick={() => {
+                                setVisiblePage(!visiblePage);
+                                handleClick(true);
+                              }}
+                            >
+                              <svg
+                                width="20"
+                                height="20"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                                stroke-width="2"
+                                viewBox="0 0 24 24"
+                                xmlns="http://www.w3.org/2000/svg"
+                              >
+                                <path d="M12 5v14"></path>
+                                <path d="M5 12h14"></path>
+                              </svg>
+                            </button>
+                          </div>
+                        )}
                       </ListItem>
                     </List>
                   </AccordionBody>
@@ -247,6 +334,11 @@ export const SecondSideBar = () => {
             </Accordion>
           ))}
       </List>
+      <CreatePageModal
+        visiblePage={visiblePage}
+        setVisiblePage={setVisiblePage}
+        secondhandleClick={secondhandleClick}
+      />
     </Card>
   );
 };

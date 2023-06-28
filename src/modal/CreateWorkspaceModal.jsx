@@ -13,7 +13,11 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Button } from "rsuite";
 
-export const CreateWorkspaceModal = ({ visible, setVisible }) => {
+export const CreateWorkspaceModal = ({
+  visible,
+  setVisible,
+  secondhandleClick,
+}) => {
   const [workspaceName, setWorkspaceName] = useState("");
 
   const dispatch = useDispatch();
@@ -67,18 +71,30 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
       });
     }
     setVisible(!visible);
+    secondhandleClick(false);
   };
 
   return (
-    <div className="w-full z-50">
-      <Modal open={visible} onClickBackdrop={() => setVisible(!visible)}>
+    <div className="w-full">
+      <Modal
+        open={visible}
+        onClickBackdrop={() => {
+          setVisible(!visible);
+          secondhandleClick(false);
+        }}
+      >
         <div className="w-[540px] bg-white rounded-lg p-3">
           <div className="flex justify-end">
-            <button type="button" onClick={() => setVisible(!visible)}>
+            <button
+              type="button"
+              onClick={() => {
+                setVisible(!visible);
+                secondhandleClick(false);
+              }}
+            >
               <img src={close} />
             </button>
           </div>
-
           <div className="px-14 space-y-3 text-accent">
             <div className="flex justify-center items-center">
               <img src={group} />
@@ -87,7 +103,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
               Create Workspace
             </h1>
             <div className="flex flex-col gap-y-2 font-semibold text-18px">
-              <p>Worksapce Name</p>
+              <p>Workspace Name</p>
               <input
                 type="text"
                 placeholder="Workspace Name"
@@ -95,7 +111,12 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                 className="rounded-lg py-3 border-primary focus:ring-btn-primary focus:border-btn-primary"
                 onChange={(e) => setWorkspaceName(e.target.value)}
               />
-              <p>Workspace Photo</p>
+              <p>
+                Workspace Photo{" "}
+                <span className="text-end text-[#9CA3AF] font-normal">
+                  (optional)
+                </span>
+              </p>
               <label>
                 <input
                   className="text-sm cursor-pointer w-36 hidden"
@@ -117,14 +138,14 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                 </div>
               </label>
               <div className="space-y-3 mt-2">
-                <p className="text-end text-[#9CA3AF] font-normal">
-                  (optional)
-                </p>
                 <div className="flex justify-end items-center gap-5 text-16px font-semibold pb-5">
                   <button
                     className="px-10 py-3 border-[1px] rounded-lg"
                     type="button"
-                    onClick={() => setVisible(!visible)}
+                    onClick={() => {
+                      setVisible(!visible);
+                      secondhandleClick(false);
+                    }}
                   >
                     Cancel
                   </button>

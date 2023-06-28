@@ -400,7 +400,7 @@ export const CreateDocument = () => {
             </div>
           )}
         </div>
-        <div className="mt-[75vh]"></div>
+        <div className="h-[75vh]"></div>
       </BlockUI>
       {/* <div>
         <DocumentPermissionModal

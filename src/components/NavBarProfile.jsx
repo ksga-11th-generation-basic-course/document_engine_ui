@@ -57,8 +57,20 @@ export const NavBarProfile = () => {
     dispatch(setCurrentEditing({ documentId, status }));
   };
 
+  const [openNav, setOpenNav] = useState(false);
+
+  const handleClickNav = (status) => {
+    setOpenNav(status);
+  };
+
   return (
-    <div className="flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white">
+    <div
+      className={
+        openNav
+          ? "fixed right-0 w-[1650px] flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white z-50"
+          : "fixed right-0 w-[1650px] flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white z-20"
+      }
+    >
       {param.documentId ? (
         <div>
           <Menu
@@ -167,7 +179,11 @@ export const NavBarProfile = () => {
         </div>
       ) : null}
       <div>
-        <JoinWorkspaceModal visible={visible} setVisible={setVisible} />
+        <JoinWorkspaceModal
+          visible={visible}
+          setVisible={setVisible}
+          handleClickNav={handleClickNav}
+        />
       </div>
       <div className="relative">
         <Menu placement="bottom-end">

@@ -8,7 +8,7 @@ import { useDispatch } from "react-redux";
 import { joinWorkspaceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
 import { Button } from "rsuite";
 
-export const JoinWorkspaceModal = ({ visible, setVisible }) => {
+export const JoinWorkspaceModal = ({ visible, setVisible, handleClickNav }) => {
   const [workspaceCode, setWorkspaceCode] = useState();
 
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
       const workspace = await joinWorkspace(workspaceCode);
       dispatch(joinWorkspaceSuccess(workspace));
       setVisible(!visible);
+      handleClickNav(false);
       document.getElementById("joinWorkspaceByWorkspaceCode").reset();
     } catch (error) {
       console.log(error);
@@ -31,6 +32,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
         onClick={() => {
           setVisible(!visible);
           document.getElementById("joinWorkspaceByWorkspaceCode").reset();
+          handleClickNav(true);
         }}
       >
         <img src={join} className="w-4 h-4 md:w-3.5" />
@@ -41,6 +43,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
         onClickBackdrop={() => {
           setVisible(!visible);
           document.getElementById("joinWorkspaceByWorkspaceCode").reset();
+          handleClickNav(false);
         }}
       >
         <div className="w-[540px] bg-white rounded-lg p-3">
@@ -50,6 +53,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
               onClick={() => {
                 setVisible(!visible);
                 document.getElementById("joinWorkspaceByWorkspaceCode").reset();
+                handleClickNav(false);
               }}
             >
               <img className="p-2" src={close} />
@@ -69,7 +73,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
               <p>Workspace Code</p>
               <input
                 type="text"
-                placeholder="Worksapce Code"
+                placeholder="Workspace Code"
                 className="rounded-lg py-3 border-primary focus:ring-btn-primary focus:border-btn-primary"
                 onChange={(e) => setWorkspaceCode(e.target.value)}
               />
@@ -82,6 +86,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
                   document
                     .getElementById("joinWorkspaceByWorkspaceCode")
                     .reset();
+                  handleClickNav(false);
                 }}
               >
                 Cancel

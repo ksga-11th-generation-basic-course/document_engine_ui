@@ -47,7 +47,7 @@ export const Workspace = () => {
 
   const [openSearch, setOpenSearch] = useState(false);
 
-  const { workspaces, totalPage } = useSelector((state) => state.workspace);
+  const { workspaces, totalPage, loading } = useSelector((state) => state.workspace);
 
   const dispatch = useDispatch();
 
@@ -63,7 +63,7 @@ export const Workspace = () => {
 
   const [sortbydatetime, setSortbydatetime] = useState("DEFAULT");
 
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   const [status, setStatus] = useState("Ascending");
 
@@ -318,11 +318,11 @@ export const Workspace = () => {
             </Menu>
           </div>
         </div>
-        <div className="md:col-span-1 col-span-4 h-11">
+        <div className="col-span-4 h-11">
           <div className="flex justify-end relative">
             <Collapse open={openSearch}>
               <Card>
-                <CardBody>
+                <CardBody className="p-0">
                   <input
                     type="text"
                     placeholder="search"
@@ -339,7 +339,20 @@ export const Workspace = () => {
               className="absolute mr-2 top-3 transition-opacity duration-500 ease-in-out opacity-100 hover:opacity-75"
               onClick={toggleOpen}
             >
-              <img src={search} />
+              <svg
+                width="20"
+                height="20"
+                fill="none"
+                stroke="#526581"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16z"></path>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
             </button>
           </div>
         </div>

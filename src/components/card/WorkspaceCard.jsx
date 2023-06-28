@@ -80,7 +80,7 @@ export const WorkspaceCard = ({ workspace }) => {
             )}
           </h3>
           <p className="text-14px leading-3">
-            Create date: <span>{workspace && workspace.createdDate}</span>
+            Created date: <span>{workspace && workspace.createdDate}</span>
           </p>
         </div>
         {workspace && workspace.isOwner ? (
