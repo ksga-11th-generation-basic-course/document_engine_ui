@@ -9,7 +9,7 @@ import logo from "../assets/landing_image/logo.svg";
 import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
 import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
 import documentIcon from "../assets/document_image/documents.svg";
-import dropdowndocument from "../assets/document_image/dropdowndocuments.svg";
+import dropdowndocument from "../assets/document_image/dropdowndoecuments.svg";
 import { useDispatch, useSelector } from "react-redux";
 import {
   createDocument,
