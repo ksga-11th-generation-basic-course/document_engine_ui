@@ -33,6 +33,8 @@ export const SecondSideBar = () => {
 
   const { workspaces } = useSelector((state) => state.workspace);
 
+  const { documents } = useSelector((state) => state.document);
+
   const dispatch = useDispatch();
 
   const [no, setNo] = useState(1);
@@ -57,13 +59,7 @@ export const SecondSideBar = () => {
         sortbydatetime: sortbydatetime,
       })
     );
-  }, [dispatch, no, size, asc, desc, sortbydatetime]);
-
-  useEffect(() => {
-    dispatch(
-      getAllDocumentInEachWorkspace({ workspaceId, no, size, sortbydatetime })
-    );
-  }, [dispatch, no, size, sortbydatetime]);
+  }, [dispatch, no, size, asc, desc, sortbydatetime, workspaces]);
 
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
@@ -162,6 +158,7 @@ export const SecondSideBar = () => {
         {workspaces &&
           workspaces.map((workspace, index) => (
             <Accordion
+              key={index}
               open={open === index + 1}
               icon={
                 <ChevronDownIcon
@@ -182,65 +179,32 @@ export const SecondSideBar = () => {
                   </p>
                 </AccordionHeader>
               </ListItem>
-              <AccordionBody className="py-0">
-                <List className="px-2 py-0">
-                  <ListItem className="space-x-2 p-3">
-                    <svg
-                      width="20"
-                      height="20"
-                      fill="none"
-                      stroke="#526581"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-                      <path d="M13 2v7h7"></path>
-                    </svg>
-                    <p className="font-semibold text-18px text-accent">Java</p>
-                  </ListItem>
-                  <ListItem className="space-x-2 p-3">
-                    <svg
-                      width="20"
-                      height="20"
-                      fill="none"
-                      stroke="#526581"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-                      <path d="M13 2v7h7"></path>
-                    </svg>
-                    <p className="font-semibold text-18px text-accent">
-                      React Js
-                    </p>
-                  </ListItem>
-                  <ListItem className="space-x-2 p-3">
-                    <svg
-                      width="20"
-                      height="20"
-                      fill="none"
-                      stroke="#526581"
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      viewBox="0 0 24 24"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
-                      <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-                      <path d="M13 2v7h7"></path>
-                    </svg>
-                    <p className="font-semibold text-18px text-accent">
-                      Laravel
-                    </p>
-                  </ListItem>
-                </List>
-              </AccordionBody>
+              {workspace?.documents &&
+                workspace?.documents.map((document, index) => (
+                  <AccordionBody className="py-0" key={index}>
+                    <List className="px-2 py-0">
+                      <ListItem className="space-x-2 p-3">
+                        <svg
+                          width="20"
+                          height="20"
+                          fill="none"
+                          stroke="#526581"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                          <path d="M13 2v7h7"></path>
+                        </svg>
+                        <p className="font-semibold text-18px text-accent">
+                          {document?.title}
+                        </p>
+                      </ListItem>
+                    </List>
+                  </AccordionBody>
+                ))}
             </Accordion>
           ))}
       </List>
