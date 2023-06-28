@@ -1,8 +1,6 @@
 import React from "react";
-import { SideBar } from "../components/SideBar";
 import { NavBarProfile } from "../components/NavBarProfile";
 import { Outlet } from "react-router-dom";
-import { NewSidebar } from "../components/NewSidebar";
 import { SecondSideBar } from "../components/SecondSideBar";
 
 export const Root = () => {

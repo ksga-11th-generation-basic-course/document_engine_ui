@@ -57,8 +57,6 @@ export const Document = () => {
 
   const [openGrid, setOpenGrid] = useState(true);
 
-  const [openBulletList, setOpenBulletList] = useState(false);
-
   const [openWorkspaceSetting, setOpenWorksapceSetting] = useState(false);
 
   const [openCollaboratorForMember, setOpenCollaboratorForMember] =
@@ -331,60 +329,61 @@ export const Document = () => {
             </div>
           ) : (
             <div className="flex justify-center items-center gap-x-5">
-              <div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setOpenGrid(true);
-                    setOpenBulletList(false);
-                  }}
-                >
-                  <svg
-                    width="20"
-                    height="20"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
+              {openGrid ? (
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOpenGrid(false);
+                    }}
                   >
-                    <path d="M3 3h7v7H3z"></path>
-                    <path d="M14 3h7v7h-7z"></path>
-                    <path d="M14 14h7v7h-7z"></path>
-                    <path d="M3 14h7v7H3z"></path>
-                  </svg>
-                </button>
-              </div>
-              <div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setOpenGrid(false);
-                    setOpenBulletList(true);
-                  }}
-                >
-                  <svg
-                    width="20"
-                    height="20"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    viewBox="0 0 24 24"
-                    xmlns="http://www.w3.org/2000/svg"
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M3 3h7v7H3z"></path>
+                      <path d="M14 3h7v7h-7z"></path>
+                      <path d="M14 14h7v7h-7z"></path>
+                      <path d="M3 14h7v7H3z"></path>
+                    </svg>
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOpenGrid(true);
+                    }}
                   >
-                    <path d="M8 6h13"></path>
-                    <path d="M8 12h13"></path>
-                    <path d="M8 18h13"></path>
-                    <path d="M3 6h.01"></path>
-                    <path d="M3 12h.01"></path>
-                    <path d="M3 18h.01"></path>
-                  </svg>
-                </button>
-              </div>
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M8 6h13"></path>
+                      <path d="M8 12h13"></path>
+                      <path d="M8 18h13"></path>
+                      <path d="M3 6h.01"></path>
+                      <path d="M3 12h.01"></path>
+                      <path d="M3 18h.01"></path>
+                    </svg>
+                  </button>
+                </div>
+              )}
               <div>
                 <button
                   type="button"
@@ -490,8 +489,7 @@ export const Document = () => {
             </div>
           )}
         </div>
-      ) : null}
-      {openBulletList ? (
+      ) : (
         <div className="space-y-5">
           {documents === null ? null : documents.length > 0 ? (
             documents
@@ -517,7 +515,7 @@ export const Document = () => {
             </div>
           )}
         </div>
-      ) : null}
+      )}
       <div>
         {workspace && isOwner && (
           <WorkspaceSettingModal
