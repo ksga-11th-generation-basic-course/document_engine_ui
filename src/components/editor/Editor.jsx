@@ -29,7 +29,7 @@ import {
 import "@blocknote/core/style.css";
 import { RiImage2Fill } from "react-icons/ri";
 import { RiChatQuoteFill } from "react-icons/ri";
-import { Button, ButtonToolbar, Loader, Placeholder } from "rsuite";
+// import { Button, ButtonToolbar, Loader, Placeholder } from "rsuite";
 
 export const Editor = () => {
   const QuoteBlock = createReactBlockSpec({

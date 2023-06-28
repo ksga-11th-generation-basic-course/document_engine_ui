@@ -1,9 +1,9 @@
-import { Sidenav, Nav, Toggle } from "rsuite";
-import DashboardIcon from "@rsuite/icons/legacy/Dashboard";
-import PeoplesIcon from "@rsuite/icons/Peoples";
-import PeopleBranchIcon from "@rsuite/icons/PeopleBranch";
-import PageIcon from "@rsuite/icons/Page";
-import ExpandOutlineIcon from "@rsuite/icons/ExpandOutline";
+// import { Sidenav, Nav, Toggle } from "rsuite";
+// import DashboardIcon from "@rsuite/icons/legacy/Dashboard";
+// import PeoplesIcon from "@rsuite/icons/Peoples";
+// import PeopleBranchIcon from "@rsuite/icons/PeopleBranch";
+// import PageIcon from "@rsuite/icons/Page";
+// import ExpandOutlineIcon from "@rsuite/icons/ExpandOutline";
 import React, { useEffect, useState } from "react";
 import logo from "../assets/landing_image/logo.svg";
 import { Link, NavLink, useNavigate, useParams } from "react-router-dom";
