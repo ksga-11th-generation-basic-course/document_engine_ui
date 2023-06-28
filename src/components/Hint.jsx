@@ -3,6 +3,8 @@ import star from "../assets/dashboard_image/star.svg";
 import lightbulb from "../assets/dashboard_image/lightbulb.png";
 import { useDispatch, useSelector } from "react-redux";
 import { getCurrentUser } from "../redux/service/userService/userService";
+import { Skeleton } from "@mui/material";
+
 
 export const Hint = () => {
   const [open, setOpen] = useState(false);
@@ -11,19 +13,28 @@ export const Hint = () => {
 
   const dispatch = useDispatch();
 
+  const [holder, setHolder] = useState(true);
+
   useEffect(() => {
     dispatch(getCurrentUser());
+    setTimeout(() => {
+      setHolder(!holder);
+    }, 3000);
   }, []);
 
   return (
     <div className="lg:ml-4 md:-ml-5">
       <div className="mb-5 mt-7">
-        <h1 className="font-bold text-accent text-44px md:text-28px">
-          Hi, {user && user.userName}!
-        </h1>
-        <p className="text-accent text-20px -mt-2 md:text-14px">
-          Welcome to DocEngine
-        </p>
+          {holder ? (
+            <Skeleton animation="wave" variant="text" width={370} height={70} />
+          ) : (
+            <h1 className="font-bold text-accent text-44px md:text-28px">Hi, {user && user.userName}!</h1>
+          )}
+          {holder ? (
+            <Skeleton animation="wave" variant="text" width={200} height={30} />
+          ) : (
+            <p className="text-accent text-20px -mt-2 md:text-14px">Welcome to DocEngine</p>
+          )}
       </div>
 
       <div className="relative lg:w-[620px]">

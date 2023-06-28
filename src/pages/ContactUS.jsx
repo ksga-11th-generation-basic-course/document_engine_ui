@@ -5,6 +5,7 @@ import IG from "../assets/images/Contact/IG.svg";
 import Face from "../assets/images/Contact/Facebook.svg";
 import Tele from "../assets/images/Contact/Telegram .svg";
 import { NavBar } from "../components/NavBar";
+import { Textarea } from "@material-tailwind/react";
 
 export const ContactUs = () => {
   return (
@@ -75,7 +76,7 @@ export const ContactUs = () => {
                 </svg>
               </div>
             </div>
-            <textarea
+            {/* <textarea
               className="
                                 form-control
                                 block
@@ -91,7 +92,8 @@ export const ContactUs = () => {
                                 transition
                                 ease-in-out
                             "
-            ></textarea>
+            ></textarea> */}
+            <Textarea label="Message" />
             <button
               type="submit"
               className="
