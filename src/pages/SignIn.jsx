@@ -21,9 +21,12 @@ import { signInSuccess } from "../redux/slice/authenticationSlice/authentication
 import { EnableAccountModal } from "../modal/EnableAccountModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Dialog } from "@material-tailwind/react";
 
 export const SignIn = () => {
   const [enableAccount, setEnableAccount] = useState(false);
+
+  const [open, setOpen] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -74,12 +77,19 @@ export const SignIn = () => {
       try {
         const user = await signin(values);
         dispatch(signInSuccess(user));
-        navigate("/dashboard");
-        resetForm({ values: "" });
+        setOpen(!open);
+        setTimeout(() => {
+          navigate("/dashboard");
+          resetForm({ values: "" });
+          setOpen(open);
+        }, 6000);
       } catch (error) {
+        setOpen(open);
         if (error === "Account is close") {
+          setOpen(open);
           setEnableAccount(!enableAccount);
         } else if (error === "User Not Found") {
+          setOpen(open);
           toast.error("Invalid Email", {
             position: "top-right",
             autoClose: 5000,
@@ -91,6 +101,7 @@ export const SignIn = () => {
             theme: "colored",
           });
         } else if (error === "Invalid Password") {
+          setOpen(open);
           toast.error(error, {
             position: "top-right",
             autoClose: 5000,
@@ -248,6 +259,25 @@ export const SignIn = () => {
         />
       </div>
       <ToastContainer />
+      <Dialog open={open} className="flex justify-center items-center">
+        <section className="relative">
+          <img
+            src={Logo}
+            alt=""
+            className="absolute z-50 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-96 animate-fade animate-infinite animate-ease-in-out animate-alternate"
+          />
+
+          <div className="wave absolute bottom-0 wave1"></div>
+          <div className="wave absolute bottom-0 wave2"></div>
+          <div className="wave absolute bottom-0 wave3"></div>
+          <div className="wave absolute bottom-0 wave4"></div>
+
+          <div className="wave2 absolute top-0 wave1"></div>
+          <div className="wave2 absolute top-0 wave2"></div>
+          <div className="wave2 absolute top-0 wave3"></div>
+          <div className="wave2 absolute top-0 wave4"></div>
+        </section>
+      </Dialog>
     </div>
   );
 };

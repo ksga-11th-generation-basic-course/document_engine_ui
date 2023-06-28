@@ -62,13 +62,9 @@ export const CreateDocument = () => {
   const blockData = useSelector((state) => state.block.blocks);
   const { tagsWorkspace, tagsDocument } = useSelector((state) => state.tag);
   const param = useParams();
-  const documentId = param.documentId;
-  const workspaceId = param.workspaceId;
+  const documentId = param?.documentId;
+  const workspaceId = param?.workspaceId;
   const dispatch = useDispatch();
-
-  // console.log(documentId);
-
-  // console.log(blockData)
 
   useEffect(() => {
     dispatch(getDocumentByDocumentId(documentId));
@@ -80,58 +76,6 @@ export const CreateDocument = () => {
     dispatch(getDocumentByPageId(document?.pageId));
   }, [documentId, workspaceId, document?.pageId]);
   const [title, setTitle] = useState();
-
-  // let initialContent = [];
-  // if (blockData != null) {
-  //   for (let i = 0; i < blockData.length; i++) {
-  //     const element = blockData[i];
-  //     const block = {
-  //       id: element.blockId,
-  //       type: element.blockType,
-  //       props: {
-  //         textColor: "default",
-  //         backgroundColor: "default",
-  //         textAlignment: element.content.textAlignment,
-  //         level: element.content.level,
-  //       },
-  //       content: [
-  //         {
-  //           type: element.content.typeContent,
-  //           text: element.content.text,
-
-  //           styles: {
-  //             ...(element.content.bold !== undefined
-  //               ? { bold: element.content.bold }
-  //               : {}),
-  //             ...(element.content.italic !== undefined
-  //               ? { italic: element.content.italic }
-  //               : {}),
-  //             ...(element.content.strike !== undefined
-  //               ? { strike: element.content.strike }
-  //               : {}),
-  //             ...(element.content.underline !== undefined
-  //               ? { underline: element.content.underline }
-  //               : {}),
-  //             ...(element.content.backgroundColor !== undefined
-  //               ? { backgroundColor: element.content.backgroundColor }
-  //               : {}),
-  //             ...(element.content.textColor !== undefined
-  //               ? { textColor: element.content.textColor }
-  //               : {}),
-  //           },
-  //         },
-  //       ],
-
-  //       children: [],
-  //       order: element.order,
-  //     };
-  //     initialContent.push(block);
-  //   }
-  // }
-
-  // console.log(data)
-
-  // console.log(blockData);
 
   const [loading, setLoading] = useState(false);
 
@@ -228,7 +172,7 @@ export const CreateDocument = () => {
     </li>,
   ];
 
-  console.log(blockData)
+  console.log(blockData);
 
   return (
     <div className="w-full relative">

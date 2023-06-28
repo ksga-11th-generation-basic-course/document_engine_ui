@@ -22,7 +22,7 @@ import {
 import { ChevronRightIcon, ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Button } from "@material-tailwind/react";
 import logo from "../assets/landing_image/logo.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { getAllWorkspace } from "../redux/service/workspaceService/workspaceService";
 import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
@@ -48,6 +48,8 @@ export const SecondSideBar = () => {
   const [sortbydatetime, setSortbydatetime] = useState("DEFAULT");
 
   const [visible, setVisible] = useState(false);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(
@@ -181,26 +183,63 @@ export const SecondSideBar = () => {
               </ListItem>
               {workspace?.documents &&
                 workspace?.documents.map((document, index) => (
-                  <AccordionBody className="py-0" key={index}>
-                    <List className="px-2 py-0">
-                      <ListItem className="space-x-2 p-3">
-                        <svg
-                          width="20"
-                          height="20"
-                          fill="none"
-                          stroke="#526581"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                          stroke-width="2"
-                          viewBox="0 0 24 24"
-                          xmlns="http://www.w3.org/2000/svg"
+                  <AccordionBody
+                    className="py-0"
+                    key={index}
+                  >
+                    <List className="px-2 py-1">
+                      <ListItem className="p-0">
+                        <NavLink
+                          to={`/createdocument/${document?.documentId}/${workspace?.workspaceId}`}
+                          className={({ isActive }) =>
+                            isActive
+                              ? "flex items-center w-full gap-x-3 text-primary bg-[#EFEFEF] py-3 rounded-lg px-4 focus:text-primary hover:text-primary justify-between"
+                              : "flex items-center w-full gap-x-3 py-3 text-accent rounded-lg px-4 focus:text-accent hover:text-accent justify-between"
+                          }
+                          style={{ textDecoration: "none" }}
                         >
-                          <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
-                          <path d="M13 2v7h7"></path>
-                        </svg>
-                        <p className="font-semibold text-18px text-accent">
-                          {document?.title}
-                        </p>
+                          <div className="flex gap-x-2">
+                            <svg
+                              width="20"
+                              height="20"
+                              fill="none"
+                              stroke="currentColor"
+                              stroke-linecap="round"
+                              stroke-linejoin="round"
+                              stroke-width="2"
+                              viewBox="0 0 24 24"
+                              xmlns="http://www.w3.org/2000/svg"
+                            >
+                              <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
+                              <path d="M13 2v7h7"></path>
+                            </svg>
+                            <p className="font-semibold text-18px">
+                              {document?.title}
+                            </p>
+                          </div>
+                          <svg
+                            width="20"
+                            height="20"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <rect
+                              width="18"
+                              height="18"
+                              x="3"
+                              y="3"
+                              rx="2"
+                              ry="2"
+                            ></rect>
+                            <path d="M12 8v8"></path>
+                            <path d="M8 12h8"></path>
+                          </svg>
+                        </NavLink>
                       </ListItem>
                     </List>
                   </AccordionBody>
