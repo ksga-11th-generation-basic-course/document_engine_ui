@@ -127,7 +127,7 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
               className="px-3 py-2 md:p-1.5 border-[1px] rounded-lg"
               onClick={hanldeKickMember}
             >
-              <img src={kickmember} className="w-[19px] h-[19px]" className="md:w-2.5"/>
+              <img src={kickmember} className="w-[19px] h-[19px] md:w-2.5"/>
             </button>
           </div>
         ) : null}

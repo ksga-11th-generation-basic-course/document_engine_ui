@@ -7,7 +7,7 @@ export const NavBar = () => {
   return (
     <div className="fixed z-50 flex w-full justify-between items-center px-14 sm:px-4 md:px-6 border-[2px] text-18px font-semibold text-accent bg-[#F9F9FF] lg:py-2 sm:justify-around">
       <div>
-        <Link to={"/"} to={"/"}>
+        <Link to={"/"}>
           <img src={logo} className="w-[72px] h-[72px] lg:w-[52px] lg:h-[52px] md:w-[50px]" />
         </Link>
       </div>

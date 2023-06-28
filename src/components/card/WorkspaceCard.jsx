@@ -49,7 +49,7 @@ export const WorkspaceCard = ({ workspace }) => {
         ) : null}
       </div>
       <div className="h-[200px] overflow-hidden" onClick={handleNavigate}>
-        <img src={workspace && workspace.workspaceImage} className="w-full" className="w-fit"/>
+        <img src={workspace && workspace.workspaceImage} className="w-full" />
       </div>
       <div className="flex justify-between items-center p-3">
         <div>
