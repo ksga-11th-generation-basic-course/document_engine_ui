@@ -58,13 +58,7 @@ export const SecondSideBar = () => {
       })
     );
   }, [dispatch, no, size, asc, desc, sortbydatetime]);
-
-  useEffect(() => {
-    dispatch(
-      getAllDocumentInEachWorkspace({ workspaceId, no, size, sortbydatetime })
-    );
-  }, [dispatch, no, size, sortbydatetime]);
-
+  
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };
