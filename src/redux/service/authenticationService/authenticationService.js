@@ -59,10 +59,10 @@ export const signup = async (authentication) => {
         "Content-Type": "application/json",
       }
     );
-
+      console.log(response.data.payload)
     return response.data.payload;
   } catch (error) {
-    throw new Error("Sign-up failed");
+    console.log(error)
   }
 };
 
