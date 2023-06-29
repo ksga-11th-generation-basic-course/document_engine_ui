@@ -14,7 +14,7 @@ export const Root = () => {
       <div className="grid grid-cols-12">
         <div className="col-span-2  z-10 md:col-span-12">
           <div className="fixed w-80 shadow-sidebar lg:hidden md:hidden">
-           <NewSidebar/>
+                    <NewSidebar/>
           </div>
 
           <div className="hidden lg:inline-block md:inline-block">
@@ -28,7 +28,7 @@ export const Root = () => {
               <div className="hidden lg:inline-block">
                 {open ? null : (
                   <button
-                    className="lg:pl-10 md:pl-10"
+                    className="lg:pl-10 md:pl-5"
                     onClick={() => setOpen(!open)}
                   >
                     <img src={menu} alt="menu" className="md:w-3" />
@@ -37,7 +37,7 @@ export const Root = () => {
 
                 {open ? (
                   <span className="fixed z-10 shadow-custom lg:fixed md:fixed">
-                               <NewSidebar/>
+                          <NewSidebar/>
                   </span>
                 ) : null}
               </div>
@@ -46,7 +46,7 @@ export const Root = () => {
                 className={
                   open
                     ? "hidden lg:inline-block lg:absolute lg:right-0 lg:mt-24 md:mt-16 lg:pr-10  md:pr-5"
-                    : "hidden lg:inline-block lg:absolute lg:right-0 md:inline-block md:absolute lg:pr-10 md:pr-5"
+                    : "hidden lg:inline-block lg:absolute lg:right-0 md:inline-block md:absolute lg:pr-10"
                 }
               >
                 <NavBarProfile />

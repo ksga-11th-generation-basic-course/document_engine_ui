@@ -52,42 +52,42 @@ export const Dashboard = () => {
 
 
   return (
-    <div className="bg-white md:ml-16">
-      <div className="w-full lg:w-full">
-        <Hint />
-      </div>
-      <div className="flex items-center mt-12 mb-7 gap-x-3 md:-ml-5 md:mt-7 md:mb-5">
-        <img
-          src={documenticon}
-          className="shadow-custom p-2 rounded-lg md:w-7"
+    <div className="bg-white">
+    <div className="w-full lg:w-full">
+      <Hint />
+    </div>
+    <div className="flex items-center mt-12 mb-7 gap-x-3 md:-ml-5 md:mt-7 md:mb-5">
+      <img
+        src={documenticon}
+        className="shadow-custom p-2 rounded-lg md:w-7"
+      />
+      <p className="font-semibold text-22px text-accent md:text-14px">
+        Recently
+      </p>
+    </div>
+    <div className="space-y-8  md:space-y-5 ">
+      <div>
+        <DocumentCardRow
+          documentname={"Spring Profile"}
+          editDate={"Edited 5days ago"}
+          status={true}
         />
-        <p className="font-semibold text-22px text-accent md:text-14px">
-          Recently
-        </p>
       </div>
-      <div className="space-y-8">
-        {recentlies === null ? null : recentlies.length > 0 ? (
-          recentlies.map((recently, index) => (
-            <div key={index}>
-              <DocumentCardRow
-                documentId={recently.documentId}
-                workspaceId={recently.workspaceId}
-                documentname={recently.title}
-                editDate={recently.editDate}
-                status={recently.status}
-              />
-            </div>
-          ))
-        ) : (
-          <div className="col-span-12 absolute bottom-[40%] left-[55%] lg:bottom-0 lg:left-[45%] lg:top-96 lg:mt-40">
-            <div className="flex flex-col items-center justify-center gap-y-1">
-              <p className="font-semibold text-accent text-base">
-                No Recently
-              </p>
-            </div>
-          </div>
-        )}
+      <div>
+        <DocumentCardRow
+          documentname={"Redux Toolkit"}
+          editDate={"Edited 9days ago"}
+          status={false}
+        />
+      </div>
+      <div>
+        <DocumentCardRow
+          documentname={"Laravel"}
+          editDate={"Edited 17days ago"}
+          status={true}
+        />
       </div>
     </div>
+  </div>
   );
 };
