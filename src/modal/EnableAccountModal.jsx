@@ -20,19 +20,19 @@ export const EnableAccountModal = ({ enableAccount, setEnableAccount }) => {
               <img src={close} />
             </button>
           </div>
-          <div className="px-14 space-y-5 text-accent">
+          <div className="px-14 space-y-3 text-accent">
             <div className="flex justify-center items-center">
               <img src={closeaccount} />
             </div>
-            <h1 className="font-bold text-24px text-primary text-center">
+            <h1 className="font-bold text-24px leading-9  text-primary text-center">
               Account was closed!
-              <p className="font-normal text-accent text-24px text-center leading-10 mt-3">
-                Your account was closed. 
-                Do you want to enable your account?
+              <p className="font-normal text-accent text-18px text-center">
+                Your account was closed. <br /> Do you want to enable your
+                account?
               </p>
             </h1>
 
-            <div className="flex justify-center items-center gap-5 text-18px font-semibold pb-5 mt-10">
+            <div className="flex justify-center items-center gap-5 text-16px font-semibold pb-5">
               <button
                 className="px-10 py-3 border-[1px] rounded-lg"
                 onClick={() => setEnableAccount(!enableAccount)}

@@ -24,6 +24,7 @@ export const EnableAccount = () => {
       console.log(error);
     }
   };
+
   return (
     <div>
       <div className="flex justify-center items-center bg-[#EDF9FF] relative text-[#37352F]">
@@ -75,8 +76,8 @@ export const EnableAccount = () => {
                                        focus:ring-[#1E9CEF] focus:ring-opacity-50 text-white w-full  rounded-lg shadow-sm hover:shadow-md font-semibold text-center 
                                      lg:pb-9 lg:pt-2 lg:text-xl md:text-base md:pt-1 md:pb-1 md:w-[228px] md:h-[40px] md:-mb-36"
                                      onClick={handleSubmit}
-                                     >
-                            Continue
+                          >
+                                    Continue
                           </button>
                         </div>
                       </div>              
