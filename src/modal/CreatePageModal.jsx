@@ -8,7 +8,6 @@ export const CreatePageModal = ({
 }) => {
   return (
     <div>
-      <button onClick={() => setVisiblePage(!visiblePage)}>Open Modal</button>
       <Modal
         open={visiblePage}
         onClickBackdrop={() => {
