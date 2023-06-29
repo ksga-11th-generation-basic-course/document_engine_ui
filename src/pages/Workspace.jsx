@@ -16,7 +16,6 @@ import { ThemeProvider, createTheme } from "@mui/material/styles";
 import { CustomSkeleton } from "../components/CustomSkeleton";
 import "primereact/resources/themes/lara-light-indigo/theme.css";
 import "primereact/resources/primereact.min.css";
-
 import {
   Menu,
   MenuHandler,
