@@ -1,18 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import logo from "../assets/landing_image/logo.svg";
 import { Link, NavLink } from "react-router-dom";
-import { DropDownMenu } from "../components/DropDownMenu";
 
 export const NavBar = () => {
+  const[openMenu, setOpenMenu] = useState(false);
   return (
-    <div className="fixed z-50 flex w-full justify-between items-center px-14 border-[2px] text-18px font-semibold text-accent bg-[#F9F9FF]">
+    <div className="fixed z-50 flex w-full justify-between items-center px-14 sm:px-4 md:px-6 border-[2px] text-18px font-semibold text-accent bg-[#F9F9FF] lg:py-2 sm:justify-around">
       <div>
         <Link to={"/"}>
-          <img src={logo} className="w-[72px] h-[72px]" />
+          <img src={logo} className="w-[72px] h-[72px] lg:w-[52px] lg:h-[52px] md:w-[50px]" />
         </Link>
       </div>
-      <div className="relative">
-        <ul className="flex justify-center items-center gap-x-8">
+      {/* Home, About Us and Contact Us */}
+      <div className="relative sm:hidden md:hidden">
+        <ul className="flex justify-center items-center gap-x-8 text-20px lg:text-18px" >
           <li>
             <NavLink
               to={"/"}
@@ -45,15 +46,44 @@ export const NavBar = () => {
           </li>
         </ul>
       </div>
-      <div className="relative flex justify-center items-center gap-x-5">
-        <Link to={"/signin"}>Sign in</Link>
-        <Link to={"/signup"} className="bg-primary px-4 py-2 rounded-xl text-white">
+      {/* Sign in and Sign up  */}
+      <div className="relative flex justify-center sm:w-auto md:justify-between  sm:flex sm:justify-evenly items-center gap-x-5  text-20px lg:text-18px md:text-16px">
+        <Link to={"/signin"} className="sm:whitespace-nowrap">Sign in</Link>
+        <Link to={"/signup"}className="bg-primary px-4 py-2 text rounded-xl text-white md:h-8 md:pt-1 md:rounded-lg  ">
           Sign up
         </Link>
-        {/* <div className="hidden lg:block">
-          <DropDownMenu />
-        </div> */}
       </div>
-    </div>
+
+      {/* Home, About Us and Contact Us */}
+      <div className="sm:block md:block  hidden dropdown relative ">
+            <div className="dropdown dropdown-end  relative">
+                <button className="btn btn-ghost btn-circle" onClick={() => setOpenMenu(!openMenu)}>
+                  <svg className="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clipRule="evenodd"></path></svg>
+                </button>
+                
+              {openMenu ? 
+                <ul className="menu menu-compact gap-2 dropdown-content mt-5 p-4 text-center  bg-sky-100 max-lg:hidden max-md:hidden border-primary border-2 shadow-lg absolute right-0 rounded-box w-[345px] md:[]">
+                <li><NavLink   to={"/"} className={({ isActive }) =>
+                                isActive
+                                  ? "text-center bg-primary p-3 text-white"
+                                  : "text-center bg-sky-500 p-3 text-white"
+                              }
+                 >Home</NavLink> </li>
+                <li><NavLink   to={"/aboutus"} className={({ isActive }) =>
+                                isActive
+                                  ? "text-center bg-primary p-3 text-white"
+                                  : "text-center bg-sky-500 p-3 text-white"
+                              }> About Us</NavLink></li>
+                <li><NavLink  to={"/contactus"} className={({ isActive }) =>
+                                isActive
+                                  ? "text-center bg-primary p-3 text-white"
+                                  : "text-center bg-sky-500 p-3 text-white"
+                              }> Contact Us</NavLink></li>
+              </ul>
+              : null  
+            }
+          </div>
+      </div>
+   </div>  
   );
 };
