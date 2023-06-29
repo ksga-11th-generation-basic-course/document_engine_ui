@@ -27,7 +27,7 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Radio } from "@material-tailwind/react";
 import { Collapse, Card, CardBody } from "@material-tailwind/react";
 
-import { Dropdown } from 'react-daisyui'
+import { Dropdown } from "react-daisyui";
 
 // const socket = io.connect("http://localhost:3002");
 
@@ -141,7 +141,21 @@ export const Workspace = () => {
       <div className="grid grid-cols-12 md:grid md:grid-cols-12 sm:grid sm:grid-cols-1">
         <div className="col-span-4 md:col-span-5 sm:grid-cols-1 flex items-center gap-x-5 h-11">
           <div className="flex items-center gap-x-3">
-            <img src={sort} className="w-7 h-7 md:w-6 md:h-8" />
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M1.5 6.75h21"></path>
+              <path d="M5.25 12h13.5"></path>
+              <path d="M9.75 17.25h4.5"></path>
+            </svg>
             <h4 className="font-semibold text-20px md:text-18px">Sort: </h4>
           </div>
           <div className="relative">

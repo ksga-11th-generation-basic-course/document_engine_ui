@@ -239,7 +239,7 @@ export const CreateDocument = () => {
           <div className="w-full h-auto">
             <span className="font-semibold ">
               <input
-                className="text-5xl p-0 text-black w-auto py-2 focus:ring-0 focus:border-0 border-0"
+                className="text-5xl  w-full p-0 text-black py-2 focus:ring-0 focus:border-0 border-0"
                 type="text"
                 onChange={handleInputChange}
                 placeholder={document?.title}

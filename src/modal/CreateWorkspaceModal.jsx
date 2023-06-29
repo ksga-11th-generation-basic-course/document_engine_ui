@@ -48,7 +48,7 @@ export const CreateWorkspaceModal = ({
       const workspace = await createWorkspace(workspaceName, url);
       dispatch(createWorkspaceSuccess(workspace));
       toast.success("Create Workspace Successfully", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -60,7 +60,7 @@ export const CreateWorkspaceModal = ({
       setWorkspaceName("");
     } catch (error) {
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -68,7 +68,8 @@ export const CreateWorkspaceModal = ({
         draggable: true,
         progress: undefined,
         theme: "light",
-      });
+        zIndex: 10000
+      });      
     }
     setVisible(!visible);
     secondhandleClick(false);

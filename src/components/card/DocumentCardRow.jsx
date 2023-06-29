@@ -38,7 +38,7 @@ export const DocumentCardRow = ({
           ) : null}
         </div>
         <p className="text-accent text-16px text-left md:text-10px">
-          Edited {editDate}
+          Edited {editDate} minutes ago
         </p>
       </div>
       <div className="relative z-10">

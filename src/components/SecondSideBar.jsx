@@ -21,6 +21,7 @@ import {
   MenuItem,
 } from "@material-tailwind/react";
 import { CreatePageModal } from "../modal/CreatePageModal";
+import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
 
 export const SecondSideBar = ({ handleClick }) => {
   const [open, setOpen] = React.useState(0);
@@ -72,6 +73,17 @@ export const SecondSideBar = ({ handleClick }) => {
       })
     );
   }, [dispatch, no, size, asc, desc, sortbydatetime]);
+
+  const handleGetDocumentInEachWorkspace = (workspaceId) => {
+    dispatch(
+      getAllDocumentInEachWorkspace({
+        workspaceId,
+        no: 1,
+        size: 1000,
+        sortbydatetime: "DEFAULT",
+      })
+    );
+  };
 
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
@@ -176,7 +188,13 @@ export const SecondSideBar = ({ handleClick }) => {
         <div className="text-18px text-gray-400">WORKSPACE</div>
         {workspaces &&
           workspaces.map((workspace, index) => (
-            <Accordion key={index} open={open === index + 1}>
+            <Accordion
+              key={index}
+              open={open === index + 1}
+              onClick={() =>
+                handleGetDocumentInEachWorkspace(workspace.workspaceId)
+              }
+            >
               <ListItem className="p-0" selected={open === index + 1}>
                 <ChevronDownIcon
                   strokeWidth={5}
@@ -188,7 +206,7 @@ export const SecondSideBar = ({ handleClick }) => {
                   onClick={() => handleOpen(index + 1)}
                   className="border-b-0 px-3 py-2"
                 >
-                  <p className="font-semibold text-18px text-accent">
+                  <p className="font-semibold text-18px text-accent line-clamp-1">
                     {workspace.workspaceName}
                   </p>
                 </AccordionHeader>
@@ -280,8 +298,8 @@ export const SecondSideBar = ({ handleClick }) => {
                   </button>
                 </div>
               </ListItem>
-              {workspace?.documents &&
-                workspace?.documents.map((document, index) => (
+              {documents &&
+                documents.map((document, index) => (
                   <AccordionBody className="py-0" key={index}>
                     <List className="px-2 py-1">
                       <ListItem

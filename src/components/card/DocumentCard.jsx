@@ -129,7 +129,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
               {document.title}
             </span>
             <span className="text-14px font-semibold leading-8 text-accent">
-              Edited <span>{document.editDate}</span>
+              Edited <span>{document.editDate}</span> minutes ago
             </span>
           </div>
         </div>
