@@ -25,10 +25,7 @@ export const CloseAccountModal = ({ closeAccount, setCloseAccount }) => {
 
   return (
     <div className="w-full">
-      <Modal
-        open={closeAccount}
-        onClickBackdrop={() => setCloseAccount(!closeAccount)}
-      >
+      <Modal open={closeAccount} onClickBackdrop={() => setCloseAccount(!closeAccount)}>
         <div className="w-[540px] bg-white rounded-lg p-3 md:w-[300px]">
           <div className="flex justify-end">
             <button
@@ -38,13 +35,13 @@ export const CloseAccountModal = ({ closeAccount, setCloseAccount }) => {
               <img src={close} className="md:w-6"/>
             </button>
           </div>
-          <div className="px-14 space-y-5 text-accent md:px-5">
+          <div className="px-14 space-y-2 text-accent md:px-5">
             <div className="flex justify-center items-center">
               <img src={closeaccount} className="md:w-16"/>
             </div>
             <h1 className="font-bold text-24px text-primary text-center">
               Close Account!
-              <p className="font-normal text-accent text-18px text-center md:text-16px">
+              <p className="font-normal text-accent text-22px text-center md:text-16px">
                 Are you sure want to close your account?
               </p>
             </h1>
@@ -56,10 +53,7 @@ export const CloseAccountModal = ({ closeAccount, setCloseAccount }) => {
               >
                 No, cancel
               </button>
-              <button
-                className="bg-red-500 text-white  px-10 py-3 rounded-lg"
-                onClick={handelCloseAccount}
-              >
+              <button className="bg-red-500 text-white  px-10 py-3 rounded-lg md:px-9 md:py-2.5" onClick={handelCloseAccount}>
                 Close
               </button>
             </div>

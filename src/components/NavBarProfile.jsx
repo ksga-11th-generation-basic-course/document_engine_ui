@@ -177,18 +177,19 @@ export const NavBarProfile = () => {
                 <Avatar
                   variant="circular"
                   alt="candice wu"
-                  className="cursor-pointer rounded-full"
+                  className="cursor-pointer rounded-full shadow-md"
                   src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
                 />
               ) : (
                 <Avatar
                   variant="circular"
                   alt="candice wu"
-                  className="cursor-pointer rounded-full mt-4"
+                  className="cursor-pointer rounded-full "
                   src={user && user.profileImage}
                 />
               )}
           </MenuHandler>
+
           <MenuList className="rounded-lg text-accent w-[360px] p-5 font-ssp">
             <MenuItem>
               <p className="font-extrabold text-28px text-primary text-left">
@@ -233,7 +234,7 @@ export const NavBarProfile = () => {
             </MenuItem>
             <MenuItem
               className="flex items-center gap-x-3 hover:bg-gray-200 p-2 mt-2"
-              onClick={() => setOpenSignOut(!openSignOut)}
+              onClick={toggleVisible}
             >
               <img src={signout} />
               <span className="text-red-500 text-18px">Sign out</span>
