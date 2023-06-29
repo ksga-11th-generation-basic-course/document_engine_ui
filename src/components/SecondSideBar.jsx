@@ -176,19 +176,14 @@ export const SecondSideBar = ({ handleClick }) => {
         <div className="text-18px text-gray-400">WORKSPACE</div>
         {workspaces &&
           workspaces.map((workspace, index) => (
-            <Accordion
-              key={index}
-              open={open === index + 1}
-              icon={
+            <Accordion key={index} open={open === index + 1}>
+              <ListItem className="p-0" selected={open === index + 1}>
                 <ChevronDownIcon
-                  strokeWidth={2.5}
+                  strokeWidth={5}
                   className={`mx-auto h-4 w-4 transition-transform ${
                     open === index + 1 ? "rotate-180" : ""
                   }`}
                 />
-              }
-            >
-              <ListItem className="p-0" selected={open === index + 1}>
                 <AccordionHeader
                   onClick={() => handleOpen(index + 1)}
                   className="border-b-0 px-3 py-2"
@@ -197,6 +192,93 @@ export const SecondSideBar = ({ handleClick }) => {
                     {workspace.workspaceName}
                   </p>
                 </AccordionHeader>
+                <div className="flex gap-x-2 mr-2">
+                  <Menu placement="right-start">
+                    <MenuHandler>
+                      <button
+                        type="submit"
+                        className="hover:bg-gray-300 rounded-sm p-[1px]"
+                      >
+                        <svg
+                          width="20"
+                          height="20"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M12 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                          <path d="M19 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                          <path d="M5 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                        </svg>
+                      </button>
+                    </MenuHandler>
+                    <MenuList className="p-2 w-44 z-50 rounded-lg space-y-1">
+                      <MenuItem className="flex items-center gap-x-3 p-3 hover:bg-gray-200 rounded-md">
+                        <svg
+                          width="20"
+                          height="20"
+                          fill="none"
+                          stroke="#1E9CEF"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                          <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                        </svg>
+                        <p className="text-16px">Rename</p>
+                      </MenuItem>
+                      <MenuItem className="flex items-center gap-x-3 p-3 hover:bg-gray-200 rounded-lg">
+                        <svg
+                          width="20"
+                          height="20"
+                          fill="none"
+                          stroke="#f44336"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                          <path d="M14 2v6h6"></path>
+                          <path d="M9 15h6"></path>
+                        </svg>
+
+                        <p className="text-16px text-red-500">Delete</p>
+                      </MenuItem>
+                    </MenuList>
+                  </Menu>
+                  <button
+                    type="button"
+                    className="hover:bg-gray-300 rounded-sm p-[1px]"
+                    onClick={() => {
+                      setVisiblePage(!visiblePage);
+                      handleClick(true);
+                    }}
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M12 5v14"></path>
+                      <path d="M5 12h14"></path>
+                    </svg>
+                  </button>
+                </div>
               </ListItem>
               {workspace?.documents &&
                 workspace?.documents.map((document, index) => (
@@ -231,7 +313,7 @@ export const SecondSideBar = ({ handleClick }) => {
                               <path d="M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z"></path>
                               <path d="M13 2v7h7"></path>
                             </svg>
-                            <p className="font-semibold text-18px">
+                            <p className="font-semibold text-18px line-clamp-1">
                               {document?.title}
                             </p>
                           </div>
