@@ -50,6 +50,7 @@ export const Dashboard = () => {
 
   // console.log(recentlies)
 
+
   return (
     <div className="bg-white md:ml-16">
       <div className="w-full lg:w-full">
@@ -78,7 +79,13 @@ export const Dashboard = () => {
             </div>
           ))
         ) : (
-          <p className="font-semibold text-accent">No Recently</p>
+          <div className="col-span-12 absolute bottom-[40%] left-[55%] lg:bottom-0 lg:left-[45%] lg:top-96 lg:mt-40">
+            <div className="flex flex-col items-center justify-center gap-y-1">
+              <p className="font-semibold text-accent text-base">
+                No Recently
+              </p>
+            </div>
+          </div>
         )}
       </div>
     </div>

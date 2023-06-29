@@ -28,7 +28,7 @@ export const Root = () => {
               <div className="hidden lg:inline-block">
                 {open ? null : (
                   <button
-                    className="lg:pl-10 md:pl-5"
+                    className="lg:pl-10 md:pl-10"
                     onClick={() => setOpen(!open)}
                   >
                     <img src={menu} alt="menu" className="md:w-3" />

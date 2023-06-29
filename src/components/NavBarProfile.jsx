@@ -58,7 +58,7 @@ export const NavBarProfile = () => {
   };
 
   return (
-    <div className="flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white">
+    <div className="flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white lg:px-0 lg:-mr-5 md:pl-10">
       {param.documentId ? (
         <div>
           <Menu
@@ -177,14 +177,14 @@ export const NavBarProfile = () => {
                 <Avatar
                   variant="circular"
                   alt="candice wu"
-                  className="cursor-pointer rounded-full shadow-md"
+                  className="cursor-pointer rounded-full shadow-md md:w-9 md:h-9"
                   src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
                 />
               ) : (
                 <Avatar
                   variant="circular"
                   alt="candice wu"
-                  className="cursor-pointer rounded-full "
+                  className="cursor-pointer rounded-full md:w-9 md:h-9"
                   src={user && user.profileImage}
                 />
               )}
@@ -244,8 +244,8 @@ export const NavBarProfile = () => {
       </div>
       <div>
         <SignOutModal
-          openSignOut={openSignOut}
-          setOpenSignOut={setOpenSignOut}
+          visible={visible}
+          toggleVisible={toggleVisible}
         />
         <AccountSettingModal
           openSetting={openSetting}
