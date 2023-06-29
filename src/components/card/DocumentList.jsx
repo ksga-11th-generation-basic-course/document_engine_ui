@@ -125,8 +125,8 @@ export const DocumentList = ({ document, workspaceId }) => {
             </div>
           ) : null}
         </div>
-        <div className="flex items-center gap-x-3 -z-0">
-          <p>{document?.editDate}</p>
+        <div className="flex items-center gap-x-3">
+        Edited <span>{document?.editDate}</span> minutes ago
           <div className="relative">
             <Menu placement="right-start">
               <MenuHandler>

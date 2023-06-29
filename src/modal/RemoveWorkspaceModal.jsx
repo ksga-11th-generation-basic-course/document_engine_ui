@@ -25,7 +25,7 @@ export const RemoveWorkspaceModal = ({
       // socket.emit("remove_workspace", workspace);
       setRemoveWorkspace(!removeWorkspace);
       toast.success("Remove Workspace Successfully", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -37,7 +37,7 @@ export const RemoveWorkspaceModal = ({
     } catch (error) {
       setRemoveWorkspace(!removeWorkspace);
       toast.error(error, {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,

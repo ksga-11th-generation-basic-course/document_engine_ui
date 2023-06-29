@@ -20,7 +20,7 @@ export const DeleteDocumentModal = ({
       dispatch(removeDocumentSuccess(document));
       setDeleteDocument(!deleteDocument);
       toast.success("Remove Document Successfully", {
-        position: "top-right",
+        position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
         closeOnClick: true,
@@ -32,7 +32,7 @@ export const DeleteDocumentModal = ({
     } catch (error) {
       setDeleteDocument(!deleteDocument),
         toast.error(error, {
-          position: "top-right",
+          position: "bottom-right",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,

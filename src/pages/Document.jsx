@@ -165,7 +165,21 @@ export const Document = () => {
       <div className="grid grid-cols-12">
         <div className="col-span-4 flex items-center gap-x-5 h-11">
           <div className="flex items-center gap-x-3">
-            <img src={sort} className="w-7 h-7" />
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M1.5 6.75h21"></path>
+              <path d="M5.25 12h13.5"></path>
+              <path d="M9.75 17.25h4.5"></path>
+            </svg>
             <h4 className="font-semibold text-20px">Sort: </h4>
           </div>
           <div className="relative">
@@ -244,7 +258,19 @@ export const Document = () => {
         </div>
         <div className="col-span-4 flex items-center gap-x-5 h-11">
           <div className="flex items-center gap-x-3">
-            <img src={filter} className="w-7 h-7" />
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
+            </svg>
             <h4 className="font-semibold text-20px">Filter: </h4>
           </div>
           <div className="relative">
@@ -438,11 +464,16 @@ export const Document = () => {
                         <img src={setting} />
                         <span className="text-18px">Setting Workspace</span>
                       </MenuItem>
-                      <MenuItem className="hover:bg-gray-200 p-2 flex items-center gap-x-3">
+                      {/* <MenuItem
+                        className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
+                        onClick={() =>
+                          setOpenWorksapceSetting(!openWorkspaceSetting)
+                        }
+                      >
                         {" "}
                         <img src={group} />
                         <span className="text-18px">View member</span>
-                      </MenuItem>
+                      </MenuItem> */}
                     </MenuList>
                   </Menu>
                 ) : (
@@ -478,11 +509,16 @@ export const Document = () => {
                   return document;
                 }
               })
-              .map((document, index) => (
-                <div className="col-span-4" key={index}>
-                  <DocumentCard document={document} workspaceId={workspaceId} />
-                </div>
-              ))
+              .map((document, index) =>
+                document?.pageId === null ? (
+                  <div className="col-span-4" key={index}>
+                    <DocumentCard
+                      document={document}
+                      workspaceId={workspaceId}
+                    />
+                  </div>
+                ) : null
+              )
           ) : (
             <div className="col-span-12 absolute bottom-[45%] left-[55%]">
               <p className="font-semibold text-accent">No Document</p>
@@ -504,11 +540,16 @@ export const Document = () => {
                   return document;
                 }
               })
-              .map((document, index) => (
-                <div className="col-span-4" key={index}>
-                  <DocumentList document={document} workspaceId={workspaceId} />
-                </div>
-              ))
+              .map((document, index) =>
+                document?.pageId === null ? (
+                  <div className="col-span-4" key={index}>
+                    <DocumentList
+                      document={document}
+                      workspaceId={workspaceId}
+                    />
+                  </div>
+                ) : null
+              )
           ) : (
             <div className="col-span-12 absolute bottom-[45%] left-[55%]">
               <p className="font-semibold text-accent">No Document</p>

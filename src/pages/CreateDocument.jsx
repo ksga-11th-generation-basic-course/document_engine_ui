@@ -130,13 +130,6 @@ export const CreateDocument = () => {
     };
   }, [document]);
 
-  console.log(page);
-
-  // console.log("Title : ", title);
-  // console.log("title Document  : ", document);
-
-  console.log(page?.documentId);
-
   const breadcrumbsTwo = [
     <li className="flex items-center gap-x-2">
       <img src={icon} />

@@ -128,6 +128,7 @@ export const createDocument = async (
         },
       }
     );
+    // console.log(response.data.payload)
     return response.data.payload;
   } catch (error) {
     console.log(error);

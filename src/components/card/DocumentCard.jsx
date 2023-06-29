@@ -51,14 +51,13 @@ export const DocumentCard = ({ document, workspaceId }) => {
   const handleRemoveDocument = () => {
     setDeleteDocument(!deleteDocument);
     setdocumentId(document?.documentId);
-    // console.log(document.documentId);
   };
 
   const handleDuplicateDocument = async () => {
     const duplicate = await duplicateDocument(document.documentId);
     dispatch(duplicateDocumentSuccess(duplicate));
     toast.success("Duplicate Document Successfully", {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,

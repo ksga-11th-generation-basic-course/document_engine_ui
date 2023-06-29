@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Modal } from "react-daisyui";
 import CreateBy from "../assets/images/Dashboard/CreateBy.svg";
 import CreateDate from "../assets/images/Dashboard/CreateDate.svg";
@@ -6,22 +6,32 @@ import Tag from "../assets/images/Dashboard/Tag.svg";
 import { useDispatch, useSelector } from "react-redux";
 import { BlockNoteView, useBlockNote } from "@blocknote/react";
 import "@blocknote/core/style.css";
+import { getUsername } from "../redux/service/documentService/documentService";
 
 export const CreatePageModal = ({
+  documentData,
   visiblePage,
   setVisiblePage,
   secondhandleClick,
 }) => {
+  console.log(documentData);
   const editor = useBlockNote({
     theme: "light",
     onEditorContentChange: (editor) => {
       console.log(editor.topLevelBlocks);
     },
   });
-  const [title, setTitle] = useState("Untitle");
+  const [title, setTitle] = useState("Untitled");
   const dispatch = useDispatch();
   const [toggle, setToggle] = useState(false);
   const { tagsWorkspace, tagsDocument } = useSelector((state) => state.tag);
+  const { username } = useSelector((state) => state.document);
+  const documentId = documentData?.documentId;
+
+  useEffect(() => {
+    dispatch(getUsername(documentId));
+  }, [documentId]);
+
 
   return (
     <div>
@@ -51,7 +61,7 @@ export const CreatePageModal = ({
                       <img src={CreateBy} className="w-[17px]" alt="" />
                       <p>Create By</p>
                     </span>
-                    <p className="text-black">Tith Ouddom</p>
+                    <p className="text-black">{username}</p>
                   </div>
                 </div>
                 <div className="col-span-12 text-sm">
@@ -60,7 +70,7 @@ export const CreatePageModal = ({
                       <img src={CreateDate} className="w-[17px]" alt="" />
                       <p>Create Date</p>
                     </span>
-                    <p className="text-black">April 21, 2023 4:01 PM</p>
+                    <p className="text-black">{documentData?.createdDate}</p>
                   </div>
                 </div>
                 <div className="col-span-12 text-sm relative">
@@ -189,7 +199,7 @@ export const CreatePageModal = ({
             </div>
           </div>
           <div className="mt-2">
-            {/* <BlockNoteView editor={editor} /> */}
+            {visiblePage && <BlockNoteView editor={editor} />}
           </div>
         </Modal.Body>
       </Modal>
