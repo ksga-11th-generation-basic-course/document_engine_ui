@@ -49,7 +49,7 @@ export const Workspace = () => {
 
   const [openSearch, setOpenSearch] = useState(false);
 
-  const { workspaces, totalPage, loading } = useSelector((state) => state.workspace);
+  const { workspaces, totalPage } = useSelector((state) => state.workspace);
 
   const dispatch = useDispatch();
 
@@ -65,7 +65,7 @@ export const Workspace = () => {
 
   const [sortbydatetime, setSortbydatetime] = useState("DEFAULT");
 
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(true);
 
   const [status, setStatus] = useState("Ascending");
 
@@ -117,7 +117,7 @@ export const Workspace = () => {
     // Simulating data fetching delay
     setTimeout(() => {
       setLoading(false);
-    }, 2000);
+    }, 3000);
   }, []);
 
   useEffect(() => {

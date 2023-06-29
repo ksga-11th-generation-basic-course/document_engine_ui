@@ -9,6 +9,7 @@ import { setAccessibility } from "../../redux/service/workspaceService/workspace
 import { useDispatch, useSelector } from "react-redux";
 import { setAccessibilitySuccess } from "../../redux/slice/workspaceSlice/workspaceSlice";
 import { getCurrentUser } from "../../redux/service/userService/userService";
+import { Avatar } from "@material-tailwind/react";
 
 export const MemberWorkspaceCard = ({ member, workspaceId }) => {
   const [removeMember, setRemoveMember] = useState(false);
@@ -66,7 +67,12 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
                 {character[0]}
               </p>
             ) : (
-              <img src={member.profileImage} className="w-full h-full" />
+              <Avatar
+                variant="circular"
+                alt="candice wu"
+                className="cursor-pointer rounded-full"
+                src={member && member.profileImage}
+              />
             )}
           </div>
           <h3 className="font-semibold text-18px">{member.username}</h3>
@@ -77,9 +83,7 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
               </span>
             </div>
           ) : null}
-          {user.userId === member.userId ? (
-            <span>(You)</span>
-          ) : null}
+          {user.userId === member.userId ? <span>(You)</span> : null}
         </div>
         {!member.isOwner ? (
           <div className="flex justify-center items-center gap-x-4 md:gap-x-2">
@@ -123,7 +127,20 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
               className="px-3 py-2 md:p-1.5 border-[1px] rounded-lg"
               onClick={hanldeKickMember}
             >
-              <img src={kickmember} className="w-[19px] h-[19px]" />
+              <svg
+                width="20"
+                height="20"
+                fill="none"
+                stroke="#f44336"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M3 6h18"></path>
+                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+              </svg>
             </button>
           </div>
         ) : null}

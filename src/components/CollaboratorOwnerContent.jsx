@@ -10,7 +10,7 @@ import { getMemberInEachWorkspace } from "../redux/service/workspaceService/work
 export const CollaboratorOwnerContent = ({
   openWorkspaceSetting,
   setOpenWorkspaceSetting,
-  workspace
+  workspace,
 }) => {
   const [copied, setCopied] = useState(false);
   const handleCopy = () => {
@@ -20,7 +20,7 @@ export const CollaboratorOwnerContent = ({
     }, 2000);
   };
 
-  let workspaceId = workspace.workspaceId
+  let workspaceId = workspace.workspaceId;
 
   const members = useSelector((state) => state.workspace.members);
 
@@ -29,8 +29,6 @@ export const CollaboratorOwnerContent = ({
   useEffect(() => {
     dispatch(getMemberInEachWorkspace(workspace.workspaceId));
   }, []);
-
-
 
   return (
     <div>
@@ -58,8 +56,24 @@ export const CollaboratorOwnerContent = ({
             </div>
             <div className="flex justify-center items-center gap-x-3 md:gap-3 md:px-0 shadow-sm px-3 p-1 rounded-lg relative">
               <span className="text-primary">{workspace.workspaceCode}</span>
-              <CopyToClipboard text={workspace.workspaceCode} onCopy={handleCopy}>
-                <img src={copy} />
+              <CopyToClipboard
+                text={workspace.workspaceCode}
+                onCopy={handleCopy}
+              >
+                <svg
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="#526581"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <rect width="13" height="13" x="9" y="9" rx="2" ry="2"></rect>
+                  <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+                </svg>
               </CopyToClipboard>
               <div>
                 {copied ? (
@@ -79,7 +93,10 @@ export const CollaboratorOwnerContent = ({
             {members &&
               members.map((member, index) => (
                 <div key={index}>
-                  <MemberWorkspaceCard member={member} workspaceId={workspaceId}/>
+                  <MemberWorkspaceCard
+                    member={member}
+                    workspaceId={workspaceId}
+                  />
                 </div>
               ))}
           </div>
