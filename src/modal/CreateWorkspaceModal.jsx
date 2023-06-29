@@ -108,7 +108,12 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                 className="rounded-lg py-3 border-primary focus:ring-btn-primary focus:border-btn-primary text-18px md:text-14px md:py-2"
                 onChange={(e) => setWorkspaceName(e.target.value)}
               />
-              <p>Workspace Photo</p>
+              <p>Workspace Photo 
+                  <span className="ml-2 text-end text-[#9CA3AF] font-normal md:text-12px">
+                        (optional)
+                    </span>
+              </p>
+              
               <label>
                 <input
                   className="text-sm cursor-pointer w-36 hidden"
@@ -130,9 +135,6 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                 </div>
               </label>
               <div className="space-y-3 mt-2">
-                <p className="text-end text-[#9CA3AF] font-normal md:text-12px">
-                  (optional)
-                </p>
                 <div className="flex justify-end items-center gap-5 text-16px font-semibold pb-3 md:text-12px md:gap-3">
                   <button
                     className="px-10 py-3 border-[1px] rounded-lg md:px-8 md:ml-12 md:py-2.5"
