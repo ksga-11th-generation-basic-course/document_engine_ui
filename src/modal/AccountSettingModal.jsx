@@ -31,6 +31,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
   const dispatch = useDispatch();
 
   const [openDeleteProfile, setOpenDeleteProfile] = useState(false);
+  const [openSignOut, setOpenSignOut] = useState(false);
 
   const [closeAccount, setCloseAccount] = useState(false);
 
@@ -79,7 +80,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
           document.getElementById("changename").reset();
         }}
       >
-        <div className="bg-white rounded-lg grid grid-cols-12 lg:w-[680px] lg:h-[900px] md:w-[350px] md:h-[630px]">
+        <div className="bg-white rounded-lg grid grid-cols-12 lg:w-[680px] lg:h-[950px] md:w-[350px] md:h-[630px] md:-mt-20 z-50">
           {/* Sidebar */}
           <div className="col-span-3  rounded-lg space-y-5 lg:hidden">
             <div className="flex justify-center p-5 rounded-tl-lg shadow-md">
@@ -120,15 +121,16 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                   document.getElementById("changename").reset();
                 }}
               >
-                <img src={close} className="w-8" />
+                <img src={close} className="w-8 md:w-6" />
               </button>
             </div>
+
             <div className="px-16 space-y-5 lg:px-6">
               <div className="text-accent">
                 <h1 className="font-bold text-34px lg:text-28px md:text-22px">
                   Account Setting
                 </h1>
-                <p className="text-18px md:text-12px">
+                <p className="text-18px md:text-12px md:-mt-3">
                   Manage your profile, preferences, and login settings
                 </p>
               </div>
@@ -137,8 +139,8 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
               <div>
                 {/* For laptop and tablets */}
                 {/* Header */}
-                <div className="md:hidden flex justify-between border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 rounded-t-lg">
-                  <div className="flex justify-center items-center gap-x-3">
+                <div className="md:hidden flex justify-between border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 lg:py-0 rounded-t-lg">
+                  <div className="flex justify-center items-center gap-x-3 lg:py-3">
                     <img src={profile} className="md:w-6" />
                     <p className="font-bold text-24px text-black md:text-16px">
                       Your Profile
@@ -146,7 +148,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                   </div>
                   <button
                     type="button"
-                    className="md:hidden font-semibold text-white text-18px px-7 py-1.5 bg-primary rounded-lg md:text-12px md:px-5 md:py-1 "
+                    className="md:hidden font-semibold text-white text-18px px-7 py-1.5 lg:m-3 lg:mr-0 bg-primary rounded-lg md:text-12px md:px-5 md:py-1 "
                     onClick={handleEditProfileInformation}
                   >
                     Save
@@ -200,7 +202,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                       </p>
                     </div>
                     <div className="col-span-5 flex justify-center items-center gap-x-3 ml-10 lg:col-span-5 lg:ml-0 md:-ml-1 md:w-52">
-                    <label className="cursor-pointer">
+                      <label className="cursor-pointer">
                         <input
                           className="text-sm w-36 hidden"
                           type="file"
@@ -210,21 +212,21 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                           }}
                         />
                         <div>
-                        {user && user.profileImage === null ? (
-                          <Avatar
-                            variant="circular"
-                            alt="candice wu"
-                            className="cursor-pointer  w-11 h-11 rounded-full lg:w-8 md:w-7"
-                            src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
-                          />
-                        ) : (
-                          <Avatar
-                            variant="circular"
-                            alt="candice wu"
-                            className="cursor-pointer w-11 h-11 rounded-full lg:w-8 md:w-7"
-                            src={user && user.profileImage}
-                          />
-                        )}
+                          {user && user.profileImage === null ? (
+                            <Avatar
+                              variant="circular"
+                              alt="candice wu"
+                              className="cursor-pointer  w-11 h-11 rounded-full lg:w-8 lg:h-8 md:w-7 md:h-7"
+                              src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
+                            />
+                          ) : (
+                            <Avatar
+                              variant="circular"
+                              alt="candice wu"
+                              className="cursor-pointer w-11 h-11  rounded-full lg:w-8 lg:h-8 md:w-7 md:h-7"
+                              src={user && user.profileImage}
+                            />
+                          )}
                         </div>
                       </label>
 
@@ -243,14 +245,15 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                       </label>
 
                       <div>
-
-                      <button
-                        type="button"
-                        className="px-3 py-2 border-[1px] rounded-lg  md:px-2.5"
-                        onClick={() => setOpenDeleteProfile(!openDeleteProfile)}
-                      >
-                        <img src={trush} />
-                      </button>
+                        <button
+                          type="button"
+                          className="px-3 py-2 border-[1px] rounded-lg  md:px-2.5"
+                          onClick={() =>
+                            setOpenDeleteProfile(!openDeleteProfile)
+                          }
+                        >
+                          <img src={trush} />
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -269,7 +272,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                       <span className="flex justify-center items-center gap-x-3 bg-[#F8F8F8] py-2.5 rounded-lg md:w-60 md:py-1.5 mt-2">
                         <img src={google} className="w-5 md:w-4" />
                         <p className="text-18px md:text-12px">
-                        {user && user.email}
+                          {user && user.email}
                         </p>
                       </span>
                     </div>
@@ -295,11 +298,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                         <button
                           type="button"
                           className="font-semibold text-white text-18px px-7 py-1.5 bg-primary rounded-lg md:text-12px md:px-5 md:py-1 md:mt-1 md:ml-12 "
-                          onClick={() => {
-                            setOpenProfileSetting(false);
-                            setOpenAdvanceSetting(false);
-                            handleEditProfileInformation;
-                          }}
+                          onClick={handleEditProfileInformation}
                         >
                           Save
                         </button>
@@ -341,16 +340,17 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                 {/* Content mobile */}
                 <span className="hidden md:inline-block">
                   {openProfileSetting ? (
-                    <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg lg:space-y-7 md:px-4 md:space-y-5 md:mb-5">
+                    <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg lg:space-y-7 md:px-4 md:space-y-2 md:mb-5">
                       {/* Change account name */}
                       <div className="w-full space-y-2">
-                        <h3 className="font-bold text-18px text-black md:text-14px">
+                        <h3 className="font-bold text-18px text-black md:text-14px md:-mt-3">
                           Account Name
                         </h3>
                         <input
                           type="text"
                           className="w-full py-2.5 rounded-lg border-gray-300 focus:ring-primary focus:border-primary text-16px font-semibold lg:w-60 md:text-14px md:py-1.5"
-                          placeholder="Tith Ouddom"
+                          placeholder={user && user.userName}
+                          onChange={(e) => setUsername(e.target.value)}
                         />
                       </div>
 
@@ -385,13 +385,36 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                             Displayed when collaborating with others.
                           </p>
                         </div>
+
                         <div className="col-span-5 flex justify-center items-center gap-x-3 ml-14 lg:col-span-5 lg:ml-0 md:-ml-1 md:w-52">
-                          <div>
-                            <img
-                              src={avatar}
-                              className="rounded-full lg:w-8 md:w-7"
+                          <label className="cursor-pointer">
+                            <input
+                              className="text-sm w-36 hidden"
+                              type="file"
+                              multiple
+                              onChange={(e) => {
+                                setProfileImage(e.target.files[0]);
+                              }}
                             />
-                          </div>
+                            <div>
+                              {user && user.profileImage === null ? (
+                                <Avatar
+                                  variant="circular"
+                                  alt="candice wu"
+                                  className="cursor-pointer  w-11 h-11 rounded-full lg:w-8 lg:h-8 md:w-7 md:h-7"
+                                  src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
+                                />
+                              ) : (
+                                <Avatar
+                                  variant="circular"
+                                  alt="candice wu"
+                                  className="cursor-pointer w-11 h-11  rounded-full lg:w-8 lg:h-8 md:w-7 md:h-7"
+                                  src={user && user.profileImage}
+                                />
+                              )}
+                            </div>
+                          </label>
+
                           <label>
                             <input
                               className="text-sm cursor-pointer w-36 hidden md:w-full"
@@ -401,14 +424,15 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                                 setProfileImage(e.target.files[0]);
                               }}
                             />
-                            <p className="font-semibold text-16px border-[1px] rounded-lg px-3 py-1 cursor-pointer md:text-14px">
+                            <p className="font-semibold text-18px border-[1px] rounded-lg px-3 py-1 cursor-pointer lg:text-16px md:text-14px">
                               Upload Photo
                             </p>
                           </label>
+
                           <div>
                             <button
                               type="button"
-                              className="px-3 py-2 border-[1px] rounded-lg md:px-2.5"
+                              className="px-3 py-2 border-[1px] rounded-lg  md:px-2.5"
                               onClick={() =>
                                 setOpenDeleteProfile(!openDeleteProfile)
                               }
@@ -433,9 +457,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                         <div className="col-span-5 lg:col-span-6">
                           <span className="flex justify-center items-center gap-x-3 bg-[#F8F8F8] py-2.5 rounded-lg md:w-60 md:py-1.5 mt-2">
                             <img src={google} className="w-5 md:w-4" />
-                            <p className="md:text-12px">
-                            {user && user.email}
-                            </p>
+                            <p className="md:text-12px">{user && user.email}</p>
                           </span>
                         </div>
                       </div>
@@ -510,7 +532,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                     <div className="col-span-2 ml-3 lg:col-span-3 lg:ml-12 md:col-span-6 md:mr-20">
                       <button
                         className="font-semibold text-18px text-red-500 border-[1px] rounded-lg px-4 py-2 lg:text-16px md:text-14px md:w-20 md:px-2 md:py-1.5"
-                        onClick={toggleVisible}
+                        onClick={() => setOpenSignOut(!openSignOut)}
                       >
                         Sign out
                       </button>
@@ -537,7 +559,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                 {/* Responsive */}
                 <span className="hidden lg:hidden md:inline-block">
                   {openAdvanceSetting ? (
-                    <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg md:px-4">
+                    <div className="px-6 border-[1px] py-4 space-y-2 rounded-b-lg md:px-4">
                       {/* Signout */}
                       <div className="grid grid-cols-12 justify-center items-center">
                         <div className="col-span-10 lg:col-span-9 md:col-span-6">
@@ -552,7 +574,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                         <div className="col-span-2 ml-6 lg:col-span-3 lg:ml-12 md:col-span-6 md:mr-20">
                           <button
                             className="font-semibold text-16px text-red-500 border-[1px] rounded-lg px-4 py-2 md:text-14px md:w-20 md:px-2 md:py-1.5"
-                            onClick={toggleVisible}
+                            onClick={() => setOpenSignOut(!openSignOut)}
                           >
                             Sign out
                           </button>
@@ -584,7 +606,10 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
         </div>
       </Modal>
       <div>
-      <SignOutModal visible={visible} toggleVisible={toggleVisible} />
+        <SignOutModal
+          openSignOut={openSignOut}
+          setOpenSignOut={setOpenSignOut}
+        />
         <DeleteProfileModal
           openDeleteProfile={openDeleteProfile}
           setOpenDeleteProfile={setOpenDeleteProfile}

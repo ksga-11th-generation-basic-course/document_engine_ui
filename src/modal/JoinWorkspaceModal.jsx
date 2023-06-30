@@ -36,12 +36,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
         <img src={join} className="w-4 h-4 md:w-3.5" />
         Join
       </button>
-      <Modal open={visible}
-      onClickBackdrop={() => {
-        setVisible(!visible);
-        document.getElementById("joinWorkspaceByWorkspaceCode").reset();
-      }} 
-      >
+      <Modal open={visible}>
         <div className="w-[540px] bg-white rounded-lg p-3 md:w-[300px]">
           <div className="flex justify-end">
             <button
@@ -51,14 +46,14 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
                 document.getElementById("joinWorkspaceByWorkspaceCode").reset();
               }}
             >
-              <img className="p-2" src={close} />
+              <img className="w-9 h-9 md:w-6" src={close} />
             </button>
           </div>
-          <div className="px-14 space-y-5 text-accent">
+          <div className="px-14 space-y-5 text-accent md:space-y-4 md:px-5">
             <div className="flex justify-center items-center">
               <img className="md:w-[70px] md:h-[70px] " src={joinworkspace} />
             </div>
-            <h1 className="font-bold text-28px text-primary text-center">
+            <h1 className="font-bold text-28px text-primary text-center md:text-18px md:leading-7">
               Enter code to join workspace
             </h1>
             <form
@@ -86,7 +81,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
                 Cancel
               </button>
               <Button
-                className="bg-primary text-16px font-semibold text-white  px-10 py-3 rounded-lg"
+                className="bg-primary text-16px font-semibold text-white  px-10 py-3 rounded-lg md:text-11px"
                 onClick={handleJoinWorkspace}
               >
                 Join

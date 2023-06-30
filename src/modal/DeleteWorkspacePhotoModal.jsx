@@ -24,7 +24,7 @@ export const DeleteWorkspacePhotoModal = ({
               <img src={deleteprofile} className="md:w-16"/>
             </div>
             <p className="font-normal text-accent text-22px text-center md:text-16px">
-                    Are you sure want to delete your workspace photo?
+                    Are you sure to delete your workspace photo?
             </p>
 
             <div className="flex justify-center items-center gap-5 text-18px font-semibold pb-5 md:text-14px">

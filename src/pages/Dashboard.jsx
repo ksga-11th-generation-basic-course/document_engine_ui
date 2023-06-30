@@ -66,27 +66,27 @@ export const Dashboard = () => {
       </p>
     </div>
     <div className="space-y-8  md:space-y-5 ">
-      <div>
-        <DocumentCardRow
-          documentname={"Spring Profile"}
-          editDate={"Edited 5days ago"}
-          status={true}
-        />
-      </div>
-      <div>
-        <DocumentCardRow
-          documentname={"Redux Toolkit"}
-          editDate={"Edited 9days ago"}
-          status={false}
-        />
-      </div>
-      <div>
-        <DocumentCardRow
-          documentname={"Laravel"}
-          editDate={"Edited 17days ago"}
-          status={true}
-        />
-      </div>
+        {recentlies === null ? null : recentlies.length > 0 ? (
+          recentlies.map((recently, index) => (
+            <div key={index}>
+              <DocumentCardRow
+                documentId={recently.documentId}
+                workspaceId={recently.workspaceId}
+                documentname={recently.title}
+                editDate={recently.editDate}
+                status={recently.status}
+              />
+            </div>
+          ))
+        ) : (
+          <div className="col-span-12 absolute px-64 md:px-0 md:-ml-5">
+            <div className="flex flex-col justify-center gap-y-1 items-center h-60 w-[570px] lg:w-[170px] lg:h-40 md:w-[330px] md:h-20">
+              <p className="font-semibold text-accent text-base md:text-12px ">
+                No Recently
+              </p>
+            </div>
+          </div>
+        )}
     </div>
   </div>
   );

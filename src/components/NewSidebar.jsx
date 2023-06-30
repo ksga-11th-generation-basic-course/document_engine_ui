@@ -27,8 +27,14 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllWorkspace } from "../redux/service/workspaceService/workspaceService";
 import { CreateWorkspaceModal } from "../modal/CreateWorkspaceModal";
 import { getAllDocumentInEachWorkspace } from "../redux/service/documentService/documentService";
+import close from "../assets/dashboard_image/close.svg";
 
-export const NewSidebar = () => {
+export const NewSidebar = ({
+  sideBar,
+  setSideBar,
+  newWorkspace,
+  setNewWorkspace
+}) => {
   const [open, setOpen] = React.useState(0);
 
   const { workspaces } = useSelector((state) => state.workspace);
@@ -66,22 +72,32 @@ export const NewSidebar = () => {
   };
 
   return (
-    <Card className="h-screen w-[20rem] p-6">
-      <div className="p-4 flex justify-center">
+    <Card className="h-screen w-[20rem] p-6  md:w-[210px]">
+
+      {/* Close Button */}
+      <div className="hidden lg:flex lg:right-0 lg:-mt-5 items-end">
+        <div className="hidden lg:inline-block ">
+          <button type="button" onClick={() => setSideBar(!sideBar)}>
+            <img src={close} className="w-8  lg:absolute lg:top-5 lg:right-5 md:w-5" />
+          </button>
+        </div>
+      </div>
+
+      <div className="p-4 flex justify-center md:mt-2">
         <NavLink
           style={{ textDecoration: "none" }}
           to={"/dashboard"}
           className="flex flex-col justify-center items-center"
         >
-          <img src={logo} className="w-20 h-20" />
-          <p className="font-bold text-primary text-3xl">DocEngine</p>
+          <img src={logo} className="w-20 h-20 md:w-16 md:h-16" />
+          <p className="font-bold text-primary text-3xl md:text-2xl">DocEngine</p>
         </NavLink>
       </div>
 
       <List className="p-0 space-y-2 mt-5">
-        <div className="text-18px text-gray-400">DASHBOARD</div>
+        <div className="text-18px text-gray-400 md:text-14px">DASHBOARD</div>
         <Button
-          className="bg-primary rounded-lg p-3 shadow-none font-semibold flex items-center justify-center gap-x-2"
+          className="bg-primary rounded-lg p-3 shadow-none font-semibold flex items-center justify-center gap-x-2 md:text-15px"
           onClick={() => setVisible(!visible)}
         >
           <svg
@@ -127,7 +143,7 @@ export const NewSidebar = () => {
               <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
               <path d="M9 22V12h6v10"></path>
             </svg>
-            <p className="font-semibold text-18px">Home</p>
+            <p className="font-semibold text-18px md:text-15px">Home</p>
           </NavLink>
         </ListItem>
 
@@ -154,13 +170,13 @@ export const NewSidebar = () => {
                 fill="currentColor"
               />
             </svg>
-            <p className="font-semibold text-18px">Workspaces</p>
+            <p className="font-semibold text-18px md:text-15px">Workspaces</p>
           </NavLink>
         </ListItem>
 
         <hr className="my-2 border-blue-gray-50" />
 
-        <div className="text-18px text-gray-400">WORKSPACE</div>
+        <div className="text-18px text-gray-400 md:text-14px">WORKSPACE</div>
         {workspaces &&
           workspaces.map((workspace, index) => (
             <Accordion

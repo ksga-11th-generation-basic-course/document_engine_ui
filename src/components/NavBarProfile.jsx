@@ -58,7 +58,7 @@ export const NavBarProfile = () => {
   };
 
   return (
-    <div className="flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white lg:px-0 lg:-mr-5 md:pl-10">
+    <div className="flex justify-end items-center py-3 px-14 gap-x-5 bg-white lg:px-0 lg:-mr-5 md:pr-0 md:mr-0 md:right-0">
       {param.documentId ? (
         <div>
           <Menu
@@ -190,9 +190,9 @@ export const NavBarProfile = () => {
               )}
           </MenuHandler>
 
-          <MenuList className="rounded-lg text-accent w-[360px] p-5 font-ssp">
+          <MenuList className="rounded-lg text-accent w-[360px] p-5 font-ssp lg:z-30 md:w-60 ">
             <MenuItem>
-              <p className="font-extrabold text-28px text-primary text-left">
+              <p className="font-extrabold text-28px text-primary text-left md:text-20px">
                 Profile
               </p>
             </MenuItem>
@@ -204,48 +204,48 @@ export const NavBarProfile = () => {
                 <Avatar
                   variant="circular"
                   alt="candice wu"
-                  className="cursor-pointer rounded-full mt-4"
+                  className="cursor-pointer rounded-full mt-4 md:w-9 md:h-9"
                   src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
                 />
               ) : (
                 <Avatar
                   variant="circular"
                   alt="candice wu"
-                  className="cursor-pointer rounded-full mt-4"
+                  className="cursor-pointer rounded-full mt-4 md:w-9 md:h-9"
                   src={user && user.profileImage}
                 />
               )}
               <div>
-                <h3 className="font-bold text-20px text-left">
+                <h3 className="font-bold text-20px text-left md:text-18px">
                   {user && user.userName}
                 </h3>
-                <p className="text-[#9CA3AF] leading-3 text-base text-left">
+                <p className="text-[#9CA3AF] leading-3 text-base text-left md:text-14px">
                   {user && user.email}
                 </p>
               </div>
             </MenuItem>
             <hr className="my-2 border-blue-gray-50 mt-2" />
             <MenuItem
-              className="flex items-center gap-x-3 hover:bg-gray-200 p-2 mt-2"
+              className="flex items-center gap-x-3 hover:bg-[#EFEFEF] p-2 mt-2"
               onClick={() => setOpenSetting(!openSetting)}
             >
-              <img src={setting} />
-              <span className="text-18px ml-1">Setting</span>
+              <img src={setting} className="md:w-5 md:h-5"/>
+              <span className="text-18px ml-1 md:text-16px">Setting</span>
             </MenuItem>
             <MenuItem
-              className="flex items-center gap-x-3 hover:bg-gray-200 p-2 mt-2"
-              onClick={toggleVisible}
+              className="flex items-center gap-x-3 hover:bg-[#EFEFEF] p-2 mt-2"
+              onClick={() => setOpenSignOut(!openSignOut)}
             >
-              <img src={signout} />
-              <span className="text-red-500 text-18px">Sign out</span>
+              <img src={signout} className="md:w-5 md:h-5"/>
+              <span className="text-red-500 text-18px md:text-16px">Sign out</span>
             </MenuItem>
           </MenuList>
         </Menu>
       </div>
       <div>
         <SignOutModal
-          visible={visible}
-          toggleVisible={toggleVisible}
+          openSignOut={openSignOut} 
+          setOpenSignOut={setOpenSignOut}
         />
         <AccountSettingModal
           openSetting={openSetting}

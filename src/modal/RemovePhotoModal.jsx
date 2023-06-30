@@ -38,7 +38,7 @@ export const RemovePhotoModal = ({ removePhoto, setRemovePhoto, workspaceId }) =
             <h1 className="font-bold text-24px text-primary text-center">
               Delete Photo!
               <p className="font-normal text-accent text-18px text-center">
-                Are you sure want to delete your workspace photo?
+                Are you sure to delete your workspace photo?
               </p>
             </h1>
 

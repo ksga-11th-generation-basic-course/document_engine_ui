@@ -41,11 +41,10 @@ export const DeleteProfileModal = ({
             <div className="flex justify-center items-center">
               <img src={deleteprofile} className="md:w-16"/>
             </div>
-            <h1 className="font-bold text-24px text-primary text-center">
+            <h1 className="font-bold text-24px text-primary text-center -mt-5">
               Remove Profile!
-              <p className="font-normal text-accent text-18px text-center">
-                Are you sure want to delete your profile <br /> photo from this
-                workspace?
+              <p className="font-normal text-accent text-22px text-center leading-10 px-7 mt-2">
+                Are you sure to delete your profile photo?
               </p>
             </h1>
 

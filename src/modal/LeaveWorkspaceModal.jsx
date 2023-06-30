@@ -45,7 +45,7 @@ export const LeaveWorkspaceModal = ({
             <h1 className="font-bold text-24px text-primary text-center">
               Leave Workspace!
               <p className="font-normal text-accent text-18px text-center">
-                Are you sure want to leave from this workspace?
+                Are you sure to leave from this workspace?
               </p>
             </h1>
 

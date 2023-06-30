@@ -108,7 +108,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                 className="rounded-lg py-3 border-primary focus:ring-btn-primary focus:border-btn-primary text-18px md:text-14px md:py-2"
                 onChange={(e) => setWorkspaceName(e.target.value)}
               />
-              <p>Workspace Photo 
+              <p className="mt-5">Workspace Photo 
                   <span className="ml-2 text-end text-[#9CA3AF] font-normal md:text-12px">
                         (optional)
                     </span>

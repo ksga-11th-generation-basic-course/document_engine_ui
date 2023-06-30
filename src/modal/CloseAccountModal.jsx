@@ -42,7 +42,7 @@ export const CloseAccountModal = ({ closeAccount, setCloseAccount }) => {
             <h1 className="font-bold text-24px text-primary text-center">
               Close Account!
               <p className="font-normal text-accent text-22px text-center md:text-16px">
-                Are you sure want to close your account?
+                Are you sure to close your account?
               </p>
             </h1>
 

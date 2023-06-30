@@ -45,7 +45,7 @@ export const RemoveMemberModal = ({
             <h1 className="font-bold text-24px text-primary text-center">
               Remove Member!
               <p className="font-normal text-accent text-22px text-center md:text-16px">
-                        Are you sure want to remove this member from this
+                        Are you sure to remove this member from this
                 workspace?
               </p>
             </h1>

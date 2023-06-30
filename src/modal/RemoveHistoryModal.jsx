@@ -46,7 +46,7 @@ export const RemoveHistory = ({
             <h1 className="font-bold text-24px text-primary text-center">
               Remove History!
               <p className="font-normal text-accent text-18px text-center">
-                Are you sure want to delete this history?
+                Are you sure to delete this history?
               </p>
             </h1>
 

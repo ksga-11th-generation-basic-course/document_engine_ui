@@ -128,7 +128,7 @@ export const createDocument = async (
         },
       }
     );
-    console.log(response.data.payload);
+    // console.log(response.data.payload)
     return response.data.payload;
   } catch (error) {
     console.log(error);
@@ -290,6 +290,23 @@ export const getDocumentRecently = createAsyncThunk(
       return response.data.payload;
     } catch (error) {
       console.log(error);
+      throw error.response.data.detail;
+    }
+  }
+);
+
+export const getDocumentByPageId = createAsyncThunk(
+  `documents/getpagebyid`,
+  async (pageId) => {
+    try {
+      const response = await api.get(`documents/page/${pageId}`, {
+        headers: {
+          Authorization: "Bearer " + localStorage.getItem("token"),
+          "Content-Type ": "application/json",
+        },
+      });
+      return response.data.payload;
+    } catch (error) {
       throw error.response.data.detail;
     }
   }

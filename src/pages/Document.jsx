@@ -57,8 +57,6 @@ export const Document = () => {
 
   const [openGrid, setOpenGrid] = useState(true);
 
-  const [openBulletList, setOpenBulletList] = useState(false);
-
   const [openWorkspaceSetting, setOpenWorksapceSetting] = useState(false);
 
   const [openCollaboratorForMember, setOpenCollaboratorForMember] =
@@ -155,17 +153,15 @@ export const Document = () => {
           <p className="font-semibold text-20px">Documents</p>
         </div>
         {accessibility ? (
-          <button
+          <Button
             type="button"
             onClick={handleCreateDocument}
-            className="font-semibold bg-primary px-5 py-3 rounded-lg text-white"
+            className="font-semibold text-16px bg-primary px-5 py-3 rounded-lg text-white"
           >
             Create Document
-          </button>
+          </Button>
         ) : null}
       </div>
-      
-      {/* Option */}
       <div className="grid grid-cols-12">
         <div className="col-span-4 flex items-center gap-x-5 h-11">
           <div className="flex items-center gap-x-3">
@@ -244,56 +240,6 @@ export const Document = () => {
                 </MenuItem>
               </MenuList>
             </Menu>
-            {/* <Dropdown>
-              <Dropdown.Toggle>
-                <div className="flex items-center gap-x-20">
-                  <p className="text-18px text-black">Last Update</p>
-                  <img src={chevrondown} />
-                </div>
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="w-48 bg-white rounded-lg">
-                <FormControl>
-                  <RadioGroup
-                    aria-labelledby="demo-radio-buttons-group-label"
-                    defaultValue="LAST_UPDATE"
-                    name="radio-buttons-group"
-                  >
-                    <Dropdown.Item>
-                      <FormControlLabel
-                        value="LAST_UPDATE"
-                        control={<Radio />}
-                        label="Last Update"
-                        className="h-5 w-full"
-                      />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                      <FormControlLabel
-                        value="THIS_WEEK"
-                        control={<Radio />}
-                        label="This week"
-                        className="h-5 w-full"
-                      />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                      <FormControlLabel
-                        value="THIS_MONTH"
-                        control={<Radio />}
-                        label="This month"
-                        className="h-5 w-full"
-                      />
-                    </Dropdown.Item>
-                    <Dropdown.Item>
-                      <FormControlLabel
-                        value="THIS_YEAR"
-                        control={<Radio />}
-                        label="This year"
-                        className="h-5 w-full"
-                      />
-                    </Dropdown.Item>
-                  </RadioGroup>
-                </FormControl>
-              </Dropdown.Menu>
-            </Dropdown> */}
           </div>
         </div>
         <div className="col-span-4 flex items-center gap-x-5 h-11">
@@ -327,6 +273,7 @@ export const Document = () => {
                     label={<span className="text-18px">Product</span>}
                     className="checked:bg-primary"
                   />
+                  ;
                 </MenuItem>
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Checkbox
@@ -334,6 +281,7 @@ export const Document = () => {
                     label={<span className="text-18px">Technology</span>}
                     className="checked:bg-primary"
                   />
+                  ;
                 </MenuItem>
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Checkbox
@@ -341,43 +289,10 @@ export const Document = () => {
                     label={<span className="text-18px">Document</span>}
                     className="checked:bg-primary"
                   />
+                  ;
                 </MenuItem>
               </MenuList>
             </Menu>
-            {/* <Dropdown>
-              <Dropdown.Toggle>
-                <div className="flex items-center gap-x-20">
-                  <p className="text-18px text-black">Product</p>
-                  <img src={chevrondown} />
-                </div>
-              </Dropdown.Toggle>
-              <Dropdown.Menu className="w-48 bg-white rounded-lg">
-                {tagsWorkspace &&
-                  tagsWorkspace.map((tag, index) => (
-                    <Dropdown.Item key={index}>
-                      <FormControlLabel
-                        control={<Checkbox />}
-                        label={tag?.tagName}
-                        className="h-5 w-full"
-                        value={tag?.tagName}
-                        checked={selectedTags.includes(tag.tagName)}
-                        onChange={(event) => {
-                          const tagName = tag.tagName;
-                          if (event.target.checked) {
-                            setSelectedTags([...selectedTags, tagName]);
-                          } else {
-                            setSelectedTags(
-                              selectedTags.filter(
-                                (selectedTag) => selectedTag !== tagName
-                              )
-                            );
-                          }
-                        }}
-                      />
-                    </Dropdown.Item>
-                  ))}
-              </Dropdown.Menu>
-            </Dropdown> */}
           </div>
         </div>
         <div className="col-span-4 flex items-center justify-end">
@@ -396,39 +311,98 @@ export const Document = () => {
                 className="absolute mr-2 top-3"
                 onClick={() => setOpenSearch(!openSearch)}
               >
-                <img src={search} />
+                <svg
+                  width="20"
+                  height="20"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16z"></path>
+                  <path d="m21 21-4.35-4.35"></path>
+                </svg>
               </button>
             </div>
           ) : (
             <div className="flex justify-center items-center gap-x-5">
-              <div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setOpenGrid(true);
-                    setOpenBulletList(false);
-                  }}
-                >
-                  <img src={grid} />
-                </button>
-              </div>
-              <div>
-                <button
-                  type="button"
-                  onClick={() => {
-                    setOpenGrid(false);
-                    setOpenBulletList(true);
-                  }}
-                >
-                  <img src={bulletlist} />
-                </button>
-              </div>
+              {openGrid ? (
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOpenGrid(false);
+                    }}
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M3 3h7v7H3z"></path>
+                      <path d="M14 3h7v7h-7z"></path>
+                      <path d="M14 14h7v7h-7z"></path>
+                      <path d="M3 14h7v7H3z"></path>
+                    </svg>
+                  </button>
+                </div>
+              ) : (
+                <div>
+                  <button
+                    type="button"
+                    onClick={() => {
+                      setOpenGrid(true);
+                    }}
+                  >
+                    <svg
+                      width="20"
+                      height="20"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      viewBox="0 0 24 24"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path d="M8 6h13"></path>
+                      <path d="M8 12h13"></path>
+                      <path d="M8 18h13"></path>
+                      <path d="M3 6h.01"></path>
+                      <path d="M3 12h.01"></path>
+                      <path d="M3 18h.01"></path>
+                    </svg>
+                  </button>
+                </div>
+              )}
               <div>
                 <button
                   type="button"
                   onClick={() => setOpenSearch(!openSearch)}
                 >
-                  <img src={search} />
+                  <svg
+                    width="20"
+                    height="20"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16z"></path>
+                    <path d="m21 21-4.35-4.35"></path>
+                  </svg>
                 </button>
               </div>
               <div className="relative">
@@ -436,7 +410,21 @@ export const Document = () => {
                   <Menu>
                     <MenuHandler>
                       <button type="button">
-                        <img src={dotshorizontal} className="w-4 h-4" />
+                        <svg
+                          width="20"
+                          height="20"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-linecap="round"
+                          stroke-linejoin="round"
+                          stroke-width="2"
+                          viewBox="0 0 24 24"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path d="M12 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                          <path d="M19 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                          <path d="M5 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                        </svg>
                       </button>
                     </MenuHandler>
                     <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56 font-ssp">
@@ -470,13 +458,11 @@ export const Document = () => {
                   </div>
                 )}
               </div>
-              </div>
+            </div>
           )}
         </div>
       </div>
 
-
-      {/* Card Document */}
       {openGrid ? (
         <div className="grid grid-cols-12 gap-8">
           {documents === null ? null : documents?.length > 0 ? (
@@ -503,10 +489,8 @@ export const Document = () => {
             </div>
           )}
         </div>
-      
-      ) : null}
-      {openBulletList ? (
-        <div className="space-y-6">
+      ) : (
+        <div className="space-y-5">
           {documents === null ? null : documents.length > 0 ? (
             documents
               .filter((document) => {
@@ -522,7 +506,7 @@ export const Document = () => {
               })
               .map((document, index) => (
                 <div className="col-span-4" key={index}>
-                  <DocumentList document={document} />
+                  <DocumentList document={document} workspaceId={workspaceId} />
                 </div>
               ))
           ) : (
@@ -531,7 +515,7 @@ export const Document = () => {
             </div>
           )}
         </div>
-      ) : null}
+      )}
       <div>
         {workspace && isOwner && (
           <WorkspaceSettingModal
@@ -548,7 +532,6 @@ export const Document = () => {
           />
         )}
       </div>
-      
     </div>
   );
 };

@@ -64,7 +64,7 @@ export const DeleteDocumentModal = ({
               <img src={deletedocument} className="md:w-14"/>
             </div>
             <p className="font-normal text-accent text-22px text-center md:text-16px md:px-10">
-                    Are you sure want to delete this document?
+                    Are you sure to delete this document?
             </p>
 
             <div className="flex justify-center items-center gap-5 text-20px font-semibold pb-5 md:text-12px">

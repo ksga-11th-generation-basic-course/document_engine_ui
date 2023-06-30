@@ -181,7 +181,7 @@ export const SignIn = () => {
 
               <Link
                 to={"/forgotpassword"}
-                className="transition text-18px duration-200 text-black w-full py-2.5 mb-2 mt-2 text-left font-semibold inline-block max-sm:pt-4 lg:ml-16 lg:text-2xl md:ml-1 md:text-sm"
+                className="transition text-18px duration-200 text-black w-full py-2.5 mb-2 mt-2 text-left font-semibold inline-block max-sm:pt-4 lg:text-xl md:ml-1 md:text-sm"
               >
                 Forgot your password?
               </Link>

@@ -51,6 +51,7 @@ export const WorkspaceCard = ({ workspace }) => {
       <div className="h-[200px] overflow-hidden" onClick={handleNavigate}>
         <img src={workspace && workspace.workspaceImage} className="w-full" />
       </div>
+      
       <div className="flex justify-between items-center p-3">
         <div>
           <h3 className="font-semibold text-18px md:text-14px">

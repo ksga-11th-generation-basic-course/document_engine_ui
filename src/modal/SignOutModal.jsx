@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { signOutSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 
-export const SignOutModal = ({ visible, toggleVisible }) => {
+export const SignOutModal = ({ openSignOut, setOpenSignOut }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -19,28 +19,28 @@ export const SignOutModal = ({ visible, toggleVisible }) => {
 
   return (
     <div className="w-full">
-      <Modal open={visible}>
+      <Modal open={openSignOut}>
         <div className="w-[540px] bg-white rounded-lg p-3 md:w-[300px] md:p-2.5">
           <div className="flex justify-end">
-            <button type="button" onClick={() => toggleVisible(!visible)}>
+            <button type="button" onClick={() => setOpenSignOut(!openSignOut)}>
               <img src={close}  className="md:w-6"/>
             </button>
           </div>
-          <div className="px-14 space-y-2 text-accent md:space-y-4 md:px-2">
+          <div className="px-14 space-y-2 text-accent md:space-y-0 md:px-2">
             <div className="flex justify-center items-center">
               <img src={signouticon} className="w-52 md:w-28"/>
             </div>
             <h1 className="font-bold text-24px text-primary text-center md:text-20px md:mb-3">
               Comeback soon!
-              <p className="font-normal text-accent text-24px text-center md:text-15px md:mt-2">
-                Are you sure want to sign out?
+              <p className="font-normal text-accent text-24px text-center md:text-15px md:-mt-5">
+                Are you sure to sign out?
               </p>
             </h1>
 
             <div className="flex justify-center space-x-4 items-center text-20px font-semibold pb-3 md:text-13px md:mt-2">
               <button
                 className="px-10 py-3 border-[1px] rounded-lg md:px-7 md:py-2"
-                onClick={() => toggleVisible(!visible)}
+                onClick={() => setOpenSignOut(!openSignOut)}
               >
                 Cancel
               </button>

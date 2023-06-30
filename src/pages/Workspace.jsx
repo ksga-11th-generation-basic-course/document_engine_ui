@@ -370,10 +370,10 @@ export const Workspace = () => {
               </div>
             ))
         ) : (
-          <div className="col-span-12 absolute bottom-[40%] left-[55%]">
-            <div className="flex flex-col items-center justify-center gap-y-1">
-              <img src={emptybox} className="w-32 h-32" />
-              <p className="font-semibold text-accent text-base">
+          <div className="col-span-12 absolute px-64 md:px-0 md:-ml-5">
+            <div className="flex flex-col justify-center gap-y-1 items-center h-[400px] w-[570px] lg:w-[170px] lg:h-96 md:w-[330px] md:h-60">
+            <img src={emptybox} className="w-32 h-32 md:w-24 md:h-24" />
+              <p className="font-semibold text-accent text-base md:text-12px ">
                 No Workspace
               </p>
             </div>

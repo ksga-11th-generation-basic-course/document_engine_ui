@@ -29,9 +29,9 @@ import {
 import "@blocknote/core/style.css";
 import { RiImage2Fill } from "react-icons/ri";
 import { RiChatQuoteFill } from "react-icons/ri";
-// import { Button, ButtonToolbar, Loader, Placeholder } from "rsuite";
+import { Button, ButtonToolbar, Loader, Placeholder } from "rsuite";
 
-export const Editor = () => {
+export const Editor = ({ loading, blockData }) => {
   const QuoteBlock = createReactBlockSpec({
     type: "quote",
     propSchema: {
@@ -237,7 +237,7 @@ export const Editor = () => {
     "Upload an image with link"
   );
 
-  const blockData = useSelector((state) => state.block.blocks);
+  // const blockData = useSelector((state) => state.block.blocks);
 
   // console.log(blockData);
 
@@ -245,14 +245,12 @@ export const Editor = () => {
   const param = useParams();
   const dispatch = useDispatch();
 
-  useEffect(() => {
-    dispatch(getBlockBydoucmentId(param.documentId));
-  }, []);
+  // useEffect(() => {
+  //   dispatch(getBlockBydoucmentId(param.documentId));
+  // }, [param.documentId]);
 
   const sortedInitialContent = [...blockData].sort((a, b) => a.order - b.order);
 
-  // console.log("adwawd", sortedInitialContent)
-  // console.log("block", initialContent);
   const [timerId, setTimerId] = useState(null);
 
   function handleInputChange(event) {
@@ -269,11 +267,10 @@ export const Editor = () => {
   const [loadingPlaceHolder, setLoadingPlaceHolder] = useState(true);
   setTimeout(() => {
     setLoadingPlaceHolder(false);
-  }, 2000);
+  }, 4000);
 
   // Create Block
   const handleCreateBlock = async () => {
-    setIsLoading(true);
     for (let index = 0; index < blocks.length; index++) {
       const text = blocks[index];
       const types = blocks.filter((obj) => obj.type).map((obj) => obj.type);
@@ -288,11 +285,17 @@ export const Editor = () => {
           blockId,
           type,
           text,
+          index,
           param.documentId
         );
         dispatch(createBlockSuccess(response));
       } else {
-        const response = await updateBlock(blockId, param.documentId, text);
+        const response = await updateBlock(
+          blockId,
+          param.documentId,
+          text,
+          index
+        );
         dispatch(updateBlockSuccess(response));
       }
     }
@@ -304,10 +307,24 @@ export const Editor = () => {
       const blockId = await deleteBlock(val.blockId, param.documentId);
       dispatch(deleteBlockSuccess(blockId));
     });
-    setTimeout(() => {
-      setIsLoading(false);
-    }, 3000);
+    setIsLoading(false);
   };
+
+  const [inputValue, setInputValue] = useState();
+
+  useEffect(() => {
+    setIsLoading(loading);
+  }, [loading]);
+
+  useEffect(() => {
+    setIsLoading(true);
+    const timeoutId = setTimeout(() => {
+      handleCreateBlock();
+    }, 1000);
+    return () => {
+      clearTimeout(timeoutId);
+    };
+  }, [inputValue]);
 
   //Editor
   const editor = useBlockNote({
@@ -315,22 +332,8 @@ export const Editor = () => {
       return block.content;
     }),
     onEditorContentChange: (editor) => {
-      oninput = () => handleInputChange();
       setBlocks(editor.topLevelBlocks);
-      for (
-        let indexOfTopLevelBlocks = 0;
-        indexOfTopLevelBlocks < editor.topLevelBlocks.length;
-        indexOfTopLevelBlocks++
-      ) {
-        const element = editor.topLevelBlocks[indexOfTopLevelBlocks];
-        for (
-          let indexOfContent = 0;
-          indexOfContent < element.content.length;
-          indexOfContent++
-        ) {
-          const text = element.content[0].text;
-        }
-      }
+      setInputValue(editor.topLevelBlocks);
     },
     blockSchema: {
       // Adds all default blocks.
@@ -357,7 +360,7 @@ export const Editor = () => {
 
   return (
     <div>
-      <div className="absolute -top-14 -left-36 -z-0">
+      {/* <div className="absolute -top-14 -left-36 -z-0">
         {isLoading ? (
           <Button appearance="ghost" className="w-24" loading>
             Ghost
@@ -365,17 +368,16 @@ export const Editor = () => {
         ) : (
           <ButtonToolbar>
             <Button
-              onClick={handleCreateBlock}
               disabled={isLoading}
               className="w-24"
               appearance="ghost"
               active
             >
-              Save
+              Saved
             </Button>
           </ButtonToolbar>
         )}
-      </div>
+      </div> */}
 
       {loadingPlaceHolder ? (
         <div>
