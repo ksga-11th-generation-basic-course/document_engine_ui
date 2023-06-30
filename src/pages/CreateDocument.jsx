@@ -245,7 +245,7 @@ export const CreateDocument = () => {
                 <div className="flex">
                   <span className="flex gap-x-3 w-36">
                     <img src={CreateBy} className="w-[17px]" alt="" />
-                    <p>Create By</p>
+                    <p>Created By</p>
                   </span>
                   <p className="text-black">{username}</p>
                 </div>
@@ -254,7 +254,7 @@ export const CreateDocument = () => {
                 <div className="flex">
                   <span className="flex gap-x-3 w-36">
                     <img src={CreateDate} className="w-[17px]" alt="" />
-                    <p>Create Date</p>
+                    <p>Created Date</p>
                   </span>
                   <p className="text-black">{timestamp}</p>
                 </div>
