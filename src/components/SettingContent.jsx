@@ -23,17 +23,15 @@ export const SettingContent = ({
 
   const [removePhoto, setRemovePhoto] = useState(false);
 
-  const [workspaceName, setWorkspaceName] = useState(
-    workspace && workspace.workspaceName
-  );
+  const [workspaceName, setWorkspaceName] = useState();
 
   const [workspaceImage, setWorkspaceImage] = useState(null);
 
-  const [url, setUrl] = useState(workspace && workspace.workspaceImage);
+  const [url, setUrl] = useState();
 
   const dispatch = useDispatch();
 
-  let workspaceId = workspace.workspaceId;
+  let workspaceId = workspace?.workspaceId;
 
   useEffect(() => {
     if (!workspaceImage) return;
@@ -49,6 +47,15 @@ export const SettingContent = ({
       });
     });
   }, [workspaceImage]);
+
+  useEffect(() => {
+    setWorkspaceName(workspace?.workspaceName);
+    setUrl(workspace?.workspaceImage);
+    return () => {
+      setWorkspaceName("");
+      setUrl(null);
+    };
+  }, [workspace]);
 
   const handleEditWorkspaceInformation = async () => {
     try {
@@ -103,6 +110,7 @@ export const SettingContent = ({
               <input
                 type="text"
                 value={workspaceName}
+                placeholder={workspaceName}
                 className="w-96 md:w-72 py-3 md:py-2 rounded-lg border-gray-300 focus:ring-primary focus:border-primary text-16px font-semibold"
                 onChange={(e) => setWorkspaceName(e.target.value)}
               />

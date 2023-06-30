@@ -29,6 +29,9 @@ import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlic
 import { toast } from "react-toastify";
 import setting from "../assets/dashboard_image/setting.svg";
 import trush from "../assets/dashboard_image/trush.svg";
+import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
+import { RemoveWorkspaceModal } from "../modal/RemoveWorkspaceModal";
+import { DeleteDocumentModal } from "../modal/DeleteDocumentModal";
 
 export const SecondSideBar = ({ handleClick }) => {
   const [open, setOpen] = React.useState(0);
@@ -54,6 +57,18 @@ export const SecondSideBar = ({ handleClick }) => {
   const [visiblePage, setVisiblePage] = useState(false);
 
   const [hoveredIndex, setHoveredIndex] = useState(null);
+
+  const [removeWorkspace, setRemoveWorkspace] = useState(false);
+
+  const [openWorkspaceSetting, setOpenWorkspaceSetting] = useState(false);
+
+  const [workspaceId, setWorkspaceId] = useState();
+
+  const [workspace, setWorkspace] = useState();
+
+  const [documentId, setdocumentId] = useState();
+
+  const [deleteDocument, setDeleteDocument] = useState(false);
 
   const handleMouseEnter = (index) => {
     setHoveredIndex(index);
@@ -146,13 +161,19 @@ export const SecondSideBar = ({ handleClick }) => {
     setOpen(open === value ? 0 : value);
   };
 
-  function renderPages(pages) {
+  function renderPages(pages, documentIndex) {
     return (
       <div>
         {pages.map((page, index) => (
           <AccordionBody className="py-0" key={index}>
             <List className="px-5 py-1">
-              <ListItem className="p-0 hover:bg-gray-200">
+              <ListItem
+                className="p-0 hover:bg-gray-200"
+                onMouseEnter={() =>
+                  handleMouseEnter(index + documentIndex * 10)
+                }
+                onMouseLeave={handleMouseLeave}
+              >
                 <NavLink
                   to={`/createdocument/${page?.documentId}/${page?.workspaceId}`}
                   className={({ isActive }) =>
@@ -182,6 +203,78 @@ export const SecondSideBar = ({ handleClick }) => {
                     </p>
                   </div>
                 </NavLink>
+                {index + documentIndex * 10 === hoveredIndex && (
+                  <div className="flex gap-x-2 mr-2">
+                    <Menu placement="right-start">
+                      <MenuHandler>
+                        <button
+                          type="submit"
+                          className="hover:bg-gray-300 rounded-sm p-[1px]"
+                        >
+                          <svg
+                            width="20"
+                            height="20"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M12 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                            <path d="M19 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                            <path d="M5 11a1 1 0 1 0 0 2 1 1 0 1 0 0-2z"></path>
+                          </svg>
+                        </button>
+                      </MenuHandler>
+                      <MenuList className="p-2 w-44 z-50 rounded-lg space-y-1">
+                        <MenuItem className="flex items-center gap-x-3 p-3 hover:bg-gray-200 rounded-md">
+                          <svg
+                            width="20"
+                            height="20"
+                            fill="none"
+                            stroke="#1E9CEF"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                          </svg>
+                          <p className="text-16px">Rename</p>
+                        </MenuItem>
+                        <MenuItem
+                          className="flex items-center gap-x-3 p-3 hover:bg-gray-200 rounded-lg"
+                          onClick={() => {
+                            setDeleteDocument(!deleteDocument);
+                            setdocumentId(page?.documentId);
+                          }}
+                        >
+                          <svg
+                            width="20"
+                            height="20"
+                            fill="none"
+                            stroke="#f44336"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            stroke-width="2"
+                            viewBox="0 0 24 24"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                            <path d="M14 2v6h6"></path>
+                            <path d="M9 15h6"></path>
+                          </svg>
+
+                          <p className="text-16px text-red-500">Delete</p>
+                        </MenuItem>
+                      </MenuList>
+                    </Menu>
+                  </div>
+                )}
               </ListItem>
             </List>
           </AccordionBody>
@@ -275,7 +368,13 @@ export const SecondSideBar = ({ handleClick }) => {
                               </svg>
                               <p className="text-16px">Rename</p>
                             </MenuItem>
-                            <MenuItem className="flex items-center gap-x-3 p-3 hover:bg-gray-200 rounded-lg">
+                            <MenuItem
+                              className="flex items-center gap-x-3 p-3 hover:bg-gray-200 rounded-lg"
+                              onClick={() => {
+                                setDeleteDocument(!deleteDocument);
+                                setdocumentId(document?.documentId);
+                              }}
+                            >
                               <svg
                                 width="20"
                                 height="20"
@@ -327,7 +426,7 @@ export const SecondSideBar = ({ handleClick }) => {
                     )}
                   </ListItem>
                 </List>
-                {document?.pages && renderPages(document?.pages)}
+                {document?.pages && renderPages(document?.pages, index)}
               </AccordionBody>
             ) : null
           )}
@@ -480,13 +579,25 @@ export const SecondSideBar = ({ handleClick }) => {
                       </button>
                     </MenuHandler>
                     <MenuList className="p-2 w-44 z-50 rounded-lg space-y-1">
-                      <MenuItem className="flex items-center gap-x-3 p-3 hover:bg-gray-200 rounded-md">
+                      <MenuItem
+                        className="flex items-center gap-x-3 p-3 hover:bg-gray-200 rounded-md"
+                        onClick={() => {
+                          setOpenWorkspaceSetting(!openWorkspaceSetting);
+                          setWorkspace(workspace);
+                        }}
+                      >
                         <img src={setting} className="w-6 h-6" />
                         <p className="text-16px">Setting</p>
                       </MenuItem>
-                      <MenuItem className="flex items-center gap-x-3 p-3 hover:bg-gray-200 rounded-lg">
+                      <MenuItem
+                        className="flex items-center gap-x-3 p-3 hover:bg-gray-200 rounded-lg"
+                        onClick={() => {
+                          setRemoveWorkspace(!removeWorkspace);
+                          setWorkspaceId(workspace?.workspaceId);
+                        }}
+                      >
                         <img src={trush} className="w-5 h-5" />
-                        <p className="text-16px text-red-500">Delete</p>
+                        <p className="text-16px text-red-500">Remove</p>
                       </MenuItem>
                     </MenuList>
                   </Menu>
@@ -523,6 +634,21 @@ export const SecondSideBar = ({ handleClick }) => {
         visiblePage={visiblePage}
         setVisiblePage={setVisiblePage}
         secondhandleClick={secondhandleClick}
+      />
+      <RemoveWorkspaceModal
+        removeWorkspace={removeWorkspace}
+        setRemoveWorkspace={setRemoveWorkspace}
+        workspaceId={workspaceId}
+      />
+      <WorkspaceSettingModal
+        openWorkspaceSetting={openWorkspaceSetting}
+        setOpenWorkspaceSetting={setOpenWorkspaceSetting}
+        workspace={workspace}
+      />
+      <DeleteDocumentModal
+        deleteDocument={deleteDocument}
+        setDeleteDocument={setDeleteDocument}
+        documentId={documentId}
       />
     </Card>
   );

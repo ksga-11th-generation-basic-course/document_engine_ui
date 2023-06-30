@@ -22,7 +22,7 @@ export const Root = () => {
         </div>
         <div className="col-span-11 bg-white shadow-xl h-screen">
           <NavBarProfile />
-          <div className="px-60 bg-white mt-20">
+          <div className="px-60 bg-white">
             <Outlet />
           </div>
         </div>

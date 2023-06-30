@@ -1,19 +1,35 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import close from "../assets/dashboard_image/close.svg";
 import { DocumentHistoryCard } from "./card/DocumentHistoryCard";
-import { useDispatch, useSelector } from "react-redux";
-import { getHistoryByDocumentId } from "../redux/service/historyService/historyService";
+import { api } from "../utils/constant";
 
 export const DocumentHistoryContent = ({
   openDocumentHistory,
   setOpenDocumentHistory,
   documentId,
 }) => {
-  const { histories, loading, error } = useSelector((state) => state.history);
-  const dispatch = useDispatch();
+  const [histories, setHistories] = useState([]);
+
   useEffect(() => {
-    dispatch(getHistoryByDocumentId(documentId));
-  }, []);
+    const getHistoryByDocumentId = async () => {
+      console.log(documentId);
+      try {
+        const response = await api.get(`histories/documents/${documentId}`, {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        });
+        setHistories(response.data.payload);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    getHistoryByDocumentId();
+  }, [documentId]);
+
+  console.log(histories);
+
   return (
     <div>
       <div className="flex w-full justify-end">
@@ -31,12 +47,10 @@ export const DocumentHistoryContent = ({
         </div>
         <div>
           <div className="border-[1px] px-6 py-3 rounded-lg space-y-3 overflow-auto h-[600px]">
-            {histories && histories.map((history, index) => (
-              <DocumentHistoryCard
-                history={history}
-                key={index}
-              />
-            ))}
+            {histories &&
+              histories.map((history, index) => (
+                <DocumentHistoryCard history={history} key={index} />
+              ))}
           </div>
         </div>
       </div>

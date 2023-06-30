@@ -4,6 +4,7 @@ import { api } from "../../../utils/constant";
 export const getHistoryByDocumentId = createAsyncThunk(
   `histories/getHistoryById`,
   async (documentId) => {
+    console.log(documentId)
     try {
       const response = await api.get(`histories/documents/${documentId}`, {
         headers: {

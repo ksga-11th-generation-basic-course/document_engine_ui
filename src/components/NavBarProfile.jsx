@@ -65,11 +65,12 @@ export const NavBarProfile = () => {
 
   return (
     <div
-      className={
-        openNav
-          ? "fixed right-0 w-[1650px] flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white z-30"
-          : "fixed right-0 w-[1650px] flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white z-10"
-      }
+      className="w-full flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white"
+      // className={
+      //   openNav
+      //     ? "fixed right-0 w-[1650px] flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white z-30"
+      //     : "fixed right-0 w-[1650px] flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white z-10"
+      // }
     >
       {param.documentId ? (
         <div>

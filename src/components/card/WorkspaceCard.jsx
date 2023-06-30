@@ -190,7 +190,6 @@ export const WorkspaceCard = ({ workspace }) => {
       <WorkspaceSettingModal
         openWorkspaceSetting={openWorkspaceSetting}
         setOpenWorkspaceSetting={setOpenWorkspaceSetting}
-        workspaceCode={workspaceCode}
         workspace={workspace}
       />
       <LeaveWorkspaceModal

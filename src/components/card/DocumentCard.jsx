@@ -161,7 +161,10 @@ export const DocumentCard = ({ document, workspaceId }) => {
               </MenuItem>
               <MenuItem
                 className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
-                onClick={() => setOpenDocumentHistory(!openDocumentHistory)}
+                onClick={() => {
+                  setOpenDocumentHistory(!openDocumentHistory);
+                  setdocumentId(document?.documentId);
+                }}
               >
                 {" "}
                 <img src={history} />
@@ -222,7 +225,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
         <DocumentHistoryModal
           openDocumentHistory={openDocumentHistory}
           setOpenDocumentHistory={setOpenDocumentHistory}
-          documentId={document.documentId}
+          documentId={documentId}
         />
         <DeleteDocumentModal
           deleteDocument={deleteDocument}
