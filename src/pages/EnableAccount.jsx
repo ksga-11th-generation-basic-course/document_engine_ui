@@ -62,7 +62,7 @@ export const EnableAccount = () => {
                           <input
                             placeholder="name@gmail.com"
                             type="text"
-                            className="border text-[#9CA3AF] focus:outline-none h-[46px] border-[#1E9CEF] rounded-lg focus:border-primary w-full  mt-2  text-base block
+                            className="border text-black focus:outline-none h-[46px] border-[#1E9CEF] rounded-lg focus:border-primary w-full  mt-2  text-base block
                             lg:text-xl lg:h-13 md:w-[225px] md:text-sm md:h-9"
                             onChange={(e) => setEmail(e.target.value)}/>
                         </div>
