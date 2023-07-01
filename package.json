@@ -85,7 +85,16 @@
     "vite": "^4.3.2"
   },
   "main": "index.js",
-  "repository": "https://github.com/ksga-11th-generation-basic-course/document_engine_ui.git",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ksga-11th-generation-basic-course/document_engine_ui.git"
+  },
   "author": "Sovannak Kheng <sovannak.khengg@gmail.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "description": "<!-- PROJECT LOGO -->\r <br />\r <p align=\"center\">\r   <a href=\"http://localhost:8080/swagger-ui/index.html#\">\r     <img src=\"https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2FLogo.png?alt=media&token=28366c6e-9c93-4f4f-a797-53e9e344ebb2&_gl=1*vkbziq*_ga*MTgxNTY1NDU3MS4xNjg1NTgyMzEx*_ga_CW55HF8NVT*MTY4NTU4MjMxMS4xLjEuMTY4NTU4MzMyMC4wLjAuMA..\" alt=\"Logo\">\r   </a>\r </p>\r <h3 align=\"center\">DocEngine</h3>",
+  "bugs": {
+    "url": "https://github.com/ksga-11th-generation-basic-course/document_engine_ui/issues"
+  },
+  "homepage": "https://github.com/ksga-11th-generation-basic-course/document_engine_ui#readme",
+  "keywords": []
 }
