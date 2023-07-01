@@ -125,7 +125,9 @@ export const DocumentCard = ({ document, workspaceId }) => {
                   fill="#1E9CEF"
                 />
               </svg>
+              <p className="line-clamp-1">
               {document.title}
+              </p>
             </span>
             <span className="text-14px font-semibold leading-8 text-accent">
               Edited <span>{document.editDate}</span> minutes ago

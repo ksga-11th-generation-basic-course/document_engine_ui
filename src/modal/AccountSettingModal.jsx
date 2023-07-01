@@ -34,11 +34,18 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
 
   const [resetPassword, setResetPassword] = useState(false);
 
-  const [username, setUsername] = useState(user && user.userName);
+  const [username, setUsername] = useState();
 
   const [profileImage, setProfileImage] = useState();
 
   const [url, setUrl] = useState(user && user.profileImage);
+
+  useEffect(() => {
+    setUsername(user?.userName);
+    return () => {
+      setUsername("");
+    };
+  }, []);
 
   useEffect(() => {
     if (!profileImage) return;
@@ -60,7 +67,6 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
       const user = await editProfileInformation(username, url);
       dispatch(editProfileInformationSuccess(user));
       setOpenSetting(!openSetting);
-      document.getElementById("changename").reset();
     } catch (error) {
       console.log(error);
     }
@@ -72,7 +78,6 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
         open={openSetting}
         onClickBackdrop={() => {
           setOpenSetting(!openSetting);
-          document.getElementById("changename").reset();
         }}
       >
         <div className="w-[1200px] h-[840px] bg-white rounded-lg grid grid-cols-12">
@@ -110,7 +115,6 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                 type="button"
                 onClick={() => {
                   setOpenSetting(!openSetting);
-                  document.getElementById("changename").reset();
                 }}
               >
                 <img src={close} />
@@ -135,13 +139,6 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                   >
                     Save
                   </Button>
-                  {/* <button
-                    
-                    type="button"
-                    className="font-semibold text-white text-18px px-7 py-1 bg-primary rounded-lg"
-                  >
-                    Save
-                  </button> */}
                 </div>
                 <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg">
                   <div className="w-full space-y-2">
@@ -197,6 +194,13 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                               alt="candice wu"
                               className="cursor-pointer rounded-full"
                               src={URL.createObjectURL(profileImage)}
+                            />
+                          ) : user && user.profileImage === null ? (
+                            <Avatar
+                              variant="circular"
+                              alt="candice wu"
+                              className="cursor-pointer rounded-full"
+                              src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fprofile%2Fcb6df344-7dd9-4323-8961-cbd55a606e77_user.png?alt=media&token=6eb13cc7-734c-4292-bc74-2ea2b4e6b5c2"
                             />
                           ) : (
                             <Avatar

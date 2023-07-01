@@ -228,15 +228,14 @@ export const CreateDocument = () => {
         </ol>
       </nav>
       <BlockUI blocked={false}>
-        <div className="text-[#9CA3AF] grid grid-rows-1 gap-2 px-12">
+        <div className="text-[#9CA3AF] grid grid-rows-1 gap-2 px-12 pointer-events-none">
           <div className="w-full h-auto">
             <span className="font-semibold ">
               <input
                 className="text-5xl  w-full p-0 text-black py-2 focus:ring-0 focus:border-0 border-0"
                 type="text"
                 onChange={handleInputChange}
-                placeholder={document?.title}
-                // defaultValue={document?.title}
+                placeholder={title}
                 value={title ? title : "Loading..."}
               />
             </span>
@@ -384,7 +383,7 @@ export const CreateDocument = () => {
             <hr className="mt-3" />
           </div>
         </div>
-        <div className="mt-2">
+        <div className="mt-2 pointer-events-none">
           {blockData === null ? null : blockData.length > 0 ? (
             <Editor loading={loading} blockData={blockData} />
           ) : (

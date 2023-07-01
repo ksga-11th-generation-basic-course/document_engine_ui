@@ -32,13 +32,16 @@ import trush from "../assets/dashboard_image/trush.svg";
 import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
 import { RemoveWorkspaceModal } from "../modal/RemoveWorkspaceModal";
 import { DeleteDocumentModal } from "../modal/DeleteDocumentModal";
+import { api } from "../utils/constant";
 
 export const SecondSideBar = ({ handleClick }) => {
   const [open, setOpen] = React.useState(0);
 
   const { workspaces } = useSelector((state) => state.workspace);
 
-  const { documents } = useSelector((state) => state.document);
+  // const { documents } = useSelector((state) => state.document);
+
+  const [documents, setDocuments] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -107,6 +110,23 @@ export const SecondSideBar = ({ handleClick }) => {
     );
   };
 
+  const getAllDocumentInEachWorkspace = async (workspaceId) => {
+    try {
+      const response = await api.get(
+        `documents/workspaces/${workspaceId}?pageNo=1&pageSize=1000&eSortCurrentDateTime=DEFAULT`,
+        {
+          headers: {
+            Authorization: "Bearer " + localStorage.getItem("token"),
+            "Content-Type ": "application/json",
+          },
+        }
+      );
+      setDocuments(response.data.payload);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   const [documentData, setDocumentData] = useState();
 
   const now = new Date();
@@ -170,7 +190,7 @@ export const SecondSideBar = ({ handleClick }) => {
               <ListItem
                 className="p-0 hover:bg-gray-200"
                 onMouseEnter={() =>
-                  handleMouseEnter(index + documentIndex * 10)
+                  handleMouseEnter(index + documentIndex + 10000)
                 }
                 onMouseLeave={handleMouseLeave}
               >
@@ -203,7 +223,7 @@ export const SecondSideBar = ({ handleClick }) => {
                     </p>
                   </div>
                 </NavLink>
-                {index + documentIndex * 10 === hoveredIndex && (
+                {index + documentIndex + 10000 === hoveredIndex && (
                   <div className="flex gap-x-2 mr-2">
                     <Menu placement="right-start">
                       <MenuHandler>
@@ -536,7 +556,8 @@ export const SecondSideBar = ({ handleClick }) => {
               key={index}
               open={open === index + 1}
               onClick={() =>
-                handleGetDocumentInEachWorkspace(workspace.workspaceId)
+                // handleGetDocumentInEachWorkspace(workspace?.workspaceId)
+                getAllDocumentInEachWorkspace(workspace?.workspaceId)
               }
             >
               <ListItem className="p-0" selected={open === index + 1}>

@@ -189,12 +189,21 @@ export const NavBarProfile = () => {
       <div className="relative">
         <Menu placement="bottom-end">
           <MenuHandler>
-            <Avatar
-              variant="circular"
-              alt="candice wu"
-              className="cursor-pointer rounded-full"
-              src={user && user.profileImage}
-            />
+            {user && user.profileImage === null ? (
+              <Avatar
+                variant="circular"
+                alt="candice wu"
+                className="cursor-pointer rounded-full"
+                src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fprofile%2Fcb6df344-7dd9-4323-8961-cbd55a606e77_user.png?alt=media&token=6eb13cc7-734c-4292-bc74-2ea2b4e6b5c2"
+              />
+            ) : (
+              <Avatar
+                variant="circular"
+                alt="candice wu"
+                className="cursor-pointer rounded-full"
+                src={user && user.profileImage}
+              />
+            )}
           </MenuHandler>
           <MenuList className="rounded-lg text-accent w-[360px] p-5 font-ssp">
             <MenuItem>
@@ -211,13 +220,13 @@ export const NavBarProfile = () => {
                   variant="circular"
                   alt="candice wu"
                   className="cursor-pointer rounded-full mt-4"
-                  src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
+                  src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fprofile%2Fcb6df344-7dd9-4323-8961-cbd55a606e77_user.png?alt=media&token=6eb13cc7-734c-4292-bc74-2ea2b4e6b5c2"
                 />
               ) : (
                 <Avatar
                   variant="circular"
                   alt="candice wu"
-                  className="cursor-pointer rounded-full mt-4"
+                  className="cursor-pointer rounded-full"
                   src={user && user.profileImage}
                 />
               )}

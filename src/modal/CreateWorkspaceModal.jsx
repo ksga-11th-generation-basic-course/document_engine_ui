@@ -25,7 +25,7 @@ export const CreateWorkspaceModal = ({
   const [workspaceImage, setWorkspaceImage] = useState();
 
   const [url, setUrl] = useState(
-    "https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fworkspace%2F009e87fc-0298-4096-ad96-713ac96409ba_Monterey-dark.jpg?alt=media&token=8a49d5d6-c072-4617-a7bf-88bc3d229b7e"
+    "https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fworkspace%2F367d4a06-1532-4b25-96c6-df8bafcd0e8b_photo_2023-06-30_11-42-21.jpg?alt=media&token=a2721664-400d-4bc6-bac6-b0484a547542"
   );
 
   useEffect(() => {
@@ -68,8 +68,8 @@ export const CreateWorkspaceModal = ({
         draggable: true,
         progress: undefined,
         theme: "light",
-        zIndex: 10000
-      });      
+        zIndex: 10000,
+      });
     }
     setVisible(!visible);
     secondhandleClick(false);

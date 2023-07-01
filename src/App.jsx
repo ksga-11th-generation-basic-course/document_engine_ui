@@ -18,6 +18,7 @@ import { ProtectedRoute } from "./routes/ProtectedRoute";
 import { EnableAccount } from "./pages/EnableAccount";
 import { VerifyToEnable } from "./pages/VerifyToEnable";
 import { DocumentHistoryView } from "./pages/DocumentHistoryView";
+import { Test } from "./pages/Test";
 
 function App() {
   return (
@@ -70,6 +71,8 @@ function App() {
         />
 
         <Route path="/signup" element={<SignUp />} />
+        
+        <Route path="/test" element={<Test />} />
         <Route
           path="/verifyotp"
           element={

@@ -400,7 +400,7 @@ export const Workspace = () => {
               </div>
             ))
         ) : (
-          <div className="col-span-12 absolute bottom-[40%] left-[55%]">
+          <div className="col-span-12 absolute bottom-[40%] left-[50%]">
             <div className="flex flex-col items-center justify-center gap-y-1">
               <img src={emptybox} className="w-32 h-32" />
               <p className="font-semibold text-accent text-base">

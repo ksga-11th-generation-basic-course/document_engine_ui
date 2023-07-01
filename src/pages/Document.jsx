@@ -1,12 +1,5 @@
 import React, { useEffect, useState } from "react";
-import sort from "../assets/workspace_image/sort.svg";
-import chevrondown from "../assets/workspace_image/chevrondown.svg";
-import filter from "../assets/workspace_image/filter.svg";
-import search from "../assets/workspace_image/search.svg";
 import documenticon from "../assets/document_image/documenticon.svg";
-import bulletlist from "../assets/document_image/bulletlist.svg";
-import dotshorizontal from "../assets/document_image/dotshorizontal.svg";
-import grid from "../assets/document_image/grid.svg";
 import { DocumentCard } from "../components/card/DocumentCard";
 import { DocumentList } from "../components/card/DocumentList";
 import { Link, useNavigate, useParams } from "react-router-dom";
@@ -18,24 +11,14 @@ import {
 } from "../redux/service/documentService/documentService";
 import {
   checkAccessibility,
-  checkIsOwnerWorkspace,
   checkIsOwnerWorkspaceCurrent,
   getWorkspaceByWorkspaceId,
 } from "../redux/service/workspaceService/workspaceService";
-import { Dropdown, Form } from "react-daisyui";
 import setting from "../assets/document_image/settings.svg";
-import group from "../assets/document_image/group.svg";
 import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
 import usericon from "../assets/workspace_image/usericon.svg";
 import { WorkspaceViewForMemberModal } from "../modal/WorkspaceViewForMemberModal";
 import { getCurrentUser } from "../redux/service/userService/userService";
-// import {
-//   Checkbox,
-//   FormControl,
-//   FormControlLabel,
-//   Radio,
-//   RadioGroup,
-// } from "@mui/material";
 
 import {
   Menu,
@@ -51,6 +34,7 @@ import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlic
 import "../App.css";
 import { Button } from "rsuite";
 import { Checkbox } from "@material-tailwind/react";
+import { DocumentCardSkeleton } from "../components/DocumentCardSkeleton";
 
 export const Document = () => {
   const [openSearch, setOpenSearch] = useState(false);
@@ -62,7 +46,7 @@ export const Document = () => {
   const [openCollaboratorForMember, setOpenCollaboratorForMember] =
     useState(false);
 
-  const { documents, loading } = useSelector((state) => state.document);
+  const { documents } = useSelector((state) => state.document);
 
   const workspace = useSelector((state) => state.workspace.workspace);
 
@@ -70,7 +54,7 @@ export const Document = () => {
 
   const isOwner = useSelector((state) => state.workspace.isOwner);
 
-  const tagsWorkspace = useSelector((state) => state.tag.tagsWorkspace);
+  const { tagsWorkspace } = useSelector((state) => state.tag);
 
   const dispatch = useDispatch();
 
@@ -78,11 +62,11 @@ export const Document = () => {
 
   const workspaceId = param.workspaceId;
 
-  // const isOwner = param.isOwner;
-
   const [searchTerm, setSearchTerm] = useState("");
 
   const [selectedTags, setSelectedTags] = useState([]);
+
+  console.log(selectedTags);
 
   const [documentId, setDocumentId] = useState();
 
@@ -92,9 +76,9 @@ export const Document = () => {
 
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   dispatch(searchDocumentByTagName({ workspaceId, selectedTags }));
-  // }, [selectedTags]);
+  useEffect(() => {
+    dispatch(searchDocumentByTagName({ workspaceId, selectedTags }));
+  }, [selectedTags]);
 
   const [no, setNo] = useState(1);
 
@@ -136,6 +120,15 @@ export const Document = () => {
       theme: "light",
     });
   };
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulating data fetching delay
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
 
   return (
     <div className="text-accent space-y-5 mb-[30vh]">
@@ -293,30 +286,33 @@ export const Document = () => {
                 </button>
               </MenuHandler>
               <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
-                <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
-                  <Checkbox
-                    id="Product"
-                    label={<span className="text-18px">Product</span>}
-                    className="checked:bg-primary"
-                  />
-                  ;
-                </MenuItem>
-                <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
-                  <Checkbox
-                    id="Technology"
-                    label={<span className="text-18px">Technology</span>}
-                    className="checked:bg-primary"
-                  />
-                  ;
-                </MenuItem>
-                <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
-                  <Checkbox
-                    id="Document"
-                    label={<span className="text-18px">Document</span>}
-                    className="checked:bg-primary"
-                  />
-                  ;
-                </MenuItem>
+                {tagsWorkspace &&
+                  tagsWorkspace.map((tag, index) => {
+                    return (
+                      <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
+                        <Checkbox
+                          id={tag?.tagName}
+                          label={
+                            <span className="text-18px">{tag?.tagName}</span>
+                          }
+                          className="checked:bg-primary"
+                          checked={selectedTags.includes(tag?.tagName)}
+                          onChange={(event) => {
+                            const tagName = tag.tagName;
+                            if (event.target.checked) {
+                              setSelectedTags([...selectedTags, tagName]);
+                            } else {
+                              setSelectedTags(
+                                selectedTags.filter(
+                                  (selectedTag) => selectedTag !== tagName
+                                )
+                              );
+                            }
+                          }}
+                        />
+                      </MenuItem>
+                    );
+                  })}
               </MenuList>
             </Menu>
           </div>
@@ -496,7 +492,16 @@ export const Document = () => {
 
       {openGrid ? (
         <div className="grid grid-cols-12 gap-8">
-          {documents === null ? null : documents?.length > 0 ? (
+          {loading ? (
+            documents &&
+            documents.map((document, index) =>
+              document?.pageId === null ? (
+                <div className="col-span-4" key={index}>
+                  <DocumentCardSkeleton />
+                </div>
+              ) : null
+            )
+          ) : documents === null ? null : documents?.length > 0 ? (
             documents
               .filter((document) => {
                 if (searchTerm === "") {
