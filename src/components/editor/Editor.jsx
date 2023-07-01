@@ -30,15 +30,133 @@ import "@blocknote/core/style.css";
 import { RiImage2Fill } from "react-icons/ri";
 import { RiChatQuoteFill } from "react-icons/ri";
 import { Button, ButtonToolbar, Loader, Placeholder } from "rsuite";
+import "twemoji";
+import Twemoji from "./Twemoji";
 
-export const Editor = ({ loading, blockData }) => {
+export const Editor = ({ loading, blockData, status }) => {
+  const CodeBlock = createReactBlockSpec({
+    type: "codeblock",
+    propSchema: {
+      language: {
+        default: "plaintext",
+      },
+    },
+    containsInlineContent: true,
+    render: ({ block, editor }) => {
+      return (
+        <div className="relative bg-stone-100 p-6">
+          <select
+            className="absolute top-6 right-6 text-sm w-[100px] bg-stone-100 focus:outline-none"
+            onChange={(e) => {
+              editor.updateBlock(block, {
+                props: {
+                  ...block.props,
+                  language: e.target.value,
+                },
+              });
+            }}
+          >
+            <option className="p-3" value="plaintext">
+              Plain Text
+            </option>
+            <option className="p-3" value="javascript">
+              javascript
+            </option>
+          </select>
+          <code className={`language-${block.props.language}`}>
+            <InlineContent />
+          </code>
+        </div>
+      );
+    },
+  });
+
+  const CodeCommand = new ReactSlashMenuItem(
+    "Code",
+    (editor) => {
+      if (editor.getTextCursorPosition().block.content.length === 0) {
+        editor.updateBlock(editor.getTextCursorPosition().block, {
+          type: "codeblock",
+          props: {},
+        });
+        return;
+      }
+
+      editor.insertBlocks(
+        [
+          {
+            type: "codeblock",
+            props: {},
+          },
+        ],
+        editor.getTextCursorPosition().block,
+        "after"
+      );
+    },
+    ["code"],
+    "Text",
+    // <IconCode className="w-5 h-5" />,
+    "Insert a Code Block"
+  );
+
+  const CalloutBlock = createReactBlockSpec({
+    type: "callout",
+    propSchema: {
+      language: {
+        default: "plaintext",
+      },
+    },
+    containsInlineContent: true,
+    render: () => {
+      return (
+        <div className="flex bg-stone-100 p-6">
+          <button className="w-6 h-6 flex justify-center items-center mr-3">
+            <img
+              draggable="false"
+              alt="💡"
+              src="https://twemoji.maxcdn.com/v/14.0.2/svg/1f4a1.svg"
+              width={20}
+              height={20}
+            />
+          </button>
+          <InlineContent className="flex-1" />
+        </div>
+      );
+    },
+  });
+
+  const CalloutCommand = new ReactSlashMenuItem(
+    "Callout",
+    (editor) => {
+      if (editor.getTextCursorPosition().block.content.length === 0) {
+        editor.updateBlock(editor.getTextCursorPosition().block, {
+          type: "callout",
+          props: {},
+        });
+        return;
+      }
+
+      editor.insertBlocks(
+        [
+          {
+            type: "callout",
+            props: {},
+          },
+        ],
+        editor.getTextCursorPosition().block,
+        "after"
+      );
+    },
+    ["callout"],
+    "Text",
+    <Twemoji emoji="💡" className="w-5 h-5" />,
+    "Insert a Code Block"
+  );
+
   const QuoteBlock = createReactBlockSpec({
     type: "quote",
     propSchema: {
       ...defaultProps,
-      text: {
-        default: "Enter quote text here",
-      },
     },
     containsInlineContent: true,
     render: ({ block }) => (
@@ -65,16 +183,22 @@ export const Editor = ({ loading, blockData }) => {
     ),
   });
 
-  // Creates a slash menu item for inserting a quote block.
   const insertQuote = new ReactSlashMenuItem(
     "Insert Quote",
     (editor) => {
+      if (editor.getTextCursorPosition().block.content.length === 0) {
+        editor.updateBlock(editor.getTextCursorPosition().block, {
+          type: "quote",
+          props: {},
+        });
+        return;
+      }
       editor.insertBlocks(
         [
           {
             type: "quote",
             props: {
-              text: "", // Initialize the quote text as an empty string
+              text: "",
             },
           },
         ],
@@ -237,6 +361,8 @@ export const Editor = ({ loading, blockData }) => {
     "Upload an image with link"
   );
 
+  
+
   // const blockData = useSelector((state) => state.block.blocks);
 
   // console.log(blockData);
@@ -343,6 +469,8 @@ export const Editor = ({ loading, blockData }) => {
       imageFile: ImageBlockFile,
       embed: EmbedBlock,
       quote: QuoteBlock,
+      codeblock: CodeBlock,
+      callout: CalloutBlock,
     },
     slashCommands: [
       ...defaultReactSlashMenuItems,
@@ -350,12 +478,16 @@ export const Editor = ({ loading, blockData }) => {
       insertImageFile,
       insertEmbed,
       insertQuote,
+      CodeCommand,
+      CalloutCommand,
     ],
     editorDOMAttributes: {
       class: styles.editor,
       "data-test": "editor",
     },
     theme: "light",
+    editable: true,
+    
   });
 
   return (

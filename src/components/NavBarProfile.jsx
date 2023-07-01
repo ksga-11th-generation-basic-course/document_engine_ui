@@ -74,13 +74,7 @@ export const NavBarProfile = () => {
     >
       {param.documentId ? (
         <div>
-          <Menu
-            open={openMenu}
-            handler={setOpenMenu}
-            dismiss={{
-              itemPress: false,
-            }}
-          >
+          <Menu open={openMenu} handler={setOpenMenu}>
             <MenuHandler>
               <button className="flex items-center justify-between w-[250px] border-[1px] rounded-lg p-3">
                 <p className="text-18px text-black font-ssp flex gap-x-2">
@@ -96,7 +90,10 @@ export const NavBarProfile = () => {
               </button>
             </MenuHandler>
             <MenuList className="rounded-lg p-2 font-ssp w-[250px] space-y-2">
-              <MenuItem className="p-2 hover:bg-gray-200 rounded-lg">
+              <MenuItem
+                className="p-2 hover:bg-gray-200 rounded-lg"
+                onClick={() => handleChangeStatus(true)}
+              >
                 {" "}
                 <div className="flex gap-x-3">
                   <img src={pen} alt="" />
@@ -104,7 +101,10 @@ export const NavBarProfile = () => {
                 </div>
                 <p className="mr-6">Edit document directly</p>
               </MenuItem>
-              <MenuItem className="p-2 hover:bg-gray-200 rounded-lg">
+              <MenuItem
+                className="p-2 hover:bg-gray-200 rounded-lg"
+                onClick={() => handleChangeStatus(false)}
+              >
                 {" "}
                 <div className="flex gap-x-3">
                   <img src={eyeview} alt="" />

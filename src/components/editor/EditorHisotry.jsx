@@ -12,13 +12,13 @@ export const EditorHisotry = () => {
     (a, b) => a.order - b.order
   );
   const param = useParams();
-  console.log(blockHistory);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBlockHistory(param.historyId));
   }, []);
   const editor = useBlockNote({
-    initialContent: sortedInitialContent.map((block) => {
+    initialContent: sortedInitialContent && sortedInitialContent.map((block) => {
+      console.log(block.content)
       return block.content;
     }),
     theme: "light",
