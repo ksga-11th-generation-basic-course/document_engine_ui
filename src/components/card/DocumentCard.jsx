@@ -121,7 +121,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
         <div className="absolute bottom-1 right-0">
           <div className="relative">
             <ButtonToolbar>
-              <Dropdown className="p-2"
+              <Dropdown className="p-2 text-16px"
                 icon={
                   <svg
                     xmlns="http://www.w3.org/2000/svg"

@@ -29,6 +29,7 @@ import {
   getUsername,
   getWorkspaceName,
 } from "../redux/service/documentService/documentService";
+import { Editor } from "../components/editor/Editor";
 import { updateDocument } from "../redux/service/documentService/documentService";
 import { updateDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
 import { date } from "yup";
@@ -45,7 +46,6 @@ import Breadcrumbs from "@mui/material/Breadcrumbs";
 import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
-import { Editor } from "../components/editor/Editor";
 
 export const CreateDocument = () => {
   // const [openPermission, setOpenPermission] = useState(false);
@@ -236,8 +236,8 @@ export const CreateDocument = () => {
                 type="text"
                 onChange={handleInputChange}
                 placeholder={document?.title}
-                defaultValue={document?.title}
-                value={title ? title : "Untitled"}
+                // defaultValue={document?.title}
+                value={title ? title : "Loading..."}
               />
             </span>
             <div className="w-full grid grid-cols-12 gap-y-2">
@@ -245,7 +245,7 @@ export const CreateDocument = () => {
                 <div className="flex">
                   <span className="flex gap-x-3 w-36">
                     <img src={CreateBy} className="w-[17px]" alt="" />
-                    <p>Created By</p>
+                    <p>Create By</p>
                   </span>
                   <p className="text-black">{username}</p>
                 </div>
@@ -254,7 +254,7 @@ export const CreateDocument = () => {
                 <div className="flex">
                   <span className="flex gap-x-3 w-36">
                     <img src={CreateDate} className="w-[17px]" alt="" />
-                    <p>Created Date</p>
+                    <p>Create Date</p>
                   </span>
                   <p className="text-black">{timestamp}</p>
                 </div>
