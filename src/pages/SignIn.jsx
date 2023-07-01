@@ -316,7 +316,7 @@ export const SignIn = () => {
           <div className="wave2 absolute top-0 wave4"></div>
         </section>
       </Dialog>
-
     </div>
   );
 };
+
