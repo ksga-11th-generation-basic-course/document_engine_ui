@@ -130,13 +130,16 @@ export const Workspace = () => {
     }
   }
   return (
-    <div className="text-accent space-y-5 sm:h-full bg-white">
+    <div className="text-accent lg:ml-5 md:ml-0 md:mt-3">
+      {/* Icon workspace */}
       <div className="flex items-center gap-x-3 ">
-        <img src={workspaceicon} className="p-2 shadow-md rounded-lg" />
+        <img src={workspaceicon} className="p-2 shadow-custom rounded-lg" />
         <p className="font-semibold text-20px">Workspaces</p>
       </div>
-      <div className="grid grid-cols-12 md:grid md:grid-cols-12 sm:grid sm:grid-cols-1">
-        <div className="col-span-4 md:col-span-5 sm:grid-cols-1 flex items-center gap-x-5 h-11">
+      
+      <div className="grid grid-cols-12 mt-7 md:mt-3">
+        {/* Sort */}
+        <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center  md:ml-8 md:w-36 md:col-span-6">
           <div className="flex items-center gap-x-3">
             <img src={sort} className="w-7 h-7 md:w-6 md:h-8" />
             <h4 className="font-semibold text-20px md:text-18px">Sort: </h4>
@@ -228,7 +231,9 @@ export const Workspace = () => {
             </Menu>
           </div>
         </div>
-        <div className="col-span-4 md:col-span-6 sm:grid-cols-1 flex items-center gap-x-5 h-11">
+
+        {/* Filter */}
+        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:ml-40 md:w-40 md:ml-36">
           <div className="flex items-center gap-x-3">
             <svg
               width="20"
@@ -317,7 +322,9 @@ export const Workspace = () => {
             </Menu>
           </div>
         </div>
-        <div className="md:col-span-1 col-span-4 h-11 -mt-2">
+
+        {/* Search Button */}
+        <div className="col-span-4 flex justify-end relative lg:hidden  md:hidden">
           <div className="flex justify-end relative items-center">
             <Collapse open={openSearch}>
               <Card>
@@ -343,6 +350,7 @@ export const Workspace = () => {
           </div>
         </div>
       </div>
+
       <div className="grid grid-cols-12 gap-5" onScroll={() => handleScroll()}>
         {loading ? (
           workspaces &&
