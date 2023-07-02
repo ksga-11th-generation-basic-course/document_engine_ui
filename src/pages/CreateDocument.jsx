@@ -241,6 +241,12 @@ export const CreateDocument = () => {
                     <p>Tag</p>
                   </div>
                 </span>
+                {toggle && (
+                  <div
+                    className="fixed inset-0"
+                    onClick={() => setToggle(!toggle)}
+                  ></div>
+                )}
                 <button className="flex flex-wrap col-span-8 gap-2 h-auto w-full ml-10">
                   {tagsDocument &&
                     tagsDocument.map((tag, index) => (
