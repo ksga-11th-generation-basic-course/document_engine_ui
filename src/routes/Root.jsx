@@ -32,7 +32,7 @@ export const Root = () => {
                                   }
 
                                 {sideBar ? 
-                                    <span className="fixed z-10 shadow-custom lg:fixed lg:z-30 md:fixed md:-ml-5">
+                                    <span className="fixed z-10 shadow-custom lg:fixed lg:z-50 md:fixed md:-ml-5">
                                             <NewSidebar sideBar={sideBar} setSideBar={setSideBar} newWorkspace={newWorkspace} setNewWorkspace={setNewWorkspace}/>
                                       </span>  : null}
                             </div>

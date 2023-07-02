@@ -70,7 +70,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
             </form>
             <div className="flex justify-end items-center gap-5 text-18px font-semibold pb-2 md:text-11px">
               <button
-                className="px-10 py-3 md:px-5 border-[1px] rounded-lg"
+                className="px-10 py-3 md:px-5 border-[1px] rounded-lg md:py-2"
                 onClick={() => {
                   setVisible(!visible);
                   document
@@ -81,7 +81,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible }) => {
                 Cancel
               </button>
               <Button
-                className="bg-primary text-16px font-semibold text-white  px-10 py-3 rounded-lg md:text-11px"
+                className="bg-primary text-16px font-semibold text-white  px-10 py-3 rounded-lg md:text-11px md:py-2"
                 onClick={handleJoinWorkspace}
               >
                 Join

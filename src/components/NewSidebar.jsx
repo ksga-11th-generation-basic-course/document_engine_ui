@@ -72,7 +72,7 @@ export const NewSidebar = ({
   };
 
   return (
-    <Card className="h-screen w-[20rem] p-6  md:w-[210px]">
+    <Card className="h-screen w-[20rem] p-6  md:w-[210px] z-50">
 
       {/* Close Button */}
       <div className="hidden lg:flex lg:right-0 lg:-mt-5 items-end">

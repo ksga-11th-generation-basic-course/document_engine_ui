@@ -83,8 +83,8 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
       >
         New Workspace
       </button> */}
-      <Modal open={visible} onClickBackdrop={() => setVisible(!visible)}>
-        <div className="w-[540px] bg-white rounded-lg p-3 md:w-[300px] md:p-2">
+      <Modal open={visible}>
+        <div className="w-[540px] bg-white rounded-lg p-3 md:w-[300px] md:p-2 z-50">
           <div className="flex justify-end">
             <button type="button" onClick={() => setVisible(!visible)}>
               <img src={close} className="md:w-6"/>
@@ -116,14 +116,14 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
               
               <label>
                 <input
-                  className="text-sm cursor-pointer w-36 hidden"
+                  className="text-sm cursor-pointer w-36 hidden" 
                   type="file"
                   multiple
                   onChange={(e) => {
                     setWorkspaceImage(e.target.files[0]);
                   }}
                 />
-                <div className="w-[410px] h-[165px] overflow-hidden rounded-lg">
+                <div className="w-[410px] h-[165px] overflow-hidden rounded-lg md:w-full">
                   {workspaceImage ? (
                     <img
                       src={URL.createObjectURL(workspaceImage)}
@@ -134,7 +134,7 @@ export const CreateWorkspaceModal = ({ visible, setVisible }) => {
                   )}
                 </div>
               </label>
-              <div className="space-y-3 mt-2">
+              <div className="space-y-3 mt-2 md:-mt-14">
                 <div className="flex justify-end items-center gap-5 text-16px font-semibold pb-3 md:text-12px md:gap-3">
                   <button
                     className="px-10 py-3 border-[1px] rounded-lg md:px-8 md:ml-12 md:py-2.5"

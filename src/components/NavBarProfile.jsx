@@ -58,7 +58,7 @@ export const NavBarProfile = () => {
   };
 
   return (
-    <div className="flex justify-end items-center py-3 px-14 gap-x-5 bg-white lg:px-0 lg:-mr-5 md:pr-0 md:mr-0 md:right-0">
+    <div className="flex justify-end items-center py-3 px-14 gap-x-5 z-0 bg-white lg:px-0 lg:-mr-5 md:pr-0 md:mr-0 md:right-0">
       {param.documentId ? (
         <div>
           <Menu
@@ -178,7 +178,8 @@ export const NavBarProfile = () => {
                   variant="circular"
                   alt="candice wu"
                   className="cursor-pointer rounded-full shadow-md md:w-9 md:h-9"
-                  src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
+                  // src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
+                      src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fprofile%2Fcb6df344-7dd9-4323-8961-cbd55a606e77_user.png?alt=media&token=6eb13cc7-734c-4292-bc74-2ea2b4e6b5c2"
                 />
               ) : (
                 <Avatar
@@ -205,8 +206,8 @@ export const NavBarProfile = () => {
                   variant="circular"
                   alt="candice wu"
                   className="cursor-pointer rounded-full mt-4 md:w-9 md:h-9"
-                  src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
-                />
+                  src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fprofile%2Fcb6df344-7dd9-4323-8961-cbd55a606e77_user.png?alt=media&token=6eb13cc7-734c-4292-bc74-2ea2b4e6b5c2"
+                  />
               ) : (
                 <Avatar
                   variant="circular"

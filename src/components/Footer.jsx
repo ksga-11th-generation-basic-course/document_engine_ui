@@ -10,8 +10,8 @@ import pic_footer_right from "../assets/landing_image/pic_footer_right.svg";
 
 export const Footer = () => {
   return (
-    <div className="w-full ">
-          <img src={bg_footer} className="w-full md:absolute md:-mt-[50px]" />
+    <div className="w-full md:w-[406px]">
+          <img src={bg_footer} className="w-full md:-mt-[50px]" />
           <div className="absolute z-20 mt-24 space-x-52 grid grid-cols-12 justify-center lg:px-20 md:-ml-20 md:space-x-0 md:absolute">
                   {/* follow us */}
                     <div className="pl-52 col-span-4 -mt-20  lg:h-[50px] lg:col-span-12 md:ml-6  "> 

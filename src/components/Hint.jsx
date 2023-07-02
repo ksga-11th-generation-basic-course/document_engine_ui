@@ -36,7 +36,7 @@ export const Hint = () => {
                 >
                   <img src={star} className="md:w-6"/>
                   <div className="md:-ml-2 ">
-                    <h3 className="font-semibold text-24px text-black md:text-15px md:text-left">
+                    <h3 className="font-semibold text-24px text-black md:text-14px md:text-left md:leading-7">
                     {user && user.userName}, get started with DocEngine
                     </h3>
                     <p className="text-accent text-20px text-left md:text-14px">
