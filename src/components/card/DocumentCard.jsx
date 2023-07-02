@@ -26,7 +26,6 @@ import {
   MenuHandler,
   MenuList,
   MenuItem,
-  Button,
 } from "@material-tailwind/react";
 
 export const DocumentCard = ({ document, workspaceId }) => {
@@ -35,12 +34,6 @@ export const DocumentCard = ({ document, workspaceId }) => {
   const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
   const [deleteDocument, setDeleteDocument] = useState(false);
   const [documentId, setdocumentId] = useState();
-  const { members } = useSelector((state) => state.document);
-
-  const dispatch = useDispatch();
-  useEffect(() => {
-    dispatch(getMemberInEachDocument(document.documentId));
-  }, []);
 
   const handleNavigate = () => {
     setTimeout(() => {
@@ -125,9 +118,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
                   fill="#1E9CEF"
                 />
               </svg>
-              <p className="line-clamp-1">
-              {document.title}
-              </p>
+              <p className="line-clamp-1">{document.title}</p>
             </span>
             <span className="text-14px font-semibold leading-8 text-accent">
               Edited <span>{document.editDate}</span> minutes ago
@@ -220,9 +211,8 @@ export const DocumentCard = ({ document, workspaceId }) => {
         <DocumentPermissionModal
           openPermission={openPermission}
           setOpenPermission={setOpenPermission}
-          documentId={document.documentId}
-          workspaceId={workspaceId}
-          members={members}
+          documentId={document?.documentId}
+          workspaceId={document?.workspaceId}
         />
         <DocumentHistoryModal
           openDocumentHistory={openDocumentHistory}

@@ -5,6 +5,7 @@ import deletedocument from "../assets/document_image/deletedocument.svg";
 import { removeHistoryByHistoryId } from "../redux/service/historyService/historyService";
 import { useDispatch } from "react-redux";
 import { removeHistorySuccess } from "../redux/slice/historySlice/historySlice";
+import { toast } from "react-toastify";
 
 export const RemoveHistory = ({
   historyId,
@@ -18,10 +19,30 @@ export const RemoveHistory = ({
     try {
       const history = await removeHistoryByHistoryId(historyId, documentId);
       dispatch(removeHistorySuccess(history));
-      setRemoveHistory(!removeHistory);
+      toast.success("Create Workspace Successfully", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
-      console.log(error);
+      toast.error(error, {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        zIndex: 10000,
+      });
     }
+    setRemoveHistory(!removeHistory);
   };
 
   return (

@@ -22,6 +22,7 @@ const historySlice = createSlice({
       state.histories = state.histories.filter(
         (history) => history.historyId !== action.payload
       );
+      
     },
     restoreDocumentSuccess: (state, action) => {
       state.title = action.payload;
@@ -57,7 +58,6 @@ const historySlice = createSlice({
       state.error = action.error.message;
     });
 
-    
     builder.addCase(getHistoryByHistoryId.pending, (state) => {
       state.loading = true;
     });

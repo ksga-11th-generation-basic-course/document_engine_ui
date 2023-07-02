@@ -1,16 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import close from "../assets/dashboard_image/close.svg";
 import search from "../assets/document_image/search.svg";
 import { MemberDocumentPermissionCard } from "./card/MemberDocumentPermissionCard";
-
+import { useDispatch, useSelector } from "react-redux";
+import { getMemberInEachDocument } from "../redux/service/documentService/documentService";
 
 export const DocumentPermissionContent = ({
   openPermission,
   setOpenPermission,
-  members,
   workspaceId,
   documentId,
 }) => {
+  const { members } = useSelector((state) => state.document);
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(getMemberInEachDocument(documentId));
+  }, []);
   const [searchTerm, setSearchTerm] = useState("");
   return (
     <div>

@@ -3,7 +3,6 @@ import styles from "../../App.module.css";
 import {
   createBlock,
   deleteBlock,
-  getBlockBydoucmentId,
   updateBlock,
 } from "../../redux/service/blockService/blockService";
 import { useParams } from "react-router-dom";
@@ -12,7 +11,7 @@ import {
   deleteBlockSuccess,
   updateBlockSuccess,
 } from "../../redux/slice/blockSlice/blockSlice";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import {
   BlockNoteEditor,
   defaultBlockSchema,
@@ -29,9 +28,14 @@ import {
 import "@blocknote/core/style.css";
 import { RiImage2Fill } from "react-icons/ri";
 import { RiChatQuoteFill } from "react-icons/ri";
+import { RiCodeSSlashFill } from "react-icons/ri";
 import { Button, ButtonToolbar, Loader, Placeholder } from "rsuite";
 import "twemoji";
 import Twemoji from "./Twemoji";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { storage } from "../../firebase/firebase.utils";
+import { v4 as uuidv4 } from "uuid";
+import { ProgressSpinner } from "primereact/progressspinner";
 
 export const Editor = ({ loading, blockData, status }) => {
   const CodeBlock = createReactBlockSpec({
@@ -95,7 +99,7 @@ export const Editor = ({ loading, blockData, status }) => {
     },
     ["code"],
     "Text",
-    // <IconCode className="w-5 h-5" />,
+    <RiCodeSSlashFill />,
     "Insert a Code Block"
   );
 
@@ -212,143 +216,95 @@ export const Editor = ({ loading, blockData, status }) => {
     "Insert a quote"
   );
 
-  const EmbedBlock = createReactBlockSpec({
-    type: "embed",
-    propSchema: {
-      ...defaultProps,
-      src: {
-        default: "",
-      },
-      width: {
-        default: "100%",
-      },
-      height: {
-        default: "auto",
-      },
-    },
-    containsInlineContent: true,
-    render: ({ block }) => (
-      <div id="embed-wrapper">
-        <iframe
-          src={block.props.src}
-          width={block.props.width}
-          height={block.props.height}
-          frameBorder="0"
-          allowFullScreen
-        ></iframe>
-        <InlineContent />
-      </div>
-    ),
-  });
-
-  // Creates a slash menu item for inserting an embed block.
-  const insertEmbed = new ReactSlashMenuItem(
-    "Insert Embed",
-    (editor) => {
-      const src = prompt("Enter embed URL");
-      editor.insertBlocks(
-        [
-          {
-            type: "embed",
-            props: {
-              src: src || "",
-            },
-          },
-        ],
-        editor.getTextCursorPosition().block,
-        "after"
-      );
-    },
-    ["embed", "iframe", "video"],
-    "Media",
-    <RiImage2Fill />,
-    "Insert an embed"
-  );
-
-  const ImageBlockFile = createReactBlockSpec({
-    type: "image",
-    propSchema: {
-      ...defaultProps,
-      src: {
-        default: "https://via.placeholder.com/1000",
-      },
-    },
-    containsInlineContent: true,
-    render: ({ block }) => (
-      <div id="image-wrapper">
-        <img src={block.props.src} alt="Image" contentEditable={false} />
-        <InlineContent />
-      </div>
-    ),
-  });
-
-  // Creates a slash menu item for inserting an image block.
-  const insertImageFile = new ReactSlashMenuItem(
-    "Upload Image File",
-    (editor) => {
-      const fileInput = document.createElement("input");
-      fileInput.type = "file";
-      fileInput.accept = "image/*";
-      fileInput.onchange = (event) => {
-        const file = event.target.files[0];
-        if (file) {
-          const reader = new FileReader();
-          reader.onload = (readerEvent) => {
-            const src = readerEvent.target.result;
-            editor.insertBlocks(
-              [
-                {
-                  type: "image",
-                  props: {
-                    src,
-                  },
-                },
-              ],
-              editor.getTextCursorPosition().block,
-              "after"
-            );
-          };
-          reader.readAsDataURL(file);
-        }
-      };
-      fileInput.click();
-    },
-    ["image", "img", "picture", "media"],
-    "Media",
-    <RiImage2Fill />,
-    "Upload an image with file"
-  );
-
-  // Creates a custom image block.
   const ImageBlock = createReactBlockSpec({
     type: "image",
     propSchema: {
       ...defaultProps,
       src: {
-        default: "https://via.placeholder.com/1000",
+        default: "",
+      },
+      caption: {
+        default: "",
       },
     },
-    containsInlineContent: true,
-    render: ({ block }) => (
-      <div id="image-wrapper">
-        <img src={block.props.src} alt="Image" contentEditable={false} />
-        <InlineContent />
-      </div>
-    ),
+    containsInlineContent: true, // For the caption
+    render: ({ block, editor }) => {
+      const inputRef = useRef(null);
+
+      const onSelect = (e) => {
+        const file = e.target.files?.[0];
+        if (!file) return;
+
+        const imageRef = ref(
+          storage,
+          `images/document/${uuidv4()}_${file.name}`
+        );
+
+        uploadBytes(imageRef, file).then((snapshot) => {
+          getDownloadURL(snapshot.ref).then((url) => {
+            editor.updateBlock(block, {
+              props: {
+                ...block.props,
+                src: url,
+              },
+            });
+          });
+        });
+      };
+
+      return (
+        <div className="flex flex-col" id={block.id}>
+          {block.props.src && (
+            <>
+              <img
+                // className="w-full"
+                src={block.props.src}
+                alt=""
+                contentEditable={false}
+              />
+            </>
+          )}
+          {!block.props.src && (
+            <div
+              className="w-full bg-stone-100 flex items-center p-6"
+              contentEditable={false}
+              onClick={() => inputRef.current.click()}
+              onKeyDown={() => inputRef.current.click()}
+            >
+              <input
+                type="file"
+                className="hidden"
+                ref={inputRef}
+                onChange={onSelect}
+              />
+              <RiImage2Fill />
+              <p className="text-xl text-gray-600" contentEditable={false}>
+                Add an image
+              </p>
+            </div>
+          )}
+          <InlineContent className={block.props.caption ? "block" : "hidden"} />
+        </div>
+      );
+    },
   });
 
-  // Creates a slash menu item for inserting an image block.
-  const insertImage = new ReactSlashMenuItem(
-    "Upload Image Link",
+  const ImageCommand = new ReactSlashMenuItem(
+    "Insert Image",
     (editor) => {
-      const src = prompt("Enter image URL");
+      if (editor.getTextCursorPosition().block.content.length === 0) {
+        editor.updateBlock(editor.getTextCursorPosition().block, {
+          type: "image",
+          props: {},
+        });
+        return;
+      }
+
       editor.insertBlocks(
         [
           {
             type: "image",
-            props: {
-              src: src || "https://via.placeholder.com/1000",
-            },
+            props: {},
           },
         ],
         editor.getTextCursorPosition().block,
@@ -358,22 +314,12 @@ export const Editor = ({ loading, blockData, status }) => {
     ["image", "img", "picture", "media"],
     "Media",
     <RiImage2Fill />,
-    "Upload an image with link"
+    "Insert an image"
   );
-
-  
-
-  // const blockData = useSelector((state) => state.block.blocks);
-
-  // console.log(blockData);
 
   const [blocks, setBlocks] = useState([]);
   const param = useParams();
   const dispatch = useDispatch();
-
-  // useEffect(() => {
-  //   dispatch(getBlockBydoucmentId(param.documentId));
-  // }, [param.documentId]);
 
   const sortedInitialContent = [...blockData].sort((a, b) => a.order - b.order);
 
@@ -466,17 +412,13 @@ export const Editor = ({ loading, blockData, status }) => {
       ...defaultBlockSchema,
       // Adds the custom image block.
       image: ImageBlock,
-      imageFile: ImageBlockFile,
-      embed: EmbedBlock,
       quote: QuoteBlock,
       codeblock: CodeBlock,
       callout: CalloutBlock,
     },
     slashCommands: [
       ...defaultReactSlashMenuItems,
-      insertImage,
-      insertImageFile,
-      insertEmbed,
+      ImageCommand,
       insertQuote,
       CodeCommand,
       CalloutCommand,
@@ -486,30 +428,26 @@ export const Editor = ({ loading, blockData, status }) => {
       "data-test": "editor",
     },
     theme: "light",
-    editable: true,
-    
+    editable: status,
   });
 
   return (
     <div>
-      {/* <div className="absolute -top-14 -left-36 -z-0">
+      <div className="absolute top-5 ml-10">
         {isLoading ? (
-          <Button appearance="ghost" className="w-24" loading>
-            Ghost
-          </Button>
+          <div className="flex items-center gap-x-3">
+            <p className="text-gray-500 text-16px">Editing</p> 
+            <ProgressSpinner
+            style={{ width: "20px", height: "20px"}}
+            strokeWidth="5"
+            fill="var(--surface-ground)"
+            animationDuration=".5s"
+          />
+          </div>
         ) : (
-          <ButtonToolbar>
-            <Button
-              disabled={isLoading}
-              className="w-24"
-              appearance="ghost"
-              active
-            >
-              Saved
-            </Button>
-          </ButtonToolbar>
+          <p className="text-gray-500 text-16px">Edited just now</p>
         )}
-      </div> */}
+      </div>
 
       {loadingPlaceHolder ? (
         <div>

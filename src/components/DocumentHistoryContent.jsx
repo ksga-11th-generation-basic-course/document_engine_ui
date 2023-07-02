@@ -2,33 +2,19 @@ import React, { useEffect, useState } from "react";
 import close from "../assets/dashboard_image/close.svg";
 import { DocumentHistoryCard } from "./card/DocumentHistoryCard";
 import { api } from "../utils/constant";
+import { useDispatch, useSelector } from "react-redux";
+import { getHistoryByDocumentId } from "../redux/service/historyService/historyService";
 
 export const DocumentHistoryContent = ({
   openDocumentHistory,
   setOpenDocumentHistory,
   documentId,
 }) => {
-  const [histories, setHistories] = useState([]);
-
+  const { histories } = useSelector((state) => state.history);
+  const dispatch = useDispatch();
   useEffect(() => {
-    const getHistoryByDocumentId = async () => {
-      console.log(documentId);
-      try {
-        const response = await api.get(`histories/documents/${documentId}`, {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-            "Content-Type ": "application/json",
-          },
-        });
-        setHistories(response.data.payload);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    getHistoryByDocumentId();
+    dispatch(getHistoryByDocumentId(documentId));
   }, [documentId]);
-
-  console.log(histories);
 
   return (
     <div>

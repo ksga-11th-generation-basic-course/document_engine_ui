@@ -6,22 +6,9 @@ import ViewHistory from "../assets/images/Dashboard/ViewHistory.svg";
 import ViewMember from "../assets/images/Dashboard/ViewMember.svg";
 import ExportFile from "../assets/images/Dashboard/ExportFile.svg";
 import Tag from "../assets/images/Dashboard/Tag.svg";
-import arrow from "../assets/document_image/arrow.svg";
 import icon from "../assets/document_image/icon.svg";
 import { Link, useParams } from "react-router-dom";
 import doc from "../assets/document_image/doc.svg";
-import { DocumentPermissionModal } from "../modal/DocumentPermissionModal";
-import { DocumentHistoryModal } from "../modal/DocumentHistoryModal";
-import { DropDownExport } from "../components/DropDownExport";
-import EditorJS from "@editorjs/editorjs";
-import List from "@editorjs/list";
-import Code from "@editorjs/code";
-import LinkTool from "@editorjs/link";
-import Image from "@editorjs/image";
-import Header from "@editorjs/header";
-import Quote from "@editorjs/quote";
-import CheckList from "@editorjs/checklist";
-import InlineCode from "@editorjs/inline-code";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getDocumentByDocumentId,
@@ -32,7 +19,6 @@ import {
 import { Editor } from "../components/editor/Editor";
 import { updateDocument } from "../redux/service/documentService/documentService";
 import { updateDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
-import { date } from "yup";
 import { getBlockBydoucmentId } from "../redux/service/blockService/blockService";
 import {
   addTagToDocument,
@@ -41,16 +27,15 @@ import {
   getTagByDocumentId,
   getTagInEachWorkspace,
 } from "../redux/service/tagService/tagService";
-import { BlockUI } from "primereact/blockui";
 import Breadcrumbs from "@mui/material/Breadcrumbs";
-import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
+import { DocumentPermissionModal } from "../modal/DocumentPermissionModal";
+import { DocumentHistoryModal } from "../modal/DocumentHistoryModal";
 
 export const CreateDocument = () => {
-  // const [openPermission, setOpenPermission] = useState(false);
-  // const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
-  // const [openExport, setOpenExport] = useState(false);
+  const [openPermission, setOpenPermission] = useState(false);
+  const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
   const [inputValue, setInputValue] = useState("");
   const [toggle, setToggle] = useState(false);
   const [timerId, setTimerId] = useState(null);
@@ -165,11 +150,9 @@ export const CreateDocument = () => {
     </li>,
   ];
 
-  console.log(blockData);
-
   return (
-    <div className="w-full relative">
-      {/* <div className="absolute z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
+    <div className="w-full">
+      <div className="fixed z-10 right-0 rounded-lg shadow-md border-[1px] h-auto p-2 top-[45%]">
         <div className="grid grid-rows-1 gap-3">
           <button
             className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
@@ -189,19 +172,12 @@ export const CreateDocument = () => {
             <button
               className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
               type="button"
-              onClick={() => setOpenExport(!openExport)}
             >
               <img src={ExportFile} alt="" />
             </button>
-            {openExport ? (
-              <DropDownExport
-                openExport={openExport}
-                setOpenExport={setOpenExport}
-              />
-            ) : null}
           </div>
         </div>
-      </div> */}
+      </div>
       <nav className="flex items-center text-sm px-10">
         <ol className="list-none p-0 inline-flex">
           <Stack spacing={2}>
@@ -400,16 +376,19 @@ export const CreateDocument = () => {
         )}
       </div>
       <div className="h-[75vh]"></div>
-      {/* <div>
+      <div>
         <DocumentPermissionModal
           openPermission={openPermission}
           setOpenPermission={setOpenPermission}
+          documentId={document?.documentId}
+          workspaceId={document?.workspaceId}
         />
         <DocumentHistoryModal
           openDocumentHistory={openDocumentHistory}
           setOpenDocumentHistory={setOpenDocumentHistory}
+          documentId={document?.documentId}
         />
-      </div> */}
+      </div>
     </div>
   );
 };

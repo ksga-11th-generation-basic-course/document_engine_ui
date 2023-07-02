@@ -17,11 +17,13 @@ export const EditorHisotry = () => {
     dispatch(getBlockHistory(param.historyId));
   }, []);
   const editor = useBlockNote({
-    initialContent: sortedInitialContent && sortedInitialContent.map((block) => {
-      console.log(block.content)
-      return block.content;
-    }),
+    initialContent:
+      sortedInitialContent &&
+      sortedInitialContent.map((block) => {
+        return block.content;
+      }),
     theme: "light",
+    editable: false,
   });
   return <BlockNoteView editor={editor} />;
 };

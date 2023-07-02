@@ -34,7 +34,6 @@ export const removeHistoryByHistoryId = async (historyId, documentId) => {
     );
     return historyId;
   } catch (error) {
-    console.log(error);
     throw error.response.data.detail;
   }
 };
