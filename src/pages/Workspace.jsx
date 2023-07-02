@@ -130,21 +130,21 @@ export const Workspace = () => {
     }
   }
   return (
-    <div className="text-accent lg:ml-5 md:ml-0 md:mt-3">
+    <div className="text-accent lg:ml-5 md:-ml-5 md:mt-10">
       {/* Icon workspace */}
       <div className="flex items-center gap-x-3 ">
-        <img src={workspaceicon} className="p-2 shadow-custom rounded-lg" />
-        <p className="font-semibold text-20px">Workspaces</p>
+        <img src={workspaceicon} className="p-2 shadow-custom rounded-lg md:w-9" />
+        <p className="font-semibold text-20px md:text-18px">Workspaces</p>
       </div>
-      
-      <div className="grid grid-cols-12 mt-7 md:mt-3">
+
+      <div className="grid grid-cols-12 mt-7 md:mt-5">
         {/* Sort */}
-        <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center  md:ml-8 md:w-36 md:col-span-6">
+        <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center  md:ml-0 md:w-36 md:col-span-12">
           <div className="flex items-center gap-x-3">
-            <img src={sort} className="w-7 h-7 md:w-6 md:h-8" />
+            <img src={sort} className="w-7 h-7 md:w-6 md:h-6" />
             <h4 className="font-semibold text-20px md:text-18px">Sort: </h4>
           </div>
-          <div className="relative">
+          <div className="relative lg:ml-7 lg:z-30">
             <Menu
               open={openMenu}
               handler={setOpenMenu}
@@ -153,7 +153,7 @@ export const Workspace = () => {
               }}
             >
               <MenuHandler>
-                <button className="flex items-center justify-between w-[200px]">
+                <button className="flex items-center justify-between w-[200px] z-50">
                   <p className="text-18px text-black font-ssp">{status}</p>
                   <ChevronDownIcon
                     strokeWidth={3}
@@ -163,7 +163,7 @@ export const Workspace = () => {
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp z-50">
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="Ascending"
@@ -227,17 +227,16 @@ export const Workspace = () => {
                     }}
                   />
                 </MenuItem>
-                </MenuList>
+              </MenuList>
             </Menu>
           </div>
         </div>
 
         {/* Filter */}
-        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:ml-40 md:w-40 md:ml-36">
+        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:ml-56 md:w-40 md:ml-1  md:col-span-12 md:mt-3">
           <div className="flex items-center gap-x-3">
+            <span className="w-4 h-4 md:mr-1">
             <svg
-              width="20"
-              height="20"
               fill="none"
               stroke="currentColor"
               stroke-linecap="round"
@@ -248,6 +247,7 @@ export const Workspace = () => {
             >
               <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
             </svg>
+            </span>
             <h4 className="font-semibold text-20px md:text-18px">Filter: </h4>
           </div>
           <div className="relative">
@@ -271,7 +271,7 @@ export const Workspace = () => {
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp z-20">
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="All Workspaces"
@@ -323,16 +323,32 @@ export const Workspace = () => {
           </div>
         </div>
 
+        <div className="hidden md:inline-block w-full mt-3">
+          <input
+            type="text"
+            placeholder="search"
+            className="rounded-lg text-18px font-ssp border-gray-300 w-[330px] focus:ring-accent focus:border-accent"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button
+            type="button"
+            className="absolute -mt-8 opacity-100 hover:opacity-75 ml-72"
+            onClick={(e) => setSearchTerm(e.target.value)}
+          >
+            <img src={search} />
+          </button>
+        </div>
+
         {/* Search Button */}
-        <div className="col-span-4 flex justify-end relative lg:hidden  md:hidden">
-          <div className="flex justify-end relative items-center">
+        <div className="col-span-4 h-11 -mt-5 lg:absolute lg:h-0 lg:top-[100px] lg:right-[70px] md:hidden">
+          <div className="flex justify-end relative">
             <Collapse open={openSearch}>
               <Card>
-                <CardBody>
+                <CardBody className="bg-white">
                   <input
                     type="text"
                     placeholder="search"
-                    className={`rounded-lg text-18px font-ssp border-gray-300 w-full focus:ring-accent focus:border-accent ml-6 -mt-10 transition-transform duration-300 ease-in-out transform ${
+                    className={`rounded-lg text-18px font-ssp border-gray-300 w-full focus:ring-accent focus:border-accent ml-6 -mt-2 transition-transform duration-300 ease-in-out transform ${
                       openSearch ? "translate-x-0" : "translate-x-full"
                     }`}
                     onChange={(e) => setSearchTerm(e.target.value)}
@@ -342,7 +358,7 @@ export const Workspace = () => {
             </Collapse>
             <button
               type="button"
-              className="absolute mr-2 top-6 transition-opacity duration-500 ease-in-out opacity-100 hover:opacity-75"
+              className="absolute mr-2 top-7 transition-opacity duration-500 ease-in-out opacity-100 hover:opacity-75"
               onClick={toggleOpen}
             >
               <img src={search} />
@@ -351,7 +367,10 @@ export const Workspace = () => {
         </div>
       </div>
 
-      <div className="grid grid-cols-12 gap-5" onScroll={() => handleScroll()}>
+      <div
+        className="grid grid-cols-12 gap-5 z-0"
+        onScroll={() => handleScroll()}
+      >
         {loading ? (
           workspaces &&
           workspaces.map((workspace, index) => (
@@ -373,15 +392,15 @@ export const Workspace = () => {
               }
             })
             .map((workspace, index) => (
-              <div className="col-span-4" key={index}>
+              <div className="col-span-4 z-0" key={index}>
                 <WorkspaceCard workspace={workspace} />
               </div>
             ))
         ) : (
-          <div className="col-span-12 absolute px-64 md:px-0 md:-ml-5">
+          <div className="col-span-12 absolute px-64 md:px-0 md:-ml-5 z-0">
             <div className="flex flex-col justify-center gap-y-1 items-center h-[400px] w-[570px] lg:w-[170px] lg:h-96 md:w-[330px] md:h-60">
-            <img src={emptybox} className="w-32 h-32 md:w-24 md:h-24" />
-              <p className="font-semibold text-accent text-base md:text-12px ">
+              <img src={emptybox} className="w-32 h-32 md:w-24 md:h-24" />
+              <p className="font-semibold text-accent text-base md:text-12px">
                 No Workspace
               </p>
             </div>
