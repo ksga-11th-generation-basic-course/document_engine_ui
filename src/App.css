@@ -16,6 +16,11 @@
   width: 200px;
 }
 
+/* .p-component-overlay {
+  background-color: rgba(0, 0, 0, 0);
+  transition-duration: 0.2s;
+} */
+
 .spinner {
   width: 56px;
   height: 56px;
