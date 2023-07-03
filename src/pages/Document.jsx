@@ -25,6 +25,7 @@ import {
   MenuHandler,
   MenuList,
   MenuItem,
+  Button,
 } from "@material-tailwind/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Radio } from "@material-tailwind/react";
@@ -32,7 +33,6 @@ import { Radio } from "@material-tailwind/react";
 import { getTagInEachWorkspace } from "../redux/service/tagService/tagService";
 import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlice";
 import "../App.css";
-import { Button } from "rsuite";
 import { Checkbox } from "@material-tailwind/react";
 import { DocumentCardSkeleton } from "../components/DocumentCardSkeleton";
 
@@ -66,10 +66,6 @@ export const Document = () => {
 
   const [selectedTags, setSelectedTags] = useState([]);
 
-  console.log(selectedTags);
-
-  const [documentId, setDocumentId] = useState();
-
   const [openMenu, setOpenMenu] = React.useState(false);
 
   const [openMenuTwo, setOpenMenuTwo] = React.useState(false);
@@ -77,8 +73,19 @@ export const Document = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    dispatch(searchDocumentByTagName({ workspaceId, selectedTags }));
-  }, [selectedTags]);
+    if (selectedTags && selectedTags.length > 0) {
+      dispatch(searchDocumentByTagName({ workspaceId, selectedTags }));
+    } else {
+      dispatch(
+        getAllDocumentInEachWorkspace({
+          workspaceId,
+          no: 1,
+          size: 6,
+          sortbydatetime: "DEFAULT",
+        })
+      );
+    }
+  }, [selectedTags, workspaceId]);
 
   const [no, setNo] = useState(1);
 
@@ -95,7 +102,7 @@ export const Document = () => {
     dispatch(checkAccessibility(workspaceId));
     dispatch(checkIsOwnerWorkspaceCurrent(workspaceId));
     dispatch(getTagInEachWorkspace(workspaceId));
-  }, [dispatch, no, size, sortbydatetime]);
+  }, [workspaceId]);
 
   const now = new Date();
   const currentDateTime = now.toISOString();
@@ -149,7 +156,7 @@ export const Document = () => {
           <Button
             type="button"
             onClick={handleCreateDocument}
-            className="font-semibold text-16px bg-primary px-5 py-3 rounded-lg text-white"
+            className="font-semibold text-base bg-primary px-5 py-3 rounded-lg text-white shadow-none"
           >
             Create Document
           </Button>
@@ -460,16 +467,6 @@ export const Document = () => {
                         <img src={setting} />
                         <span className="text-18px">Setting Workspace</span>
                       </MenuItem>
-                      {/* <MenuItem
-                        className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
-                        onClick={() =>
-                          setOpenWorksapceSetting(!openWorkspaceSetting)
-                        }
-                      >
-                        {" "}
-                        <img src={group} />
-                        <span className="text-18px">View member</span>
-                      </MenuItem> */}
                     </MenuList>
                   </Menu>
                 ) : (
@@ -525,8 +522,35 @@ export const Document = () => {
                 ) : null
               )
           ) : (
-            <div className="col-span-12 absolute bottom-[45%] left-[55%]">
-              <p className="font-semibold text-accent">No Document</p>
+            <div className="col-span-12 absolute bottom-[40%] left-[50%]">
+              <div className="flex flex-col items-center justify-center gap-y-1">
+                <svg
+                  width="64"
+                  height="41"
+                  viewBox="0 0 64 41"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g transform="translate(0 1)" fill="none" fill-rule="evenodd">
+                    <ellipse
+                      fill="#F5F5F5"
+                      cx="32"
+                      cy="33"
+                      rx="32"
+                      ry="7"
+                    ></ellipse>
+                    <g fill-rule="nonzero" stroke="#D9D9D9">
+                      <path d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"></path>
+                      <path
+                        d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
+                        fill="#FAFAFA"
+                      ></path>
+                    </g>
+                  </g>
+                </svg>
+                <p className="font-semibold text-accent text-base">
+                  No Document
+                </p>
+              </div>
             </div>
           )}
         </div>
@@ -556,8 +580,35 @@ export const Document = () => {
                 ) : null
               )
           ) : (
-            <div className="col-span-12 absolute bottom-[45%] left-[55%]">
-              <p className="font-semibold text-accent">No Document</p>
+            <div className="col-span-12 absolute bottom-[40%] left-[50%]">
+              <div className="flex flex-col items-center justify-center gap-y-1">
+                <svg
+                  width="64"
+                  height="41"
+                  viewBox="0 0 64 41"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <g transform="translate(0 1)" fill="none" fill-rule="evenodd">
+                    <ellipse
+                      fill="#F5F5F5"
+                      cx="32"
+                      cy="33"
+                      rx="32"
+                      ry="7"
+                    ></ellipse>
+                    <g fill-rule="nonzero" stroke="#D9D9D9">
+                      <path d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"></path>
+                      <path
+                        d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
+                        fill="#FAFAFA"
+                      ></path>
+                    </g>
+                  </g>
+                </svg>
+                <p className="font-semibold text-accent text-base">
+                  No Document
+                </p>
+              </div>
             </div>
           )}
         </div>

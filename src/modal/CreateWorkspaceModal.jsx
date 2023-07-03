@@ -12,6 +12,7 @@ import { v4 as uuidv4 } from "uuid";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Button } from "rsuite";
+import { useNavigate } from "react-router-dom";
 
 export const CreateWorkspaceModal = ({
   visible,
@@ -23,6 +24,8 @@ export const CreateWorkspaceModal = ({
   const dispatch = useDispatch();
 
   const [workspaceImage, setWorkspaceImage] = useState();
+
+  const navigate = useNavigate();
 
   const [url, setUrl] = useState(
     "https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fworkspace%2F367d4a06-1532-4b25-96c6-df8bafcd0e8b_photo_2023-06-30_11-42-21.jpg?alt=media&token=a2721664-400d-4bc6-bac6-b0484a547542"
@@ -47,6 +50,7 @@ export const CreateWorkspaceModal = ({
     try {
       const workspace = await createWorkspace(workspaceName, url);
       dispatch(createWorkspaceSuccess(workspace));
+      navigate("/workspace");
       toast.success("Create Workspace Successfully", {
         position: "bottom-right",
         autoClose: 5000,

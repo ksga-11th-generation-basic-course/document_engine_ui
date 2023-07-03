@@ -16,6 +16,7 @@ import { toast } from "react-toastify";
 import {
   duplicateDocument,
   getMemberInEachDocument,
+  setCurrentEditing,
 } from "../../redux/service/documentService/documentService";
 import { duplicateDocumentSuccess } from "../../redux/slice/documentSlice/documentSlice";
 import { saveAs } from "file-saver";
@@ -27,6 +28,10 @@ import {
   MenuList,
   MenuItem,
 } from "@material-tailwind/react";
+import { BlockNoteEditor } from "@blocknote/core";
+import { BlockNoteView, useBlockNote } from "@blocknote/react";
+import "@blocknote/core/style.css";
+import { getBlockBydoucmentId } from "../../redux/service/blockService/blockService";
 
 export const DocumentCard = ({ document, workspaceId }) => {
   const navigate = useNavigate();
@@ -34,11 +39,19 @@ export const DocumentCard = ({ document, workspaceId }) => {
   const [openDocumentHistory, setOpenDocumentHistory] = useState(false);
   const [deleteDocument, setDeleteDocument] = useState(false);
   const [documentId, setdocumentId] = useState();
+  const dispatch = useDispatch();
+
+  const blockData = useSelector((state) => state.block.blocks);
+
+  const handleExportFile = (documentId) => {
+    // console.log(documentId);
+    dispatch(getBlockBydoucmentId(documentId));
+  };
 
   const handleNavigate = () => {
-    setTimeout(() => {
-      navigate(`/createdocument/${document.documentId}/${workspaceId}`);
-    }, 1000);
+    navigate(
+      `/createdocument/${document?.documentId}/${document?.workspaceId}`
+    );
   };
 
   const handleRemoveDocument = () => {
@@ -61,8 +74,16 @@ export const DocumentCard = ({ document, workspaceId }) => {
     });
   };
 
+  const hanleDocumentHistory = (id) => {
+    setdocumentId(id);
+    setOpenDocumentHistory(!openDocumentHistory);
+  };
+
   const viewPage = () => {
-    navigate(`/createdocument/${document.documentId}/${workspaceId}`);
+    dispatch(
+      setCurrentEditing({ documentId: document?.documentId, status: false })
+    );
+    navigate(`/createdocument/${document?.documentId}/${workspaceId}`);
   };
 
   const handleExport = () => {
@@ -154,10 +175,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
               </MenuItem>
               <MenuItem
                 className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
-                onClick={() => {
-                  setOpenDocumentHistory(!openDocumentHistory);
-                  setdocumentId(document?.documentId);
-                }}
+                onClick={() => hanleDocumentHistory(document?.documentId)}
               >
                 {" "}
                 <img src={history} />
@@ -172,7 +190,10 @@ export const DocumentCard = ({ document, workspaceId }) => {
                   </MenuItem>
                 </MenuHandler>
                 <MenuList className="text-accent rounded-lg space-y-1 p-2 w-36">
-                  <MenuItem className="hover:bg-gray-200 p-2 flex items-center gap-x-3">
+                  <MenuItem
+                    className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
+                    onClick={() => handleExportFile(document?.documentId)}
+                  >
                     {" "}
                     <img src={download} />
                     <span className="text-18px">.doc</span>

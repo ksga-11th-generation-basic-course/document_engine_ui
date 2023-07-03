@@ -11,7 +11,7 @@ import {
   deleteBlockSuccess,
   updateBlockSuccess,
 } from "../../redux/slice/blockSlice/blockSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   BlockNoteEditor,
   defaultBlockSchema,
@@ -37,7 +37,8 @@ import { storage } from "../../firebase/firebase.utils";
 import { v4 as uuidv4 } from "uuid";
 import { ProgressSpinner } from "primereact/progressspinner";
 
-export const Editor = ({ loading, blockData, status }) => {
+export const Editor = ({ loading, blockData }) => {
+  const { document } = useSelector((state) => state.document);
   const CodeBlock = createReactBlockSpec({
     type: "codeblock",
     propSchema: {
@@ -257,16 +258,19 @@ export const Editor = ({ loading, blockData, status }) => {
           {block.props.src && (
             <>
               <img
-                // className="w-full"
                 src={block.props.src}
-                alt=""
                 contentEditable={false}
+                onLoad={(e) => {
+                  const { naturalWidth, naturalHeight } = e.target;
+                  e.target.style.width = `${naturalWidth}px`;
+                  e.target.style.height = `${naturalHeight}px`;
+                }}
               />
             </>
           )}
           {!block.props.src && (
             <div
-              className="w-full bg-stone-100 flex items-center p-6"
+              className="w-full bg-stone-100 flex items-center p-6 gap-x-2 cursor-pointer"
               contentEditable={false}
               onClick={() => inputRef.current.click()}
               onKeyDown={() => inputRef.current.click()}
@@ -408,9 +412,7 @@ export const Editor = ({ loading, blockData, status }) => {
       setInputValue(editor.topLevelBlocks);
     },
     blockSchema: {
-      // Adds all default blocks.
       ...defaultBlockSchema,
-      // Adds the custom image block.
       image: ImageBlock,
       quote: QuoteBlock,
       codeblock: CodeBlock,
@@ -428,7 +430,8 @@ export const Editor = ({ loading, blockData, status }) => {
       "data-test": "editor",
     },
     theme: "light",
-    editable: status,
+    editable: document?.status,
+    enableBlockNoteExtensions: true
   });
 
   return (
@@ -436,13 +439,13 @@ export const Editor = ({ loading, blockData, status }) => {
       <div className="absolute top-5 ml-10">
         {isLoading ? (
           <div className="flex items-center gap-x-3">
-            <p className="text-gray-500 text-16px">Editing</p> 
+            <p className="text-gray-500 text-16px">Editing</p>
             <ProgressSpinner
-            style={{ width: "20px", height: "20px"}}
-            strokeWidth="5"
-            fill="var(--surface-ground)"
-            animationDuration=".5s"
-          />
+              style={{ width: "20px", height: "20px" }}
+              strokeWidth="5"
+              fill="var(--surface-ground)"
+              animationDuration=".5s"
+            />
           </div>
         ) : (
           <p className="text-gray-500 text-16px">Edited just now</p>
@@ -450,9 +453,9 @@ export const Editor = ({ loading, blockData, status }) => {
       </div>
 
       {loadingPlaceHolder ? (
-        <div>
+        <div className="ml-11">
           <Placeholder.Paragraph rows={blockData.length} />
-          <Loader content="loading" />
+          {/* <Loader content="loading" /> */}
         </div>
       ) : (
         <BlockNoteView editor={editor} />

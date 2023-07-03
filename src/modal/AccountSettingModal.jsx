@@ -45,7 +45,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
     return () => {
       setUsername("");
     };
-  }, []);
+  }, [user]);
 
   useEffect(() => {
     if (!profileImage) return;

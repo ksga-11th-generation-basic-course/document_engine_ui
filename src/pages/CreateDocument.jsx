@@ -55,11 +55,15 @@ export const CreateDocument = () => {
     dispatch(getDocumentByDocumentId(documentId));
     dispatch(getWorkspaceName(documentId));
     dispatch(getUsername(documentId));
-    dispatch(getBlockBydoucmentId(documentId));
     dispatch(getTagByDocumentId(documentId));
     dispatch(getTagInEachWorkspace(workspaceId));
     dispatch(getDocumentByPageId(document?.pageId));
   }, [documentId, workspaceId, document?.pageId]);
+
+  useEffect(() => {
+    dispatch(getBlockBydoucmentId(document?.documentId));
+  }, [document]);
+
   const [title, setTitle] = useState();
 
   const [loading, setLoading] = useState(false);
@@ -93,6 +97,7 @@ export const CreateDocument = () => {
       if (tagName) {
         dispatch(createTag({ tagName, workspaceId, documentId }));
         setInputValue("");
+        setToggle(!toggle);
       }
     }
   };
@@ -366,18 +371,10 @@ export const CreateDocument = () => {
       </div>
       <div className="mt-2">
         {blockData === null ? null : blockData.length > 0 ? (
-          <Editor
-            loading={loading}
-            blockData={blockData}
-            status={document?.status}
-          />
+          <Editor loading={loading} blockData={blockData} />
         ) : (
           <div>
-            <Editor
-              loading={loading}
-              blockData={blockData}
-              status={document?.status}
-            />
+            <Editor loading={loading} blockData={blockData} />
           </div>
         )}
       </div>

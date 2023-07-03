@@ -7,9 +7,12 @@ import { joinWorkspace } from "../redux/service/workspaceService/workspaceServic
 import { useDispatch } from "react-redux";
 import { joinWorkspaceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
 import { Button } from "rsuite";
+import { useNavigate } from "react-router-dom";
 
 export const JoinWorkspaceModal = ({ visible, setVisible, handleClickNav }) => {
   const [workspaceCode, setWorkspaceCode] = useState();
+
+  const navigate = useNavigate();
 
   const dispatch = useDispatch();
 
@@ -17,6 +20,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible, handleClickNav }) => {
     try {
       const workspace = await joinWorkspace(workspaceCode);
       dispatch(joinWorkspaceSuccess(workspace));
+      navigate("/workspace");
       setVisible(!visible);
       handleClickNav(false);
       document.getElementById("joinWorkspaceByWorkspaceCode").reset();

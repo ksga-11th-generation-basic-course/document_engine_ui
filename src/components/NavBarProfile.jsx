@@ -55,6 +55,7 @@ export const NavBarProfile = () => {
 
   const handleChangeStatus = (status) => {
     dispatch(setCurrentEditing({ documentId, status }));
+    location.reload();
   };
 
   const [openNav, setOpenNav] = useState(false);

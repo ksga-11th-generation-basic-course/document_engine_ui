@@ -39,9 +39,9 @@ export const SecondSideBar = ({ handleClick }) => {
 
   const { workspaces } = useSelector((state) => state.workspace);
 
-  // const { documents } = useSelector((state) => state.document);
+  const { documents } = useSelector((state) => state.document);
 
-  const [documents, setDocuments] = useState([]);
+  // const [documents, setDocuments] = useState([]);
 
   const dispatch = useDispatch();
 
@@ -100,6 +100,8 @@ export const SecondSideBar = ({ handleClick }) => {
   }, [dispatch, no, size, asc, desc, sortbydatetime]);
 
   const handleGetDocumentInEachWorkspace = (workspaceId) => {
+    navigate(`/document/${workspaceId}`);
+    console.log(workspaceId);
     dispatch(
       getAllDocumentInEachWorkspace({
         workspaceId,
@@ -110,24 +112,24 @@ export const SecondSideBar = ({ handleClick }) => {
     );
   };
 
-  const getAllDocumentInEachWorkspace = async (workspaceId) => {
-    try {
-      const response = await api.get(
-        `documents/workspaces/${workspaceId}?pageNo=1&pageSize=1000&eSortCurrentDateTime=DEFAULT`,
-        {
-          headers: {
-            Authorization: "Bearer " + localStorage.getItem("token"),
-            "Content-Type ": "application/json",
-          },
-        }
-      );
-      setDocuments(response.data.payload);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  // const getAllDocumentInEachWorkspace = async (workspaceId) => {
+  //   try {
+  //     const response = await api.get(
+  //       `documents/workspaces/${workspaceId}?pageNo=1&pageSize=1000&eSortCurrentDateTime=DEFAULT`,
+  //       {
+  //         headers: {
+  //           Authorization: "Bearer " + localStorage.getItem("token"),
+  //           "Content-Type ": "application/json",
+  //         },
+  //       }
+  //     );
+  //     setDocuments(response.data.payload);
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // };
 
-  const [documentData, setDocumentData] = useState();
+  // const [documentData, setDocumentData] = useState();
 
   const now = new Date();
   const currentDateTime = now.toISOString();
@@ -139,7 +141,7 @@ export const SecondSideBar = ({ handleClick }) => {
       documentId,
       workspaceId
     );
-    setDocumentData(document);
+    // setDocumentData(document);
     dispatch(createDocumentSuccess(document));
     toast.success("Create Document Successfully", {
       position: "bottom-right",
@@ -555,9 +557,9 @@ export const SecondSideBar = ({ handleClick }) => {
             <Accordion
               key={index}
               open={open === index + 1}
-              onClick={() =>
-                // handleGetDocumentInEachWorkspace(workspace?.workspaceId)
-                getAllDocumentInEachWorkspace(workspace?.workspaceId)
+              onClick={
+                () => handleGetDocumentInEachWorkspace(workspace?.workspaceId)
+                // getAllDocumentInEachWorkspace(workspace?.workspaceId)
               }
             >
               <ListItem className="p-0" selected={open === index + 1}>
@@ -651,7 +653,7 @@ export const SecondSideBar = ({ handleClick }) => {
           ))}
       </List>
       <CreatePageModal
-        documentData={documentData}
+        // documentData={documentData}
         visiblePage={visiblePage}
         setVisiblePage={setVisiblePage}
         secondhandleClick={secondhandleClick}
