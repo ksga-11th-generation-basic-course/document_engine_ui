@@ -159,7 +159,7 @@ export const VerifyToEnable = () => {
                           </div>
                           {formik.errors.OTP && (
                             <p className="text-red-500 text-lg md:text-sm">
-                              The field is not blank
+                              The field is required
                             </p>
                           )}
                           <div className="flex justify-center text-center mt-5 ">

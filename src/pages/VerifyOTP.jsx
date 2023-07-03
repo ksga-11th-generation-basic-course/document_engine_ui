@@ -50,6 +50,7 @@ export const VerifyOTP = () => {
     inputRef.current[0].addEventListener("paste", pasteText);
     // return () => inputRef.current[0].removeEventListener("paste", pasteText);
   }, []);
+
   const pasteText = (event) => {
     const pastedText = event.clipboard.getData("text");
     const fieldValues = {};
@@ -59,6 +60,7 @@ export const VerifyOTP = () => {
     setOTP(fieldValues);
     inputRef.current[5].focus();
   };
+
   const handleChange = (event, index) => {
     const { value } = event.target;
     if (/[a-z]/gi.test(value)) return;
@@ -80,6 +82,7 @@ export const VerifyOTP = () => {
       }
     }
   };
+  
   const renderInput = () => {
     return formik.values.OTP.map((value, index) => (
       <input
@@ -159,7 +162,7 @@ export const VerifyOTP = () => {
                             </div>
                             {formik.errors.OTP && (
                               <p className="text-red-500 text-lg md:text-sm">
-                                The field is not blank
+                                The field is required
                               </p>
                             )}
                             <div className="flex justify-center text-center mt-5 ">
