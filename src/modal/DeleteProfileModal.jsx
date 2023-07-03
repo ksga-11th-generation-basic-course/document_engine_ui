@@ -34,7 +34,7 @@ export const DeleteProfileModal = ({
               type="button"
               onClick={() => setOpenDeleteProfile(!openDeleteProfile)}
             >
-              <img src={close} className="md:w-6"/>
+              <img src={close} className="w-8 md:w-6"/>
             </button>
           </div>
           <div className="px-14 space-y-5 text-accent md:px-5">

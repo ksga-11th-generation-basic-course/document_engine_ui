@@ -84,12 +84,12 @@ export const ContactUs = () => {
           <div className="">
             <div className="flex mt-12 sm:flex justify-center items-center lg:mr-36 md:-ml-52">
               <img src={Message} alt="" className="w-7 mr-2 " />
-              <a href="#" className="pr-6 sm:pr-8 text-gray-400 md:text-sm ">
-                documentengine@gmail.com
+              <a href="#" className="text-20px pr-6 sm:pr-8 text-gray-400 md:text-sm ">
+                docengine@gmail.com
               </a>
             </div>
             {/* contact with facebook, Telegram and Instagram */}
-            <div className="Image flex flex-row ml-8 top-12 w-[40px] mt-6 lg:ml-8 md:-ml-52 md:mt-1 md:pb-10">
+            <div className="Image flex flex-row ml-8 top-12 w-[40px] mt-6 lg:ml-8 md:-ml-56 lg:mt-5 md:mt-3 md:pb-10">
                 <img src={Face} alt="" className=": md:ml-8 md:w-[30px]" />
                 <img src={Tele} alt=""className="mr-6 ml-6 md:w-[30px] md:ml-6 md:mr-6 " />
                 <img src={IG} alt="" className="md:w-[30px]  md:mr-8"/>

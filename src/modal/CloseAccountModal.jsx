@@ -32,7 +32,7 @@ export const CloseAccountModal = ({ closeAccount, setCloseAccount }) => {
               type="button"
               onClick={() => setCloseAccount(!closeAccount)}
             >
-              <img src={close} className="md:w-6"/>
+              <img src={close} className="w-8 md:w-6"/>
             </button>
           </div>
           <div className="px-14 space-y-2 text-accent md:px-5">
