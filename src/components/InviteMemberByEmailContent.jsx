@@ -16,6 +16,7 @@ export const InviteMemberByEmailContent = ({
   const dispatch = useDispatch();
 
   let workspaceId = workspace.workspaceId;
+  
 
   const handleInviteMemberViaEmail = async () => {
     try {

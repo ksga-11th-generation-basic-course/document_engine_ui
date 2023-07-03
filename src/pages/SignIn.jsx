@@ -3,7 +3,7 @@ import Logo from "../assets/images/Logo.svg";
 import RightImage from "../assets/images/Login/Right-img-login.svg";
 import LeftImage from "../assets/images/Login/Left-img-login.svg";
 import { useFormik } from "formik";
-
+import {EyeInvisibleFilled,EyeOutlined} from"@ant-design/icons"
 import { Link, useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { signInWithPopup } from "firebase/auth";
@@ -31,6 +31,8 @@ export const SignIn = () => {
   const dispatch = useDispatch();
 
   const navigate = useNavigate();
+  const [password, setPassWord]=useState("")
+  const [visable,setvisable]=useState(false)
 
   const handleGoogle = () => {
     signInWithPopup(auth, providerGoogle)
@@ -138,7 +140,8 @@ export const SignIn = () => {
             <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl">
               Sign in
             </h1>
-            <div className="px-2 py-30px max-sm:py-8 max-sm:px-8">
+            <div className="px-2 py-30px max-sm:py-8 max-sm:px-8 relative">
+            <span><i class="slash_eye fa fa-eye-slash absolute top-12 right-2 cursor-pointer text-gray-400"></i></span>
               <label className="font-semibold text-18px block pt-3 pb-2  text-black">
                 Email
               </label>
@@ -160,10 +163,10 @@ export const SignIn = () => {
               <label className="font-semibold text-18px block pt-3 pb-2  text-black">
                 Password
               </label>
-              <div className=" max-sm:flex max-sm:items-center max-sm:border-b pb-25px max-sm:border-primary ">
+              <div className=" max-sm:flex max-sm:items-center relative max-sm:border-b pb-25px max-sm:border-primary ">
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
-                  type="password"
+                  type={visable?"text":"password"}
                   placeholder="Password"
                   aria-label="Full name"
                   name="password"
@@ -171,8 +174,11 @@ export const SignIn = () => {
                   onBlur={formik.handleBlur}
                   value={formik.values.password}
                 />
+                <div className="p-2 absolute top-1 right-3 " onClick={()=>setvisable(!visable)}>
+                  {visable?<EyeOutlined/>:<EyeInvisibleFilled/>}
+                </div>
                 {formik.touched.password && formik.errors.password ? (
-                  <div className="mt-2 text-red-600">
+                  <div className="mt-2  text-red-600">
                     {formik.errors.password}
                   </div>
                 ) : null}

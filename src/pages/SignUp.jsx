@@ -4,6 +4,7 @@ import Right1Image from "../assets/images/Login/Right-img-logout.svg";
 import Left1Image from "../assets/images/Login/Left-img-logout.svg";
 import Google from "../assets/images/Login/Google.svg";
 import Facebook from "../assets/images/Login/Facebook.svg";
+import {EyeInvisibleFilled,EyeOutlined} from"@ant-design/icons"
 import { useDispatch, useSelector } from "react-redux";
 import { signInWithPopup } from "firebase/auth";
 import {
@@ -22,6 +23,10 @@ import { signUpSuccess } from "../redux/slice/authenticationSlice/authentication
 
 export const SignUp = () => {
   const navigate = useNavigate();
+  const [password, setPassWord]=useState("")
+  const [confirm,setConfirm]=useState("")
+  const [visablePass,setvisable1]=useState(false)
+  const [visableCon,setvisable2]=useState(false)
 
   const dispatch = useDispatch();
 
@@ -93,7 +98,7 @@ export const SignUp = () => {
   });
 
   return (
-    <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
+    <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent fixed">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
         <Link to={"/"}>
           <img
@@ -157,10 +162,13 @@ export const SignUp = () => {
               <label className="font-semibold text-lg block pt-3 pb-2  text-black">
                 Password
               </label>
-              <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
+              <div className=" max-sm:flex max-sm:items-center relative max-sm:border-b max-sm:border-primary ">
+                 <div className="p-2 absolute top-1 right-3 " onClick={()=>setvisable1(!visablePass)}>
+                  {visablePass?<EyeOutlined/>:<EyeInvisibleFilled/>}
+                </div>
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
-                  type="password"
+                  type={visablePass?"text":"password"}
                   placeholder="Password"
                   aria-label="Full name"
                   name="password"
@@ -178,10 +186,13 @@ export const SignUp = () => {
               <label className="font-semibold text-lg block pt-3 pb-2 text-black">
                 Confirm Password
               </label>
-              <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
+              <div className=" max-sm:flex max-sm:items-center relative max-sm:border-b max-sm:border-primary ">
+                <div className="p-2 absolute top-1 right-3 " onClick={()=>setvisable2(!visableCon)}>
+                  {visableCon?<EyeOutlined/>:<EyeInvisibleFilled/>}
+                </div>
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
-                  type="password"
+                  type={visableCon?"text":"password"}
                   placeholder="Confirm Password"
                   aria-label="Full name"
                   name="confirmPassword"

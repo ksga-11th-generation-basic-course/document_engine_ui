@@ -17,7 +17,6 @@ export const Landing = () => {
   return (
     <div className="bg-white">
       <NavBar />
-      
       <div className="pt-32 px-16">
         <div className="grid grid-cols-12">
           <dir className="col-span-4">
