@@ -81,7 +81,7 @@ export const SignUp = () => {
         .min(4, "Password must have more than 4 characters "),
       confirmPassword: Yup.string()
         .oneOf([Yup.ref("password")], "Confirm Password must matched Password")
-        .required("Confirm Password is required"),
+        .required("Confirm Password is a required field"),
     }),
     onSubmit: async (values, { resetForm }) => {
       try {
