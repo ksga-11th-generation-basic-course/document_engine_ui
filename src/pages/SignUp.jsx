@@ -73,7 +73,7 @@ export const SignUp = () => {
         .required("Email is required"),
       password: Yup.string()
         .required("Password is required")
-        .min(4, "Password must have at least 4 characters"),
+        .min(8, "Password must have at least 8 characters"),
       confirmPassword: Yup.string()
         .oneOf([Yup.ref("password")], "Confirm Password must matched Password")
         .required("Confirm Password is required"),

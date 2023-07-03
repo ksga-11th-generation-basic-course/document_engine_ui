@@ -67,11 +67,11 @@ export const SignIn = () => {
     },
     validationSchema: Yup.object({
       email: Yup.string()
-        .email("Enter a valid email")
-        .required("Please enter email"),
+        .email("Email is invalid ")
+        .required("Email is required"),
       password: Yup.string()
-        .required("Please enter password")
-        .min(4, "Password must have more than 4 characters "),
+        .required("Password is required")
+        .min(8, "Password must have at least 8 characters "),
     }),
     onSubmit: async (values, { resetForm }) => {
       try {
