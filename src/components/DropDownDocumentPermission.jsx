@@ -15,12 +15,11 @@ export const DropDownDocumentPermission = ({
 }) => {
   const dispatch = useDispatch();
 
-  console.log("doc", documentId, "work", workspaceId, "user", userId);
   const setAccess = async (accessibilityStatus) => {
+    console.log(documentId);
     const accessibility = await setAccessibility(
       documentId,
       userId,
-      workspaceId,
       accessibilityStatus
     );
     dispatch(setAccessibilitySuccess(accessibility));

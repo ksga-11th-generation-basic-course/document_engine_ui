@@ -21,10 +21,7 @@ import { Button } from "rsuite";
 import { Avatar } from "@material-tailwind/react";
 
 export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
-  const [visible, setVisible] = useState(false);
-  const toggleVisible = () => {
-    setVisible(!visible);
-  };
+  const [openSignOut, setOpenSignOut] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -270,7 +267,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                     </div>
                     <button
                       className="font-semibold text-16px text-red-500 border-[1px] rounded-lg px-3 py-1"
-                      onClick={toggleVisible}
+                      onClick={() => setOpenSignOut(!openSignOut)}
                     >
                       Sign out
                     </button>
@@ -298,7 +295,10 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
         </div>
       </Modal>
       <div>
-        <SignOutModal visible={visible} toggleVisible={toggleVisible} />
+        <SignOutModal
+          openSignOut={openSignOut}
+          setOpenSignOut={setOpenSignOut}
+        />
         <DeleteProfileModal
           openDeleteProfile={openDeleteProfile}
           setOpenDeleteProfile={setOpenDeleteProfile}

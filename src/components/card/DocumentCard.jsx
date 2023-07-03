@@ -15,7 +15,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
 import {
   duplicateDocument,
-  getMemberInEachDocument,
   setCurrentEditing,
 } from "../../redux/service/documentService/documentService";
 import { duplicateDocumentSuccess } from "../../redux/slice/documentSlice/documentSlice";
@@ -28,9 +27,6 @@ import {
   MenuList,
   MenuItem,
 } from "@material-tailwind/react";
-import { BlockNoteEditor } from "@blocknote/core";
-import { BlockNoteView, useBlockNote } from "@blocknote/react";
-import "@blocknote/core/style.css";
 import { getBlockBydoucmentId } from "../../redux/service/blockService/blockService";
 
 export const DocumentCard = ({ document, workspaceId }) => {

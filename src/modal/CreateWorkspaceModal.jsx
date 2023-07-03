@@ -28,7 +28,7 @@ export const CreateWorkspaceModal = ({
   const navigate = useNavigate();
 
   const [url, setUrl] = useState(
-    "https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fworkspace%2F367d4a06-1532-4b25-96c6-df8bafcd0e8b_photo_2023-06-30_11-42-21.jpg?alt=media&token=a2721664-400d-4bc6-bac6-b0484a547542"
+    "https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fworkspace%2F3036d816-8b3f-4c2e-8725-8b0d0944b4f3_4014085.jpg?alt=media&token=1c310982-d56b-49bc-929f-693812978256"
   );
 
   useEffect(() => {

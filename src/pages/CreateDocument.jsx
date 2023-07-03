@@ -151,7 +151,7 @@ export const CreateDocument = () => {
     </li>,
     <li className="flex items-center gap-x-2">
       <img src={doc} />
-      <p className="text-primary">{title ? title : "Loading..."}</p>
+      <p className="text-primary">{title}</p>
     </li>,
   ];
 
@@ -193,19 +193,6 @@ export const CreateDocument = () => {
               {document?.pageId === null ? breadcrumbsTwo : breadcrumbsThree}
             </Breadcrumbs>
           </Stack>
-          {/* <li className="flex items-center gap-x-2">
-            <img src={icon} />
-            <Link to={`/document/${workspaceId}`} className="text-black">
-              {workspace}
-            </Link>
-            <span className="mx-2">
-              <img src={arrow} className="w-2" alt="" />
-            </span>
-          </li>
-          <li className="flex items-center gap-x-2">
-            <img src={doc} />
-            <Link className="text-primary">{title ? title : "Loading..."}</Link>
-          </li> */}
         </ol>
       </nav>
       <div className="text-[#9CA3AF] grid grid-rows-1 gap-2 px-12">
@@ -215,8 +202,8 @@ export const CreateDocument = () => {
               className="text-5xl  w-full p-0 text-black py-2 focus:ring-0 focus:border-0 border-0"
               type="text"
               onChange={handleInputChange}
-              placeholder={title}
-              value={title ? title : "Loading..."}
+              placeholder={document?.title}
+              value={title}
             />
           </span>
           <div className="w-full grid grid-cols-12 gap-y-2">

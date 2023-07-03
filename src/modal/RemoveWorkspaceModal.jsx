@@ -7,6 +7,7 @@ import { removeWorkspaceService } from "../redux/service/workspaceService/worksp
 import "react-toastify/dist/ReactToastify.css";
 import { removeWorkspaceServiceSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router";
 // import { io } from "socket.io-client";
 
 // const socket = io.connect("http://localhost:3001");
@@ -18,10 +19,13 @@ export const RemoveWorkspaceModal = ({
 }) => {
   const dispatch = useDispatch();
 
+  const navigate = useNavigate();
+
   const handleRemoveWorkspace = async () => {
     try {
       const workspace = await removeWorkspaceService(workspaceId);
       dispatch(removeWorkspaceServiceSuccess(workspace));
+      navigate("/workspace");
       // socket.emit("remove_workspace", workspace);
       setRemoveWorkspace(!removeWorkspace);
       toast.success("Remove Workspace Successfully", {

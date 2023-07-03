@@ -184,16 +184,14 @@ export const updateDocument = async (documentId, title) => {
 export const setAccessibility = async (
   documentId,
   userId,
-  workspaceId,
   accessibility
 ) => {
   try {
     const response = await api.put(
-      `documents/${documentId}/users/${userId}/${workspaceId}/accessibility/?accessibility=${accessibility}`,
+      `documents/${documentId}/users/${userId}/accessibility/?accessibility=${accessibility}`,
       {
         documentId: documentId,
         userId: userId,
-        workspaceId: workspaceId,
         accessibility: accessibility,
       },
       {

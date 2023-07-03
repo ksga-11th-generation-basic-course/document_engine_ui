@@ -9,10 +9,19 @@ import { setAccessibility } from "../../redux/service/workspaceService/workspace
 import { useDispatch, useSelector } from "react-redux";
 import { setAccessibilitySuccess } from "../../redux/slice/workspaceSlice/workspaceSlice";
 import { getCurrentUser } from "../../redux/service/userService/userService";
+import {
+  Menu,
+  MenuHandler,
+  MenuList,
+  MenuItem,
+} from "@material-tailwind/react";
 import { Avatar } from "@material-tailwind/react";
+import { ChevronDownIcon } from "@heroicons/react/24/outline";
 
 export const MemberWorkspaceCard = ({ member, workspaceId }) => {
   const [removeMember, setRemoveMember] = useState(false);
+
+  const [openMenu, setOpenMenu] = React.useState(false);
 
   const character = member.username.split("");
 
@@ -88,7 +97,40 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
         {!member.isOwner ? (
           <div className="flex justify-center items-center gap-x-4 md:gap-x-2">
             <div className="relative">
-              <Dropdown>
+              <Menu open={openMenu} handler={setOpenMenu}>
+                <MenuHandler>
+                  <button className="flex items-center justify-between w-[190px] border-[1px] py-2 px-3 rounded-lg">
+                    {member.accessibility ? (
+                      <p className="text-18px text-black font-ssp flex gap-x-2">
+                        <img src={pencil} alt="" />
+                        Editor
+                      </p>
+                    ) : (
+                      <p className="text-18px text-black font-ssp flex gap-x-2">
+                        <img src={view} alt="" />
+                        Viewer
+                      </p>
+                    )}
+                    <ChevronDownIcon
+                      strokeWidth={3}
+                      className={`h-4 w-4 transition-transform ${
+                        openMenu ? "rotate-180" : ""
+                      }`}
+                    />
+                  </button>
+                </MenuHandler>
+                <MenuList className="rounded-lg p-2 w-[190px] font-ssp z-[9999]">
+                  <MenuItem className="flex justify-start items-center p-3 hover:bg-gray-200 rounded-lg gap-x-2" onClick={() => handleSetAccessibility(true)}>
+                    <img src={pencil} alt="" />
+                    <p className="text-18px text-black">Editor</p>
+                  </MenuItem>
+                  <MenuItem className="flex justify-start p-3 hover:bg-gray-200 rounded-lg gap-x-2" onClick={() => handleSetAccessibility(false)}>
+                    <img src={view} alt="" />
+                    <p className="text-18px text-black">Viewer</p>
+                  </MenuItem>
+                </MenuList>
+              </Menu>
+              {/* <Dropdown>
                 <Dropdown.Toggle>
                   {member.accessibility ? (
                     <div className="text-18px md:text-16px md:gap-x-1 md:px-2 border-[1px] rounded-lg px-3 py-1 flex justify-center items-center gap-x-2">
@@ -120,7 +162,7 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
                     <span>Viewer</span>
                   </Dropdown.Item>
                 </Dropdown.Menu>
-              </Dropdown>
+              </Dropdown> */}
             </div>
             <button
               type="button"

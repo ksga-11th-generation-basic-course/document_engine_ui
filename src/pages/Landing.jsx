@@ -17,7 +17,7 @@ export const Landing = () => {
   return (
     <div className="bg-white">
       <NavBar />
-      
+
       <div className="pt-32 px-16">
         <div className="grid grid-cols-12">
           <dir className="col-span-4">
@@ -32,17 +32,20 @@ export const Landing = () => {
                 security, edit your documents and work as a <br /> group.
               </p>
               <div>
-                <Link to={"/signin"} className="bg-primary px-8 py-3 rounded-xl font-bold text-18px text-white">
+                <Link
+                  to={"/signup"}
+                  className="bg-primary px-8 py-3 rounded-xl font-bold text-18px text-white"
+                >
                   Get Started
                 </Link>
               </div>
             </div>
           </dir>
           <div className="col-span-8 mx-auto">
-            <img src={literature}/>
+            <img src={literature} />
           </div>
         </div>
-        
+
         <div className="border-[2px] mt-24 border-gray-300"></div>
 
         <div className="mt-24">
@@ -120,7 +123,7 @@ export const Landing = () => {
         </div>
       </div>
 
-      <Footer/>
+      <Footer />
     </div>
   );
 };
