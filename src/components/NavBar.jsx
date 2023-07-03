@@ -4,6 +4,7 @@ import { Link, NavLink } from "react-router-dom";
 
 export const NavBar = () => {
   const[openMenu, setOpenMenu] = useState(false);
+
   return (
     <div className="fixed z-50 flex w-full justify-between items-center px-14 sm:px-4 md:px-6 border-[2px] text-18px font-semibold text-accent bg-[#F9F9FF] lg:py-2 sm:justify-around">
       <div>
@@ -20,6 +21,9 @@ export const NavBar = () => {
               className={({ isActive }) =>
                 isActive ? "text-primary" : "text-accent"
               }
+              onClick={() => {
+                window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+              }}
             >
               Home
             </NavLink>
@@ -30,6 +34,9 @@ export const NavBar = () => {
               className={({ isActive }) =>
                 isActive ? "text-primary" : "text-accent"
               }
+              onClick={() => {
+                window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+              }}
             >
               About Us
             </NavLink>
@@ -40,6 +47,9 @@ export const NavBar = () => {
               className={({ isActive }) =>
                 isActive ? "text-primary" : "text-accent"
               }
+              onClick={() => {
+                window.scrollTo({top: 0, left: 0, behavior: 'instant'});
+              }}
             >
               Contact Us
             </NavLink>
