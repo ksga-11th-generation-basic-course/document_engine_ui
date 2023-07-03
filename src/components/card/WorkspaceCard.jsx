@@ -63,7 +63,7 @@ export const WorkspaceCard = ({ workspace }) => {
           {workspace && workspace.workspaceName}
         </h4>
         {workspace && workspace.isOwner ? (
-          <p className="rounded-full">Owner</p>
+          <p className="rounded-full text-primary">Owner</p>
         ) : null}
       </div>
       <div className="h-[200px] overflow-hidden" onClick={handleNavigate}>

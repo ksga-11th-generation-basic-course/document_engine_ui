@@ -30,7 +30,7 @@ import { RiImage2Fill } from "react-icons/ri";
 import { RiChatQuoteFill } from "react-icons/ri";
 import { RiCodeSSlashFill } from "react-icons/ri";
 import { Button, ButtonToolbar, Loader, Placeholder } from "rsuite";
-import "twemoji";
+// import "twemoji";
 import Twemoji from "./Twemoji";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { storage } from "../../firebase/firebase.utils";

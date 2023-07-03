@@ -55,27 +55,19 @@ export const NavBarProfile = () => {
 
   const handleChangeStatus = (status) => {
     dispatch(setCurrentEditing({ documentId, status }));
-    location.reload();
-  };
-
-  const [openNav, setOpenNav] = useState(false);
-
-  const handleClickNav = (status) => {
-    setOpenNav(status);
   };
 
   return (
-    <div
-      className="w-full flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white"
-      // className={
-      //   openNav
-      //     ? "fixed right-0 w-[1650px] flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white z-30"
-      //     : "fixed right-0 w-[1650px] flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white z-10"
-      // }
-    >
+    <div className="flex justify-end items-center py-3 px-14 gap-x-5 z-0 bg-white lg:px-0 lg:-mr-5 md:pr-0 md:mr-0 md:right-0">
       {param.documentId ? (
         <div>
-          <Menu open={openMenu} handler={setOpenMenu}>
+          <Menu
+            open={openMenu}
+            handler={setOpenMenu}
+            dismiss={{
+              itemPress: false,
+            }}
+          >
             <MenuHandler>
               <button className="flex items-center justify-between w-[250px] border-[1px] rounded-lg p-3">
                 <p className="text-18px text-black font-ssp flex gap-x-2">
@@ -91,10 +83,7 @@ export const NavBarProfile = () => {
               </button>
             </MenuHandler>
             <MenuList className="rounded-lg p-2 font-ssp w-[250px] space-y-2">
-              <MenuItem
-                className="p-2 hover:bg-gray-200 rounded-lg"
-                onClick={() => handleChangeStatus(true)}
-              >
+              <MenuItem className="p-2 hover:bg-gray-200 rounded-lg">
                 {" "}
                 <div className="flex gap-x-3">
                   <img src={pen} alt="" />
@@ -102,10 +91,7 @@ export const NavBarProfile = () => {
                 </div>
                 <p className="mr-6">Edit document directly</p>
               </MenuItem>
-              <MenuItem
-                className="p-2 hover:bg-gray-200 rounded-lg"
-                onClick={() => handleChangeStatus(false)}
-              >
+              <MenuItem className="p-2 hover:bg-gray-200 rounded-lg">
                 {" "}
                 <div className="flex gap-x-3">
                   <img src={eyeview} alt="" />
@@ -117,7 +103,7 @@ export const NavBarProfile = () => {
           </Menu>
           {/* <Menu as="div" className="relative inline-block text-left bg-white">
             <div>
-              <Menu.Button className="inline-flex w-full gap-x-3 justify-center items-center rounded-lg border-[1px] bg-opacity-20 px-5 py-2 text-sm font-medium text-accent hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
+            <Menu.Button className="inline-flex w-full gap-x-3 justify-center items-center rounded-lg border-[1px] bg-opacity-20 px-5 py-2 text-sm font-medium text-accent hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
                 {document?.status ? (
                   <img src={pen} alt="" />
                 ) : (
@@ -181,34 +167,33 @@ export const NavBarProfile = () => {
         </div>
       ) : null}
       <div>
-        <JoinWorkspaceModal
-          visible={visible}
-          setVisible={setVisible}
-          handleClickNav={handleClickNav}
-        />
+        <JoinWorkspaceModal visible={visible} setVisible={setVisible} />
       </div>
+      
       <div className="relative">
         <Menu placement="bottom-end">
           <MenuHandler>
-            {user && user.profileImage === null ? (
-              <Avatar
-                variant="circular"
-                alt="candice wu"
-                className="cursor-pointer rounded-full"
-                src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fprofile%2Fcb6df344-7dd9-4323-8961-cbd55a606e77_user.png?alt=media&token=6eb13cc7-734c-4292-bc74-2ea2b4e6b5c2"
-              />
-            ) : (
-              <Avatar
-                variant="circular"
-                alt="candice wu"
-                className="cursor-pointer rounded-full"
-                src={user && user.profileImage}
-              />
-            )}
+          {user && user.profileImage === null ? (
+                <Avatar
+                  variant="circular"
+                  alt="candice wu"
+                  className="cursor-pointer rounded-full shadow-md md:w-9 md:h-9"
+                  // src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
+                      src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fprofile%2Fcb6df344-7dd9-4323-8961-cbd55a606e77_user.png?alt=media&token=6eb13cc7-734c-4292-bc74-2ea2b4e6b5c2"
+                />
+              ) : (
+                <Avatar
+                  variant="circular"
+                  alt="candice wu"
+                  className="cursor-pointer rounded-full md:w-9 md:h-9"
+                  src={user && user.profileImage}
+                />
+              )}
           </MenuHandler>
-          <MenuList className="rounded-lg text-accent w-[360px] p-5 font-ssp">
+
+          <MenuList className="rounded-lg text-accent w-[360px] p-5 font-ssp lg:z-30 md:w-60 ">
             <MenuItem>
-              <p className="font-extrabold text-28px text-primary text-left">
+              <p className="font-extrabold text-28px text-primary text-left md:text-20px">
                 Profile
               </p>
             </MenuItem>
@@ -220,47 +205,47 @@ export const NavBarProfile = () => {
                 <Avatar
                   variant="circular"
                   alt="candice wu"
-                  className="cursor-pointer rounded-full mt-4"
+                  className="cursor-pointer rounded-full mt-4 md:w-9 md:h-9"
                   src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fprofile%2Fcb6df344-7dd9-4323-8961-cbd55a606e77_user.png?alt=media&token=6eb13cc7-734c-4292-bc74-2ea2b4e6b5c2"
-                />
+                  />
               ) : (
                 <Avatar
                   variant="circular"
                   alt="candice wu"
-                  className="cursor-pointer rounded-full"
+                  className="cursor-pointer rounded-full mt-4 md:w-9 md:h-9"
                   src={user && user.profileImage}
                 />
               )}
               <div>
-                <h3 className="font-bold text-20px text-left">
+                <h3 className="font-bold text-20px text-left md:text-18px">
                   {user && user.userName}
                 </h3>
-                <p className="text-[#9CA3AF] leading-3 text-base text-left">
+                <p className="text-[#9CA3AF] leading-3 text-base text-left md:text-14px">
                   {user && user.email}
                 </p>
               </div>
             </MenuItem>
             <hr className="my-2 border-blue-gray-50 mt-2" />
             <MenuItem
-              className="flex items-center gap-x-3 hover:bg-gray-200 p-2 mt-2"
+              className="flex items-center gap-x-3 hover:bg-[#EFEFEF] p-2 mt-2"
               onClick={() => setOpenSetting(!openSetting)}
             >
-              <img src={setting} />
-              <span className="text-18px ml-1">Setting</span>
+              <img src={setting} className="md:w-5 md:h-5"/>
+              <span className="text-18px ml-1 md:text-16px">Setting</span>
             </MenuItem>
             <MenuItem
-              className="flex items-center gap-x-3 hover:bg-gray-200 p-2 mt-2"
+              className="flex items-center gap-x-3 hover:bg-[#EFEFEF] p-2 mt-2"
               onClick={() => setOpenSignOut(!openSignOut)}
             >
-              <img src={signout} />
-              <span className="text-red-500 text-18px">Sign out</span>
+              <img src={signout} className="md:w-5 md:h-5"/>
+              <span className="text-red-500 text-18px md:text-16px">Sign out</span>
             </MenuItem>
           </MenuList>
         </Menu>
       </div>
       <div>
         <SignOutModal
-          openSignOut={openSignOut}
+          openSignOut={openSignOut} 
           setOpenSignOut={setOpenSignOut}
         />
         <AccountSettingModal

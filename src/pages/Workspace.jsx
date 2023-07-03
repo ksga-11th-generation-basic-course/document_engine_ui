@@ -27,8 +27,6 @@ import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { Radio } from "@material-tailwind/react";
 import { Collapse, Card, CardBody } from "@material-tailwind/react";
 
-import { Dropdown } from "react-daisyui";
-
 // const socket = io.connect("http://localhost:3002");
 
 const theme = createTheme({
@@ -117,7 +115,7 @@ export const Workspace = () => {
     // Simulating data fetching delay
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 2000);
   }, []);
 
   useEffect(() => {
@@ -131,34 +129,22 @@ export const Workspace = () => {
       setSize((prevPage) => prevPage + 1);
     }
   }
-
   return (
-    <div className="text-accent space-y-5 sm:h-full bg-white">
+    <div className="text-accent lg:ml-5 md:-ml-5 md:mt-10">
+      {/* Icon workspace */}
       <div className="flex items-center gap-x-3 ">
-        <img src={workspaceicon} className="p-2 shadow-md rounded-lg" />
-        <p className="font-semibold text-20px">Workspaces</p>
+        <img src={workspaceicon} className="p-2 shadow-custom rounded-lg md:w-9" />
+        <p className="font-semibold text-20px md:text-18px">Workspaces</p>
       </div>
-      <div className="grid grid-cols-12 md:grid md:grid-cols-12 sm:grid sm:grid-cols-1">
-        <div className="col-span-4 md:col-span-5 sm:grid-cols-1 flex items-center gap-x-5 h-11">
+
+      <div className="grid grid-cols-12 mt-7 md:mt-5">
+        {/* Sort */}
+        <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center  md:ml-0 md:w-36 md:col-span-12">
           <div className="flex items-center gap-x-3">
-            <svg
-              width="20"
-              height="20"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M1.5 6.75h21"></path>
-              <path d="M5.25 12h13.5"></path>
-              <path d="M9.75 17.25h4.5"></path>
-            </svg>
+            <img src={sort} className="w-7 h-7 md:w-6 md:h-6" />
             <h4 className="font-semibold text-20px md:text-18px">Sort: </h4>
           </div>
-          <div className="relative">
+          <div className="relative lg:ml-7 lg:z-30">
             <Menu
               open={openMenu}
               handler={setOpenMenu}
@@ -167,7 +153,7 @@ export const Workspace = () => {
               }}
             >
               <MenuHandler>
-                <button className="flex items-center justify-between w-[200px]">
+                <button className="flex items-center justify-between w-[200px] z-50">
                   <p className="text-18px text-black font-ssp">{status}</p>
                   <ChevronDownIcon
                     strokeWidth={3}
@@ -177,7 +163,7 @@ export const Workspace = () => {
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp z-50">
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="Ascending"
@@ -245,11 +231,12 @@ export const Workspace = () => {
             </Menu>
           </div>
         </div>
-        <div className="col-span-4 md:col-span-6 sm:grid-cols-1 flex items-center gap-x-5 h-11">
+
+        {/* Filter */}
+        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:ml-56 md:w-40 md:ml-1  md:col-span-12 md:mt-3">
           <div className="flex items-center gap-x-3">
+            <span className="w-4 h-4 md:mr-1">
             <svg
-              width="20"
-              height="20"
               fill="none"
               stroke="currentColor"
               stroke-linecap="round"
@@ -260,6 +247,7 @@ export const Workspace = () => {
             >
               <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
             </svg>
+            </span>
             <h4 className="font-semibold text-20px md:text-18px">Filter: </h4>
           </div>
           <div className="relative">
@@ -283,7 +271,7 @@ export const Workspace = () => {
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp z-20">
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="All Workspaces"
@@ -334,15 +322,33 @@ export const Workspace = () => {
             </Menu>
           </div>
         </div>
-        <div className="col-span-4 h-11">
+
+        <div className="hidden md:inline-block w-full mt-3">
+          <input
+            type="text"
+            placeholder="search"
+            className="rounded-lg text-18px font-ssp border-gray-300 w-[330px] focus:ring-accent focus:border-accent"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button
+            type="button"
+            className="absolute -mt-8 opacity-100 hover:opacity-75 ml-72"
+            onClick={(e) => setSearchTerm(e.target.value)}
+          >
+            <img src={search} />
+          </button>
+        </div>
+
+        {/* Search Button */}
+        <div className="col-span-4 h-11 -mt-5 lg:absolute lg:h-0 lg:top-[100px] lg:right-[70px] md:hidden">
           <div className="flex justify-end relative">
             <Collapse open={openSearch}>
               <Card>
-                <CardBody className="p-0">
+                <CardBody className="bg-white">
                   <input
                     type="text"
                     placeholder="search"
-                    className={`rounded-lg text-18px font-ssp border-gray-300 w-full focus:ring-accent focus:border-accent transition-transform duration-300 ease-in-out transform ${
+                    className={`rounded-lg text-18px font-ssp border-gray-300 w-full focus:ring-accent focus:border-accent ml-6 -mt-2 transition-transform duration-300 ease-in-out transform ${
                       openSearch ? "translate-x-0" : "translate-x-full"
                     }`}
                     onChange={(e) => setSearchTerm(e.target.value)}
@@ -352,28 +358,19 @@ export const Workspace = () => {
             </Collapse>
             <button
               type="button"
-              className="absolute mr-2 top-3 transition-opacity duration-500 ease-in-out opacity-100 hover:opacity-75"
+              className="absolute mr-2 top-7 transition-opacity duration-500 ease-in-out opacity-100 hover:opacity-75"
               onClick={toggleOpen}
             >
-              <svg
-                width="20"
-                height="20"
-                fill="none"
-                stroke="#526581"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16z"></path>
-                <path d="m21 21-4.35-4.35"></path>
-              </svg>
+              <img src={search} />
             </button>
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-12 gap-5" onScroll={() => handleScroll()}>
+
+      <div
+        className="grid grid-cols-12 gap-5 z-0"
+        onScroll={() => handleScroll()}
+      >
         {loading ? (
           workspaces &&
           workspaces.map((workspace, index) => (
@@ -395,37 +392,15 @@ export const Workspace = () => {
               }
             })
             .map((workspace, index) => (
-              <div className="col-span-4" key={index}>
+              <div className="col-span-4 z-0" key={index}>
                 <WorkspaceCard workspace={workspace} />
               </div>
             ))
         ) : (
-          <div className="col-span-12 absolute bottom-[40%] left-[50%]">
-            <div className="flex flex-col items-center justify-center gap-y-1">
-              <svg
-                width="64"
-                height="41"
-                viewBox="0 0 64 41"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <g transform="translate(0 1)" fill="none" fill-rule="evenodd">
-                  <ellipse
-                    fill="#F5F5F5"
-                    cx="32"
-                    cy="33"
-                    rx="32"
-                    ry="7"
-                  ></ellipse>
-                  <g fill-rule="nonzero" stroke="#D9D9D9">
-                    <path d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"></path>
-                    <path
-                      d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
-                      fill="#FAFAFA"
-                    ></path>
-                  </g>
-                </g>
-              </svg>
-              <p className="font-semibold text-accent text-base">
+          <div className="col-span-12 absolute px-64 md:px-0 md:-ml-5 z-0">
+            <div className="flex flex-col justify-center gap-y-1 items-center h-[400px] w-[570px] lg:w-[170px] lg:h-96 md:w-[330px] md:h-60">
+              <img src={emptybox} className="w-32 h-32 md:w-24 md:h-24" />
+              <p className="font-semibold text-accent text-base md:text-12px">
                 No Workspace
               </p>
             </div>

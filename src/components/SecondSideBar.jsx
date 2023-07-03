@@ -33,8 +33,9 @@ import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
 import { RemoveWorkspaceModal } from "../modal/RemoveWorkspaceModal";
 import { DeleteDocumentModal } from "../modal/DeleteDocumentModal";
 import { api } from "../utils/constant";
+import close from "../assets/dashboard_image/close.svg";
 
-export const SecondSideBar = ({ handleClick }) => {
+export const SecondSideBar = ({ handleClick,sideBar,setSideBar }) => {
   const [open, setOpen] = React.useState(0);
 
   const { workspaces } = useSelector((state) => state.workspace);
@@ -457,20 +458,30 @@ export const SecondSideBar = ({ handleClick }) => {
   }
 
   return (
-    <Card className="fixed h-screen w-[18rem] p-6 ">
+    <Card className="fixed h-screen w-[18rem] p-6 md:w-[210px] z-50 rounded-none">
+
+      {/* Close Button */}
+      <div className="hidden lg:flex lg:right-0 lg:-mt-5 items-end">
+        <div className="hidden lg:inline-block ">
+          <button type="button" onClick={() => setSideBar(!sideBar)}>
+            <img src={close} className="w-8  lg:absolute lg:top-5 lg:right-5 md:w-5 " />
+          </button>
+        </div>
+      </div>
+
       <div className="p-4 flex justify-center">
         <NavLink
           style={{ textDecoration: "none" }}
           to={`/dashboard`}
           className="flex flex-col justify-center items-center"
         >
-          <img src={logo} className="w-24 h-24" />
+          <img src={logo} className="w-24 h-24 md:w-20 md:h-20" />
         </NavLink>
       </div>
       <List className="p-0 space-y-2">
-        <div className="text-18px text-gray-400">DASHBOARD</div>
+        <div className="text-18px text-gray-400 md:text-14px">DASHBOARD</div>
         <Button
-          className="bg-primary rounded-lg p-3 shadow-none font-semibold flex items-center justify-center gap-x-2"
+          className="bg-primary rounded-lg p-3 shadow-none font-semibold flex items-center justify-center gap-x-2 md:text-15px"
           onClick={() => {
             setVisible(!visible);
             handleClick(true);
@@ -521,7 +532,7 @@ export const SecondSideBar = ({ handleClick }) => {
               <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
               <path d="M9 22V12h6v10"></path>
             </svg>
-            <p className="font-semibold text-18px">Home</p>
+            <p className="font-semibold text-18px md:text-15px">Home</p>
           </NavLink>
         </ListItem>
         <ListItem className="p-0">
@@ -547,11 +558,11 @@ export const SecondSideBar = ({ handleClick }) => {
               />
             </svg>
 
-            <p className="font-semibold text-18px">Workspaces</p>
+            <p className="font-semibold text-18px md:text-15px">Workspaces</p>
           </NavLink>
         </ListItem>
         <hr className="my-2 border-blue-gray-50" />
-        <div className="text-18px text-gray-400">WORKSPACE</div>
+        <div className="text-18px text-gray-400 md:text-14px">WORKSPACE</div>
         {workspaces &&
           workspaces.map((workspace, index) => (
             <Accordion
@@ -562,7 +573,7 @@ export const SecondSideBar = ({ handleClick }) => {
                 // getAllDocumentInEachWorkspace(workspace?.workspaceId)
               }
             >
-              <ListItem className="p-0" selected={open === index + 1}>
+              <ListItem className="p-0 -mt-2" selected={open === index + 1}>
                 <ChevronDownIcon
                   strokeWidth={5}
                   className={`mx-auto h-4 w-4 transition-transform ${
