@@ -22,11 +22,13 @@ import { EnableAccountModal } from "../modal/EnableAccountModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Dialog } from "@material-tailwind/react";
+import {EyeInvisibleFilled,EyeOutlined} from"@ant-design/icons"
 
 export const SignIn = () => {
   const [enableAccount, setEnableAccount] = useState(false);
 
   const [open, setOpen] = useState(false);
+  const [visible,setvisible]=useState(false)
 
   const dispatch = useDispatch();
 
@@ -181,6 +183,9 @@ export const SignIn = () => {
                   onBlur={formik.handleBlur}
                   value={formik.values.password}
                 />
+                <div className="p-2 absolute top-1 right-3 " onClick={()=>setvisible(!visible)}>
+                  {visible?<EyeOutlined/>:<EyeInvisibleFilled/>}
+                </div>
                 {formik.touched.password && formik.errors.password ? (
                   <div className="mt-2 text-red-600 lg:w-[370px] lg:text-xl md:w-[219px] md:text-sm">
                     {formik.errors.password}
