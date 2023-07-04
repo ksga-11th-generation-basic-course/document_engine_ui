@@ -132,7 +132,7 @@ export const SignIn = () => {
         />
         <form
           onSubmit={formik.handleSubmit}
-          className="bg-white max-sm:bg-[#EDF9FF] p-12 flex flex-col justify-center gap-y-6 rounded-3xl lg:shadow-lg"
+          className="bg-white max-sm:bg-[#EDF9FF] -ml-4 mr-6 p-12 flex flex-col justify-center gap-y-6 rounded-3xl lg:shadow-lg"
         >
           <div className=" xs:p-0 mx-auto w-[380px] md:max-w-md">
             <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl">
