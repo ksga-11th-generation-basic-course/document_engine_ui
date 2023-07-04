@@ -14,7 +14,7 @@ export const SignOutModal = ({ openSignOut, setOpenSignOut }) => {
     dispatch(signOutSuccess());
     localStorage.removeItem("user");
     localStorage.removeItem("token");
-    navigate("/");
+    navigate("/signin");
   };
 
   return (

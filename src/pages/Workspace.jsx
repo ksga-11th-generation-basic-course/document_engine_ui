@@ -72,6 +72,8 @@ export const Workspace = () => {
 
   const toggleOpen = () => setOpenSearch((cur) => !cur);
 
+  const [tempWorkspaces, setTempWorkspaces] = useState();
+
   useEffect(() => {
     dispatch(
       getAllWorkspace({
@@ -84,6 +86,10 @@ export const Workspace = () => {
     );
     dispatch(getTotalPage(size));
   }, [dispatch, no, size, asc, desc, sortbydatetime]);
+
+  useEffect(() => {
+    setTempWorkspaces(workspaces);
+  }, [workspaces]);
 
   // useEffect(() => {
   //   socket.on("remove_workspace_success", (workspaceId) => {
@@ -374,14 +380,14 @@ export const Workspace = () => {
       </div>
       <div className="grid grid-cols-12 gap-5" onScroll={() => handleScroll()}>
         {loading ? (
-          workspaces &&
-          workspaces.map((workspace, index) => (
+          tempWorkspaces &&
+          tempWorkspaces.map((workspace, index) => (
             <div className="col-span-4" key={index}>
               <CustomSkeleton />
             </div>
           ))
-        ) : workspaces === null ? null : workspaces.length > 0 ? (
-          workspaces
+        ) : tempWorkspaces === null ? null : tempWorkspaces.length > 0 ? (
+          tempWorkspaces
             .filter((workspace) => {
               if (searchTerm === "") {
                 return workspace;

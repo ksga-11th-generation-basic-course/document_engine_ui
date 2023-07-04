@@ -9,25 +9,27 @@ import file from "../../assets/dashboard_image/file.png";
 import delet from "../../assets/dashboard_image/document.png";
 import { DropDownDocument } from "../DropDownDocument";
 import { useNavigate } from "react-router-dom";
-import { Dropdown } from "react-daisyui";
+import { Button, Dropdown } from "react-daisyui";
 
 export const DocumentCardRow = ({
   documentname,
   editDate,
   status,
   documentId,
-  workspaceId
+  workspaceId,
 }) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [visible, setVisible] = useState(false);
   const handleNavigate = () => {
     navigate(`/createdocument/${documentId}/${workspaceId}`);
   };
+
   return (
-    <div className="flex justify-between items-center gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:w-full md:-ml-5 md:px-4 md:w-[350px] md:py-2.5 md:pl-5">
+    <div className="flex justify-between items-center px-3 gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:w-full md:-ml-5 md:w-[330px] md:py-0 md:px-0">
       <div className="w-full h-full px-5 py-4" onClick={handleNavigate}>
         <div className="flex gap-x-5">
-          <h3 className="font-semibold text-22px text-black w-44 md:text-12px md:w-24 line-clamp-1">
+          <h3 className="font-semibold text-22px text-black w-44 md:text-16px md:w-24 line-clamp-1 md:-mt-4">
             {documentname}
           </h3>
           {status ? (
@@ -37,21 +39,32 @@ export const DocumentCardRow = ({
             </div>
           ) : null}
         </div>
-        <p className="text-accent text-16px text-left md:text-10px">
-          Edited {editDate} minutes ago
+        <p className="text-accent text-16px text-left md:text-12px md:-mt-2">
+          Edited 
+          {editDate > 0 ?
+                <span className="ml-1">
+                {editDate >= 60 ? Math.trunc(editDate/60) : editDate}  
+                {editDate >= 120 ? " hours ago" : editDate >= 60 ? " hour ago"  : editDate > 1 ? " minutes ago" : " minute ago"}
+                </span> : " Just Now"  
+        }
         </p>
       </div>
       <div className="relative z-10">
-        <Dropdown className="dropdown">
-          <Dropdown.Toggle>
-            <img src={dotmenu} className="md:w-6" />
-          </Dropdown.Toggle>
-          <Dropdown.Menu className="w-60 bg-white border rounded-lg text-base">
-            <Dropdown.Item onClick={handleNavigate}>
-              <img src={view} />
-              <span>View page</span>
-            </Dropdown.Item>
-          </Dropdown.Menu>
+        <Dropdown className="dropdown relative">
+          <Button
+            className="bg-white hover:bg-gray-50 border-none"
+            onClick={() => setVisible(!visible)}
+          >
+            <img src={dotmenu} className="w-12 " />
+          </Button>
+          {visible ? (
+            <Dropdown.Menu className="w-52 bg-white border rounded-lg absolute right-0 md:w-40">
+              <Dropdown.Item onClick={handleNavigate}>
+                <img src={view} className="md:w-4" />
+                <span className="text-20px md:text-16px">View page</span>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          ) : null}
         </Dropdown>
       </div>
     </div>

@@ -33,6 +33,7 @@ import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
 import { RemoveWorkspaceModal } from "../modal/RemoveWorkspaceModal";
 import { DeleteDocumentModal } from "../modal/DeleteDocumentModal";
 import { api } from "../utils/constant";
+import close from "../assets/dashboard_image/close.svg";
 
 export const SecondSideBar = ({ handleClick }) => {
   const [open, setOpen] = React.useState(0);
@@ -458,6 +459,15 @@ export const SecondSideBar = ({ handleClick }) => {
 
   return (
     <Card className="fixed h-screen w-[18rem] p-6 ">
+      {/* Close Button */}
+      <div className="hidden lg:flex lg:right-0 lg:-mt-5 items-end">
+        <div className="hidden lg:inline-block ">
+          <button type="button" onClick={() => setSideBar(!sideBar)}>
+            <img src={close} className="w-8  lg:absolute lg:top-5 lg:right-5 md:w-5 " />
+          </button>
+        </div>
+      </div>
+
       <div className="p-4 flex justify-center">
         <NavLink
           style={{ textDecoration: "none" }}
@@ -552,7 +562,8 @@ export const SecondSideBar = ({ handleClick }) => {
         </ListItem>
         <hr className="my-2 border-blue-gray-50" />
         <div className="text-18px text-gray-400">WORKSPACE</div>
-        {workspaces &&
+        {workspaces && workspaces.length > 0 ? (
+          workspaces &&
           workspaces.map((workspace, index) => (
             <Accordion
               key={index}
@@ -650,7 +661,39 @@ export const SecondSideBar = ({ handleClick }) => {
               </ListItem>
               {documents && renderDocuments(documents)}
             </Accordion>
-          ))}
+          ))
+        ) : (
+          <div className="absolute bottom-[30%] left-[30%]">
+            <div className="flex flex-col items-center justify-center gap-y-1">
+              <svg
+                width="64"
+                height="41"
+                viewBox="0 0 64 41"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g transform="translate(0 1)" fill="none" fill-rule="evenodd">
+                  <ellipse
+                    fill="#F5F5F5"
+                    cx="32"
+                    cy="33"
+                    rx="32"
+                    ry="7"
+                  ></ellipse>
+                  <g fill-rule="nonzero" stroke="#526581">
+                    <path d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"></path>
+                    <path
+                      d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
+                      fill="#FAFAFA"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+              <p className="font-semibold text-accent text-base">
+                No Workspace
+              </p>
+            </div>
+          </div>
+        )}
       </List>
       <CreatePageModal
         // documentData={documentData}
