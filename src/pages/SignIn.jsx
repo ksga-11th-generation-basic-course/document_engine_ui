@@ -22,6 +22,7 @@ import { EnableAccountModal } from "../modal/EnableAccountModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Dialog } from "@material-tailwind/react";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export const SignIn = () => {
   const [enableAccount, setEnableAccount] = useState(false);
@@ -117,66 +118,82 @@ export const SignIn = () => {
     },
   });
 
+  const [changePassword, setChangePassword] = useState(true);
+  const changeIcon = changePassword === true ? false : true;
+
   return (
-    <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
-      <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
+    <div className="flex px-2 justify-center items-center bg-[#EDF9FF] sm:bg-white text-accent">
+      <div className="flex justify-center items-center min-h-screen overflow-hidden sm:flex sm:justify-center sm:items-center ">
         <Link to={"/"}>
           <img
             src={Logo}
-            className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10"
+            className="absolute top-8 left-10 sm:top-0 sm:left-3 md:top-0 md:left-3"
           />
         </Link>
         <img
-          className="w-[600px] h-[500.16px] mr-5 max-sm:hidden"
+          className="w-[600px] h-[500.16px] mr-5 sm:hidden md:hidden"
           src={LeftImage}
         />
+
         <form
           onSubmit={formik.handleSubmit}
-          className="bg-white max-sm:bg-[#EDF9FF] p-12 flex flex-col justify-center gap-y-6 rounded-3xl lg:shadow-lg"
+          className="bg-white max-sm:bg-[#EDF9FF] p-10 flex flex-col justify-center gap-y-6 rounded-3xl lg:absolute lg:z-10 lg:top-1/2 lg:left-1/2 lg:transform lg:-translate-x-1/2 lg:-translate-y-1/2 xl:absolute xl:z-10 xl:top-1/2 xl:left-1/2 xl:transform xl:-translate-x-1/2 xl:-translate-y-1/2 2xl:absolute 2xl:z-10 2xl:top-1/2 2xl:left-1/2 2xl:transform 2xl:-translate-x-1/2 2xl:-translate-y-1/2"
         >
-          <div className=" xs:p-0 mx-auto w-[380px] md:max-w-md">
-            <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl">
+          <div className=" xs:p-0 mx-auto w-[380px] sm:w-[330px] ">
+            <h1 className="font-bold text-center text-primary text-36px">
               Sign in
             </h1>
-            <div className="px-2 py-30px max-sm:py-8 max-sm:px-8">
-              <label className="font-semibold text-18px block pt-3 pb-2  text-black">
-                Email
+            <div class="mb-1 mt-2 relative sm:flex sm:justify-center sm:items-center ">
+              <input
+                name="email"
+                type="text"
+                placeholder=" "
+                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer "
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.email}
+              />
+              <label
+                for="floating"
+                class="flex gap-2 absolute text-16px text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+              >
+                Your Email
               </label>
-              <div className=" max-sm:flex max-sm:items-center max-sm:border-b pb-25px max-sm:border-primary ">
-                <input
-                  className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:leading-tight max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
-                  type="text"
-                  placeholder="example@gmail.com"
-                  aria-label="Full name"
-                  name="email"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.email}
-                />
-                {formik.touched.email && formik.errors.email ? (
-                  <div className="mt-2 text-red-600">{formik.errors.email}</div>
-                ) : null}
-              </div>
-              <label className="font-semibold text-18px block pt-3 pb-2  text-black">
+            </div>
+              {formik.touched.email && formik.errors.email ? (
+                <div className="h-5 text-red-600">{formik.errors.email}</div>
+              ) : <div className="h-5"></div>}
+            <div class="mb-1 mt-2 relative ">
+              <input
+                placeholder=" "
+                class="block px-2.5 pb-2.5 pt-4 w-full text-sm text-gray-900 bg-transparent rounded-lg border-1 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+                type={changePassword ? "password" : "text"}
+                name="password"
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.password}
+              />
+              <label
+                for="floating"
+                class="flex gap-2 absolute text-16px text-gray-500 dark:text-gray-400 duration-300 transform -translate-y-4 scale-75 top-2 z-10 origin-[0] bg-white dark:bg-gray-900 px-2 peer-focus:px-2 peer-focus:text-blue-600 peer-focus:dark:text-blue-500 peer-placeholder-shown:scale-100 peer-placeholder-shown:-translate-y-1/2 peer-placeholder-shown:top-1/2 peer-focus:top-2 peer-focus:scale-75 peer-focus:-translate-y-4 left-1"
+              >
                 Password
               </label>
-              <div className=" max-sm:flex max-sm:items-center max-sm:border-b pb-25px max-sm:border-primary ">
-                <input
-                  className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
-                  type="password"
-                  placeholder="Password"
-                  aria-label="Full name"
-                  name="password"
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                  value={formik.values.password}
-                />
-                {formik.touched.password && formik.errors.password ? (
-                  <div className="mt-2 text-red-600">
+              
+                <span className="absolute right-3 top-3 cursor-pointer"
+                  onClick={() => {
+                    setChangePassword(changeIcon);
+                  }}
+                >
+                  {changeIcon ? <VisibilityOff /> : <Visibility />}
+                </span>
+            </div>
+            {formik.touched.password && formik.errors.password ? (
+                  <div className="h-1 text-red-600">
                     {formik.errors.password}
                   </div>
-                ) : null}
-              </div>
+                ) : <div className="h-1"></div>}
+            <div className="px-2 py-30px ">
               <Link
                 to={"/forgotpassword"}
                 className="transition text-18px duration-200 text-black w-full py-2.5 mb-2 mt-2 text-left font-semibold inline-block max-sm:pt-4"
@@ -250,8 +267,8 @@ export const SignIn = () => {
             </div>
           </div>
         </form>
+      <img className="w-[600px] h-[600.57px] sm:hidden md:hidden lg:hidden" src={RightImage} />
       </div>
-      <img className="w-[600px] h-[600.57px]  max-sm:hidden" src={RightImage} />
       <div>
         <EnableAccountModal
           enableAccount={enableAccount}
