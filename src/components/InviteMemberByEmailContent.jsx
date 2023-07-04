@@ -5,7 +5,8 @@ import { inviteMemberViaEmail } from "../redux/service/workspaceService/workspac
 import { useDispatch } from "react-redux";
 import { inviteMemberViaEmailSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
 import { Button } from "rsuite";
-
+import { useFormik } from "formik";
+import * as Yup from "yup";
 export const InviteMemberByEmailContent = ({
   openWorkspaceSetting,
   setOpenWorkspaceSetting,
@@ -27,7 +28,17 @@ export const InviteMemberByEmailContent = ({
       console.log(error);
     }
   };
-
+  
+  const formik = useFormik({
+    initialValues: {
+      email: "",   
+    },
+    validationSchema: Yup.object({
+      email: Yup.string()
+        .email("Enter a valid email")
+        .required("Please enter a your email"),
+    }),
+  });
   return (
     <div>
       <div className="flex w-full justify-end">
@@ -42,7 +53,7 @@ export const InviteMemberByEmailContent = ({
         <div className="text-accent">
           <h1 className="font-bold text-34px md:text-24px">Invite Via Email</h1>
           <p className="md:text-16px">
-            Manage permissions and invite people in your workspace
+            Please input email to invite in your workspace
           </p>
         </div>
         <div>
@@ -64,19 +75,24 @@ export const InviteMemberByEmailContent = ({
           <div className="px-6 md:p-3 border-[1px] py-4 space-y-2 rounded-b-lg">
             <div className="flex flex-col gap-y-2">
               <label className="font-semibold">User Email</label>
-              <div className="relative">
+              <form className="relative">
                 <input
                   type="text"
-                  value={email}
+                  value={formik.values.email}
                   placeholder="example@gmail.com"
                   className="font-semibold w-full px-10 rounded-lg border-[1px] border-gray-300 focus:ring-gray-400 focus:border-gray-400"
                   onChange={(e) => setEmail(e.target.value)}
                 />
+                {formik.touched.email && formik.errors.email ? (
+                  <div className="mt-2 text-red-600">
+                    {formik.errors.username}
+                  </div>
+                ) : null}
                 <img
                   src={iconemail}
                   className="w-6 h-6 absolute top-[10px] left-2"
                 />
-              </div>
+              </form>
             </div>
           </div>
         </div>

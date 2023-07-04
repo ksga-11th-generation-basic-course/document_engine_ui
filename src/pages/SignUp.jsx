@@ -73,17 +73,17 @@ export const SignUp = () => {
     },
     validationSchema: Yup.object({
       username: Yup.string()
-        .required("Username is a required field")
-        .min(4, "Must have at least 2 characters"),
+        .required("Username must be to input")
+        .min(4, "Username have 4 characters"),
       email: Yup.string()
         .email("Enter a valid email")
         .required("Please enter a registered email"),
       password: Yup.string()
-        .required("Password is a required field")
+        .required("Password must be to input")
         .min(4, "Password must have more than 4 characters "),
       confirmPassword: Yup.string()
         .oneOf([Yup.ref("password")], "Confirm Password must matched Password")
-        .required("Confirm Password is required"),
+        .required("Confirm Password must be to input"),
     }),
     onSubmit: async (values, { resetForm }) => {
       try {

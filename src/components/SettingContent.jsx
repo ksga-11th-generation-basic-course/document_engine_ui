@@ -78,7 +78,7 @@ export const SettingContent = ({
             Workspace’s Setting
           </h1>
           <p className="md:text-md">
-            Manage permissions and invite people in your workspace
+            Here is your workspace setting
           </p>
         </div>
         <div>
