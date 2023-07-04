@@ -19,12 +19,12 @@ import {
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { signUpSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export const SignUp = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
-
   const handleGoogle = () => {
     signInWithPopup(auth, providerGoogle)
       .then((data) => {
@@ -89,6 +89,10 @@ export const SignUp = () => {
       }
     },
   });
+
+  const [changePassword, setChangePassword] = useState(false);
+  const [changeConPassword, setChangeConPassword] = useState(false);
+
   return (
     <div className="lg:bg-[#EDF9FF] flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
@@ -166,7 +170,7 @@ export const SignUp = () => {
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none 
                   max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
                   lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded md:text-sm"
-                  type="password"
+                  type={!changePassword ? "password" : "text"}
                   placeholder="Password"
                   aria-label="Full name"
                   name="password"
@@ -174,6 +178,13 @@ export const SignUp = () => {
                   onBlur={formik.handleBlur}
                   value={formik.values.password}
                 />
+                 <span className="absolute -mt-11 ml-80 cursor-pointer bg-white p-2"
+                  onClick={() => {
+                    setChangePassword(!changePassword);
+                  }}
+                >
+                  {changePassword ? <Visibility />:<VisibilityOff /> }
+                </span>
                 {formik.touched.password && formik.errors.password ? (
                   <div className="mt-2 text-red-600 lg:text-xl md:text-sm">
                     {formik.errors.password}
@@ -189,7 +200,7 @@ export const SignUp = () => {
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px  rounded-lg px-2 py-3 max-sm:appearance-none 
                   max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
                   lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded md:text-sm"
-                  type="password"
+                  type={!changeConPassword ? "password" : "text"}
                   placeholder="Confirm Password"
                   aria-label="Full name"
                   name="confirmPassword"
@@ -197,6 +208,13 @@ export const SignUp = () => {
                   onBlur={formik.handleBlur}
                   value={formik.values.confirmPassword}
                 />
+                <span className="absolute -mt-11 ml-80 cursor-pointer bg-white p-2"
+                  onClick={() => {
+                    setChangeConPassword(!changeConPassword);
+                  }}
+                >
+                  {changeConPassword ? <Visibility />:<VisibilityOff />}
+                </span>
                 {formik.touched.confirmPassword &&
                 formik.errors.confirmPassword ? (
                   <div className="mt-2 text-red-600 lg:text-xl md:text-sm">

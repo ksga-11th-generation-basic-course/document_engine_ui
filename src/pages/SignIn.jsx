@@ -22,11 +22,13 @@ import { EnableAccountModal } from "../modal/EnableAccountModal";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { Dialog } from "@material-tailwind/react";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
 
 export const SignIn = () => {
   const [enableAccount, setEnableAccount] = useState(false);
 
   const [open, setOpen] = useState(false);
+  const [visible,setvisible]=useState(false)
 
   const dispatch = useDispatch();
 
@@ -117,6 +119,9 @@ export const SignIn = () => {
     },
   });
 
+  const [changePassword, setChangePassword] = useState(true);
+  const changeIcon = changePassword === true ? false : true;
+
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
@@ -169,20 +174,25 @@ export const SignIn = () => {
                 Password
               </label>
               <div className=" max-sm:flex max-sm:items-center max-sm:border-b pb-25px max-sm:border-primary lg:mr-32 ">
-                <input
-                  className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg 
-                  px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3 
-                   leading-tight focus:outline-none lg:w-[370px] lg:h-12 lg:text-xl md:rounded-md md:h-8 md:w-[210px] md:text-sm"
-                  type="password"
-                  placeholder="password"
+              <input
+                  className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none"
+                  type={changePassword ? "password" : "text"}
+                  placeholder="Password"
                   aria-label="Full name"
                   name="password"
                   onChange={formik.handleChange}
                   onBlur={formik.handleBlur}
                   value={formik.values.password}
                 />
+                <span className="absolute -mt-11 ml-80 cursor-pointer bg-white p-2"
+                  onClick={() => {
+                    setChangePassword(changeIcon);
+                  }}
+                >
+                  {changeIcon ? <VisibilityOff /> : <Visibility />}
+                </span>
                 {formik.touched.password && formik.errors.password ? (
-                  <div className="mt-2 text-red-600 lg:w-[370px] lg:text-xl md:w-[219px] md:text-sm">
+                  <div className="mt-2  text-red-600 md:text-sm">
                     {formik.errors.password}
                   </div>
                 ) : null}

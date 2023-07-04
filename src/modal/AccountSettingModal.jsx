@@ -65,7 +65,6 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
       const user = await editProfileInformation(username, url);
       dispatch(editProfileInformationSuccess(user));
       setOpenSetting(!openSetting);
-      document.getElementById("changename").reset();
     } catch (error) {
       console.log(error);
     }

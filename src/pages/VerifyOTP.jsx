@@ -15,6 +15,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
 import { verifySuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
+import arrowBack from "../../src/assets/signin_image/arrowback.svg"
 
 const validate = (values) => {
   const errors = {};
@@ -127,10 +128,13 @@ export const VerifyOTP = () => {
           />
           {/* Verify Email Address */}
           <form
-            className="bg-white  mt-36 flex flex-col justify-center  rounded-3xl shadow-md px-10 py-20 pb-28 lg:mt-48 md:ml-2"
+            className="bg-white  mt-36 flex flex-col justify-center  rounded-3xl shadow-md px-20 py-20 lg:mt-48 md:ml-2"
           >
-            <div className="  mx-auto  md:w-full md:max-w-md  ">
+            <div className="  mx-auto  md:w-full md:max-w-md -mt-7">
               <div className=" w-full  ">
+                  <Link to={"/signup"}>
+                          <img src={arrowBack} className="w-6  mt-5 -ml-12 absolute" />
+                  </Link>
                 <h1 className="font-bold text-center text-primary text-36px lg:-mt-8 lg:text-3xl md:text-28px md:-mb-4">
                   Verify Email Address
                 </h1>

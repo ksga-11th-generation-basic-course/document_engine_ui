@@ -13,11 +13,11 @@ export const AboutUs = () => {
       </div>
 
       {/*  */}
-      <div className="SlideBar pt-[76px] sm:pt-[70px]  md:pt-[32px] lg:pt-[78px] lg:-mt-2">
+      <div className="SlideBar pt-[76px] sm:pt-[70px]  md:pt-[32px] lg:pt-[70px]">
         <div className="SlideBar2 relative ">
-          <div className="absolute left-0  text-6xl xl:top-24 font-bold top-44  text-primary px-20 sm:-left-10 lg:top-12 lg:-left-5 lg:text-5xl  sm:text-24px sm:top-2">
-            <h1>What & Who</h1>
-            <h1 className="md:-mt-7">We Are</h1>
+          <div className="absolute left-0  text-6xl xl:top-24 font-bold top-44  text-primary px-20 sm:-left-10 lg:top-12 lg:-left-5 lg:text-5xl  sm:text-24px sm:top-7 sm:leading-6">
+            <h1 className="sm:whitespace-nowrap sm:pb-2">What & Who</h1>
+            <h1 className="sm:whitespace-nowrap">We Are</h1>
           </div>
         </div>
 
@@ -37,11 +37,11 @@ export const AboutUs = () => {
               All your <span className="text-primary pr-2">Documents</span>in
               one <span className="text-primary "> place</span>
             </h1>
-            <h1 className="text-accent md:-mt-7">
+            <h1 className="text-accent">
               and<span className="text-primary p-2">safe! </span>
             </h1>
           </div>
-          <div className="pt-10 lg:text-xl leading-normal xl:pb-5 text-2xl w-96 sm:text-12px sm:-ml-5 sm:mt-3 sm:pr-16 text-[#575E69] md:pt-0">
+          <div className="pt-10 lg:text-xl leading-normal xl:pb-5 text-2xl w-96 sm:pt-2 sm:text-12px sm:-ml-5 sm:mt-3 sm:pr-16 text-[#575E69] md:leading-6">
             DocEngine is a system that includes the possibility to customize the
             document with auto-saving and ease when the users want to share
             those documents within the group.
@@ -88,7 +88,7 @@ export const AboutUs = () => {
         <h1 className="text-4xl text-center w-full pt-10 max-sm:pt-2 sm:text-20px text-accent font-bold">
           Our<span className="text-primary pl-2">Members </span>
         </h1>
-        <div className="Member flex justify-center items-center lg:inline-block lg:ml-24 lg:mt-14 sm:px-5 md:ml-0 md:mt-5">
+        <div className="Member my-20 flex justify-center items-center lg:inline-block lg:ml-24 lg:mt-14 sm:px-5 md:ml-0 md:mt-5">
           <div className="text-22px space-y-7 md:text-12px">
             <div className=" bg-[#EDF9FF] w-fit px-4 py-2 rounded-2xl space-x-2 ml-16 lg:ml-0">
               <span className="font-semibold">KHENG SOVANAK</span>
@@ -155,7 +155,7 @@ export const AboutUs = () => {
       </div>
 
       {/* Footer */}
-      <div className="lg:mt-52 md:mt-32">
+      <div className="lg:mt-52">
         <Footer />
       </div>
     </div>
