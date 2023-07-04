@@ -137,7 +137,7 @@ export const Workspace = () => {
         <p className="font-semibold text-20px md:text-18px">Workspaces</p>
       </div>
 
-      <div className="grid grid-cols-12 mt-7 md:mt-5">
+      <div className="grid grid-cols-12 mt-7 md:mt-5 mb-5">
         {/* Sort */}
         <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center  md:ml-0 md:w-36 md:col-span-12">
           <div className="flex items-center gap-x-3">

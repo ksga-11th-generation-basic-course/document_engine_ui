@@ -152,3 +152,7 @@ section .wave.wave4 {
   animation-delay: -5s;
   bottom: 20px;
 }
+
+#dropdown{
+  background-color: white;
+}

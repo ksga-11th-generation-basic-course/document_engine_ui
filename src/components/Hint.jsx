@@ -19,7 +19,7 @@ export const Hint = () => {
     <div className="md:-ml-5 ">
           <div className="mb-5 mt-7">
               <h1 className="font-bold text-accent text-44px md:text-22px">Hi, {user && user.userName}!</h1>
-              <p className="-mt-1 text-accent text-20px md:text-11px md:-mt-4">Welcome to DocEngine</p>
+              <p className="-mt-1 text-accent text-20px md:text-12px md:-mt-4">Welcome to DocEngine</p>
           </div>
           
           <div className="relative lg:w-[680px] md:w-[330px]">

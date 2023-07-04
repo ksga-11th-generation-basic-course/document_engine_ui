@@ -9,25 +9,27 @@ import file from "../../assets/dashboard_image/file.png";
 import delet from "../../assets/dashboard_image/document.png";
 import { DropDownDocument } from "../DropDownDocument";
 import { useNavigate } from "react-router-dom";
-import { Dropdown } from "react-daisyui";
+import { Button, Dropdown } from "react-daisyui";
 
 export const DocumentCardRow = ({
   documentname,
   editDate,
   status,
   documentId,
-  workspaceId
+  workspaceId,
 }) => {
   const navigate = useNavigate();
   const [open, setOpen] = useState(false);
+  const [visible, setVisible] = useState(false);
   const handleNavigate = () => {
     navigate(`/createdocument/${documentId}/${workspaceId}`);
   };
+
   return (
-    <div className="flex justify-between items-center gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:w-full md:-ml-5 md:px-4 md:w-[350px] md:py-2.5 md:pl-5">
+    <div className="flex justify-between items-center px-3 gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:w-full md:-ml-5 md:w-[330px] md:py-0 md:px-0">
       <div className="w-full h-full px-5 py-4" onClick={handleNavigate}>
         <div className="flex gap-x-5">
-          <h3 className="font-semibold text-22px text-black w-44 md:text-12px md:w-24 ">
+          <h3 className="font-semibold text-22px text-black w-44 md:text-16px md:w-24 line-clamp-1 md:-mt-4">
             {documentname}
           </h3>
           {status ? (
@@ -37,43 +39,32 @@ export const DocumentCardRow = ({
             </div>
           ) : null}
         </div>
-        <p className="text-accent text-16px text-left md:text-10px">
-          Edited {editDate}
+        <p className="text-accent text-16px text-left md:text-12px md:-mt-2">
+          Edited 
+          {editDate > 0 ?
+                <span className="ml-1">
+                {editDate >= 60 ? Math.trunc(editDate/60) : editDate}  
+                {editDate >= 120 ? " hours ago" : editDate >= 60 ? " hour ago"  : editDate > 1 ? " minutes ago" : " minute ago"}
+                </span> : " Just Now"  
+        }
         </p>
       </div>
       <div className="relative z-10">
-        <Dropdown className="dropdown">
-          <button className="mr-10">
-          <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="5"
-                    height="16"
-                    viewBox="0 0 5 16"
-                    fill="none"
-                  >
-                    <path
-                      d="M1.79199 2C1.79199 2.55228 2.23971 3 2.79199 3C3.34428 3 3.79199 2.55228 3.79199 2C3.79199 1.44772 3.34428 1 2.79199 1C2.23971 1 1.79199 1.44772 1.79199 2Z"
-                      stroke="#526581"
-                      stroke-width="2"
-                    />
-                    <path
-                      d="M1.79199 8C1.79199 8.55228 2.23971 9 2.79199 9C3.34428 9 3.79199 8.55228 3.79199 8C3.79199 7.44772 3.34428 7 2.79199 7C2.23971 7 1.79199 7.44772 1.79199 8Z"
-                      stroke="#526581"
-                      stroke-width="2"
-                    />
-                    <path
-                      d="M1.79199 14C1.79199 14.5523 2.23971 15 2.79199 15C3.34428 15 3.79199 14.5523 3.79199 14C3.79199 13.4477 3.34428 13 2.79199 13C2.23971 13 1.79199 13.4477 1.79199 14Z"
-                      stroke="#526581"
-                      stroke-width="2"
-                    />
-                  </svg>
-          </button>
-          <Dropdown.Menu className="w-60 bg-white border rounded-lg text-base">
-            <Dropdown.Item onClick={handleNavigate}>
-              <img src={view} />
-              <span>View page</span>
-            </Dropdown.Item>
-          </Dropdown.Menu>
+        <Dropdown className="dropdown relative">
+          <Button
+            className="bg-white hover:bg-gray-50 border-none"
+            onClick={() => setVisible(!visible)}
+          >
+            <img src={dotmenu} className="w-12 " />
+          </Button>
+          {visible ? (
+            <Dropdown.Menu className="w-52 bg-white border rounded-lg absolute right-0 md:w-40">
+              <Dropdown.Item onClick={handleNavigate}>
+                <img src={view} className="md:w-4" />
+                <span className="text-20px md:text-16px">View page</span>
+              </Dropdown.Item>
+            </Dropdown.Menu>
+          ) : null}
         </Dropdown>
       </div>
     </div>
