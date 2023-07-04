@@ -16,7 +16,7 @@ import { ContactUs } from "./pages/ContactUS";
 import { NotFound } from "./pages/NotFound";
 import EnableAccount from "./pages/EnableAccount";
 import { EnableAccVerifyCode } from "./pages/EnableAccVerifyCode";
-import DownloadFile from "./pages/DownloadFile";
+import ExportFile from "./pages/ExportFile";
 
 
 function App() {
@@ -37,7 +37,7 @@ function App() {
         <Route path="/enableaccount" element={<EnableAccount />} />
         <Route path="/enableaccountverifycode" element={<EnableAccVerifyCode/>} />
         <Route path="/landing" element={<Landing />} />
-        <Route path="/downloadfile" element={<DownloadFile />} />
+        <Route path="/exportfile" element={<ExportFile />} />
 
 
 

@@ -1,4 +1,3 @@
-
 import React from "react";
 import Download from "../assets/images/Icon/download.svg";
 import Docker from "../assets/workspace_image/docker.svg"
@@ -9,8 +8,8 @@ const MD_FILE_URL = " http://localhost:5174/file_md.md";
 // const PNG_FILE_URL = " http://localhost:5173/Moby-logo.png";
 
 
-function DownloadFile() {
-  const downloadFileAtURL = (url) => {
+function ExportFile() {
+    const downloadFileAtURL = (url) => {
     const fileName = url.split("/").pop();
     const aTag = document.createElement("a");
     aTag.href = url;
@@ -84,4 +83,4 @@ function DownloadFile() {
   );
 }
 
-export default DownloadFile;
+export default ExportFile;
