@@ -108,7 +108,7 @@ export const ResetForgotPassword = () => {
                               value={formik.values.newPassword}
                               className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 
                               max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                              lg:text-lg lg:text-20px md:text-sm  md:w-[225px] md:h-[35px] md:-ml-36"
+                              lg:text-lg lg:text-20px md:text-sm  md:w-[225px] md:h-[35px] md:-ml-36 md:-mt-1"
                             />
                             <span
                               className="absolute -mt-11 ml-36 cursor-pointer bg-white p-2 lg:ml-44"
@@ -143,7 +143,7 @@ export const ResetForgotPassword = () => {
                               value={formik.values.newConfirmPassword}
                               className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 
                               max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                              lg:text-lg lg:text-20px md:text-sm  md:w-[225px] md:h-[35px] md:-ml-5"
+                              lg:text-lg lg:text-20px md:text-sm  md:w-[225px] md:h-[35px] md:-ml-5  md:-mt-1"
                             />
                             <span
                               className="absolute -mt-11 ml-36 cursor-pointer bg-white p-2 lg:ml-40"

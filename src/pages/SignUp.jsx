@@ -117,14 +117,14 @@ export const SignUp = () => {
               Sign Up
             </h1>
             <div className="px-2 py-5 max-sm:py-8 max-sm:px-8 ">
-              <label className="font-semibold text-lg block pb-2  text-black lg:text-2xl md:text-lg">
+              <label className="font-semibold text-lg block pb-2  text-black lg:text-2xl md:text-16px">
                 Username
               </label>
-              <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary">
+              <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary md:-mt-2">
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3
                   max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                  lg:text-xl lg:h-12  md:h-8 md:w-[210px] md:rounded md:text-sm"
+                  lg:text-xl lg:h-12  md:h-8 md:w-[210px] md:rounded-md md:text-sm"
                   type="text"
                   placeholder="Username"
                   aria-label="Full name"
@@ -140,14 +140,14 @@ export const SignUp = () => {
                 ) : null}
               </div>
               {/* <input type="username" className="border border-primary max-sm:bg-transparent max-sm:appearance-none max-sm:border-none max-sm:focus:outline-none outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Username' /> */}
-              <label className="font-semibold text-lg block pt-3 pb-2 text-black lg:text-2xl md:text-lg">
+              <label className="font-semibold text-lg block pt-3 pb-2 text-black lg:text-2xl md:text-16px">
                 Email
               </label>
-              <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
+              <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary md:-mt-2">
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none
                   max-sm:bg-transparent max-sm:leading-tight max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded md:text-sm"
+                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded-md md:text-sm"
                   type="text"
                   placeholder="example@gmail.com"
                   aria-label="Full name"
@@ -163,14 +163,14 @@ export const SignUp = () => {
                 ) : null}
               </div>
               {/* <input type="email" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='example@gmail.com' /> */}
-              <label className="font-semibold text-lg block pt-3 pb-2  text-black lg:text-2xl md:text-lg">
+              <label className="font-semibold text-lg block pt-3 pb-2  text-black lg:text-2xl md:text-16px">
                 Password
               </label>
-              <div className="  max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary">
+              <div className="  max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary md:-mt-2">
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none 
                   max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded md:text-sm"
+                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded-md md:text-sm"
                   type={!changePassword ? "password" : "text"}
                   placeholder="Password"
                   aria-label="Full name"
@@ -196,14 +196,14 @@ export const SignUp = () => {
                 ) : null}
               </div>
               {/* <input type="text" className="border border-primary outline-blue-500 rounded-lg px-2 py-3 mt-1 mb-3 text-sm w-full" placeholder='Password' /> */}
-              <label className="font-semibold text-lg block pt-3 pb-2 text-black lg:text-2xl md:text-lg">
+              <label className="font-semibold text-lg block pt-3 pb-2 text-black lg:text-2xl md:text-16px">
                 Confirm Password
               </label>
-              <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary ">
+              <div className=" max-sm:flex max-sm:items-center max-sm:border-b max-sm:border-primary md:-mt-2">
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px  rounded-lg px-2 py-3 max-sm:appearance-none 
                   max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded md:text-sm"
+                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded-md md:text-sm"
                   type={!changeConPassword ? "password" : "text"}
                   placeholder="Confirm Password"
                   aria-label="Full name"

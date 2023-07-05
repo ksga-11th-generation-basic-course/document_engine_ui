@@ -102,7 +102,7 @@ export const ForgotPassword = () => {
                                 type="text"
                                 placeholder="name@gmail.com"
                                 className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 max-sm:appearance-none
-                                     max-sm:bg-transparent max-sm:border-none w-full text-[#] mr-3  leading-tight focus:outline-none md:text-sm md:h-[37px] "
+                                     max-sm:bg-transparent max-sm:border-none w-full text-[#] mr-3  leading-tight focus:outline-none md:text-sm md:-mt-1 md:h-[37px] "
                                 aria-label="Full name"
                                 onChange={formik.handleChange}
                                 onBlur={formik.handleBlur}

@@ -151,7 +151,7 @@ export const SignIn = () => {
               <label className="font-semibold text-20px block pt-3 pb-2  text-black lg:text-xl md:text-base ">
                 Email
               </label>
-              <div className=" max-sm:flex max-sm:items-center max-sm:border-b pb-25px max-sm:border-primary lg:mr-32 ">
+              <div className=" max-sm:flex max-sm:items-center max-sm:border-b pb-25px max-sm:border-primary lg:mr-32 md:-mt-2">
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border
                    rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:leading-tight max-sm:border-none 
@@ -173,7 +173,7 @@ export const SignIn = () => {
               <label className="font-semibold text-20px block pt-3 pb-2  text-black lg:text-xl md:text-base">
                 Password
               </label>
-              <div className=" max-sm:flex max-sm:items-center max-sm:border-b pb-25px max-sm:border-primary">
+              <div className=" max-sm:flex max-sm:items-center max-sm:border-b pb-25px max-sm:border-primary md:-mt-2">
               <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border
                   rounded-lg px-2 py-3 max-sm:appearance-none max-sm:bg-transparent max-sm:leading-tight max-sm:border-none 

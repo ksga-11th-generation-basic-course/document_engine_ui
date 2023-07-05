@@ -102,7 +102,7 @@ export const EnableAccount = () => {
                         name="email"
                         aria-label="Full name"
                         className="border focus:outline-none h-[46px] border-[#1E9CEF] rounded-lg focus:border-primary w-full  mt-2  text-18px block
-                            lg:text-xl lg:h-13 md:w-[225px] md:text-sm md:h-9"
+                            lg:text-xl lg:h-13 md:w-[225px] md:text-sm md:h-9  md:mt-1"
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.email}
