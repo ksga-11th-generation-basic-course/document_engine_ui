@@ -12,6 +12,7 @@ import {
   getDocumentByDocumentId,
   setCurrentEditing,
 } from "../redux/service/documentService/documentService";
+import view from "../assets/document_image/view.svg";
 
 import {
   Menu,
@@ -42,6 +43,8 @@ export const NavBarProfile = () => {
 
   const document = useSelector((state) => state.document.document);
 
+  console.log(document?.status);
+
   const dispatch = useDispatch();
 
   const param = useParams();
@@ -64,6 +67,25 @@ export const NavBarProfile = () => {
     setOpenNav(status);
   };
 
+  const handleStatus = (status) => {
+    switch (status) {
+      case true:
+        return (
+          <p className="text-18px text-black font-ssp flex gap-x-2">
+            <img src={pen} alt="" />
+            Editor
+          </p>
+        );
+      case false:
+        return (
+          <p className="text-18px text-black font-ssp flex gap-x-2">
+            <img src={view} alt="" />
+            Viewer
+          </p>
+        );
+    }
+  };
+
   return (
     <div
       className="w-full flex justify-end items-center py-3 px-14 2xs:px-24 gap-x-5 bg-white"
@@ -78,10 +100,7 @@ export const NavBarProfile = () => {
           <Menu open={openMenu} handler={setOpenMenu}>
             <MenuHandler>
               <button className="flex items-center justify-between w-[250px] border-[1px] rounded-lg p-3">
-                <p className="text-18px text-black font-ssp flex gap-x-2">
-                  <img src={pen} alt="" />
-                  Editing
-                </p>
+                {handleStatus(document?.status)}
                 <ChevronDownIcon
                   strokeWidth={3}
                   className={`h-4 w-4 transition-transform ${

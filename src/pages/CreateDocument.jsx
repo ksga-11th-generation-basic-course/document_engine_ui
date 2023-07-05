@@ -32,6 +32,7 @@ import Stack from "@mui/material/Stack";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { DocumentPermissionModal } from "../modal/DocumentPermissionModal";
 import { DocumentHistoryModal } from "../modal/DocumentHistoryModal";
+import { getHistoryByDocumentId } from "../redux/service/historyService/historyService";
 
 export const CreateDocument = () => {
   const [openPermission, setOpenPermission] = useState(false);
@@ -58,6 +59,7 @@ export const CreateDocument = () => {
     dispatch(getTagByDocumentId(documentId));
     dispatch(getTagInEachWorkspace(workspaceId));
     dispatch(getDocumentByPageId(document?.pageId));
+    dispatch(getHistoryByDocumentId(document?.documentId));
   }, [documentId, workspaceId, document?.pageId]);
 
   useEffect(() => {
@@ -211,7 +213,7 @@ export const CreateDocument = () => {
               <div className="flex">
                 <span className="flex gap-x-3 w-36">
                   <img src={CreateBy} className="w-[17px]" alt="" />
-                  <p>Create By</p>
+                  <p>Created By</p>
                 </span>
                 <p className="text-black">{username}</p>
               </div>
@@ -220,7 +222,7 @@ export const CreateDocument = () => {
               <div className="flex">
                 <span className="flex gap-x-3 w-36">
                   <img src={CreateDate} className="w-[17px]" alt="" />
-                  <p>Create Date</p>
+                  <p>Created Date</p>
                 </span>
                 <p className="text-black">{timestamp}</p>
               </div>

@@ -188,7 +188,6 @@ export const Workspace = () => {
                       setDesc(false);
                       setStatus("Ascending");
                     }}
-                    defaultChecked
                   />
                 </MenuItem>
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
@@ -204,10 +203,11 @@ export const Workspace = () => {
                     }}
                   />
                 </MenuItem>
+                <hr className="my-2 border-blue-gray-50" />
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="This week"
-                    name="type"
+                    name="this"
                     label={<span className="text-18px">This week</span>}
                     className="checked:bg-primary"
                     onClick={() => {
@@ -219,7 +219,7 @@ export const Workspace = () => {
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="This month"
-                    name="type"
+                    name="this"
                     label={<span className="text-18px">This month</span>}
                     className="checked:bg-primary"
                     onClick={() => {
@@ -231,7 +231,7 @@ export const Workspace = () => {
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="This year"
-                    name="type"
+                    name="this"
                     label={<span className="text-18px">This year</span>}
                     className="checked:bg-primary"
                     onClick={() => {

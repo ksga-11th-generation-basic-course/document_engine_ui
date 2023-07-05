@@ -137,7 +137,7 @@ const documentSlice = createSlice({
       if (state.document && state.document.documentId === documentId) {
         state.document.status = status;
       }
-      console.log(state.document)
+      // console.log(state.document)
       state.error = null;
     });
     builder.addCase(setCurrentEditing.rejected, (state, action) => {

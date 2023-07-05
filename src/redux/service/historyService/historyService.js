@@ -52,7 +52,7 @@ export const restoreDocument = async (historyId, documentId) => {
     );
     return response.data.response;
   } catch (error) {
-    console.log(error);
+    // console.log(error);
     throw error.response.data.detail;
   }
 };
@@ -67,7 +67,7 @@ export const getBlockHistory = createAsyncThunk(
           "Content-Type ": "application/json",
         },
       });
-      console.log(response.data.payload);
+      // console.log(response.data.payload);
       return response.data.payload;
     } catch (error) {
       console.log(error)
@@ -86,7 +86,7 @@ export const getHistoryByHistoryId = createAsyncThunk(
           "Content-Type ": "application/json",
         },
       });
-      console.log(response.data.payload);
+      // console.log(response.data.payload);
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;

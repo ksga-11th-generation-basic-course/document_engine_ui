@@ -11,12 +11,8 @@ export const DocumentHistoryContent = ({
   documentId,
 }) => {
   const { histories } = useSelector((state) => state.history);
-  const dispatch = useDispatch();
-  useEffect(() => {
-    if (documentId) {
-      dispatch(getHistoryByDocumentId(documentId));
-    }
-  }, [dispatch, documentId]);
+
+  console.log(histories)
 
   return (
     <div>
