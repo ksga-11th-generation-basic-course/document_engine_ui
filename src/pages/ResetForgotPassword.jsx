@@ -64,19 +64,19 @@ export const ResetForgotPassword = () => {
         <div className="flex items-center justify-center">
           <div className="flex flex-row justify-center  items-center relative min-h-screen  overflow-hidden">
             {/* <!-- component --> */}
-            <div className="flex flex-col items-center">
+            <div className="flex flex-col items-center lg:-ml-20 md:-ml-10">
               <div className="flex  items-center mt-20 w-full lg:-mt-20 md:-mt-40">
                 {/*Form Set New Password */}
                 <form
                   onSubmit={formik.handleSubmit}
-                  className="bg-[#FFFFFF] px-24 py-10 flex flex-col justify-center gap-y-6 shadow rounded-3xl
-          lg:w-[550px] lg:mt-48 lg:p-8 lg:ml-10 lg:mb-28 md:w-[310px] md:mt-36 md:mr-8  md:mb-4 md:py-5"
+                  className="bg-[#FFFFFF] px-20 py-14 flex flex-col justify-center gap-y-6 shadow rounded-3xl
+          lg:w-[520px] lg:mt-48 lg:p-10 lg:ml-20 lg:mb-28 md:w-[310px] md:mt-36 md:mr-8  md:mb-4 md:py-5"
                 >
                   <div className="">
                     <Link to={"/verifyforgotpassword"}>
                       <img
                         src={arrowBack}
-                        className="w-6  mt-2 -ml-16 absolute lg:mt-8 lg:ml-0 md:w-4 md:-ml-3"
+                        className="w-6  mt-2 -ml-8 absolute lg:mt-8 lg:ml-2 md:w-4 md:-ml-3"
                       />
                     </Link>
 
@@ -95,8 +95,8 @@ export const ResetForgotPassword = () => {
                             {/* <p class="text-l text-center text-gray-500">password reset instructor</p>   */}
                           </div>
 
-                          <div className="relative -mx-5 w-96 md:ml-2">
-                            <p className="font-semibold text-left pt-5 pb-2 text-20px text-black lg:text-xl lg:text-22px md:text-base md:pt-1 md:pl-1">
+                          <div className="relative w-96 md:ml-0 ">
+                            <p className="font-semibold text-left pt-5 pb-2 text-20px text-black lg:text-xl lg:text-22px md:text-base md:pt-1">
                               New Password
                             </p>
                             <input
@@ -111,15 +111,31 @@ export const ResetForgotPassword = () => {
                               lg:text-lg lg:text-20px md:text-sm  md:w-[225px] md:h-[35px] md:-ml-36 md:-mt-1"
                             />
                             <span
-                              className="absolute -mt-11 ml-36 cursor-pointer bg-white p-2 lg:ml-44"
+                              className="absolute -mt-11 ml-36 cursor-pointer bg-white p-2 lg:ml-36 md:-ml-10 md:mt-0 md:p-1"
                               onClick={() => {
                                 setChangePassword(!changePassword);
                               }}
                             >
                               {changePassword ? (
-                                <Visibility />
+                                <svg
+                                  className="w-6 md:w-4 fill-gray-500"
+                                  focusable="false"
+                                  aria-hidden="true"
+                                  viewBox="0 0 24 24"
+                                  data-testid="VisibilityIcon"
+                                >
+                                  <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
+                                </svg>
                               ) : (
-                                <VisibilityOff />
+                                <svg
+                                  className="w-6 md:w-4 fill-gray-500"
+                                  focusable="false"
+                                  aria-hidden="true"
+                                  viewBox="0 0 24 24"
+                                  data-testid="VisibilityOffIcon"
+                                >
+                                  <path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78 3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"></path>
+                                </svg>
                               )}
                             </span>
                             {formik.touched.newPassword &&
@@ -130,8 +146,8 @@ export const ResetForgotPassword = () => {
                             ) : null}
                           </div>
 
-                          <div className="relative -mx-5 md:ml-2 md:-mt-2">
-                            <p className="font-semibold text-left pt-5 pb-2 text-black text-20px lg:text-xl lg:text-22px md:text-base md:pl-1">
+                          <div className="relative md:ml-0 md:-mt-2">
+                            <p className="font-semibold text-left pt-5 pb-2 text-black text-20px lg:text-xl lg:text-22px md:text-base">
                               Confirm New Password
                             </p>
                             <input
@@ -143,18 +159,34 @@ export const ResetForgotPassword = () => {
                               value={formik.values.newConfirmPassword}
                               className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 
                               max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                              lg:text-lg lg:text-20px md:text-sm  md:w-[225px] md:h-[35px] md:-ml-5  md:-mt-1"
+                              lg:text-lg lg:text-20px md:text-sm  md:w-[225px] md:h-[35px] md:ml-0  md:-mt-1"
                             />
                             <span
-                              className="absolute -mt-11 ml-36 cursor-pointer bg-white p-2 lg:ml-40"
+                              className="absolute -mt-11 ml-36 cursor-pointer bg-white p-2 lg:ml-36 md:ml-20 md:-mt-8 md:p-1"
                               onClick={() => {
                                 setChangeConPassword(!changeConPassword);
                               }}
                             >
                               {changeConPassword ? (
-                                <Visibility />
+                                <svg
+                                  className="w-6 md:w-4 fill-gray-500"
+                                  focusable="false"
+                                  aria-hidden="true"
+                                  viewBox="0 0 24 24"
+                                  data-testid="VisibilityIcon"
+                                >
+                                  <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path>
+                                </svg>
                               ) : (
-                                <VisibilityOff />
+                                <svg
+                                  className="w-6 md:w-4 fill-gray-500"
+                                  focusable="false"
+                                  aria-hidden="true"
+                                  viewBox="0 0 24 24"
+                                  data-testid="VisibilityOffIcon"
+                                >
+                                  <path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78 3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"></path>
+                                </svg>
                               )}
                             </span>
                             {formik.touched.newConfirmPassword &&
@@ -165,7 +197,7 @@ export const ResetForgotPassword = () => {
                             ) : null}
                           </div>
 
-                          <div className="mt-5 -mx-5">
+                          <div className="mt-5">
                             <button
                               type="submit"
                               className="font-semibold text-20px transition duration-200 bg-primary hover:bg-btn-primary text-white w-full px-2 py-3 
