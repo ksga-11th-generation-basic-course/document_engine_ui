@@ -15,8 +15,6 @@ export const ForgotPassword = () => {
 
   const dispatch = useDispatch();
 
-  const [email, setEmail] = useState();
-
   const formik = useFormik({
     initialValues: {
       email: "",
@@ -28,7 +26,6 @@ export const ForgotPassword = () => {
     }),
     onSubmit: async (values, { resetForm }) => {
       try {
-        console.log(values.email);
         const user = await forgotPassword(values.email);
         dispatch(forgotPasswordSuccess(user));
         navigate("/verifyforgotpassword");
@@ -54,14 +51,15 @@ export const ForgotPassword = () => {
 
   return (
     <div className="bg-[#EDF9FF] h-screen ">
-      <div className="flex justify-center items-center  relative text-[#37352F] ">
+      <div className="flex justify-center items-center  relative text-[#37352F]">
+      
+        <img src={Forgot1} className="hidden  lg:hidden lg:z-0 lg:mt-60" />
         <Link to={"/"}>
           <img
             src={Logo}
-            className="absolute top-8 left-16 md:left-14 md:w-[60px]"
+            className="absolute top-8 left-36 max-sm:left-3 max-sm:top-0 lg:-ml-9 md:pl-2 md:w-[60px] md:h-[60px]"
           />
         </Link>
-        <img src={Forgot1} className="hidden  lg:hidden lg:z-0 lg:mt-60" />
 
         {/* Background Image */}
         <div className="flex flex-col  mt-52 items-center justify-center w-[600px] h-[500px] relative lg:w-[250px] md:-mt-6 md:w-[12px] ">

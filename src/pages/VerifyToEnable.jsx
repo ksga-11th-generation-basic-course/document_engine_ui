@@ -15,6 +15,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
 import { verifyToEnableAccountSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
+import arrowBack from "../../src/assets/signin_image/arrowback.svg";
 
 const validate = (values) => {
   const errors = {};
@@ -88,7 +89,7 @@ export const VerifyToEnable = () => {
         value={value}
         onKeyUp={(event) => handleBackSpace(event, index)}
         ref={(element) => (inputRef.current[index] = element)}
-        className="m-2 border border-primary bg-blue-50 focus:ring-btn-primary focus:border-btn-primary h-12 w-12 text-center rounded md:w-[25px] md:h-[25px]"
+        className="m-2 border border-primary bg-blue-50 focus:ring-btn-primary focus:border-btn-primary h-10 w-10 text-center rounded md:w-[25px] md:h-[25px]"
         type="text"
         id="first"
         maxLength="1"
@@ -110,97 +111,101 @@ export const VerifyToEnable = () => {
   return (
     <div className="bg-[#EDF9FF] h-screen  min-h-screen ">
       <div className="    px-2 justify-center items-center  text-accent">
-      <Link to={"/"}>
-                <img
-                    src={Logo}
-                    className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10 lg:[50px] md:w-[60px] md:mr-24 "
-              />
-      </Link>
+        <Link to={"/"}>
+          <img
+            src={Logo}
+            className="absolute top-8 left-36 max-sm:left-3 max-sm:top-10 lg:[50px] md:w-[60px] md:mr-24 hover:cursor-pointer "
+          />
+        </Link>
 
         <div className=" flex justify-center items-center  relative overflow-hidden">
-        {/* Image Background */}
-        <img
-          className="w-[500px] h-[700.16px] mt-32 mr-5 max-sm:hidden lg:w-[140px] lg:hidden md:hidden"
-          src={VerifyL}
-        />
-        {/* Verify Email Address */}
-        <form className="bg-white  h-[510px] w-[530px] mt-36 flex flex-col justify-center  rounded-3xl shadow-md 
-         lg:w-[500px] lg:h-[470px] lg:mt-48 md:w-[320px] md:border md:ml-2 md:h-[400px] md:mt-40">
-          <div className="  mx-auto  md:w-full md:max-w-md  ">
-            <div className=" w-full  ">
-              <h1 className="font-bold text-center text-primary text-36px lg:-mt-8 lg:text-3xl md:text-xl md:-mb-4 md:mt-6">
-                Verify Email Address
-              </h1>
+          {/* Image Background */}
+          <img
+            className="w-[500px] h-[700.16px] mt-32 mr-5 max-sm:hidden lg:w-[140px] lg:hidden md:hidden"
+            src={VerifyL}
+          />
+          {/* Verify Email Address */}
+          <form className="bg-white  mt-36 flex flex-col justify-center  rounded-3xl shadow-md px-20 py-14 lg:mt-48 md:ml-2">
+            <div className="  mx-auto  md:w-full md:max-w-md  ">
+              <div className=" w-full  ">
+                <Link to={"/enableaccount"}>
+                  <img src={arrowBack} className="w-6  mt-5 -ml-10 absolute" />
+                </Link>
 
-              {/* Please enter the code we've send to */}
-              <div>
-                <div className="py-8 px-3">
-                  <div className="container mx-auto">
-                    <div className="max-w-sm mx-auto md:max-w-lg">
-                      <div className="w-full">
-                        <div className=" h-64 rounded text-center">
-                          <div className="text">
-                            <p className="text-18px text-accent lg:text-xl md:text-sm md:pt-1">
-                              Please enter the code we've send to
-                            </p>
-                            <p className="text-18px text-center text-primary md:text-sm">
-                              your email address
-                            </p>
-                          </div>
+                <h1 className="font-bold text-center text-primary text-36px lg:-mt-8 lg:text-3xl md:text-xl md:-mb-4 md:mt-6">
+                  Verify Email Address
+                </h1>
 
-                          {/* Box input password */}
-                          <div
-                            id="otp"
-                            className="flex flex-row justify-center text-center mt-5"
-                          >
-                            <Formik>
-                              <div className="form ">{renderInput()}</div>
-                            </Formik>
-                          </div>
-                          {formik.errors.OTP && (
-                            <p className="text-red-500 text-lg md:text-sm">
-                              The field is required
-                            </p>
-                          )}
-                          <div className="flex justify-center text-center mt-5 ">
-                            <a className="flex items-center cursor-pointer ">
-                              <span className="font-bold ">
-                                (
-                                <Countdown
-                                  seconds={60}
-                                  onTimeout={handleTimeout}
-                                  reset={resetCountdown}
-                                />
-                                )
-                              </span>
-                            </a>
-                          </div>
+                {/* Please enter the code we've send to */}
+                <div>
+                  <div className="py-8 px-3">
+                    <div className="container mx-auto">
+                      <div className="max-w-sm mx-auto md:max-w-lg">
+                        <div className="w-full">
+                          <div className=" h-64 rounded text-center">
+                            <div className="text">
+                              <p className="-mt-7 text-18px text-accent lg:text-xl md:text-sm md:pt-1">
+                                Please enter the code we've send to
+                              </p>
+                              <p className="text-18px text-center text-primary md:text-sm">
+                                your email address
+                              </p>
+                            </div>
 
-                          {/* Didn't receive the code? Click to resend */}
-                          <div className="flex justify-center text-center mt-5 ">
-                            <a className="flex items-center text-primary hover:text-btn-primary cursor-pointer">
-                              <button
-                                type="button"
-                                onClick={handleResendCode}
-                                className="underline pr-3 lg:text-lg md:text-sm"
-                              >
-                                Didn't receive the code? Click to resend
-                              </button>
-                            </a>
-                          </div>
+                            {/* Box input password */}
+                            <div
+                              id="otp"
+                              className="flex flex-row justify-center text-center mt-5"
+                            >
+                              <Formik>
+                                <div className="form ">{renderInput()}</div>
+                              </Formik>
+                            </div>
+                            {formik.errors.OTP && (
+                              <p className="text-red-500 text-lg md:text-sm">
+                                The field is required
+                              </p>
+                            )}
+                            <div className="flex justify-center text-center mt-5 ">
+                              <a className="flex items-center cursor-pointer ">
+                                <span className="font-bold ">
+                                  (
+                                  <Countdown
+                                    seconds={60}
+                                    onTimeout={handleTimeout}
+                                    reset={resetCountdown}
+                                  />
+                                  )
+                                </span>
+                              </a>
+                            </div>
 
-                          {/*  Verify */}
-                          <div className="mt-5">
-                                    <Link to={"/resetforgotpassword"}>
-                                          <button
-                                                type="button"
-                                                onClick={formik.handleSubmit}
-                                                className="transition font-bold text-18px duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm
+                            {/* Didn't receive the code? Click to resend */}
+                            <div className="flex justify-center text-center mt-5 ">
+                              <a className="flex items-center text-16px text-primary hover:text-btn-primary cursor-pointer">
+                                <button
+                                  type="button"
+                                  onClick={handleResendCode}
+                                  className="ml-2 underline pr-3 lg:text-lg md:text-sm"
+                                >
+                                  Didn't receive the code? Click to resend
+                                </button>
+                              </a>
+                            </div>
+
+                            {/*  Verify */}
+                            <div className="mt-5">
+                              <Link to={"/resetforgotpassword"}>
+                                <button
+                                  type="button"
+                                  onClick={formik.handleSubmit}
+                                  className="transition font-bold text-18px duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm
                                                 hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[260px] md:h-12 md:pt-2.5 "
-                                        >
-                                                Verify  
-                                        </button>
-                                    </Link>
+                                >
+                                  Enable Account
+                                </button>
+                              </Link>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -209,13 +214,15 @@ export const VerifyToEnable = () => {
                 </div>
               </div>
             </div>
-          </div>          
-        </form>
-        <div>
-        <img className="w-[600px] h-[500.57px]  max-sm:hidden lg:w-[140px] lg:hidden lg:mt-14 md:hidden" src={VerifyR} />
-        </div>       
-      </div>  
-    </div>   
+          </form>
+          <div>
+            <img
+              className="w-[600px] h-[500.57px]  max-sm:hidden lg:w-[140px] lg:hidden lg:mt-14 md:hidden"
+              src={VerifyR}
+            />
+          </div>
+        </div>
+      </div>
     </div>
   );
 };

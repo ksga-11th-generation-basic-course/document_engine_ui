@@ -114,7 +114,7 @@ export const VerifyForgotPassword = () => {
         <Link to={"/"}>
           <img
             src={Logo}
-            className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10 lg:[50px] md:w-[60px] md:mr-24 "
+            className="absolute top-8 left-36 max-sm:left-3 max-sm:top-0 lg:-ml-9 md:pl-2 md:w-[60px] md:h-[60px]"
           />
         </Link>
 

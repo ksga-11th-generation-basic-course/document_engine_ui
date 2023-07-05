@@ -116,7 +116,7 @@ export const VerifyOTP = () => {
       <Link to={"/"}>
                 <img
                     src={Logo}
-                    className="absolute top-8 left-10 max-sm:left-3 max-sm:top-10 lg:[50px] md:w-[60px] md:mr-24 "
+                    className="absolute top-8 left-7 max-sm:left-3 max-sm:top-10 lg:[50px] md:w-[60px] md:mr-24 "
               />
       </Link>
 

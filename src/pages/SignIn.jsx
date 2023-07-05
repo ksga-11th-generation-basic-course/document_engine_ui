@@ -125,11 +125,11 @@ export const SignIn = () => {
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
-         <Link to={"/"}>
-              <img
-                    src={Logo}
-                    className="absolute top-4 left-8 max-sm:left-3 max-sm:top-7 lg:w-[80px] lg:-ml-4 md:w-[60px] md:h-[60px] md:mr-9 md:mt-0 "
-                  />
+        <Link to={"/"}>
+          <img
+            src={Logo}
+            className="absolute top-8 left-8 max-sm:left-3 max-sm:top-0 lg:-ml-9 md:pl-2 md:w-[60px] md:h-[60px]"
+          />
         </Link>
         <img
           className="w-[600px] h-[500.16px] mr-5 max-sm:hidden lg:w-[150px] md:w-[200px] lg:hidden"
@@ -189,7 +189,7 @@ export const SignIn = () => {
                     setChangePassword(changeIcon);
                   }}
                 >
-                  {changeIcon ? <VisibilityOff /> : <Visibility />}
+                  {changeIcon ?  <Visibility />:<VisibilityOff />}
                 </span>
                 {formik.touched.password && formik.errors.password ? (
                   <div className="mt-2  text-red-600 md:text-sm">

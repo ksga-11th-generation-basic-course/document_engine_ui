@@ -1,12 +1,15 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import Logo from "../assets/images/Logo.svg";
 import Reset from "../assets/images/Set_New_pass.svg";
 import { useFormik } from "formik";
 import * as Yup from "yup";
 import { resetPassword } from "../redux/service/authenticationService/authenticationService";
 import { useDispatch } from "react-redux";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { resetPasswordSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
+import arrowBack from "../../src/assets/signin_image/arrowback.svg";
+import { Visibility, VisibilityOff } from "@mui/icons-material";
+
 export const ResetForgotPassword = () => {
   const navigate = useNavigate();
 
@@ -20,7 +23,10 @@ export const ResetForgotPassword = () => {
     validationSchema: Yup.object({
       newPassword: Yup.string()
         .required("Password is a required field")
-        .min(4, "Password must have more than 4 characters "),
+        .matches(
+          /(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}/,
+          "Password must contain 8 characters one lowercase , one uppercase , one special character and one number"
+        ),
       newConfirmPassword: Yup.string()
         .oneOf(
           [Yup.ref("newPassword")],
@@ -42,91 +48,132 @@ export const ResetForgotPassword = () => {
     },
   });
 
+  const [changePassword, setChangePassword] = useState(false);
+  const [changeConPassword, setChangeConPassword] = useState(false);
+
   return (
     <div className="bg-[#EDF9FF]  h-screen">
       <div className="relative text-[#37352F]">
-        <img src={Logo} className="absolute top-10 left-10 md:w-[60px]" />
+        <Link to={"/"}>
+          <img
+            src={Logo}
+            className="absolute top-8 left-36 max-sm:left-3 max-sm:top-0 lg:-ml-9 md:pl-2 md:w-[60px] md:h-[60px]"
+          />
+        </Link>
 
         <div className="flex items-center justify-center">
           <div className="flex flex-row justify-center  items-center relative min-h-screen  overflow-hidden">
             {/* <!-- component --> */}
-            <div className="flex flex-col items-center justify-between">
+            <div className="flex flex-col items-center">
               <div className="flex  items-center mt-20 w-full lg:pt-20">
                 {/*Form Set New Password */}
-                <form action="" onSubmit={formik.handleSubmit}>
-                  <div className="bg-white w-full  shadow-md p-10 flex  justify-center  rounded-3xl lg:mb-44 lg:w-[500px] lg:pb-8 md:p-1 md:-mt-28  md:w-[290px] md:pb-8">
-                    <div>
-                      <div className="">
-                        <h1 className="font-bold text-center text-primary text-44px text-2xl lg:mb-4 lg:mt-6 md:text-2xl md:mb-0">
-                          Set New Password
-                        </h1>
+                <form
+                  onSubmit={formik.handleSubmit}
+                  className="bg-[#FFFFFF] px-24 py-10 flex flex-col justify-center gap-y-6 shadow rounded-3xl 
+          lg:w-[480px] lg:mt-48 lg:p-8 lg:ml-10 lg:mb-28 md:w-[310px] md:mt-36 md:mr-8  md:mb-4"
+                >
+                  <div>
+                    <div className="">
+                      <Link to={"/verifyforgotpassword"}>
+                        <img
+                          src={arrowBack}
+                          className="w-6  mt-2 -ml-16 absolute"
+                        />
+                      </Link>
 
-                        {/* ------------ */}
-                        <div>
-                          <div className="py-4 container mx-auto max-w-sm h-54 rounded text-center  md:max-w-lg">
-                            <div className="text">
-                              <div className="w-full">
-                                <p className="text-18px text-accent text-base lg:text-xl lg:text-22px lg:pb-4 lg:pl-4 md:text-sm  ">
-                                  Password must be at least 8 characters.
-                                </p>
-                                {/* <p class="text-l text-center text-gray-500">password reset instructor</p>   */}
-                              </div>
+                      <h1 className="font-bold text-center text-primary text-4xl lg:mb-4 lg:mt-6 md:text-2xl md:mb-0">
+                        Set New Password
+                      </h1>
 
-                              <div className="relative md:ml-2">
-                                <p className="font-semibold text-left pt-5 pb-2 text-black text-base lg:text-xl lg:text-22px md:text-base md:pt-1 md:pl-3">
-                                  New Password
-                                </p>
-                                <input
-                                  placeholder="Your New Password"
-                                  name="newPassword"
-                                  type="password"
-                                  onChange={formik.handleChange}
-                                  onBlur={formik.handleBlur}
-                                  value={formik.values.newPassword}
-                                  className="border-primary text-base focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3
-                                                    max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                                                    lg:text-xl lg:text-20px md:text-sm md:w-[200px] md:h-[35px]"
-                                />
-                                {formik.touched.newPassword &&
-                                formik.errors.newPassword ? (
-                                  <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:text-sm md:pl-6">
-                                    {formik.errors.newPassword}
-                                  </div>
-                                ) : null}
-                              </div>
+                      {/* ------------ */}
+                      <div>
+                        <div className="py-4 container mx-auto max-w-sm h-54 rounded text-center  md:max-w-lg">
+                          <div className="text">
+                            <div className="w-full">
+                              <p className="-mt-2 text-16px text-accent text-base lg:text-xl lg:text-22px lg:pb-4 lg:pl-4 md:text-sm  ">
+                                Password must be at least 8 characters.
+                              </p>
+                              {/* <p class="text-l text-center text-gray-500">password reset instructor</p>   */}
+                            </div>
 
-                              <div className="relative md:ml-2">
-                                <p className="font-semibold text-left pt-5 pb-2 text-black text-base lg:text-xl lg:text-22px md:text-base md:pl-4">
-                                  Confirm New Password
-                                </p>
-                                <input
-                                  placeholder="Your New Password"
-                                  name="newConfirmPassword"
-                                  type="password"
-                                  onChange={formik.handleChange}
-                                  onBlur={formik.handleBlur}
-                                  value={formik.values.newConfirmPassword}
-                                  className="border-primary text-base focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 
+                            <div className="relative -mx-5 w-96 md:ml-2">
+                              <p className="font-semibold text-left pt-5 pb-2 text-20px text-black lg:text-xl lg:text-22px md:text-base md:pt-1 md:pl-3">
+                                New Password
+                              </p>
+                              <input
+                                placeholder="Your New Password"
+                                name="newPassword"
+                                type={!changePassword ? "password" : "text"}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.newPassword}
+                                className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3
+                                  max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
+                                  lg:text-xl lg:h-12  md:h-8 md:w-[210px] md:rounded md:text-sm"
+                              />
+                              <span
+                                className="absolute -mt-11 ml-36 cursor-pointer bg-white p-2"
+                                onClick={() => {
+                                  setChangePassword(!changePassword);
+                                }}
+                              >
+                                {changePassword ? (
+                                  <Visibility />
+                                ) : (
+                                  <VisibilityOff />
+                                )}
+                              </span>
+                              {formik.touched.newPassword &&
+                              formik.errors.newPassword ? (
+                                <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:text-sm md:pl-6">
+                                  {formik.errors.newPassword}
+                                </div>
+                              ) : null}
+                            </div>
+
+                            <div className="relative -mx-5 md:ml-2">
+                              <p className="font-semibold text-left pt-5 pb-2 text-black text-20px lg:text-xl lg:text-22px md:text-base md:pl-4">
+                                Confirm New Password
+                              </p>
+                              <input
+                                placeholder="Your New Password"
+                                name="newConfirmPassword"
+                                type={!changeConPassword ? "password" : "text"}
+                                onChange={formik.handleChange}
+                                onBlur={formik.handleBlur}
+                                value={formik.values.newConfirmPassword}
+                                className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 
                                                     max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
                                                     lg:text-lg lg:text-20px md:text-sm  md:w-[200px] md:h-[35px]"
-                                />
-                                {formik.touched.newConfirmPassword &&
-                                formik.errors.newConfirmPassword ? (
-                                  <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:text-sm md:pl-6">
-                                    {formik.errors.newConfirmPassword}
-                                  </div>
-                                ) : null}
-                              </div>
+                              />
+                              <span
+                                className="absolute -mt-11 ml-36 cursor-pointer bg-white p-2"
+                                onClick={() => {
+                                  setChangeConPassword(!changeConPassword);
+                                }}
+                              >
+                                {changeConPassword ? (
+                                  <Visibility />
+                                ) : (
+                                  <VisibilityOff />
+                                )}
+                              </span>
+                              {formik.touched.newConfirmPassword &&
+                              formik.errors.newConfirmPassword ? (
+                                <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:text-sm md:pl-6">
+                                  {formik.errors.newConfirmPassword}
+                                </div>
+                              ) : null}
+                            </div>
 
-                              <div className="mt-5">
-                                <button
-                                  type="submit"
-                                  className="font-semibold text-18px transition text-base duration-200 bg-primary hover:bg-btn-primary text-white w-full px-2 py-3 
+                            <div className="mt-5 -mx-5">
+                              <button
+                                type="submit"
+                                className="font-semibold text-20px transition duration-200 bg-primary hover:bg-btn-primary text-white w-full px-2 py-3 
                                                     rounded-lg shadow-sm hover:shadow-md text-center inline-block lg:text-xl lg:font-semibold lg:text-22px md:text-base  md:w-[200px] md:h-[35px] md:pt-2 "
-                                >
-                                  Reset Password
-                                </button>
-                              </div>
+                              >
+                                Reset Password
+                              </button>
                             </div>
                           </div>
                         </div>
@@ -138,19 +185,19 @@ export const ResetForgotPassword = () => {
             </div>
           </div>
 
-          <div className="w-full bg-cover relative max-w-md  ml-16 lg:max-w-2xl lg:hidden">
+          <div className="w-full bg-cover relative max-w-md  ml-16 mt-20 lg:max-w-2xl lg:hidden">
             <div className="flex flex-col items-center justify-center w-full h-full relative">
-              <img src={Reset} />
+              <img src={Reset} className="w-[700px]" />
             </div>
           </div>
         </div>
 
         {/* Pagination */}
-      <div className="flex justify-center gap-1 lg:-mt-40 lg:left-52 md:-mt-52 md:left-16 -mt-28">
-        <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1"></div>
-        <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1"></div>
-        <div className="w-[50px] h-[7px] rounded-2xl bg-[#1E9CEF] md:h-1.5 "></div>
-      </div>
+        <div className="flex justify-center gap-1 lg:-mt-40 lg:left-52 md:-mt-52 md:left-16 -mt-28">
+          <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1"></div>
+          <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1"></div>
+          <div className="w-[50px] h-[7px] rounded-2xl bg-[#1E9CEF] md:h-1.5 "></div>
+        </div>
       </div>
     </div>
   );
