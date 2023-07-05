@@ -7,6 +7,7 @@ import {
 const initialState = {
   isAuthenticated: false,
   authentication: null,
+  email: null,
 };
 
 const authenticationSlice = createSlice({
@@ -19,6 +20,7 @@ const authenticationSlice = createSlice({
     },
     signUpSuccess: (state, action) => {
       state.authentication = action.payload;
+      console.log("Data : ", action.payload);
     },
     verifySuccess: (state, action) => {
       state.authentication = action.payload;

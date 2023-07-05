@@ -82,6 +82,7 @@ export const SignUp = () => {
       try {
         const user = await signup(values);
         dispatch(signUpSuccess(user));
+        console.log(values);
         navigate("/verifyOTP");
         resetForm({ values: "" });
       } catch (error) {
@@ -99,7 +100,7 @@ export const SignUp = () => {
         <Link to={"/"}>
           <img
             src={Logo}
-            className="absolute top-8 left-8 max-sm:left-3 max-sm:top-0 lg:-ml-9 md:pl-2 md:w-[60px] md:h-[60px]"
+            className="absolute top-8 left-8 lg:left-3 md:left-9 md:w-[60px] md:h-[60px]"
           />
         </Link>
         <img
@@ -109,7 +110,7 @@ export const SignUp = () => {
         <form
           onSubmit={formik.handleSubmit}
           className=" bg-[#FFFFFF] p-12 flex flex-col justify-center gap-y-6 shadow rounded-3xl 
-          lg:w-[480px] lg:mt-48 lg:p-8 lg:ml-10 lg:mb-28 md:w-[310px] md:mt-36 md:mr-8  md:mb-4"
+          lg:w-[480px] lg:mt-40 lg:p-8 lg:ml-10 lg:mb-28 md:w-[310px] md:mt-24 md:mr-8  md:mb-4"
         >
           <div className=" xs:p-0 mx-auto w-[380px] md:ml-3">
             <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl lg:text-4xl md:text-2xl md:pr-36">
@@ -183,7 +184,10 @@ export const SignUp = () => {
                     setChangePassword(!changePassword);
                   }}
                 >
-                  {changePassword ? <Visibility />:<VisibilityOff /> }
+                  {changePassword ? 
+                  <svg className="w-6 md:w-4 fill-gray-500" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="VisibilityIcon"><path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"></path></svg>
+                  :<svg className="w-6 md:w-4 fill-gray-500" focusable="false" aria-hidden="true" viewBox="0 0 24 24" data-testid="VisibilityOffIcon"><path d="M12 7c2.76 0 5 2.24 5 5 0 .65-.13 1.26-.36 1.83l2.92 2.92c1.51-1.26 2.7-2.89 3.43-4.75-1.73-4.39-6-7.5-11-7.5-1.4 0-2.74.25-3.98.7l2.16 2.16C10.74 7.13 11.35 7 12 7zM2 4.27l2.28 2.28.46.46C3.08 8.3 1.78 10.02 1 12c1.73 4.39 6 7.5 11 7.5 1.55 0 3.03-.3 4.38-.84l.42.42L19.73 22 21 20.73 3.27 3 2 4.27zM7.53 9.8l1.55 1.55c-.05.21-.08.43-.08.65 0 1.66 1.34 3 3 3 .22 0 .44-.03.65-.08l1.55 1.55c-.67.33-1.41.53-2.2.53-2.76 0-5-2.24-5-5 0-.79.2-1.53.53-2.2zm4.31-.78 3.15 3.15.02-.16c0-1.66-1.34-3-3-3l-.17.01z"></path></svg>
+                  }
                 </span>
                 {formik.touched.password && formik.errors.password ? (
                   <div className="mt-2 text-red-600 lg:text-xl md:text-sm">
@@ -252,58 +256,65 @@ export const SignUp = () => {
                 </p>
               </div>
             </div>
-            <div className="p-2">
-              <div className="grid grid-cols-2 gap-3  md:flex flex-col-reverse">
+            <div className="">
+              <div className="grid grid-cols-12 gap-4 lg:gap-3 lg:ml-2  md:ml-2 ">
+                {/* Google */}
+                <div className="col-span-6 lg:col-span-12 md:pl-2">
                 <button
                   onClick={handleGoogle}
                   type="button"
-                  className="flex rounded-lg justify-center items-center py-2 px-4 text-sm border border-gray-200  outline-none max-sm:border-primary max-sm:border-2
-                  text-accent font-bold transition transform md:h-10 md:w-[210px]"
+                  className="flex  rounded-lg justify-center items-center py-2 text-sm w-full border border-gray-200  outline-none max-sm:border-primary
+                    text-accent font-bold transition transform md:h-[37px] md:w-[210px] md:pl-6  "
                 >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    className="w-7 h-7 mr-2"
-                    viewBox="0 0 48 48"
-                  >
-                    <path
-                      fill="#fbc02d"
-                      d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"
-                    />
-                    <path
-                      fill="#e53935"
-                      d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"
-                    />
-                    <path
-                      fill="#4caf50"
-                      d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"
-                    />
-                    <path
-                      fill="#1565c0"
-                      d="M43.611 20.083 43.595 20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"
-                    />
-                  </svg>
-                  <span className="text-20px text-black lg:text-2xl md:text-base">
-                    Google
-                  </span>
+                  
+                    <div className="flex mr-5 lg:mr-8 gap-x-1 md:gap-x-0 md:pr-4">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="w-7 h-7 mr-2 lg:w-[35px]  lg:h-[35px] md:w-[25px] md:h-[25px] "
+                        viewBox="0 0 48 48"
+                      >
+                        <path
+                          fill="#fbc02d"
+                          d="M43.611 20.083H42V20H24v8h11.303c-1.649 4.657-6.08 8-11.303 8-6.627 0-12-5.373-12-12s5.373-12 12-12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 12.955 4 4 12.955 4 24s8.955 20 20 20 20-8.955 20-20c0-1.341-.138-2.65-.389-3.917z"
+                        />
+                        <path
+                          fill="#e53935"
+                          d="m6.306 14.691 6.571 4.819C14.655 15.108 18.961 12 24 12c3.059 0 5.842 1.154 7.961 3.039l5.657-5.657C34.046 6.053 29.268 4 24 4 16.318 4 9.656 8.337 6.306 14.691z"
+                        />
+                        <path
+                          fill="#4caf50"
+                          d="M24 44c5.166 0 9.86-1.977 13.409-5.192l-6.19-5.238A11.91 11.91 0 0 1 24 36c-5.202 0-9.619-3.317-11.283-7.946l-6.522 5.025C9.505 39.556 16.227 44 24 44z"
+                        />
+                        <path
+                          fill="#1565c0"
+                          d="M43.611 20.083 43.595 20H24v8h11.303a12.04 12.04 0 0 1-4.087 5.571l.003-.002 6.19 5.238C36.971 39.205 44 34 44 24c0-1.341-.138-2.65-.389-3.917z"
+                        />
+                      </svg>
+                      <span className="text-20px text-black pt-1 lg:text-22px lg:pt-1.5 md:pt-0 md:text-base">Google</span>
+                    </div>
+                  
                 </button>
-
-                <button
-                  onClick={handleFacebook}
-                  type="button"
-                  className="flex rounded-lg justify-center items-center py-2 px-4 font-bold text-sm border  outline-none border-gray-200 max-sm:border-primary max-sm:border-2
-                   text-accent transition transform md:h-10 md:w-[210px] md:text-base "
-                >
-                  <svg
-                    className="w-7 h-7 mr-2 text-blue-600 fill-current"
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
+                </div>
+                {/* Facebook */}
+                <div className="col-span-6 lg:col-span-12 md:pl-2">
+                  <button
+                    onClick={handleFacebook}
+                    type="button"
+                    className="flex rounded-lg justify-center items-center py-2 w-full font-bold text-sm border  outline-none border-gray-200 max-sm:border-primary max-sm:border-2
+                    text-accent transition transform lg:w-[370px]  md:h-[37px] md:w-[210px] gap-x-1.5 md:gap-x-0.5"
                   >
-                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
-                  </svg>
-                  <span className="text-18px text-black lg:text-2xl md:text-base">
-                    Facebook
-                  </span>
-                </button>
+                   
+                   <svg
+                      className="w-7 h-7 mr-2 text-blue-600 fill-current lg:w-[32px] lg:h-[32px] md:w-[22px] md:h-[22px]"
+                      xmlns="http://www.w3.org/2000/svg"
+                      viewBox="0 0 24 24"
+                    >
+                      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                    </svg>
+                    <span className="text-20px text-black lg:text-22px md:text-base ">Facebook</span>
+                   
+                  </button>
+                </div>
               </div>
             </div>
           </div>

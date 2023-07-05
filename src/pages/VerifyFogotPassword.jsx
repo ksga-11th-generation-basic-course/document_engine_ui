@@ -88,7 +88,7 @@ export const VerifyForgotPassword = () => {
         value={value}
         onKeyUp={(event) => handleBackSpace(event, index)}
         ref={(element) => (inputRef.current[index] = element)}
-        className="m-2 border border-primary bg-blue-50 focus:ring-btn-primary focus:border-btn-primary h-12 w-12 text-center rounded 
+        className="m-2 border border-primary bg-blue-50 focus:ring-btn-primary focus:border-btn-primary h-10 w-10 text-center rounded 
         md:w-[25px] md:h-[25px]"
         type="text"
         id="first"
@@ -114,7 +114,7 @@ export const VerifyForgotPassword = () => {
         <Link to={"/"}>
           <img
             src={Logo}
-            className="absolute top-8 left-36 max-sm:left-3 max-sm:top-0 lg:-ml-9 md:pl-2 md:w-[60px] md:h-[60px]"
+            className="absolute top-8 left-36 lg:left-32 lg:ml-1.5 md:w-[60px] md:left-10"
           />
         </Link>
 
@@ -125,16 +125,14 @@ export const VerifyForgotPassword = () => {
             src={VerifyL}
           />
           {/* Verify Email Address */}
-          <form
-            className="bg-white  mt-36 flex flex-col justify-center  rounded-3xl shadow-md px-20 py-20 lg:mt-48 md:ml-2"
-          >
-            <div className="  mx-auto  md:w-full md:max-w-md -mt-7">
+          <form className="bg-white  mt-36 flex flex-col justify-center  rounded-3xl shadow-md px-20 py-14 lg:mt-52 lg:py-20 md:ml-2 md:py-14 md:px-7">
+            <div className="  mx-auto  md:w-full md:max-w-md  ">
               <div className=" w-full  ">
                 <Link to={"/forgotpassword"}>
-                  <img src={arrowBack} className="w-6  mt-5 -ml-12 absolute" />
+                  <img src={arrowBack} className="w-6  mt-5 -ml-10 absolute lg:mt-3 md:w-4 md:mt-2 md:-ml-2" />
                 </Link>
 
-                <h1 className="font-bold text-center text-primary text-36px lg:-mt-8 lg:text-3xl md:text-xl md:-mb-4 md:mt-6">
+                <h1 className="font-bold text-center text-primary text-36px lg:-mt-5 lg:text-4xl md:text-2xl md:-mb-4">
                   Verify Email Address
                 </h1>
 
@@ -146,7 +144,7 @@ export const VerifyForgotPassword = () => {
                         <div className="w-full">
                           <div className=" h-64 rounded text-center">
                             <div className="text">
-                              <p className="text-18px text-accent lg:text-xl md:text-sm md:pt-1">
+                              <p className="-mt-7 text-18px text-accent lg:text-xl lg:-mt-4 md:text-sm md:pt-3">
                                 Please enter the code we've send to
                               </p>
                               <p className="text-18px text-center text-primary md:text-sm">
@@ -184,11 +182,11 @@ export const VerifyForgotPassword = () => {
 
                             {/* Didn't receive the code? Click to resend */}
                             <div className="flex justify-center text-center mt-5 ">
-                              <a className="flex items-center text-primary hover:text-btn-primary cursor-pointer">
+                              <a className="flex items-center text-16px text-primary hover:text-btn-primary cursor-pointer">
                                 <button
                                   type="button"
                                   onClick={handleResendCode}
-                                  className="underline pr-3 lg:text-lg md:text-sm"
+                                  className="ml-2 underline pr-3 lg:text-lg md:text-sm"
                                 >
                                   Didn't receive the code? Click to resend
                                 </button>
@@ -199,7 +197,7 @@ export const VerifyForgotPassword = () => {
                             <div className="mt-5">
                               <Link to={"/resetforgotpassword"}>
                                 <button
-                                  type="button"
+                                  type="submit"
                                   onClick={formik.handleSubmit}
                                   className="transition font-bold text-18px duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm
                                                 hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[260px] md:h-12 md:pt-2.5 "
@@ -217,6 +215,8 @@ export const VerifyForgotPassword = () => {
               </div>
             </div>
           </form>
+
+          
           <div>
             <img
               className="w-[600px] h-[500.57px]  max-sm:hidden lg:w-[140px] lg:hidden lg:mt-14 md:hidden"

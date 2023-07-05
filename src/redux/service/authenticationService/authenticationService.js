@@ -17,7 +17,6 @@ export const signupWithGoogleAndFacebook = createAsyncThunk(
           "Content-Type": "application/json",
         }
       );
-
       return response.data.payload;
     } catch (error) {
       return error;

@@ -56,7 +56,7 @@ export const EnableAccount = () => {
         <Link to={"/"}>
           <img
             src={Logo}
-            className="absolute top-8 left-36 max-sm:left-3 max-sm:top-0 lg:-ml-9 md:pl-2 md:w-[60px] md:h-[60px]"
+            className="absolute top-8 left-36 lg:-ml-2 md:pl-2 md:w-[68px] md:left-11"
           />
         </Link>
 
@@ -80,18 +80,18 @@ export const EnableAccount = () => {
                   <Link to={"/"}>
                     <img
                       src={arrowBack}
-                      className="w-6  mt-5 -ml-16 absolute"
+                      className="w-6  mt-5 -ml-16 absolute lg:mt-3 md:-mt-14 md:ml-2 md:w-4"
                     />
                   </Link>
 
                   <h1 className="font-bold text-center text-[#1E9CEF] text-34px whitespace-nowrap max-sm:text-4xl lg:text-4xl md:text-xl md:-mt-16">
                     Enable Your Account
                   </h1>
-                  <p className="text-16px text-[#9CA3AF] text-center max-sm:text-base lg:text-xl md:text-sm">
+                  <p className="text-16px text-[#9CA3AF] text-center lg:mt-2 max-sm:text-base lg:text-xl md:text-sm">
                     Please enter your email address below.
                   </p>
                   {/* Email */}
-                  <div className="py-4 max-sm:px-0 max-sm:py-3 container max-w-sm mx-auto md:max-w-lg lg:bg-white  h-54 rounded text-center">
+                  <div className="py-4 max-sm:px-0 max-sm:py-3 container max-w-sm mx-auto md:max-w-lg lg:bg-white  h-54 rounded text-center lg:-mt-2">
                     <div className="relative -mx-5 md:ml-6">
                       <p className="text-left font-semibold pt-2 text-20px lg:text-2xl md:text-base md:pt-1">
                         Email

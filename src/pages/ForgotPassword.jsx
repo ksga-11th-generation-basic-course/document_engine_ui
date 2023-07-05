@@ -57,7 +57,7 @@ export const ForgotPassword = () => {
         <Link to={"/"}>
           <img
             src={Logo}
-            className="absolute top-8 left-36 max-sm:left-3 max-sm:top-0 lg:-ml-9 md:pl-2 md:w-[60px] md:h-[60px]"
+            className="absolute top-8 left-36 lg:-ml-2 md:w-[60px] md:left-[53px] "
           />
         </Link>
 
@@ -67,18 +67,18 @@ export const ForgotPassword = () => {
         </div>
 
         {/* forgot Your Password? */}
-        <div className="">
+        <div className="md:flex md:justify-center md:items-center">
           <form
             onSubmit={formik.handleSubmit}
             className="bg-white p-7 flex flex-col justify-center gap-y-6 rounded-3xl shadow-md mt-56 px-20
-              lg:absolute lg:top-56 lg:left-36  lg:w-[490px] lg:mb-9 lg:-mt-0 md:absolute md:top-0 md:left-14 md:w-[290px] md:h-[328px] md:mt-36 md:p-3 "
+              lg:absolute lg:top-56 lg:left-36  lg:w-[490px] lg:mb-9 lg:-mt-0 md:absolute md:top-0 md:left-12 md:w-[300px] md:h-[328px] md:mt-36 md:p-3"
           >
-            <div className=" xs:p-0 mx-auto md:max-w-md  md:flex flex-col-reverse  md:m-2">
+            <div className=" xs:p-0 mx-auto md:max-w-md  md:flex flex-col-reverse  md:m-2 md:px-36">
               <div className="w-full  ">
                 <Link to={"/"}>
-                  <img src={arrowBack} className="w-6  mt-5 -ml-10 absolute" />
+                  <img src={arrowBack} className="w-6  mt-5 -ml-10 absolute md:w-4 md:-ml-1 md:mt-7" />
                 </Link>
-                <h1 className="font-bold text-center text-primary text-36px mt-5 md:text-xl">
+                <h1 className="font-bold text-center text-primary text-36px mt-5 lg:text-[30px] md:text-xl lg:-ml-3 md:ml-0">
                   Forgot Your Password?
                 </h1>
                 <div>
@@ -88,7 +88,7 @@ export const ForgotPassword = () => {
                         <div className="w-full">
                           <div className=" h-54 rounded text-center">
                             <div className="text-18px">
-                              <p className=" text-[#9CA3AF] -mt-5 px-7 md:text-sm">
+                              <p className=" text-[#9CA3AF] -mt-7 px-7 md:text-sm md:px-3">
                                 Please enter your email address below to receive
                                 password reset instruction.
                               </p>
@@ -134,7 +134,7 @@ export const ForgotPassword = () => {
           </form>
         </div>
       </div>
-      <div className="flex justify-center mt-44 gap-1 lg:mt-32 md:mt-28 md:ml-2  ">
+      <div className="flex justify-center mt-44 gap-1 lg:mt-10 md:mt-20 md:ml-2">
         <div className="w-[50px] h-[7px] rounded-2xl bg-[#1E9CEF] md:h-1.5 md:w-[40px]"></div>
         <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5 md:w-[40px]"></div>
         <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5 md:w-[40px]"></div>

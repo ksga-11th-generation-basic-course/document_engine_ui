@@ -114,7 +114,7 @@ export const VerifyToEnable = () => {
         <Link to={"/"}>
           <img
             src={Logo}
-            className="absolute top-8 left-36 max-sm:left-3 max-sm:top-10 lg:[50px] md:w-[60px] md:mr-24 hover:cursor-pointer "
+            className="absolute top-8 left-36 lg:-ml-2 md:w-[60px] md:left-16 "
           />
         </Link>
 
@@ -125,14 +125,14 @@ export const VerifyToEnable = () => {
             src={VerifyL}
           />
           {/* Verify Email Address */}
-          <form className="bg-white  mt-36 flex flex-col justify-center  rounded-3xl shadow-md px-20 py-14 lg:mt-48 md:ml-2">
+          <form className="bg-white  mt-36 flex flex-col justify-center  rounded-3xl shadow-md px-20 py-14 lg:mt-48 lg:py-20 md:ml-2 md:py-14 md:px-7">
             <div className="  mx-auto  md:w-full md:max-w-md  ">
               <div className=" w-full  ">
                 <Link to={"/enableaccount"}>
-                  <img src={arrowBack} className="w-6  mt-5 -ml-10 absolute" />
+                  <img src={arrowBack} className="w-6  mt-5 -ml-10 absolute lg:mt-3 md:w-4 md:mt-2 md:-ml-2" />
                 </Link>
 
-                <h1 className="font-bold text-center text-primary text-36px lg:-mt-8 lg:text-3xl md:text-xl md:-mb-4 md:mt-6">
+                <h1 className="font-bold text-center text-primary text-36px lg:-mt-5 lg:text-4xl md:text-2xl md:-mb-4">
                   Verify Email Address
                 </h1>
 
@@ -144,7 +144,7 @@ export const VerifyToEnable = () => {
                         <div className="w-full">
                           <div className=" h-64 rounded text-center">
                             <div className="text">
-                              <p className="-mt-7 text-18px text-accent lg:text-xl md:text-sm md:pt-1">
+                              <p className="-mt-7 text-18px text-accent lg:text-xl lg:-mt-4 md:text-sm md:pt-3">
                                 Please enter the code we've send to
                               </p>
                               <p className="text-18px text-center text-primary md:text-sm">
