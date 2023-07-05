@@ -120,7 +120,7 @@ export const Landing = () => {
             <div className="flex justify-center items-center gap-x-10 md:-ml-16 md:-mt-16">
                 <div className="bg-primary shadow-icon rounded-full ">
                       <div className="relative flex justify-center items-center w-16 h-16 lg:w-12 lg:h-12  md:w-10 md:h-10">
-                          <img src={group}  className="absolute p-2"/>
+                          <img src={group}  className="absolute p-2 w-16"/>
                       </div>
                 </div>
                 
