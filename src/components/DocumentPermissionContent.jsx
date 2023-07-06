@@ -19,7 +19,7 @@ export const DocumentPermissionContent = ({
   const [searchTerm, setSearchTerm] = useState("");
   return (
     <div>
-      <div className="flex w-full justify-end">
+      <div className="flex w-full justify-end ">
         <button
           type="button"
           onClick={() => setOpenPermission(!openPermission)}

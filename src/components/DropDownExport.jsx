@@ -3,7 +3,7 @@ import download from "../assets/document_image/download.svg"
 
 export const DropDownExport = ({openExport, setOpenExport}) => {
   return (
-    <div>
+    <div className="">
       {open && (
         <div
           className="fixed inset-0"

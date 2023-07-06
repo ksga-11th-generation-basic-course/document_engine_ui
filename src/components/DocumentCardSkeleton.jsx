@@ -3,9 +3,9 @@ import React from "react";
 
 export const DocumentCardSkeleton = () => {
   return (
-    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-1 flex relative">
+    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-1 flex relative ">
       <div className="w-full p-3">
-        <div className="flex justify-between items-center">
+        <div className="flex justify-between items-center ">
           <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl absolute right-2 top-3 "></div>
         </div>
         <div className="flex justify-between items-center">
@@ -13,7 +13,7 @@ export const DocumentCardSkeleton = () => {
             <span className="font-bold text-22px text-primary flex gap-x-1">
               <Skeleton
                 animation="wave"
-                className="mr-2"
+                className="mr-2 "
                 variant="rounded"
                 width={25}
                 height={25}

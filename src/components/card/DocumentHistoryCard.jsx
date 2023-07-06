@@ -44,8 +44,8 @@ export const DocumentHistoryCard = ({ history }) => {
   };
 
   return (
-    <div>
-      <div className="flex justify-between items-center w-full text-accent">
+    <div className="">
+      <div className="flex justify-between items-center w-full text-accent  ">
         <div className="text-18px space-y-3">
           <p className="font-semibold">{history?.editedDate}</p>
           <div className="flex items-center gap-x-3">
@@ -65,7 +65,7 @@ export const DocumentHistoryCard = ({ history }) => {
           >
             <img src={dotsvertical} />
           </button> */}
-          <Menu as="div" className="relative inline-block text-left bg-white">
+          <Menu as="div" className="relative inline-block text-left bg-white ">
             <div>
               <Menu.Button className="inline-flex w-full gap-x-3 justify-center items-center rounded-lg border-[1px] bg-opacity-20 p-3 text-sm font-medium text-accent hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
                 <img src={dotsvertical} />
@@ -82,11 +82,11 @@ export const DocumentHistoryCard = ({ history }) => {
             >
               <Menu.Items className="absolute  mt-2 w-40 right-0 divide-y divide-gray-100 rounded-md bg-white z-10 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
                 <div className="px-1 py-1 bg-white">
-                  <Menu.Item className=" hover:bg-gray-100">
+                  <Menu.Item className=" hover:bg-gray-100 ">
                     {({ active }) => (
                       <button
                         className={`${
-                          active ? "bg-violet-500 text-accent" : "text-accent"
+                          active ? "bg-violet-500 text-accent" : "text-accent "
                         } group flex w-full flex-col justify-start text-sm rounded-md px-2 py-2`}
                         onClick={() =>
                           navigate(`/document/history/${historyId}/${workspaceId}`)
@@ -101,11 +101,11 @@ export const DocumentHistoryCard = ({ history }) => {
                       </button>
                     )}
                   </Menu.Item>
-                  <Menu.Item className=" hover:bg-gray-100">
+                  <Menu.Item className=" hover:bg-gray-100 ">
                     {({ active }) => (
                       <button
                         className={`${
-                          active ? "bg-violet-500 text-accent" : "text-accent"
+                          active ? "bg-violet-500 text-accent " : "text-accent"
                         } group flex w-full flex-col justify-start text-sm rounded-md px-2 py-2`}
                         onClick={() => setRemoveHistory(!removeHistory)}
                         // onClick={() => handleChangeStatus(true)}
@@ -131,7 +131,7 @@ export const DocumentHistoryCard = ({ history }) => {
           ) : null} */}
         </div>
       </div>
-      <div className="border-[1px] mt-3 mb-3"></div>
+      <div className="border-[1px] mt-3 mb-3 "></div>
       <div>
         <RemoveHistory
           historyId={history?.historyId}

@@ -58,7 +58,7 @@ export const NavBarProfile = () => {
   };
 
   return (
-    <div className="flex justify-end items-center py-3 px-14 gap-x-5 z-0 bg-white lg:px-0 lg:-mr-5 md:pr-0 md:mr-0 md:right-0">
+    <div className="flex justify-end items-center py-3 px-14 gap-x-5 z-0 bg-white lg:px-0 lg:-mr-5 md:pr-0 md:-mr-36">
       {param.documentId ? (
         <div>
           <Menu
@@ -69,7 +69,7 @@ export const NavBarProfile = () => {
             }}
           >
             <MenuHandler>
-              <button className="flex items-center justify-between w-[250px] border-[1px] rounded-lg p-3">
+              <button className="flex items-center justify-between w-[250px] border-[1px] rounded-lg p-3 md:w-[150px] md:h-8 ">
                 <p className="text-18px text-black font-ssp flex gap-x-2">
                   <img src={pen} alt="" />
                   Editing
@@ -82,8 +82,8 @@ export const NavBarProfile = () => {
                 />
               </button>
             </MenuHandler>
-            <MenuList className="rounded-lg p-2 font-ssp w-[250px] space-y-2">
-              <MenuItem className="p-2 hover:bg-gray-200 rounded-lg">
+            <MenuList className="rounded-lg p-2 font-ssp w-[250px] space-y-2 lg:z-40">
+              <MenuItem className="p-2 hover:bg-gray-200 rounded-lg ">
                 {" "}
                 <div className="flex gap-x-3">
                   <img src={pen} alt="" />
@@ -101,69 +101,7 @@ export const NavBarProfile = () => {
               </MenuItem>
             </MenuList>
           </Menu>
-          {/* <Menu as="div" className="relative inline-block text-left bg-white">
-            <div>
-            <Menu.Button className="inline-flex w-full gap-x-3 justify-center items-center rounded-lg border-[1px] bg-opacity-20 px-5 py-2 text-sm font-medium text-accent hover:bg-opacity-30 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">
-                {document?.status ? (
-                  <img src={pen} alt="" />
-                ) : (
-                  <img src={eyeview} alt="" />
-                )}
-                <span className="text-lg">
-                  {document?.status ? "Editing" : "Viewer"}
-                </span>
-                <img src={drop} alt="" />
-              </Menu.Button>
-            </div>
-            <Transition
-              as={Fragment}
-              enter="transition ease-out duration-100"
-              enterFrom="transform opacity-0 scale-95"
-              enterTo="transform opacity-100 scale-100"
-              leave="transition ease-in duration-75"
-              leaveFrom="transform opacity-100 scale-100"
-              leaveTo="transform opacity-0 scale-95"
-            >
-              <Menu.Items className="absolute z-[2000]  mt-2 w-[250px] origin-top-right divide-y divide-gray-100 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
-                <div className="px-1 py-1 bg-white">
-                  <Menu.Item className=" hover:bg-gray-100">
-                    {({ active }) => (
-                      <button
-                        className={`${
-                          active ? "bg-violet-500 text-accent" : "text-accent"
-                        } group flex w-full flex-col justify-start text-sm rounded-md px-2 py-2`}
-                        onClick={() => handleChangeStatus(true)}
-                      >
-                        <div className="flex gap-x-3">
-                          <img src={pen} alt="" />
-                          <span className="text-lg">Editing</span>
-                        </div>
-                        <p className="ml-[27.5px]">Edit document directly</p>
-                      </button>
-                    )}
-                  </Menu.Item>
-                  <Menu.Item className="hover:bg-gray-100">
-                    {({ active }) => (
-                      <button
-                        className={`${
-                          active ? "bg-violet-500 text-accent" : "text-accent"
-                        } group flex w-full flex-col gap-x-4 rounded-md px-2 py-2 text-sm`}
-                        onClick={() => handleChangeStatus(false)}
-                      >
-                        <div className="flex gap-x-3">
-                          <img src={eyeview} alt="" />
-                          <span className="text-lg">Viewer</span>
-                        </div>
-                        <p className="ml-[27.5px]">
-                          Read or export final document
-                        </p>
-                      </button>
-                    )}
-                  </Menu.Item>
-                </div>
-              </Menu.Items>
-            </Transition>
-          </Menu> */}
+          
         </div>
       ) : null}
       <div>

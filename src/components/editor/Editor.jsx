@@ -49,7 +49,7 @@ export const Editor = ({ loading, blockData }) => {
     containsInlineContent: true,
     render: ({ block, editor }) => {
       return (
-        <div className="relative bg-stone-100 p-6">
+        <div className="relative bg-stone-100 p-6 ">
           <select
             className="absolute top-6 right-6 text-sm w-[100px] bg-stone-100 focus:outline-none"
             onChange={(e) => {
@@ -436,7 +436,7 @@ export const Editor = ({ loading, blockData }) => {
 
   return (
     <div>
-      <div className="absolute top-5 ml-10">
+      <div className="absolute top-5 ml-10 lg:mt-4 lg:ml-20 md:-mt-1 md:ml-12">
         {isLoading ? (
           <div className="flex items-center gap-x-3">
             <p className="text-gray-500 text-16px">Editing</p>

@@ -4,6 +4,7 @@ import { RemoveWorkspaceModal } from "./RemoveWorkspaceModal";
 import { SideBarSettingWorkspace } from "../components/SideBarSettingWorkspace";
 import { SettingContent } from "../components/SettingContent";
 import { CollaboratorOwnerContent } from "../components/CollaboratorOwnerContent";
+import menu from "../assets/images/Dashboard/menu.svg";
 import { InviteMemberByEmailContent } from "../components/InviteMemberByEmailContent";
 
 export const WorkspaceSettingModal = ({
@@ -25,8 +26,8 @@ export const WorkspaceSettingModal = ({
         open={openWorkspaceSetting}
         onClickBackdrop={() => setOpenWorkspaceSetting(!openWorkspaceSetting)}
       >
-        <div className="w-[1200px] md:w-[600px] h-[820px] md:h-[710px] bg-white rounded-lg grid grid-cols-12 relative">
-          <div className="col-span-3 md:col-span-3 bg-[#FAFAF9] rounded-lg">
+        <div className="w-[1200px] h-[820px]  bg-white rounded-lg grid grid-cols-12 relative  lg:w-[700px] lg:rounded-xl lg:h-[850px] md:w-[500px] md:h-[650px]">
+          <div className="col-span-3 bg-[#FAFAF9] rounded-lg lg:hidden md:hidden ">
             <SideBarSettingWorkspace
               collaborator={collaborator}
               setCollaborator={setCollaborator}
@@ -36,31 +37,7 @@ export const WorkspaceSettingModal = ({
               setOpenInviteMember={setOpenInviteMember}
             />
           </div>
-          <div className="col-span-9 md:col-span-9 p-3 shadow-xl">
-            <div>
-              {setting ? (
-                <SettingContent
-                  workspace={workspace}
-                  openWorkspaceSetting={openWorkspaceSetting}
-                  setOpenWorkspaceSetting={setOpenWorkspaceSetting}
-                />
-              ) : null}
-              {collaborator ? (
-                <CollaboratorOwnerContent
-                  workspace={workspace}
-                  openWorkspaceSetting={openWorkspaceSetting}
-                  setOpenWorkspaceSetting={setOpenWorkspaceSetting}
-                />
-              ) : null}
-              {openInviteMember ? (
-                <InviteMemberByEmailContent
-                  workspace={workspace}
-                  openWorkspaceSetting={openWorkspaceSetting}
-                  setOpenWorkspaceSetting={setOpenWorkspaceSetting}
-                />
-              ) : null}
-            </div>
-          </div>
+          
         </div>
       </Modal>
       <div>

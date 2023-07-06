@@ -57,7 +57,7 @@ export const WorkspaceCard = ({ workspace }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg text-accent cursor-pointer sm:w-[300px] border-[1px]">
+    <div className="shadow-md rounded-lg text-accent cursor-pointer  sm:w-[300px] border-[1px]">
       <div className="flex justify-between items-center p-3">
         <h4 className="font-semibold text-18px line-clamp-1">
           {workspace && workspace.workspaceName}

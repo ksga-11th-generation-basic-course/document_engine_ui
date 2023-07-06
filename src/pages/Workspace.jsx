@@ -143,7 +143,8 @@ export const Workspace = () => {
         <img src={workspaceicon} className="p-2 shadow-md rounded-lg" />
         <p className="font-semibold text-20px">Workspaces</p>
       </div>
-      <div className="grid grid-cols-12 md:grid md:grid-cols-12 sm:grid sm:grid-cols-1">
+      {/* Sort */}
+      <div className="grid grid-cols-12  md:grid md:grid-cols-12 sm:grid sm:grid-cols-1">
         <div className="col-span-4 md:col-span-5 sm:grid-cols-1 flex items-center gap-x-5 h-11">
           <div className="flex items-center gap-x-3">
             <svg
@@ -250,6 +251,7 @@ export const Workspace = () => {
             </Menu>
           </div>
         </div>
+        {/* Filter */}
         <div className="col-span-4 md:col-span-6 sm:grid-cols-1 flex items-center gap-x-5 h-11">
           <div className="flex items-center gap-x-3">
             <svg
@@ -339,16 +341,17 @@ export const Workspace = () => {
             </Menu>
           </div>
         </div>
-        <div className="col-span-4 h-11">
-          <div className="flex justify-end relative">
+      {/* Option Document */}
+        <div className="col-span-4 h-11 ">
+          <div className="flex justify-end relative ">
             <Collapse open={openSearch}>
               <Card>
-                <CardBody className="p-0">
+                <CardBody className="p-0 ">
                   <input
                     type="text"
                     placeholder="search"
                     className={`rounded-lg text-18px font-ssp border-gray-300 w-full focus:ring-accent focus:border-accent transition-transform duration-300 ease-in-out transform ${
-                      openSearch ? "translate-x-0" : "translate-x-full"
+                      openSearch ? "translate-x-0 " : "translate-x-full "
                     }`}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
@@ -378,7 +381,8 @@ export const Workspace = () => {
           </div>
         </div>
       </div>
-      <div className="grid grid-cols-12 gap-5" onScroll={() => handleScroll()}>
+      {/* Card */}
+      <div className="grid grid-cols-12 gap-5 " onScroll={() => handleScroll()}>
         {loading ? (
           tempWorkspaces &&
           tempWorkspaces.map((workspace, index) => (
@@ -400,7 +404,7 @@ export const Workspace = () => {
               }
             })
             .map((workspace, index) => (
-              <div className="col-span-4" key={index}>
+              <div className="col-span-4 " key={index}>
                 <WorkspaceCard workspace={workspace} />
               </div>
             ))

@@ -104,9 +104,9 @@ export const DocumentCard = ({ document, workspaceId }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-1 flex relative">
-      <div onClick={handleNavigate} className="w-full p-3">
-        <div className="flex justify-between items-center">
+    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-1 flex relative lg:w-[280px] md:w-[320px] md:h-32 md:-ml-1">
+      <div onClick={handleNavigate} className="w-full p-3 ">
+        <div className="flex justify-between items-center ">
           {/* <h4 className="font-semibold text-20px">{document.title}</h4> */}
           {document.status ? (
             <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF] absolute right-2 top-3 ">
@@ -116,7 +116,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
           ) : null}
         </div>
         <div className="flex justify-between items-center">
-          <div>
+          <div className="md:mt-4">
             <span className="font-bold text-22px text-primary flex gap-x-3">
               <svg
                 className="mt-2"
@@ -137,14 +137,19 @@ export const DocumentCard = ({ document, workspaceId }) => {
               </svg>
               <p className="line-clamp-1">{document.title}</p>
             </span>
-            <span className="text-14px font-semibold leading-8 text-accent">
-              Edited <span>{document.editDate}</span> minutes ago
+            <span className="text-14px font-semibold leading-8 text-accent ">
+              Edited {document.editDate > 0 ?
+                <span className="ml-1">
+                {document.editDate >= 60 ? Math.trunc(document.editDate/60) : document.editDate}  
+                {document.editDate >= 120 ? " hours ago" : document.editDate >= 60 ? " hour ago"  : document.editDate > 1 ? " minutes ago" : " minute ago"}
+                </span> : " Just Now"  
+        }
             </span>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-1 right-0">
+      <div className="absolute bottom-1 right-0 ">
         <div className="relative">
           <Menu placement="right-start">
             <MenuHandler>
@@ -152,7 +157,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
                 <img src={dotmenu} className="w-4 h-4" />
               </button>
             </MenuHandler>
-            <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56 font-ssp">
+            <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56 font-ssp lg:z-40 md:z-40">
               <MenuItem
                 className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                 onClick={viewPage}
@@ -162,7 +167,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
                 <span className="text-18px">View page</span>
               </MenuItem>
               <MenuItem
-                className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
+                className="hover:bg-gray-200 p-2 flex items-center gap-x-3 "
                 onClick={() => setOpenPermission(!openPermission)}
               >
                 {" "}
@@ -170,22 +175,22 @@ export const DocumentCard = ({ document, workspaceId }) => {
                 <span className="text-18px">Permission</span>
               </MenuItem>
               <MenuItem
-                className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
+                className="hover:bg-gray-200 p-2 flex items-center gap-x-3 "
                 onClick={() => hanleDocumentHistory(document?.documentId)}
               >
                 {" "}
                 <img src={history} />
-                <span className="text-18px">Document History</span>
+                <span className="text-18px ">Document History</span>
               </MenuItem>
               <Menu placement="right-start" offset={15}>
                 <MenuHandler>
-                  <MenuItem className="hover:bg-gray-200 p-2 flex items-center gap-x-3">
+                  <MenuItem className="hover:bg-gray-200 p-2 flex items-center gap-x-3 lg:w-[400px] ">
                     {" "}
                     <img src={file} />
                     <span className="text-18px"> Export file</span>
                   </MenuItem>
                 </MenuHandler>
-                <MenuList className="text-accent rounded-lg space-y-1 p-2 w-36">
+                <MenuList className="text-accent rounded-lg space-y-1 p-2 w-36 lg:z-40 ">
                   <MenuItem
                     className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                     onClick={() => handleExportFile(document?.documentId)}

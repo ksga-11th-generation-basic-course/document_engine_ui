@@ -26,7 +26,7 @@ export const DocumentCardRow = ({
   };
 
   return (
-    <div className="flex justify-between items-center px-3 gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:w-full md:-ml-5 md:w-[330px] md:py-0 md:px-0">
+    <div className="flex justify-between items-center px-3 gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:w-full md:-ml-5 md:w-[330px]  md:py-0 md:px-0">
       <div className="w-full h-full px-5 py-4" onClick={handleNavigate}>
         <div className="flex gap-x-5">
           <h3 className="font-semibold text-22px text-black w-44 md:text-16px md:w-24 line-clamp-1 md:-mt-4">

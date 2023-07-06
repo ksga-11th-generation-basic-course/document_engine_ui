@@ -10,7 +10,7 @@ export const SideBarSettingWorkspace = ({
   setOpenInviteMember,
 }) => {
   return (
-    <div className="space-y-3">
+    <div className="space-y-3 ">
       <div className="flex justify-center p-5 rounded-tl-lg shadow-md">
         <img className="md:w-16" src={logo} />
       </div>

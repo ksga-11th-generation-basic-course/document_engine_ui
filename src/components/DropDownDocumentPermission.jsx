@@ -25,7 +25,7 @@ export const DropDownDocumentPermission = ({
     dispatch(setAccessibilitySuccess(accessibility));
   };
   return (
-    <div>
+    <div >
       {permissiom && (
         <div
           className="fixed inset-0"

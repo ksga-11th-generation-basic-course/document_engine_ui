@@ -96,7 +96,7 @@ export const DocumentList = ({ document, workspaceId }) => {
 
   return (
     <div>
-      <div className="flex justify-between items-center text-black text-18px xs:text-14px cursor-pointer" onClick={handleNavigate}>
+      <div className="flex justify-between items-center text-black text-18px xs:text-14px cursor-pointer " onClick={handleNavigate}>
         <div className="flex items-center gap-x-3">
           <span className="font-bold text-22px text-primary flex gap-x-3">
             <svg
@@ -134,7 +134,7 @@ export const DocumentList = ({ document, workspaceId }) => {
                   <img src={dotmenu} className="w-4 h-4" />
                 </button>
               </MenuHandler>
-              <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56 font-ssp">
+              <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56 font-ssp lg:z-10 md:z-10">
                 <MenuItem
                   className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                   onClick={viewPage}

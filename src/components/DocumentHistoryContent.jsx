@@ -19,8 +19,8 @@ export const DocumentHistoryContent = ({
   }, [dispatch, documentId]);
 
   return (
-    <div>
-      <div className="flex w-full justify-end">
+    <div >
+      <div className="flex w-full justify-end ">
         <button
           type="button"
           onClick={() => setOpenDocumentHistory(!openDocumentHistory)}
@@ -34,7 +34,7 @@ export const DocumentHistoryContent = ({
           <p>Manage history of document and rollback to specific version</p>
         </div>
         <div>
-          <div className="border-[1px] px-6 py-3 rounded-lg space-y-3 overflow-auto h-[600px]">
+          <div className="border-[1px] px-6 py-3 rounded-lg space-y-3 overflow-auto h-[600px] md:z-50">
             {histories &&
               histories.map((history, index) => (
                 <DocumentHistoryCard history={history} key={index} />

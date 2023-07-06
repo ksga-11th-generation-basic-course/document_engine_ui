@@ -80,7 +80,7 @@ export const MemberDocumentPermissionCard = ({
 
   return (
     <div>
-      <div className="flex justify-between items-center w-full">
+      <div className="flex justify-between items-center w-full ">
         <div className="flex justify-center items-center gap-x-3">
           <div
             className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full`}

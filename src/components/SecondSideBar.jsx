@@ -35,7 +35,7 @@ import { DeleteDocumentModal } from "../modal/DeleteDocumentModal";
 import { api } from "../utils/constant";
 import close from "../assets/dashboard_image/close.svg";
 
-export const SecondSideBar = ({ handleClick }) => {
+export const SecondSideBar = ({ handleClick, sideBar, setSideBar }) => {
   const [open, setOpen] = React.useState(0);
 
   const { workspaces } = useSelector((state) => state.workspace);

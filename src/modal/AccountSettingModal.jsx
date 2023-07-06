@@ -72,7 +72,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <Modal
         open={openSetting}
         onClickBackdrop={() => {
@@ -111,7 +111,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
             </div>
           </div>
 
-          <div className="col-span-9 p-3 shadow-xl  bg-white rounded-r-lg lg:col-span-12">
+          <div className="col-span-9 p-3 shadow-xl  bg-white rounded-r-lg lg:rounded-2xl lg:col-span-12 md:-ml-20 md:w-[510px] md:text-lg md:pl-8 ">
             {/* Close button */}
             <div className="flex w-full justify-end mt-3">
               <button
@@ -139,7 +139,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
               <div>
                 {/* For laptop and tablets */}
                 {/* Header */}
-                <div className="md:hidden flex justify-between border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 lg:py-0 rounded-t-lg">
+                <div className="md:hidden flex justify-between border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 lg:py-0 rounded-t-lg lg:rounded-lg">
                   <div className="flex justify-center items-center gap-x-3 lg:py-3">
                     <img src={profile} className="md:w-6" />
                     <p className="font-bold text-24px text-black md:text-16px">

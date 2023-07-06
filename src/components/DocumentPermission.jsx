@@ -4,7 +4,7 @@ import key from "../assets/document_image/key.svg";
 export const DocumentPermission = () => {
   return (
     <div>
-      <div className="relative">
+      <div className="relative ">
         <button className="flex items-center gap-x-3 text-primary bg-[#F6F6F6] rounded-lg w-full py-3 px-3">
           {" "}
           <img src={key} />
