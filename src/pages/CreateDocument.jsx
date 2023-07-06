@@ -33,6 +33,7 @@ import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { DocumentPermissionModal } from "../modal/DocumentPermissionModal";
 import { DocumentHistoryModal } from "../modal/DocumentHistoryModal";
 import { getHistoryByDocumentId } from "../redux/service/historyService/historyService";
+import { clearBlocksSuccess } from "../redux/slice/blockSlice/blockSlice";
 
 export const CreateDocument = () => {
   const [openPermission, setOpenPermission] = useState(false);
@@ -52,6 +53,8 @@ export const CreateDocument = () => {
   const workspaceId = param?.workspaceId;
   const dispatch = useDispatch();
 
+  // console.log("create", blockData);
+
   useEffect(() => {
     dispatch(getDocumentByDocumentId(documentId));
     dispatch(getWorkspaceName(documentId));
@@ -59,12 +62,12 @@ export const CreateDocument = () => {
     dispatch(getTagByDocumentId(documentId));
     dispatch(getTagInEachWorkspace(workspaceId));
     dispatch(getDocumentByPageId(document?.pageId));
-    dispatch(getHistoryByDocumentId(document?.documentId));
   }, [documentId, workspaceId, document?.pageId]);
 
   useEffect(() => {
-    dispatch(getBlockBydoucmentId(document?.documentId));
-  }, [document]);
+    dispatch(clearBlocksSuccess());
+    dispatch(getBlockBydoucmentId(documentId));
+  }, [documentId]);
 
   const [title, setTitle] = useState();
 
@@ -87,6 +90,8 @@ export const CreateDocument = () => {
   }
 
   const timestamp = document && document.createdDate;
+
+  console.log(document?.createdDate);
 
   const handleInputChan = (event) => {
     setInputValue(event.target.value);
@@ -131,7 +136,7 @@ export const CreateDocument = () => {
     </li>,
     <li className="flex items-center gap-x-2">
       <img src={doc} />
-      <p className="text-primary">{title ? title : "Loading..."}</p>
+      <p className="text-primary">{title}</p>
     </li>,
   ];
 

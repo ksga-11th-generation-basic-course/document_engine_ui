@@ -48,7 +48,9 @@ export const Workspace = () => {
 
   const [openSearch, setOpenSearch] = useState(false);
 
-  const { workspaces, totalPage } = useSelector((state) => state.workspace);
+  const { workspaces, totalPage, loading } = useSelector(
+    (state) => state.workspace
+  );
 
   const dispatch = useDispatch();
 
@@ -64,7 +66,7 @@ export const Workspace = () => {
 
   const [sortbydatetime, setSortbydatetime] = useState("DEFAULT");
 
-  const [loading, setLoading] = useState(true);
+  const [loadingSkeleton, setLoadingSkeleton] = useState(true);
 
   const [status, setStatus] = useState("Ascending");
 
@@ -115,8 +117,8 @@ export const Workspace = () => {
   useEffect(() => {
     // Simulating data fetching delay
     setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+      setLoadingSkeleton(false);
+    }, 2000);
   }, []);
 
   useEffect(() => {
@@ -373,13 +375,16 @@ export const Workspace = () => {
         </div>
       </div>
       <div className="grid grid-cols-12 gap-5" onScroll={() => handleScroll()}>
-        {loading ? (
-          workspaces &&
-          workspaces.map((workspace, index) => (
-            <div className="col-span-4" key={index}>
-              <CustomSkeleton />
-            </div>
-          ))
+        {loadingSkeleton ? (
+          workspaces && workspaces.length > 0 ? (
+            workspaces.map((workspace, index) => (
+              <div className="col-span-4" key={index}>
+                <CustomSkeleton />
+              </div>
+            ))
+          ) : (
+            <div className="loader absolute  bottom-[42%] left-[54%]"></div>
+          )
         ) : workspaces === null ? null : workspaces.length > 0 ? (
           workspaces
             .filter((workspace) => {
@@ -399,7 +404,7 @@ export const Workspace = () => {
               </div>
             ))
         ) : (
-          <div className="col-span-12 absolute bottom-[40%] left-[50%]">
+          <div className="col-span-12 absolute bottom-[40%] left-[53%]">
             <div className="flex flex-col items-center justify-center gap-y-1">
               <svg
                 width="64"

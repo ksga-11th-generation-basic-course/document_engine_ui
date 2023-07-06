@@ -100,7 +100,7 @@ export const SecondSideBar = ({ handleClick }) => {
   }, [dispatch, no, size, asc, desc, sortbydatetime]);
 
   const handleGetDocumentInEachWorkspace = (workspaceId) => {
-    navigate(`/document/${workspaceId}`);
+    // navigate(`/document/${workspaceId}`);
     console.log(workspaceId);
     dispatch(
       getAllDocumentInEachWorkspace({
@@ -131,18 +131,18 @@ export const SecondSideBar = ({ handleClick }) => {
 
   // const [documentData, setDocumentData] = useState();
 
-  const now = new Date();
-  const currentDateTime = now.toISOString();
   const handleCreatePage = async (documentId, workspaceId) => {
     const document = await createDocument(
       "Untitled",
       false,
-      currentDateTime,
       documentId,
       workspaceId
     );
     // setDocumentData(document);
     dispatch(createDocumentSuccess(document));
+    navigate(
+      `/createdocument/${document?.documentId}/${document?.workspaceId}`
+    );
     toast.success("Create Document Successfully", {
       position: "bottom-right",
       autoClose: 5000,
@@ -156,13 +156,7 @@ export const SecondSideBar = ({ handleClick }) => {
   };
 
   const handleCreateDocument = async (workspaceId) => {
-    const document = await createDocument(
-      "Untitled",
-      false,
-      currentDateTime,
-      null,
-      workspaceId
-    );
+    const document = await createDocument("Untitled", false, null, workspaceId);
     dispatch(createDocumentSuccess(document));
     navigate(
       `/createdocument/${document?.documentId}/${document?.workspaceId}`
@@ -421,7 +415,6 @@ export const SecondSideBar = ({ handleClick }) => {
                           type="button"
                           className="hover:bg-gray-300 rounded-sm p-[1px]"
                           onClick={() => {
-                            setVisiblePage(!visiblePage);
                             handleClick(true);
                             handleCreatePage(
                               document?.documentId,
@@ -552,7 +545,8 @@ export const SecondSideBar = ({ handleClick }) => {
         </ListItem>
         <hr className="my-2 border-blue-gray-50" />
         <div className="text-18px text-gray-400">WORKSPACE</div>
-        {workspaces &&
+        {workspaces && workspaces.length > 0 ? (
+          workspaces &&
           workspaces.map((workspace, index) => (
             <Accordion
               key={index}
@@ -650,14 +644,46 @@ export const SecondSideBar = ({ handleClick }) => {
               </ListItem>
               {documents && renderDocuments(documents)}
             </Accordion>
-          ))}
+          ))
+        ) : (
+          <div className="absolute bottom-[30%] left-[30%]">
+            <div className="flex flex-col items-center justify-center gap-y-1">
+              <svg
+                width="64"
+                height="41"
+                viewBox="0 0 64 41"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g transform="translate(0 1)" fill="none" fill-rule="evenodd">
+                  <ellipse
+                    fill="#F5F5F5"
+                    cx="32"
+                    cy="33"
+                    rx="32"
+                    ry="7"
+                  ></ellipse>
+                  <g fill-rule="nonzero" stroke="#526581">
+                    <path d="M55 12.76L44.854 1.258C44.367.474 43.656 0 42.907 0H21.093c-.749 0-1.46.474-1.947 1.257L9 12.761V22h46v-9.24z"></path>
+                    <path
+                      d="M41.613 15.931c0-1.605.994-2.93 2.227-2.931H55v18.137C55 33.26 53.68 35 52.05 35h-40.1C10.32 35 9 33.259 9 31.137V13h11.16c1.233 0 2.227 1.323 2.227 2.928v.022c0 1.605 1.005 2.901 2.237 2.901h14.752c1.232 0 2.237-1.308 2.237-2.913v-.007z"
+                      fill="#FAFAFA"
+                    ></path>
+                  </g>
+                </g>
+              </svg>
+              <p className="font-semibold text-accent text-base">
+                No Workspace
+              </p>
+            </div>
+          </div>
+        )}
       </List>
-      <CreatePageModal
+      {/* <CreatePageModal
         // documentData={documentData}
         visiblePage={visiblePage}
         setVisiblePage={setVisiblePage}
         secondhandleClick={secondhandleClick}
-      />
+      /> */}
       <RemoveWorkspaceModal
         removeWorkspace={removeWorkspace}
         setRemoveWorkspace={setRemoveWorkspace}

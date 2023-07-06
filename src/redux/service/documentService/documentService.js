@@ -14,7 +14,7 @@ export const getAllDocumentInEachWorkspace = createAsyncThunk(
           },
         }
       );
-      console.log(response.data.payload)
+      console.log(response.data.payload);
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;
@@ -104,20 +104,13 @@ export const getMemberInEachDocument = createAsyncThunk(
   }
 );
 
-export const createDocument = async (
-  title,
-  status,
-  createDate,
-  pageId,
-  workspaceId
-) => {
+export const createDocument = async (title, status, pageId, workspaceId) => {
   try {
     const response = await api.post(
       `documents`,
       {
         title: title,
         status: status,
-        createdDate: createDate,
         pageId: pageId,
         workspaceId: workspaceId,
       },
@@ -181,11 +174,7 @@ export const updateDocument = async (documentId, title) => {
   }
 };
 
-export const setAccessibility = async (
-  documentId,
-  userId,
-  accessibility
-) => {
+export const setAccessibility = async (documentId, userId, accessibility) => {
   try {
     const response = await api.put(
       `documents/${documentId}/users/${userId}/accessibility/?accessibility=${accessibility}`,

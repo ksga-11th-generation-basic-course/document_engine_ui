@@ -50,7 +50,7 @@ export const CreateWorkspaceModal = ({
     try {
       const workspace = await createWorkspace(workspaceName, url);
       dispatch(createWorkspaceSuccess(workspace));
-      navigate("/workspace");
+      navigate(`/document/${workspace?.workspaceId}`);
       toast.success("Create Workspace Successfully", {
         position: "bottom-right",
         autoClose: 5000,

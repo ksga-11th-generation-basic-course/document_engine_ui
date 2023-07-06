@@ -104,13 +104,10 @@ export const Document = () => {
     dispatch(getTagInEachWorkspace(workspaceId));
   }, [workspaceId]);
 
-  const now = new Date();
-  const currentDateTime = now.toISOString();
   const handleCreateDocument = async () => {
     const document = await createDocument(
       "Untitled",
       false,
-      currentDateTime,
       null,
       workspaceId
     );
@@ -134,7 +131,7 @@ export const Document = () => {
     // Simulating data fetching delay
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 1500);
   }, []);
 
   return (

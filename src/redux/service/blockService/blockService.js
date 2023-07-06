@@ -36,6 +36,7 @@ export const createBlock = async (
 export const getBlockBydoucmentId = createAsyncThunk(
   `/documents/blocks`,
   async (documentId) => {
+    // console.log("documentId", documentId)
     try {
       const response = await api.get(`blocks/${documentId}`, {
         headers: {
@@ -43,7 +44,7 @@ export const getBlockBydoucmentId = createAsyncThunk(
           "Content-Type ": "application/json",
         },
       });
-      // console.log(response.data.payload)
+      // console.log("service", response.data.payload)
       return response.data.payload;
     } catch (error) {
       throw error.response.data.detail;

@@ -4,6 +4,7 @@ import { DocumentHistoryCard } from "./card/DocumentHistoryCard";
 import { api } from "../utils/constant";
 import { useDispatch, useSelector } from "react-redux";
 import { getHistoryByDocumentId } from "../redux/service/historyService/historyService";
+import { clearHistoriesSuccess } from "../redux/slice/historySlice/historySlice";
 
 export const DocumentHistoryContent = ({
   openDocumentHistory,
@@ -11,8 +12,13 @@ export const DocumentHistoryContent = ({
   documentId,
 }) => {
   const { histories } = useSelector((state) => state.history);
-
-  console.log(histories)
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(clearHistoriesSuccess());
+    dispatch(getHistoryByDocumentId(documentId));
+  }, [documentId]);
+  
+  console.log(histories);
 
   return (
     <div>

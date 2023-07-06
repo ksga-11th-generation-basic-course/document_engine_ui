@@ -24,14 +24,20 @@ const blockSlice = createSlice({
         (block) => block.blockId !== action.payload
       );
     },
+    clearBlocksSuccess: (state) => {
+      state.blocks = null;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getBlockBydoucmentId.pending, (state) => {
       state.loading = true;
     });
     builder.addCase(getBlockBydoucmentId.fulfilled, (state, action) => {
+      console.log("slice", action.payload);
       state.loading = false;
       state.blocks = action.payload;
+      console.log("slice 2", state.blocks);
+      // console.log("awdwada", action.payload);
       state.error = null;
     });
     builder.addCase(getBlockBydoucmentId.rejected, (state, action) => {
@@ -41,6 +47,6 @@ const blockSlice = createSlice({
     });
   },
 });
-export const { createBlockSuccess, updateBlockSuccess, deleteBlockSuccess } =
+export const { createBlockSuccess, updateBlockSuccess, deleteBlockSuccess, clearBlocksSuccess } =
   blockSlice.actions;
 export default blockSlice.reducer;

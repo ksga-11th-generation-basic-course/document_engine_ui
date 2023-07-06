@@ -325,6 +325,8 @@ export const Editor = ({ loading, blockData }) => {
   const param = useParams();
   const dispatch = useDispatch();
 
+  console.log("Test", blockData)
+
   const sortedInitialContent = [...blockData].sort((a, b) => a.order - b.order);
 
   const [timerId, setTimerId] = useState(null);

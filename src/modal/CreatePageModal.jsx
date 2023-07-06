@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { BlockNoteView, useBlockNote } from "@blocknote/react";
 import "@blocknote/core/style.css";
 import { getUsername } from "../redux/service/documentService/documentService";
+import { Editor } from "../components/editor/Editor";
 
 export const CreatePageModal = ({
   documentData,
@@ -14,24 +15,17 @@ export const CreatePageModal = ({
   setVisiblePage,
   secondhandleClick,
 }) => {
-  console.log(documentData);
-  const editor = useBlockNote({
-    theme: "light",
-    onEditorContentChange: (editor) => {
-      console.log(editor.topLevelBlocks);
-    },
-  });
   const [title, setTitle] = useState("Untitled");
   const dispatch = useDispatch();
   const [toggle, setToggle] = useState(false);
   const { tagsWorkspace, tagsDocument } = useSelector((state) => state.tag);
+  const blockData = useSelector((state) => state.block.blocks);
   const { username } = useSelector((state) => state.document);
   const documentId = documentData?.documentId;
 
   useEffect(() => {
     dispatch(getUsername(documentId));
   }, [documentId]);
-
 
   return (
     <div>
@@ -199,7 +193,7 @@ export const CreatePageModal = ({
             </div>
           </div>
           <div className="mt-2">
-            {visiblePage && <BlockNoteView editor={editor} />}
+            {visiblePage && <Editor blockData={blockData} />}
           </div>
         </Modal.Body>
       </Modal>

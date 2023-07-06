@@ -57,6 +57,8 @@ export const WorkspaceSettingModal = ({
                   workspace={workspace}
                   openWorkspaceSetting={openWorkspaceSetting}
                   setOpenWorkspaceSetting={setOpenWorkspaceSetting}
+                  setCollaborator={setCollaborator}
+                  setOpenInviteMember={setOpenInviteMember}
                 />
               ) : null}
             </div>

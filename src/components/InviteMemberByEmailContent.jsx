@@ -11,6 +11,8 @@ export const InviteMemberByEmailContent = ({
   openWorkspaceSetting,
   setOpenWorkspaceSetting,
   workspace,
+  setCollaborator,
+  setOpenInviteMember,
 }) => {
   const [email, setEmail] = useState("");
 
@@ -26,6 +28,8 @@ export const InviteMemberByEmailContent = ({
     try {
       const workspace = await inviteMemberViaEmail(workspaceId, email);
       dispatch(inviteMemberViaEmailSuccess(workspace));
+      setCollaborator(true);
+      setOpenInviteMember(false);
       setSuccess(true);
       setTimeout(() => {
         setSuccess(false);
