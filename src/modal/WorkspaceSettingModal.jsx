@@ -4,8 +4,9 @@ import { RemoveWorkspaceModal } from "./RemoveWorkspaceModal";
 import { SideBarSettingWorkspace } from "../components/SideBarSettingWorkspace";
 import { SettingContent } from "../components/SettingContent";
 import { CollaboratorOwnerContent } from "../components/CollaboratorOwnerContent";
-import menu from "../assets/images/Dashboard/menu.svg";
 import { InviteMemberByEmailContent } from "../components/InviteMemberByEmailContent";
+import menu from "../assets/images/Dashboard/menu.svg";
+import close from "../assets/dashboard_image/close.svg";
 
 export const WorkspaceSettingModal = ({
   openWorkspaceSetting,
@@ -20,14 +21,16 @@ export const WorkspaceSettingModal = ({
 
   const [openInviteMember, setOpenInviteMember] = useState(false);
 
+  const [open, setOpen] = useState(false);
+
   return (
-    <div className="w-full">
+    <div className="w-full ">
       <Modal
         open={openWorkspaceSetting}
         onClickBackdrop={() => setOpenWorkspaceSetting(!openWorkspaceSetting)}
       >
-        <div className="w-[1200px] h-[820px]  bg-white rounded-lg grid grid-cols-12 relative  lg:w-[700px] lg:rounded-xl lg:h-[850px] md:w-[500px] md:h-[650px]">
-          <div className="col-span-3 bg-[#FAFAF9] rounded-lg lg:hidden md:hidden ">
+        <div className="shadow-custom w-[1200px] h-[810px]  bg-white rounded-lg grid grid-cols-12 relative lg:w-[700px] lg:rounded-xl lg:h-[850px]  md:w-[540px] md:h-[790px] ">
+          <div className="col-span-3 rounded-lg lg:hidden md:hidden ">
             <SideBarSettingWorkspace
               collaborator={collaborator}
               setCollaborator={setCollaborator}
@@ -37,7 +40,63 @@ export const WorkspaceSettingModal = ({
               setOpenInviteMember={setOpenInviteMember}
             />
           </div>
-          
+          <div className="col-span-9 lg:col-span-12 p-3 shadow-xl lg:p-0  md:pl-4 md:mr-2 md:shadow-none md:border-l-0">
+            <span className="hidden lg:inline-block md:inline-block">
+              {open? null : 
+                  <button onClick={() => setOpen(!open)}>
+                  <img
+                    src={menu}
+                    alt="menu"
+                    className="lg:absolute lg:mt-5 lg:ml-10 md:w-3.5 md:ml-4 md:mt-2"
+                  />
+                </button>
+              }
+
+              {open ? 
+                  <div className="hidden lg:inline-block lg:z-20 lg:absolute lg:ml-[205px]   md:w-full md:ml-[130px] ">
+                  <div className="hidden lg:inline-block lg:ml-20">
+                    <button type="button" onClick={() => setOpen(!open)}>
+                      <img src={close} className="w-7 md:w-5" />
+                    </button>
+                  </div>
+                </div> : null  
+            }
+
+              {open ? (
+                <span className="hidden lg:z-10 lg:inline-block lg:absolute lg:-mt-[18px]">
+                  <SideBarSettingWorkspace
+                    collaborator={collaborator}
+                    setCollaborator={setCollaborator}
+                    setting={setting}
+                    setSetting={setSetting}
+                  />
+                </span>
+              ) : null}
+            </span>
+            <div>
+              {setting ? (
+                <SettingContent
+                  workspace={workspace}
+                  openWorkspaceSetting={openWorkspaceSetting}
+                  setOpenWorkspaceSetting={setOpenWorkspaceSetting}
+                />
+              ) : null}
+              {collaborator ? (
+                <CollaboratorOwnerContent
+                  workspace={workspace}
+                  openWorkspaceSetting={openWorkspaceSetting}
+                  setOpenWorkspaceSetting={setOpenWorkspaceSetting}
+                />
+              ) : null}
+              {openInviteMember ? (
+                <InviteMemberByEmailContent
+                  workspace={workspace}
+                  openWorkspaceSetting={openWorkspaceSetting}
+                  setOpenWorkspaceSetting={setOpenWorkspaceSetting}
+                />
+              ) : null}
+            </div>
+          </div>
         </div>
       </Modal>
       <div>

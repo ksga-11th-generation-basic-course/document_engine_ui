@@ -157,7 +157,7 @@ export const Document = () => {
             type="button"
             onClick={handleCreateDocument}
             className="font-semibold text-base bg-primary px-5 py-3 rounded-lg text-white shadow-none
-              lg:-mr-64 lg:-mt-6 md:w-[160px] md:text-sm md:ml-24 md:mr-"
+              lg:w-[200px] lg:ml-[190px] lg:-mt-6 md:w-[160px] md:text-sm md:ml-24 md:mr-"
           >
             Create Document
           </Button>
@@ -165,7 +165,7 @@ export const Document = () => {
       </div>
       {/* Sort */}
       <div className="grid grid-cols-12 lg:grid lg:grid-cols-12 lg:-ml-2 md:grid md:grid-cols-12 md:text-sm md:mt-3 md:w-[400px] ">
-        <div className="col-span-4 flex items-center gap-x-5 h-11 lg:col-span-4 lg:w-72 md:w-36 md:col-span-6">
+        <div className="col-span-4 flex items-center gap-x-5 h-11 lg:col-span-4 lg:ml-8  lg:w-72 md:w-36 md:col-span-6">
           <div className="flex items-center gap-x-3">
             <svg
               width="20"
@@ -259,7 +259,7 @@ export const Document = () => {
           </div>
         </div>
         {/* Filter */}
-        <div className="col-span-4 flex items-center gap-x-5 h-11 lg:col-span-4 lg:w-80 lg:ml-28 md:col-span-4 md:w-40 md:ml-14">
+        <div className="col-span-4 flex items-center gap-x-5 h-11 lg:col-span-4 lg:w-[230px]  lg:ml-48 md:col-span-4 md:w-40 md:ml-14">
           <div className="flex items-center gap-x-3">
             <svg
             className="lg:w-6 md:w-4 md:h-4"
@@ -330,7 +330,7 @@ export const Document = () => {
         </div>
 
         {/* Option Document */}
-        <div className="col-span-4 flex items-center justify-end  lg:col-span-4 lg:-mr-64  md:w-[110px] md:col-span-3  md:ml-44 ">
+        <div className="col-span-4 flex items-center justify-end  lg:w-[230px] lg:absolute lg:-mt-12 lg:ml-20  md:w-[110px] md:col-span-3  md:ml-44 ">
           {openSearch ? (
             <div className="flex justify-end items-center relative">
               {openSearch ? (
@@ -562,7 +562,7 @@ export const Document = () => {
           )}
         </div>
       ) : (
-        <div className="space-y-5">
+        <div className="space-y-5 lg:ml-16 ">
           {documents === null ? null : documents.length > 0 ? (
             documents
               .filter((document) => {

@@ -69,14 +69,14 @@ export const SettingContent = ({
 
   return (
     <div>
-      <div className="flex w-full justify-end">
+      <div className="flex w-full justify-end ">
         <button
-          type="button"
+          type="button "
           onClick={() => {
             setOpenWorkspaceSetting(!openWorkspaceSetting);
           }}
         >
-          <img src={close} />
+          <img src={close} className="lg:mr-6 lg:-mt-1 md:-mr-1 md:-mt-1"/>
         </button>
       </div>
       <div className="px-16 md:px-3 space-y-5">

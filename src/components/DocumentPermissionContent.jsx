@@ -27,7 +27,7 @@ export const DocumentPermissionContent = ({
           <img src={close} />
         </button>
       </div>
-      <div className="px-16 space-y-5">
+      <div className="px-16 space-y-5 ">
         <div className="text-accent">
           <h1 className="font-bold text-34px">Document Permission</h1>
           <p>Manage permissions of your members in workspace</p>

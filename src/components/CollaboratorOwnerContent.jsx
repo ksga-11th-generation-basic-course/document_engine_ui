@@ -37,7 +37,7 @@ export const CollaboratorOwnerContent = ({
           type="button"
           onClick={() => setOpenWorkspaceSetting(!openWorkspaceSetting)}
         >
-          <img src={close} />
+          <img src={close} className="lg:mr-4 lg:-mt-1 lg:w-[40px] "/>
         </button>
       </div>
       <div className="px-16 space-y-5 md:px-3">

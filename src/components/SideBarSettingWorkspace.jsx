@@ -10,16 +10,16 @@ export const SideBarSettingWorkspace = ({
   setOpenInviteMember,
 }) => {
   return (
-    <div className="space-y-3 ">
+    <div className="space-y-3 bg-white lg:h-[848px] lg:w-[320px] lg:z-10 lg:rounded-l-xl lg:mt-1 lg:shadow-xl md:w-[250px] md:rounded-l-xl md:h-[787px] md:-ml-3.5 ">
       <div className="flex justify-center p-5 rounded-tl-lg shadow-md">
         <img className="md:w-16" src={logo} />
       </div>
-      <div className="w-full px-3 md:p-0">
+      <div className="w-full px-3  md:p-0">
         <div>
           <button
             className={
               setting
-                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3"
+                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3 md:m-2 md:w-[230px] "
                 : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3"
             }
             onClick={() => {
@@ -45,7 +45,7 @@ export const SideBarSettingWorkspace = ({
             <p className="font-semibold text-18px md:text-[16px]">Setting</p>
           </button>
         </div>
-        <div>
+        <div className="lg:z-40">
           <button
             className={
               collaborator
