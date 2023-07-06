@@ -138,33 +138,35 @@ export const Workspace = () => {
   }
 
   return (
-    <div className="text-accent space-y-5 sm:h-full bg-white">
+    <div className="text-accent space-y-5 sm:h-full bg-white md:mt-5 md:-ml-3">
       <div className="flex items-center gap-x-3 ">
         <img src={workspaceicon} className="p-2 shadow-md rounded-lg" />
         <p className="font-semibold text-20px">Workspaces</p>
       </div>
-      {/* Sort */}
-      <div className="grid grid-cols-12  md:grid md:grid-cols-12 sm:grid sm:grid-cols-1">
-        <div className="col-span-4 md:col-span-5 sm:grid-cols-1 flex items-center gap-x-5 h-11">
+      <div className="grid grid-cols-12 lg:ml-2 lg:gap-x-6 md:grid md:grid-cols-12 sm:grid sm:grid-cols-1">
+        {/* Sort */}
+        <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center  md:ml-0 md:w-36 md:col-span-12">
           <div className="flex items-center gap-x-3">
-            <svg
-              width="20"
-              height="20"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="1.5"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M1.5 6.75h21"></path>
-              <path d="M5.25 12h13.5"></path>
-              <path d="M9.75 17.25h4.5"></path>
-            </svg>
+            <span className="mt-2 w-7 h-7 md:w-6 md:h-6">
+              <svg
+                width="20"
+                height="20"
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="1.5"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M1.5 6.75h21"></path>
+                <path d="M5.25 12h13.5"></path>
+                <path d="M9.75 17.25h4.5"></path>
+              </svg>
+            </span>
             <h4 className="font-semibold text-20px md:text-18px">Sort: </h4>
           </div>
-          <div className="relative">
+          <div className="relative lg:ml-3 lg:z-30">
             <Menu
               open={openMenu}
               handler={setOpenMenu}
@@ -173,7 +175,7 @@ export const Workspace = () => {
               }}
             >
               <MenuHandler>
-                <button className="flex items-center justify-between w-[200px]">
+                <button className="flex items-center justify-between w-[200px] z-50">
                   <p className="text-18px text-black font-ssp">{status}</p>
                   <ChevronDownIcon
                     strokeWidth={3}
@@ -183,7 +185,7 @@ export const Workspace = () => {
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp z-50">
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="Ascending"
@@ -251,22 +253,23 @@ export const Workspace = () => {
             </Menu>
           </div>
         </div>
+
         {/* Filter */}
-        <div className="col-span-4 md:col-span-6 sm:grid-cols-1 flex items-center gap-x-5 h-11">
+        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:ml-56 md:w-40 md:ml-1  md:col-span-12 md:mt-3">
           <div className="flex items-center gap-x-3">
-            <svg
-              width="20"
-              height="20"
-              fill="none"
-              stroke="currentColor"
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
-            </svg>
+            <span className="w-5 h-5 md:mr-1">
+              <svg
+                fill="none"
+                stroke="currentColor"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
+              </svg>
+            </span>
             <h4 className="font-semibold text-20px md:text-18px">Filter: </h4>
           </div>
           <div className="relative">
@@ -290,7 +293,7 @@ export const Workspace = () => {
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp z-20">
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="All Workspaces"
@@ -341,17 +344,34 @@ export const Workspace = () => {
             </Menu>
           </div>
         </div>
-      {/* Option Document */}
-        <div className="col-span-4 h-11 ">
-          <div className="flex justify-end relative ">
+
+        <div className="hidden md:inline-block w-full mt-3">
+          <input
+            type="text"
+            placeholder="search"
+            className="rounded-lg text-18px font-ssp border-gray-300 w-[300px] focus:ring-accent focus:border-accent"
+            onChange={(e) => setSearchTerm(e.target.value)}
+          />
+          <button
+            type="button"
+            className="absolute -mt-8 opacity-100 hover:opacity-75 ml-[270px]"
+            onClick={(e) => setSearchTerm(e.target.value)}
+          >
+            <img src={search} />
+          </button>
+        </div>
+
+        {/* Search Button */}
+        <div className="col-span-4 h-11 -mt-5 lg:absolute lg:h-0 lg:top-[100px] lg:right-[55px] md:hidden">
+          <div className="flex justify-end relative">
             <Collapse open={openSearch}>
               <Card>
-                <CardBody className="p-0 ">
+                <CardBody className="bg-white">
                   <input
                     type="text"
                     placeholder="search"
-                    className={`rounded-lg text-18px font-ssp border-gray-300 w-full focus:ring-accent focus:border-accent transition-transform duration-300 ease-in-out transform ${
-                      openSearch ? "translate-x-0 " : "translate-x-full "
+                    className={`rounded-lg text-18px font-ssp border-gray-300 w-full focus:ring-accent focus:border-accent ml-6 -mt-2 transition-transform duration-300 ease-in-out transform ${
+                      openSearch ? "translate-x-0" : "translate-x-full"
                     }`}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
@@ -360,29 +380,19 @@ export const Workspace = () => {
             </Collapse>
             <button
               type="button"
-              className="absolute mr-2 top-3 transition-opacity duration-500 ease-in-out opacity-100 hover:opacity-75"
+              className="absolute mr-2 top-7 transition-opacity duration-500 ease-in-out opacity-100 hover:opacity-75"
               onClick={toggleOpen}
             >
-              <svg
-                width="20"
-                height="20"
-                fill="none"
-                stroke="#526581"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16z"></path>
-                <path d="m21 21-4.35-4.35"></path>
-              </svg>
+              <img src={search} />
             </button>
           </div>
         </div>
       </div>
-      {/* Card */}
-      <div className="grid grid-cols-12 gap-5 " onScroll={() => handleScroll()}>
+
+      <div
+        className="grid grid-cols-12 gap-5 z-0 lg:pb-20"
+        onScroll={() => handleScroll()}
+      >
         {loading ? (
           tempWorkspaces &&
           tempWorkspaces.map((workspace, index) => (
@@ -404,13 +414,13 @@ export const Workspace = () => {
               }
             })
             .map((workspace, index) => (
-              <div className="col-span-4 " key={index}>
+              <div className="col-span-4 z-0 -ml-1 lg:col-span-12 lg:w-96 lg:ml-40 md:ml-2 md:w-[300px]" key={index}>
                 <WorkspaceCard workspace={workspace} />
               </div>
             ))
         ) : (
-          <div className="col-span-12 absolute bottom-[40%] left-[50%]">
-            <div className="flex flex-col items-center justify-center gap-y-1">
+          <div className="col-span-12 absolute px-64 md:px-0 md:-ml-5 z-0">
+            <div className="flex flex-col justify-center gap-y-1 items-center h-[400px] w-[570px] lg:w-[170px] lg:h-96 md:w-[330px] md:h-60">
               <svg
                 width="64"
                 height="41"
@@ -434,7 +444,7 @@ export const Workspace = () => {
                   </g>
                 </g>
               </svg>
-              <p className="font-semibold text-accent text-base">
+              <p className="font-semibold text-accent text-base md:text-12px">
                 No Workspace
               </p>
             </div>
