@@ -15,7 +15,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
 import { verifySuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
-import arrowBack from "../../src/assets/signin_image/arrowback.svg"
+import arrowBack from "../../src/assets/signin_image/arrowback.svg";
 
 const validate = (values) => {
   const errors = {};
@@ -24,10 +24,12 @@ const validate = (values) => {
   }
   return errors;
 };
+
 export const VerifyOTP = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+  const email = localStorage.getItem("email");
 
   const formik = useFormik({
     initialValues: {
@@ -39,6 +41,8 @@ export const VerifyOTP = () => {
         const optCode = await verifyOTP(values.OTP.join(""));
         dispatch(verifySuccess(optCode));
         navigate("/signin");
+        console.log("Email : ", email);
+        console.log("Email2 : ", localStorage.getItem("email"));
         localStorage.removeItem("email");
       } catch (error) {
         console.error("Verify failed:", error);
@@ -83,7 +87,7 @@ export const VerifyOTP = () => {
       }
     }
   };
-  
+
   const renderInput = () => {
     return formik.values.OTP.map((value, index) => (
       <input
@@ -110,15 +114,16 @@ export const VerifyOTP = () => {
     dispatch(resendVerifyCode(email));
     setResetCountdown(true);
   };
+
   return (
     <div className="flex px-2 justify-center items-center bg-[#EDF9FF] text-accent">
       <div className="flex justify-center items-center min-h-screen relative overflow-hidden">
-      <Link to={"/"}>
-                <img
-                    src={Logo}
-                    className="absolute top-8 left-1 lg:left-3 md:w-[60px] md:left-6 md:mr-24 "
-              />
-      </Link>
+        <Link to={"/"}>
+          <img
+            src={Logo}
+            className="absolute top-8 left-1 lg:left-3 md:w-[60px] md:left-6 md:mr-24 "
+          />
+        </Link>
 
         <div className=" flex justify-center items-center  relative overflow-hidden -mt-20">
           {/* Image Background */}
@@ -131,7 +136,10 @@ export const VerifyOTP = () => {
             <div className="  mx-auto  md:w-full md:max-w-md  ">
               <div className=" w-full  ">
                 <Link to={"/signup"}>
-                  <img src={arrowBack} className="w-6  mt-5 -ml-10 absolute lg:mt-3 md:w-4 md:mt-2 md:-ml-2" />
+                  <img
+                    src={arrowBack}
+                    className="w-6  mt-5 -ml-10 absolute lg:mt-3 md:w-4 md:mt-2 md:-ml-2"
+                  />
                 </Link>
 
                 <h1 className="font-bold text-center text-primary text-36px lg:-mt-5 lg:text-4xl md:text-2xl md:-mb-4">
@@ -150,7 +158,7 @@ export const VerifyOTP = () => {
                                 Please enter the code we've send to
                               </p>
                               <p className="text-18px text-center text-primary md:text-sm">
-                                your email address
+                                {email}
                               </p>
                             </div>
 
@@ -204,7 +212,7 @@ export const VerifyOTP = () => {
                                   className="transition font-bold text-18px duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm
                                                 hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[260px] md:h-12 md:pt-2.5 "
                                 >
-                                  Verify  & Sign in
+                                  Verify & Sign in
                                 </button>
                               </Link>
                             </div>
@@ -217,7 +225,7 @@ export const VerifyOTP = () => {
               </div>
             </div>
           </form>
-          
+
           <div>
             <img
               className="w-[600px] h-[500.57px]  max-sm:hidden lg:w-[140px] lg:hidden lg:mt-14 md:hidden"

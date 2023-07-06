@@ -138,32 +138,34 @@ export const Document = () => {
   }, []);
 
   return (
-    <div className="text-accent space-y-5 mb-[30vh]">
-      <div>
-        <h1 className="font-bold text-accent text-44px">
+    <div className="text-accent space-y-5 lg:w-full mb-[30vh] lg:ml-12 lg:mt-4 md:ml-4 md:w-full ">
+      <div className="lg:-ml-3 md:ml-3">
+        <h1 className="font-bold text-accent text-44px md:-ml-5 md:text-xl">
           {workspace && workspace.workspaceName}
         </h1>
-        <p className="text-accent text-18px">
+        <p className="text-accent text-18px md:-ml-5 md:text-sm">
           Welcome to {workspace && workspace.workspaceName} workspace
         </p>
       </div>
-      <div className="flex justify-between items-center">
-        <div className="flex items-center gap-x-3">
-          <img src={documenticon} className="p-2 shadow-md rounded-lg" />
-          <p className="font-semibold text-20px">Documents</p>
+      <div className="flex justify-between items-center lg:-ml-2.5 md:w-[400px]  md:grid md:grid-cols-2">
+        <div className="flex items-center gap-x-3 2xl:gap-x-2 md:col-span-1">
+          <img src={documenticon} className="p-2 shadow-md rounded-lg lg:w-9 md:w-7 md:p-1.5" />
+          <p className="font-semibold text-20px md:text-18px">Documents</p>
         </div>
         {accessibility ? (
           <Button
             type="button"
             onClick={handleCreateDocument}
-            className="font-semibold text-base bg-primary px-5 py-3 rounded-lg text-white shadow-none"
+            className="font-semibold text-base bg-primary px-5 py-3 rounded-lg text-white shadow-none
+              lg:w-[200px] lg:ml-[190px] lg:-mt-6 md:w-[160px] md:text-sm md:ml-24 md:mr-"
           >
             Create Document
           </Button>
         ) : null}
       </div>
-      <div className="grid grid-cols-12">
-        <div className="col-span-4 flex items-center gap-x-5 h-11">
+      {/* Sort */}
+      <div className="grid grid-cols-12 lg:grid lg:grid-cols-12 lg:-ml-2 md:grid md:grid-cols-12 md:text-sm md:mt-3 md:w-[400px] ">
+        <div className="col-span-4 flex items-center gap-x-5 h-11 lg:col-span-4 lg:ml-8  lg:w-72 md:w-36 md:col-span-6">
           <div className="flex items-center gap-x-3">
             <svg
               width="20"
@@ -180,9 +182,9 @@ export const Document = () => {
               <path d="M5.25 12h13.5"></path>
               <path d="M9.75 17.25h4.5"></path>
             </svg>
-            <h4 className="font-semibold text-20px">Sort: </h4>
+            <h4 className="font-semibold text-20px md:text-16px ">Sort: </h4>
           </div>
-          <div className="relative">
+          <div className="relative lg:inline-block ">
             <Menu
               open={openMenu}
               handler={setOpenMenu}
@@ -191,23 +193,23 @@ export const Document = () => {
               }}
             >
               <MenuHandler>
-                <button className="flex items-center justify-between w-[200px]">
+                <button className="flex items-center justify-between w-[200px] ">
                   <p className="text-18px text-black font-ssp">Ascending</p>
                   <ChevronDownIcon
                     strokeWidth={3}
-                    className={`h-4 w-4 transition-transform ${
+                    className={`h-4 w-4 transition-transform lg:mr-24 ${
                       openMenu ? "rotate-180" : ""
                     }`}
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp lg:z-40 md:z-40">
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="Ascending"
                     name="type"
-                    label={<span className="text-18px">Last Update</span>}
-                    className="checked:bg-primary"
+                    label={<span className="text-18px md:ml-5">Last Update</span>}
+                    className="checked:bg-primary md:absolute"
                     // onClick={() => {
                     //   setAsc(true);
                     //   setDesc(false);
@@ -256,9 +258,11 @@ export const Document = () => {
             </Menu>
           </div>
         </div>
-        <div className="col-span-4 flex items-center gap-x-5 h-11">
+        {/* Filter */}
+        <div className="col-span-4 flex items-center gap-x-5 h-11 lg:col-span-4 lg:w-[230px]  lg:ml-48 md:col-span-4 md:w-40 md:ml-14">
           <div className="flex items-center gap-x-3">
             <svg
+            className="lg:w-6 md:w-4 md:h-4"
               width="20"
               height="20"
               fill="none"
@@ -271,9 +275,9 @@ export const Document = () => {
             >
               <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
             </svg>
-            <h4 className="font-semibold text-20px">Filter: </h4>
+            <h4 className="font-semibold text-20px md:text-16px ">Filter: </h4>
           </div>
-          <div className="relative">
+          <div className="relative md:gap-x-1">
             <Menu
               open={openMenuTwo}
               handler={setOpenMenuTwo}
@@ -283,16 +287,16 @@ export const Document = () => {
             >
               <MenuHandler>
                 <button className="flex items-center justify-between w-[200px]">
-                  <p className="text-18px text-black font-ssp">Product</p>
+                  <p className="text-18px text-black font-ssp ">Product</p>
                   <ChevronDownIcon
                     strokeWidth={3}
-                    className={`h-4 w-4 transition-transform ${
+                    className={`h-4 w-4 transition-transform md:text-14px text-accent lg:mr-24 ${
                       openMenuTwo ? "rotate-180" : ""
                     }`}
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp lg:z-40 md:z-40">
                 {tagsWorkspace &&
                   tagsWorkspace.map((tag, index) => {
                     return (
@@ -324,7 +328,9 @@ export const Document = () => {
             </Menu>
           </div>
         </div>
-        <div className="col-span-4 flex items-center justify-end">
+
+        {/* Option Document */}
+        <div className="col-span-4 flex items-center justify-end  lg:w-[230px] lg:absolute lg:-mt-12 lg:ml-20  md:w-[110px] md:col-span-3  md:ml-44 ">
           {openSearch ? (
             <div className="flex justify-end items-center relative">
               {openSearch ? (
@@ -456,16 +462,16 @@ export const Document = () => {
                         </svg>
                       </button>
                     </MenuHandler>
-                    <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56 font-ssp">
+                    <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56 font-ssp lg:z-40 md:z-40">
                       <MenuItem
-                        className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
+                        className="hover:bg-gray-200 p-2 flex items-center gap-x-3 "
                         onClick={() =>
                           setOpenWorksapceSetting(!openWorkspaceSetting)
                         }
                       >
                         {" "}
                         <img src={setting} />
-                        <span className="text-18px">Setting Workspace</span>
+                        <span className="text-18px ">Setting Workspace</span>
                       </MenuItem>
                     </MenuList>
                   </Menu>
@@ -487,13 +493,14 @@ export const Document = () => {
         </div>
       </div>
 
+   {/* Card */}
       {openGrid ? (
-        <div className="grid grid-cols-12 gap-8">
+        <div className="grid grid-cols-12 gap-8 lg:-ml-2  lg:w-[300px] lg:gap-14  lg:grid-cols-12 md:grid-cols-2 md:ml-14  ">
           {loading ? (
             documents &&
             documents.map((document, index) =>
               document?.pageId === null ? (
-                <div className="col-span-4" key={index}>
+                <div className="col-span-4 lg:col-span-6 " key={index}>
                   <DocumentCardSkeleton />
                 </div>
               ) : null
@@ -513,7 +520,7 @@ export const Document = () => {
               })
               .map((document, index) =>
                 document?.pageId === null ? (
-                  <div className="col-span-4" key={index}>
+                  <div className="col-span-4 lg:col-span-6 " key={index}>
                     <DocumentCard
                       document={document}
                       workspaceId={workspaceId}
@@ -522,7 +529,7 @@ export const Document = () => {
                 ) : null
               )
           ) : (
-            <div className="col-span-12 absolute bottom-[40%] left-[50%]">
+            <div className="col-span-12 absolute bottom-[40%] left-[50%] lg:w-[300px] bg-slate-800">
               <div className="flex flex-col items-center justify-center gap-y-1">
                 <svg
                   width="64"
@@ -555,7 +562,7 @@ export const Document = () => {
           )}
         </div>
       ) : (
-        <div className="space-y-5">
+        <div className="space-y-5 lg:ml-16 ">
           {documents === null ? null : documents.length > 0 ? (
             documents
               .filter((document) => {
@@ -571,7 +578,7 @@ export const Document = () => {
               })
               .map((document, index) =>
                 document?.pageId === null ? (
-                  <div className="col-span-4" key={index}>
+                  <div className="col-span-4 " key={index}>
                     <DocumentList
                       document={document}
                       workspaceId={workspaceId}

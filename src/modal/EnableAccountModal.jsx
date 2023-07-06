@@ -34,14 +34,14 @@ export const EnableAccountModal = ({ enableAccount, setEnableAccount }) => {
 
             <div className="flex justify-center items-center gap-5 text-16px font-semibold pb-5">
               <button
-                className="px-10 py-3 border-[1px] rounded-lg"
+                className="px-10 py-3 border-[1px] rounded-lg hover:underline"
                 onClick={() => setEnableAccount(!enableAccount)}
               >
                 No, cancel
               </button>
               <Link
                 to={"/enableaccount"}
-                className="bg-primary text-white  px-10 py-3 rounded-lg "
+                className="bg-primary text-white  px-10 py-3 rounded-lg hover:text-white"
               >
                 Enable
               </Link>

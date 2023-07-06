@@ -14,7 +14,7 @@ export const SettingWorkspace = ({
         className={
           setting
             ? "flex items-center gap-x-3 text-primary bg-[#F6F6F6] rounded-lg w-full py-3 px-3"
-            : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3"
+            : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3 "
         }
         onClick={() => {
           setSetting(true);

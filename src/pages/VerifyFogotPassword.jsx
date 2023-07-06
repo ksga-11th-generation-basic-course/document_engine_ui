@@ -15,7 +15,7 @@ import {
 import { Link, useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
 import { verifySuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
-import arrowBack from "../../src/assets/signin_image/arrowback.svg"
+import arrowBack from "../../src/assets/signin_image/arrowback.svg";
 
 const validate = (values) => {
   const errors = {};
@@ -28,6 +28,7 @@ export const VerifyForgotPassword = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+  const email = localStorage.getItem("email");
 
   const formik = useFormik({
     initialValues: {
@@ -129,7 +130,10 @@ export const VerifyForgotPassword = () => {
             <div className="  mx-auto  md:w-full md:max-w-md  ">
               <div className=" w-full  ">
                 <Link to={"/forgotpassword"}>
-                  <img src={arrowBack} className="w-6  mt-5 -ml-10 absolute lg:mt-3 md:w-4 md:mt-2 md:-ml-2" />
+                  <img
+                    src={arrowBack}
+                    className="w-6  mt-5 -ml-10 absolute lg:mt-3 md:w-4 md:mt-2 md:-ml-2"
+                  />
                 </Link>
 
                 <h1 className="font-bold text-center text-primary text-36px lg:-mt-5 lg:text-4xl md:text-2xl md:-mb-4">
@@ -148,7 +152,7 @@ export const VerifyForgotPassword = () => {
                                 Please enter the code we've send to
                               </p>
                               <p className="text-18px text-center text-primary md:text-sm">
-                                your email address
+                                {email}
                               </p>
                             </div>
 
@@ -216,7 +220,6 @@ export const VerifyForgotPassword = () => {
             </div>
           </form>
 
-          
           <div>
             <img
               className="w-[600px] h-[500.57px]  max-sm:hidden lg:w-[140px] lg:hidden lg:mt-14 md:hidden"

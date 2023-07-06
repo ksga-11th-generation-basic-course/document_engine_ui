@@ -30,6 +30,7 @@ export const EnableAccount = () => {
       try {
         const user = await enableAccount(values.email);
         dispatch(enableAccountSuccess(user));
+        localStorage.setItem("email",values.email);
         navigate("/verifyenableaccount");
         resetForm({ values: "" });
       } catch (error) {

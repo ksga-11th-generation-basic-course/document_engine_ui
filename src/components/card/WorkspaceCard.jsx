@@ -57,19 +57,19 @@ export const WorkspaceCard = ({ workspace }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg text-accent cursor-pointer sm:w-[300px] border-[1px]">
+    <div className="shadow-md rounded-lg text-accent cursor-pointer border-[1px] hover:shadow-hover">
       <div className="flex justify-between items-center p-3">
         <h4 className="font-semibold text-18px line-clamp-1">
           {workspace && workspace.workspaceName}
         </h4>
         {workspace && workspace.isOwner ? (
-          <p className="rounded-full">Owner</p>
+          <p className="rounded-full text-primary">Owner</p>
         ) : null}
       </div>
-      <div className="h-[200px] overflow-hidden" onClick={handleNavigate}>
-        <img src={workspace && workspace.workspaceImage} className="w-full" />
+      <div className="overflow-hidden" onClick={handleNavigate}>
+        <img src={workspace && workspace.workspaceImage} className="w-fit" />
       </div>
-      <div className="flex justify-between items-center p-3">
+      <div className="flex justify-between items-center p-3 lg:-mt-8">
         <div>
           <h3 className="font-semibold text-18px">
             {(workspace && workspace.totalDocument === 0) ||

@@ -28,6 +28,7 @@ export const ForgotPassword = () => {
       try {
         const user = await forgotPassword(values.email);
         dispatch(forgotPasswordSuccess(user));
+        localStorage.setItem("email",values.email);
         navigate("/verifyforgotpassword");
         resetForm({ values: "" });
       } catch (error) {

@@ -15,6 +15,7 @@ import { Link, useNavigate } from "react-router-dom";
 import {
   signup,
   signupWithGoogleAndFacebook,
+  verifyOTP,
 } from "../redux/service/authenticationService/authenticationService";
 import { useFormik } from "formik";
 import * as Yup from "yup";
@@ -77,12 +78,13 @@ export const SignUp = () => {
       confirmPassword: Yup.string()
         .oneOf([Yup.ref("password")], "Confirm Password must matched Password")
         .required("Confirm Password is required"),
+        
     }),
     onSubmit: async (values, { resetForm }) => {
       try {
         const user = await signup(values);
         dispatch(signUpSuccess(user));
-        console.log(values);
+        localStorage.setItem("email",values.email);
         navigate("/verifyOTP");
         resetForm({ values: "" });
       } catch (error) {
@@ -149,7 +151,7 @@ export const SignUp = () => {
                   max-sm:bg-transparent max-sm:leading-tight max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
                   lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded-md md:text-sm"
                   type="text"
-                  placeholder="example@gmail.com"
+                  placeholder="name@gmail.com"
                   aria-label="Full name"
                   name="email"
                   onChange={formik.handleChange}

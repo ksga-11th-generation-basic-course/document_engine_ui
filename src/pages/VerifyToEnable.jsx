@@ -28,6 +28,8 @@ export const VerifyToEnable = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+  const email = localStorage.getItem("email");
+  
 
   const formik = useFormik({
     initialValues: {
@@ -148,7 +150,7 @@ export const VerifyToEnable = () => {
                                 Please enter the code we've send to
                               </p>
                               <p className="text-18px text-center text-primary md:text-sm">
-                                your email address
+                                {email}
                               </p>
                             </div>
 
