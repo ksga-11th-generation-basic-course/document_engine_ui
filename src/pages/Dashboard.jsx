@@ -46,7 +46,7 @@ export const Dashboard = () => {
   const recentlies = useSelector((state) => state.document.recently);
   useEffect(() => {
     dispatch(getDocumentRecently());
-  }, []);
+  }, [dispatch]);
 
   // console.log(recentlies)
 

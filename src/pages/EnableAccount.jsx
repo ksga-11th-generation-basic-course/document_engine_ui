@@ -11,11 +11,13 @@ import arrowBack from "../../src/assets/signin_image/arrowback.svg";
 import { ToastContainer, toast } from "react-toastify";
 import * as Yup from "yup";
 import { Formik, useFormik } from "formik";
+import { Box, CircularProgress } from "@mui/material";
 
 export const EnableAccount = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -28,12 +30,17 @@ export const EnableAccount = () => {
     }),
     onSubmit: async (values, { resetForm }) => {
       try {
+        setLoading(!loading);
         const user = await enableAccount(values.email);
         dispatch(enableAccountSuccess(user));
         localStorage.setItem("email",values.email);
-        navigate("/verifyenableaccount");
-        resetForm({ values: "" });
+        setTimeout(() => {
+          navigate("/verifyenableaccount");
+          resetForm({ values: "" });
+          setLoading(loading);
+        }, 6000);
       } catch (error) {
+        setLoading(false);
         console.error("Enable account failed:", error);
         if (error === "User Not Found") {
           toast.error("Invalid Email", {
@@ -123,7 +130,16 @@ export const EnableAccount = () => {
                                        focus:ring-[#1E9CEF] focus:ring-opacity-50 text-white w-full  rounded-lg shadow-sm hover:shadow-md font-semibold text-center 
                                      lg:pb-9 lg:pt-2 lg:text-xl md:text-base md:pt-1 md:pb-1 md:w-[228px] md:h-[40px] md:-mb-36"
                       >
-                        Continue
+                        {loading ? (
+                                  <Box className="">
+                                    <CircularProgress
+                                      size={25}
+                                      color="inherit"
+                                    />
+                                  </Box>
+                                ) : (
+                                  <p>Continue</p>
+                                )}
                       </button>
                     </div>
                   </div>

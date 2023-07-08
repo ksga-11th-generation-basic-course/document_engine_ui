@@ -35,6 +35,7 @@ import { createDocumentSuccess } from "../redux/slice/documentSlice/documentSlic
 import "../App.css";
 import { Checkbox } from "@material-tailwind/react";
 import { DocumentCardSkeleton } from "../components/DocumentCardSkeleton";
+import { toast } from "react-toastify";
 
 export const Document = () => {
   const [openSearch, setOpenSearch] = useState(false);

@@ -21,11 +21,15 @@ import { useFormik } from "formik";
 import * as Yup from "yup";
 import { signUpSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Box, CircularProgress } from "@mui/material";
+import { toast } from "react-toastify";
 
 export const SignUp = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
+
   const handleGoogle = () => {
     signInWithPopup(auth, providerGoogle)
       .then((data) => {
@@ -74,7 +78,7 @@ export const SignUp = () => {
         .required("Email is required"),
       password: Yup.string()
         .required("Password is required")
-        .matches(/(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}/, "Password must contain 8 characters one lowercase , one uppercase , one special character and one number"),
+        .matches(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/, "Password must contain 8 characters one lowercase , one uppercase , one special character and one number"),
       confirmPassword: Yup.string()
         .oneOf([Yup.ref("password")], "Confirm Password must matched Password")
         .required("Confirm Password is required"),
@@ -82,13 +86,30 @@ export const SignUp = () => {
     }),
     onSubmit: async (values, { resetForm }) => {
       try {
+        setLoading(!loading);
         const user = await signup(values);
         dispatch(signUpSuccess(user));
         localStorage.setItem("email",values.email);
-        navigate("/verifyOTP");
-        resetForm({ values: "" });
+        setTimeout(() => {
+          navigate("/verifyOTP");
+          resetForm({ values: "" });
+          setLoading(loading);
+        }, 6000);
       } catch (error) {
-        console.error("Sign-in failed:", error);
+        setLoading(false);
+        console.error("Sign-up failed:", error);
+        if (error === "This email has already exist") {
+          toast.error("This email has already exist", {
+            position: "top-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+            theme: "colored",
+          });
+        }
       }
     },
   });
@@ -248,7 +269,13 @@ export const SignUp = () => {
                 focus:outline-none shadow-sm hover:shadow-md text-center  text-18px inline-block
                 lg:text-2xl lg:h-13 md:h-[2px] md:pb-8 md:w-[210px] md:rounded-md md:text-base"
               >
-                Continue
+                {loading ? (
+                  <Box className="">
+                    <CircularProgress size={25} color="inherit" />
+                  </Box>
+                ) : (
+                  <p>Continue</p>
+                )}
               </button>
             </div>
             <div className="px-4 pb-4 ">
@@ -256,7 +283,7 @@ export const SignUp = () => {
                 className="flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-400 after:mt-0.5 after:flex-1
                after:border-t after:border-neutral-400 md:w-[200px]"
               >
-                <p className="mx-1 text-center text-gray-400 lg:text-2xl md:text-base  ">
+                <p className="mx-1 text-center text-gray-400 text-20px lg:text-2xl md:text-base  ">
                   or
                 </p>
               </div>

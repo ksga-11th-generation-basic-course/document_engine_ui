@@ -9,11 +9,13 @@ import arrowBack from "../../src/assets/signin_image/arrowback.svg";
 import { Formik, useFormik } from "formik";
 import * as Yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
+import { Box, CircularProgress } from "@mui/material";
 
 export const ForgotPassword = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -26,13 +28,17 @@ export const ForgotPassword = () => {
     }),
     onSubmit: async (values, { resetForm }) => {
       try {
+        setLoading(!loading);
         const user = await forgotPassword(values.email);
         dispatch(forgotPasswordSuccess(user));
-        localStorage.setItem("email",values.email);
-        navigate("/verifyforgotpassword");
-        resetForm({ values: "" });
+        localStorage.setItem("email", values.email);
+        setTimeout(() => {
+          navigate("/verifyforgotpassword");
+          resetForm({ values: "" });
+          setLoading(loading);
+        }, 6000);
       } catch (error) {
-        // console.log(error);
+        setLoading(false);
         console.error("Forgot password failed:", error);
         if (error === "User Not Found") {
           toast.error("Invalid Email", {
@@ -53,7 +59,6 @@ export const ForgotPassword = () => {
   return (
     <div className="bg-[#EDF9FF] h-screen ">
       <div className="flex justify-center items-center  relative text-[#37352F]">
-      
         <img src={Forgot1} className="hidden  lg:hidden lg:z-0 lg:mt-60" />
         <Link to={"/"}>
           <img
@@ -76,8 +81,11 @@ export const ForgotPassword = () => {
           >
             <div className=" xs:p-0 mx-auto md:max-w-md  md:flex flex-col-reverse  md:m-2 md:px-36">
               <div className="w-full  ">
-                <Link to={"/"}>
-                  <img src={arrowBack} className="w-6  mt-5 -ml-10 absolute md:w-4 md:-ml-1 md:mt-7" />
+                <Link to={"/signin"}>
+                  <img
+                    src={arrowBack}
+                    className="w-6  mt-5 -ml-10 absolute md:w-4 md:-ml-1 md:mt-7"
+                  />
                 </Link>
                 <h1 className="font-bold text-center text-primary text-36px mt-5 lg:text-[30px] md:text-xl lg:-ml-3 md:ml-0">
                   Forgot Your Password?
@@ -121,7 +129,16 @@ export const ForgotPassword = () => {
                                 className="font-semibold text-18px transition  duration-200 bg-primary hover:bg-btn-primary text-white w-full px-2 py-3 rounded-lg shadow-sm 
                                       hover:shadow-md text-center inline-block md:text-base md:h-[37px] md:pt-2 "
                               >
-                                Continue
+                                {loading ? (
+                                  <Box className="">
+                                    <CircularProgress
+                                      size={25}
+                                      color="inherit"
+                                    />
+                                  </Box>
+                                ) : (
+                                  <p>Continue</p>
+                                )}
                               </button>
                             </div>
                           </div>

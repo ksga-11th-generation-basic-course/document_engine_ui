@@ -9,11 +9,13 @@ import { Link, useNavigate } from "react-router-dom";
 import { resetPasswordSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 import arrowBack from "../../src/assets/signin_image/arrowback.svg";
 import { Visibility, VisibilityOff } from "@mui/icons-material";
+import { Box, CircularProgress } from "@mui/material";
 
 export const ResetForgotPassword = () => {
   const navigate = useNavigate();
 
   const dispatch = useDispatch();
+  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -24,7 +26,7 @@ export const ResetForgotPassword = () => {
       newPassword: Yup.string()
         .required("Password is a required field")
         .matches(
-          /(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,}/,
+          /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/,
           "Password must contain 8 characters one lowercase , one uppercase , one special character and one number"
         ),
       newConfirmPassword: Yup.string()
@@ -36,12 +38,16 @@ export const ResetForgotPassword = () => {
     }),
     onSubmit: async (values, { resetForm }) => {
       try {
+        setLoading(!loading);
         const email = localStorage.getItem("email");
         const user = await resetPassword({ ...values, email: email });
         dispatch(resetPasswordSuccess(user));
+        setTimeout(() => {
+          navigate("/signin");
+          resetForm({ values: "" });
+          setLoading(loading);
         localStorage.removeItem("email");
-        navigate("/signin");
-        resetForm({ values: "" });
+        }, 6000);
       } catch (error) {
         console.error("Reset password failed:", error);
       }
@@ -61,11 +67,11 @@ export const ResetForgotPassword = () => {
           />
         </Link>
 
-        <div className="flex items-center justify-center">
+        <div className="flex items-center justify-center md:mb-10">
           <div className="flex flex-row justify-center  items-center relative min-h-screen  overflow-hidden">
             {/* <!-- component --> */}
             <div className="flex flex-col items-center lg:-ml-20 md:-ml-10">
-              <div className="flex  items-center mt-20 w-full lg:-mt-20 md:-mt-40">
+              <div className="flex  items-center mt-5 w-full lg:-mt-20 md:-mt-40">
                 {/*Form Set New Password */}
                 <form
                   onSubmit={formik.handleSubmit}
@@ -89,13 +95,13 @@ export const ResetForgotPassword = () => {
                       <div className="py-4 container mx-auto max-w-sm h-54 rounded text-center  md:max-w-lg">
                         <div className="text">
                           <div className="w-full">
-                            <p className="-mt-2 text-16px text-accent text-base lg:text-xl lg:text-22px lg:pb-4 lg:pl-4 lg:-mt-6 md:text-sm md:-mt-3">
+                            <p className="-mt-2 text-16px text-accent text-base lg:text-xl lg:text-22px lg:pb-4 lg:pl-4 lg:-mt-6 md:text-sm md:-mt-3 md:-ml-3">
                               Password must be at least 8 characters.
                             </p>
                             {/* <p class="text-l text-center text-gray-500">password reset instructor</p>   */}
                           </div>
 
-                          <div className="relative w-96 md:ml-0 ">
+                          <div className="relative w-96 md:ml-1.5 ">
                             <p className="font-semibold text-left pt-5 pb-2 text-20px text-black lg:text-xl lg:text-22px md:text-base md:pt-1">
                               New Password
                             </p>
@@ -108,7 +114,7 @@ export const ResetForgotPassword = () => {
                               value={formik.values.newPassword}
                               className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 
                               max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                              lg:text-lg lg:text-20px md:text-sm  md:w-[225px] md:h-[35px] md:-ml-36 md:-mt-1"
+                              lg:text-lg lg:text-20px md:text-sm  md:w-[225px] md:h-[35px] md:-ml-[150px] md:-mt-1"
                             />
                             <span
                               className="absolute -mt-11 ml-36 cursor-pointer bg-white p-2 lg:ml-36 md:-ml-10 md:mt-0 md:p-1"
@@ -140,13 +146,13 @@ export const ResetForgotPassword = () => {
                             </span>
                             {formik.touched.newPassword &&
                             formik.errors.newPassword ? (
-                              <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:text-sm md:pl-6">
+                              <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:text-sm md:w-[230px]">
                                 {formik.errors.newPassword}
                               </div>
                             ) : null}
                           </div>
 
-                          <div className="relative md:ml-0 md:-mt-2">
+                          <div className="relative md:ml-1.5 md:-mt-2">
                             <p className="font-semibold text-left pt-5 pb-2 text-black text-20px lg:text-xl lg:text-22px md:text-base">
                               Confirm New Password
                             </p>
@@ -159,7 +165,7 @@ export const ResetForgotPassword = () => {
                               value={formik.values.newConfirmPassword}
                               className="border-primary focus:border-btn-primary focus:ring-btn-primary text-18px border  rounded-lg px-2 py-3 
                               max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                              lg:text-lg lg:text-20px md:text-sm  md:w-[225px] md:h-[35px] md:ml-0  md:-mt-1"
+                              lg:text-lg lg:text-20px md:text-sm  md:w-[225px] md:h-[35px] md:-ml-0.5  md:-mt-1"
                             />
                             <span
                               className="absolute -mt-11 ml-36 cursor-pointer bg-white p-2 lg:ml-36 md:ml-20 md:-mt-8 md:p-1"
@@ -191,7 +197,7 @@ export const ResetForgotPassword = () => {
                             </span>
                             {formik.touched.newConfirmPassword &&
                             formik.errors.newConfirmPassword ? (
-                              <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:text-sm md:pl-6">
+                              <div className="mt-2 text-red-600 text-left lg:text-base lg:text-20px md:text-sm">
                                 {formik.errors.newConfirmPassword}
                               </div>
                             ) : null}
@@ -203,7 +209,16 @@ export const ResetForgotPassword = () => {
                               className="font-semibold text-20px transition duration-200 bg-primary hover:bg-btn-primary text-white w-full px-2 py-3 
                                                     rounded-lg shadow-sm hover:shadow-md text-center inline-block lg:text-xl lg:font-semibold lg:text-22px md:text-16px  md:w-[225px] md:h-[35px] md:pt-1 md:-mt-1"
                             >
-                              Reset Password
+                               {loading ? (
+                                  <Box className="">
+                                    <CircularProgress
+                                      size={25}
+                                      color="inherit"
+                                    />
+                                  </Box>
+                                ) : (
+                                  <p>Reset Password</p>
+                                )}
                             </button>
                           </div>
                         </div>
@@ -215,7 +230,7 @@ export const ResetForgotPassword = () => {
             </div>
           </div>
 
-          <div className="w-full bg-cover relative max-w-md  ml-16 mt-20 lg:max-w-2xl lg:hidden">
+          <div className="w-full bg-cover relative max-w-md  ml-16 mt-10 lg:max-w-2xl lg:hidden">
             <div className="flex flex-col items-center justify-center w-full h-full relative">
               <img src={Reset} className="w-[700px]" />
             </div>

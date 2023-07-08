@@ -44,7 +44,7 @@ export const DocumentCardRow = ({
           {editDate > 0 ?
                 <span className="ml-1">
                 {editDate >= 60 ? Math.trunc(editDate/60) : editDate}  
-                {editDate >= 120 ? " hours ago" : editDate >= 60 ? " hour ago"  : editDate > 1 ? " minutes ago" : " minute ago"}
+                {editDate >= 2880 ? "days ago" : editDate >= 1440 ? "day ago" : editDate >= 120 ? " hours ago" : editDate >= 60 ? " hour ago"  : editDate > 1 ? " minutes ago" : " minute ago"}
                 </span> : " Just Now"  
         }
         </p>

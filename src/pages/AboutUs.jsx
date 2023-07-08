@@ -155,7 +155,7 @@ export const AboutUs = () => {
       </div>
 
       {/* Footer */}
-      <div className="lg:mt-52">
+      <div className="lg:mt-52 md:mt-32">
         <Footer />
       </div>
     </div>

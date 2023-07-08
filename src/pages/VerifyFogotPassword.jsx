@@ -16,6 +16,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
 import { verifySuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 import arrowBack from "../../src/assets/signin_image/arrowback.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Box, CircularProgress } from "@mui/material";
 
 const validate = (values) => {
   const errors = {};
@@ -29,6 +32,7 @@ export const VerifyForgotPassword = () => {
 
   const dispatch = useDispatch();
   const email = localStorage.getItem("email");
+  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -37,9 +41,13 @@ export const VerifyForgotPassword = () => {
     validate,
     onSubmit: async (values) => {
       try {
+        setLoading(!loading);
         const optCode = await verifyOTP(values.OTP.join(""));
         dispatch(verifySuccess(optCode));
-        navigate("/ResetForgotPassword");
+        setTimeout(() => {
+          navigate("/ResetForgotPassword");
+          setLoading(loading);
+        }, 6000);
       } catch (error) {
         console.error("Verify failed:", error);
       }
@@ -90,7 +98,7 @@ export const VerifyForgotPassword = () => {
         onKeyUp={(event) => handleBackSpace(event, index)}
         ref={(element) => (inputRef.current[index] = element)}
         className="m-2 border border-primary bg-blue-50 focus:ring-btn-primary focus:border-btn-primary h-10 w-10 text-center rounded 
-        md:w-[25px] md:h-[25px]"
+        md:w-[25px] md:h-[25px] md:text-7px"
         type="text"
         id="first"
         maxLength="1"
@@ -99,14 +107,26 @@ export const VerifyForgotPassword = () => {
     ));
   };
 
+  const [seconds, setSeconds] = useState(60);
   const [resetCountdown, setResetCountdown] = useState(false);
 
   const handleTimeout = () => {};
 
   const handleResendCode = () => {
+    toast.success("Code Resend Successfully", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    setResetCountdown(!resetCountdown);
+    setSeconds(60);
     const email = localStorage.getItem("email");
     dispatch(resendVerifyCode(email));
-    setResetCountdown(true);
   };
 
   return (
@@ -119,14 +139,14 @@ export const VerifyForgotPassword = () => {
           />
         </Link>
 
-        <div className=" flex justify-center items-center  relative overflow-hidden">
+        <div className="flex justify-center items-center  relative overflow-hidden">
           {/* Image Background */}
           <img
-            className="w-[500px] h-[700.16px] mt-32 mr-5 max-sm:hidden lg:w-[140px] lg:hidden md:hidden"
+            className="w-[500px] h-[700.16px] mt-40 mr-5 max-sm:hidden lg:w-[140px] lg:hidden md:hidden"
             src={VerifyL}
           />
           {/* Verify Email Address */}
-          <form className="bg-white  mt-36 flex flex-col justify-center  rounded-3xl shadow-md px-20 py-14 lg:mt-52 lg:py-20 md:ml-2 md:py-14 md:px-7">
+          <form className="bg-white  mt-20 flex flex-col justify-center  rounded-3xl shadow-md px-20 py-10  lg:mt-52 lg:py-16 md:ml-2 md:pt-7 md:px-7">
             <div className="  mx-auto  md:w-full md:max-w-md  ">
               <div className=" w-full  ">
                 <Link to={"/forgotpassword"}>
@@ -136,7 +156,7 @@ export const VerifyForgotPassword = () => {
                   />
                 </Link>
 
-                <h1 className="font-bold text-center text-primary text-36px lg:-mt-5 lg:text-4xl md:text-2xl md:-mb-4">
+                <h1 className="font-bold text-center text-primary text-36px lg:text-4xl md:text-2xl md:-mb-5">
                   Verify Email Address
                 </h1>
 
@@ -151,7 +171,7 @@ export const VerifyForgotPassword = () => {
                               <p className="-mt-7 text-18px text-accent lg:text-xl lg:-mt-4 md:text-sm md:pt-3">
                                 Please enter the code we've send to
                               </p>
-                              <p className="text-18px text-center text-primary md:text-sm">
+                              <p className="mt-0 text-18px text-center text-primary md:text-sm">
                                 {email}
                               </p>
                             </div>
@@ -175,27 +195,25 @@ export const VerifyForgotPassword = () => {
                                 <span className="font-bold ">
                                   (
                                   <Countdown
-                                    seconds={60}
+                                    seconds={seconds}
+                                    setSeconds={setSeconds}
                                     onTimeout={handleTimeout}
                                     reset={resetCountdown}
+                                    setReset={setResetCountdown}
                                   />
                                   )
                                 </span>
                               </a>
                             </div>
 
-                            {/* Didn't receive the code? Click to resend */}
+                            {/* Didn't receive the code? Click to resend */} 
+                            {seconds === 1?
                             <div className="flex justify-center text-center mt-5 ">
-                              <a className="flex items-center text-16px text-primary hover:text-btn-primary cursor-pointer">
-                                <button
-                                  type="button"
-                                  onClick={handleResendCode}
-                                  className="ml-2 underline pr-3 lg:text-lg md:text-sm"
-                                >
-                                  Didn't receive the code? Click to resend
-                                </button>
-                              </a>
-                            </div>
+                              <span className="flex items-center text-18px ml-2  pr-3 lg:text-lg md:text-sm ">
+                                   Didn't receive the code?  
+                                   <button type="button" onClick={handleResendCode} className="underline ml-1  text-primary  cursor-pointer">Click to resend</button>
+                              </span>
+                            </div>:null}
 
                             {/*  Verify */}
                             <div className="mt-5">
@@ -204,9 +222,18 @@ export const VerifyForgotPassword = () => {
                                   type="submit"
                                   onClick={formik.handleSubmit}
                                   className="transition font-bold text-18px duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm
-                                                hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[260px] md:h-12 md:pt-2.5 "
+                                                hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[260px] md:pt-2.5 "
                                 >
-                                  Verify
+                                   {loading ? (
+                                  <Box className="">
+                                    <CircularProgress
+                                      size={25}
+                                      color="inherit"
+                                    />
+                                  </Box>
+                                ) : (
+                                  <p>Verify</p>
+                                )}
                                 </button>
                               </Link>
                             </div>
@@ -228,11 +255,14 @@ export const VerifyForgotPassword = () => {
           </div>
         </div>
       </div>
-      <div className="-ml-20 flex justify-center  mt-16 gap-1 lg:mt-16 lg:ml-0 md:mt-20 md:ml-3">
+      <div className="-ml-20 flex justify-center gap-1 lg:mt-16 lg:ml-0 md:mt-20 md:ml-3">
         <div className="w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5 md:w-[40px]"></div>
         <div className=" w-[50px] h-[7px] rounded-2xl bg-[#1E9CEF] md:h-1.5 md:w-[40px]"></div>
         <div className=" w-[50px] h-[7px] rounded-2xl bg-[#CCCCCC] md:h-1.5 md:w-[40px]"></div>
       </div>
+      
+      <ToastContainer />
+
     </div>
   );
 };

@@ -16,6 +16,9 @@ import { Link, useNavigate } from "react-router-dom";
 import Countdown from "../components/CountDown";
 import { verifyToEnableAccountSuccess } from "../redux/slice/authenticationSlice/authenticationSlice";
 import arrowBack from "../../src/assets/signin_image/arrowback.svg";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Box, CircularProgress } from "@mui/material";
 
 const validate = (values) => {
   const errors = {};
@@ -29,7 +32,7 @@ export const VerifyToEnable = () => {
 
   const dispatch = useDispatch();
   const email = localStorage.getItem("email");
-  
+  const [loading, setLoading] = useState(false);
 
   const formik = useFormik({
     initialValues: {
@@ -38,10 +41,14 @@ export const VerifyToEnable = () => {
     validate,
     onSubmit: async (values) => {
       try {
+        setLoading(!loading);
         const optCode = await verifyToEnableAccount(values.OTP.join(""));
         dispatch(verifyToEnableAccountSuccess(optCode));
-        navigate("/signin");
-        localStorage.removeItem("email");
+        setTimeout(() => {
+          navigate("/signin");
+          setLoading(loading);
+          localStorage.removeItem("email");
+        }, 6000);
       } catch (error) {
         console.error("Verify failed:", error);
       }
@@ -100,14 +107,26 @@ export const VerifyToEnable = () => {
     ));
   };
 
+  const [seconds, setSeconds] = useState(60);
   const [resetCountdown, setResetCountdown] = useState(false);
 
   const handleTimeout = () => {};
 
   const handleResendCode = () => {
+    toast.success("Code Resend Successfully", {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+    });
+    setResetCountdown(!resetCountdown);
+    setSeconds(60);
     const email = localStorage.getItem("email");
     dispatch(resendVerifyCode(email));
-    setResetCountdown(true);
   };
 
   return (
@@ -149,7 +168,7 @@ export const VerifyToEnable = () => {
                               <p className="-mt-7 text-18px text-accent lg:text-xl lg:-mt-4 md:text-sm md:pt-3">
                                 Please enter the code we've send to
                               </p>
-                              <p className="text-18px text-center text-primary md:text-sm">
+                              <p className="mt-0 text-18px text-center text-primary md:text-sm">
                                 {email}
                               </p>
                             </div>
@@ -173,9 +192,11 @@ export const VerifyToEnable = () => {
                                 <span className="font-bold ">
                                   (
                                   <Countdown
-                                    seconds={60}
+                                    seconds={seconds}
+                                    setSeconds={setSeconds}
                                     onTimeout={handleTimeout}
                                     reset={resetCountdown}
+                                    setReset={setResetCountdown}
                                   />
                                   )
                                 </span>
@@ -183,17 +204,13 @@ export const VerifyToEnable = () => {
                             </div>
 
                             {/* Didn't receive the code? Click to resend */}
+                            {seconds === 1?
                             <div className="flex justify-center text-center mt-5 ">
-                              <a className="flex items-center text-16px text-primary hover:text-btn-primary cursor-pointer">
-                                <button
-                                  type="button"
-                                  onClick={handleResendCode}
-                                  className="ml-2 underline pr-3 lg:text-lg md:text-sm"
-                                >
-                                  Didn't receive the code? Click to resend
-                                </button>
-                              </a>
-                            </div>
+                              <span className="flex items-center text-18px ml-2  pr-3 lg:text-lg md:text-sm ">
+                                   Didn't receive the code?  
+                                   <button type="button" onClick={handleResendCode} className="underline ml-1  text-primary  cursor-pointer">Click to resend</button>
+                              </span>
+                            </div>:null}
 
                             {/*  Verify */}
                             <div className="mt-5">
@@ -204,7 +221,16 @@ export const VerifyToEnable = () => {
                                   className="transition font-bold text-18px duration-200 bg-primary hover:bg-btn-primary text-white w-full py-3 rounded-lg shadow-sm
                                                 hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[260px] md:h-12 md:pt-2.5 "
                                 >
-                                  Enable Account
+                                  {loading ? (
+                                  <Box className="">
+                                    <CircularProgress
+                                      size={25}
+                                      color="inherit"
+                                    />
+                                  </Box>
+                                ) : (
+                                  <p>Enable Account</p>
+                                )}
                                 </button>
                               </Link>
                             </div>
@@ -225,6 +251,8 @@ export const VerifyToEnable = () => {
           </div>
         </div>
       </div>
+      <ToastContainer />
+
     </div>
   );
 };
