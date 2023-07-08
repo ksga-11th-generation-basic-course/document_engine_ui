@@ -132,14 +132,14 @@ export const SignUp = () => {
         />
         <form
           onSubmit={formik.handleSubmit}
-          className=" bg-[#FFFFFF] p-12 flex flex-col justify-center gap-y-6 shadow rounded-3xl 
-          lg:w-[480px] lg:mt-40 lg:p-8 lg:ml-10 lg:mb-28 md:w-[310px] md:mt-24 md:mr-8  md:mb-4"
+          className=" bg-[#FFFFFF] p-8 w-[450px] flex flex-col justify-center gap-y-6 shadow rounded-3xl 
+          lg:w-[480px] lg:mt-40 lg:p-10 lg:ml-10 lg:mb-28 md:mt-32 md:w-[330px]  md:ml-0   md:mb-4 md: md:flex md:items-center"
         >
-          <div className=" xs:p-0 mx-auto w-[380px] md:ml-3">
-            <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl lg:text-4xl md:text-2xl md:pr-36">
+          <div className="">
+            <h1 className="font-bold text-center text-primary text-36px max-sm:pt-5 max-sm:text-4xl lg:text-4xl md:text-2xl md:items-end">
               Sign Up
             </h1>
-            <div className="px-2 py-5 max-sm:py-8 max-sm:px-8 ">
+            <div className="px-2 py-5 md:ml-3">
               <label className="font-semibold text-lg block pb-2  text-black lg:text-2xl md:text-16px">
                 Username
               </label>
@@ -147,7 +147,7 @@ export const SignUp = () => {
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3
                   max-sm:appearance-none max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                  lg:text-xl lg:h-12  md:h-8 md:w-[210px] md:rounded-md md:text-sm"
+                  lg:text-xl lg:h-12  md:h-8 md:w-[280px] md:rounded-md md:text-sm"
                   type="text"
                   placeholder="Username"
                   aria-label="Full name"
@@ -170,7 +170,7 @@ export const SignUp = () => {
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none
                   max-sm:bg-transparent max-sm:leading-tight max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded-md md:text-sm"
+                  lg:text-xl lg:h-12 md:h-8 md:w-[280px] md:rounded-md md:text-sm"
                   type="text"
                   placeholder="name@gmail.com"
                   aria-label="Full name"
@@ -193,7 +193,7 @@ export const SignUp = () => {
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px rounded-lg px-2 py-3 max-sm:appearance-none 
                   max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded-md md:text-sm"
+                  lg:text-xl lg:h-12 md:h-8 md:w-[280px] md:rounded-md md:text-sm"
                   type={!changePassword ? "password" : "text"}
                   placeholder="Password"
                   aria-label="Full name"
@@ -202,7 +202,7 @@ export const SignUp = () => {
                   onBlur={formik.handleBlur}
                   value={formik.values.password}
                 />
-                 <span className="absolute -mt-11 ml-80 cursor-pointer bg-white p-2 md:-ml-10 md:mt-2 md:p-0"
+                 <span className="absolute -mt-11 ml-[325px] cursor-pointer bg-white p-2 lg:ml-[340px] md:-ml-9 md:mt-2 md:p-0"
                   onClick={() => {
                     setChangePassword(!changePassword);
                   }}
@@ -213,7 +213,7 @@ export const SignUp = () => {
                   }
                 </span>
                 {formik.touched.password && formik.errors.password ? (
-                  <div className="mt-2 text-red-600 lg:text-xl md:text-sm">
+                  <div className="mt-2 text-red-600 w-80 lg:w-[350px] lg:text-xl md:w-[285px] md:text-sm">
                     {formik.errors.password}
                   </div>
                 ) : null}
@@ -226,7 +226,7 @@ export const SignUp = () => {
                 <input
                   className="border-primary focus:border-btn-primary focus:ring-btn-primary border text-18px  rounded-lg px-2 py-3 max-sm:appearance-none 
                   max-sm:bg-transparent max-sm:border-none w-full text-gray-700 mr-3  leading-tight focus:outline-none
-                  lg:text-xl lg:h-12 md:h-8 md:w-[210px] md:rounded-md md:text-sm"
+                  lg:text-xl lg:h-12 md:h-8 md:w-[280px] md:rounded-md md:text-sm"
                   type={!changeConPassword ? "password" : "text"}
                   placeholder="Confirm Password"
                   aria-label="Full name"
@@ -235,7 +235,7 @@ export const SignUp = () => {
                   onBlur={formik.handleBlur}
                   value={formik.values.confirmPassword}
                 />
-                <span className="absolute -mt-11 ml-80 cursor-pointer bg-white p-2 md:-ml-10 md:mt-2 md:p-0"
+                <span className="absolute -mt-11 ml-[325px]  cursor-pointer bg-white p-2 lg:ml-[340px]  md:-ml-10 md:mt-2 md:p-0"
                   onClick={() => {
                     setChangeConPassword(!changeConPassword);
                   }}
@@ -256,7 +256,7 @@ export const SignUp = () => {
               <button
                 type="button"
                 className="transition text-black duration-200 w-full py-2.5 mb-3 mt-2 text-center text-18px text-b font-semibold inline-block max-sm:pt-4
-                lg:text-xl md:text-sm md:pr-40"
+                lg:text-xl md:text-sm md:pr-5"
               >
                 Do you have an account?
                 <Link to={"/signin"} className="text-primary pl-2">
@@ -267,7 +267,7 @@ export const SignUp = () => {
                 type="submit"
                 className="px-2 py-3 font-semibold transition duration-200 bg-primary hover:bg-btn-primary focus:shadow-sm text-white w-full rounded-lg 
                 focus:outline-none shadow-sm hover:shadow-md text-center  text-18px inline-block
-                lg:text-2xl lg:h-13 md:h-[2px] md:pb-8 md:w-[210px] md:rounded-md md:text-base"
+                lg:text-2xl lg:h-13 md:h-[2px] md:pb-8 md:w-[280px] md:rounded-md md:text-base"
               >
                 {loading ? (
                   <Box className="">
@@ -278,10 +278,10 @@ export const SignUp = () => {
                 )}
               </button>
             </div>
-            <div className="px-4 pb-4 ">
+            <div className="px-4 pb-4 md:ml-1">
               <div
                 className="flex items-center before:mt-0.5 before:flex-1 before:border-t before:border-neutral-400 after:mt-0.5 after:flex-1
-               after:border-t after:border-neutral-400 md:w-[200px]"
+               after:border-t after:border-neutral-400 md:w-[275px]"
               >
                 <p className="mx-1 text-center text-gray-400 text-20px lg:text-2xl md:text-base  ">
                   or
@@ -296,7 +296,7 @@ export const SignUp = () => {
                   onClick={handleGoogle}
                   type="button"
                   className="flex  rounded-lg justify-center items-center py-2 text-sm w-full border border-gray-200  outline-none max-sm:border-primary
-                    text-accent font-bold transition transform md:h-[37px] md:w-[210px] md:pl-6  "
+                    text-accent font-bold transition transform lg:ml-1 lg:w-[375px] md:h-[37px] md:w-[280px] md:pl-6  "
                 >
                   
                     <div className="flex mr-5 lg:mr-8 gap-x-1 md:gap-x-0 md:pr-4">
@@ -333,7 +333,7 @@ export const SignUp = () => {
                     onClick={handleFacebook}
                     type="button"
                     className="flex rounded-lg justify-center items-center py-2 w-full font-bold text-sm border  outline-none border-gray-200 max-sm:border-primary max-sm:border-2
-                    text-accent transition transform lg:w-[370px]  md:h-[37px] md:w-[210px] gap-x-1.5 md:gap-x-0.5"
+                    text-accent transition transform lg:w-[375px] lg:ml-1 md:h-[37px] md:w-[280px] gap-x-1.5 md:gap-x-0.5"
                   >
                    
                    <svg
