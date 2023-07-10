@@ -3,7 +3,7 @@ import React from "react";
 
 export const DocumentCardSkeleton = () => {
   return (
-    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-1 flex relative">
+    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-1 flex relative hover:shadow-hover">
       <div className="w-full p-3">
         <div className="flex justify-between items-center">
           <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl absolute right-2 top-3 "></div>
@@ -39,7 +39,7 @@ export const DocumentCardSkeleton = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-1 right-0">
+      <div className="absolute bottom-7 right-3">
         <div className="relative">
           <Skeleton
             animation="wave"

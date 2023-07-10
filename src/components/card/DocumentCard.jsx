@@ -104,14 +104,14 @@ export const DocumentCard = ({ document, workspaceId }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] p-1 flex relative">
-      <div onClick={handleNavigate} className="w-full p-3">
+    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] pl-5 py-3 flex relative z-0 hover:shadow-hover">
+      <div onClick={handleNavigate} className="w-full">
         <div className="flex justify-between items-center">
           {/* <h4 className="font-semibold text-20px">{document.title}</h4> */}
           {document.status ? (
-            <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF] absolute right-2 top-3 ">
+            <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF] absolute right-5 top-3 ">
               <p className="text-14px 2xl:text-12px">Editing...</p>
-              <img src={pencil} className="w-3 h-3" />
+              <img src={pencil} className="w-3 h-3 mt-1" />
             </div>
           ) : null}
         </div>
@@ -138,13 +138,19 @@ export const DocumentCard = ({ document, workspaceId }) => {
               <p className="line-clamp-1">{document.title}</p>
             </span>
             <span className="text-14px font-semibold leading-8 text-accent">
-              Edited <span>{document.editDate}</span> minutes ago
+              Edited 
+              {document.editDate > 0 ?
+                <span className="ml-1">
+                {document.editDate >= 60 ? Math.trunc(document.editDate/60) : document.editDate}  
+                {document.editDate >= 2880 ? "days ago" : document.editDate >= 1440 ? "day ago" : document.editDate >= 120 ? " hours ago" : document.editDate >= 60 ? " hour ago"  : document.editDate > 1 ? " minutes ago" : " minute ago"}
+                </span> : " Just Now"  
+        }
             </span>
           </div>
         </div>
       </div>
 
-      <div className="absolute bottom-1 right-0">
+      <div className="absolute bottom-1 right-3">
         <div className="relative">
           <Menu placement="right-start">
             <MenuHandler>

@@ -26,7 +26,7 @@ export const DocumentCardRow = ({
   };
 
   return (
-    <div className="flex justify-between items-center px-3 gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:w-full md:-ml-5 md:w-[330px] md:py-0 md:px-0">
+    <div className="flex justify-between items-center px-3 gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:w-full md:-ml-5 md:w-[330px] md:py-0 md:px-0 z-0 hover:shadow-hover">
       <div className="w-full h-full px-5 py-4" onClick={handleNavigate}>
         <div className="flex gap-x-5">
           <h3 className="font-semibold text-22px text-black w-44 md:text-16px md:w-24 line-clamp-1 md:-mt-4">
@@ -35,7 +35,7 @@ export const DocumentCardRow = ({
           {status ? (
             <div className="flex text-primary gap-x-1 px-3 justify-center items-center rounded-2xl bg-[#EDF9FF]">
               <p className="xl:text-14px mr-2 md:text-10px">Editing...</p>
-              <img src={pencil} className="w-4 h-4 md:w-2 md:h-2" />
+              <img src={pencil} className="w-3 h-3 -ml-1 md:w-2 md:h-2" />
             </div>
           ) : null}
         </div>
@@ -52,7 +52,7 @@ export const DocumentCardRow = ({
       <div className="relative z-10">
         <Dropdown className="dropdown relative">
           <Button
-            className="bg-white hover:bg-gray-50 border-none"
+            className="bg-white hover:bg-gray-50 border-none rounded-xl"
             onClick={() => setVisible(!visible)}
           >
             <img src={dotmenu} className="w-12 " />

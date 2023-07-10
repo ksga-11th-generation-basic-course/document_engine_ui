@@ -136,7 +136,7 @@ export const Workspace = () => {
   return (
     <div className="text-accent space-y-5 sm:h-full bg-white md:mt-5 md:-ml-3">
       <div className="flex items-center gap-x-3 ">
-        <img src={workspaceicon} className="p-2 shadow-md rounded-lg" />
+        <img src={workspaceicon} className="p-2 shadow-custom hover:shadow-hover rounded-lg" />
         <p className="font-semibold text-20px">Workspaces</p>
       </div>
       <div className="grid grid-cols-12 lg:ml-2 lg:gap-x-6 md:grid md:grid-cols-12 sm:grid sm:grid-cols-1">

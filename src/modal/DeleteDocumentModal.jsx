@@ -45,7 +45,7 @@ export const DeleteDocumentModal = ({
   };
 
   return (
-    <div className="w-full">
+    <div className="w-full z-50">
       <Modal
         open={deleteDocument}
         onClickBackdrop={() => setDeleteDocument(!deleteDocument)}

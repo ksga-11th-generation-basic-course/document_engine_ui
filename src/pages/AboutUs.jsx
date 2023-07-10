@@ -91,7 +91,7 @@ export const AboutUs = () => {
         <div className="Member my-20 flex justify-center items-center lg:inline-block lg:ml-24 lg:mt-14 sm:px-5 md:ml-0 md:mt-5">
           <div className="text-22px space-y-7 md:text-12px md:ml-3">
             <div className=" bg-[#EDF9FF] w-fit px-4 py-2 rounded-2xl space-x-2 ml-16 lg:ml-0 md:space-x-0">
-              <span className="font-semibold">KHENG SOVANAK</span>
+              <span className="font-semibold">KHENG SOVANNAK</span>
               <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold">
                 <span>@</span>
               </span>
@@ -121,7 +121,9 @@ export const AboutUs = () => {
 
           <div className="px-10 lg:hidden">
             <img src={Member} alt="" className="" />
+            <p className="text-primary text-28px font-semibold mt-10 ml-36">www.docengine.tech</p>
           </div>
+
           <div className="text-20px space-y-8 lg:-mt-[280px] lg:ml-[350px] md:text-12px md:ml-44 md:-mt-[220px] lg:space-y-7 ">
             <div className=" bg-[#EDF9FF] w-fit px-4 py-2 rounded-2xl space-x-2  md:space-x-0">
             <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold">
@@ -151,11 +153,14 @@ export const AboutUs = () => {
               <span className="font-semibold">SORN SREYNORNG</span>
             </div>
           </div>
+
+          <p className="hidden lg:inline-block text-primary text-28px font-semibold mt-24 ml-36 md:text-16px md:ml-24 md:mt-10">www.docengine.tech</p>
+
         </div>
       </div>
 
       {/* Footer */}
-      <div className="lg:mt-52 md:mt-32">
+      <div className="lg:mt-40 md:mt-28">
         <Footer />
       </div>
     </div>

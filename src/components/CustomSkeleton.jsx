@@ -3,7 +3,7 @@ import React from "react";
 
 export const CustomSkeleton = () => {
   return (
-    <div className="shadow-md rounded-lg text-accent cursor-pointer sm:w-[300px] border-[1px] skeleton-container">
+    <div className="shadow-md rounded-lg text-accent cursor-pointer sm:w-[300px] border-[1px] skeleton-container hover:shadow-hover">
       <div className="flex justify-between items-center p-3">
         <h4 className="font-semibold text-18px">
           <Skeleton variant="text" width={200} height={30} />

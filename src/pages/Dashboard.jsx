@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import documenticon from "../assets/dashboard_image/documenticon.svg";
 import { DocumentCardRow } from "../components/card/DocumentCardRow";
 import { Hint } from "../components/Hint";
 import { useDispatch, useSelector } from "react-redux";
 import { getDocumentRecently } from "../redux/service/documentService/documentService";
+import SkeletonDocumentRow from "../components/SkeletonDocumentRow";
 
 export const Dashboard = () => {
   // const documentRecentlyUpdated = [
@@ -50,6 +51,14 @@ export const Dashboard = () => {
 
   // console.log(recentlies)
 
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 3000);
+  }, []);
+
 
   return (
     <div className="bg-white">
@@ -66,8 +75,24 @@ export const Dashboard = () => {
       </p>
     </div>
     <div className="space-y-8  md:space-y-5 ">
-        {recentlies === null ? null : recentlies.length > 0 ? (
-          recentlies.map((recently, index) => (
+    {loading ? (
+          recentlies === null ? null : recentlies.length > 0 ? (
+            [...recentlies].map((recently, index) => (
+              <SkeletonDocumentRow key={index} />
+            ))
+          ) : (
+            <div className="col-span-12 absolute px-64 md:px-0 md:-ml-5">
+            <div className="flex flex-col justify-center gap-y-1 items-center h-60 w-[570px] lg:w-[170px] lg:h-40 md:w-[330px] md:h-20">
+              <p className="font-semibold text-accent text-base md:text-12px ">
+                No Recently
+              </p>
+            </div>
+          </div>
+          )
+        ) : recentlies === null ? null : recentlies.length > 0 ? (
+          [...recentlies]
+          .sort((a, b) => a.editDate - b.editDate)
+            .map((recently, index) => (
             <div key={index}>
               <DocumentCardRow
                 documentId={recently.documentId}

@@ -96,7 +96,7 @@ export const DocumentList = ({ document, workspaceId }) => {
 
   return (
     <div>
-      <div className="flex justify-between items-center text-black text-18px xs:text-14px cursor-pointer" onClick={handleNavigate}>
+      <div className="flex justify-between items-center text-black text-18px xs:text-14px cursor-pointer z-0 lg:w-[500px]" onClick={handleNavigate}>
         <div className="flex items-center gap-x-3">
           <span className="font-bold text-22px text-primary flex gap-x-3">
             <svg
@@ -121,12 +121,18 @@ export const DocumentList = ({ document, workspaceId }) => {
           {document?.status ? (
             <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF] ml-5 xs:text-14px xs:ml-0 xs:px-2 xs:py-2 xs:gap-x-5">
               <p className="text-14px xs:hidden">Editing...</p>
-              <img src={pencil} className="w-3 h-3" />
+              <img src={pencil} className="w-3 h-3 mt-1" />
             </div>
           ) : null}
         </div>
         <div className="flex items-center gap-x-3">
-        Edited <span>{document?.editDate}</span> minutes ago
+        Edited 
+        {document.editDate > 0 ?
+                <span className="-ml-2">
+                {document.editDate >= 60 ? Math.trunc(document.editDate/60) : document.editDate}  
+                {document.editDate >= 2880 ? "days ago" : document.editDate >= 1440 ? "day ago" : document.editDate >= 120 ? " hours ago" : document.editDate >= 60 ? " hour ago"  : document.editDate > 1 ? " minutes ago" : " minute ago"}
+                </span> : " Just Now"  
+        }
           <div className="relative">
             <Menu placement="right-start">
               <MenuHandler>
@@ -206,7 +212,7 @@ export const DocumentList = ({ document, workspaceId }) => {
           </div>
         </div>
       </div>
-      <hr />
+      <hr className="lg:w-[495px]"/>
       <div>
         <DocumentPermissionModal
           openPermission={openPermission}

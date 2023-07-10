@@ -71,8 +71,6 @@ export const Document = () => {
 
   const [openMenuTwo, setOpenMenuTwo] = React.useState(false);
 
-  const [status, setStatus] = useState("Ascending");
-
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -88,7 +86,7 @@ export const Document = () => {
         })
       );
     }
-  }, [dispatch, selectedTags, workspaceId]);
+  }, [selectedTags, workspaceId]);
 
   const [no, setNo] = useState(1);
 
@@ -105,18 +103,20 @@ export const Document = () => {
     dispatch(checkAccessibility(workspaceId));
     dispatch(checkIsOwnerWorkspaceCurrent(workspaceId));
     dispatch(getTagInEachWorkspace(workspaceId));
-  }, [dispatch, no, size, sortbydatetime, workspaceId]);
+  }, [workspaceId]);
 
+  const now = new Date();
+  const currentDateTime = now.toISOString();
   const handleCreateDocument = async () => {
     const document = await createDocument(
       "Untitled",
       false,
+      currentDateTime,
       null,
       workspaceId
     );
     dispatch(createDocumentSuccess(document));
     navigate(`/createdocument/${document.documentId}/${workspaceId}`);
-    // navigate(`/dashboard`);
     toast.success("Create Document Successfully", {
       position: "top-right",
       autoClose: 5000,
@@ -135,8 +135,10 @@ export const Document = () => {
     // Simulating data fetching delay
     setTimeout(() => {
       setLoading(false);
-    }, 1500);
+    }, 3000);
   }, []);
+
+  const [status, setStatus] = useState("Ascending");
 
   return (
     <div className="text-accent space-y-5 lg:ml-7 md:ml-1 md:mt-10">
@@ -144,15 +146,9 @@ export const Document = () => {
         <h1 className="font-bold text-accent text-44px ">
           {workspace && workspace.workspaceName}
         </h1>
-        {openGrid ? (
           <p className="text-accent text-18px">
             Welcome to {workspace && workspace.workspaceName} workspace
           </p>
-        ) : (
-          <p className="text-accent text-18px lg:text-[14px]">
-            Welcome to {workspace && workspace.workspaceName} workspace
-          </p>
-        )}
       </div>
       <div className="flex justify-between items-center pt-1 xs:pt-5 2xs:pt-5 mt-5 md:-mt-96">
         <div className="flex items-center gap-x-3 2xl:gap-x-2 md:-mt-5">
@@ -168,8 +164,7 @@ export const Document = () => {
           <Button
             type="button"
             onClick={handleCreateDocument}
-            className={openGrid ? "font-semibold bg-primary px-4 py-3 text-base rounded-lg text-white lg:absolute lg:-mr-[270px] lg:text-14px md:absolute md:mt-24 md:w-72"
-          : "font-semibold bg-primary px-4 py-3 text-base rounded-lg text-white lg:absolute lg:-mr-[400px] lg:text-14px  md:absolute md:mt-24 md:w-72"}
+            className="font-semibold bg-primary px-4 py-3 text-base rounded-lg text-white lg:absolute lg:right-24 lg:text-14px md:absolute md:mt-24 md:w-72"
           >
             Create Document
           </Button>
@@ -285,8 +280,12 @@ export const Document = () => {
         </div>
 
         {/* Filter */}
-        <div className={openGrid ? "col-span-4 flex items-center gap-x-5 h-11 lg:ml-[275px] md:col-span-12 md:w-40 md:ml-3"
-        : "col-span-4 flex items-center gap-x-5 h-11 lg:ml-[328px] md:col-span-4 md:w-40 md:ml-3"}>
+        <div
+          className={openGrid ? 
+            "col-span-4 flex items-center gap-x-5 h-11 lg:ml-[273px] md:col-span-12 md:w-40 md:ml-3" :
+            "col-span-4 flex items-center gap-x-5 h-11 lg:ml-[245px] md:col-span-12 md:w-40 md:ml-3"
+          }
+        >
           <div className="flex items-center gap-x-3">
             <svg
               width="20"
@@ -526,7 +525,10 @@ export const Document = () => {
             documents &&
             documents.map((document, index) =>
               document?.pageId === null ? (
-                <div className="col-span-4" key={index}>
+                <div
+                  className="col-span-4 z-0 -ml-1 lg:col-span-12 lg:w-96 lg:ml-24 md:ml-2 md:w-[300px]"
+                  key={index}
+                >
                   <DocumentCardSkeleton />
                 </div>
               ) : null
@@ -546,7 +548,10 @@ export const Document = () => {
               })
               .map((document, index) =>
                 document?.pageId === null ? (
-                  <div className="col-span-4" key={index}>
+                  <div
+                    className="col-span-4 z-0 lg:col-span-12 lg:w-96 lg:ml-24 md:ml-2 md:w-[300px]"
+                    key={index}
+                  >
                     <DocumentCard
                       document={document}
                       workspaceId={workspaceId}
@@ -557,7 +562,7 @@ export const Document = () => {
           ) : (
             <div className="col-span-12 absolute px-64 md:px-0 md:-ml-5 z-0">
               <div className="flex flex-col justify-center gap-y-1 items-center h-[400px] w-[570px] lg:w-[170px] lg:h-96 md:w-[330px] md:h-60">
-              <svg
+                <svg
                   width="64"
                   height="41"
                   viewBox="0 0 64 41"
@@ -604,7 +609,10 @@ export const Document = () => {
               })
               .map((document, index) =>
                 document?.pageId === null ? (
-                  <div className="col-span-4" key={index}>
+                  <div
+                    className="col-span-4 z-0 lg:col-span-12 lg:w-96 lg:ml-14 md:ml-2 md:w-[300px]"
+                    key={index}
+                  >
                     <DocumentList
                       document={document}
                       workspaceId={workspaceId}
