@@ -57,7 +57,7 @@ export const WorkspaceCard = ({ workspace }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg text-accent cursor-pointer border-[1px] hover:shadow-hover">
+    <div className="shadow-md rounded-lg text-accent cursor-pointer sm:w-[300px] border-[1px]">
       <div className="flex justify-between items-center p-3">
         <h4 className="font-semibold text-18px line-clamp-1">
           {workspace && workspace.workspaceName}
@@ -66,10 +66,10 @@ export const WorkspaceCard = ({ workspace }) => {
           <p className="rounded-full text-primary">Owner</p>
         ) : null}
       </div>
-      <div className="overflow-hidden" onClick={handleNavigate}>
-        <img src={workspace && workspace.workspaceImage} className="w-fit" />
+      <div className="h-[200px] overflow-hidden md:h-[150px]" onClick={handleNavigate}>
+        <img src={workspace && workspace.workspaceImage} className="w-full" />
       </div>
-      <div className="flex justify-between items-center p-3 lg:-mt-8">
+      <div className="flex justify-between items-center p-3">
         <div>
           <h3 className="font-semibold text-18px">
             {(workspace && workspace.totalDocument === 0) ||
@@ -79,7 +79,7 @@ export const WorkspaceCard = ({ workspace }) => {
               <p>{workspace.totalDocument} Documents</p>
             )}
           </h3>
-          <p className="text-14px leading-3">
+          <p className="text-14px leading-3 md:text-12px">
             Created date: <span>{workspace && workspace.createdDate}</span>
           </p>
         </div>
@@ -105,7 +105,7 @@ export const WorkspaceCard = ({ workspace }) => {
                   </svg>
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg space-y-2 p-2 w-56 text-accent font-ssp">
+              <MenuList className="rounded-lg space-y-2 p-2 w-56 text-accent font-ssp z-20">
                 <MenuItem
                   className="flex gap-x-3 items-center hover:bg-gray-200 p-2"
                   onClick={handleSettingWorkspace}

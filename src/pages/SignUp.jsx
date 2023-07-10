@@ -270,8 +270,8 @@ export const SignUp = () => {
                 lg:text-2xl lg:h-13 md:h-[2px] md:pb-8 md:w-[280px] md:rounded-md md:text-base"
               >
                 {loading ? (
-                  <Box className="">
-                    <CircularProgress size={25} color="inherit" />
+                  <Box className="pt-1 lg:pt-1.5 md:pt-0">
+                    <CircularProgress size={25} color="inherit"/>
                   </Box>
                 ) : (
                   <p>Continue</p>

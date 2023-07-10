@@ -36,6 +36,7 @@ export const createBlock = async (
 export const getBlockBydoucmentId = createAsyncThunk(
   `/documents/blocks`,
   async (documentId) => {
+     // console.log("documentId", documentId)
     try {
       const response = await api.get(`blocks/${documentId}`, {
         headers: {

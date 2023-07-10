@@ -59,7 +59,7 @@ export const Footer = () => {
           </span>
         </div>
       </div>
-      <div className="bg-primary h-[180px]  lg:h-[340px] md:h-[222px]  "></div>
+      <div className="bg-primary h-[180px]  lg:h-[340px] md:h-[224px]  "></div>
     </div>
   );
 };

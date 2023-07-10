@@ -130,7 +130,7 @@ export const ForgotPassword = () => {
                                       hover:shadow-md text-center inline-block md:text-base md:h-[37px] md:pt-2 "
                               >
                                 {loading ? (
-                                  <Box className="">
+                                  <Box className="pt-1 lg:pt-1.5 md:pt-0">
                                     <CircularProgress
                                       size={25}
                                       color="inherit"

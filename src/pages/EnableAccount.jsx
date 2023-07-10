@@ -131,7 +131,7 @@ export const EnableAccount = () => {
                                      lg:pb-9 lg:pt-2 lg:text-xl md:text-base md:pt-1 md:pb-1 md:w-[228px] md:h-[40px] md:-mb-36"
                       >
                         {loading ? (
-                                  <Box className="">
+                                  <Box className="pt-1 lg:pt-1.5 md:pt-0">
                                     <CircularProgress
                                       size={25}
                                       color="inherit"

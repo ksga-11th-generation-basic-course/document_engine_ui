@@ -21,6 +21,7 @@ import { Button } from "rsuite";
 import { Avatar } from "@material-tailwind/react";
 import dropdown from "../assets/images/popUp/dropdown.svg";
 import reverse_dropdown from "../assets/images/popUp/reverse_dropdown.svg";
+import { toast } from "react-toastify";
 
 export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
   const [visible, setVisible] = useState(false);
@@ -43,6 +44,13 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
   const [openProfileSetting, setOpenProfileSetting] = useState(false);
   const [openAdvanceSetting, setOpenAdvanceSetting] = useState(false);
 
+  useEffect(() => {
+    setUsername(user?.userName);
+    return () => {
+      setUsername("");
+    };
+  }, [user]);
+
   const [url, setUrl] = useState(user && user.profileImage);
 
   useEffect(() => {
@@ -64,6 +72,16 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
     try {
       const user = await editProfileInformation(username, url);
       dispatch(editProfileInformationSuccess(user));
+      toast.success("Your Information is updated Successfully", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
       setOpenSetting(!openSetting);
     } catch (error) {
       console.log(error);
@@ -110,7 +128,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
             </div>
           </div>
 
-          <div className="col-span-9 p-3 shadow-xl  bg-white rounded-r-lg lg:col-span-12">
+          <div className="col-span-9 p-3 shadow-xl  bg-white rounded-r-lg lg:col-span-12 lg:rounded-lg">
             {/* Close button */}
             <div className="flex w-full justify-end mt-3">
               <button
@@ -211,13 +229,20 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                           }}
                         />
                         <div>
-                          {user && user.profileImage === null ? (
+                          {profileImage ? (
                             <Avatar
                               variant="circular"
                               alt="candice wu"
                               className="cursor-pointer  w-11 h-11 rounded-full lg:w-8 lg:h-8 md:w-7 md:h-7"
-                              src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fprofile%2Fcb6df344-7dd9-4323-8961-cbd55a606e77_user.png?alt=media&token=6eb13cc7-734c-4292-bc74-2ea2b4e6b5c2"  
-                              />
+                              src={URL.createObjectURL(profileImage)}
+                            />
+                          ) : user && user.profileImage === null ? (
+                            <Avatar
+                              variant="circular"
+                              alt="candice wu"
+                              className="cursor-pointer  w-11 h-11 rounded-full lg:w-8 lg:h-8 md:w-7 md:h-7"
+                              src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fprofile%2Fcb6df344-7dd9-4323-8961-cbd55a606e77_user.png?alt=media&token=6eb13cc7-734c-4292-bc74-2ea2b4e6b5c2"
+                            />
                           ) : (
                             <Avatar
                               variant="circular"
@@ -347,6 +372,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                         </h3>
                         <input
                           type="text"
+                          value={username}
                           className="w-full py-2.5 rounded-lg border-gray-300 focus:ring-primary focus:border-primary text-16px font-semibold lg:w-60 md:text-14px md:py-1.5"
                           placeholder={user && user.userName}
                           onChange={(e) => setUsername(e.target.value)}
@@ -396,13 +422,20 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                               }}
                             />
                             <div>
-                              {user && user.profileImage === null ? (
+                              {profileImage ? (
+                                <Avatar
+                                  variant="circular"
+                                  alt="candice wu"
+                                  className="cursor-pointer  w-11 h-11 rounded-full lg:w-8 lg:h-8 md:w-7 md:h-7"
+                                  src={URL.createObjectURL(profileImage)}
+                                />
+                              ) : user && user.profileImage === null ? (
                                 <Avatar
                                   variant="circular"
                                   alt="candice wu"
                                   className="cursor-pointer  w-11 h-11 rounded-full lg:w-8 lg:h-8 md:w-7 md:h-7"
                                   src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fprofile%2Fcb6df344-7dd9-4323-8961-cbd55a606e77_user.png?alt=media&token=6eb13cc7-734c-4292-bc74-2ea2b4e6b5c2"
-                                  />
+                                />
                               ) : (
                                 <Avatar
                                   variant="circular"

@@ -192,7 +192,7 @@ export const SignIn = () => {
                   onBlur={formik.handleBlur}
                   value={formik.values.password}
                 />
-                <span className="absolute -mt-10 ml-[310px] cursor-pointer bg-white p-1.5 lg:-ml-14 lg:mt-1.5 md:-ml-10 md:mt-2"
+                <span className="absolute -mt-10 ml-[310px] cursor-pointer bg-white p-1.5 lg:-ml-14 lg:mt-1.5 md:-ml-11 md:mt-1.5"
                   onClick={() => {
                     setChangePassword(changeIcon);
                   }}
@@ -224,7 +224,7 @@ export const SignIn = () => {
                 lg:w-[370px] lg:h-14 lg:text-2xl lg:pr-3  md:pt-2 md:rounded-md md:overflow-hidden md:w-[270px] md:h-9 md:text-base"
               >
                 {loading ? (
-                  <Box className="">
+                  <Box className="pt-1 lg:pt-1.5 md:pt-0">
                     <CircularProgress size={25} color="inherit" />
                   </Box>
                 ) : (

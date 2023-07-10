@@ -35,7 +35,7 @@ import { DeleteDocumentModal } from "../modal/DeleteDocumentModal";
 import { api } from "../utils/constant";
 import close from "../assets/dashboard_image/close.svg";
 
-export const SecondSideBar = ({ handleClick }) => {
+export const SecondSideBar = ({ handleClick,sideBar,setSideBar }) => {
   const [open, setOpen] = React.useState(0);
 
   const { workspaces } = useSelector((state) => state.workspace);
@@ -101,7 +101,7 @@ export const SecondSideBar = ({ handleClick }) => {
   }, [dispatch, no, size, asc, desc, sortbydatetime]);
 
   const handleGetDocumentInEachWorkspace = (workspaceId) => {
-    navigate(`/document/${workspaceId}`);
+    // navigate(`/document/${workspaceId}`);
     console.log(workspaceId);
     dispatch(
       getAllDocumentInEachWorkspace({
@@ -132,18 +132,18 @@ export const SecondSideBar = ({ handleClick }) => {
 
   // const [documentData, setDocumentData] = useState();
 
-  const now = new Date();
-  const currentDateTime = now.toISOString();
   const handleCreatePage = async (documentId, workspaceId) => {
     const document = await createDocument(
       "Untitled",
       false,
-      currentDateTime,
       documentId,
       workspaceId
     );
     // setDocumentData(document);
     dispatch(createDocumentSuccess(document));
+    navigate(
+      `/createdocument/${document?.documentId}/${document?.workspaceId}`
+    );
     toast.success("Create Document Successfully", {
       position: "bottom-right",
       autoClose: 5000,
@@ -157,13 +157,7 @@ export const SecondSideBar = ({ handleClick }) => {
   };
 
   const handleCreateDocument = async (workspaceId) => {
-    const document = await createDocument(
-      "Untitled",
-      false,
-      currentDateTime,
-      null,
-      workspaceId
-    );
+    const document = await createDocument("Untitled", false, null, workspaceId);
     dispatch(createDocumentSuccess(document));
     navigate(
       `/createdocument/${document?.documentId}/${document?.workspaceId}`
@@ -422,7 +416,6 @@ export const SecondSideBar = ({ handleClick }) => {
                           type="button"
                           className="hover:bg-gray-300 rounded-sm p-[1px]"
                           onClick={() => {
-                            setVisiblePage(!visiblePage);
                             handleClick(true);
                             handleCreatePage(
                               document?.documentId,
@@ -458,12 +451,12 @@ export const SecondSideBar = ({ handleClick }) => {
   }
 
   return (
-    <Card className="fixed h-screen w-[18rem] p-6 ">
+    <Card className="fixed h-screen w-[18rem] p-6 md:w-[13rem] z-0">
       {/* Close Button */}
       <div className="hidden lg:flex lg:right-0 lg:-mt-5 items-end">
         <div className="hidden lg:inline-block ">
           <button type="button" onClick={() => setSideBar(!sideBar)}>
-            <img src={close} className="w-8  lg:absolute lg:top-5 lg:right-5 md:w-5 " />
+            <img src={close} className="w-8  lg:absolute lg:top-5 lg:right-5 md:w-5" />
           </button>
         </div>
       </div>
@@ -472,15 +465,15 @@ export const SecondSideBar = ({ handleClick }) => {
         <NavLink
           style={{ textDecoration: "none" }}
           to={`/dashboard`}
-          className="flex flex-col justify-center items-center"
+          className="flex flex-col justify-center items-center md:mt-1"
         >
-          <img src={logo} className="w-24 h-24" />
+          <img src={logo} className="w-24 h-24 md:w-20 md:h-20" />
         </NavLink>
       </div>
-      <List className="p-0 space-y-2">
-        <div className="text-18px text-gray-400">DASHBOARD</div>
+      <List className="p-0 space-y-2 mt-2">
+        <div className="text-18px text-gray-400 md:text-16px">DASHBOARD</div>
         <Button
-          className="bg-primary rounded-lg p-3 shadow-none font-semibold flex items-center justify-center gap-x-2"
+          className="bg-primary rounded-lg p-3 shadow-none font-semibold flex items-center justify-center gap-x-2 md:text-14px md:gap-x-1.5"
           onClick={() => {
             setVisible(!visible);
             handleClick(true);
@@ -561,7 +554,7 @@ export const SecondSideBar = ({ handleClick }) => {
           </NavLink>
         </ListItem>
         <hr className="my-2 border-blue-gray-50" />
-        <div className="text-18px text-gray-400">WORKSPACE</div>
+        <div className="text-18px text-gray-400 md:text-16px">WORKSPACE</div>
         {workspaces && workspaces.length > 0 ? (
           workspaces &&
           workspaces.map((workspace, index) => (
@@ -688,19 +681,19 @@ export const SecondSideBar = ({ handleClick }) => {
                   </g>
                 </g>
               </svg>
-              <p className="font-semibold text-accent text-base">
+              <p className="font-semibold text-accent text-base md:text-sm">
                 No Workspace
               </p>
             </div>
           </div>
         )}
       </List>
-      <CreatePageModal
+      {/* <CreatePageModal
         // documentData={documentData}
         visiblePage={visiblePage}
         setVisiblePage={setVisiblePage}
         secondhandleClick={secondhandleClick}
-      />
+      /> */}
       <RemoveWorkspaceModal
         removeWorkspace={removeWorkspace}
         setRemoveWorkspace={setRemoveWorkspace}

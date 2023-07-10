@@ -100,17 +100,17 @@ function App() {
           <Route
             path="/document/:workspaceId"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <Document />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route
             path="/createdocument/:documentId/:workspaceId"
             element={
-              <ProtectedRoute>
+              // <ProtectedRoute>
                 <CreateDocument />
-              </ProtectedRoute>
+              // </ProtectedRoute>
             }
           />
           <Route

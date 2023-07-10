@@ -210,7 +210,7 @@ export const ResetForgotPassword = () => {
                                                     rounded-lg shadow-sm hover:shadow-md text-center inline-block lg:text-xl lg:font-semibold lg:text-22px md:text-16px  md:w-[225px] md:h-[35px] md:pt-1 md:-mt-1"
                             >
                                {loading ? (
-                                  <Box className="">
+                                  <Box className="pt-1 lg:pt-1.5 md:pt-0">
                                     <CircularProgress
                                       size={25}
                                       color="inherit"

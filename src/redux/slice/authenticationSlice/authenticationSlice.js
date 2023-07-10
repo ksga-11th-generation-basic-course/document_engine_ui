@@ -2,7 +2,6 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   signinWithGoogleAndFacebook,
   signupWithGoogleAndFacebook,
-  signup,
 } from "../../service/authenticationService/authenticationService";
 
 const initialState = {

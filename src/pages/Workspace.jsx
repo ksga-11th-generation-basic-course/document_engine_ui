@@ -48,7 +48,9 @@ export const Workspace = () => {
 
   const [openSearch, setOpenSearch] = useState(false);
 
-  const { workspaces, totalPage } = useSelector((state) => state.workspace);
+  const { workspaces, totalPage, loading } = useSelector(
+    (state) => state.workspace
+  );
 
   const dispatch = useDispatch();
 
@@ -64,15 +66,13 @@ export const Workspace = () => {
 
   const [sortbydatetime, setSortbydatetime] = useState("DEFAULT");
 
-  const [loading, setLoading] = useState(true);
+  const [loadingSkeleton, setLoadingSkeleton] = useState(true);
 
   const [status, setStatus] = useState("Ascending");
 
   const [filterStatus, setFilterStatus] = useState("All Workspaces");
 
   const toggleOpen = () => setOpenSearch((cur) => !cur);
-
-  const [tempWorkspaces, setTempWorkspaces] = useState();
 
   useEffect(() => {
     dispatch(
@@ -86,10 +86,6 @@ export const Workspace = () => {
     );
     dispatch(getTotalPage(size));
   }, [dispatch, no, size, asc, desc, sortbydatetime]);
-
-  useEffect(() => {
-    setTempWorkspaces(workspaces);
-  }, [workspaces]);
 
   // useEffect(() => {
   //   socket.on("remove_workspace_success", (workspaceId) => {
@@ -121,8 +117,8 @@ export const Workspace = () => {
   useEffect(() => {
     // Simulating data fetching delay
     setTimeout(() => {
-      setLoading(false);
-    }, 3000);
+      setLoadingSkeleton(false);
+    }, 2000);
   }, []);
 
   useEffect(() => {
@@ -148,21 +144,21 @@ export const Workspace = () => {
         <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center  md:ml-0 md:w-36 md:col-span-12">
           <div className="flex items-center gap-x-3">
             <span className="mt-2 w-7 h-7 md:w-6 md:h-6">
-              <svg
-                width="20"
-                height="20"
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="1.5"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M1.5 6.75h21"></path>
-                <path d="M5.25 12h13.5"></path>
-                <path d="M9.75 17.25h4.5"></path>
-              </svg>
+            <svg
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="1.5"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M1.5 6.75h21"></path>
+              <path d="M5.25 12h13.5"></path>
+              <path d="M9.75 17.25h4.5"></path>
+            </svg>
             </span>
             <h4 className="font-semibold text-20px md:text-18px">Sort: </h4>
           </div>
@@ -175,7 +171,7 @@ export const Workspace = () => {
               }}
             >
               <MenuHandler>
-                <button className="flex items-center justify-between w-[200px] z-50">
+                <button className="flex items-center justify-between w-[200px] z-20">
                   <p className="text-18px text-black font-ssp">{status}</p>
                   <ChevronDownIcon
                     strokeWidth={3}
@@ -185,7 +181,7 @@ export const Workspace = () => {
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px] font-ssp z-50">
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp z-20">
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="Ascending"
@@ -197,7 +193,6 @@ export const Workspace = () => {
                       setDesc(false);
                       setStatus("Ascending");
                     }}
-                    defaultChecked
                   />
                 </MenuItem>
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
@@ -213,10 +208,11 @@ export const Workspace = () => {
                     }}
                   />
                 </MenuItem>
+                <hr className="my-2 border-blue-gray-50" />
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="This week"
-                    name="type"
+                    name="this"
                     label={<span className="text-18px">This week</span>}
                     className="checked:bg-primary"
                     onClick={() => {
@@ -228,7 +224,7 @@ export const Workspace = () => {
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="This month"
-                    name="type"
+                    name="this"
                     label={<span className="text-18px">This month</span>}
                     className="checked:bg-primary"
                     onClick={() => {
@@ -240,7 +236,7 @@ export const Workspace = () => {
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="This year"
-                    name="type"
+                    name="this"
                     label={<span className="text-18px">This year</span>}
                     className="checked:bg-primary"
                     onClick={() => {
@@ -253,23 +249,25 @@ export const Workspace = () => {
             </Menu>
           </div>
         </div>
-
-        {/* Filter */}
+          
+          {/* Filter */}
         <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:ml-56 md:w-40 md:ml-1  md:col-span-12 md:mt-3">
           <div className="flex items-center gap-x-3">
-            <span className="w-5 h-5 md:mr-1">
-              <svg
-                fill="none"
-                stroke="currentColor"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
-              </svg>
-            </span>
+           <span className="w-5 h-5 md:mr-1">
+           <svg
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
+            </svg>
+           </span>
             <h4 className="font-semibold text-20px md:text-18px">Filter: </h4>
           </div>
           <div className="relative">
@@ -360,17 +358,17 @@ export const Workspace = () => {
             <img src={search} />
           </button>
         </div>
-
+        
         {/* Search Button */}
-        <div className="col-span-4 h-11 -mt-5 lg:absolute lg:h-0 lg:top-[100px] lg:right-[55px] md:hidden">
+        <div className="col-span-4 h-11 lg:absolute lg:h-0 lg:top-[100px] lg:right-[50px] md:hidden">
           <div className="flex justify-end relative">
             <Collapse open={openSearch}>
               <Card>
-                <CardBody className="bg-white">
+                <CardBody className="p-0">
                   <input
                     type="text"
                     placeholder="search"
-                    className={`rounded-lg text-18px font-ssp border-gray-300 w-full focus:ring-accent focus:border-accent ml-6 -mt-2 transition-transform duration-300 ease-in-out transform ${
+                    className={`rounded-lg text-18px font-ssp border-gray-300 w-full focus:ring-accent focus:border-accent transition-transform duration-300 ease-in-out transform ${
                       openSearch ? "translate-x-0" : "translate-x-full"
                     }`}
                     onChange={(e) => setSearchTerm(e.target.value)}
@@ -380,28 +378,42 @@ export const Workspace = () => {
             </Collapse>
             <button
               type="button"
-              className="absolute mr-2 top-7 transition-opacity duration-500 ease-in-out opacity-100 hover:opacity-75"
+              className="absolute mr-2 top-3 transition-opacity duration-500 ease-in-out opacity-100 hover:opacity-75"
               onClick={toggleOpen}
             >
-              <img src={search} />
+              <svg
+                width="20"
+                height="20"
+                fill="none"
+                stroke="#526581"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M11 3a8 8 0 1 0 0 16 8 8 0 1 0 0-16z"></path>
+                <path d="m21 21-4.35-4.35"></path>
+              </svg>
             </button>
           </div>
         </div>
       </div>
 
-      <div
-        className="grid grid-cols-12 gap-5 z-0 lg:pb-20"
-        onScroll={() => handleScroll()}
-      >
-        {loading ? (
-          tempWorkspaces &&
-          tempWorkspaces.map((workspace, index) => (
-            <div className="col-span-4" key={index}>
-              <CustomSkeleton />
-            </div>
-          ))
-        ) : tempWorkspaces === null ? null : tempWorkspaces.length > 0 ? (
-          tempWorkspaces
+
+      <div className="grid grid-cols-12 gap-5 z-0 lg:pb-20" onScroll={() => handleScroll()}>
+        {loadingSkeleton ? (
+          workspaces && workspaces.length > 0 ? (
+            workspaces.map((workspace, index) => (
+              <div className="col-span-4 z-0 -ml-1 lg:col-span-12 lg:w-96 lg:ml-40 md:ml-2 md:w-[300px]" key={index}>
+                <CustomSkeleton />
+              </div>
+            ))
+          ) : (
+            <div className="loader absolute  bottom-[42%] left-[54%]"></div>
+          )
+        ) : workspaces === null ? null : workspaces.length > 0 ? (
+          workspaces
             .filter((workspace) => {
               if (searchTerm === "") {
                 return workspace;

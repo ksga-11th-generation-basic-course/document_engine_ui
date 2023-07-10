@@ -104,13 +104,7 @@ export const getMemberInEachDocument = createAsyncThunk(
   }
 );
 
-export const createDocument = async (
-  title,
-  status,
-  createDate,
-  pageId,
-  workspaceId
-) => {
+export const createDocument = async (title, status, createDate, pageId, workspaceId) => {
   try {
     const response = await api.post(
       `documents`,
@@ -181,11 +175,7 @@ export const updateDocument = async (documentId, title) => {
   }
 };
 
-export const setAccessibility = async (
-  documentId,
-  userId,
-  accessibility
-) => {
+export const setAccessibility = async (documentId, userId, accessibility) => {
   try {
     const response = await api.put(
       `documents/${documentId}/users/${userId}/accessibility/?accessibility=${accessibility}`,

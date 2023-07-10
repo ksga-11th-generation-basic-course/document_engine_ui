@@ -32,6 +32,8 @@ import Stack from "@mui/material/Stack";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { DocumentPermissionModal } from "../modal/DocumentPermissionModal";
 import { DocumentHistoryModal } from "../modal/DocumentHistoryModal";
+import { getHistoryByDocumentId } from "../redux/service/historyService/historyService";
+import { clearBlocksSuccess } from "../redux/slice/blockSlice/blockSlice";
 
 export const CreateDocument = () => {
   const [openPermission, setOpenPermission] = useState(false);
@@ -51,6 +53,8 @@ export const CreateDocument = () => {
   const workspaceId = param?.workspaceId;
   const dispatch = useDispatch();
 
+  // console.log("create", blockData);
+
   useEffect(() => {
     dispatch(getDocumentByDocumentId(documentId));
     dispatch(getWorkspaceName(documentId));
@@ -61,8 +65,9 @@ export const CreateDocument = () => {
   }, [documentId, workspaceId, document?.pageId]);
 
   useEffect(() => {
-    dispatch(getBlockBydoucmentId(document?.documentId));
-  }, [document]);
+    dispatch(clearBlocksSuccess());
+    dispatch(getBlockBydoucmentId(documentId));
+  }, [documentId]);
 
   const [title, setTitle] = useState();
 
@@ -85,6 +90,8 @@ export const CreateDocument = () => {
   }
 
   const timestamp = document && document.createdDate;
+
+  console.log(document?.createdDate);
 
   const handleInputChan = (event) => {
     setInputValue(event.target.value);
@@ -129,7 +136,7 @@ export const CreateDocument = () => {
     </li>,
     <li className="flex items-center gap-x-2">
       <img src={doc} />
-      <p className="text-primary">{title ? title : "Loading..."}</p>
+      <p className="text-primary">{title}</p>
     </li>,
   ];
 
@@ -156,9 +163,9 @@ export const CreateDocument = () => {
   ];
 
   return (
-    <div className="w-full md:mt-4 md:-ml-4 lg:w-[500px] ">
-      <div className="fixed z-10 right-0 rounded-lg shadow-md border-[1px] h-auto p-2 top-[45%] bg-white mr-4  ">
-        <div className="grid grid-rows-1 gap-3 ">
+    <div className="w-full">
+      <div className="fixed z-10 right-0 rounded-lg shadow-md border-[1px] h-auto p-2 top-[45%]">
+        <div className="grid grid-rows-1 gap-3">
           <button
             className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
             type="button"
@@ -183,7 +190,6 @@ export const CreateDocument = () => {
           </div>
         </div>
       </div>
-      
       <nav className="flex items-center text-sm px-10">
         <ol className="list-none p-0 inline-flex">
           <Stack spacing={2}>
@@ -208,16 +214,16 @@ export const CreateDocument = () => {
             />
           </span>
           <div className="w-full grid grid-cols-12 gap-y-2">
-            <div className="col-span-12 text-sm ">
-              <div className="flex ">
-                <span className="flex gap-x-3 w-36 ">
-                  <img src={CreateBy} className="w-[17px]  " alt="" />
+            <div className="col-span-12 text-sm">
+              <div className="flex">
+                <span className="flex gap-x-3 w-36">
+                  <img src={CreateBy} className="w-[17px]" alt="" />
                   <p>Created By</p>
                 </span>
                 <p className="text-black">{username}</p>
               </div>
             </div>
-            <div className="col-span-12 text-sm md:w-[400px]">
+            <div className="col-span-12 text-sm">
               <div className="flex">
                 <span className="flex gap-x-3 w-36">
                   <img src={CreateDate} className="w-[17px]" alt="" />
@@ -226,7 +232,7 @@ export const CreateDocument = () => {
                 <p className="text-black">{timestamp}</p>
               </div>
             </div>
-            <div className="col-span-12 text-sm relative md:w-[300px]">
+            <div className="col-span-12 text-sm relative">
               <div className="relative grid grid-cols-10">
                 <span className="col-span-1 gap-x-3 w-36">
                   <div className="flex gap-x-3">
@@ -357,8 +363,7 @@ export const CreateDocument = () => {
           <hr className="mt-3" />
         </div>
       </div>
-
-      <div className="mt-2  ">
+      <div className="mt-2">
         {blockData === null ? null : blockData.length > 0 ? (
           <Editor loading={loading} blockData={blockData} />
         ) : (
@@ -367,9 +372,8 @@ export const CreateDocument = () => {
           </div>
         )}
       </div>
-
-      <div className="h-[75vh] "></div>
-      <div >
+      <div className="h-[75vh]"></div>
+      <div>
         <DocumentPermissionModal
           openPermission={openPermission}
           setOpenPermission={setOpenPermission}

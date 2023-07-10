@@ -24,6 +24,9 @@ const blockSlice = createSlice({
         (block) => block.blockId !== action.payload
       );
     },
+    clearBlocksSuccess: (state) => {
+      state.blocks = null;
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getBlockBydoucmentId.pending, (state) => {
@@ -41,6 +44,6 @@ const blockSlice = createSlice({
     });
   },
 });
-export const { createBlockSuccess, updateBlockSuccess, deleteBlockSuccess } =
+export const { createBlockSuccess, updateBlockSuccess, deleteBlockSuccess, clearBlocksSuccess  } =
   blockSlice.actions;
 export default blockSlice.reducer;

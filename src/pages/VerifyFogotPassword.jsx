@@ -54,11 +54,13 @@ export const VerifyForgotPassword = () => {
     },
   });
   const inputRef = useRef({});
+  
   useEffect(() => {
     inputRef.current[0].focus();
     inputRef.current[0].addEventListener("pasts", pasteText);
     // return () => inputRef.current[0].removeEventListener("pasts", pasteText);
   }, []);
+
   const pasteText = (event) => {
     const pastedText = event.clipboard.getData("text");
     const fieldValues = {};
@@ -115,7 +117,7 @@ export const VerifyForgotPassword = () => {
   const handleResendCode = () => {
     toast.success("Code Resend Successfully", {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -123,10 +125,12 @@ export const VerifyForgotPassword = () => {
       progress: undefined,
       theme: "light",
     });
+    setLoading(false);
     setResetCountdown(!resetCountdown);
     setSeconds(60);
     const email = localStorage.getItem("email");
     dispatch(resendVerifyCode(email));
+    formik.resetForm({values: ""});
   };
 
   return (
@@ -225,7 +229,7 @@ export const VerifyForgotPassword = () => {
                                                 hover:shadow-md text-center inline-block lg:text-xl md:text-base md:w-[260px] md:pt-2.5 "
                                 >
                                    {loading ? (
-                                  <Box className="">
+                                  <Box className="pt-1 lg:pt-1.5 md:pt-0">
                                     <CircularProgress
                                       size={25}
                                       color="inherit"

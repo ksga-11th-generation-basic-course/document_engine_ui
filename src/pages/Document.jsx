@@ -71,6 +71,8 @@ export const Document = () => {
 
   const [openMenuTwo, setOpenMenuTwo] = React.useState(false);
 
+  const [status, setStatus] = useState("Ascending");
+
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -86,7 +88,7 @@ export const Document = () => {
         })
       );
     }
-  }, [selectedTags, workspaceId]);
+  }, [dispatch, selectedTags, workspaceId]);
 
   const [no, setNo] = useState(1);
 
@@ -103,20 +105,18 @@ export const Document = () => {
     dispatch(checkAccessibility(workspaceId));
     dispatch(checkIsOwnerWorkspaceCurrent(workspaceId));
     dispatch(getTagInEachWorkspace(workspaceId));
-  }, [workspaceId]);
+  }, [dispatch, no, size, sortbydatetime, workspaceId]);
 
-  const now = new Date();
-  const currentDateTime = now.toISOString();
   const handleCreateDocument = async () => {
     const document = await createDocument(
       "Untitled",
       false,
-      currentDateTime,
       null,
       workspaceId
     );
     dispatch(createDocumentSuccess(document));
     navigate(`/createdocument/${document.documentId}/${workspaceId}`);
+    // navigate(`/dashboard`);
     toast.success("Create Document Successfully", {
       position: "top-right",
       autoClose: 5000,
@@ -135,38 +135,49 @@ export const Document = () => {
     // Simulating data fetching delay
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 1500);
   }, []);
 
   return (
-    <div className="text-accent space-y-5 lg:w-full mb-[30vh] lg:ml-12 lg:mt-4 md:ml-4 md:w-full ">
-      <div className="lg:-ml-3 md:ml-3">
-        <h1 className="font-bold text-accent text-44px md:-ml-5 md:text-xl">
+    <div className="text-accent space-y-5 lg:ml-7 md:ml-1 md:mt-10">
+      <div>
+        <h1 className="font-bold text-accent text-44px ">
           {workspace && workspace.workspaceName}
         </h1>
-        <p className="text-accent text-18px md:-ml-5 md:text-sm">
-          Welcome to {workspace && workspace.workspaceName} workspace
-        </p>
+        {openGrid ? (
+          <p className="text-accent text-18px">
+            Welcome to {workspace && workspace.workspaceName} workspace
+          </p>
+        ) : (
+          <p className="text-accent text-18px lg:text-[14px]">
+            Welcome to {workspace && workspace.workspaceName} workspace
+          </p>
+        )}
       </div>
-      <div className="flex justify-between items-center lg:-ml-2.5 md:w-[400px]  md:grid md:grid-cols-2">
-        <div className="flex items-center gap-x-3 2xl:gap-x-2 md:col-span-1">
-          <img src={documenticon} className="p-2 shadow-md rounded-lg lg:w-9 md:w-7 md:p-1.5" />
-          <p className="font-semibold text-20px md:text-18px">Documents</p>
+      <div className="flex justify-between items-center pt-1 xs:pt-5 2xs:pt-5 mt-5 md:-mt-96">
+        <div className="flex items-center gap-x-3 2xl:gap-x-2 md:-mt-5">
+          <img
+            src={documenticon}
+            className="p-2 lg:w-7 2xs:w-7 2xs:p-1 sm:w-8 shadow-custom rounded-lg md:w-7 md:p-1.5"
+          />
+          <p className="font-semibold text-20px 2xs:text-18px sm:text-18px md:text-18px">
+            Documents
+          </p>
         </div>
         {accessibility ? (
           <Button
             type="button"
             onClick={handleCreateDocument}
-            className="font-semibold text-base bg-primary px-5 py-3 rounded-lg text-white shadow-none
-              lg:w-[200px] lg:ml-[190px] lg:-mt-6 md:w-[160px] md:text-sm md:ml-24 md:mr-"
+            className={openGrid ? "font-semibold bg-primary px-4 py-3 text-base rounded-lg text-white lg:absolute lg:-mr-[270px] lg:text-14px md:absolute md:mt-24 md:w-72"
+          : "font-semibold bg-primary px-4 py-3 text-base rounded-lg text-white lg:absolute lg:-mr-[400px] lg:text-14px  md:absolute md:mt-24 md:w-72"}
           >
             Create Document
           </Button>
         ) : null}
       </div>
-      {/* Sort */}
-      <div className="grid grid-cols-12 lg:grid lg:grid-cols-12 lg:-ml-2 md:grid md:grid-cols-12 md:text-sm md:mt-3 md:w-[400px] ">
-        <div className="col-span-4 flex items-center gap-x-5 h-11 lg:col-span-4 lg:ml-8  lg:w-72 md:w-36 md:col-span-6">
+      <div className="grid grid-cols-12 lg:grid lg:grid-cols-12 md:grid md:grid-cols-12 md:text-sm">
+        {/* Sort */}
+        <div className="col-span-4 flex items-center gap-x-5 h-11 lg:ml-2  lg:w-72 md:w-36 md:col-span-12 md:mt-16">
           <div className="flex items-center gap-x-3">
             <svg
               width="20"
@@ -183,9 +194,9 @@ export const Document = () => {
               <path d="M5.25 12h13.5"></path>
               <path d="M9.75 17.25h4.5"></path>
             </svg>
-            <h4 className="font-semibold text-20px md:text-16px ">Sort: </h4>
+            <h4 className="font-semibold text-20px md:text-16px">Sort: </h4>
           </div>
-          <div className="relative lg:inline-block ">
+          <div className="relative">
             <Menu
               open={openMenu}
               handler={setOpenMenu}
@@ -194,78 +205,93 @@ export const Document = () => {
               }}
             >
               <MenuHandler>
-                <button className="flex items-center justify-between w-[200px] ">
-                  <p className="text-18px text-black font-ssp">Ascending</p>
+                <button className="flex items-center justify-between w-[200px] z-20">
+                  <p className="text-18px text-black font-ssp">{status}</p>
                   <ChevronDownIcon
                     strokeWidth={3}
-                    className={`h-4 w-4 transition-transform lg:mr-24 ${
+                    className={`h-4 w-4 transition-transform md:absolute md:ml-36 ${
                       openMenu ? "rotate-180" : ""
                     }`}
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px] font-ssp lg:z-40 md:z-40">
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp z-20 md:w-[180px] md:absolute md:-ml-8">
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="Ascending"
                     name="type"
-                    label={<span className="text-18px md:ml-5">Last Update</span>}
-                    className="checked:bg-primary md:absolute"
-                    // onClick={() => {
-                    //   setAsc(true);
-                    //   setDesc(false);
-                    //   setStatus("Ascending");
-                    // }}
-                    defaultChecked
+                    label={<span className="text-18px">Ascending</span>}
+                    className="checked:bg-primary"
+                    onClick={() => {
+                      setAsc(true);
+                      setDesc(false);
+                      setStatus("Ascending");
+                    }}
                   />
                 </MenuItem>
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
-                    id="This week"
+                    id="Descending"
                     name="type"
+                    label={<span className="text-18px">Descending</span>}
+                    className="checked:bg-primary"
+                    onClick={() => {
+                      setAsc(false);
+                      setDesc(true);
+                      setStatus("Descending");
+                    }}
+                  />
+                </MenuItem>
+                <hr className="my-2 border-blue-gray-50" />
+                <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
+                  <Radio
+                    id="This week"
+                    name="this"
                     label={<span className="text-18px">This week</span>}
                     className="checked:bg-primary"
-                    // onClick={() => {
-                    //   setSortbydatetime("THIS_WEEK");
-                    //   setStatus("THIS_WEEK");
-                    // }}
+                    onClick={() => {
+                      setSortbydatetime("THIS_WEEK");
+                      setStatus("THIS_WEEK");
+                    }}
                   />
                 </MenuItem>
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="This month"
-                    name="type"
+                    name="this"
                     label={<span className="text-18px">This month</span>}
                     className="checked:bg-primary"
-                    // onClick={() => {
-                    //   setSortbydatetime("THIS_MONTH");
-                    //   setStatus("THIS_MONTH");
-                    // }}
+                    onClick={() => {
+                      setSortbydatetime("THIS_MONTH");
+                      setStatus("THIS_MONTH");
+                    }}
                   />
                 </MenuItem>
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="This year"
-                    name="type"
+                    name="this"
                     label={<span className="text-18px">This year</span>}
                     className="checked:bg-primary"
-                    // onClick={() => {
-                    //   setSortbydatetime("THIS_YEAR");
-                    //   setStatus("THIS_YEAR");
-                    // }}
+                    onClick={() => {
+                      setSortbydatetime("THIS_YEAR");
+                      setStatus("THIS_YEAR");
+                    }}
                   />
                 </MenuItem>
               </MenuList>
             </Menu>
           </div>
         </div>
+
         {/* Filter */}
-        <div className="col-span-4 flex items-center gap-x-5 h-11 lg:col-span-4 lg:w-[230px]  lg:ml-48 md:col-span-4 md:w-40 md:ml-14">
+        <div className={openGrid ? "col-span-4 flex items-center gap-x-5 h-11 lg:ml-[275px] md:col-span-12 md:w-40 md:ml-3"
+        : "col-span-4 flex items-center gap-x-5 h-11 lg:ml-[328px] md:col-span-4 md:w-40 md:ml-3"}>
           <div className="flex items-center gap-x-3">
             <svg
-            className="lg:w-6 md:w-4 md:h-4"
               width="20"
               height="20"
+              className="lg:w-6 md:w-4 md:h-4"
               fill="none"
               stroke="currentColor"
               stroke-linecap="round"
@@ -276,9 +302,9 @@ export const Document = () => {
             >
               <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
             </svg>
-            <h4 className="font-semibold text-20px md:text-16px ">Filter: </h4>
+            <h4 className="font-semibold text-20px md:text-16px">Filter: </h4>
           </div>
-          <div className="relative md:gap-x-1">
+          <div className="relative">
             <Menu
               open={openMenuTwo}
               handler={setOpenMenuTwo}
@@ -288,7 +314,7 @@ export const Document = () => {
             >
               <MenuHandler>
                 <button className="flex items-center justify-between w-[200px]">
-                  <p className="text-18px text-black font-ssp ">Product</p>
+                  <p className="text-18px text-black font-ssp">Product</p>
                   <ChevronDownIcon
                     strokeWidth={3}
                     className={`h-4 w-4 transition-transform md:text-14px text-accent lg:mr-24 ${
@@ -297,7 +323,7 @@ export const Document = () => {
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px] font-ssp lg:z-40 md:z-40">
+              <MenuList className="rounded-lg p-2 w-[200px] font-ssp">
                 {tagsWorkspace &&
                   tagsWorkspace.map((tag, index) => {
                     return (
@@ -330,8 +356,8 @@ export const Document = () => {
           </div>
         </div>
 
-        {/* Option Document */}
-        <div className="col-span-4 flex items-center justify-end  lg:w-[230px] lg:absolute lg:-mt-12 lg:ml-20  md:w-[110px] md:col-span-3  md:ml-44 ">
+        {/* Option */}
+        <div className="lg:absolute col-span-4 flex items-center justify-end lg:-mt-32 lg:right-24 md:col-span-3 md:right-56 md:-ml-96 md:mt-40">
           {openSearch ? (
             <div className="flex justify-end items-center relative">
               {openSearch ? (
@@ -465,14 +491,14 @@ export const Document = () => {
                     </MenuHandler>
                     <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56 font-ssp lg:z-40 md:z-40">
                       <MenuItem
-                        className="hover:bg-gray-200 p-2 flex items-center gap-x-3 "
+                        className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                         onClick={() =>
                           setOpenWorksapceSetting(!openWorkspaceSetting)
                         }
                       >
                         {" "}
                         <img src={setting} />
-                        <span className="text-18px ">Setting Workspace</span>
+                        <span className="text-18px">Setting Workspace</span>
                       </MenuItem>
                     </MenuList>
                   </Menu>
@@ -494,14 +520,13 @@ export const Document = () => {
         </div>
       </div>
 
-   {/* Card */}
       {openGrid ? (
-        <div className="grid grid-cols-12 gap-8 lg:-ml-2  lg:w-[300px] lg:gap-14  lg:grid-cols-12 md:grid-cols-2 md:ml-14  ">
+        <div className="grid grid-cols-12 gap-8">
           {loading ? (
             documents &&
             documents.map((document, index) =>
               document?.pageId === null ? (
-                <div className="col-span-4 lg:col-span-6 " key={index}>
+                <div className="col-span-4" key={index}>
                   <DocumentCardSkeleton />
                 </div>
               ) : null
@@ -521,7 +546,7 @@ export const Document = () => {
               })
               .map((document, index) =>
                 document?.pageId === null ? (
-                  <div className="col-span-4 lg:col-span-6 " key={index}>
+                  <div className="col-span-4" key={index}>
                     <DocumentCard
                       document={document}
                       workspaceId={workspaceId}
@@ -530,9 +555,9 @@ export const Document = () => {
                 ) : null
               )
           ) : (
-            <div className="col-span-12 absolute bottom-[40%] left-[50%] lg:w-[300px] bg-slate-800">
-              <div className="flex flex-col items-center justify-center gap-y-1">
-                <svg
+            <div className="col-span-12 absolute px-64 md:px-0 md:-ml-5 z-0">
+              <div className="flex flex-col justify-center gap-y-1 items-center h-[400px] w-[570px] lg:w-[170px] lg:h-96 md:w-[330px] md:h-60">
+              <svg
                   width="64"
                   height="41"
                   viewBox="0 0 64 41"
@@ -555,7 +580,7 @@ export const Document = () => {
                     </g>
                   </g>
                 </svg>
-                <p className="font-semibold text-accent text-base">
+                <p className="font-semibold text-accent text-base md:text-12px">
                   No Document
                 </p>
               </div>
@@ -563,7 +588,7 @@ export const Document = () => {
           )}
         </div>
       ) : (
-        <div className="space-y-5 lg:ml-16 ">
+        <div className="space-y-5">
           {documents === null ? null : documents.length > 0 ? (
             documents
               .filter((document) => {
@@ -579,7 +604,7 @@ export const Document = () => {
               })
               .map((document, index) =>
                 document?.pageId === null ? (
-                  <div className="col-span-4 " key={index}>
+                  <div className="col-span-4" key={index}>
                     <DocumentList
                       document={document}
                       workspaceId={workspaceId}
@@ -588,8 +613,8 @@ export const Document = () => {
                 ) : null
               )
           ) : (
-            <div className="col-span-12 absolute bottom-[40%] left-[50%]">
-              <div className="flex flex-col items-center justify-center gap-y-1">
+            <div className="col-span-12 absolute px-64 md:px-0 md:-ml-5 z-0">
+              <div className="flex flex-col justify-center gap-y-1 items-center h-[400px] w-[570px] lg:w-[170px] lg:h-96 md:w-[330px] md:h-60">
                 <svg
                   width="64"
                   height="41"

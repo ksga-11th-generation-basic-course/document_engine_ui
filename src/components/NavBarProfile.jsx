@@ -51,10 +51,36 @@ export const NavBarProfile = () => {
   useEffect(() => {
     dispatch(getCurrentUser());
     param.documentId && dispatch(getDocumentByDocumentId(param.documentId));
-  }, []);
+  }, [dispatch, param.documentId]);
 
   const handleChangeStatus = (status) => {
     dispatch(setCurrentEditing({ documentId, status }));
+    location.reload();
+  };
+
+  const [openNav, setOpenNav] = useState(false);
+
+  const handleClickNav = (status) => {
+    setOpenNav(status);
+  };
+
+  const handleStatus = (status) => {
+    switch (status) {
+      case true:
+        return (
+          <p className="text-18px text-black font-ssp flex gap-x-2">
+            <img src={pen} alt="" />
+            Editor
+          </p>
+        );
+      case false:
+        return (
+          <p className="text-18px text-black font-ssp flex gap-x-2">
+            <img src={view} alt="" />
+            Viewer
+          </p>
+        );
+    }
   };
 
   return (
@@ -74,6 +100,7 @@ export const NavBarProfile = () => {
                   <img src={pen} alt="" />
                   Editing
                 </p>
+                {handleStatus(document?.status)}
                 <ChevronDownIcon
                   strokeWidth={3}
                   className={`h-4 w-4 transition-transform ${
@@ -83,7 +110,7 @@ export const NavBarProfile = () => {
               </button>
             </MenuHandler>
             <MenuList className="rounded-lg p-2 font-ssp w-[250px] space-y-2">
-              <MenuItem className="p-2 hover:bg-gray-200 rounded-lg">
+              <MenuItem className="p-2 hover:bg-gray-200 rounded-lg" onClick={() => handleChangeStatus(true)}>
                 {" "}
                 <div className="flex gap-x-3">
                   <img src={pen} alt="" />
@@ -91,7 +118,7 @@ export const NavBarProfile = () => {
                 </div>
                 <p className="mr-6">Edit document directly</p>
               </MenuItem>
-              <MenuItem className="p-2 hover:bg-gray-200 rounded-lg">
+              <MenuItem className="p-2 hover:bg-gray-200 rounded-lg" onClick={() => handleChangeStatus(true)}>
                 {" "}
                 <div className="flex gap-x-3">
                   <img src={eyeview} alt="" />
@@ -167,7 +194,7 @@ export const NavBarProfile = () => {
         </div>
       ) : null}
       <div>
-        <JoinWorkspaceModal visible={visible} setVisible={setVisible} />
+        <JoinWorkspaceModal visible={visible} setVisible={setVisible} handleClickNav={handleClickNav}/>
       </div>
       
       <div className="relative">
@@ -177,15 +204,14 @@ export const NavBarProfile = () => {
                 <Avatar
                   variant="circular"
                   alt="candice wu"
-                  className="cursor-pointer rounded-full shadow-md md:w-9 md:h-9"
-                  // src="https://firebasestorage.googleapis.com/v0/b/upload-image-b8776.appspot.com/o/images%2Fphoto_2023-06-04_15-01-31.jpg?alt=media&token=f115ba63-1e31-4bc6-9f98-785ab3d729c8&_gl=1*6buxcb*_ga*MTYwNjUwODg3OS4xNjg1ODU0MzY2*_ga_CW55HF8NVT*MTY4NTg2NTU2My4zLjEuMTY4NTg2NTcwMS4wLjAuMA.."
+                  className="cursor-pointer rounded-full w-12 h-12 shadow-md md:w-9 md:h-9"
                       src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fprofile%2Fcb6df344-7dd9-4323-8961-cbd55a606e77_user.png?alt=media&token=6eb13cc7-734c-4292-bc74-2ea2b4e6b5c2"
                 />
               ) : (
                 <Avatar
                   variant="circular"
                   alt="candice wu"
-                  className="cursor-pointer rounded-full md:w-9 md:h-9"
+                  className="cursor-pointer rounded-full  w-12 h-12 md:w-9 md:h-9"
                   src={user && user.profileImage}
                 />
               )}

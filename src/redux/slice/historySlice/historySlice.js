@@ -22,10 +22,12 @@ const historySlice = createSlice({
       state.histories = state.histories.filter(
         (history) => history.historyId !== action.payload
       );
-      
     },
     restoreDocumentSuccess: (state, action) => {
       state.title = action.payload;
+    },
+    clearHistoriesSuccess: (state) => {
+      state.histories = null;
     },
   },
 
@@ -73,6 +75,6 @@ const historySlice = createSlice({
     });
   },
 });
-export const { removeHistorySuccess, restoreDocumentSuccess } =
+export const { removeHistorySuccess, restoreDocumentSuccess,clearHistoriesSuccess, } =
   historySlice.actions;
 export default historySlice.reducer;
