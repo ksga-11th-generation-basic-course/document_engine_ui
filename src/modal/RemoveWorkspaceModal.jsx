@@ -58,8 +58,9 @@ export const RemoveWorkspaceModal = ({
       <Modal
         open={removeWorkspace}
         onClickBackdrop={() => setRemoveWorkspace(!removeWorkspace)}
+        className="z-40"
       >
-        <div className="w-[540px] md:w-[430px] bg-white rounded-lg p-3 md:p-0">
+        <div className="w-[540px] bg-white rounded-lg p-3 md:w-[330px]">
           <div className="flex justify-end">
             <button
               type="button"
@@ -68,27 +69,27 @@ export const RemoveWorkspaceModal = ({
               <img className="md:w-10 md:h-10 md:p-2" src={close} />
             </button>
           </div>
-          <div className="px-14 text-accent space-y-3">
+          <div className="px-14 text-accent space-y-3 md:px-5">
             <div className="flex justify-center items-center">
-              <img className="md:w-20 md:h-20" src={romoveworkspace} />
+              <img  className="md:w-16" src={romoveworkspace} />
             </div>
             <h1 className="font-bold text-24px leading-9 text-primary text-center">
               Remove Workspace!
-              <p className="font-normal text-accent text-18px text-center">
+              <p className="font-normal text-accent text-18px text-center md:text-16px">
                 Are you sure to remove this workspace?
               </p>
             </h1>
 
-            <div className="flex justify-center items-center gap-5 text-16px font-semibold pb-5">
+            <div className="flex justify-center items-center gap-5 text-16px font-semibold pb-5 md:text-14px">
               <button
-                className="px-10 py-3 border-[1px] rounded-lg"
+                className="px-10 py-3 border-[1px] rounded-lg md:px-4 md:py-2.5"
                 type="button"
                 onClick={() => setRemoveWorkspace(!removeWorkspace)}
               >
                 No, cancel
               </button>
               <button
-                className="bg-red-500 text-white  px-10 py-3 rounded-lg"
+                className="bg-red-500 text-white  px-10 py-3 rounded-lg md:px-5 md:py-2.5"
                 type="button"
                 onClick={handleRemoveWorkspace}
               >

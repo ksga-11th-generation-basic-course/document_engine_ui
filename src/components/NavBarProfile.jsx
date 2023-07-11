@@ -213,7 +213,7 @@ export const NavBarProfile = () => {
               )}
           </MenuHandler>
 
-          <MenuList className="rounded-lg text-accent w-[360px] p-5 font-ssp lg:z-30 md:w-60 ">
+          <MenuList className="rounded-lg text-accent w-[360px] p-5 font-ssp lg:z-30 md:w-64 ">
             <MenuItem>
               <p className="font-extrabold text-28px text-primary text-left md:text-20px">
                 Profile

@@ -18,7 +18,7 @@ export const DropDownProfile = ({ open, setOpen, user }) => {
       {open && (
         <div className="fixed inset-0" onClick={() => setOpen(!open)}></div>
       )}
-      <div className="absolute right-0 w-[380px] mt-3 p-3 text-accent rounded-lg shadow border-[0.8px] bg-white z-50">
+      <div className="absolute right-0 w-[380px] mt-3 p-3 text-accent rounded-lg shadow border-[0.8px] bg-white z-50 md:w-[500px] ">
         <div className="flex justify-end">
           <button type="button" onClick={() => setOpen(!open)}>
             <img src={close} className="h-7 w-7 md:w-5" />

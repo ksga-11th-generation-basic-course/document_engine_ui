@@ -49,7 +49,7 @@ export const DocumentCardRow = ({
         }
         </p>
       </div>
-      <div className="relative z-10">
+      <div className="relative">
         <Dropdown className="dropdown relative">
           <Button
             className="bg-white hover:bg-gray-50 border-none rounded-xl"
