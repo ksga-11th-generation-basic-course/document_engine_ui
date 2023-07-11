@@ -426,7 +426,7 @@ export const Workspace = () => {
               }
             })
             .map((workspace, index) => (
-              <div className="col-span-4 z-0 -ml-1 lg:col-span-12 lg:w-96 lg:ml-40 md:ml-2 md:w-[300px]" key={index}>
+              <div className="col-span-4 -ml-1 lg:col-span-12 lg:w-96 lg:ml-40 md:ml-2 md:w-[300px]" key={index}>
                 <WorkspaceCard workspace={workspace} />
               </div>
             ))

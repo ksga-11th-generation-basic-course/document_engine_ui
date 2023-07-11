@@ -5,6 +5,8 @@ import { SideBarSettingWorkspace } from "../components/SideBarSettingWorkspace";
 import { SettingContent } from "../components/SettingContent";
 import { CollaboratorOwnerContent } from "../components/CollaboratorOwnerContent";
 import { InviteMemberByEmailContent } from "../components/InviteMemberByEmailContent";
+import menu from "../assets/images/Dashboard/menu.svg";
+import close from "../assets/dashboard_image/close.svg";
 
 export const WorkspaceSettingModal = ({
   openWorkspaceSetting,
@@ -26,7 +28,7 @@ export const WorkspaceSettingModal = ({
         onClickBackdrop={() => setOpenWorkspaceSetting(!openWorkspaceSetting)}
       >
         <div className="w-[1200px] md:w-[600px] h-[820px] md:h-[710px] bg-white rounded-lg grid grid-cols-12 relative">
-          <div className="col-span-3 md:col-span-3 bg-[#FAFAF9] rounded-lg">
+          <div className="col-span-3 md:col-span-3 rounded-lg lg:hidden md:hidden">
             <SideBarSettingWorkspace
               collaborator={collaborator}
               setCollaborator={setCollaborator}
@@ -36,7 +38,7 @@ export const WorkspaceSettingModal = ({
               setOpenInviteMember={setOpenInviteMember}
             />
           </div>
-          <div className="col-span-9 md:col-span-9 p-3 shadow-xl">
+          <div className="col-span-9 p-3 shadow-xl lg:col-span-12 lg:p-0  md:pl-3 md:col-span-9 ">
             <div>
               {setting ? (
                 <SettingContent

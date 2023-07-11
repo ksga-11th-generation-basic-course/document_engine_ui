@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import { removeWorkspaceImage } from "../redux/service/workspaceService/workspaceService";
 import { removeWorkspaceImageSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
 
+
 export const RemovePhotoModal = ({ removePhoto, setRemovePhoto, workspaceId }) => {
   const dispatch = useDispatch();
 
