@@ -18,8 +18,8 @@ export const Root = () => {
     <div className="relative">
       <div className="grid grid-cols-12">
         <div className= "col-span-2  md:col-span-12">
-              <div className= "fixed w-80 shadow-sidebar lg:hidden md:hidden z-10"> 
-                    <SecondSideBar handleClick={handleClick} sideBar={sideBar} setSideBar={setSideBar}/>
+              <div className= {open ? "fixed w-80 lg:hidden md:hidden z-50" : "fixed w-80 lg:hidden md:hidden z-10"}> 
+                    <SecondSideBar handleClick={handleClick} sideBar={sideBar} setSideBar={setSideBar} newWorkspace={newWorkspace} setNewWorkspace={setNewWorkspace}/>
               </div>
 
               <div className="hidden lg:inline-block md:inline-block">
@@ -37,7 +37,7 @@ export const Root = () => {
 
                                 {sideBar ? 
                                     <span className="fixed z-10 shadow-custom lg:fixed lg:z-50 md:fixed md:-ml-5">
-                                            <SecondSideBar handleClick={handleClick} sideBar={sideBar} setSideBar={setSideBar}/>
+                                            <SecondSideBar handleClick={handleClick} sideBar={sideBar} setSideBar={setSideBar} newWorkspace={newWorkspace} setNewWorkspace={setNewWorkspace}/>
                                       </span>  : null}
                             </div>
 
@@ -48,7 +48,7 @@ export const Root = () => {
             </div>
         </div>
 
-        <div className="col-span-10 h-screen overflow-y-auto lg:hidden z-0 md:hidden">
+        <div className={newWorkspace ? "col-span-10 h-screen overflow-y-auto lg:hidden z-0 md:hidden" : "col-span-10 h-screen overflow-y-auto lg:hidden"}>
                 <div><NavBarProfile/></div>
                 <div className="px-64 mt-10 z-0">
                          <Outlet/>

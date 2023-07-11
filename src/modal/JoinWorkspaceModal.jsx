@@ -96,7 +96,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible, handleClickNav }) => {
                 Cancel
               </button>
               <Button
-                className="bg-primary text-16px font-semibold text-white  px-10 py-3 rounded-lg  md:py-2.5 md:mt-3 md:text-14px md:px-8"
+                className="bg-primary text-20px font-semibold text-white  px-10 py-4 rounded-lg  md:py-2.5 md:mt-3 md:text-14px md:px-8"
                 onClick={handleJoinWorkspace}
               >
                 Join

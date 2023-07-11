@@ -21,7 +21,7 @@ import { Button } from "rsuite";
 import { Avatar } from "@material-tailwind/react";
 import dropdown from "../assets/images/popUp/dropdown.svg";
 import reverse_dropdown from "../assets/images/popUp/reverse_dropdown.svg";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
   const [visible, setVisible] = useState(false);
@@ -637,6 +637,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
           </div>
         </div>
       </Modal>
+
       <div>
         <SignOutModal
           openSignOut={openSignOut}
