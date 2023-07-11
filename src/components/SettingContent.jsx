@@ -71,7 +71,7 @@ export const SettingContent = ({
   };
 
   return (
-    <div>
+    <div className="h-[70px] ">
       {/* Close button */}
       <div className="flex w-full justify-end p-1">
         <button
@@ -165,7 +165,7 @@ export const SettingContent = ({
                     setWorkspaceImage(e.target.files[0]);
                   }}
                 />
-                <div className="overflow-hidden rounded-lg w-[300px] h-[200px]">
+                <div className="overflow-hidden rounded-lg w-[270px] h-[150px]">
                   {workspaceImage ? (
                     <img src={URL.createObjectURL(workspaceImage)} />
                   ) : (
