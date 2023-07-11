@@ -34,7 +34,7 @@ export const DocumentCardRow = ({
           </h3>
           {status ? (
             <div className="flex text-primary gap-x-1 px-3 justify-center items-center rounded-2xl bg-[#EDF9FF]">
-              <p className="xl:text-14px mr-2 md:text-10px">Editing...</p>
+              <p className="xl:text-14px mr-2 md:text-[11px]">Editing...</p>
               <img src={pencil} className="w-3 h-3 -ml-1 md:w-2 md:h-2" />
             </div>
           ) : null}

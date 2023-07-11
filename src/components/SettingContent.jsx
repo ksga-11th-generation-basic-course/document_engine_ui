@@ -18,6 +18,7 @@ import { RemovePhotoModal } from "../modal/RemovePhotoModal";
 export const SettingContent = ({
   openWorkspaceSetting,
   setOpenWorkspaceSetting,
+  workspace,
 }) => {
   const [removeWorkspace, setRemoveWorkspace] = useState(false);
   const [removePhoto, setRemovePhoto] = useState(false);
