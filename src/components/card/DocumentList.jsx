@@ -96,9 +96,9 @@ export const DocumentList = ({ document, workspaceId }) => {
 
   return (
     <div>
-      <div className="flex justify-between items-center text-black text-18px xs:text-14px cursor-pointer z-0 lg:w-[500px]" onClick={handleNavigate}>
+      <div className="flex justify-between items-center text-black text-18px xs:text-14px cursor-pointer z-0 lg:w-[500px] md:w-[290px]" onClick={handleNavigate}>
         <div className="flex items-center gap-x-3">
-          <span className="font-bold text-22px text-primary flex gap-x-3">
+          <span className="font-bold text-22px text-primary flex gap-x-3 md:text-18px md:gap-x-2">
             <svg
               className="mt-2"
               xmlns="http://www.w3.org/2000/svg"
@@ -212,7 +212,7 @@ export const DocumentList = ({ document, workspaceId }) => {
           </div>
         </div>
       </div>
-      <hr className="lg:w-[495px]"/>
+      <hr className="lg:w-[495px] md:w-[295px]"/>
       <div>
         <DocumentPermissionModal
           openPermission={openPermission}

@@ -8,7 +8,7 @@ export const CustomSkeleton = () => {
         <h4 className="font-semibold text-18px">
           <Skeleton variant="text" width={200} height={30} />
         </h4>
-        <p className="border-[1px] rounded-full px-3">
+        <p className="rounded-full px-3 -mr-3">
           <Skeleton variant="text" width={50} height={20} />
         </p>
       </div>

@@ -72,6 +72,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
     try {
       const user = await editProfileInformation(username, url);
       dispatch(editProfileInformationSuccess(user));
+      setOpenSetting(!openSetting);
       toast.success("Your Information is updated Successfully", {
         position: "bottom-right",
         autoClose: 5000,
@@ -82,7 +83,6 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
         progress: undefined,
         theme: "light",
       });
-      setOpenSetting(!openSetting);
     } catch (error) {
       console.log(error);
     }

@@ -141,16 +141,16 @@ export const Document = () => {
   const [status, setStatus] = useState("Ascending");
 
   return (
-    <div className="text-accent space-y-5 lg:ml-7 md:ml-1 md:mt-10">
-      <div>
-        <h1 className="font-bold text-accent text-44px ">
+    <div className="text-accent space-y-5 lg:ml-7 md:-ml-3 md:mt-10">
+      <div className="md:ml-3">
+        <h1 className="font-bold text-accent text-44px">
           {workspace && workspace.workspaceName}
         </h1>
           <p className="text-accent text-18px">
             Welcome to {workspace && workspace.workspaceName} workspace
           </p>
       </div>
-      <div className="flex justify-between items-center pt-1 xs:pt-5 2xs:pt-5 mt-5 md:-mt-96">
+      <div className="flex justify-between items-center pt-1 xs:pt-5 2xs:pt-5 mt-5 md:-mt-96 md:ml-3">
         <div className="flex items-center gap-x-3 2xl:gap-x-2 md:-mt-5">
           <img
             src={documenticon}
@@ -164,7 +164,7 @@ export const Document = () => {
           <Button
             type="button"
             onClick={handleCreateDocument}
-            className="font-semibold bg-primary px-4 py-3 text-base rounded-lg text-white lg:absolute lg:right-24 lg:text-14px md:absolute md:mt-24 md:w-72"
+            className="font-semibold bg-primary px-4 py-3 text-base rounded-lg text-white lg:absolute lg:right-24 lg:text-14px md:absolute md:mt-24 md:w-72 md:right-14"
           >
             Create Document
           </Button>
@@ -172,7 +172,7 @@ export const Document = () => {
       </div>
       <div className="grid grid-cols-12 lg:grid lg:grid-cols-12 md:grid md:grid-cols-12 md:text-sm">
         {/* Sort */}
-        <div className="col-span-4 flex items-center gap-x-5 h-11 lg:ml-2  lg:w-72 md:w-36 md:col-span-12 md:mt-16">
+        <div className="col-span-4 flex items-center gap-x-5 h-11 lg:ml-2  lg:w-72 md:w-36 md:col-span-12 md:mt-16 md:ml-3">
           <div className="flex items-center gap-x-3">
             <svg
               width="20"
@@ -189,7 +189,7 @@ export const Document = () => {
               <path d="M5.25 12h13.5"></path>
               <path d="M9.75 17.25h4.5"></path>
             </svg>
-            <h4 className="font-semibold text-20px md:text-16px">Sort: </h4>
+            <h4 className="font-semibold text-20px md:text-18fpx">Sort: </h4>
           </div>
           <div className="relative">
             <Menu
@@ -301,7 +301,7 @@ export const Document = () => {
             >
               <path d="M22 3H2l8 9.46V19l4 2v-8.54L22 3z"></path>
             </svg>
-            <h4 className="font-semibold text-20px md:text-16px">Filter: </h4>
+            <h4 className="font-semibold text-20px md:text-18px">Filter: </h4>
           </div>
           <div className="relative">
             <Menu
@@ -356,7 +356,7 @@ export const Document = () => {
         </div>
 
         {/* Option */}
-        <div className="lg:absolute col-span-4 flex items-center justify-end lg:-mt-32 lg:right-24 md:col-span-3 md:right-56 md:-ml-96 md:mt-40">
+        <div className="lg:absolute col-span-4 flex items-center justify-end lg:-mt-32 lg:right-24 md:col-span-3 md:mt-40 md:right-60">
           {openSearch ? (
             <div className="flex justify-end items-center relative">
               {openSearch ? (
@@ -526,7 +526,7 @@ export const Document = () => {
             documents.map((document, index) =>
               document?.pageId === null ? (
                 <div
-                  className="col-span-4 z-0 -ml-1 lg:col-span-12 lg:w-96 lg:ml-24 md:ml-2 md:w-[300px]"
+                  className="col-span-4 z-0 lg:col-span-12 lg:w-96 lg:ml-24 md:ml-2 md:w-[300px] md:first:mt-10 md:last:mb-10"
                   key={index}
                 >
                   <DocumentCardSkeleton />
@@ -549,7 +549,7 @@ export const Document = () => {
               .map((document, index) =>
                 document?.pageId === null ? (
                   <div
-                    className="col-span-4 z-0 lg:col-span-12 lg:w-96 lg:ml-24 md:ml-2 md:w-[300px]"
+                    className="col-span-4 z-0 lg:col-span-12 lg:w-96 lg:ml-24 md:ml-2 md:w-[300px] md:first:mt-10 md:last:mb-10"
                     key={index}
                   >
                     <DocumentCard
@@ -610,7 +610,7 @@ export const Document = () => {
               .map((document, index) =>
                 document?.pageId === null ? (
                   <div
-                    className="col-span-4 z-0 lg:col-span-12 lg:w-96 lg:ml-14 md:ml-2 md:w-[300px]"
+                    className="col-span-4 z-0 lg:col-span-12 lg:w-96 lg:ml-14 md:ml-3 md:w-10 md:first:mt-10 md:last:mb-10"
                     key={index}
                   >
                     <DocumentList

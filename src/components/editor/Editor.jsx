@@ -325,6 +325,8 @@ export const Editor = ({ loading, blockData }) => {
   const param = useParams();
   const dispatch = useDispatch();
 
+  console.log("Test", blockData)
+
   const sortedInitialContent = [...blockData].sort((a, b) => a.order - b.order);
 
   const [timerId, setTimerId] = useState(null);
@@ -436,7 +438,7 @@ export const Editor = ({ loading, blockData }) => {
 
   return (
     <div>
-      <div className="absolute top-5 ml-10">
+      <div className="absolute top-5 ml-12 mt-3 lg:mt-3 lg:ml-12 md:-mt-1 md:ml-12">
         {isLoading ? (
           <div className="flex items-center gap-x-3">
             <p className="text-gray-500 text-16px">Editing</p>
@@ -448,7 +450,7 @@ export const Editor = ({ loading, blockData }) => {
             />
           </div>
         ) : (
-          <p className="text-gray-500 text-16px">Edited just now</p>
+          <p className="text-gray-500 text-16px md:hidden">Edited just now</p>
         )}
       </div>
 

@@ -32,8 +32,6 @@ import Stack from "@mui/material/Stack";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { DocumentPermissionModal } from "../modal/DocumentPermissionModal";
 import { DocumentHistoryModal } from "../modal/DocumentHistoryModal";
-import { getHistoryByDocumentId } from "../redux/service/historyService/historyService";
-import { clearBlocksSuccess } from "../redux/slice/blockSlice/blockSlice";
 
 export const CreateDocument = () => {
   const [openPermission, setOpenPermission] = useState(false);
@@ -53,8 +51,6 @@ export const CreateDocument = () => {
   const workspaceId = param?.workspaceId;
   const dispatch = useDispatch();
 
-  // console.log("create", blockData);
-
   useEffect(() => {
     dispatch(getDocumentByDocumentId(documentId));
     dispatch(getWorkspaceName(documentId));
@@ -65,9 +61,8 @@ export const CreateDocument = () => {
   }, [documentId, workspaceId, document?.pageId]);
 
   useEffect(() => {
-    dispatch(clearBlocksSuccess());
-    dispatch(getBlockBydoucmentId(documentId));
-  }, [documentId]);
+    dispatch(getBlockBydoucmentId(document?.documentId));
+  }, [document]);
 
   const [title, setTitle] = useState();
 
@@ -90,8 +85,6 @@ export const CreateDocument = () => {
   }
 
   const timestamp = document && document.createdDate;
-
-  console.log(document?.createdDate);
 
   const handleInputChan = (event) => {
     setInputValue(event.target.value);
@@ -136,7 +129,7 @@ export const CreateDocument = () => {
     </li>,
     <li className="flex items-center gap-x-2">
       <img src={doc} />
-      <p className="text-primary">{title}</p>
+      <p className="text-primary">{title ? title : "Loading..."}</p>
     </li>,
   ];
 
@@ -163,9 +156,9 @@ export const CreateDocument = () => {
   ];
 
   return (
-    <div className="w-full">
-      <div className="fixed z-10 right-0 rounded-lg shadow-md border-[1px] h-auto p-2 top-[45%]">
-        <div className="grid grid-rows-1 gap-3">
+    <div className="w-full md:mt-4 lg:w-[500px] md:w-[300px] ">
+      <div className="fixed z-10 right-0 rounded-lg shadow-md border-[1px] h-auto p-2 top-[45%] bg-white mr-4 md:right-0">
+        <div className="grid grid-rows-1 gap-3 ">
           <button
             className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
             type="button"
@@ -190,7 +183,8 @@ export const CreateDocument = () => {
           </div>
         </div>
       </div>
-      <nav className="flex items-center text-sm px-10">
+      
+      <nav className="flex items-center text-sm px-10 mt-12 ml-2 lg:mt-5 md:mt-10 md:-ml-10">
         <ol className="list-none p-0 inline-flex">
           <Stack spacing={2}>
             <Breadcrumbs
@@ -202,11 +196,11 @@ export const CreateDocument = () => {
           </Stack>
         </ol>
       </nav>
-      <div className="text-[#9CA3AF] grid grid-rows-1 gap-2 px-12">
+      <div className="text-[#9CA3AF] grid grid-rows-1 gap-2 px-12 md:-ml-48">
         <div className="w-full h-auto">
-          <span className="font-semibold ">
+          <span className="font-semibold md:left-96">
             <input
-              className="text-5xl  w-full p-0 text-black py-2 focus:ring-0 focus:border-0 border-0"
+              className="text-5xl  w-full p-0 text-black py-2 focus:ring-0 focus:border-0 border-0 md:text-4xl md:pl-36"
               type="text"
               onChange={handleInputChange}
               placeholder={document?.title}
@@ -214,30 +208,30 @@ export const CreateDocument = () => {
             />
           </span>
           <div className="w-full grid grid-cols-12 gap-y-2">
-            <div className="col-span-12 text-sm">
-              <div className="flex">
-                <span className="flex gap-x-3 w-36">
-                  <img src={CreateBy} className="w-[17px]" alt="" />
+            <div className="col-span-12 text-sm ">
+              <div className="flex md:pl-36">
+                <span className="flex gap-x-3 w-36 ">
+                  <img src={CreateBy} className="w-[17px]  " alt="" />
                   <p>Created By</p>
                 </span>
                 <p className="text-black">{username}</p>
               </div>
             </div>
             <div className="col-span-12 text-sm">
-              <div className="flex">
-                <span className="flex gap-x-3 w-36">
+              <div className="flex md:pl-36 md:w-[440px]">
+                <span className="flex gap-x-3">
                   <img src={CreateDate} className="w-[17px]" alt="" />
                   <p>Created Date</p>
                 </span>
-                <p className="text-black">{timestamp}</p>
+                <p className="text-black ml-9">{timestamp}</p>
               </div>
             </div>
-            <div className="col-span-12 text-sm relative">
+            <div className="col-span-12 text-sm relative md:ml-36">
               <div className="relative grid grid-cols-10">
                 <span className="col-span-1 gap-x-3 w-36">
                   <div className="flex gap-x-3">
                     <img src={Tag} className="w-[16px]" alt="" />
-                    <p>Tag</p>
+                    <p >Tag</p>
                   </div>
                 </span>
                 {toggle && (
@@ -246,7 +240,7 @@ export const CreateDocument = () => {
                     onClick={() => setToggle(!toggle)}
                   ></div>
                 )}
-                <button className="flex flex-wrap col-span-8 gap-2 h-auto w-full ml-10">
+                <button className="flex flex-wrap col-span-8 gap-2 h-auto w-full ml-10 md:ml-12">
                   {tagsDocument &&
                     tagsDocument.map((tag, index) => (
                       <span
@@ -278,7 +272,7 @@ export const CreateDocument = () => {
                   {!toggle && (
                     <div
                       onClick={() => setToggle(!toggle)}
-                      className="px-2 text-sm cursor-pointer font-medium shadow rounded-md flex justify-center items-center gap-1 text-[#1E9CEF]"
+                      className="px-2 text-sm cursor-pointer font-medium shadow rounded-md flex justify-center items-center gap-1 text-[#1E9CEF] lg:ml-16"
                     >
                       Add Tag
                       <svg
@@ -360,10 +354,11 @@ export const CreateDocument = () => {
               </div>
             </div>
           </div>
-          <hr className="mt-3" />
+          <hr className="mt-3 md:w-72 md:ml-14" />
         </div>
       </div>
-      <div className="mt-2">
+
+      <div className="mt-2 md:-ml-14">
         {blockData === null ? null : blockData.length > 0 ? (
           <Editor loading={loading} blockData={blockData} />
         ) : (
@@ -372,8 +367,9 @@ export const CreateDocument = () => {
           </div>
         )}
       </div>
-      <div className="h-[75vh]"></div>
-      <div>
+
+      <div className="h-[75vh] "></div>
+      <div >
         <DocumentPermissionModal
           openPermission={openPermission}
           setOpenPermission={setOpenPermission}
