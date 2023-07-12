@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import pencil from "../../assets/workspace_image/pencil.svg";
 import chevrondown from "../../assets/workspace_image/chevrondown.svg";
 import { RemoveMemberModal } from "../../modal/RemoveMemberModal";
-import { Dropdown } from "react-daisyui";
+import { Button, Dropdown } from "react-daisyui";
 import view from "../../assets/workspace_image/view.svg";
 import kickmember from "../../assets/workspace_image/kickmember.svg";
 import { setAccessibility } from "../../redux/service/workspaceService/workspaceService";
@@ -17,6 +17,7 @@ import {
 } from "@material-tailwind/react";
 import { Avatar } from "@material-tailwind/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import dotmenu from "../../assets/dashboard_image/dotmenu.png";
 
 export const MemberWorkspaceCard = ({ member, workspaceId }) => {
   const [removeMember, setRemoveMember] = useState(false);
@@ -36,6 +37,7 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
   const randomColor = colors[Math.floor(Math.random() * colors.length)];
 
   const [workspaceIdProp, setWorkspaceIdProp] = useState();
+  const [visible, setVisible] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -67,12 +69,12 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
   return (
     <div>
       <div className="flex justify-between items-center w-full space-y-4">
-        <div className="flex justify-center items-center gap-x-3">
+        <div className="flex justify-center items-center gap-x-3 md:gap-x-2.5">
           <div
-            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full overflow-hidden`}
+            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full overflow-hidden md:w-6 md:h-6`}
           >
             {member.profileImage === null ? (
-              <p className="font-semibold text-18px text-white">
+              <p className="font-semibold text-18px text-white md:text-12px">
                 {character[0]}
               </p>
             ) : (
@@ -84,16 +86,42 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
               />
             )}
           </div>
-          <h3 className="font-semibold text-18px">{member.username}</h3>
+          <h3 className="font-semibold text-18px  md:text-15px">
+            {member.username}
+          </h3>
           {member.isOwner ? (
             <div>
-              <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg">
+              <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg md:text-12px">
                 Owner
               </span>
             </div>
           ) : null}
           {user.userId === member.userId ? <span>(You)</span> : null}
         </div>
+
+        {!member.isOwner ? (
+          <div className="hidden md:inline-block md:relative">
+            <div className="relative">
+              <Dropdown className="dropdown relative">
+                <Button
+                  className="bg-white hover:bg-gray-50 border-none rounded-xl"
+                  onClick={() => setVisible(!visible)}
+                >
+                  <img src={dotmenu} className="w-12 " />
+                </Button>
+                {visible ? (
+                  <Dropdown.Menu className="w-52 bg-white border rounded-lg absolute right-0 md:w-40">
+                    <Dropdown.Item >
+                      <img src={view} className="md:w-4" />
+                      <span className="text-20px md:text-16px">View page</span>
+                    </Dropdown.Item>
+                  </Dropdown.Menu>
+                ) : null}
+              </Dropdown>
+            </div>
+          </div>
+        ) : null}
+
         {!member.isOwner ? (
           <div className="flex justify-center items-center gap-x-4 md:gap-x-2">
             <div className="relative">
@@ -120,11 +148,17 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
                   </button>
                 </MenuHandler>
                 <MenuList className="rounded-lg p-2 w-[190px] font-ssp z-[9999]">
-                  <MenuItem className="flex justify-start items-center p-3 hover:bg-gray-200 rounded-lg gap-x-2" onClick={() => handleSetAccessibility(true)}>
+                  <MenuItem
+                    className="flex justify-start items-center p-3 hover:bg-gray-200 rounded-lg gap-x-2"
+                    onClick={() => handleSetAccessibility(true)}
+                  >
                     <img src={pencil} alt="" />
                     <p className="text-18px text-black">Editor</p>
                   </MenuItem>
-                  <MenuItem className="flex justify-start p-3 hover:bg-gray-200 rounded-lg gap-x-2" onClick={() => handleSetAccessibility(false)}>
+                  <MenuItem
+                    className="flex justify-start p-3 hover:bg-gray-200 rounded-lg gap-x-2"
+                    onClick={() => handleSetAccessibility(false)}
+                  >
                     <img src={view} alt="" />
                     <p className="text-18px text-black">Viewer</p>
                   </MenuItem>
