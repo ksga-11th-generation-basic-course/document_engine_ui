@@ -63,7 +63,7 @@ export const CollaboratorOwnerContent = ({
             <div className="flex justify-center items-center gap-x-3">
               <p className="font-semibold text-18px">Collaborators</p>
             </div>
-            <div className="flex justify-center items-center gap-x-3 md:gap-3 md:px-0 shadow-sm px-3 p-1 rounded-lg relative">
+            <div className="flex justify-center items-center gap-x-3 md:gap-3 md:px-0 shadow-sm px-3 p-1 rounded-lg relative hover:shadow-hover">
               <span className="text-primary">{workspace.workspaceCode}</span>
               <CopyToClipboard
                 text={workspace.workspaceCode}

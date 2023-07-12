@@ -59,7 +59,7 @@ export const InviteMemberByEmailContent = ({
               <img src={iconemail} />
               <p className="font-semibold text-18px">Invite Members</p>
             </div>
-            <div className="flex justify-center items-center gap-x-3 md:gap-3 md:px-0 shadow-sm px-3 rounded-lg relative">
+            <div className="flex justify-center items-center gap-x-3 md:gap-3 md:px-0 shadow-sm rounded-lg relative">
               <Button
                 className="font-semibold text-white text-18px md:text-16px md:px-5 md:py-1 px-7 py-2 bg-primary rounded-lg"
                 type="button"

@@ -98,7 +98,7 @@ export const SettingContent = ({
         </button>
       </div>
 
-      <div className="px-16 md:px-8 space-y-5 lg:mt-8 md:mt-3">
+      <div className="px-16 md:px-8 space-y-5 lg:mt-8 md:mt-3 md:-ml-3.5">
         {/* Header title */}
         <div className="text-accent">
           <h1 className="font-bold text-34px md:text-22px">
@@ -223,14 +223,14 @@ export const SettingContent = ({
         </div>
 
         {/* Workspace setting for mobile phone */}
-        <div>
+        <div className="md:-mt-10">
           {/* Header */}
           {openWorkspace ? (
             <div
               className={
                 openWorkspace
-                  ? "hidden md:flex md:justify-between md:border-r-[1px] md:border-t-[1px] md:border-l-[1px] md:py-3 md:rounded-t-lg md:px-4"
-                  : "hidden md:flex md:justify-between md:border-[1px] md:py-3 md:rounded-lg md:px-4"
+                  ? "hidden md:flex md:justify-between md:border-r-[1px] md:border-t-[1px] md:border-l-[1px] md:py-3 md:rounded-t-lg md:px-4 md:-mt-2"
+                  : "hidden md:flex md:justify-between md:border-[1px] md:py-3 md:rounded-lg md:px-4 md:-mt-2"
               }
             >
               <div className="flex justify-center items-center gap-x-3">
@@ -241,7 +241,7 @@ export const SettingContent = ({
                 <span className="hidden md:inline-block md:-mt-1">
                   <button
                     type="button"
-                    className="font-semibold text-white text-18px px-7 py-1.5 bg-primary rounded-lg md:text-12px md:px-5 md:py-1 md:mt-1 md:ml-16"
+                    className="font-semibold text-white text-18px px-7 py-1.5 bg-primary rounded-lg md:text-12px md:px-5 md:py-1 md:mt-1 md:ml-7"
                     onClick={() => {
                       handleEditWorkspaceInformation;
                       setOpenWorkspace(false);
@@ -258,7 +258,7 @@ export const SettingContent = ({
               className={
                 openWorkspace
                   ? "hidden md:flex md:justify-between md:border-r-[1px] md:border-t-[1px] md:border-l-[1px] md:py-3 md:rounded-t-lg md:px-4 md:w-full"
-                  : "hidden md:flex md:justify-between md:border-[1px] md:py-3 md:rounded-lg md:px-4 md:w-full"
+                  : "hidden md:flex md:justify-between md:border-[1px] md:py-3 md:rounded-lg md:px-4 md:w-full md:-mt-2"
               }
               onClick={() => {
                 setOpenWorkspace(true);
@@ -270,7 +270,7 @@ export const SettingContent = ({
                 <p className="font-bold text-24px text-black md:text-16px">
                   Your Workspace
                 </p>
-                <span className="hidden md:inline-block md:-mt-1 md:ml-5">
+                <span className="hidden md:inline-block md:-mt-1 md:-ml-5">
                   {!openWorkspace ? (
                     <img
                       src={dropdown}
@@ -286,9 +286,9 @@ export const SettingContent = ({
           {/* Content mobile */}
           <span className="hidden md:inline-block">
             {openWorkspace ? (
-              <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg lg:space-y-7 md:px-4 md:space-y-5 md:mb-5">
+              <div className="px-6 border-[1px] py-0 space-y-4 rounded-b-lg lg:space-y-7 md:px-4 md:space-y-2 md:mb-5 md:pb-4">
                 {/* Change workspace name */}
-                <div className="w-full space-y-2">
+                <div className="w-full space-y-0">
                   <h3 className="font-bold text-18px text-black md:text-14px">
                     Workspace Name
                   </h3>
@@ -304,12 +304,13 @@ export const SettingContent = ({
                 {/* Change profile */}
                 <div>
                   <div className="md:grid md:grid-cols-12 md:gap-y-2 md:items-center">
-                    <div className="md:col-span-5">
+                    <div className="md:col-span-12">
                       <h3 className="font-bold text-18px text-black md:text-14px">
                         Workspace Photo
                       </h3>
                     </div>
-                    <div className="md:col-span-6 flex justify-center items-center gap-x-3 md:w-40 md:ml-2">
+                    
+                    <div className="md:col-span-5 flex justify-center items-center gap-x-3 md:w-40 md:-ml-1 md:-mt-3">
                       <label>
                         <input
                           className="text-sm cursor-pointer w-36 hidden md:w-full"
@@ -331,9 +332,9 @@ export const SettingContent = ({
                           <img src={trush} className="md:w-3" />
                         </button>
                       </div>
-                    </div>
+                    </div> 
                   </div>
-                  <div className="overflow-hidden rounded-lg w-[300px] md:w-[210px] md:mt-3">
+                  <div className="overflow-hidden rounded-lg md:w-[100px] md:h-[100px] md:mt-3">
                     {workspaceImage === null ? (
                       <img src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fworkspace%2F3036d816-8b3f-4c2e-8725-8b0d0944b4f3_4014085.jpg?alt=media&token=1c310982-d56b-49bc-929f-693812978256" />
                     ) : workspaceImage ? (
@@ -367,7 +368,7 @@ export const SettingContent = ({
               <p className="font-bold text-24px text-black md:text-16px">
                 Advanced
               </p>
-              <span className="hidden md:inline-block md:-mt-1 md:ml-12">
+              <span className="hidden md:inline-block md:-mt-1 md:ml-2">
                 {!openAdvance ? (
                   <img
                     src={dropdown}
@@ -388,13 +389,13 @@ export const SettingContent = ({
             {openAdvance ? (
               <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg md:px-4">
                 {/* Remove workspace */}
-                <div className="grid grid-cols-12 justify-center items-center">
-                  <div className="col-span-10 lg:col-span-9 md:col-span-6">
+                <div className="grid grid-cols-12 justify-center items-center md:w-full">
+                  <div className="col-span-10 lg:col-span-9 md:col-span-0">
                     <h3 className="font-bold text-18px text-black md:text-16px">
                       Remove Workspace
                     </h3>
                   </div>
-                  <div className="col-span-2 ml-6 lg:col-span-3 lg:ml-12 md:col-span-6 md:mr-20 md:ml-16">
+                  <div className="col-span-2 ml-6 lg:col-span-3 lg:ml-12 md:mr-20 md:-ml-5">
                     <button
                       className="font-semibold text-16px text-red-500 border-[1px] rounded-lg px-4 py-2 md:text-14px md:w-20 md:px-2 md:py-1.5"
                       onClick={() => setRemoveWorkspace(!removeWorkspace)}
