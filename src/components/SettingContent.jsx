@@ -14,6 +14,7 @@ import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 import { Button } from "rsuite";
 import { RemoveWorkspacePhotoModal } from "../modal/RemoveWorkspacePhotoModal";
+import { toast } from "react-toastify";
 
 export const SettingContent = ({
   openWorkspaceSetting,
@@ -30,8 +31,7 @@ export const SettingContent = ({
 
   const [workspaceImage, setWorkspaceImage] = useState(null);
 
-  const [url, setUrl] = useState();
-
+  const [url, setUrl] = useState(workspace && workspace.workspaceImage);
   const dispatch = useDispatch();
 
   let workspaceId = workspace?.workspaceId;
@@ -65,6 +65,16 @@ export const SettingContent = ({
       const workspace = await editWorkspace(workspaceId, workspaceName, url);
       dispatch(editWorkspaceSuccess(workspace));
       setOpenWorkspaceSetting(!openWorkspaceSetting);
+      toast.success("Workspace Information is updated Successfully", {
+        position: "bottom-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+      });
     } catch (error) {
       console.log(error);
     }
@@ -166,7 +176,9 @@ export const SettingContent = ({
                   }}
                 />
                 <div className="overflow-hidden rounded-lg w-[270px] h-[150px]">
-                  {workspaceImage ? (
+                  {workspaceImage === null ? (
+                    <img src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fworkspace%2F3036d816-8b3f-4c2e-8725-8b0d0944b4f3_4014085.jpg?alt=media&token=1c310982-d56b-49bc-929f-693812978256" />
+                  ) : workspaceImage ? (
                     <img src={URL.createObjectURL(workspaceImage)} />
                   ) : (
                     <img src={workspace && workspace.workspaceImage} />
@@ -319,7 +331,9 @@ export const SettingContent = ({
                     </div>
                   </div>
                   <div className="overflow-hidden rounded-lg w-[300px] md:w-[210px] md:mt-3">
-                    {workspaceImage ? (
+                    {workspaceImage === null ? (
+                      <img src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fworkspace%2F3036d816-8b3f-4c2e-8725-8b0d0944b4f3_4014085.jpg?alt=media&token=1c310982-d56b-49bc-929f-693812978256" />
+                    ) : workspaceImage ? (
                       <img src={URL.createObjectURL(workspaceImage)} />
                     ) : (
                       <img src={workspace && workspace.workspaceImage} />
@@ -400,6 +414,7 @@ export const SettingContent = ({
         />
         <RemoveWorkspacePhotoModal
           workspaceId={workspaceId}
+          workspaceName={workspaceName}
           removePhoto={removePhoto}
           setRemovePhoto={setRemovePhoto}
         />
