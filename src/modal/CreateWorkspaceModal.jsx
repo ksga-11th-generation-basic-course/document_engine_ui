@@ -34,7 +34,7 @@ export const CreateWorkspaceModal = ({
   );
 
   useEffect(()=>{
-    if(visible==false){
+    if(visible===false){
       setUrl("https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fworkspace%2F3036d816-8b3f-4c2e-8725-8b0d0944b4f3_4014085.jpg?alt=media&token=1c310982-d56b-49bc-929f-693812978256"
       )
     }
@@ -48,7 +48,7 @@ export const CreateWorkspaceModal = ({
         `images/workspace/${uuidv4()}_${workspaceImage.name}`
         
       );
-      console.log(storage);
+      console.log("Storage",storage);
 
       uploadBytes(imageRef, workspaceImage).then((snapshot) => {
         getDownloadURL(snapshot.ref).then((url) => {

@@ -10,11 +10,11 @@ export const SideBarSettingWorkspace = ({
   setOpenInviteMember,
 }) => {
   return (
-    <div className="space-y-3 lg:absolute lg:h-[850px] lg:shadow-custom lg:bg-white lg:w-60 lg:rounded-lg md:w-[180px] md:-ml-3 md:border-l-0 md:rounded-l-xl md:h-[650px]">
+    <div className="space-y-3 lg:absolute lg:h-[850px] lg:shadow-custom lg:bg-white lg:w-60 md:w-[180px] md:border-l-0 md:rounded-l-xl md:h-[650px]">
       <div className="flex justify-center p-5 rounded-tl-lg shadow-md">
         <img className="md:w-16" src={logo} />
       </div>
-      <div className="w-full px-3 md:p-0">
+      <div className="w-full px-3 md:p-0 md:px-2">
         <div>
           <button
             className={
@@ -31,6 +31,7 @@ export const SideBarSettingWorkspace = ({
             <svg
               width="28"
               height="28"
+              className="md:w-6 md:h-6"
               fill="none"
               stroke="currentColor"
               stroke-linecap="round"
@@ -61,6 +62,7 @@ export const SideBarSettingWorkspace = ({
             <svg
               width="25"
               height="25"
+              className="md:w-5 md:h-5"
               fill="none"
               stroke="currentColor"
               stroke-linecap="round"
@@ -95,6 +97,7 @@ export const SideBarSettingWorkspace = ({
             <svg
               width="28"
               height="28"
+              className="md:w-5 md:h-5"
               fill="none"
               stroke="currentColor"
               stroke-linecap="round"

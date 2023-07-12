@@ -7,6 +7,8 @@ import { inviteMemberViaEmailSuccess } from "../redux/slice/workspaceSlice/works
 import { Button } from "rsuite";
 
 export const InviteMemberByEmailContent = ({
+  open,
+  setOpen,
   openWorkspaceSetting,
   setOpenWorkspaceSetting,
   workspace,
@@ -29,15 +31,22 @@ export const InviteMemberByEmailContent = ({
 
   return (
     <div>
-      <div className="flex w-full justify-end">
+      {/* Close button */}
+      <div className="flex w-full justify-end p-1">
         <button
           type="button"
-          onClick={() => setOpenWorkspaceSetting(!openWorkspaceSetting)}
+          onClick={() => {
+            setOpenWorkspaceSetting(!openWorkspaceSetting), setOpen(!open);
+          }}
         >
-          <img src={close} />
+          <img
+            src={close}
+            className="w-9 lg:w-7 lg:right-7 lg:absolute md:-mt-2  md:w-6"
+          />
         </button>
       </div>
-      <div className="px-16 space-y-5 md:px-3">
+
+      <div className="px-16 space-y-5 lg:mt-8  md:px-3">
         <div className="text-accent">
           <h1 className="font-bold text-34px md:text-24px">Invite Via Email</h1>
           <p className="md:text-16px">

@@ -17,6 +17,8 @@ import { RemoveWorkspacePhotoModal } from "../modal/RemoveWorkspacePhotoModal";
 import { toast } from "react-toastify";
 
 export const SettingContent = ({
+  open,
+  setOpen,
   openWorkspaceSetting,
   setOpenWorkspaceSetting,
   workspace,
@@ -65,6 +67,7 @@ export const SettingContent = ({
       const workspace = await editWorkspace(workspaceId, workspaceName, url);
       dispatch(editWorkspaceSuccess(workspace));
       setOpenWorkspaceSetting(!openWorkspaceSetting);
+      setOpen(!open);
       toast.success("Workspace Information is updated Successfully", {
         position: "bottom-right",
         autoClose: 5000,
@@ -86,7 +89,7 @@ export const SettingContent = ({
       <div className="flex w-full justify-end p-1">
         <button
           type="button"
-          onClick={() => setOpenWorkspaceSetting(!openWorkspaceSetting)}
+          onClick={() => {setOpenWorkspaceSetting(!openWorkspaceSetting),setOpen(!open)}}
         >
           <img
             src={close}
@@ -95,13 +98,13 @@ export const SettingContent = ({
         </button>
       </div>
 
-      <div className="px-16 md:px-8 space-y-5 lg:mt-16 md:mt-8">
+      <div className="px-16 md:px-8 space-y-5 lg:mt-8 md:mt-3">
         {/* Header title */}
         <div className="text-accent">
           <h1 className="font-bold text-34px md:text-22px">
             Workspace’s Setting
           </h1>
-          <p className="md:text-12px">
+          <p className="md:text-12px md:-mt-3">
             Manage permissions and invite people in your workspace
           </p>
         </div>
