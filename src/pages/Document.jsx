@@ -118,7 +118,7 @@ export const Document = () => {
     dispatch(createDocumentSuccess(document));
     navigate(`/createdocument/${document.documentId}/${workspaceId}`);
     toast.success("Create Document Successfully", {
-      position: "top-right",
+      position: "bottom-right",
       autoClose: 5000,
       hideProgressBar: false,
       closeOnClick: true,

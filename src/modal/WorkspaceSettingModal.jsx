@@ -20,6 +20,7 @@ export const WorkspaceSettingModal = ({
   const [collaborator, setCollaborator] = useState(false);
 
   const [openInviteMember, setOpenInviteMember] = useState(false);
+  const [open, setOpen] = useState(false);
 
   return (
     <div className="w-full">
@@ -61,7 +62,7 @@ export const WorkspaceSettingModal = ({
             }
 
               {open ? (
-                <span className="hidden lg:z-10 lg:inline-block lg:absolute lg:-mt-[18px]">
+                <span className="hidden lg:z-10 lg:inline-block lg:absolute lg:-mt-[15px] ">
                   <SideBarSettingWorkspace
                     collaborator={collaborator}
                     setCollaborator={setCollaborator}
