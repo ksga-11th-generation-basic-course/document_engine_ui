@@ -26,7 +26,7 @@ export const Footer = () => {
             <a href="https://www.facebook.com/profile.php?id=100093609306190" target="_blank">
               <img src={instagram} className="w-8 lg:w-[29px] md:w-5" />
             </a>
-            <a href="https://www.facebook.com/profile.php?id=100093609306190" target="_blank">
+            <a href="https://t.me/docengine" target="_blank">
               <img src={telegram} className="w-9 lg:w-[31px] md:w-6" />
             </a>
           </div>
