@@ -28,7 +28,7 @@ function SkeletonDocumentRow() {
         </p>
       </div>
       <div className="relative z-10 md:hidden">
-        <Skeleton className="mr-2" variant="rounded" width={20} height={40} />
+        <Skeleton className="mr-5" variant="rounded" width={15} height={40} />
       </div>
 
       {/* For mobile */}
@@ -54,7 +54,7 @@ function SkeletonDocumentRow() {
           />
         </p>
       </div>
-      <div className="relative z-10">
+      <div className="hidden lg:hidden  md:inline-block md:relative md:z-10">
         <Skeleton className="mr-5" variant="rounded" width={10} height={30} />
       </div>
     </div>

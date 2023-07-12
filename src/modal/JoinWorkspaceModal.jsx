@@ -60,7 +60,7 @@ export const JoinWorkspaceModal = ({ visible, setVisible, handleClickNav }) => {
                 handleClickNav(false);
               }}
             >
-              <img className="p-2 w-9 h-9 md:w-12" src={close} />
+              <img className="p-2 w-14 h-14 md:w-12" src={close} />
             </button>
           </div>
           <div className="px-14 space-y-5 text-accent md:px-5 md:space-y-0">

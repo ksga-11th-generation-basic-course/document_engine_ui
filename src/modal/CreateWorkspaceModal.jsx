@@ -153,7 +153,7 @@ export const CreateWorkspaceModal = ({
                       setWorkspaceImage(e.target.files[0]);
                     }}
                   />
-                  <div className="w-[410px] h-[165px] overflow-hidden rounded-lg md:w-full">
+                  <div className="w-[410px] h-[165px] mt-1 overflow-hidden rounded-lg md:w-full">
                     {workspaceImage ? (
                       <img
                         src={URL.createObjectURL(workspaceImage)}

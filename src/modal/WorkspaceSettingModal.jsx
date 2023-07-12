@@ -100,12 +100,6 @@ export const WorkspaceSettingModal = ({
           </div>
         </div>
       </Modal>
-      <div>
-        <RemoveWorkspaceModal
-          removeWorkspace={removeWorkspace}
-          setRemoveWorkspace={setRemoveWorkspace}
-        />
-      </div>
     </div>
   );
 };

@@ -13,7 +13,7 @@ import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 import { Button } from "rsuite";
-import { RemovePhotoModal } from "../modal/RemovePhotoModal";
+import { RemoveWorkspacePhotoModal } from "../modal/RemoveWorkspacePhotoModal";
 
 export const SettingContent = ({
   openWorkspaceSetting,
@@ -398,7 +398,7 @@ export const SettingContent = ({
           setRemoveWorkspace={setRemoveWorkspace}
           workspaceId={workspaceId}
         />
-        <RemovePhotoModal
+        <RemoveWorkspacePhotoModal
           workspaceId={workspaceId}
           removePhoto={removePhoto}
           setRemovePhoto={setRemovePhoto}
