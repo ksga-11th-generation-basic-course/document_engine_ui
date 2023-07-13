@@ -464,14 +464,6 @@ export const Workspace = () => {
         )}
       </div>
       <div className="flex justify-center items-center absolute left-[51%] bottom-6">
-        {/* <ThemeProvider theme={theme}>
-          <Pagination
-            count={5}
-            color="primary"
-            page={no}
-            onChange={handlePageNoChange}
-          />
-        </ThemeProvider> */}
       </div>
     </div>
   );
