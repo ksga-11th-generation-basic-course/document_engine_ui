@@ -9,7 +9,7 @@ import file from "../../assets/dashboard_image/file.png";
 import delet from "../../assets/dashboard_image/document.png";
 import { DropDownDocument } from "../DropDownDocument";
 import { useNavigate } from "react-router-dom";
-import { Button, Dropdown } from "react-daisyui";
+import { Button,Dropdown } from "react-daisyui";
 
 export const DocumentCardRow = ({
   documentname,
@@ -24,6 +24,9 @@ export const DocumentCardRow = ({
   const handleNavigate = () => {
     navigate(`/createdocument/${documentId}/${workspaceId}`);
   };
+
+  console.log("Document Id : ",documentId );
+  console.log("Document Id : ",documentId );
 
   return (
     <div className="flex justify-between items-center px-3 gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:w-full md:-ml-5 md:w-[330px] md:py-0 md:px-0 z-0 hover:shadow-hover">

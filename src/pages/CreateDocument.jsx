@@ -354,11 +354,11 @@ export const CreateDocument = () => {
               </div>
             </div>
           </div>
-          <hr className="mt-3 md:w-72 md:ml-14" />
+          <hr className="mt-3 md:w-72 md:ml-36" />
         </div>
       </div>
 
-      <div className="mt-2 md:-ml-14">
+      <div className="mt-2 md:-ml-12">
         {blockData === null ? null : blockData.length > 0 ? (
           <Editor loading={loading} blockData={blockData} />
         ) : (
