@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import pencil from "../../assets/workspace_image/pencil.svg";
 import chevrondown from "../../assets/workspace_image/chevrondown.svg";
 import { RemoveMemberModal } from "../../modal/RemoveMemberModal";
-import { Button, Dropdown } from "react-daisyui";
+// import { Button, Dropdown } from "react-daisyui";
 import view from "../../assets/workspace_image/view.svg";
 import kickmember from "../../assets/workspace_image/kickmember.svg";
 import { setAccessibility } from "../../redux/service/workspaceService/workspaceService";
@@ -13,11 +13,20 @@ import {
   Menu,
   MenuHandler,
   MenuList,
-  MenuItem,
+  // MenuItem,
 } from "@material-tailwind/react";
 import { Avatar } from "@material-tailwind/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
-import dotmenu from "../../assets/dashboard_image/dotmenu.png";
+import IconButton from "@mui/material/IconButton";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
+import Button from "@mui/material/Button";
+// import Menu from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import key from "../../assets/document_image/key.svg";
+import dotmenu from "../../assets/workspace_image/dotmenu.svg";
 
 export const MemberWorkspaceCard = ({ member, workspaceId }) => {
   const [removeMember, setRemoveMember] = useState(false);
@@ -66,6 +75,28 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
     dispatch(getCurrentUser());
   }, []);
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const [anchorE2, setAnchorE2] = React.useState(null);
+  const open2 = Boolean(anchorE2);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const secondHandleClick = (event) => {
+    setAnchorE2(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const secondHandleClose = () => {
+    setAnchorE2(null);
+  };
+
   return (
     <div>
       <div className="flex justify-between items-center w-full space-y-4">
@@ -99,31 +130,102 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
           {user.userId === member.userId ? <span>(You)</span> : null}
         </div>
 
+        {/* For Mobile */}
         {!member.isOwner ? (
-          <div className="hidden md:inline-block md:relative">
-            <div className="relative">
-              <Dropdown className="dropdown relative">
+          <div className="hidden md:inline-block">
+            <img src={dotmenu} className="w-3 h-3 -mt-3" onClick={handleClick}/>
+            <Menu
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+              placement="right-start"
+              offset={15}
+              className="-ml-16"
+
+            >
+                {/* Permission */}
+              <MenuItem>
                 <Button
-                  className="bg-white hover:bg-gray-50 border-none rounded-xl"
-                  onClick={() => setVisible(!visible)}
+                  id="advance-button"
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  placement="right-start"
+                  onClick={secondHandleClick}
+                  className="relative"
                 >
-                  <img src={dotmenu} className="w-12 " />
+                  <img src={key} className="w-4"/>
+                  <span className="ml-3 text-12px">Permission</span>
                 </Button>
-                {visible ? (
-                  <Dropdown.Menu className="w-52 bg-white border rounded-lg absolute right-0 md:w-40">
-                    <Dropdown.Item >
-                      <img src={view} className="md:w-4" />
-                      <span className="text-20px md:text-16px">View page</span>
-                    </Dropdown.Item>
-                  </Dropdown.Menu>
-                ) : null}
-              </Dropdown>
-            </div>
+
+                <Menu
+                  id="advance-menu"
+                  anchorE2={anchorE2}
+                  open={open2}
+                  onClose={secondHandleClose}
+                  MenuListProps={{
+                    "aria-labelledby": "advance-button",
+                  }}
+                  className="-mt-[360px] ml-3.5"
+                >
+                  <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue="female"
+                    name="radio-buttons-group"
+                    className="px-4"
+                    
+                  >
+                    <FormControlLabel
+                      value="viewer"
+                      control={<Radio />}
+                      label="Viewer"
+                    />
+                    <FormControlLabel
+                      value="editor"
+                      control={<Radio />}
+                      label="Editor"
+                    />
+                  </RadioGroup>
+                </Menu>
+              </MenuItem>
+
+                {/* Remove Member */}
+              <MenuItem onClick={handleClose}>
+                <Button
+                  id="basic-button"
+                  aria-controls={open ? "basic-menu" : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? "true" : undefined}
+                  onClick={hanldeKickMember}
+                >
+                  <svg
+                    width="16"
+                    height="16"
+                    fill="none"
+                    stroke="#f44336"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    viewBox="0 0 24 24"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path d="M3 6h18"></path>
+                    <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path>
+                  </svg>
+                  <span className="text-red-500 ml-3 mt-1 text-12px">Remove</span>
+                </Button>
+              </MenuItem>
+            </Menu>
           </div>
         ) : null}
 
+        {/* For Laptop & tablet */}
         {!member.isOwner ? (
-          <div className="flex justify-center items-center gap-x-4 md:gap-x-2">
+          <div className="flex justify-center items-center gap-x-4 md:gap-x-2 md:hidden">
             <div className="relative">
               <Menu open={openMenu} handler={setOpenMenu}>
                 <MenuHandler>

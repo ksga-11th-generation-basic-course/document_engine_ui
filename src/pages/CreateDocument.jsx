@@ -62,7 +62,7 @@ export const CreateDocument = () => {
 
   useEffect(() => {
     dispatch(getBlockBydoucmentId(document?.documentId));
-  }, [document]);
+  }, [dispatch, document]);
 
   const [title, setTitle] = useState();
 

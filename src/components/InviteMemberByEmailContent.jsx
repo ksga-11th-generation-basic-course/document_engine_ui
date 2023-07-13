@@ -46,7 +46,7 @@ export const InviteMemberByEmailContent = ({
         </button>
       </div>
 
-      <div className="px-16 space-y-5 lg:mt-8  md:px-3">
+      <div className="px-16 space-y-5 lg:mt-8  md:px-8 md:mt-3 md:-ml-4">
         <div className="text-accent">
           <h1 className="font-bold text-34px md:text-22px">Invite Via Email</h1>
           <p className="md:text-12px md:-mt-3">

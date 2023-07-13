@@ -19,8 +19,8 @@ export const SideBarSettingWorkspace = ({
           <button
             className={
               setting
-                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3"
-                : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3"
+                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3 md:py-2"
+                : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3 md:py-2"
             }
             onClick={() => {
               setSetting(true);
@@ -50,8 +50,8 @@ export const SideBarSettingWorkspace = ({
           <button
             className={
               collaborator
-                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3"
-                : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3"
+                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3 md:py-2"
+                : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3 md:py-2"
             }
             onClick={() => {
               setSetting(false);
@@ -85,8 +85,8 @@ export const SideBarSettingWorkspace = ({
           <button
             className={
               openInviteMember
-                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3"
-                : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3"
+                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3 md:py-2"
+                : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3 md:py-2"
             }
             onClick={() => {
               setOpenInviteMember(true);

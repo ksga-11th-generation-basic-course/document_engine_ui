@@ -28,16 +28,16 @@ export const SignOutModal = ({ openSignOut, setOpenSignOut }) => {
           </div>
           <div className="px-14 space-y-5 text-accent md:space-y-0 md:px-2">
             <div className="flex justify-center items-center">
-              <img src={signouticon} className="w-52 md:w-28" />
+              <img src={signouticon} className="w-40 md:w-28" />
             </div>
             <h1 className="font-bold text-28px text-primary text-center md:text-20px md:mb-3">
               Comeback soon!
-              <p className="font-normal text-accent text-24px text-center mt-1 md:text-15px md:-mt-4">
+              <p className="font-normal text-accent text-22px text-center mt-1 md:text-15px md:-mt-4">
                 Are you sure want to sign out?
               </p>
             </h1>
 
-            <div className="flex justify-center space-x-4 items-center text-20px font-semibold pb-3 md:text-13px md:-mt-10">
+            <div className="flex justify-center space-x-4 items-center text-18px font-semibold pb-3 md:text-13px md:-mt-10">
               <button
                 className="px-10 py-3 border-[1px] rounded-lg md:px-7 md:py-2.5 md:text-14px"
                 onClick={() => setOpenSignOut(!openSignOut)}

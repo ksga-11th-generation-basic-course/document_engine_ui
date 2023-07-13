@@ -98,7 +98,7 @@ export const SettingContent = ({
         </button>
       </div>
 
-      <div className="px-16 md:px-8 space-y-5 lg:mt-8 md:mt-3 md:-ml-3.5">
+      <div className="px-16 md:px-8 space-y-5 lg:mt-8 md:mt-3 md:-ml-4">
         {/* Header title */}
         <div className="text-accent">
           <h1 className="font-bold text-34px md:text-22px">
