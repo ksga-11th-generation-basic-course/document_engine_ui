@@ -1,4 +1,4 @@
 import axios from "axios";
 export const api = axios.create({
-  baseURL: "http://localhost:8096/api/v1/",
+  baseURL: "https://api.docengine.tech/api/v1/",
 });
