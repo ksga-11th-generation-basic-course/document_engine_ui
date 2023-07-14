@@ -18,7 +18,7 @@ export const DocumentPermissionContent = ({
   }, []);
   const [searchTerm, setSearchTerm] = useState("");
   return (
-    <div>
+    <div className="z-50">
       <div className="flex w-full justify-end z-[9999]">
         <button
           type="button"
