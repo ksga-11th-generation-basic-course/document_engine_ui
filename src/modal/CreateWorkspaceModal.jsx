@@ -73,10 +73,10 @@ export const CreateWorkspaceModal = ({
         const workspace = await createWorkspace(values.workspacename, url);
         dispatch(createWorkspaceSuccess(workspace));
         resetForm({ values: "" });
-        navigate("/workspace");
+        navigate(`/document/${workspace?.workspaceId}`);
         toast.success("Create Workspace Successfully", {
           position: "bottom-right",
-          autoClose: 5000,
+          autoClose: 3000,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,

@@ -17,8 +17,8 @@ export const WorkspaceViewForMemberModal = ({
           setOpenCollaboratorForMember(!openCollaboratorForMember)
         }
       >
-        <div className="w-[1200px] h-[810px] bg-white rounded-lg grid grid-cols-12 relative">
-          <div className="col-span-3 bg-[#FAFAF9] rounded-lg">
+        <div className="w-[1200px] h-[810px] bg-white rounded-lg grid grid-cols-12 relative lg:w-[700px] md:w-[350px] md:h-[700px]">
+          <div className="col-span-3 bg-[#FAFAF9] rounded-lg lg:hidden">
             <div className="space-y-3">
               <div className="flex justify-center p-5 rounded-tl-lg shadow-md">
                 <img src={logo} />
@@ -28,7 +28,7 @@ export const WorkspaceViewForMemberModal = ({
               </div>
             </div>
           </div>
-          <div className="col-span-9 p-3 shadow-xl">
+          <div className="col-span-9 p-3 shadow-xl lg:col-span-12">
             <div>
               <CollaboratorMemberContent
                 openCollaboratorForMember={openCollaboratorForMember}

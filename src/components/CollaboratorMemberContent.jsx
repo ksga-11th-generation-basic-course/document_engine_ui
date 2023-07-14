@@ -26,21 +26,21 @@ export const CollaboratorMemberContent = ({
             setOpenCollaboratorForMember(!openCollaboratorForMember)
           }
         >
-          <img src={close} />
+          <img src={close} className="md:w-7"/>
         </button>
       </div>
-      <div className="px-16 space-y-5">
+      <div className="px-16 space-y-5 md:px-3">
         <div className="text-accent">
-          <h1 className="font-bold text-34px">Collaborators & permissions</h1>
-          <p>Manage permissions and invite people in your workspace</p>
+          <h1 className="font-bold text-34px md:text-22px">Collaborators & permissions</h1>
+          <p className="md:text-12px md:-mt-3">Manage permissions and invite people in your workspace</p>
         </div>
         <div>
-          <div className="flex justify-between items-center border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 rounded-t-lg">
+          <div className="flex justify-between items-center border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 rounded-t-lg md:px-4">
             <div className="flex justify-center items-center gap-x-3">
-              <p className="font-semibold text-18px">Collaborators</p>
+              <p className="font-semibold text-22px md:text-18px">Collaborators</p>
             </div>
           </div>
-          <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg">
+          <div className="px-6 border-[1px] py-4 space-y-4 rounded-b-lg md:px-4">
             {members &&
               members.map((member, index) => (
                 <div key={index}>

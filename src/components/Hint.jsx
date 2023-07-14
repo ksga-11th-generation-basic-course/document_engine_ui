@@ -22,7 +22,7 @@ export const Hint = () => {
 
   return (
     <div className="md:-ml-5 z-0 ">
-      <div className="mb-5 mt-7">
+      <div className="mb-5 mt-7 md:mt-0">
         <h1 className="font-bold text-accent text-44px md:text-22px">
           Hi, {user && user.userName}!
         </h1>

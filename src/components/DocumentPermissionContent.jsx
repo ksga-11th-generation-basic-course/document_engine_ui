@@ -18,19 +18,19 @@ export const DocumentPermissionContent = ({
   }, []);
   const [searchTerm, setSearchTerm] = useState("");
   return (
-    <div className="z-50">
+    <div className="z-50 mt-2">
       <div className="flex w-full justify-end z-[9999]">
         <button
           type="button"
           onClick={() => setOpenPermission(!openPermission)}
         >
-          <img src={close} />
+          <img src={close} className="md:w-8"/>
         </button>
       </div>
-      <div className="px-16 space-y-5 z-[9999]">
+      <div className="px-16 space-y-5 z-[9999] md:px-4">
         <div className="text-accent">
-          <h1 className="font-bold text-34px">Document Permission</h1>
-          <p>Manage permissions of your members in workspace</p>
+          <h1 className="font-bold text-34px md:text-[26px]">Document Permission</h1>
+          <p className="md:-mt-3">Manage permissions of your members in workspace</p>
         </div>
         <div className="space-y-2">
           <div className="relative">

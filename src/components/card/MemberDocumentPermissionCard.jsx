@@ -83,15 +83,15 @@ export const MemberDocumentPermissionCard = ({
       <div className="flex justify-between items-center w-full">
         <div className="flex justify-center items-center gap-x-3">
           <div
-            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full`}
+            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full md:w-7 md:h-7`}
           >
-            <p className="font-semibold text-18px text-white">{character[0]}</p>
+            <p className="font-semibold text-18px text-white md:text-14px">{character[0]}</p>
           </div>
           <h3 className="font-semibold text-18px">
             {username} {currentuser ? null : <span>(You)</span>}
           </h3>
           {isOwner ? (
-            <span className="px-6 text-primary bg-[#EDF9FF] rounded-lg">
+            <span className="px-6 text-primary bg-[#EDF9FF] rounded-lg md:hidden">
               Owner
             </span>
           ) : null}

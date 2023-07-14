@@ -104,7 +104,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] pl-5 py-3 flex relative z-0 hover:shadow-hover">
+    <div className="shadow-md rounded-lg text-black cursor-pointer border-[1px] pl-5 py-3 flex relative hover:shadow-hover">
       <div onClick={handleNavigate} className="w-full">
         <div className="flex justify-between items-center">
           {/* <h4 className="font-semibold text-20px">{document.title}</h4> */}

@@ -26,8 +26,8 @@ export const CustomSkeleton = () => {
             </span>
           </p>
         </div>
-        <div className="relative">
-          <Skeleton variant="circular" width={30} height={30} />
+        <div className="relative right-2">
+          <Skeleton variant="text" width={10} height={40} />
         </div>
       </div>
     </div>

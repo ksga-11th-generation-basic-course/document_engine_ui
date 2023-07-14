@@ -28,19 +28,19 @@ export const MemberWorkspaceForMemberViewCard = ({ member }) => {
       <div className="flex justify-between items-center w-full space-y-4">
         <div className="flex justify-center items-center gap-x-3">
           <div
-            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full overflow-hidden`}
+            className={`w-9 h-9 ${randomColor} flex justify-center items-center rounded-full overflow-hidden md:w-7 md:h-7`}
           >
             {member.profileImage === null ? (
-              <p className="font-semibold text-18px text-white">
+              <p className="font-semibold text-18px text-white md:text-14px">
                 {character[0]}
               </p>
             ) : (
               <img src={member.profileImage} className="w-full h-full" />
             )}
           </div>
-          <h3 className="font-semibold text-18px">{member.username}</h3>
+          <h3 className="font-semibold text-18px md:text-16px">{member.username}</h3>
           {member.isOwner ? (
-            <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg">
+            <span className="px-6 md:px-2 text-primary bg-[#EDF9FF] rounded-lg md:text-12px">
               Owner
             </span>
           ) : null}

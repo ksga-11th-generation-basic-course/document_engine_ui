@@ -523,7 +523,7 @@ export const Document = () => {
             documents.map((document, index) =>
               document?.pageId === null ? (
                 <div
-                  className="col-span-4 z-0 lg:col-span-6 lg:w-[330px] md:col-span-12 md:w-[315px] md:ml-2 md:first:mt-10 md:last:mb-10"
+                  className="col-span-4 lg:col-span-6 lg:w-[330px] md:col-span-12 md:w-[315px] md:ml-2 md:first:mt-10 md:last:mb-10"
                   key={index}
                 >
                   <DocumentCardSkeleton />
@@ -546,7 +546,7 @@ export const Document = () => {
               .map((document, index) =>
                 document?.pageId === null ? (
                   <div
-                    className="col-span-4 z-0 lg:col-span-6 lg:w-[330px] md:col-span-12 md:w-[315px] md:ml-2 md:first:mt-10 md:last:mb-10"
+                    className="col-span-4 lg:col-span-6 lg:w-[330px] md:col-span-12 md:w-[315px] md:ml-2 md:first:mt-10 md:last:mb-10"
                     key={index}
                   >
                     <DocumentCard
