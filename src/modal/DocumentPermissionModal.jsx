@@ -11,7 +11,7 @@ export const DocumentPermissionModal = ({
   workspaceId,
 }) => {
   return (
-    <div className="w-full">
+    <div className="w-full z-30">
       <Modal
         open={openPermission}
         onClickBackdrop={() => setOpenPermission(!openPermission)}
@@ -27,7 +27,7 @@ export const DocumentPermissionModal = ({
               </div>
             </div>
           </div>
-          <div className="col-span-9 p-3 shadow-xl">
+          <div className="col-span-9 p-3 shadow-xl z-50">
             <div>
               <DocumentPermissionContent
                 openPermission={openPermission}

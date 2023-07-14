@@ -17,7 +17,7 @@ export const Root = () => {
   return (
     <div className="relative">
       <div className="grid grid-cols-12">
-        <div className= "col-span-2  md:col-span-12">
+        <div className= "col-span-2 lg:col-span-12  md:col-span-12">
               <div className= {open ? "fixed w-80 lg:hidden md:hidden z-50" : "fixed w-80 lg:hidden md:hidden z-10"}> 
                     <SecondSideBar handleClick={handleClick} sideBar={sideBar} setSideBar={setSideBar}/>
               </div>
@@ -48,7 +48,7 @@ export const Root = () => {
             </div>
         </div>
 
-        <div className={newWorkspace ? "col-span-10 h-screen overflow-y-auto lg:hidden z-0 md:hidden" : "col-span-10 h-screen overflow-y-auto lg:hidden"}>
+        <div className={newWorkspace ? "col-span-10 h-screen overflow-y-auto lg:hidden z-0 md:hidden" : "col-span-10 h-screen overflow-y-auto lg:hidden md:hidden"}>
                 <div><NavBarProfile/></div>
                 <div className="px-64 mt-10">
                          <Outlet/>

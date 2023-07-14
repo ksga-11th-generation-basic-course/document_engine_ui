@@ -81,7 +81,7 @@ export const AboutUs = () => {
               </div>
             </div>
             <div className="pt-10 lg:-ml-40 lg:pt-0 sm:indent-[0.5px] sm:text-xl  sm:px-0 md:-mt-10 ">
-              <h1 className="text-4xl text-center -ml-10 sm:text-18px sm:text-center font-bold text-accent md:ml-36">
+              <h1 className="text-4xl text-center -ml-64 sm:text-18px sm:text-center font-bold text-accent md:ml-36">
                 About Our <span className="text-primary">Project </span>
               </h1>
               <div className="text-accent text-2xl pb-12  pt-16 w-[900px] leading-9 lg:w-[670px] lg:-mt-5 lg:pl-5  md:pt-10 max-sm:text-justify max-sm:px-2 md:-mt-7  md:text-12px md:pl-40 md:w-[480px] md:leading-6">

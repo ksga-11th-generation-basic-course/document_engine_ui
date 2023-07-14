@@ -57,9 +57,9 @@ export const WorkspaceCard = ({ workspace }) => {
   };
 
   return (
-    <div className="shadow-md rounded-lg text-accent cursor-pointer sm:w-[300px] border-[1px] hover:shadow-hover">
+    <div className="shadow-md rounded-lg text-accent cursor-pointer  border-[1px] hover:shadow-hover">
       <div className="flex justify-between items-center p-3">
-        <h4 className="font-semibold text-18px line-clamp-1">
+        <h4 className="font-semibold text-18px w-44 line-clamp-1">
           {workspace && workspace.workspaceName}
         </h4>
         {workspace && workspace.isOwner ? (

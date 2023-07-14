@@ -108,13 +108,13 @@ export const MemberWorkspaceCard = ({ member, workspaceId }) => {
           >
             {member.profileImage === null ? (
               <p className="font-semibold text-18px text-white md:text-12px">
-                {/* {character[0]} */}
-                <Avatar
+                {character[0]}
+                {/* <Avatar
                   variant="circular"
                   alt="candice wu"
                   className="rounded-full w-12 h-12 shadow-md md:w-9 md:h-9"
                   src="https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fprofile%2Fcb6df344-7dd9-4323-8961-cbd55a606e77_user.png?alt=media&token=6eb13cc7-734c-4292-bc74-2ea2b4e6b5c2"
-                />
+                /> */}
               </p>
             ) : (
               <Avatar

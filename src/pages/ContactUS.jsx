@@ -98,7 +98,7 @@ export const ContactUs = () => {
             <a href="https://www.facebook.com/profile.php?id=100093609306190" target="_blank" rel="noreferrer">
               <img src={Face} className="w-14 md:ml-8 md:w-[30px]" />
             </a>
-            <a href="https://www.facebook.com/profile.php?id=100093609306190" target="_blank" rel="noreferrer">
+            <a href="https://t.me/docengine" target="_blank" rel="noreferrer">
               <img src={Tele} className="w-14 md:w-[30px] md:ml-6 md:mr-6" />
             </a>
             <a href="https://www.facebook.com/profile.php?id=100093609306190" target="_blank" rel="noreferrer">

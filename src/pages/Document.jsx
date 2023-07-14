@@ -141,7 +141,7 @@ export const Document = () => {
   const [status, setStatus] = useState("Ascending");
 
   return (
-    <div className="text-accent space-y-5 lg:ml-7 md:-ml-3 md:mt-10">
+    <div className="text-accent space-y-5 md:-ml-5 md:mt-5">
       <div className="md:ml-3">
         <h1 className="font-bold text-accent text-44px">
           {workspace && workspace.workspaceName}
@@ -164,15 +164,15 @@ export const Document = () => {
           <Button
             type="button"
             onClick={handleCreateDocument}
-            className="font-semibold bg-primary px-4 py-3 text-base rounded-lg text-white lg:absolute lg:right-24 lg:text-14px md:absolute md:mt-24 md:w-72 md:right-14"
+            className="font-semibold bg-primary px-4 py-3 text-base rounded-lg text-white lg:absolute lg:right-14 lg:text-14px md:absolute md:mt-24 md:w-[310px] md:right-11"
           >
             Create Document
           </Button>
         ) : null}
       </div>
-      <div className="grid grid-cols-12 lg:grid lg:grid-cols-12 md:grid md:grid-cols-12 md:text-sm">
+      <div className="grid grid-cols-12 lg:gap-x-10 md:gap-x-0">
         {/* Sort */}
-        <div className="col-span-4 flex items-center gap-x-5 h-11 lg:ml-2  lg:w-72 md:w-36 md:col-span-12 md:mt-16 md:ml-3">
+        <div className="col-span-4 flex items-center gap-x-5 h-11 lg:col-span-6 lg:ml-2  lg:w-72 md:w-36 md:col-span-12 md:mt-16 md:ml-3">
           <div className="flex items-center gap-x-3">
             <svg
               width="20"
@@ -281,10 +281,7 @@ export const Document = () => {
 
         {/* Filter */}
         <div
-          className={openGrid ? 
-            "col-span-4 flex items-center gap-x-5 h-11 lg:ml-[273px] md:col-span-12 md:w-40 md:ml-3" :
-            "col-span-4 flex items-center gap-x-5 h-11 lg:ml-[245px] md:col-span-12 md:w-40 md:ml-3"
-          }
+          className= "col-span-4 flex items-center gap-x-5 h-11 lg:col-span-6  md:col-span-12 md:w-40 md:ml-3" 
         >
           <div className="flex items-center gap-x-3">
             <svg
@@ -356,7 +353,7 @@ export const Document = () => {
         </div>
 
         {/* Option */}
-        <div className="lg:absolute col-span-4 flex items-center justify-end lg:-mt-32 lg:right-24 md:col-span-3 md:mt-40 md:right-60">
+        <div className="lg:absolute col-span-4 flex items-center justify-end lg:-mt-32 lg:right-14 md:col-span-3 md:mt-40 md:right-[250px]">
           {openSearch ? (
             <div className="flex justify-end items-center relative">
               {openSearch ? (
@@ -520,13 +517,13 @@ export const Document = () => {
       </div>
 
       {openGrid ? (
-        <div className="grid grid-cols-12 gap-8">
+        <div className="grid grid-cols-12 gap-5">
           {loading ? (
             documents &&
             documents.map((document, index) =>
               document?.pageId === null ? (
                 <div
-                  className="col-span-4 z-0 lg:col-span-12 lg:w-96 lg:ml-24 md:ml-2 md:w-[300px] md:first:mt-10 md:last:mb-10"
+                  className="col-span-4 z-0 lg:col-span-6 lg:w-[330px] md:col-span-12 md:w-[315px] md:ml-2 md:first:mt-10 md:last:mb-10"
                   key={index}
                 >
                   <DocumentCardSkeleton />
@@ -549,7 +546,7 @@ export const Document = () => {
               .map((document, index) =>
                 document?.pageId === null ? (
                   <div
-                    className="col-span-4 z-0 lg:col-span-12 lg:w-96 lg:ml-24 md:ml-2 md:w-[300px] md:first:mt-10 md:last:mb-10"
+                    className="col-span-4 z-0 lg:col-span-6 lg:w-[330px] md:col-span-12 md:w-[315px] md:ml-2 md:first:mt-10 md:last:mb-10"
                     key={index}
                   >
                     <DocumentCard
@@ -610,7 +607,7 @@ export const Document = () => {
               .map((document, index) =>
                 document?.pageId === null ? (
                   <div
-                    className="col-span-4 z-0 lg:col-span-12 lg:w-96 lg:ml-14 md:ml-3 md:w-10 md:first:mt-10 md:last:mb-10"
+                    className="col-span-4 z-0 lg:col-span-12 lg:w-[340px] lg:ml-14 md:ml-4 md:w-10 md:first:mt-10 md:last:mb-10"
                     key={index}
                   >
                     <DocumentList
@@ -654,6 +651,7 @@ export const Document = () => {
           )}
         </div>
       )}
+
       <div>
         {workspace && isOwner && (
           <WorkspaceSettingModal

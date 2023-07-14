@@ -116,23 +116,23 @@ export const DocumentList = ({ document, workspaceId }) => {
                 fill="#1E9CEF"
               />
             </svg>
-            {document.title}
+            <span className="w-40 line-clamp-1 md:text-14px md:w-14 md:h-5">{document.title}</span>
           </span>
           {document?.status ? (
-            <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF] ml-5 xs:text-14px xs:ml-0 xs:px-2 xs:py-2 xs:gap-x-5">
-              <p className="text-14px xs:hidden">Editing...</p>
+            <div className="flex text-primary gap-x-1 px-3 justify-center rounded-2xl bg-[#EDF9FF] ml-5 xs:text-14px xs:ml-0 xs:px-2 xs:py-2 xs:gap-x-1">
+              <p className="text-14px md:hidden">Editing...</p>
               <img src={pencil} className="w-3 h-3 mt-1" />
             </div>
           ) : null}
         </div>
         <div className="flex items-center gap-x-3">
         Edited 
-        {document.editDate > 0 ?
+        <span className="">{document.editDate > 0 ?
                 <span className="-ml-2">
                 {document.editDate >= 60 ? Math.trunc(document.editDate/60) : document.editDate}  
                 {document.editDate >= 2880 ? "days ago" : document.editDate >= 1440 ? "day ago" : document.editDate >= 120 ? " hours ago" : document.editDate >= 60 ? " hour ago"  : document.editDate > 1 ? " minutes ago" : " minute ago"}
                 </span> : " Just Now"  
-        }
+        }</span>
           <div className="relative">
             <Menu placement="right-start">
               <MenuHandler>

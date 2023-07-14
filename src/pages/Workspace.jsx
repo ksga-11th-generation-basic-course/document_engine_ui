@@ -134,12 +134,12 @@ export const Workspace = () => {
   }
 
   return (
-    <div className="text-accent space-y-5 sm:h-full bg-white md:mt-5 md:-ml-3">
-      <div className="flex items-center gap-x-3 ">
+    <div className="text-accent space-y-5 sm:h-full bg-white md:mt-5">
+      <div className="flex items-center gap-x-3 lg:-ml-1">
         <img src={workspaceicon} className="p-2 shadow-custom hover:shadow-hover rounded-lg" />
         <p className="font-semibold text-20px">Workspaces</p>
       </div>
-      <div className="grid grid-cols-12 lg:ml-2 lg:gap-x-6 md:grid md:grid-cols-12 sm:grid sm:grid-cols-1">
+      <div className="grid grid-cols-12 lg:gap-x-6 md:grid md:grid-cols-12 sm:grid sm:grid-cols-1">
         {/* Sort */}
         <div className="-mt-1 col-span-4 gap-x-3 lg:col-span-6  flex items-center  md:ml-0 md:w-36 md:col-span-12">
           <div className="flex items-center gap-x-3">
@@ -171,7 +171,7 @@ export const Workspace = () => {
               }}
             >
               <MenuHandler>
-                <button className="flex items-center justify-between w-[200px] z-20">
+                <button className="flex items-center justify-between w-[180px] z-20 md:w-[197px]">
                   <p className="text-18px text-black font-ssp">{status}</p>
                   <ChevronDownIcon
                     strokeWidth={3}
@@ -181,7 +181,7 @@ export const Workspace = () => {
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px] font-ssp z-20">
+              <MenuList className="rounded-lg p-2 w-[180px] font-ssp z-20">
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="Ascending"
@@ -251,7 +251,7 @@ export const Workspace = () => {
         </div>
           
           {/* Filter */}
-        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center lg:ml-56 md:w-40 md:ml-1  md:col-span-12 md:mt-3">
+        <div className="col-span-4  gap-x-3 lg:col-span-6 flex items-center md:w-40  md:col-span-12 md:mt-3">
           <div className="flex items-center gap-x-3">
            <span className="w-5 h-5 md:mr-1">
            <svg
@@ -279,7 +279,7 @@ export const Workspace = () => {
               }}
             >
               <MenuHandler>
-                <button className="flex items-center justify-between w-[200px]">
+                <button className="flex items-center justify-between w-[230px] md:w-[200px]">
                   <p className="text-18px text-black font-ssp">
                     {filterStatus}
                   </p>
@@ -291,7 +291,7 @@ export const Workspace = () => {
                   />
                 </button>
               </MenuHandler>
-              <MenuList className="rounded-lg p-2 w-[200px] font-ssp z-20">
+              <MenuList className="rounded-lg p-2 w-[230px] font-ssp z-20">
                 <MenuItem className="flex justify-start p-0 hover:bg-gray-200 rounded-lg">
                   <Radio
                     id="All Workspaces"
@@ -360,7 +360,7 @@ export const Workspace = () => {
         </div>
         
         {/* Search Button */}
-        <div className="col-span-4 h-11 lg:absolute lg:h-0 lg:top-[100px] lg:right-[50px] md:hidden">
+        <div className="col-span-4 h-11 lg:absolute lg:h-0 lg:top-[100px] lg:right-[40px] md:hidden">
           <div className="flex justify-end relative">
             <Collapse open={openSearch}>
               <Card>
@@ -401,11 +401,11 @@ export const Workspace = () => {
       </div>
 
 
-      <div className="grid grid-cols-12 gap-5 z-0 lg:pb-20" onScroll={() => handleScroll()}>
+      <div className="grid grid-cols-12 gap-5 z-0 " onScroll={() => handleScroll()}>
         {loadingSkeleton ? (
           workspaces && workspaces.length > 0 ? (
             workspaces.map((workspace, index) => (
-              <div className="col-span-4 z-0 -ml-1 lg:col-span-12 lg:w-96 lg:ml-40 md:ml-2 md:w-[300px]" key={index}>
+              <div className="col-span-4 z-0 -ml-1 lg:col-span-6 lg:w-[335px] md:col-span-12 md:w-[300px]" key={index}>
                 <CustomSkeleton />
               </div>
             ))
@@ -426,7 +426,7 @@ export const Workspace = () => {
               }
             })
             .map((workspace, index) => (
-              <div className="col-span-4 -ml-1 lg:col-span-12 lg:w-96 lg:ml-40 md:ml-2 md:w-[300px]" key={index}>
+              <div className="col-span-4 -ml-1 lg:col-span-6 lg:w-[335px]  md:col-span-12 md:w-[300px]" key={index}>
                 <WorkspaceCard workspace={workspace} />
               </div>
             ))
@@ -463,6 +463,8 @@ export const Workspace = () => {
           </div>
         )}
       </div>
+
+
       <div className="flex justify-center items-center absolute left-[51%] bottom-6">
         {/* <ThemeProvider theme={theme}>
           <Pagination
