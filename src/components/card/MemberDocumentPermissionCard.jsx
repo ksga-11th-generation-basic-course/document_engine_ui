@@ -8,12 +8,21 @@ import {
   Menu,
   MenuHandler,
   MenuList,
-  MenuItem,
+  select,
+  // MenuItem,
 } from "@material-tailwind/react";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
 import { setAccessibilitySuccess } from "../../redux/slice/documentSlice/documentSlice";
 import { useDispatch } from "react-redux";
 import { setAccessibility } from "../../redux/service/documentService/documentService";
+import Button from "@mui/material/Button";
+import Menu2 from "@mui/material/Menu";
+import MenuItem from "@mui/material/MenuItem";
+import Radio from "@mui/material/Radio";
+import RadioGroup from "@mui/material/RadioGroup";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import key from "../../assets/document_image/key.svg";
+import dotmenu from "../../assets/workspace_image/dotmenu.svg";
 
 export const MemberDocumentPermissionCard = ({
   username,
@@ -78,6 +87,28 @@ export const MemberDocumentPermissionCard = ({
     dispatch(setAccessibilitySuccess(accessibility));
   };
 
+  const [anchorEl, setAnchorEl] = React.useState(null);
+  const open = Boolean(anchorEl);
+
+  const [anchorE2, setAnchorE2] = React.useState(null);
+  const open2 = Boolean(anchorE2);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const secondHandleClick = (event) => {
+    setAnchorE2(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
+
+  const secondHandleClose = () => {
+    setAnchorE2(null);
+  };
+
   return (
     <div>
       <div className="flex justify-between items-center w-full">
@@ -97,7 +128,7 @@ export const MemberDocumentPermissionCard = ({
           ) : null}
         </div>
         {!status ? (
-          <div className="flex justify-center items-center gap-x-4">
+          <div className="flex justify-center items-center gap-x-4 md:hidden">
             <div className="relative">
               {/* <button
                 type="button"
@@ -173,6 +204,60 @@ export const MemberDocumentPermissionCard = ({
             </div>
           </div>
         ) : null}
+
+            {/* For Mobile */}
+            {!status ? (
+          <div className="hidden lg:hidden md:inline-block">
+            <img
+              src={dotmenu}
+              className="w-3 h-3"
+              onClick={handleClick}
+            />
+            <Menu2
+              id="basic-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={handleClose}
+              MenuListProps={{
+                "aria-labelledby": "basic-button",
+              }}
+              className="-ml-16 hidden lg:hidden md:inline-block"
+            >
+              {/* Permission */}
+              <MenuItem>
+              <RadioGroup
+                    aria-labelledby="demo-radio-buttons-group-label"
+                    defaultValue="female"
+                    name="radio-buttons-group"
+                    className="px-4"
+                  >
+                    <FormControlLabel
+                      value="editor"
+                      control={<Radio />}
+                      label="Editor"
+                      onClick={() => setAccess("EDITOR")}
+                      checked={accessibilityStatus(accessibility) === "EDITOR" ?  select : null}
+                    />
+                    <FormControlLabel
+                      value="viewer"
+                      control={<Radio />}
+                      label="Viewer"
+                      // onClick={() => setAccess("VIEWER")}
+                      // checked={accessibilityStatus(accessibility) === "VIEWER" ?  select : null}
+                    />
+                    <FormControlLabel
+                      value="no_access"
+                      control={<Radio />}
+                      label="No access"
+                      // onClick={() => setAccess("NO_ACCESS")}
+                      // checked={accessibilityStatus(accessibility) === "NO_ACCESS" ?  select : null}
+                    />
+                  </RadioGroup>
+              </MenuItem>
+            </Menu2>
+          </div>
+        ) : null}
+
       </div>
     </div>
   );
