@@ -441,7 +441,7 @@ export const Editor = ({ loading, blockData }) => {
       <div className="absolute top-5 ml-12 mt-3 lg:mt-3 lg:ml-12 md:-mt-1 md:ml-12">
         {isLoading ? (
           <div className="flex items-center gap-x-3">
-            <p className="text-gray-500 text-16px">Editing</p>
+            <p className="text-gray-500 text-16px md:hidden">Editing</p>
             <ProgressSpinner
               style={{ width: "20px", height: "20px" }}
               strokeWidth="5"

@@ -142,7 +142,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
               {document.editDate > 0 ?
                 <span className="ml-1">
                 {document.editDate >= 60 ? Math.trunc(document.editDate/60) : document.editDate}  
-                {document.editDate >= 2880 ? "days ago" : document.editDate >= 1440 ? "day ago" : document.editDate >= 120 ? " hours ago" : document.editDate >= 60 ? " hour ago"  : document.editDate > 1 ? " minutes ago" : " minute ago"}
+                {document.editDate >= 2880 ? " days ago" : document.editDate >= 1440 ? " day ago" : document.editDate >= 120 ? " hours ago" : document.editDate >= 60 ? " hour ago"  : document.editDate > 1 ? " minutes ago" : " minute ago"}
                 </span> : " Just Now"  
         }
             </span>
@@ -190,7 +190,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
               </MenuItem>
 
               {/* Export File */}
-              <Menu placement="right-start" offset={15}>
+              <Menu >
                 <MenuHandler>
                   <MenuItem className="hover:bg-gray-200 p-2 flex items-center gap-x-3">
                     {" "}
@@ -198,7 +198,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
                     <span className="text-18px"> Export file</span>
                   </MenuItem>
                 </MenuHandler>
-                <MenuList className="text-accent rounded-lg space-y-1 p-2 w-36">
+                <MenuList className="text-accent rounded-lg space-y-1 p-2 w-36 md:l-96">
                   <MenuItem
                     className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                     onClick={() => handleExportFile(document?.documentId)}

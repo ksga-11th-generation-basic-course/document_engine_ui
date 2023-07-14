@@ -161,13 +161,13 @@ export const Document = () => {
           </p>
         </div>
         {accessibility ? (
-          <Button
+          <button
             type="button"
             onClick={handleCreateDocument}
             className="font-semibold bg-primary px-4 py-3 text-base rounded-lg text-white lg:absolute lg:right-14 lg:text-14px md:absolute md:mt-24 md:w-[310px] md:right-11"
           >
             Create Document
-          </Button>
+          </button>
         ) : null}
       </div>
       <div className="grid grid-cols-12 lg:gap-x-10 md:gap-x-0">
@@ -353,15 +353,17 @@ export const Document = () => {
         </div>
 
         {/* Option */}
-        <div className="lg:absolute col-span-4 flex items-center justify-end lg:-mt-32 lg:right-14 md:col-span-3 md:mt-40 md:right-[250px]">
+        <div className={openSearch ? "lg:absolute col-span-4 flex items-center justify-end lg:-mt-32 lg:right-14 md:col-span-3 md:mt-40 md:right-[70px]"
+                                                              : "lg:absolute col-span-4 flex items-center justify-end lg:-mt-32 lg:right-14 md:col-span-3 md:mt-40 md:right-[250px]"  }   
+        >
           {openSearch ? (
-            <div className="flex justify-end items-center relative">
+            <div className="flex justify-end items-center relative md:absolute md:mt-6">
               {openSearch ? (
                 <input
                   type="text"
                   placeholder="search"
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="rounded-lg text-18px border-gray-200 border-[1px] w-[280px] focus:ring-accent focus:border-accent"
+                  className="rounded-lg text-18px border-gray-200 border-[1px] w-[280px] focus:ring-accent focus:border-accent md:ml-96"
                 />
               ) : null}
               <button
@@ -607,7 +609,7 @@ export const Document = () => {
               .map((document, index) =>
                 document?.pageId === null ? (
                   <div
-                    className="col-span-4 z-0 lg:col-span-12 lg:w-[340px] lg:ml-14 md:ml-4 md:w-10 md:first:mt-10 md:last:mb-10"
+                    className="col-span-4 z-0 lg:col-span-12 lg:w-[340px] lg:ml-14 md:ml-4 md:first:mt-14 md:last:mb-10"
                     key={index}
                   >
                     <DocumentList

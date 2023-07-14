@@ -59,7 +59,7 @@ export const DocumentPermissionContent = ({
                   }
                 })
                 .map((member, index) => (
-                  <div className="col-span-4" key={index}>
+                  <div className="col-span-4 md:col-span-12" key={index}>
                     <MemberDocumentPermissionCard
                       username={member.username}
                       status={member.isOwner}

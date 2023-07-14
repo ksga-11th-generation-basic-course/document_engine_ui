@@ -118,7 +118,7 @@ export const MemberDocumentPermissionCard = ({
           >
             <p className="font-semibold text-18px text-white md:text-14px">{character[0]}</p>
           </div>
-          <h3 className="font-semibold text-18px">
+          <h3 className="font-semibold text-18px md:text-16px">
             {username} {currentuser ? null : <span>(You)</span>}
           </h3>
           {isOwner ? (
@@ -223,7 +223,6 @@ export const MemberDocumentPermissionCard = ({
               }}
               className="-ml-16 hidden lg:hidden md:inline-block"
             >
-              {/* Permission */}
               <MenuItem>
               <RadioGroup
                     aria-labelledby="demo-radio-buttons-group-label"
@@ -236,21 +235,21 @@ export const MemberDocumentPermissionCard = ({
                       control={<Radio />}
                       label="Editor"
                       onClick={() => setAccess("EDITOR")}
-                      checked={accessibilityStatus(accessibility) === "EDITOR" ?  select : null}
+                      checked={accessibility === "EDITOR"?  select : null}
                     />
                     <FormControlLabel
                       value="viewer"
                       control={<Radio />}
                       label="Viewer"
-                      // onClick={() => setAccess("VIEWER")}
-                      // checked={accessibilityStatus(accessibility) === "VIEWER" ?  select : null}
+                      onClick={() => setAccess("VIEWER")}
+                      checked={accessibility === "VIEWER"?  select : null}
                     />
                     <FormControlLabel
                       value="no_access"
                       control={<Radio />}
                       label="No access"
-                      // onClick={() => setAccess("NO_ACCESS")}
-                      // checked={accessibilityStatus(accessibility) === "NO_ACCESS" ?  select : null}
+                      onClick={() => setAccess("NO_ACCESS")}
+                      checked={accessibility === "VIEWER"?  select : null}
                     />
                   </RadioGroup>
               </MenuItem>

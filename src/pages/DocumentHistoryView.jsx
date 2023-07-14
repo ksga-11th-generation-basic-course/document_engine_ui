@@ -53,6 +53,8 @@ import Typography from "@mui/material/Typography";
 import Stack from "@mui/material/Stack";
 import NavigateNextIcon from "@mui/icons-material/NavigateNext";
 import { restoreDocumentSuccess } from "../redux/slice/historySlice/historySlice";
+import { WorkspaceSettingModal } from "../modal/WorkspaceSettingModal";
+import { WorkspaceViewForMemberModal } from "../modal/WorkspaceViewForMemberModal";
 
 export const DocumentHistoryView = () => {
   const document = useSelector((state) => state.document.document);
@@ -140,16 +142,16 @@ export const DocumentHistoryView = () => {
 
   return (
     <div className="w-full">
-      <div className="absolute top-6 flex items-center gap-x-2 text-16px text-accent">
+      <div className="absolute top-6 flex items-center gap-x-2 text-16px text-accent lg:ml-10 lg:mt-2 md:mt-10 md:ml-0">
         <span>Edited at</span>
         <span className="font-bold">{history?.editedDate}</span>
         <span>By</span>
         <div className="w-6 h-6 flex items-center justify-center rounded-full bg-purple-500 text-white relative">
-          {/* <span>{character[0]?.toUpperCase()}</span> */}
+          <span>{character[0]?.toUpperCase()}</span>
         </div>
         <span className="font-bold">{history?.editedBy}</span>
       </div>
-      <div className="fixed z-10 right-0 rounded-lg shadow h-auto p-2 top-[45%]">
+      <div className="fixed z-10 right-5 rounded-lg shadow h-auto p-2 top-[45%] md:right-2">
         <div className="grid grid-rows-1 gap-3">
           <button
             className="w-[30px] h-[30px] rounded-[10px] shadow bg-white flex justify-center items-center"
@@ -182,7 +184,7 @@ export const DocumentHistoryView = () => {
           </div>
         </div>
       </div>
-      <nav className="flex items-center text-sm px-10">
+      <nav className="flex items-center text-sm px-12 md:mt-14 md:px-0">
         <ol className="list-none p-0 inline-flex">
           <Stack spacing={2}>
             <Breadcrumbs
@@ -195,7 +197,7 @@ export const DocumentHistoryView = () => {
         </ol>
       </nav>
       <BlockUI blocked={false}>
-        <div className="text-[#9CA3AF] grid grid-rows-1 gap-2 px-12">
+        <div className="text-[#9CA3AF] grid grid-rows-1 gap-2 px-12 md:px-0">
           <div className="w-full h-auto">
             <span className="font-semibold ">
               <div className="text-5xl p-0 text-black w-auto py-2 focus:ring-0 focus:border-0 border-0">
@@ -243,7 +245,7 @@ export const DocumentHistoryView = () => {
                 </div>
               </div>
             </div>
-            <hr className="mt-3" />
+            <hr className="mt-3 md:w-72" />
           </div>
         </div>
         <div className="mt-2">
