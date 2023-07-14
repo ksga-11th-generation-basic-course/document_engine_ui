@@ -11,7 +11,6 @@ import Seyha from "../assets/images/about/Seyha.jpg";
 import Raksa from "../assets/images/about/Raksa.jpg";
 import Seangorn from "../assets/images/about/Seangorn.jpg";
 import Lyheng from "../assets/images/about/Lyheng.jpg";
-import Sreynorng from "../assets/images/about/Sreynorng.jpg";
 
 
 
@@ -84,7 +83,7 @@ export const AboutUs = () => {
               </div>
             </div>
             <div className="pt-10 lg:-ml-40 lg:pt-0 sm:indent-[0.5px] sm:text-xl  sm:px-0 md:-mt-10 ">
-              <h1 className="text-4xl text-center -ml-10 sm:text-18px sm:text-center font-bold text-accent md:ml-36">
+              <h1 className="text-4xl text-center -ml-56 sm:text-18px sm:text-center font-bold text-accent md:ml-36">
                 About Our <span className="text-primary">Project </span>
               </h1>
               <div className="text-accent text-2xl pb-12  pt-16 w-[900px] leading-9 lg:w-[670px] lg:-mt-5 lg:pl-5  md:pt-10 max-sm:text-justify max-sm:px-2 md:-mt-7  md:text-12px md:pl-40 md:w-[480px] md:leading-6">
@@ -101,28 +100,35 @@ export const AboutUs = () => {
       </div>
 
       {/* Our members */}
-      <div className="mt-10 -mb-20 md:mt-0 lg:-mb-40">
-        <h1 className="text-4xl text-center w-full pt-10 max-sm:pt-2 sm:text-20px text-accent font-bold">
+      <div className="mt-10  md:mt-0 lg:-mb-40">
+        <h1 className="text-4xl text-center w-full pt-10  max-sm:pt-2 sm:text-20px text-accent font-bold">
           Our<span className="text-primary pl-2">Members </span>
         </h1>
-        <div className="Member my-20 flex justify-center items-center lg:inline-block lg:ml-3 lg:mt-14 sm:px-5 md:-ml-2  md:mt-5 md:space-y-6">
-          <div className="text-22px space-y-10 lg:ml-[10px] md:text-12px md:ml-3">
-            <div className="flex lg:ml-12">
-              <div className=" bg-[#EDF9FF] w-fit px-4 pt-2 h-[50px] rounded-2xl space-x-2 ml-16 lg:ml-0 md:w-[155px] md:h-[35px] md:space-x-0">
-                <span className="font-semibold">KHENG SOVANNAK</span>
-                <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold">
-                  <span>@</span>
+        <div className="Member mt-52 my-20 flex justify-center items-center lg:inline-block lg:ml-3 lg:mt-14 sm:px-5 md:-ml-2  md:mt-14 md:space-y-24">
+        <div className=" absolute -mt-[600px] lg:flex  lg:mt-1 lg:ml-12 md:ml-20 md:mt-6 ">
+            <Avatar
+                className="w-16 h-16 mb-4 rounded-full ring ring-primary ring-offset-base-100 ml-[140px] ring-offset-2 lg:hidden md:w-[40px] md:h-[40px]"
+                src={Vannak}
+              />
+              <div className=" bg-[#EDF9FF] w-fit px-4 pt-2 h-[50px] rounded-2xl space-x-2 ml-16  lg:ml-4 md:-pt-4 md:w-[180px] md:h-[35px] md:space-x-0">
+                <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold text-xl lg:hidden">
+                  <span >@</span>
+                </span>
+                <span className="font-semibold text-xl md:text-sm  ">KHENG SOVANNAK</span>
+                <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold text-xl md:text-sm">
+                  <span >@</span>
                 </span>
               </div>
               <Avatar
-                className="w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ml-6 ring-offset-2 md:w-[40px] md:h-[40px]"
+                className="w-16 hidden h-16 mb-4 rounded-full ring ring-primary ring-offset-base-100 ml-[140px] ring-offset-2 
+                lg:absolute lg:mt-2 lg:ml-[330px] lg:inline-block md:absolute md:-mt-14 md:ml-20 md:w-[40px] md:h-[40px]"
                 src={Vannak}
               />
             </div>
-
-            <div className="flex ">
-              <div className=" bg-[#EDF9FF] w-fit h-[50px]  px-4 py-2 rounded-2xl space-x-2 md:w-[150px] md:h-[35px] md:space-x-0">
-                <span className="font-semibold">KHENG MENGLOT</span>
+          <div className="text-22px space-y-14 lg:mt-28 lg:ml-[10px] md:text-12px md:mt-16 md:ml-3">
+            <div className="flex ml-8 ">
+              <div className=" bg-[#EDF9FF] w-fit h-[50px]  px-4 py-2 rounded-2xl space-x-2 md:w-[170px] md:h-[35px] md:space-x-0">
+                <span className="font-semibold text-xl md:text-sm">KHENG MENGLOT</span>
                 <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold">
                   <span>@</span>
                 </span>
@@ -135,7 +141,7 @@ export const AboutUs = () => {
 
             <div className="flex lg:-ml-4 ">
               <div className=" bg-[#EDF9FF] w-fit h-[50px] px-4 py-2 rounded-2xl space-x-2 ml-8 lg:ml-8 md:ml-4 md:w-[150px] md:h-[35px] md:space-x-0">
-                <span className="font-semibold">TITH OUDDOM</span>
+                <span className="font-semibold text-xl md:text-sm">TITH OUDDOM</span>
                 <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold">
                   <span>@</span>
                 </span>
@@ -148,7 +154,7 @@ export const AboutUs = () => {
 
             <div className="flex lg:ml-8">
               <div className=" bg-[#EDF9FF] w-fit h-[50px] px-4 py-2 rounded-2xl space-x-2 ml-16 lg:ml-0 md:w-[170px] md:h-[35px] md:space-x-0">
-                <span className="font-semibold">YAN SOVANSEYHA</span>
+                <span className="font-semibold text-xl md:text-sm">YAN SOVANSEYHA</span>
                 <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold">
                   <span>@</span>
                 </span>
@@ -167,8 +173,8 @@ export const AboutUs = () => {
             </p>
           </div>
 
-          <div className="text-20px space-y-10 lg:space-y-10 lg:-mt-[210px] lg:ml-[410px] md:w-[200px] md:space-y-10 md:text-12px md:ml-32 md:-mt-[190px]  ">
-            <div className="flex -ml-14 lg:-ml-20">
+          <div className="text-20px space-y-14 -mt-8 lg:space-y-12 lg:-mt-[210px] lg:ml-[410px] md:w-[200px] md:space-y-12 md:text-12px md:ml-32  ">
+            <div className="flex -ml-14 lg:-ml-14">
               <Avatar
                 className="w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ml-6 ring-offset-2 md:w-[40px] md:h-[40px]  "
                 src={Raksa}
@@ -177,48 +183,37 @@ export const AboutUs = () => {
                 <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold">
                   <span>@</span>
                 </span>
-                <span className="font-semibold">RUOS RAKSA</span>
+                <span className="font-semibold md:text-sm">RUOS RAKSA</span>
               </div>
             </div>
 
-            <div className="flex  ">
-            <Avatar
-                  className="w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ml-6 ring-offset-2 md:-ml-4 md:w-[40px] md:h-[40px]"
-                  src={Seangorn}
-                />
-            <div className="ml-6 h-[50px] bg-[#EDF9FF] w-fit px-4 py-2 rounded-2xl space-x-2  lg:ml-0 md:ml-6 md:space-x-0 md:w-[180px] md:-mr-8 md:h-[35px]">
-              <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold">
-                <span>@</span>
-              </span>
-              <span className="font-semibold">KHY SEANGNGORN</span>
-            </div>
-            </div>
-
-            <div className="flex md:mt-14">
+            <div className="flex -ml-1 ">
             <Avatar
                   className="w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ml-6 ring-offset-2 md:-ml-4 md:w-[40px] md:h-[40px]"
                   src={Lyheng}
                 />
-            <div className="ml-6 h-[50px] bg-[#EDF9FF] w-fit px-4 py-2 rounded-2xl space-x-2  lg:ml-0 md:ml-6 md:space-x-0 md:w-[150px] md:-mr-8 md:h-[35px]">
+            <div className="ml-6 h-[50px] bg-[#EDF9FF] w-fit px-4 py-2 rounded-2xl space-x-2  lg:ml-0 md:ml-6 md:space-x-0 md:w-[160px] md:-mr-8 md:h-[35px]">
               <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold">
                 <span>@</span>
               </span>
-              <span className="font-semibold">CHHUM LYHENG</span>
+              <span className="font-semibold md:text-sm"> CHHUM LYHENG</span>
             </div>
             </div>
 
-           <div className="flex -ml-14 lg:-ml-24">
-           <Avatar
-                  className="w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ml-6 ring-offset-2 md:w-[40px] md:h-[40px]"
-                  src={Sreynorng}
+            <div className="flex -ml-8 md:mt-14">
+            <Avatar
+                  className="w-16 h-16 rounded-full ring ring-primary ring-offset-base-100 ml-6 ring-offset-2 md:-ml-4 md:w-[40px] md:h-[40px]"
+                  src={Seangorn}
                 />
-           <div className="ml-6 h-[50px] bg-[#EDF9FF] w-fit px-4 py-2 rounded-2xl space-x-2  md:space-x-0 md:w-[170px] md:-mr-8 md:h-[35px]">
+            <div className="ml-6 h-[50px] bg-[#EDF9FF] w-fit px-4 py-2 rounded-2xl space-x-2  lg:ml-0 md:ml-6 md:space-x-0 md:w-[190px] md:-mr-8 md:h-[35px]">
               <span className="shadow-icon2 px-2 py-1 rounded-full text-primary font-semibold">
                 <span>@</span>
               </span>
-              <span className="font-semibold">SORN SREYNORNG</span>
+              <span className="font-semibold md:text-sm">KHY SEANGNGORN</span>
             </div>
-           </div>
+            </div>
+
+         
           </div>
 
           <p className="hidden lg:inline-block text-primary text-28px font-semibold mt-24 ml-36 

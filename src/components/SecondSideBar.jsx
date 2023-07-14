@@ -113,24 +113,6 @@ export const SecondSideBar = ({ handleClick,sideBar,setSideBar, }) => {
     );
   };
 
-  // const getAllDocumentInEachWorkspace = async (workspaceId) => {
-  //   try {
-  //     const response = await api.get(
-  //       `documents/workspaces/${workspaceId}?pageNo=1&pageSize=1000&eSortCurrentDateTime=DEFAULT`,
-  //       {
-  //         headers: {
-  //           Authorization: "Bearer " + localStorage.getItem("token"),
-  //           "Content-Type ": "application/json",
-  //         },
-  //       }
-  //     );
-  //     setDocuments(response.data.payload);
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // };
-
-  // const [documentData, setDocumentData] = useState();
 
   const handleCreatePage = async (documentId, workspaceId) => {
     const document = await createDocument(
@@ -560,6 +542,7 @@ export const SecondSideBar = ({ handleClick,sideBar,setSideBar, }) => {
           workspaces.map((workspace, index) => (
             <Accordion
               key={index}
+              // dropdown list document...
               open={open === index + 1}
               onClick={
                 () => handleGetDocumentInEachWorkspace(workspace?.workspaceId)
@@ -573,6 +556,7 @@ export const SecondSideBar = ({ handleClick,sideBar,setSideBar, }) => {
                     open === index + 1 ? "rotate-180" : ""
                   }`}
                 />
+                {/* workspace list */}
                 <AccordionHeader
                   onClick={() => handleOpen(index + 1)}
                   className="border-b-0 px-3 py-2"
@@ -688,12 +672,6 @@ export const SecondSideBar = ({ handleClick,sideBar,setSideBar, }) => {
           </div>
         )}
       </List>
-      {/* <CreatePageModal
-        // documentData={documentData}
-        visiblePage={visiblePage}
-        setVisiblePage={setVisiblePage}
-        secondhandleClick={secondhandleClick}
-      /> */}
       <RemoveWorkspaceModal
         removeWorkspace={removeWorkspace}
         setRemoveWorkspace={setRemoveWorkspace}

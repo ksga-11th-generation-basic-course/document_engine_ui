@@ -21,6 +21,7 @@ import {
   Avatar,
   Typography,
 } from "@material-tailwind/react";
+import view from "../assets/document_image/view.svg"
 import setting from "../assets/dashboard_image/setting.svg";
 import signout from "../assets/dashboard_image/signout.svg";
 import close from "../assets/dashboard_image/close.svg";
