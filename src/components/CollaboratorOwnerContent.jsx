@@ -8,6 +8,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getMemberInEachWorkspace } from "../redux/service/workspaceService/workspaceService";
 
 export const CollaboratorOwnerContent = ({
+  open,
+  setOpen,
   openWorkspaceSetting,
   setOpenWorkspaceSetting,
   workspace,
@@ -28,34 +30,41 @@ export const CollaboratorOwnerContent = ({
 
   useEffect(() => {
     dispatch(getMemberInEachWorkspace(workspace.workspaceId));
-  }, []);
+  }, [dispatch, workspace.workspaceId]);
 
   return (
     <div>
-      <div className="flex w-full justify-end">
+      {/* Close button */}
+      <div className="flex w-full justify-end p-1">
         <button
           type="button"
-          onClick={() => setOpenWorkspaceSetting(!openWorkspaceSetting)}
+          onClick={() => {
+            setOpenWorkspaceSetting(!openWorkspaceSetting), setOpen(!open);
+          }}
         >
-          <img src={close} />
+          <img
+            src={close}
+            className="w-9 lg:w-7 lg:right-7 lg:absolute md:-mt-2  md:w-6"
+          />
         </button>
       </div>
-      <div className="px-16 space-y-5 md:px-3">
+
+      <div className="px-16 space-y-5 lg:mt-8  md:px-8 md:mt-3 md:-ml-4">
         <div className="text-accent">
-          <h1 className="font-bold text-34px md:text-24px">
+          <h1 className="font-bold text-34px md:text-22px">
             Collaborators & permissions
           </h1>
-          <p className="md:text-16px">
+          <p className="md:text-12px md:-mt-3">
             Manage permissions and invite people in your workspace
           </p>
         </div>
         <div>
-          <div className="flex justify-between items-center border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 rounded-t-lg">
+          <div className="flex justify-between items-center border-l-[1px] border-r-[1px] border-t-[1px] px-6 py-3 rounded-t-lg md:px-4">
             <div className="flex justify-center items-center gap-x-3">
-              <p className="font-semibold text-18px">Collaborators</p>
+              <p className="font-bold text-22px md:text-18px">Collaborators</p>
             </div>
-            <div className="flex justify-center items-center gap-x-3 md:gap-3 md:px-0 shadow-sm px-3 p-1 rounded-lg relative">
-              <span className="text-primary">{workspace.workspaceCode}</span>
+            <div className="flex justify-center items-center gap-x-3 md:gap-3 shadow-sm px-3 p-1 rounded-lg relative hover:shadow-hover">
+              <span className="text-primary md:text-12px">{workspace.workspaceCode}</span>
               <CopyToClipboard
                 text={workspace.workspaceCode}
                 onCopy={handleCopy}
@@ -63,6 +72,7 @@ export const CollaboratorOwnerContent = ({
                 <svg
                   width="20"
                   height="20"
+                  className="md:w-3"
                   fill="none"
                   stroke="#526581"
                   stroke-linecap="round"
@@ -82,14 +92,14 @@ export const CollaboratorOwnerContent = ({
                       <div className="bg-[#DCFFD9] py-2 px-2 rounded-l-lg">
                         <img src={tick} />
                       </div>
-                      <p className="pr-2 md:text-14px md:pr-2">Code Copied</p>
+                      <p className="pr-2 md:text-12px md:pr-2">Code Copied</p>
                     </div>
                   </div>
                 ) : null}
               </div>
             </div>
           </div>
-          <div className="px-6 md:p-3 border-[1px] py-4 space-y-2 rounded-b-lg">
+          <div className="px-6 md:p-3 border-[1px] py-4 space-y-2 rounded-b-lg md:px-4">
             {members &&
               members.map((member, index) => (
                 <div key={index}>
@@ -101,6 +111,8 @@ export const CollaboratorOwnerContent = ({
               ))}
           </div>
         </div>
+
+        
       </div>
     </div>
   );

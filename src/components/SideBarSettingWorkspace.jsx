@@ -10,17 +10,17 @@ export const SideBarSettingWorkspace = ({
   setOpenInviteMember,
 }) => {
   return (
-    <div className="space-y-3 bg-white lg:h-[848px] lg:w-[320px] lg:z-10 lg:rounded-l-xl lg:mt-1 lg:shadow-xl md:w-[250px] md:rounded-l-xl md:h-[787px] md:-ml-3.5 ">
+    <div className="space-y-3 lg:absolute lg:h-[850px] lg:shadow-custom lg:bg-white lg:w-60 md:w-[180px] md:border-l-0 md:rounded-l-xl md:h-[650px]">
       <div className="flex justify-center p-5 rounded-tl-lg shadow-md">
         <img className="md:w-16" src={logo} />
       </div>
-      <div className="w-full px-3  md:p-0">
+      <div className="w-full px-3 md:p-0 md:px-2">
         <div>
           <button
             className={
               setting
-                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3 md:m-2 md:w-[230px] "
-                : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3"
+                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3 md:py-2"
+                : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3 md:py-2"
             }
             onClick={() => {
               setSetting(true);
@@ -31,6 +31,7 @@ export const SideBarSettingWorkspace = ({
             <svg
               width="28"
               height="28"
+              className="md:w-6 md:h-6"
               fill="none"
               stroke="currentColor"
               stroke-linecap="round"
@@ -45,12 +46,12 @@ export const SideBarSettingWorkspace = ({
             <p className="font-semibold text-18px md:text-[16px]">Setting</p>
           </button>
         </div>
-        <div className="lg:z-40">
+        <div>
           <button
             className={
               collaborator
-                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3"
-                : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3"
+                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3 md:py-2"
+                : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3 md:py-2"
             }
             onClick={() => {
               setSetting(false);
@@ -61,6 +62,7 @@ export const SideBarSettingWorkspace = ({
             <svg
               width="25"
               height="25"
+              className="md:w-5 md:h-5"
               fill="none"
               stroke="currentColor"
               stroke-linecap="round"
@@ -83,8 +85,8 @@ export const SideBarSettingWorkspace = ({
           <button
             className={
               openInviteMember
-                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3"
-                : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3"
+                ? "flex items-center gap-x-3 text-primary bg-gray-200 rounded-lg w-full py-3 px-3 md:py-2"
+                : "flex items-center gap-x-3 rounded-lg w-full py-3 px-3 md:py-2"
             }
             onClick={() => {
               setOpenInviteMember(true);
@@ -95,6 +97,7 @@ export const SideBarSettingWorkspace = ({
             <svg
               width="28"
               height="28"
+              className="md:w-5 md:h-5"
               fill="none"
               stroke="currentColor"
               stroke-linecap="round"

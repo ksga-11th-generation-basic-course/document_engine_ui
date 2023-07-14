@@ -159,6 +159,7 @@ export const DocumentCard = ({ document, workspaceId }) => {
               </button>
             </MenuHandler>
             <MenuList className="text-accent rounded-lg space-y-1 p-2 w-56 font-ssp">
+              {/* View Page */}
               <MenuItem
                 className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                 onClick={viewPage}
@@ -167,6 +168,8 @@ export const DocumentCard = ({ document, workspaceId }) => {
                 <img src={view} />
                 <span className="text-18px">View page</span>
               </MenuItem>
+
+              {/* View Page */}
               <MenuItem
                 className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                 onClick={() => setOpenPermission(!openPermission)}
@@ -175,6 +178,8 @@ export const DocumentCard = ({ document, workspaceId }) => {
                 <img src={permission} />
                 <span className="text-18px">Permission</span>
               </MenuItem>
+              
+              {/* Document History */}
               <MenuItem
                 className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                 onClick={() => hanleDocumentHistory(document?.documentId)}
@@ -183,6 +188,8 @@ export const DocumentCard = ({ document, workspaceId }) => {
                 <img src={history} />
                 <span className="text-18px">Document History</span>
               </MenuItem>
+
+              {/* Export File */}
               <Menu placement="right-start" offset={15}>
                 <MenuHandler>
                   <MenuItem className="hover:bg-gray-200 p-2 flex items-center gap-x-3">
@@ -212,6 +219,8 @@ export const DocumentCard = ({ document, workspaceId }) => {
                   </MenuItem>
                 </MenuList>
               </Menu>
+
+              {/* Duplicate */}
               <MenuItem
                 className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                 onClick={handleDuplicateDocument}
@@ -220,6 +229,8 @@ export const DocumentCard = ({ document, workspaceId }) => {
                 <img src={duplicate} />
                 <span className="text-18px">Duplicate </span>
               </MenuItem>
+
+              {/* Delete Document */}
               <MenuItem
                 className="hover:bg-gray-200 p-2 flex items-center gap-x-3"
                 onClick={handleRemoveDocument}

@@ -21,7 +21,7 @@ import { Button } from "rsuite";
 import { Avatar } from "@material-tailwind/react";
 import dropdown from "../assets/images/popUp/dropdown.svg";
 import reverse_dropdown from "../assets/images/popUp/reverse_dropdown.svg";
-import { toast } from "react-toastify";
+import { ToastContainer, toast } from "react-toastify";
 
 export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
   const [visible, setVisible] = useState(false);
@@ -73,7 +73,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
       const user = await editProfileInformation(username, url);
       dispatch(editProfileInformationSuccess(user));
       setOpenSetting(!openSetting);
-      toast.success("Your Information is updated Successfully", {
+      toast.success("Profile Information is updated Successfully", {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -623,7 +623,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
                           </p>
                         </div>
                         <button
-                          className="font-semibold text-16px text-red-500 border-[1px] rounded-lg px-3 py-1 md:text-14px md:w-32 md:px-2 md:py-1.5 md:ml-3"
+                          className="font-semibold text-16px text-red-500 border-[1px] rounded-lg px-3 py-1 md:text-14px md:w-32 md:px-1.5 md:py-2 md:ml-3"
                           onClick={() => setCloseAccount(!closeAccount)}
                         >
                           Close Account
@@ -637,6 +637,7 @@ export const AccountSettingModal = ({ openSetting, setOpenSetting, user }) => {
           </div>
         </div>
       </Modal>
+
       <div>
         <SignOutModal
           openSignOut={openSignOut}

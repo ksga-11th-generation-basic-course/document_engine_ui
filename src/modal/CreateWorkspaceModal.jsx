@@ -33,21 +33,31 @@ export const CreateWorkspaceModal = ({
     "https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fworkspace%2F3036d816-8b3f-4c2e-8725-8b0d0944b4f3_4014085.jpg?alt=media&token=1c310982-d56b-49bc-929f-693812978256"
   );
 
-  // useEffect(() => {
-  //   if (!workspaceImage) return;
-  //   else {
-  //     const imageRef = ref(
-  //       storage,
-  //       `images/workspace/${uuidv4()}_${workspaceImage.name}`
-  //     );
+  useEffect(()=>{
+    if(visible===false){
+      setUrl("https://firebasestorage.googleapis.com/v0/b/docengine-7e623.appspot.com/o/images%2Fworkspace%2F3036d816-8b3f-4c2e-8725-8b0d0944b4f3_4014085.jpg?alt=media&token=1c310982-d56b-49bc-929f-693812978256"
+      )
+    }
+  },[visible])
 
-  //     uploadBytes(imageRef, workspaceImage).then((snapshot) => {
-  //       getDownloadURL(snapshot.ref).then((url) => {
-  //         setUrl(url);
-  //       });
-  //     });
-  //   }
-  // }, [workspaceImage]);
+  useEffect(() => {
+    if (!workspaceImage) return;
+    else {
+      const imageRef = ref(
+        storage,
+        `images/workspace/${uuidv4()}_${workspaceImage.name}`
+        
+      );
+      console.log("Storage",storage);
+
+      uploadBytes(imageRef, workspaceImage).then((snapshot) => {
+        getDownloadURL(snapshot.ref).then((url) => {
+          setUrl(url);
+        });
+      });
+    }
+    
+  }, [workspaceImage]);
 
   const formik = useFormik({
     initialValues: {
@@ -81,6 +91,7 @@ export const CreateWorkspaceModal = ({
       }
     },
   });
+
 
   return (
     <div className="w-full">
@@ -153,7 +164,7 @@ export const CreateWorkspaceModal = ({
                       setWorkspaceImage(e.target.files[0]);
                     }}
                   />
-                  <div className="w-[410px] h-[165px] overflow-hidden rounded-lg md:w-full">
+                  <div className="w-[410px] h-[165px] mt-1 overflow-hidden rounded-lg md:w-full">
                     {workspaceImage ? (
                       <img
                         src={URL.createObjectURL(workspaceImage)}
@@ -185,6 +196,7 @@ export const CreateWorkspaceModal = ({
                 focus:outline-none shadow-sm hover:shadow-md text-center inline-block
                 lg:h-13 md:h-[2px] md:pb-8 md:w-[280px] md:rounded-md  md:py-2.5"
                     type="submit"
+                    onClick={() => setWorkspaceImage()}
                   >
                     Create
                   </button>

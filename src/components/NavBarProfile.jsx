@@ -27,6 +27,7 @@ import close from "../assets/dashboard_image/close.svg";
 import { SignOutModal } from "../modal/SignOutModal";
 import { AccountSettingModal } from "../modal/AccountSettingModal";
 import { ChevronDownIcon } from "@heroicons/react/24/outline";
+import view from "../assets/document_image/view.svg"
 
 export const NavBarProfile = () => {
   const [visible, setVisible] = useState(false);
@@ -110,7 +111,7 @@ export const NavBarProfile = () => {
                 {" "}
                 <div className="flex gap-x-3">
                   <img src={pen} alt="" className="md:w-3"/>
-                  <span className="text-lg">Editing</span>
+                  <span className="text-lg ml-1.5">Editing</span>
                 </div>
                 <p className="mr-6">Edit document directly</p>
               </MenuItem>
@@ -213,7 +214,7 @@ export const NavBarProfile = () => {
               )}
           </MenuHandler>
 
-          <MenuList className="rounded-lg text-accent w-[360px] p-5 font-ssp lg:z-30 md:w-60 ">
+          <MenuList className="rounded-lg text-accent w-[360px] p-5 font-ssp lg:z-30 md:w-64 ">
             <MenuItem>
               <p className="font-extrabold text-28px text-primary text-left md:text-20px">
                 Profile

@@ -450,7 +450,7 @@ export const Editor = ({ loading, blockData }) => {
             />
           </div>
         ) : (
-          <p className="text-gray-500 text-16px md:hidden">Edited just now</p>
+          <p className="text-gray-500 text-16px  md:hidden">Edited just now</p>
         )}
       </div>
 

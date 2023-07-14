@@ -18,7 +18,7 @@ export const Root = () => {
     <div className="relative">
       <div className="grid grid-cols-12">
         <div className= "col-span-2  md:col-span-12">
-              <div className= "fixed w-80 shadow-sidebar lg:hidden md:hidden z-0"> 
+              <div className= {open ? "fixed w-80 lg:hidden md:hidden z-50" : "fixed w-80 lg:hidden md:hidden z-10"}> 
                     <SecondSideBar handleClick={handleClick} sideBar={sideBar} setSideBar={setSideBar}/>
               </div>
 

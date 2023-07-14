@@ -9,7 +9,7 @@ import file from "../../assets/dashboard_image/file.png";
 import delet from "../../assets/dashboard_image/document.png";
 import { DropDownDocument } from "../DropDownDocument";
 import { useNavigate } from "react-router-dom";
-import { Button, Dropdown } from "react-daisyui";
+import { Button,Dropdown } from "react-daisyui";
 
 export const DocumentCardRow = ({
   documentname,
@@ -25,6 +25,9 @@ export const DocumentCardRow = ({
     navigate(`/createdocument/${documentId}/${workspaceId}`);
   };
 
+  console.log("Document Id : ",documentId );
+  console.log("Document Id : ",documentId );
+
   return (
     <div className="flex justify-between items-center px-3 gap-x-5 w-full shadow-custom rounded-lg cursor-pointer lg:w-full md:-ml-5 md:w-[330px] md:py-0 md:px-0 z-0 hover:shadow-hover">
       <div className="w-full h-full px-5 py-4" onClick={handleNavigate}>
@@ -34,7 +37,7 @@ export const DocumentCardRow = ({
           </h3>
           {status ? (
             <div className="flex text-primary gap-x-1 px-3 justify-center items-center rounded-2xl bg-[#EDF9FF]">
-              <p className="xl:text-14px mr-2 md:text-10px">Editing...</p>
+              <p className="xl:text-14px mr-2 md:text-[11px]">Editing...</p>
               <img src={pencil} className="w-3 h-3 -ml-1 md:w-2 md:h-2" />
             </div>
           ) : null}
@@ -49,7 +52,7 @@ export const DocumentCardRow = ({
         }
         </p>
       </div>
-      <div className="relative z-10">
+      <div className="relative">
         <Dropdown className="dropdown relative">
           <Button
             className="bg-white hover:bg-gray-50 border-none rounded-xl"

@@ -21,7 +21,7 @@ export const Hint = () => {
   }, []);
 
   return (
-    <div className="md:-ml-5 ">
+    <div className="md:-ml-5 z-0 ">
       <div className="mb-5 mt-7">
         <h1 className="font-bold text-accent text-44px md:text-22px">
           Hi, {user && user.userName}!
@@ -38,8 +38,8 @@ export const Hint = () => {
         <button
           className={
             open
-              ? "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom  rounded-t-lg md:pb-2 md:pt-0 md:px-3.5"
-              : "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom rounded-lg hover:shadow-hover md:pb-2 md:pt-0 md:px-3.5"
+              ? "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom  rounded-t-lg md:pb-2 md:pt-0 md:px-3.5 z-0"
+              : "flex items-center gap-x-5 w-full px-5 py-4 border-r-[15px] border-r-primary shadow-custom rounded-lg hover:shadow-hover md:pb-2 md:pt-0 md:px-3.5 z-0"
           }
           onClick={() => setOpen(!open)}
         >

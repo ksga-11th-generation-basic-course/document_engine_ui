@@ -61,7 +61,7 @@ export const Dashboard = () => {
 
 
   return (
-    <div className="bg-white">
+    <div className="bg-white z-0">
     <div className="w-full lg:w-full">
       <Hint />
     </div>
@@ -93,7 +93,7 @@ export const Dashboard = () => {
           [...recentlies]
           .sort((a, b) => a.editDate - b.editDate)
             .map((recently, index) => (
-            <div key={index}>
+            <div key={index} className="z-0">
               <DocumentCardRow
                 documentId={recently.documentId}
                 workspaceId={recently.workspaceId}
