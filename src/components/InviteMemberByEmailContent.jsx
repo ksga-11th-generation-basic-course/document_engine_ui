@@ -5,6 +5,7 @@ import { inviteMemberViaEmail } from "../redux/service/workspaceService/workspac
 import { useDispatch } from "react-redux";
 import { inviteMemberViaEmailSuccess } from "../redux/slice/workspaceSlice/workspaceSlice";
 import { Button } from "rsuite";
+import { Message } from "primereact/message";
 
 export const InviteMemberByEmailContent = ({
   open,
@@ -12,8 +13,14 @@ export const InviteMemberByEmailContent = ({
   openWorkspaceSetting,
   setOpenWorkspaceSetting,
   workspace,
+  setCollaborator,
+  setOpenInviteMember,
 }) => {
   const [email, setEmail] = useState("");
+
+  const [success, setSuccess] = useState(false);
+
+  const [failed, setFailed] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -23,9 +30,18 @@ export const InviteMemberByEmailContent = ({
     try {
       const workspace = await inviteMemberViaEmail(workspaceId, email);
       dispatch(inviteMemberViaEmailSuccess(workspace));
+      setCollaborator(true);
+      setOpenInviteMember(false);
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+      }, 2000);
       setEmail("");
     } catch (error) {
-      console.log(error);
+      setFailed(true);
+      setTimeout(() => {
+        setFailed(false);
+      }, 2000);
     }
   };
 
@@ -67,6 +83,20 @@ export const InviteMemberByEmailContent = ({
               >
                 Invite
               </Button>
+              {success && (
+                <Message
+                  severity="success"
+                  text="Invited Successfully"
+                  className="absolute top-10 p-2 w-56"
+                />
+              )}
+              {failed && (
+                <Message
+                  severity="error"
+                  text="Email was not found"
+                  className="absolute top-10 p-2 w-56"
+                />
+              )}
             </div>
           </div>
           <div className="px-6 md:p-3 border-[1px] py-4 space-y-2 rounded-b-lg md:px-4">
@@ -76,7 +106,7 @@ export const InviteMemberByEmailContent = ({
                 <input
                   type="text"
                   value={email}
-                  placeholder="example@gmail.com"
+                  placeholder="name@gmail.com"
                   className="font-semibold w-full px-10 rounded-lg border-[1px] border-gray-300 focus:ring-gray-400 focus:border-gray-400 md:text-14px"
                   onChange={(e) => setEmail(e.target.value)}
                 />
